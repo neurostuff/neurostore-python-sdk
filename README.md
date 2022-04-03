@@ -65,10 +65,8 @@ configuration = neurostore_sdk.Configuration(
 
 
 # Enter a context with an instance of the API client
-with neurostore_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = analyses_api.AnalysesApi(api_client)
-    search = "imagin" # str | search for entries that contain the substring (optional)
+client = neurostore_sdk.ApiClient(configuration)
+search = "imagin" # str | search for entries that contain the substring (optional)
 sort = "created_at" # str | Parameter to sort results on (optional) (default to "created_at")
 page = 0 # int | page of results (optional)
 desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -77,12 +75,14 @@ name = "name_example" # str | search the name field for a term (optional)
 description = "description_example" # str | search description field for a term (optional)
 nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
-    try:
-        # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested)
-        pprint(api_response)
-    except neurostore_sdk.ApiException as e:
-        print("Exception when calling AnalysesApi->analyses_get: %s\n" % e)
+try:
+    # GET list of analyses
+    api_response = client.analyses.get(
+    search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested
+    )
+    pprint(api_response)
+except neurostore_sdk.ApiException as e:
+    print("Exception when calling AnalysesApi->analyses_get: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
