@@ -18,6 +18,7 @@ docs/ConditionList.md
 docs/ConditionReturn.md
 docs/ConditionsApi.md
 docs/Entity.md
+docs/EntityAllOf.md
 docs/Image.md
 docs/ImageList.md
 docs/ImageReturn.md
@@ -33,6 +34,7 @@ docs/PointReturn.md
 docs/PointValue.md
 docs/PointsApi.md
 docs/ReadOnly.md
+docs/ReadOnly1.md
 docs/StudiesApi.md
 docs/Study.md
 docs/StudyList.md
@@ -73,6 +75,7 @@ neurostore_sdk/model/condition.py
 neurostore_sdk/model/condition_list.py
 neurostore_sdk/model/condition_return.py
 neurostore_sdk/model/entity.py
+neurostore_sdk/model/entity_all_of.py
 neurostore_sdk/model/image.py
 neurostore_sdk/model/image_list.py
 neurostore_sdk/model/image_return.py
@@ -86,6 +89,7 @@ neurostore_sdk/model/point_list.py
 neurostore_sdk/model/point_return.py
 neurostore_sdk/model/point_value.py
 neurostore_sdk/model/read_only.py
+neurostore_sdk/model/read_only1.py
 neurostore_sdk/model/study.py
 neurostore_sdk/model/study_list.py
 neurostore_sdk/model/study_return.py
@@ -103,4 +107,6 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_entity.py
+test/test_entity_all_of.py
+test/test_read_only1.py
 tox.ini

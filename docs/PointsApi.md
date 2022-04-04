@@ -273,11 +273,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
             None,
         ],
         entities=[
-            Entity(
-                label="label_example",
-                level="run",
-                analysis="analysis_example",
-            ),
+            Entity(None),
         ],
     ) # Point |  (optional)
 
@@ -384,11 +380,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
             None,
         ],
         entities=[
-            Entity(
-                label="label_example",
-                level="run",
-                analysis="analysis_example",
-            ),
+            Entity(None),
         ],
     ) # Point |  (optional)
 

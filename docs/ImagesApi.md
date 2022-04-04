@@ -287,11 +287,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         value_type="Z",
         analysis="7UvrsaALJU9g",
         entities=[
-            Entity(
-                label="label_example",
-                level="run",
-                analysis="analysis_example",
-            ),
+            Entity(None),
         ],
     ) # Image |  (optional)
 
@@ -390,11 +386,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         value_type="Z",
         analysis="7UvrsaALJU9g",
         entities=[
-            Entity(
-                label="label_example",
-                level="run",
-                analysis="analysis_example",
-            ),
+            Entity(None),
         ],
     ) # Image |  (optional)
 

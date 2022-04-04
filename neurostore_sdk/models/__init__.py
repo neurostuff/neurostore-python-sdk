@@ -21,6 +21,7 @@ from neurostore_sdk.model.condition import Condition
 from neurostore_sdk.model.condition_list import ConditionList
 from neurostore_sdk.model.condition_return import ConditionReturn
 from neurostore_sdk.model.entity import Entity
+from neurostore_sdk.model.entity_all_of import EntityAllOf
 from neurostore_sdk.model.image import Image
 from neurostore_sdk.model.image_list import ImageList
 from neurostore_sdk.model.image_return import ImageReturn
@@ -34,6 +35,7 @@ from neurostore_sdk.model.point_list import PointList
 from neurostore_sdk.model.point_return import PointReturn
 from neurostore_sdk.model.point_value import PointValue
 from neurostore_sdk.model.read_only import ReadOnly
+from neurostore_sdk.model.read_only1 import ReadOnly1
 from neurostore_sdk.model.study import Study
 from neurostore_sdk.model.study_list import StudyList
 from neurostore_sdk.model.study_return import StudyReturn
