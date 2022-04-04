@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **image** | **str, none_type** |  | [optional] 
 **label_id** | **str, none_type** |  | [optional] 
 **value** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
+**entities** | [**[Entity]**](Entity.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 

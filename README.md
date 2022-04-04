@@ -145,6 +145,8 @@ Class | Method | HTTP request | Description
  - [Condition](docs/Condition.md)
  - [ConditionList](docs/ConditionList.md)
  - [ConditionReturn](docs/ConditionReturn.md)
+ - [Entity](docs/Entity.md)
+ - [EntityAllOf](docs/EntityAllOf.md)
  - [Image](docs/Image.md)
  - [ImageList](docs/ImageList.md)
  - [ImageReturn](docs/ImageReturn.md)

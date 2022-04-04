@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **analysis_name** | **str, none_type** | name of the analysis | [optional] [readonly] 
 **analysis** | **str** | ID of the analysis this image came from | [optional] 
 **add_date** | **datetime, none_type** | date the image was added | [optional] [readonly] 
+**entities** | [**[Entity]**](Entity.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 

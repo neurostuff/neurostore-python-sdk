@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **analysis_name** | **str, none_type** | name of the analysis | [optional] [readonly] 
 **analysis** | **str** | ID of the analysis this image came from | [optional] 
 **add_date** | **datetime, none_type** | date the image was added | [optional] [readonly] 
+**entities** | [**[Entity]**](Entity.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

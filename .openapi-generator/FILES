@@ -17,6 +17,8 @@ docs/Condition.md
 docs/ConditionList.md
 docs/ConditionReturn.md
 docs/ConditionsApi.md
+docs/Entity.md
+docs/EntityAllOf.md
 docs/Image.md
 docs/ImageList.md
 docs/ImageReturn.md
@@ -71,6 +73,8 @@ neurostore_sdk/model/annotation_return.py
 neurostore_sdk/model/condition.py
 neurostore_sdk/model/condition_list.py
 neurostore_sdk/model/condition_return.py
+neurostore_sdk/model/entity.py
+neurostore_sdk/model/entity_all_of.py
 neurostore_sdk/model/image.py
 neurostore_sdk/model/image_list.py
 neurostore_sdk/model/image_return.py
@@ -100,4 +104,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_entity.py
+test/test_entity_all_of.py
 tox.ini

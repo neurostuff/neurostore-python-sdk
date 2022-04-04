@@ -31,8 +31,10 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.point_value import PointValue
     from neurostore_sdk.model.read_only import ReadOnly
+    globals()['Entity'] = Entity
     globals()['PointValue'] = PointValue
     globals()['ReadOnly'] = ReadOnly
 
@@ -108,6 +110,7 @@ class Point(ModelNormal):
             'image': (str, none_type,),  # noqa: E501
             'label_id': (str, none_type,),  # noqa: E501
             'value': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'entities': ([Entity],),  # noqa: E501
         }
 
     @cached_property
@@ -126,6 +129,7 @@ class Point(ModelNormal):
         'image': 'image',  # noqa: E501
         'label_id': 'label_id',  # noqa: E501
         'value': 'value',  # noqa: E501
+        'entities': 'entities',  # noqa: E501
     }
 
     read_only_vars = {
@@ -179,6 +183,7 @@ class Point(ModelNormal):
             image (str, none_type): [optional]  # noqa: E501
             label_id (str, none_type): [optional]  # noqa: E501
             value ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -270,6 +275,7 @@ class Point(ModelNormal):
             image (str, none_type): [optional]  # noqa: E501
             label_id (str, none_type): [optional]  # noqa: E501
             value ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
