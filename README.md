@@ -160,7 +160,6 @@ Class | Method | HTTP request | Description
  - [PointReturn](docs/PointReturn.md)
  - [PointValue](docs/PointValue.md)
  - [ReadOnly](docs/ReadOnly.md)
- - [ReadOnly1](docs/ReadOnly1.md)
  - [Study](docs/Study.md)
  - [StudyList](docs/StudyList.md)
  - [StudyReturn](docs/StudyReturn.md)

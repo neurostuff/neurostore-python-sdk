@@ -34,7 +34,6 @@ docs/PointReturn.md
 docs/PointValue.md
 docs/PointsApi.md
 docs/ReadOnly.md
-docs/ReadOnly1.md
 docs/StudiesApi.md
 docs/Study.md
 docs/StudyList.md
@@ -89,7 +88,6 @@ neurostore_sdk/model/point_list.py
 neurostore_sdk/model/point_return.py
 neurostore_sdk/model/point_value.py
 neurostore_sdk/model/read_only.py
-neurostore_sdk/model/read_only1.py
 neurostore_sdk/model/study.py
 neurostore_sdk/model/study_list.py
 neurostore_sdk/model/study_return.py
@@ -108,5 +106,4 @@ test-requirements.txt
 test/__init__.py
 test/test_entity.py
 test/test_entity_all_of.py
-test/test_read_only1.py
 tox.ini

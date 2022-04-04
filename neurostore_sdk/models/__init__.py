@@ -35,7 +35,6 @@ from neurostore_sdk.model.point_list import PointList
 from neurostore_sdk.model.point_return import PointReturn
 from neurostore_sdk.model.point_value import PointValue
 from neurostore_sdk.model.read_only import ReadOnly
-from neurostore_sdk.model.read_only1 import ReadOnly1
 from neurostore_sdk.model.study import Study
 from neurostore_sdk.model.study_list import StudyList
 from neurostore_sdk.model.study_return import StudyReturn
