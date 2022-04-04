@@ -31,8 +31,10 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.image import Image
     from neurostore_sdk.model.read_only import ReadOnly
+    globals()['Entity'] = Entity
     globals()['Image'] = Image
     globals()['ReadOnly'] = ReadOnly
 
@@ -106,6 +108,7 @@ class ImageReturn(ModelComposed):
             'analysis_name': (str, none_type,),  # noqa: E501
             'analysis': (str,),  # noqa: E501
             'add_date': (datetime, none_type,),  # noqa: E501
+            'entities': ([Entity],),  # noqa: E501
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
@@ -125,6 +128,7 @@ class ImageReturn(ModelComposed):
         'analysis_name': 'analysis_name',  # noqa: E501
         'analysis': 'analysis',  # noqa: E501
         'add_date': 'add_date',  # noqa: E501
+        'entities': 'entities',  # noqa: E501
         'id': 'id',  # noqa: E501
         'created_at': 'created_at',  # noqa: E501
         'user': 'user',  # noqa: E501
@@ -181,6 +185,7 @@ class ImageReturn(ModelComposed):
             analysis_name (str, none_type): name of the analysis. [optional]  # noqa: E501
             analysis (str): ID of the analysis this image came from. [optional]  # noqa: E501
             add_date (datetime, none_type): date the image was added. [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
@@ -291,6 +296,7 @@ class ImageReturn(ModelComposed):
             analysis_name (str, none_type): name of the analysis. [optional]  # noqa: E501
             analysis (str): ID of the analysis this image came from. [optional]  # noqa: E501
             add_date (datetime, none_type): date the image was added. [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501

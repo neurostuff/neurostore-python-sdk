@@ -286,6 +286,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         space="TAL",
         value_type="Z",
         analysis="7UvrsaALJU9g",
+        entities=[
+            Entity(
+                label="label_example",
+                level="run",
+                analysis="analysis_example",
+            ),
+        ],
     ) # Image |  (optional)
 
     # example passing only required values which don't have defaults set
@@ -382,6 +389,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         space="TAL",
         value_type="Z",
         analysis="7UvrsaALJU9g",
+        entities=[
+            Entity(
+                label="label_example",
+                level="run",
+                analysis="analysis_example",
+            ),
+        ],
     ) # Image |  (optional)
 
     # example passing only required values which don't have defaults set

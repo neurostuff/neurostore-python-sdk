@@ -272,6 +272,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         value=[
             None,
         ],
+        entities=[
+            Entity(
+                label="label_example",
+                level="run",
+                analysis="analysis_example",
+            ),
+        ],
     ) # Point |  (optional)
 
     # example passing only required values which don't have defaults set
@@ -375,6 +382,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         label_id="label_id_example",
         value=[
             None,
+        ],
+        entities=[
+            Entity(
+                label="label_example",
+                level="run",
+                analysis="analysis_example",
+            ),
         ],
     ) # Point |  (optional)
 

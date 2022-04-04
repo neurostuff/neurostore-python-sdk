@@ -20,6 +20,7 @@ from neurostore_sdk.model.annotation_return import AnnotationReturn
 from neurostore_sdk.model.condition import Condition
 from neurostore_sdk.model.condition_list import ConditionList
 from neurostore_sdk.model.condition_return import ConditionReturn
+from neurostore_sdk.model.entity import Entity
 from neurostore_sdk.model.image import Image
 from neurostore_sdk.model.image_list import ImageList
 from neurostore_sdk.model.image_return import ImageReturn
