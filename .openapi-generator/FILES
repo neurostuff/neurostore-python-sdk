@@ -104,6 +104,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_entity.py
-test/test_entity_all_of.py
 tox.ini
