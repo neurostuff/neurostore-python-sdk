@@ -1,5 +1,6 @@
 # Studyset
 
+A collection of studies (e.g., publications) where each study is unit of publishable content.
 
 ## Properties
 Name | Type | Description | Notes
