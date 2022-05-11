@@ -257,25 +257,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = points_api.PointsApi(api_client)
     id = "id_example" # str | 
-    point = Point(
-        coordinates=[
-            63,
-        ],
-        space="UNKNOWN",
-        kind="kind_example",
-        x=3.14,
-        y=3.14,
-        z=3.14,
-        analysis="6kwPw6p79Ljm",
-        image="image_example",
-        label_id="label_id_example",
-        value=[
-            None,
-        ],
-        entities=[
-            Entity(None),
-        ],
-    ) # Point |  (optional)
+    point = Point(None) # Point |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -364,25 +346,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = points_api.PointsApi(api_client)
-    point = Point(
-        coordinates=[
-            63,
-        ],
-        space="UNKNOWN",
-        kind="kind_example",
-        x=3.14,
-        y=3.14,
-        z=3.14,
-        analysis="6kwPw6p79Ljm",
-        image="image_example",
-        label_id="label_id_example",
-        value=[
-            None,
-        ],
-        entities=[
-            Entity(None),
-        ],
-    ) # Point |  (optional)
+    point = Point(None) # Point |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values

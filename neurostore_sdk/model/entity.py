@@ -32,9 +32,9 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.entity_all_of import EntityAllOf
-    from neurostore_sdk.model.read_only import ReadOnly
+    from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['EntityAllOf'] = EntityAllOf
-    globals()['ReadOnly'] = ReadOnly
+    globals()['ResourceAttributes'] = ResourceAttributes
 
 
 class Entity(ModelComposed):
@@ -106,7 +106,9 @@ class Entity(ModelComposed):
             'analysis': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -120,11 +122,14 @@ class Entity(ModelComposed):
         'analysis': 'analysis',  # noqa: E501
         'id': 'id',  # noqa: E501
         'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
         'user': 'user',  # noqa: E501
+        'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
         'created_at',  # noqa: E501
+        'updated_at',  # noqa: E501
         'user',  # noqa: E501
     }
 
@@ -169,7 +174,9 @@ class Entity(ModelComposed):
             analysis (str): [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -274,7 +281,9 @@ class Entity(ModelComposed):
             analysis (str): [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -341,7 +350,7 @@ class Entity(ModelComposed):
           ],
           'allOf': [
               EntityAllOf,
-              ReadOnly,
+              ResourceAttributes,
           ],
           'oneOf': [
           ],

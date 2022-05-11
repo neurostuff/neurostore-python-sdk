@@ -279,17 +279,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = images_api.ImagesApi(api_client)
     id = "id_example" # str | 
-    image = Image(
-        metadata={},
-        url="https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz",
-        filename="Positive_RPEs_zstat.nii.gz",
-        space="TAL",
-        value_type="Z",
-        analysis="7UvrsaALJU9g",
-        entities=[
-            Entity(None),
-        ],
-    ) # Image |  (optional)
+    image = Image(None) # Image |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -378,17 +368,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = images_api.ImagesApi(api_client)
-    image = Image(
-        metadata={},
-        url="https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz",
-        filename="Positive_RPEs_zstat.nii.gz",
-        space="TAL",
-        value_type="Z",
-        analysis="7UvrsaALJU9g",
-        entities=[
-            Entity(None),
-        ],
-    ) # Image |  (optional)
+    image = Image(None) # Image |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
