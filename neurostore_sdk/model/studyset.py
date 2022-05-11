@@ -153,12 +153,12 @@ class Studyset(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            doi (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
-            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            name (str, none_type): Descriptive and human readable name of the studyset.. [optional]  # noqa: E501
+            description (str, none_type): A longform description of the studyset.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/source the studyset is connected to if the studyset was published.. [optional]  # noqa: E501
+            doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
+            pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
+            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): The collection of studies.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -258,12 +258,12 @@ class Studyset(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            doi (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
-            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            name (str, none_type): Descriptive and human readable name of the studyset.. [optional]  # noqa: E501
+            description (str, none_type): A longform description of the studyset.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/source the studyset is connected to if the studyset was published.. [optional]  # noqa: E501
+            doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
+            pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
+            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): The collection of studies.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

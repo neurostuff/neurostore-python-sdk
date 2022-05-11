@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str, none_type** |  | [optional] 
-**description** | **str, none_type** |  | [optional] 
-**publication** | **str, none_type** |  | [optional] 
-**doi** | **str, none_type** |  | [optional] 
-**pmid** | **str, none_type** |  | [optional] 
+**name** | **str, none_type** | Descriptive and human readable name of the studyset. | [optional] 
+**description** | **str, none_type** | A longform description of the studyset. | [optional] 
+**publication** | **str, none_type** | The journal/source the studyset is connected to if the studyset was published. | [optional] 
+**doi** | **str, none_type** | A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI). | [optional] 
+**pmid** | **str, none_type** | If the article connected to the studyset was published on PubMed, then link the ID here. | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str, none_type** |  | [optional] [readonly] 

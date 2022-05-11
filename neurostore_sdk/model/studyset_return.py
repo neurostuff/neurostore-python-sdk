@@ -180,11 +180,11 @@ class StudysetReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            doi (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
+            name (str, none_type): Descriptive and human readable name of the studyset.. [optional]  # noqa: E501
+            description (str, none_type): A longform description of the studyset.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/source the studyset is connected to if the studyset was published.. [optional]  # noqa: E501
+            doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
+            pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
@@ -293,11 +293,11 @@ class StudysetReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            doi (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
+            name (str, none_type): Descriptive and human readable name of the studyset.. [optional]  # noqa: E501
+            description (str, none_type): A longform description of the studyset.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/source the studyset is connected to if the studyset was published.. [optional]  # noqa: E501
+            doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
+            pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
