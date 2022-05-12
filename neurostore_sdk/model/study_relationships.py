@@ -141,7 +141,7 @@ class StudyRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): The analyses making up the study. A study can have one or more analyses, since each analysis represents a contrast of conditions, where psychological, behavioral, pharmacological, or group based. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class StudyRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): The analyses making up the study. A study can have one or more analyses, since each analysis represents a contrast of conditions, where psychological, behavioral, pharmacological, or group based. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

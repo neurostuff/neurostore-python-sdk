@@ -141,10 +141,10 @@ class AnnotationBase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            name (str): Descriptive name for the annotation.. [optional]  # noqa: E501
+            description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
+            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -226,10 +226,10 @@ class AnnotationBase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            name (str): Descriptive name for the annotation.. [optional]  # noqa: E501
+            description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
+            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

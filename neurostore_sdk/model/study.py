@@ -159,15 +159,15 @@ class Study(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            doi (str, none_type): digital object identifier of the study. [optional]  # noqa: E501
-            name (str, none_type): title of the study. [optional]  # noqa: E501
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): other metadata associated with the study. [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
-            authors (str, none_type): [optional]  # noqa: E501
-            year (int, none_type): [optional]  # noqa: E501
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            doi (str, none_type): Digital object identifier of the study.. [optional]  # noqa: E501
+            name (str, none_type): Title of the study.. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Metadata associated with the study not covered by the other study attributes.. [optional]  # noqa: E501
+            description (str, none_type): Long form description of the study, typically the abstract.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/place of publication for the study.. [optional]  # noqa: E501
+            pmid (str, none_type): If the study was published on PubMed, place the PubMed ID here.. [optional]  # noqa: E501
+            authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
+            year (int, none_type): The year this study was published.. [optional]  # noqa: E501
+            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): The analyses making up the study. A study can have one or more analyses, since each analysis represents a contrast of conditions, where psychological, behavioral, pharmacological, or group based. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -267,15 +267,15 @@ class Study(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            doi (str, none_type): digital object identifier of the study. [optional]  # noqa: E501
-            name (str, none_type): title of the study. [optional]  # noqa: E501
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): other metadata associated with the study. [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
-            authors (str, none_type): [optional]  # noqa: E501
-            year (int, none_type): [optional]  # noqa: E501
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            doi (str, none_type): Digital object identifier of the study.. [optional]  # noqa: E501
+            name (str, none_type): Title of the study.. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Metadata associated with the study not covered by the other study attributes.. [optional]  # noqa: E501
+            description (str, none_type): Long form description of the study, typically the abstract.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/place of publication for the study.. [optional]  # noqa: E501
+            pmid (str, none_type): If the study was published on PubMed, place the PubMed ID here.. [optional]  # noqa: E501
+            authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
+            year (int, none_type): The year this study was published.. [optional]  # noqa: E501
+            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): The analyses making up the study. A study can have one or more analyses, since each analysis represents a contrast of conditions, where psychological, behavioral, pharmacological, or group based. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

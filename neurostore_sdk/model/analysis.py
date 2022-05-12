@@ -161,13 +161,13 @@ class Analysis(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            weights ([float]): weight applied to each condition, must be the same length as condition. [optional]  # noqa: E501
-            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): array of conditions (e.g., 2-back, memory, etc.) that must be the same length as weight.. [optional]  # noqa: E501
-            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            study (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            name (str, none_type): A name of the contrast being performed.. [optional]  # noqa: E501
+            description (str, none_type): A long form description of how the contrast was performed. [optional]  # noqa: E501
+            weights ([float]): Weight applied to each condition, must be the same length as the conditions attribute.. [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): Array of conditions (e.g., 2-back, memory, etc.) that must be the same length as the weights attribute. Either is an array of condition objects or strings that point to condition objects.. [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): Statistical images (e.g., beta, t-statistic, and/or z-statistic images) where each voxel gets a value. Either represented as an array of image objects or strings linking to image objects.. [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): Coordinates of significance associated with the contrast. Either an array of point objects or an array of strings linking to point objects.. [optional]  # noqa: E501
+            study (bool, date, datetime, dict, float, int, list, str, none_type): The study this analysis is associated with. Each analysis can only be associated to one and only one study, but a study can have multiple analyses.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -267,13 +267,13 @@ class Analysis(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            weights ([float]): weight applied to each condition, must be the same length as condition. [optional]  # noqa: E501
-            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): array of conditions (e.g., 2-back, memory, etc.) that must be the same length as weight.. [optional]  # noqa: E501
-            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            study (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            name (str, none_type): A name of the contrast being performed.. [optional]  # noqa: E501
+            description (str, none_type): A long form description of how the contrast was performed. [optional]  # noqa: E501
+            weights ([float]): Weight applied to each condition, must be the same length as the conditions attribute.. [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): Array of conditions (e.g., 2-back, memory, etc.) that must be the same length as the weights attribute. Either is an array of condition objects or strings that point to condition objects.. [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): Statistical images (e.g., beta, t-statistic, and/or z-statistic images) where each voxel gets a value. Either represented as an array of image objects or strings linking to image objects.. [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): Coordinates of significance associated with the contrast. Either an array of point objects or an array of strings linking to point objects.. [optional]  # noqa: E501
+            study (bool, date, datetime, dict, float, int, list, str, none_type): The study this analysis is associated with. Each analysis can only be associated to one and only one study, but a study can have multiple analyses.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -176,7 +176,7 @@ class NoteCollectionReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
@@ -289,7 +289,7 @@ class NoteCollectionReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501

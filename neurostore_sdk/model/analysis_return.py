@@ -178,9 +178,9 @@ class AnalysisReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            weights ([float]): weight applied to each condition, must be the same length as condition. [optional]  # noqa: E501
+            name (str, none_type): A name of the contrast being performed.. [optional]  # noqa: E501
+            description (str, none_type): A long form description of how the contrast was performed. [optional]  # noqa: E501
+            weights ([float]): Weight applied to each condition, must be the same length as the conditions attribute.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
@@ -289,9 +289,9 @@ class AnalysisReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            weights ([float]): weight applied to each condition, must be the same length as condition. [optional]  # noqa: E501
+            name (str, none_type): A name of the contrast being performed.. [optional]  # noqa: E501
+            description (str, none_type): A long form description of how the contrast was performed. [optional]  # noqa: E501
+            weights ([float]): Weight applied to each condition, must be the same length as the conditions attribute.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501

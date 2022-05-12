@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**note** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
+**note** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** | The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys. | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str, none_type** |  | [optional] [readonly] 

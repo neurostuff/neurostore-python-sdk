@@ -157,9 +157,9 @@ class NoteCollection(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            analysis (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            annotation (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
+            analysis (bool, date, datetime, dict, float, int, list, str, none_type): The analysis the note collection is associated with. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
+            annotation (bool, date, datetime, dict, float, int, list, str, none_type): The annotation this collection of notes is associated with. Either represented as an annotation object or a string pointing to the location of the annotation object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -259,9 +259,9 @@ class NoteCollection(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            analysis (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            annotation (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
+            analysis (bool, date, datetime, dict, float, int, list, str, none_type): The analysis the note collection is associated with. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
+            annotation (bool, date, datetime, dict, float, int, list, str, none_type): The annotation this collection of notes is associated with. Either represented as an annotation object or a string pointing to the location of the annotation object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -135,7 +135,7 @@ class NoteCollectionBase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +217,7 @@ class NoteCollectionBase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
