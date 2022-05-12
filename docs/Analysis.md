@@ -1,5 +1,6 @@
 # Analysis
 
+A contrast of weighted conditions with associated statistical results.
 
 ## Properties
 Name | Type | Description | Notes

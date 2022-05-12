@@ -186,10 +186,10 @@ class PointReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            coordinates ([float]): location of the point. [optional]  # noqa: E501
-            space (str, none_type): template space used to determine coordinate (TAL or MNI or UNKNOWN). [optional]  # noqa: E501
-            kind (str, none_type): method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
-            label_id (str, none_type): [optional]  # noqa: E501
+            coordinates ([float]): Location of the significant coordinate in three dimensional space.. [optional]  # noqa: E501
+            space (str, none_type): Template space used to determine coordinate Examples include TAL or MNI.. [optional]  # noqa: E501
+            kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
+            label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
@@ -300,10 +300,10 @@ class PointReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            coordinates ([float]): location of the point. [optional]  # noqa: E501
-            space (str, none_type): template space used to determine coordinate (TAL or MNI or UNKNOWN). [optional]  # noqa: E501
-            kind (str, none_type): method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
-            label_id (str, none_type): [optional]  # noqa: E501
+            coordinates ([float]): Location of the significant coordinate in three dimensional space.. [optional]  # noqa: E501
+            space (str, none_type): Template space used to determine coordinate Examples include TAL or MNI.. [optional]  # noqa: E501
+            kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
+            label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501

@@ -141,7 +141,7 @@ class ImageRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analysis (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the image is associated with. Each image is associated with one and only one analysis, but an analysis can have multiple images. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class ImageRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analysis (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the image is associated with. Each image is associated with one and only one analysis, but an analysis can have multiple images. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

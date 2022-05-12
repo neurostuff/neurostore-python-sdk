@@ -146,12 +146,12 @@ class ImageBase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): metadata from image. [optional]  # noqa: E501
-            url (str, none_type): URL to image file. [optional]  # noqa: E501
-            filename (str, none_type): name of the image file. [optional]  # noqa: E501
-            space (str, none_type): the template space the image is in. [optional]  # noqa: E501
-            value_type (str, none_type): The values the image represents. [optional]  # noqa: E501
-            add_date (datetime, none_type): date the image was added. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Metadata about image such as software and version used and other relevant data about how the image was produced.. [optional]  # noqa: E501
+            url (str, none_type): URL to image file.. [optional]  # noqa: E501
+            filename (str, none_type): Name of the image file.. [optional]  # noqa: E501
+            space (str, none_type): The template space the image is in (e.g., MNI . [optional]  # noqa: E501
+            value_type (str, none_type): The values the image represents. For example, T-statistic or Z-statistic, or Betas.. [optional]  # noqa: E501
+            add_date (datetime, none_type): Date the image was added.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -233,12 +233,12 @@ class ImageBase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): metadata from image. [optional]  # noqa: E501
-            url (str, none_type): URL to image file. [optional]  # noqa: E501
-            filename (str, none_type): name of the image file. [optional]  # noqa: E501
-            space (str, none_type): the template space the image is in. [optional]  # noqa: E501
-            value_type (str, none_type): The values the image represents. [optional]  # noqa: E501
-            add_date (datetime, none_type): date the image was added. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Metadata about image such as software and version used and other relevant data about how the image was produced.. [optional]  # noqa: E501
+            url (str, none_type): URL to image file.. [optional]  # noqa: E501
+            filename (str, none_type): Name of the image file.. [optional]  # noqa: E501
+            space (str, none_type): The template space the image is in (e.g., MNI . [optional]  # noqa: E501
+            value_type (str, none_type): The values the image represents. For example, T-statistic or Z-statistic, or Betas.. [optional]  # noqa: E501
+            add_date (datetime, none_type): Date the image was added.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -31,8 +31,10 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from neurostore_sdk.model.analysis import Analysis
     from neurostore_sdk.model.image import Image
     from neurostore_sdk.model.point_value import PointValue
+    globals()['Analysis'] = Analysis
     globals()['Image'] = Image
     globals()['PointValue'] = PointValue
 
@@ -91,7 +93,8 @@ class PointRelationships(ModelNormal):
         lazy_import()
         return {
             'image': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'value': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'value': ([PointValue],),  # noqa: E501
+            'analysis': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,6 +105,7 @@ class PointRelationships(ModelNormal):
     attribute_map = {
         'image': 'image',  # noqa: E501
         'value': 'value',  # noqa: E501
+        'analysis': 'analysis',  # noqa: E501
     }
 
     read_only_vars = {
@@ -145,8 +149,9 @@ class PointRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            image (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            value ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            image (bool, date, datetime, dict, float, int, list, str, none_type): Statistical image the point was derived from. Either points to an image object or a string linking to an image object.. [optional]  # noqa: E501
+            value ([PointValue]): An array of values at this point since each value could represent a beta, t-statistic and/or z-statistic, etc.. [optional]  # noqa: E501
+            analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the point is associated with. Each point is associated with one and only one analysis, but an analysis can have multiple points. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -228,8 +233,9 @@ class PointRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            image (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            value ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            image (bool, date, datetime, dict, float, int, list, str, none_type): Statistical image the point was derived from. Either points to an image object or a string linking to an image object.. [optional]  # noqa: E501
+            value ([PointValue]): An array of values at this point since each value could represent a beta, t-statistic and/or z-statistic, etc.. [optional]  # noqa: E501
+            analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the point is associated with. Each point is associated with one and only one analysis, but an analysis can have multiple points. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

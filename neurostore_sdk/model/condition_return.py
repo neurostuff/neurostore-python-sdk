@@ -160,8 +160,8 @@ class ConditionReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): condition name. [optional]  # noqa: E501
-            description (str, none_type): condition description. [optional]  # noqa: E501
+            name (str, none_type): Name of the condition being applied in the contrast, either psychological, pharmacological, or group based.. [optional]  # noqa: E501
+            description (str, none_type): Long form description of how the condition is operationalized and/or specific meaning.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
@@ -266,8 +266,8 @@ class ConditionReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): condition name. [optional]  # noqa: E501
-            description (str, none_type): condition description. [optional]  # noqa: E501
+            name (str, none_type): Name of the condition being applied in the contrast, either psychological, pharmacological, or group based.. [optional]  # noqa: E501
+            description (str, none_type): Long form description of how the condition is operationalized and/or specific meaning.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
