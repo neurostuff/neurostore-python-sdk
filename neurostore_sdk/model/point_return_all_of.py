@@ -90,7 +90,7 @@ class PointReturnAllOf(ModelNormal):
         """
         lazy_import()
         return {
-            'image': (str,),  # noqa: E501
+            'image': (str, none_type,),  # noqa: E501
             'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'x': (float,),  # noqa: E501
             'y': (float,),  # noqa: E501
@@ -153,7 +153,7 @@ class PointReturnAllOf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            image (str): [optional]  # noqa: E501
+            image (str, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
             y (float): [optional]  # noqa: E501
@@ -240,7 +240,7 @@ class PointReturnAllOf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            image (str): [optional]  # noqa: E501
+            image (str, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
             y (float): [optional]  # noqa: E501

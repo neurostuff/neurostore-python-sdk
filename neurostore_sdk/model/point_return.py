@@ -113,7 +113,7 @@ class PointReturn(ModelComposed):
             'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
-            'image': (str,),  # noqa: E501
+            'image': (str, none_type,),  # noqa: E501
             'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'x': (float,),  # noqa: E501
             'y': (float,),  # noqa: E501
@@ -195,7 +195,7 @@ class PointReturn(ModelComposed):
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
-            image (str): [optional]  # noqa: E501
+            image (str, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
             y (float): [optional]  # noqa: E501
@@ -309,7 +309,7 @@ class PointReturn(ModelComposed):
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
-            image (str): [optional]  # noqa: E501
+            image (str, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
             y (float): [optional]  # noqa: E501

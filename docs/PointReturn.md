@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **updated_at** | **str, none_type** |  | [optional] [readonly] 
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 
 **public** | **bool** |  | [optional]  if omitted the server will use the default value of True
-**image** | **str** |  | [optional] 
+**image** | **str, none_type** |  | [optional] 
 **value** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **x** | **float** |  | [optional] 
 **y** | **float** |  | [optional] 

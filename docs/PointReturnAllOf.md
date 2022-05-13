@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image** | **str** |  | [optional] 
+**image** | **str, none_type** |  | [optional] 
 **value** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **x** | **float** |  | [optional] 
 **y** | **float** |  | [optional] 

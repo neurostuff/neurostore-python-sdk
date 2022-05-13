@@ -103,13 +103,13 @@ class NoteCollectionReturn(ModelComposed):
             'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
             'analysis': (str,),  # noqa: E501
-            'analysis_name': (str,),  # noqa: E501
+            'analysis_name': (str, none_type,),  # noqa: E501
             'study': (str,),  # noqa: E501
-            'study_name': (str,),  # noqa: E501
+            'study_name': (str, none_type,),  # noqa: E501
             'annotation': (str,),  # noqa: E501
-            'study_year': (str,),  # noqa: E501
-            'publication': (str,),  # noqa: E501
-            'authors': (str,),  # noqa: E501
+            'study_year': (str, none_type,),  # noqa: E501
+            'publication': (str, none_type,),  # noqa: E501
+            'authors': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -183,13 +183,13 @@ class NoteCollectionReturn(ModelComposed):
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             analysis (str): [optional]  # noqa: E501
-            analysis_name (str): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
             study (str): [optional]  # noqa: E501
-            study_name (str): [optional]  # noqa: E501
+            study_name (str, none_type): [optional]  # noqa: E501
             annotation (str): [optional]  # noqa: E501
-            study_year (str): [optional]  # noqa: E501
-            publication (str): [optional]  # noqa: E501
-            authors (str): [optional]  # noqa: E501
+            study_year (str, none_type): [optional]  # noqa: E501
+            publication (str, none_type): [optional]  # noqa: E501
+            authors (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -296,13 +296,13 @@ class NoteCollectionReturn(ModelComposed):
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             analysis (str): [optional]  # noqa: E501
-            analysis_name (str): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
             study (str): [optional]  # noqa: E501
-            study_name (str): [optional]  # noqa: E501
+            study_name (str, none_type): [optional]  # noqa: E501
             annotation (str): [optional]  # noqa: E501
-            study_year (str): [optional]  # noqa: E501
-            publication (str): [optional]  # noqa: E501
-            authors (str): [optional]  # noqa: E501
+            study_year (str, none_type): [optional]  # noqa: E501
+            publication (str, none_type): [optional]  # noqa: E501
+            authors (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -83,13 +83,13 @@ class NoteCollectionReturnAllOf(ModelNormal):
         """
         return {
             'analysis': (str,),  # noqa: E501
-            'analysis_name': (str,),  # noqa: E501
+            'analysis_name': (str, none_type,),  # noqa: E501
             'study': (str,),  # noqa: E501
-            'study_name': (str,),  # noqa: E501
+            'study_name': (str, none_type,),  # noqa: E501
             'annotation': (str,),  # noqa: E501
-            'study_year': (str,),  # noqa: E501
-            'publication': (str,),  # noqa: E501
-            'authors': (str,),  # noqa: E501
+            'study_year': (str, none_type,),  # noqa: E501
+            'publication': (str, none_type,),  # noqa: E501
+            'authors': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -150,13 +150,13 @@ class NoteCollectionReturnAllOf(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             analysis (str): [optional]  # noqa: E501
-            analysis_name (str): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
             study (str): [optional]  # noqa: E501
-            study_name (str): [optional]  # noqa: E501
+            study_name (str, none_type): [optional]  # noqa: E501
             annotation (str): [optional]  # noqa: E501
-            study_year (str): [optional]  # noqa: E501
-            publication (str): [optional]  # noqa: E501
-            authors (str): [optional]  # noqa: E501
+            study_year (str, none_type): [optional]  # noqa: E501
+            publication (str, none_type): [optional]  # noqa: E501
+            authors (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -239,13 +239,13 @@ class NoteCollectionReturnAllOf(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             analysis (str): [optional]  # noqa: E501
-            analysis_name (str): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
             study (str): [optional]  # noqa: E501
-            study_name (str): [optional]  # noqa: E501
+            study_name (str, none_type): [optional]  # noqa: E501
             annotation (str): [optional]  # noqa: E501
-            study_year (str): [optional]  # noqa: E501
-            publication (str): [optional]  # noqa: E501
-            authors (str): [optional]  # noqa: E501
+            study_year (str, none_type): [optional]  # noqa: E501
+            publication (str, none_type): [optional]  # noqa: E501
+            authors (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

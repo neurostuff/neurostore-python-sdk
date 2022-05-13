@@ -111,7 +111,7 @@ class ImageReturn(ModelComposed):
             'public': (bool,),  # noqa: E501
             'analysis': (str,),  # noqa: E501
             'entities': ([Entity],),  # noqa: E501
-            'analysis_name': (str,),  # noqa: E501
+            'analysis_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -192,7 +192,7 @@ class ImageReturn(ModelComposed):
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             analysis (str): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
-            analysis_name (str): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -305,7 +305,7 @@ class ImageReturn(ModelComposed):
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             analysis (str): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
-            analysis_name (str): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
