@@ -93,9 +93,9 @@ class AnalysisReturnAllOf(ModelNormal):
         lazy_import()
         return {
             'study': (str,),  # noqa: E501
-            'images': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'points': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'conditions': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'images': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'points': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'conditions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -152,9 +152,9 @@ class AnalysisReturnAllOf(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             study (str): [optional]  # noqa: E501
-            images (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            points (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            conditions (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -237,9 +237,9 @@ class AnalysisReturnAllOf(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             study (str): [optional]  # noqa: E501
-            images (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            points (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            conditions (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -111,9 +111,9 @@ class AnalysisReturn(ModelComposed):
             'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
             'study': (str,),  # noqa: E501
-            'images': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'points': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'conditions': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'images': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'points': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'conditions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -187,9 +187,9 @@ class AnalysisReturn(ModelComposed):
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             study (str): [optional]  # noqa: E501
-            images (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            points (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            conditions (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -298,9 +298,9 @@ class AnalysisReturn(ModelComposed):
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             study (str): [optional]  # noqa: E501
-            images (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            points (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            conditions (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
