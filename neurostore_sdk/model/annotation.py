@@ -94,7 +94,7 @@ class Annotation(ModelComposed):
         """
         lazy_import()
         return {
-            'name': (str,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'note_keys': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
@@ -155,7 +155,7 @@ class Annotation(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): Descriptive name for the annotation.. [optional]  # noqa: E501
+            name (str, none_type): Descriptive name for the annotation.. [optional]  # noqa: E501
             description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
             note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
@@ -260,7 +260,7 @@ class Annotation(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): Descriptive name for the annotation.. [optional]  # noqa: E501
+            name (str, none_type): Descriptive name for the annotation.. [optional]  # noqa: E501
             description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
             note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501

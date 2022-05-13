@@ -82,9 +82,9 @@ class Clone(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'source': (str,),  # noqa: E501
-            'source_id': (str,),  # noqa: E501
-            'source_updated_at': (str,),  # noqa: E501
+            'source': (str, none_type,),  # noqa: E501
+            'source_id': (str, none_type,),  # noqa: E501
+            'source_updated_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -139,9 +139,9 @@ class Clone(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            source (str): [optional]  # noqa: E501
-            source_id (str): [optional]  # noqa: E501
-            source_updated_at (str): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            source_id (str, none_type): [optional]  # noqa: E501
+            source_updated_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,9 +223,9 @@ class Clone(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            source (str): [optional]  # noqa: E501
-            source_id (str): [optional]  # noqa: E501
-            source_updated_at (str): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            source_id (str, none_type): [optional]  # noqa: E501
+            source_updated_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -5,7 +5,7 @@ A container for \"subjective\" information about each analysis in the studyset, 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Descriptive name for the annotation. | [optional] 
+**name** | **str, none_type** | Descriptive name for the annotation. | [optional] 
 **description** | **str, none_type** | Long form description of the annotation. | [optional] 
 **metadata** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
 **note_keys** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** | The keys (columns) in the annotation and the key&#39;s respective type. | [optional] 

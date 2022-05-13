@@ -110,9 +110,9 @@ class StudysetReturn(ModelComposed):
             'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
-            'source': (str,),  # noqa: E501
-            'source_id': (str,),  # noqa: E501
-            'source_updated_at': (str,),  # noqa: E501
+            'source': (str, none_type,),  # noqa: E501
+            'source_id': (str, none_type,),  # noqa: E501
+            'source_updated_at': (str, none_type,),  # noqa: E501
             'studies': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -190,9 +190,9 @@ class StudysetReturn(ModelComposed):
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
-            source (str): [optional]  # noqa: E501
-            source_id (str): [optional]  # noqa: E501
-            source_updated_at (str): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            source_id (str, none_type): [optional]  # noqa: E501
+            source_updated_at (str, none_type): [optional]  # noqa: E501
             studies (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
@@ -303,9 +303,9 @@ class StudysetReturn(ModelComposed):
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
             public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
-            source (str): [optional]  # noqa: E501
-            source_id (str): [optional]  # noqa: E501
-            source_updated_at (str): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            source_id (str, none_type): [optional]  # noqa: E501
+            source_updated_at (str, none_type): [optional]  # noqa: E501
             studies (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
