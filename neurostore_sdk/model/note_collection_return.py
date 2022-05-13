@@ -33,10 +33,8 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.note_collection_base import NoteCollectionBase
     from neurostore_sdk.model.note_collection_return_all_of import NoteCollectionReturnAllOf
-    from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['NoteCollectionBase'] = NoteCollectionBase
     globals()['NoteCollectionReturnAllOf'] = NoteCollectionReturnAllOf
-    globals()['ResourceAttributes'] = ResourceAttributes
 
 
 class NoteCollectionReturn(ModelComposed):
@@ -67,10 +65,6 @@ class NoteCollectionReturn(ModelComposed):
     }
 
     validations = {
-        ('id',): {
-            'max_length': 12,
-            'min_length': 12,
-        },
     }
 
     @cached_property
@@ -97,11 +91,6 @@ class NoteCollectionReturn(ModelComposed):
         lazy_import()
         return {
             'note': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'updated_at': (str, none_type,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
-            'public': (bool,),  # noqa: E501
             'analysis': (str,),  # noqa: E501
             'analysis_name': (str, none_type,),  # noqa: E501
             'study': (str,),  # noqa: E501
@@ -119,11 +108,6 @@ class NoteCollectionReturn(ModelComposed):
 
     attribute_map = {
         'note': 'note',  # noqa: E501
-        'id': 'id',  # noqa: E501
-        'created_at': 'created_at',  # noqa: E501
-        'updated_at': 'updated_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
-        'public': 'public',  # noqa: E501
         'analysis': 'analysis',  # noqa: E501
         'analysis_name': 'analysis_name',  # noqa: E501
         'study': 'study',  # noqa: E501
@@ -135,9 +119,6 @@ class NoteCollectionReturn(ModelComposed):
     }
 
     read_only_vars = {
-        'created_at',  # noqa: E501
-        'updated_at',  # noqa: E501
-        'user',  # noqa: E501
     }
 
     @classmethod
@@ -177,11 +158,6 @@ class NoteCollectionReturn(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             analysis (str): [optional]  # noqa: E501
             analysis_name (str, none_type): [optional]  # noqa: E501
             study (str): [optional]  # noqa: E501
@@ -290,11 +266,6 @@ class NoteCollectionReturn(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             analysis (str): [optional]  # noqa: E501
             analysis_name (str, none_type): [optional]  # noqa: E501
             study (str): [optional]  # noqa: E501
@@ -370,7 +341,6 @@ class NoteCollectionReturn(ModelComposed):
           'allOf': [
               NoteCollectionBase,
               NoteCollectionReturnAllOf,
-              ResourceAttributes,
           ],
           'oneOf': [
           ],
