@@ -31,22 +31,14 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.from_neurostore_sdk_model_analysis_import_analysis import FromNeurostoreSdkModelAnalysisImportAnalysis
-    from neurostore_sdk.model.from_neurostore_sdk_model_annotation_import_annotation import FromNeurostoreSdkModelAnnotationImportAnnotation
-    from neurostore_sdk.model.from_neurostore_sdk_model_note_collection_base_import_note_collection_base import FromNeurostoreSdkModelNoteCollectionBaseImportNoteCollectionBase
-    from neurostore_sdk.model.from_neurostore_sdk_model_note_collection_relationships_import_note_collection_relationships import FromNeurostoreSdkModelNoteCollectionRelationshipsImportNoteCollectionRelationships
-    from neurostore_sdk.model.globals_analysis_analysis import GlobalsAnalysisAnalysis
-    from neurostore_sdk.model.globals_annotation_annotation import GlobalsAnnotationAnnotation
-    from neurostore_sdk.model.globals_note_collection_base_note_collection_base import GlobalsNoteCollectionBaseNoteCollectionBase
-    from neurostore_sdk.model.globals_note_collection_relationships_note_collection_relationships import GlobalsNoteCollectionRelationshipsNoteCollectionRelationships
-    globals()['from neurostore_sdk.model.analysis import Analysis'] = from neurostore_sdk.model.analysis import Analysis
-    globals()['from neurostore_sdk.model.annotation import Annotation'] = from neurostore_sdk.model.annotation import Annotation
-    globals()['from neurostore_sdk.model.note_collection_base import NoteCollectionBase'] = from neurostore_sdk.model.note_collection_base import NoteCollectionBase
-    globals()['from neurostore_sdk.model.note_collection_relationships import NoteCollectionRelationships'] = from neurostore_sdk.model.note_collection_relationships import NoteCollectionRelationships
-    globals()['globals()['Analysis'] = Analysis'] = globals()['Analysis'] = Analysis
-    globals()['globals()['Annotation'] = Annotation'] = globals()['Annotation'] = Annotation
-    globals()['globals()['NoteCollectionBase'] = NoteCollectionBase'] = globals()['NoteCollectionBase'] = NoteCollectionBase
-    globals()['globals()['NoteCollectionRelationships'] = NoteCollectionRelationships'] = globals()['NoteCollectionRelationships'] = NoteCollectionRelationships
+    from neurostore_sdk.model.analysis import Analysis
+    from neurostore_sdk.model.annotation import Annotation
+    from neurostore_sdk.model.note_collection_base import NoteCollectionBase
+    from neurostore_sdk.model.note_collection_relationships import NoteCollectionRelationships
+    globals()['Analysis'] = Analysis
+    globals()['Annotation'] = Annotation
+    globals()['NoteCollectionBase'] = NoteCollectionBase
+    globals()['NoteCollectionRelationships'] = NoteCollectionRelationships
 
 
 class NoteCollection(ModelComposed):
