@@ -96,7 +96,7 @@ class NoteCollectionReturn(ModelComposed):
             'study': (str,),  # noqa: E501
             'study_name': (str, none_type,),  # noqa: E501
             'annotation': (str,),  # noqa: E501
-            'study_year': (str, none_type,),  # noqa: E501
+            'study_year': (int, none_type,),  # noqa: E501
             'publication': (str, none_type,),  # noqa: E501
             'authors': (str, none_type,),  # noqa: E501
         }
@@ -163,7 +163,7 @@ class NoteCollectionReturn(ModelComposed):
             study (str): [optional]  # noqa: E501
             study_name (str, none_type): [optional]  # noqa: E501
             annotation (str): [optional]  # noqa: E501
-            study_year (str, none_type): [optional]  # noqa: E501
+            study_year (int, none_type): [optional]  # noqa: E501
             publication (str, none_type): [optional]  # noqa: E501
             authors (str, none_type): [optional]  # noqa: E501
         """
@@ -271,7 +271,7 @@ class NoteCollectionReturn(ModelComposed):
             study (str): [optional]  # noqa: E501
             study_name (str, none_type): [optional]  # noqa: E501
             annotation (str): [optional]  # noqa: E501
-            study_year (str, none_type): [optional]  # noqa: E501
+            study_year (int, none_type): [optional]  # noqa: E501
             publication (str, none_type): [optional]  # noqa: E501
             authors (str, none_type): [optional]  # noqa: E501
         """
