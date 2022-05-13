@@ -5,7 +5,7 @@ common resource attributes
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | short UUID specifying the location of this resource | [optional] 
+**id** | **str** | short UUID specifying the location of this resource | [readonly] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str, none_type** |  | [optional] [readonly] 
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 

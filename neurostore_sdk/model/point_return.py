@@ -71,13 +71,13 @@ class PointReturn(ModelComposed):
     }
 
     validations = {
-        ('coordinates',): {
-            'max_items': 3,
-            'min_items': 3,
-        },
         ('id',): {
             'max_length': 12,
             'min_length': 12,
+        },
+        ('coordinates',): {
+            'max_items': 3,
+            'min_items': 3,
         },
     }
 
@@ -104,11 +104,11 @@ class PointReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'coordinates': ([float],),  # noqa: E501
             'space': (str, none_type,),  # noqa: E501
             'kind': (str, none_type,),  # noqa: E501
             'label_id': (str, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
@@ -127,11 +127,11 @@ class PointReturn(ModelComposed):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'coordinates': 'coordinates',  # noqa: E501
         'space': 'space',  # noqa: E501
         'kind': 'kind',  # noqa: E501
         'label_id': 'label_id',  # noqa: E501
-        'id': 'id',  # noqa: E501
         'created_at': 'created_at',  # noqa: E501
         'updated_at': 'updated_at',  # noqa: E501
         'user': 'user',  # noqa: E501
@@ -145,6 +145,7 @@ class PointReturn(ModelComposed):
     }
 
     read_only_vars = {
+        'id',  # noqa: E501
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
@@ -156,6 +157,7 @@ class PointReturn(ModelComposed):
         """PointReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -190,7 +192,6 @@ class PointReturn(ModelComposed):
             space (str, none_type): Template space used to determine coordinate Examples include TAL or MNI.. [optional]  # noqa: E501
             kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
             label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
@@ -304,7 +305,6 @@ class PointReturn(ModelComposed):
             space (str, none_type): Template space used to determine coordinate Examples include TAL or MNI.. [optional]  # noqa: E501
             kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
             label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501

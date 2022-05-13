@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** | short UUID specifying the location of this resource | [readonly] 
 **coordinates** | **[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
 **space** | **str, none_type** | Template space used to determine coordinate Examples include TAL or MNI. | [optional] 
 **kind** | **str, none_type** | Method of how point was derived (e.g., center of mass) | [optional] 
 **label_id** | **str, none_type** | If the point is associated with an image, this is the value the point takes in that image. | [optional] 
-**id** | **str** | short UUID specifying the location of this resource | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str, none_type** |  | [optional] [readonly] 
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 

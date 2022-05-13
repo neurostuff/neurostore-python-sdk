@@ -107,6 +107,7 @@ class ResourceAttributes(ModelNormal):
     }
 
     read_only_vars = {
+        'id',  # noqa: E501
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
@@ -116,8 +117,11 @@ class ResourceAttributes(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, *args, **kwargs):  # noqa: E501
         """ResourceAttributes - a model defined in OpenAPI
+
+        Args:
+            id (str): short UUID specifying the location of this resource
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -150,7 +154,6 @@ class ResourceAttributes(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
@@ -182,6 +185,7 @@ class ResourceAttributes(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -236,7 +240,6 @@ class ResourceAttributes(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501

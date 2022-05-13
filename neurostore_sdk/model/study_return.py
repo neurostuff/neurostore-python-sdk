@@ -100,6 +100,7 @@ class StudyReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'doi': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
@@ -108,7 +109,6 @@ class StudyReturn(ModelComposed):
             'pmid': (str, none_type,),  # noqa: E501
             'authors': (str, none_type,),  # noqa: E501
             'year': (int, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
@@ -125,6 +125,7 @@ class StudyReturn(ModelComposed):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'doi': 'doi',  # noqa: E501
         'name': 'name',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
@@ -133,7 +134,6 @@ class StudyReturn(ModelComposed):
         'pmid': 'pmid',  # noqa: E501
         'authors': 'authors',  # noqa: E501
         'year': 'year',  # noqa: E501
-        'id': 'id',  # noqa: E501
         'created_at': 'created_at',  # noqa: E501
         'updated_at': 'updated_at',  # noqa: E501
         'user': 'user',  # noqa: E501
@@ -145,6 +145,7 @@ class StudyReturn(ModelComposed):
     }
 
     read_only_vars = {
+        'id',  # noqa: E501
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
@@ -156,6 +157,7 @@ class StudyReturn(ModelComposed):
         """StudyReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -194,7 +196,6 @@ class StudyReturn(ModelComposed):
             pmid (str, none_type): If the study was published on PubMed, place the PubMed ID here.. [optional]  # noqa: E501
             authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
             year (int, none_type): The year this study was published.. [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
@@ -310,7 +311,6 @@ class StudyReturn(ModelComposed):
             pmid (str, none_type): If the study was published on PubMed, place the PubMed ID here.. [optional]  # noqa: E501
             authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
             year (int, none_type): The year this study was published.. [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
