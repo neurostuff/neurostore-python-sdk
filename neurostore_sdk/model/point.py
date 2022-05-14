@@ -105,7 +105,7 @@ class Point(ModelComposed):
             'kind': (str, none_type,),  # noqa: E501
             'label_id': (str, none_type,),  # noqa: E501
             'image': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'value': ([PointValue],),  # noqa: E501
+            'values': ([PointValue],),  # noqa: E501
             'analysis': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -120,7 +120,7 @@ class Point(ModelComposed):
         'kind': 'kind',  # noqa: E501
         'label_id': 'label_id',  # noqa: E501
         'image': 'image',  # noqa: E501
-        'value': 'value',  # noqa: E501
+        'values': 'values',  # noqa: E501
         'analysis': 'analysis',  # noqa: E501
     }
 
@@ -168,7 +168,7 @@ class Point(ModelComposed):
             kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
             label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
             image (bool, date, datetime, dict, float, int, list, str, none_type): Statistical image the point was derived from. Either points to an image object or a string linking to an image object.. [optional]  # noqa: E501
-            value ([PointValue]): An array of values at this point since each value could represent a beta, t-statistic and/or z-statistic, etc.. [optional]  # noqa: E501
+            values ([PointValue]): An array of values at this point since each value could represent a beta, t-statistic and/or z-statistic, etc.. [optional]  # noqa: E501
             analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the point is associated with. Each point is associated with one and only one analysis, but an analysis can have multiple points. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
         """
 
@@ -274,7 +274,7 @@ class Point(ModelComposed):
             kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
             label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
             image (bool, date, datetime, dict, float, int, list, str, none_type): Statistical image the point was derived from. Either points to an image object or a string linking to an image object.. [optional]  # noqa: E501
-            value ([PointValue]): An array of values at this point since each value could represent a beta, t-statistic and/or z-statistic, etc.. [optional]  # noqa: E501
+            values ([PointValue]): An array of values at this point since each value could represent a beta, t-statistic and/or z-statistic, etc.. [optional]  # noqa: E501
             analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the point is associated with. Each point is associated with one and only one analysis, but an analysis can have multiple points. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
         """
 
