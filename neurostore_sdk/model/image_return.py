@@ -32,11 +32,13 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
-    from neurostore_sdk.model.image import Image
-    from neurostore_sdk.model.read_only import ReadOnly
+    from neurostore_sdk.model.image_base import ImageBase
+    from neurostore_sdk.model.image_return_all_of import ImageReturnAllOf
+    from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['Entity'] = Entity
-    globals()['Image'] = Image
-    globals()['ReadOnly'] = ReadOnly
+    globals()['ImageBase'] = ImageBase
+    globals()['ImageReturnAllOf'] = ImageReturnAllOf
+    globals()['ResourceAttributes'] = ResourceAttributes
 
 
 class ImageReturn(ModelComposed):
@@ -67,10 +69,6 @@ class ImageReturn(ModelComposed):
     }
 
     validations = {
-        ('analysis',): {
-            'max_length': 12,
-            'min_length': 12,
-        },
         ('id',): {
             'max_length': 12,
             'min_length': 12,
@@ -100,18 +98,20 @@ class ImageReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'url': (str, none_type,),  # noqa: E501
             'filename': (str, none_type,),  # noqa: E501
             'space': (str, none_type,),  # noqa: E501
             'value_type': (str, none_type,),  # noqa: E501
-            'analysis_name': (str, none_type,),  # noqa: E501
-            'analysis': (str,),  # noqa: E501
             'add_date': (datetime, none_type,),  # noqa: E501
-            'entities': ([Entity],),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
+            'analysis': (str,),  # noqa: E501
+            'entities': ([Entity],),  # noqa: E501
+            'analysis_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -120,24 +120,27 @@ class ImageReturn(ModelComposed):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
         'url': 'url',  # noqa: E501
         'filename': 'filename',  # noqa: E501
         'space': 'space',  # noqa: E501
         'value_type': 'value_type',  # noqa: E501
-        'analysis_name': 'analysis_name',  # noqa: E501
-        'analysis': 'analysis',  # noqa: E501
         'add_date': 'add_date',  # noqa: E501
-        'entities': 'entities',  # noqa: E501
-        'id': 'id',  # noqa: E501
         'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
         'user': 'user',  # noqa: E501
+        'public': 'public',  # noqa: E501
+        'analysis': 'analysis',  # noqa: E501
+        'entities': 'entities',  # noqa: E501
+        'analysis_name': 'analysis_name',  # noqa: E501
     }
 
     read_only_vars = {
-        'analysis_name',  # noqa: E501
+        'id',  # noqa: E501
         'add_date',  # noqa: E501
         'created_at',  # noqa: E501
+        'updated_at',  # noqa: E501
         'user',  # noqa: E501
     }
 
@@ -147,6 +150,7 @@ class ImageReturn(ModelComposed):
         """ImageReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -177,18 +181,19 @@ class ImageReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): metadata from image. [optional]  # noqa: E501
-            url (str, none_type): URL to image file. [optional]  # noqa: E501
-            filename (str, none_type): name of the image file. [optional]  # noqa: E501
-            space (str, none_type): the template space the image is in. [optional]  # noqa: E501
-            value_type (str, none_type): The values the image represents. [optional]  # noqa: E501
-            analysis_name (str, none_type): name of the analysis. [optional]  # noqa: E501
-            analysis (str): ID of the analysis this image came from. [optional]  # noqa: E501
-            add_date (datetime, none_type): date the image was added. [optional]  # noqa: E501
-            entities ([Entity]): [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Metadata about image such as software and version used and other relevant data about how the image was produced.. [optional]  # noqa: E501
+            url (str, none_type): URL to image file.. [optional]  # noqa: E501
+            filename (str, none_type): Name of the image file.. [optional]  # noqa: E501
+            space (str, none_type): The template space the image is in (e.g., MNI . [optional]  # noqa: E501
+            value_type (str, none_type): The values the image represents. For example, T-statistic or Z-statistic, or Betas.. [optional]  # noqa: E501
+            add_date (datetime, none_type): Date the image was added.. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            analysis (str): [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -288,18 +293,19 @@ class ImageReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): metadata from image. [optional]  # noqa: E501
-            url (str, none_type): URL to image file. [optional]  # noqa: E501
-            filename (str, none_type): name of the image file. [optional]  # noqa: E501
-            space (str, none_type): the template space the image is in. [optional]  # noqa: E501
-            value_type (str, none_type): The values the image represents. [optional]  # noqa: E501
-            analysis_name (str, none_type): name of the analysis. [optional]  # noqa: E501
-            analysis (str): ID of the analysis this image came from. [optional]  # noqa: E501
-            add_date (datetime, none_type): date the image was added. [optional]  # noqa: E501
-            entities ([Entity]): [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Metadata about image such as software and version used and other relevant data about how the image was produced.. [optional]  # noqa: E501
+            url (str, none_type): URL to image file.. [optional]  # noqa: E501
+            filename (str, none_type): Name of the image file.. [optional]  # noqa: E501
+            space (str, none_type): The template space the image is in (e.g., MNI . [optional]  # noqa: E501
+            value_type (str, none_type): The values the image represents. For example, T-statistic or Z-statistic, or Betas.. [optional]  # noqa: E501
+            add_date (datetime, none_type): Date the image was added.. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            analysis (str): [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -365,8 +371,9 @@ class ImageReturn(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
-              Image,
-              ReadOnly,
+              ImageBase,
+              ImageReturnAllOf,
+              ResourceAttributes,
           ],
           'oneOf': [
           ],

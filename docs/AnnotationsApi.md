@@ -271,20 +271,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = annotations_api.AnnotationsApi(api_client)
     id = "id_example" # str | 
-    annotation = Annotation(
-        studyset="studyset_example",
-        name="name_example",
-        description="description_example",
-        notes=[
-            None,
-        ],
-        source="source_example",
-        source_id="source_id_example",
-        source_updated_at="source_updated_at_example",
-        metadata={},
-        public=True,
-        note_keys={},
-    ) # Annotation |  (optional)
+    annotation = Annotation(None) # Annotation |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -374,20 +361,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = annotations_api.AnnotationsApi(api_client)
     source = "neurostore" # str | the source of the resource you would like to filter/copy from (optional) if omitted the server will use the default value of "neurostore"
     source_id = "1234567890ab" # str | id of the resource you are either filtering/copying on (optional)
-    annotation = Annotation(
-        studyset="studyset_example",
-        name="name_example",
-        description="description_example",
-        notes=[
-            None,
-        ],
-        source="source_example",
-        source_id="source_id_example",
-        source_updated_at="source_updated_at_example",
-        metadata={},
-        public=True,
-        note_keys={},
-    ) # Annotation |  (optional)
+    annotation = Annotation(None) # Annotation |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values

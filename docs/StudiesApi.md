@@ -310,23 +310,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = studies_api.StudiesApi(api_client)
     id = "id_example" # str | 
-    study = Study(
-        analyses=[
-            None,
-        ],
-        doi="10.1016/S0926-6410(97)00020-7",
-        name="Functional magnetic resonance imaging of category-specific cortical activation: evidence for semantic maps.",
-        metadata={},
-        description="description_example",
-        publication="publication_example",
-        pmid="pmid_example",
-        public=True,
-        authors="authors_example",
-        source="source_example",
-        source_id="source_id_example",
-        source_updated_at="source_updated_at_example",
-        year=1,
-    ) # Study |  (optional)
+    study = Study(None) # Study |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -417,23 +401,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = studies_api.StudiesApi(api_client)
     source = "neurostore" # str | the source of the resource you would like to filter/copy from (optional) if omitted the server will use the default value of "neurostore"
     source_id = "1234567890ab" # str | id of the resource you are either filtering/copying on (optional)
-    study = Study(
-        analyses=[
-            None,
-        ],
-        doi="10.1016/S0926-6410(97)00020-7",
-        name="Functional magnetic resonance imaging of category-specific cortical activation: evidence for semantic maps.",
-        metadata={},
-        description="description_example",
-        publication="publication_example",
-        pmid="pmid_example",
-        public=True,
-        authors="authors_example",
-        source="source_example",
-        source_id="source_id_example",
-        source_updated_at="source_updated_at_example",
-        year=1,
-    ) # Study |  (optional)
+    study = Study(None) # Study |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values

@@ -308,17 +308,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = studysets_api.StudysetsApi(api_client)
     id = "id_example" # str | 
-    studyset = Studyset(
-        name="name_example",
-        description="description_example",
-        publication="publication_example",
-        doi="doi_example",
-        pmid="pmid_example",
-        studies=[
-            None,
-        ],
-        public=True,
-    ) # Studyset |  (optional)
+    studyset = Studyset(None) # Studyset |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -407,17 +397,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = studysets_api.StudysetsApi(api_client)
-    studyset = Studyset(
-        name="name_example",
-        description="description_example",
-        publication="publication_example",
-        doi="doi_example",
-        pmid="pmid_example",
-        studies=[
-            None,
-        ],
-        public=True,
-    ) # Studyset |  (optional)
+    studyset = Studyset(None) # Studyset |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values

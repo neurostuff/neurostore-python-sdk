@@ -275,10 +275,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = conditions_api.ConditionsApi(api_client)
     id = "id_example" # str | 
-    condition = Condition(
-        name="name_example",
-        description="description_example",
-    ) # Condition |  (optional)
+    condition = Condition(None) # Condition |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -367,10 +364,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = conditions_api.ConditionsApi(api_client)
-    condition = Condition(
-        name="name_example",
-        description="description_example",
-    ) # Condition |  (optional)
+    condition = Condition(None) # Condition |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values

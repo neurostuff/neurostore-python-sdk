@@ -31,12 +31,16 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.read_only import ReadOnly
-    from neurostore_sdk.model.study import Study
-    from neurostore_sdk.model.studyset import Studyset
-    globals()['ReadOnly'] = ReadOnly
-    globals()['Study'] = Study
-    globals()['Studyset'] = Studyset
+    from neurostore_sdk.model.clone import Clone
+    from neurostore_sdk.model.resource_attributes import ResourceAttributes
+    from neurostore_sdk.model.study_return import StudyReturn
+    from neurostore_sdk.model.studyset_base import StudysetBase
+    from neurostore_sdk.model.studyset_return_all_of import StudysetReturnAllOf
+    globals()['Clone'] = Clone
+    globals()['ResourceAttributes'] = ResourceAttributes
+    globals()['StudyReturn'] = StudyReturn
+    globals()['StudysetBase'] = StudysetBase
+    globals()['StudysetReturnAllOf'] = StudysetReturnAllOf
 
 
 class StudysetReturn(ModelComposed):
@@ -96,16 +100,20 @@ class StudysetReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'publication': (str, none_type,),  # noqa: E501
             'doi': (str, none_type,),  # noqa: E501
             'pmid': (str, none_type,),  # noqa: E501
-            'studies': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
             'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
+            'source': (str, none_type,),  # noqa: E501
+            'source_id': (str, none_type,),  # noqa: E501
+            'source_updated_at': (str, none_type,),  # noqa: E501
+            'studies': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -114,21 +122,27 @@ class StudysetReturn(ModelComposed):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'description': 'description',  # noqa: E501
         'publication': 'publication',  # noqa: E501
         'doi': 'doi',  # noqa: E501
         'pmid': 'pmid',  # noqa: E501
-        'studies': 'studies',  # noqa: E501
+        'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
         'user': 'user',  # noqa: E501
         'public': 'public',  # noqa: E501
-        'id': 'id',  # noqa: E501
-        'created_at': 'created_at',  # noqa: E501
+        'source': 'source',  # noqa: E501
+        'source_id': 'source_id',  # noqa: E501
+        'source_updated_at': 'source_updated_at',  # noqa: E501
+        'studies': 'studies',  # noqa: E501
     }
 
     read_only_vars = {
-        'user',  # noqa: E501
+        'id',  # noqa: E501
         'created_at',  # noqa: E501
+        'updated_at',  # noqa: E501
+        'user',  # noqa: E501
     }
 
     @classmethod
@@ -137,6 +151,7 @@ class StudysetReturn(ModelComposed):
         """StudysetReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -167,16 +182,19 @@ class StudysetReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            doi (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
-            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            name (str, none_type): Descriptive and human readable name of the studyset.. [optional]  # noqa: E501
+            description (str, none_type): A longform description of the studyset.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/source the studyset is connected to if the studyset was published.. [optional]  # noqa: E501
+            doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
+            pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            source_id (str, none_type): [optional]  # noqa: E501
+            source_updated_at (str, none_type): [optional]  # noqa: E501
+            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -276,16 +294,19 @@ class StudysetReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            publication (str, none_type): [optional]  # noqa: E501
-            doi (str, none_type): [optional]  # noqa: E501
-            pmid (str, none_type): [optional]  # noqa: E501
-            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            name (str, none_type): Descriptive and human readable name of the studyset.. [optional]  # noqa: E501
+            description (str, none_type): A longform description of the studyset.. [optional]  # noqa: E501
+            publication (str, none_type): The journal/source the studyset is connected to if the studyset was published.. [optional]  # noqa: E501
+            doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
+            pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            source_id (str, none_type): [optional]  # noqa: E501
+            source_updated_at (str, none_type): [optional]  # noqa: E501
+            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -351,8 +372,10 @@ class StudysetReturn(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
-              ReadOnly,
-              Studyset,
+              Clone,
+              ResourceAttributes,
+              StudysetBase,
+              StudysetReturnAllOf,
           ],
           'oneOf': [
           ],

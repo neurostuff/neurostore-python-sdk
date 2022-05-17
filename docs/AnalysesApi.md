@@ -288,23 +288,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = analyses_api.AnalysesApi(api_client)
     id = "id_example" # str | 
-    analysis = Analysis(
-        conditions=[
-            None,
-        ],
-        images=[
-            None,
-        ],
-        name="20356",
-        points=[
-            None,
-        ],
-        weights=[
-            3.14,
-        ],
-        description="description_example",
-        study="38jobTomPDqt",
-    ) # Analysis |  (optional)
+    analysis = Analysis(None) # Analysis |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -393,23 +377,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = analyses_api.AnalysesApi(api_client)
-    analysis = Analysis(
-        conditions=[
-            None,
-        ],
-        images=[
-            None,
-        ],
-        name="20356",
-        points=[
-            None,
-        ],
-        weights=[
-            3.14,
-        ],
-        description="description_example",
-        study="38jobTomPDqt",
-    ) # Analysis |  (optional)
+    analysis = Analysis(None) # Analysis |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values

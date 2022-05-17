@@ -137,8 +137,8 @@ class PointValue(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            kind (str, none_type): [optional]  # noqa: E501
-            value (float, none_type): [optional]  # noqa: E501
+            kind (str, none_type): The kind of statistic the value represents, whether it is variance, beta, t-statistic, or z-statistic.. [optional]  # noqa: E501
+            value (float, none_type): The value of the point for the \"kind\" of statistic.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -220,8 +220,8 @@ class PointValue(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            kind (str, none_type): [optional]  # noqa: E501
-            value (float, none_type): [optional]  # noqa: E501
+            kind (str, none_type): The kind of statistic the value represents, whether it is variance, beta, t-statistic, or z-statistic.. [optional]  # noqa: E501
+            value (float, none_type): The value of the point for the \"kind\" of statistic.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

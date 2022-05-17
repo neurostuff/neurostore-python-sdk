@@ -32,13 +32,15 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
-    from neurostore_sdk.model.point import Point
+    from neurostore_sdk.model.point_base import PointBase
+    from neurostore_sdk.model.point_return_all_of import PointReturnAllOf
     from neurostore_sdk.model.point_value import PointValue
-    from neurostore_sdk.model.read_only import ReadOnly
+    from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['Entity'] = Entity
-    globals()['Point'] = Point
+    globals()['PointBase'] = PointBase
+    globals()['PointReturnAllOf'] = PointReturnAllOf
     globals()['PointValue'] = PointValue
-    globals()['ReadOnly'] = ReadOnly
+    globals()['ResourceAttributes'] = ResourceAttributes
 
 
 class PointReturn(ModelComposed):
@@ -69,17 +71,13 @@ class PointReturn(ModelComposed):
     }
 
     validations = {
-        ('coordinates',): {
-            'max_items': 3,
-            'min_items': 3,
-        },
-        ('analysis',): {
-            'max_length': 12,
-            'min_length': 12,
-        },
         ('id',): {
             'max_length': 12,
             'min_length': 12,
+        },
+        ('coordinates',): {
+            'max_items': 3,
+            'min_items': 3,
         },
     }
 
@@ -106,20 +104,21 @@ class PointReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'id': (str,),  # noqa: E501
             'coordinates': ([float],),  # noqa: E501
             'space': (str, none_type,),  # noqa: E501
             'kind': (str, none_type,),  # noqa: E501
+            'label_id': (str, none_type,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
+            'user': (str, none_type,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
+            'image': (str, none_type,),  # noqa: E501
+            'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'x': (float,),  # noqa: E501
             'y': (float,),  # noqa: E501
             'z': (float,),  # noqa: E501
-            'analysis': (str,),  # noqa: E501
-            'image': (str, none_type,),  # noqa: E501
-            'label_id': (str, none_type,),  # noqa: E501
-            'value': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'entities': ([Entity],),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -128,24 +127,27 @@ class PointReturn(ModelComposed):
 
 
     attribute_map = {
+        'id': 'id',  # noqa: E501
         'coordinates': 'coordinates',  # noqa: E501
         'space': 'space',  # noqa: E501
         'kind': 'kind',  # noqa: E501
+        'label_id': 'label_id',  # noqa: E501
+        'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
+        'user': 'user',  # noqa: E501
+        'public': 'public',  # noqa: E501
+        'image': 'image',  # noqa: E501
+        'value': 'value',  # noqa: E501
         'x': 'x',  # noqa: E501
         'y': 'y',  # noqa: E501
         'z': 'z',  # noqa: E501
-        'analysis': 'analysis',  # noqa: E501
-        'image': 'image',  # noqa: E501
-        'label_id': 'label_id',  # noqa: E501
-        'value': 'value',  # noqa: E501
         'entities': 'entities',  # noqa: E501
-        'id': 'id',  # noqa: E501
-        'created_at': 'created_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
     }
 
     read_only_vars = {
+        'id',  # noqa: E501
         'created_at',  # noqa: E501
+        'updated_at',  # noqa: E501
         'user',  # noqa: E501
     }
 
@@ -155,6 +157,7 @@ class PointReturn(ModelComposed):
         """PointReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -185,20 +188,20 @@ class PointReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            coordinates ([float]): location of the point. [optional]  # noqa: E501
-            space (str, none_type): template space used to determine coordinate (TAL or MNI or UNKNOWN). [optional]  # noqa: E501
-            kind (str, none_type): method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
+            coordinates ([float]): Location of the significant coordinate in three dimensional space.. [optional]  # noqa: E501
+            space (str, none_type): Template space used to determine coordinate Examples include TAL or MNI.. [optional]  # noqa: E501
+            kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
+            label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
+            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            image (str, none_type): [optional]  # noqa: E501
+            value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
-            analysis (str): [optional]  # noqa: E501
-            image (str, none_type): [optional]  # noqa: E501
-            label_id (str, none_type): [optional]  # noqa: E501
-            value ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -298,20 +301,20 @@ class PointReturn(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            coordinates ([float]): location of the point. [optional]  # noqa: E501
-            space (str, none_type): template space used to determine coordinate (TAL or MNI or UNKNOWN). [optional]  # noqa: E501
-            kind (str, none_type): method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
+            coordinates ([float]): Location of the significant coordinate in three dimensional space.. [optional]  # noqa: E501
+            space (str, none_type): Template space used to determine coordinate Examples include TAL or MNI.. [optional]  # noqa: E501
+            kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
+            label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
+            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            user (str, none_type): who owns the resource. [optional]  # noqa: E501
+            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            image (str, none_type): [optional]  # noqa: E501
+            value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
-            analysis (str): [optional]  # noqa: E501
-            image (str, none_type): [optional]  # noqa: E501
-            label_id (str, none_type): [optional]  # noqa: E501
-            value ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
-            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -377,8 +380,9 @@ class PointReturn(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
-              Point,
-              ReadOnly,
+              PointBase,
+              PointReturnAllOf,
+              ResourceAttributes,
           ],
           'oneOf': [
           ],
