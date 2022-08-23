@@ -185,7 +185,6 @@ Class | Method | HTTP request | Description
  - [StudyReturnAllOf](docs/StudyReturnAllOf.md)
  - [Studyset](docs/Studyset.md)
  - [StudysetBase](docs/StudysetBase.md)
- - [StudysetBase1](docs/StudysetBase1.md)
  - [StudysetList](docs/StudysetList.md)
  - [StudysetRelationships](docs/StudysetRelationships.md)
  - [StudysetReturn](docs/StudysetReturn.md)

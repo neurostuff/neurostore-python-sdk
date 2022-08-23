@@ -1,6 +1,5 @@
 # Point
 
-A three dimensional coordinate representing a significant statistical peak associated with an analysis.
 
 ## Properties
 Name | Type | Description | Notes

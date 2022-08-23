@@ -60,7 +60,6 @@ from neurostore_sdk.model.study_return import StudyReturn
 from neurostore_sdk.model.study_return_all_of import StudyReturnAllOf
 from neurostore_sdk.model.studyset import Studyset
 from neurostore_sdk.model.studyset_base import StudysetBase
-from neurostore_sdk.model.studyset_base1 import StudysetBase1
 from neurostore_sdk.model.studyset_list import StudysetList
 from neurostore_sdk.model.studyset_relationships import StudysetRelationships
 from neurostore_sdk.model.studyset_return import StudysetReturn
