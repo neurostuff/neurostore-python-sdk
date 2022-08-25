@@ -82,8 +82,7 @@ class PointValue(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'kind': (str, none_type,),  # noqa: E501
-            'value': (float, none_type,),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +91,7 @@ class PointValue(ModelNormal):
 
 
     attribute_map = {
-        'kind': 'kind',  # noqa: E501
-        'value': 'value',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -137,8 +135,7 @@ class PointValue(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            kind (str, none_type): The kind of statistic the value represents, whether it is variance, beta, t-statistic, or z-statistic.. [optional]  # noqa: E501
-            value (float, none_type): The value of the point for the \"kind\" of statistic.. [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -220,8 +217,7 @@ class PointValue(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            kind (str, none_type): The kind of statistic the value represents, whether it is variance, beta, t-statistic, or z-statistic.. [optional]  # noqa: E501
-            value (float, none_type): The value of the point for the \"kind\" of statistic.. [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

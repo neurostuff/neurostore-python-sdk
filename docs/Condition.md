@@ -1,6 +1,5 @@
 # Condition
 
-Base component making up constrasts.
 
 ## Properties
 Name | Type | Description | Notes

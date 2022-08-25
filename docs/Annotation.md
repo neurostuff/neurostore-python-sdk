@@ -1,6 +1,5 @@
 # Annotation
 
-A container for \"subjective\" information about each analysis in the studyset, such as exclusion criteria or whether the analysis needs commenting.
 
 ## Properties
 Name | Type | Description | Notes
