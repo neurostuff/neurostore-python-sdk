@@ -1,5 +1,6 @@
 # Condition
 
+A representative term for a psychological, pharmacological, medical, or physical state.
 
 ## Properties
 Name | Type | Description | Notes

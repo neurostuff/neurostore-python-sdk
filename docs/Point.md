@@ -1,5 +1,6 @@
 # Point
 
+A stereotaxic 3 dimensional coordinate describing a reported coordinate from a statistical map. This coordinate could be from a center of mass cluster, a peak statistic, a sub-threshold statistic, or from some other mechanism of selection 
 
 ## Properties
 Name | Type | Description | Notes

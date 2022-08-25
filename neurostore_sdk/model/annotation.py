@@ -158,7 +158,7 @@ class Annotation(ModelComposed):
             name (str, none_type): Descriptive name for the annotation.. [optional]  # noqa: E501
             description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
-            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
+            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective data type (such as an integer or string).. [optional]  # noqa: E501
             studyset (bool, date, datetime, dict, float, int, list, str, none_type): The studyset the annotation is associated with. Each annotation is associated with one and only one studyset, but a studyset can have multiple annotations. The representation can either be a studyset object or a string indicating the location to find the studyset object.. [optional]  # noqa: E501
             notes ([NoteCollection]): The collection of notes for each analysis within the studyset. Each analysis will have all note_keys with the appropriately typed values.. [optional]  # noqa: E501
         """
@@ -263,7 +263,7 @@ class Annotation(ModelComposed):
             name (str, none_type): Descriptive name for the annotation.. [optional]  # noqa: E501
             description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
-            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
+            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective data type (such as an integer or string).. [optional]  # noqa: E501
             studyset (bool, date, datetime, dict, float, int, list, str, none_type): The studyset the annotation is associated with. Each annotation is associated with one and only one studyset, but a studyset can have multiple annotations. The representation can either be a studyset object or a string indicating the location to find the studyset object.. [optional]  # noqa: E501
             notes ([NoteCollection]): The collection of notes for each analysis within the studyset. Each analysis will have all note_keys with the appropriately typed values.. [optional]  # noqa: E501
         """
