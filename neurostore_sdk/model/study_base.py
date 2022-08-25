@@ -59,6 +59,10 @@ class StudyBase(ModelNormal):
     }
 
     validations = {
+        ('year',): {
+            'inclusive_maximum': 9999,
+            'inclusive_minimum': 0,
+        },
     }
 
     @cached_property

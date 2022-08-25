@@ -144,7 +144,7 @@ class AnnotationBase(ModelNormal):
             name (str, none_type): Descriptive name for the annotation.. [optional]  # noqa: E501
             description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
-            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
+            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective data type (such as an integer or string).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -229,7 +229,7 @@ class AnnotationBase(ModelNormal):
             name (str, none_type): Descriptive name for the annotation.. [optional]  # noqa: E501
             description (str, none_type): Long form description of the annotation.. [optional]  # noqa: E501
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.. [optional]  # noqa: E501
-            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective type.. [optional]  # noqa: E501
+            note_keys ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The keys (columns) in the annotation and the key's respective data type (such as an integer or string).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

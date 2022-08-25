@@ -1,5 +1,6 @@
 # NoteCollection
 
+The storage object for all notes within an annotation for a single analysis.
 
 ## Properties
 Name | Type | Description | Notes

@@ -75,6 +75,10 @@ class StudyReturn(ModelComposed):
             'max_length': 12,
             'min_length': 12,
         },
+        ('year',): {
+            'inclusive_maximum': 9999,
+            'inclusive_minimum': 0,
+        },
     }
 
     @cached_property

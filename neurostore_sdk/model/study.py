@@ -67,6 +67,10 @@ class Study(ModelComposed):
     }
 
     validations = {
+        ('year',): {
+            'inclusive_maximum': 9999,
+            'inclusive_minimum': 0,
+        },
     }
 
     @cached_property

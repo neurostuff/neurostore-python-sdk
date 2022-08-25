@@ -1,6 +1,6 @@
 # Image
 
-A description of a brain image linking to the actual nifti file.
+A description of a brain image linking to the actual nifti file (typically on neurovault).
 
 ## Properties
 Name | Type | Description | Notes
