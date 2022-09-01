@@ -37,6 +37,7 @@ def lazy_import():
     from neurostore_sdk.model.condition_return import ConditionReturn
     from neurostore_sdk.model.image_request import ImageRequest
     from neurostore_sdk.model.image_return import ImageReturn
+    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.model.point_request import PointRequest
     from neurostore_sdk.model.point_return import PointReturn
     globals()['AnalysisBase'] = AnalysisBase
@@ -45,6 +46,7 @@ def lazy_import():
     globals()['ConditionReturn'] = ConditionReturn
     globals()['ImageRequest'] = ImageRequest
     globals()['ImageReturn'] = ImageReturn
+    globals()['NestedPutAttributes'] = NestedPutAttributes
     globals()['PointRequest'] = PointRequest
     globals()['PointReturn'] = PointReturn
 
@@ -109,6 +111,7 @@ class AnalysisRequest(ModelComposed):
             'images': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'points': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'conditions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -124,6 +127,7 @@ class AnalysisRequest(ModelComposed):
         'images': 'images',  # noqa: E501
         'points': 'points',  # noqa: E501
         'conditions': 'conditions',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -172,6 +176,7 @@ class AnalysisRequest(ModelComposed):
             images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -278,6 +283,7 @@ class AnalysisRequest(ModelComposed):
             images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -345,6 +351,7 @@ class AnalysisRequest(ModelComposed):
           'allOf': [
               AnalysisBase,
               AnalysisRelationships,
+              NestedPutAttributes,
           ],
           'oneOf': [
           ],

@@ -31,7 +31,9 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.model.note_collection_base import NoteCollectionBase
+    globals()['NestedPutAttributes'] = NestedPutAttributes
     globals()['NoteCollectionBase'] = NoteCollectionBase
 
 
@@ -89,6 +91,7 @@ class NoteCollectionRequest(ModelComposed):
         lazy_import()
         return {
             'note': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -98,6 +101,7 @@ class NoteCollectionRequest(ModelComposed):
 
     attribute_map = {
         'note': 'note',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -140,6 +144,7 @@ class NoteCollectionRequest(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -240,6 +245,7 @@ class NoteCollectionRequest(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             note ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.. [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -305,6 +311,7 @@ class NoteCollectionRequest(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
+              NestedPutAttributes,
               NoteCollectionBase,
           ],
           'oneOf': [

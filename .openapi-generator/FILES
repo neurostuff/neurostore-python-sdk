@@ -35,6 +35,7 @@ docs/InlineResponse422.md
 docs/JsonLd.md
 docs/JsonLdContext.md
 docs/Metadata.md
+docs/NestedPutAttributes.md
 docs/NoteCollectionBase.md
 docs/NoteCollectionRequest.md
 docs/NoteCollectionReturn.md
@@ -107,6 +108,7 @@ neurostore_sdk/model/inline_response422.py
 neurostore_sdk/model/json_ld.py
 neurostore_sdk/model/json_ld_context.py
 neurostore_sdk/model/metadata.py
+neurostore_sdk/model/nested_put_attributes.py
 neurostore_sdk/model/note_collection_base.py
 neurostore_sdk/model/note_collection_request.py
 neurostore_sdk/model/note_collection_return.py
@@ -138,4 +140,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_nested_put_attributes.py
 tox.ini

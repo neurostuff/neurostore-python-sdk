@@ -32,10 +32,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
+    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.model.point_base import PointBase
     from neurostore_sdk.model.point_relationships import PointRelationships
     from neurostore_sdk.model.point_value import PointValue
     globals()['Entity'] = Entity
+    globals()['NestedPutAttributes'] = NestedPutAttributes
     globals()['PointBase'] = PointBase
     globals()['PointRelationships'] = PointRelationships
     globals()['PointValue'] = PointValue
@@ -108,6 +110,7 @@ class PointRequest(ModelComposed):
             'y': (float,),  # noqa: E501
             'z': (float,),  # noqa: E501
             'entities': ([Entity],),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -126,6 +129,7 @@ class PointRequest(ModelComposed):
         'y': 'y',  # noqa: E501
         'z': 'z',  # noqa: E501
         'entities': 'entities',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -177,6 +181,7 @@ class PointRequest(ModelComposed):
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -286,6 +291,7 @@ class PointRequest(ModelComposed):
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -351,6 +357,7 @@ class PointRequest(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
+              NestedPutAttributes,
               PointBase,
               PointRelationships,
           ],

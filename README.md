@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
  - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)
+ - [NestedPutAttributes](docs/NestedPutAttributes.md)
  - [NoteCollectionBase](docs/NoteCollectionBase.md)
  - [NoteCollectionRequest](docs/NoteCollectionRequest.md)
  - [NoteCollectionReturn](docs/NoteCollectionReturn.md)

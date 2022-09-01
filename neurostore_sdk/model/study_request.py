@@ -33,10 +33,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.analysis_request import AnalysisRequest
     from neurostore_sdk.model.analysis_return import AnalysisReturn
+    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.model.study_base import StudyBase
     from neurostore_sdk.model.study_relationships import StudyRelationships
     globals()['AnalysisRequest'] = AnalysisRequest
     globals()['AnalysisReturn'] = AnalysisReturn
+    globals()['NestedPutAttributes'] = NestedPutAttributes
     globals()['StudyBase'] = StudyBase
     globals()['StudyRelationships'] = StudyRelationships
 
@@ -107,6 +109,7 @@ class StudyRequest(ModelComposed):
             'authors': (str, none_type,),  # noqa: E501
             'year': (int, none_type,),  # noqa: E501
             'analyses': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -124,6 +127,7 @@ class StudyRequest(ModelComposed):
         'authors': 'authors',  # noqa: E501
         'year': 'year',  # noqa: E501
         'analyses': 'analyses',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -174,6 +178,7 @@ class StudyRequest(ModelComposed):
             authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
             year (int, none_type): The year this study was published.. [optional]  # noqa: E501
             analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -282,6 +287,7 @@ class StudyRequest(ModelComposed):
             authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
             year (int, none_type): The year this study was published.. [optional]  # noqa: E501
             analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            id (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -347,6 +353,7 @@ class StudyRequest(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
+              NestedPutAttributes,
               StudyBase,
               StudyRelationships,
           ],

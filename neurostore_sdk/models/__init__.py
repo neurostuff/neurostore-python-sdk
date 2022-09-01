@@ -37,6 +37,7 @@ from neurostore_sdk.model.inline_response422 import InlineResponse422
 from neurostore_sdk.model.json_ld import JsonLd
 from neurostore_sdk.model.json_ld_context import JsonLdContext
 from neurostore_sdk.model.metadata import Metadata
+from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
 from neurostore_sdk.model.note_collection_base import NoteCollectionBase
 from neurostore_sdk.model.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.model.note_collection_return import NoteCollectionReturn
