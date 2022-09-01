@@ -285,7 +285,6 @@ import neurostore_sdk
 from neurostore_sdk.api import studysets_api
 from neurostore_sdk.model.studyset_return import StudysetReturn
 from neurostore_sdk.model.inline_response422 import InlineResponse422
-from neurostore_sdk.model.studyset import Studyset
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -308,7 +307,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = studysets_api.StudysetsApi(api_client)
     id = "id_example" # str | 
-    studyset = Studyset(None) # Studyset |  (optional)
+    studyset_return = StudysetReturn(None) # StudysetReturn |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -322,7 +321,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # PUT/update a studyset
-        api_response = api_instance.studysets_id_put(id, studyset=studyset)
+        api_response = api_instance.studysets_id_put(id, studyset_return=studyset_return)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling StudysetsApi->studysets_id_put: %s\n" % e)
@@ -334,7 +333,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
- **studyset** | [**Studyset**](Studyset.md)|  | [optional]
+ **studyset_return** | [**StudysetReturn**](StudysetReturn.md)|  | [optional]
 
 ### Return type
 
@@ -375,7 +374,6 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import studysets_api
 from neurostore_sdk.model.studyset_return import StudysetReturn
-from neurostore_sdk.model.studyset import Studyset
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -397,13 +395,13 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = studysets_api.StudysetsApi(api_client)
-    studyset = Studyset(None) # Studyset |  (optional)
+    studyset_return = StudysetReturn(None) # StudysetReturn |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # POST/create a studyset
-        api_response = api_instance.studysets_post(studyset=studyset)
+        api_response = api_instance.studysets_post(studyset_return=studyset_return)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling StudysetsApi->studysets_post: %s\n" % e)
@@ -414,7 +412,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **studyset** | [**Studyset**](Studyset.md)|  | [optional]
+ **studyset_return** | [**StudysetReturn**](StudysetReturn.md)|  | [optional]
 
 ### Return type
 

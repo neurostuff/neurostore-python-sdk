@@ -9,7 +9,6 @@ docs/AnalysisBase.md
 docs/AnalysisList.md
 docs/AnalysisRelationships.md
 docs/AnalysisReturn.md
-docs/AnalysisReturnAllOf.md
 docs/Annotation.md
 docs/AnnotationBase.md
 docs/AnnotationExport.md
@@ -30,7 +29,6 @@ docs/ImageBase.md
 docs/ImageList.md
 docs/ImageRelationships.md
 docs/ImageReturn.md
-docs/ImageReturnAllOf.md
 docs/ImagesApi.md
 docs/InlineResponse404.md
 docs/InlineResponse422.md
@@ -47,7 +45,6 @@ docs/PointBase.md
 docs/PointList.md
 docs/PointRelationships.md
 docs/PointReturn.md
-docs/PointReturnAllOf.md
 docs/PointValue.md
 docs/PointsApi.md
 docs/ResourceAttributes.md
@@ -57,13 +54,11 @@ docs/StudyBase.md
 docs/StudyList.md
 docs/StudyRelationships.md
 docs/StudyReturn.md
-docs/StudyReturnAllOf.md
 docs/Studyset.md
 docs/StudysetBase.md
 docs/StudysetList.md
 docs/StudysetRelationships.md
 docs/StudysetReturn.md
-docs/StudysetReturnAllOf.md
 docs/StudysetsApi.md
 docs/User.md
 docs/UserApi.md
@@ -90,7 +85,6 @@ neurostore_sdk/model/analysis_base.py
 neurostore_sdk/model/analysis_list.py
 neurostore_sdk/model/analysis_relationships.py
 neurostore_sdk/model/analysis_return.py
-neurostore_sdk/model/analysis_return_all_of.py
 neurostore_sdk/model/annotation.py
 neurostore_sdk/model/annotation_base.py
 neurostore_sdk/model/annotation_export.py
@@ -109,7 +103,6 @@ neurostore_sdk/model/image_base.py
 neurostore_sdk/model/image_list.py
 neurostore_sdk/model/image_relationships.py
 neurostore_sdk/model/image_return.py
-neurostore_sdk/model/image_return_all_of.py
 neurostore_sdk/model/inline_response404.py
 neurostore_sdk/model/inline_response422.py
 neurostore_sdk/model/json_ld.py
@@ -125,7 +118,6 @@ neurostore_sdk/model/point_base.py
 neurostore_sdk/model/point_list.py
 neurostore_sdk/model/point_relationships.py
 neurostore_sdk/model/point_return.py
-neurostore_sdk/model/point_return_all_of.py
 neurostore_sdk/model/point_value.py
 neurostore_sdk/model/resource_attributes.py
 neurostore_sdk/model/study.py
@@ -133,13 +125,11 @@ neurostore_sdk/model/study_base.py
 neurostore_sdk/model/study_list.py
 neurostore_sdk/model/study_relationships.py
 neurostore_sdk/model/study_return.py
-neurostore_sdk/model/study_return_all_of.py
 neurostore_sdk/model/studyset.py
 neurostore_sdk/model/studyset_base.py
 neurostore_sdk/model/studyset_list.py
 neurostore_sdk/model/studyset_relationships.py
 neurostore_sdk/model/studyset_return.py
-neurostore_sdk/model/studyset_return_all_of.py
 neurostore_sdk/model/user.py
 neurostore_sdk/model/user_list.py
 neurostore_sdk/model_utils.py

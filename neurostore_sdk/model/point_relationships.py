@@ -31,12 +31,18 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.analysis import Analysis
-    from neurostore_sdk.model.image import Image
-    from neurostore_sdk.model.point_value import PointValue
-    globals()['Analysis'] = Analysis
-    globals()['Image'] = Image
-    globals()['PointValue'] = PointValue
+    from neurostore_sdk.model.from_neurostore_sdk_model_analysis_import_analysis import FromNeurostoreSdkModelAnalysisImportAnalysis
+    from neurostore_sdk.model.from_neurostore_sdk_model_image_import_image import FromNeurostoreSdkModelImageImportImage
+    from neurostore_sdk.model.from_neurostore_sdk_model_point_value_import_point_value import FromNeurostoreSdkModelPointValueImportPointValue
+    from neurostore_sdk.model.globals_analysis_analysis import GlobalsAnalysisAnalysis
+    from neurostore_sdk.model.globals_image_image import GlobalsImageImage
+    from neurostore_sdk.model.globals_point_value_point_value import GlobalsPointValuePointValue
+    globals()['from neurostore_sdk.model.analysis import Analysis'] = from neurostore_sdk.model.analysis import Analysis
+    globals()['from neurostore_sdk.model.image import Image'] = from neurostore_sdk.model.image import Image
+    globals()['from neurostore_sdk.model.point_value import PointValue'] = from neurostore_sdk.model.point_value import PointValue
+    globals()['globals()['Analysis'] = Analysis'] = globals()['Analysis'] = Analysis
+    globals()['globals()['Image'] = Image'] = globals()['Image'] = Image
+    globals()['globals()['PointValue'] = PointValue'] = globals()['PointValue'] = PointValue
 
 
 class PointRelationships(ModelNormal):

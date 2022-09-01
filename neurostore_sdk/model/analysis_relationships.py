@@ -31,14 +31,22 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.condition import Condition
-    from neurostore_sdk.model.image import Image
-    from neurostore_sdk.model.point import Point
-    from neurostore_sdk.model.study import Study
-    globals()['Condition'] = Condition
-    globals()['Image'] = Image
-    globals()['Point'] = Point
-    globals()['Study'] = Study
+    from neurostore_sdk.model.from_neurostore_sdk_model_condition_import_condition import FromNeurostoreSdkModelConditionImportCondition
+    from neurostore_sdk.model.from_neurostore_sdk_model_image_import_image import FromNeurostoreSdkModelImageImportImage
+    from neurostore_sdk.model.from_neurostore_sdk_model_point_import_point import FromNeurostoreSdkModelPointImportPoint
+    from neurostore_sdk.model.from_neurostore_sdk_model_study_import_study import FromNeurostoreSdkModelStudyImportStudy
+    from neurostore_sdk.model.globals_condition_condition import GlobalsConditionCondition
+    from neurostore_sdk.model.globals_image_image import GlobalsImageImage
+    from neurostore_sdk.model.globals_point_point import GlobalsPointPoint
+    from neurostore_sdk.model.globals_study_study import GlobalsStudyStudy
+    globals()['from neurostore_sdk.model.condition import Condition'] = from neurostore_sdk.model.condition import Condition
+    globals()['from neurostore_sdk.model.image import Image'] = from neurostore_sdk.model.image import Image
+    globals()['from neurostore_sdk.model.point import Point'] = from neurostore_sdk.model.point import Point
+    globals()['from neurostore_sdk.model.study import Study'] = from neurostore_sdk.model.study import Study
+    globals()['globals()['Condition'] = Condition'] = globals()['Condition'] = Condition
+    globals()['globals()['Image'] = Image'] = globals()['Image'] = Image
+    globals()['globals()['Point'] = Point'] = globals()['Point'] = Point
+    globals()['globals()['Study'] = Study'] = globals()['Study'] = Study
 
 
 class AnalysisRelationships(ModelNormal):

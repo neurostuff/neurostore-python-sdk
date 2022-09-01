@@ -32,13 +32,13 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.analysis_base import AnalysisBase
-    from neurostore_sdk.model.analysis_return_all_of import AnalysisReturnAllOf
+    from neurostore_sdk.model.analysis_relationships import AnalysisRelationships
     from neurostore_sdk.model.condition_return import ConditionReturn
     from neurostore_sdk.model.image_return import ImageReturn
     from neurostore_sdk.model.point_return import PointReturn
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['AnalysisBase'] = AnalysisBase
-    globals()['AnalysisReturnAllOf'] = AnalysisReturnAllOf
+    globals()['AnalysisRelationships'] = AnalysisRelationships
     globals()['ConditionReturn'] = ConditionReturn
     globals()['ImageReturn'] = ImageReturn
     globals()['PointReturn'] = PointReturn
@@ -367,7 +367,7 @@ class AnalysisReturn(ModelComposed):
           ],
           'allOf': [
               AnalysisBase,
-              AnalysisReturnAllOf,
+              AnalysisRelationships,
               ResourceAttributes,
           ],
           'oneOf': [

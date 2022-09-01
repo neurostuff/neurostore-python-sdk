@@ -35,12 +35,12 @@ def lazy_import():
     from neurostore_sdk.model.clone import Clone
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
     from neurostore_sdk.model.study_base import StudyBase
-    from neurostore_sdk.model.study_return_all_of import StudyReturnAllOf
+    from neurostore_sdk.model.study_relationships import StudyRelationships
     globals()['AnalysisReturn'] = AnalysisReturn
     globals()['Clone'] = Clone
     globals()['ResourceAttributes'] = ResourceAttributes
     globals()['StudyBase'] = StudyBase
-    globals()['StudyReturnAllOf'] = StudyReturnAllOf
+    globals()['StudyRelationships'] = StudyRelationships
 
 
 class StudyReturn(ModelComposed):
@@ -153,6 +153,7 @@ class StudyReturn(ModelComposed):
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
+        'source_updated_at',  # noqa: E501
     }
 
     @classmethod
@@ -391,7 +392,7 @@ class StudyReturn(ModelComposed):
               Clone,
               ResourceAttributes,
               StudyBase,
-              StudyReturnAllOf,
+              StudyRelationships,
           ],
           'oneOf': [
           ],

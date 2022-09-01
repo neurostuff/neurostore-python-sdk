@@ -99,6 +99,7 @@ class Clone(ModelNormal):
     }
 
     read_only_vars = {
+        'source_updated_at',  # noqa: E501
     }
 
     _composed_schemas = {}

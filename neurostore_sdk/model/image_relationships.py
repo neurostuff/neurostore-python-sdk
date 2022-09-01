@@ -31,8 +31,10 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.analysis import Analysis
-    globals()['Analysis'] = Analysis
+    from neurostore_sdk.model.from_neurostore_sdk_model_analysis_import_analysis import FromNeurostoreSdkModelAnalysisImportAnalysis
+    from neurostore_sdk.model.globals_analysis_analysis import GlobalsAnalysisAnalysis
+    globals()['from neurostore_sdk.model.analysis import Analysis'] = from neurostore_sdk.model.analysis import Analysis
+    globals()['globals()['Analysis'] = Analysis'] = globals()['Analysis'] = Analysis
 
 
 class ImageRelationships(ModelNormal):

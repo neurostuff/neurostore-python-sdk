@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **public** | **bool** |  | [optional]  if omitted the server will use the default value of True
 **source** | **str, none_type** |  | [optional] 
 **source_id** | **str, none_type** |  | [optional] 
-**source_updated_at** | **str, none_type** |  | [optional] 
+**source_updated_at** | **str, none_type** |  | [optional] [readonly] 
 **analyses** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

@@ -31,10 +31,14 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.note_collection import NoteCollection
-    from neurostore_sdk.model.studyset import Studyset
-    globals()['NoteCollection'] = NoteCollection
-    globals()['Studyset'] = Studyset
+    from neurostore_sdk.model.from_neurostore_sdk_model_note_collection_import_note_collection import FromNeurostoreSdkModelNoteCollectionImportNoteCollection
+    from neurostore_sdk.model.from_neurostore_sdk_model_studyset_import_studyset import FromNeurostoreSdkModelStudysetImportStudyset
+    from neurostore_sdk.model.globals_note_collection_note_collection import GlobalsNoteCollectionNoteCollection
+    from neurostore_sdk.model.globals_studyset_studyset import GlobalsStudysetStudyset
+    globals()['from neurostore_sdk.model.note_collection import NoteCollection'] = from neurostore_sdk.model.note_collection import NoteCollection
+    globals()['from neurostore_sdk.model.studyset import Studyset'] = from neurostore_sdk.model.studyset import Studyset
+    globals()['globals()['NoteCollection'] = NoteCollection'] = globals()['NoteCollection'] = NoteCollection
+    globals()['globals()['Studyset'] = Studyset'] = globals()['Studyset'] = Studyset
 
 
 class AnnotationRelationships(ModelNormal):

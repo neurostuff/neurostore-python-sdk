@@ -33,12 +33,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.point_base import PointBase
-    from neurostore_sdk.model.point_return_all_of import PointReturnAllOf
+    from neurostore_sdk.model.point_relationships import PointRelationships
     from neurostore_sdk.model.point_value import PointValue
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['Entity'] = Entity
     globals()['PointBase'] = PointBase
-    globals()['PointReturnAllOf'] = PointReturnAllOf
+    globals()['PointRelationships'] = PointRelationships
     globals()['PointValue'] = PointValue
     globals()['ResourceAttributes'] = ResourceAttributes
 
@@ -381,7 +381,7 @@ class PointReturn(ModelComposed):
           ],
           'allOf': [
               PointBase,
-              PointReturnAllOf,
+              PointRelationships,
               ResourceAttributes,
           ],
           'oneOf': [
