@@ -34,9 +34,11 @@ def lazy_import():
     from neurostore_sdk.model.analysis_return import AnalysisReturn
     from neurostore_sdk.model.study_base import StudyBase
     from neurostore_sdk.model.study_relationships import StudyRelationships
+    from neurostore_sdk.model.study_request import StudyRequest
     globals()['AnalysisReturn'] = AnalysisReturn
     globals()['StudyBase'] = StudyBase
     globals()['StudyRelationships'] = StudyRelationships
+    globals()['StudyRequest'] = StudyRequest
 
 
 class StudyRequest(ModelComposed):

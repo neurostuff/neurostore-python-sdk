@@ -33,13 +33,19 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.analysis_base import AnalysisBase
     from neurostore_sdk.model.analysis_relationships import AnalysisRelationships
+    from neurostore_sdk.model.condition_request import ConditionRequest
     from neurostore_sdk.model.condition_return import ConditionReturn
+    from neurostore_sdk.model.image_request import ImageRequest
     from neurostore_sdk.model.image_return import ImageReturn
+    from neurostore_sdk.model.point_request import PointRequest
     from neurostore_sdk.model.point_return import PointReturn
     globals()['AnalysisBase'] = AnalysisBase
     globals()['AnalysisRelationships'] = AnalysisRelationships
+    globals()['ConditionRequest'] = ConditionRequest
     globals()['ConditionReturn'] = ConditionReturn
+    globals()['ImageRequest'] = ImageRequest
     globals()['ImageReturn'] = ImageReturn
+    globals()['PointRequest'] = PointRequest
     globals()['PointReturn'] = PointReturn
 
 

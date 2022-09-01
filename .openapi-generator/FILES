@@ -138,12 +138,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_analysis_request.py
-test/test_annotation_request.py
-test/test_condition_request.py
-test/test_image_request.py
-test/test_note_collection_request.py
-test/test_point_request.py
-test/test_study_request.py
-test/test_studyset_request.py
 tox.ini

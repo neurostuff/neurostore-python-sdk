@@ -32,7 +32,9 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.analysis_return import AnalysisReturn
+    from neurostore_sdk.model.study_request import StudyRequest
     globals()['AnalysisReturn'] = AnalysisReturn
+    globals()['StudyRequest'] = StudyRequest
 
 
 class StudyRelationships(ModelNormal):
