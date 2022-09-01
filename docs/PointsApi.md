@@ -233,7 +233,7 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import points_api
 from neurostore_sdk.model.point_return import PointReturn
-from neurostore_sdk.model.point import Point
+from neurostore_sdk.model.point_request import PointRequest
 from neurostore_sdk.model.inline_response422 import InlineResponse422
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
@@ -257,7 +257,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = points_api.PointsApi(api_client)
     id = "id_example" # str | 
-    point = Point(None) # Point |  (optional)
+    point_request = PointRequest(None) # PointRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -271,7 +271,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # PUT/update a point
-        api_response = api_instance.points_id_put(id, point=point)
+        api_response = api_instance.points_id_put(id, point_request=point_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling PointsApi->points_id_put: %s\n" % e)
@@ -283,7 +283,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
- **point** | [**Point**](Point.md)|  | [optional]
+ **point_request** | [**PointRequest**](PointRequest.md)|  | [optional]
 
 ### Return type
 
@@ -324,7 +324,7 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import points_api
 from neurostore_sdk.model.point_return import PointReturn
-from neurostore_sdk.model.point import Point
+from neurostore_sdk.model.point_request import PointRequest
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -346,13 +346,13 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = points_api.PointsApi(api_client)
-    point = Point(None) # Point |  (optional)
+    point_request = PointRequest(None) # PointRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # POST Points
-        api_response = api_instance.points_post(point=point)
+        api_response = api_instance.points_post(point_request=point_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling PointsApi->points_post: %s\n" % e)
@@ -363,7 +363,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **point** | [**Point**](Point.md)|  | [optional]
+ **point_request** | [**PointRequest**](PointRequest.md)|  | [optional]
 
 ### Return type
 

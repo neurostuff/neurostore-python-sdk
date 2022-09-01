@@ -22,8 +22,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from neurostore_sdk.model.annotation import Annotation
 from neurostore_sdk.model.annotation_list import AnnotationList
+from neurostore_sdk.model.annotation_request import AnnotationRequest
 from neurostore_sdk.model.annotation_return import AnnotationReturn
 
 
@@ -200,7 +200,7 @@ class AnnotationsApi(object):
             params_map={
                 'all': [
                     'id',
-                    'annotation',
+                    'annotation_request',
                 ],
                 'required': [
                     'id',
@@ -220,15 +220,15 @@ class AnnotationsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'annotation':
-                        (Annotation,),
+                    'annotation_request':
+                        (AnnotationRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'annotation': 'body',
+                    'annotation_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -258,7 +258,7 @@ class AnnotationsApi(object):
                 'all': [
                     'source',
                     'source_id',
-                    'annotation',
+                    'annotation_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -287,8 +287,8 @@ class AnnotationsApi(object):
                         (str,),
                     'source_id':
                         (str,),
-                    'annotation':
-                        (Annotation,),
+                    'annotation_request':
+                        (AnnotationRequest,),
                 },
                 'attribute_map': {
                     'source': 'source',
@@ -297,7 +297,7 @@ class AnnotationsApi(object):
                 'location_map': {
                     'source': 'query',
                     'source_id': 'query',
-                    'annotation': 'body',
+                    'annotation_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -562,7 +562,7 @@ class AnnotationsApi(object):
             id (str):
 
         Keyword Args:
-            annotation (Annotation): [optional]
+            annotation_request (AnnotationRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -640,7 +640,7 @@ class AnnotationsApi(object):
         Keyword Args:
             source (str): the source of the resource you would like to filter/copy from. [optional] if omitted the server will use the default value of "neurostore"
             source_id (str): id of the resource you are either filtering/copying on. [optional]
-            annotation (Annotation): [optional]
+            annotation_request (AnnotationRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

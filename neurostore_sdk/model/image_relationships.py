@@ -31,10 +31,8 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.from_neurostore_sdk_model_analysis_import_analysis import FromNeurostoreSdkModelAnalysisImportAnalysis
-    from neurostore_sdk.model.globals_analysis_analysis import GlobalsAnalysisAnalysis
-    globals()['from neurostore_sdk.model.analysis import Analysis'] = from neurostore_sdk.model.analysis import Analysis
-    globals()['globals()['Analysis'] = Analysis'] = globals()['Analysis'] = Analysis
+    from neurostore_sdk.model.entity import Entity
+    globals()['Entity'] = Entity
 
 
 class ImageRelationships(ModelNormal):
@@ -90,7 +88,9 @@ class ImageRelationships(ModelNormal):
         """
         lazy_import()
         return {
-            'analysis': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'analysis': (str,),  # noqa: E501
+            'entities': ([Entity],),  # noqa: E501
+            'analysis_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +100,8 @@ class ImageRelationships(ModelNormal):
 
     attribute_map = {
         'analysis': 'analysis',  # noqa: E501
+        'entities': 'entities',  # noqa: E501
+        'analysis_name': 'analysis_name',  # noqa: E501
     }
 
     read_only_vars = {
@@ -143,7 +145,9 @@ class ImageRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the image is associated with. Each image is associated with one and only one analysis, but an analysis can have multiple images. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
+            analysis (str): [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -225,7 +229,9 @@ class ImageRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analysis (bool, date, datetime, dict, float, int, list, str, none_type): Analysis the image is associated with. Each image is associated with one and only one analysis, but an analysis can have multiple images. Either an analysis object or a string linking to an analysis object.. [optional]  # noqa: E501
+            analysis (str): [optional]  # noqa: E501
+            entities ([Entity]): [optional]  # noqa: E501
+            analysis_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

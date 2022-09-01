@@ -31,10 +31,8 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.from_neurostore_sdk_model_analysis_import_analysis import FromNeurostoreSdkModelAnalysisImportAnalysis
-    from neurostore_sdk.model.globals_analysis_analysis import GlobalsAnalysisAnalysis
-    globals()['from neurostore_sdk.model.analysis import Analysis'] = from neurostore_sdk.model.analysis import Analysis
-    globals()['globals()['Analysis'] = Analysis'] = globals()['Analysis'] = Analysis
+    from neurostore_sdk.model.analysis_return import AnalysisReturn
+    globals()['AnalysisReturn'] = AnalysisReturn
 
 
 class StudyRelationships(ModelNormal):
@@ -143,7 +141,7 @@ class StudyRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): The analyses making up the study. A study can have one or more analyses, since each analysis represents a contrast of conditions, where psychological, behavioral, pharmacological, or group based. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
+            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -225,7 +223,7 @@ class StudyRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): The analyses making up the study. A study can have one or more analyses, since each analysis represents a contrast of conditions, where psychological, behavioral, pharmacological, or group based. Either represented as an analysis object or a string pointing to the location of the analysis object.. [optional]  # noqa: E501
+            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

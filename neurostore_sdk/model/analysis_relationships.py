@@ -31,22 +31,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.from_neurostore_sdk_model_condition_import_condition import FromNeurostoreSdkModelConditionImportCondition
-    from neurostore_sdk.model.from_neurostore_sdk_model_image_import_image import FromNeurostoreSdkModelImageImportImage
-    from neurostore_sdk.model.from_neurostore_sdk_model_point_import_point import FromNeurostoreSdkModelPointImportPoint
-    from neurostore_sdk.model.from_neurostore_sdk_model_study_import_study import FromNeurostoreSdkModelStudyImportStudy
-    from neurostore_sdk.model.globals_condition_condition import GlobalsConditionCondition
-    from neurostore_sdk.model.globals_image_image import GlobalsImageImage
-    from neurostore_sdk.model.globals_point_point import GlobalsPointPoint
-    from neurostore_sdk.model.globals_study_study import GlobalsStudyStudy
-    globals()['from neurostore_sdk.model.condition import Condition'] = from neurostore_sdk.model.condition import Condition
-    globals()['from neurostore_sdk.model.image import Image'] = from neurostore_sdk.model.image import Image
-    globals()['from neurostore_sdk.model.point import Point'] = from neurostore_sdk.model.point import Point
-    globals()['from neurostore_sdk.model.study import Study'] = from neurostore_sdk.model.study import Study
-    globals()['globals()['Condition'] = Condition'] = globals()['Condition'] = Condition
-    globals()['globals()['Image'] = Image'] = globals()['Image'] = Image
-    globals()['globals()['Point'] = Point'] = globals()['Point'] = Point
-    globals()['globals()['Study'] = Study'] = globals()['Study'] = Study
+    from neurostore_sdk.model.condition_return import ConditionReturn
+    from neurostore_sdk.model.image_return import ImageReturn
+    from neurostore_sdk.model.point_return import PointReturn
+    globals()['ConditionReturn'] = ConditionReturn
+    globals()['ImageReturn'] = ImageReturn
+    globals()['PointReturn'] = PointReturn
 
 
 class AnalysisRelationships(ModelNormal):
@@ -102,10 +92,10 @@ class AnalysisRelationships(ModelNormal):
         """
         lazy_import()
         return {
-            'conditions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'study': (str,),  # noqa: E501
             'images': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'points': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
-            'study': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'conditions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -114,10 +104,10 @@ class AnalysisRelationships(ModelNormal):
 
 
     attribute_map = {
-        'conditions': 'conditions',  # noqa: E501
+        'study': 'study',  # noqa: E501
         'images': 'images',  # noqa: E501
         'points': 'points',  # noqa: E501
-        'study': 'study',  # noqa: E501
+        'conditions': 'conditions',  # noqa: E501
     }
 
     read_only_vars = {
@@ -161,10 +151,10 @@ class AnalysisRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): Array of conditions (e.g., 2-back, memory, etc.) that must be the same length as the weights attribute. Either is an array of condition objects or strings that point to condition objects.. [optional]  # noqa: E501
-            images ([bool, date, datetime, dict, float, int, list, str, none_type]): Statistical images (e.g., beta, t-statistic, and/or z-statistic images) where each voxel gets a value. Either represented as an array of image objects or strings linking to image objects.. [optional]  # noqa: E501
-            points ([bool, date, datetime, dict, float, int, list, str, none_type]): Coordinates of significance associated with the contrast. Either an array of point objects or an array of strings linking to point objects.. [optional]  # noqa: E501
-            study (bool, date, datetime, dict, float, int, list, str, none_type): The study this analysis is associated with. Each analysis can only be associated to one and only one study, but a study can have multiple analyses.. [optional]  # noqa: E501
+            study (str): [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -246,10 +236,10 @@ class AnalysisRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): Array of conditions (e.g., 2-back, memory, etc.) that must be the same length as the weights attribute. Either is an array of condition objects or strings that point to condition objects.. [optional]  # noqa: E501
-            images ([bool, date, datetime, dict, float, int, list, str, none_type]): Statistical images (e.g., beta, t-statistic, and/or z-statistic images) where each voxel gets a value. Either represented as an array of image objects or strings linking to image objects.. [optional]  # noqa: E501
-            points ([bool, date, datetime, dict, float, int, list, str, none_type]): Coordinates of significance associated with the contrast. Either an array of point objects or an array of strings linking to point objects.. [optional]  # noqa: E501
-            study (bool, date, datetime, dict, float, int, list, str, none_type): The study this analysis is associated with. Each analysis can only be associated to one and only one study, but a study can have multiple analyses.. [optional]  # noqa: E501
+            study (str): [optional]  # noqa: E501
+            images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

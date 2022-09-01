@@ -24,8 +24,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
 )
 from neurostore_sdk.model.inline_response404 import InlineResponse404
 from neurostore_sdk.model.inline_response422 import InlineResponse422
-from neurostore_sdk.model.study import Study
 from neurostore_sdk.model.study_list import StudyList
+from neurostore_sdk.model.study_request import StudyRequest
 from neurostore_sdk.model.study_return import StudyReturn
 
 
@@ -301,7 +301,7 @@ class StudiesApi(object):
             params_map={
                 'all': [
                     'id',
-                    'study',
+                    'study_request',
                 ],
                 'required': [
                     'id',
@@ -321,15 +321,15 @@ class StudiesApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'study':
-                        (Study,),
+                    'study_request':
+                        (StudyRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'study': 'body',
+                    'study_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -359,7 +359,7 @@ class StudiesApi(object):
                 'all': [
                     'source',
                     'source_id',
-                    'study',
+                    'study_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -388,8 +388,8 @@ class StudiesApi(object):
                         (str,),
                     'source_id':
                         (str,),
-                    'study':
-                        (Study,),
+                    'study_request':
+                        (StudyRequest,),
                 },
                 'attribute_map': {
                     'source': 'source',
@@ -398,7 +398,7 @@ class StudiesApi(object):
                 'location_map': {
                     'source': 'query',
                     'source_id': 'query',
-                    'study': 'body',
+                    'study_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -676,7 +676,7 @@ class StudiesApi(object):
             id (str):
 
         Keyword Args:
-            study (Study): [optional]
+            study_request (StudyRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -754,7 +754,7 @@ class StudiesApi(object):
         Keyword Args:
             source (str): the source of the resource you would like to filter/copy from. [optional] if omitted the server will use the default value of "neurostore"
             source_id (str): id of the resource you are either filtering/copying on. [optional]
-            study (Study): [optional]
+            study_request (StudyRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

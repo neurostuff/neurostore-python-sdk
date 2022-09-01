@@ -51,8 +51,8 @@ import time
 import neurostore_sdk
 from pprint import pprint
 from neurostore_sdk.api import analyses_api
-from neurostore_sdk.model.analysis import Analysis
 from neurostore_sdk.model.analysis_list import AnalysisList
+from neurostore_sdk.model.analysis_request import AnalysisRequest
 from neurostore_sdk.model.analysis_return import AnalysisReturn
 from neurostore_sdk.model.inline_response404 import InlineResponse404
 from neurostore_sdk.model.inline_response422 import InlineResponse422
@@ -134,55 +134,54 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Analysis](docs/Analysis.md)
  - [AnalysisBase](docs/AnalysisBase.md)
  - [AnalysisList](docs/AnalysisList.md)
  - [AnalysisRelationships](docs/AnalysisRelationships.md)
+ - [AnalysisRequest](docs/AnalysisRequest.md)
  - [AnalysisReturn](docs/AnalysisReturn.md)
- - [Annotation](docs/Annotation.md)
  - [AnnotationBase](docs/AnnotationBase.md)
  - [AnnotationExport](docs/AnnotationExport.md)
  - [AnnotationList](docs/AnnotationList.md)
  - [AnnotationRelationships](docs/AnnotationRelationships.md)
+ - [AnnotationRequest](docs/AnnotationRequest.md)
  - [AnnotationReturn](docs/AnnotationReturn.md)
  - [Clone](docs/Clone.md)
- - [Condition](docs/Condition.md)
  - [ConditionBase](docs/ConditionBase.md)
  - [ConditionList](docs/ConditionList.md)
+ - [ConditionRequest](docs/ConditionRequest.md)
  - [ConditionReturn](docs/ConditionReturn.md)
  - [Entity](docs/Entity.md)
  - [EntityAllOf](docs/EntityAllOf.md)
- - [Image](docs/Image.md)
  - [ImageBase](docs/ImageBase.md)
  - [ImageList](docs/ImageList.md)
  - [ImageRelationships](docs/ImageRelationships.md)
+ - [ImageRequest](docs/ImageRequest.md)
  - [ImageReturn](docs/ImageReturn.md)
  - [InlineResponse404](docs/InlineResponse404.md)
  - [InlineResponse422](docs/InlineResponse422.md)
  - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)
- - [NoteCollection](docs/NoteCollection.md)
  - [NoteCollectionBase](docs/NoteCollectionBase.md)
- - [NoteCollectionRelationships](docs/NoteCollectionRelationships.md)
+ - [NoteCollectionRequest](docs/NoteCollectionRequest.md)
  - [NoteCollectionReturn](docs/NoteCollectionReturn.md)
  - [NoteCollectionReturnAllOf](docs/NoteCollectionReturnAllOf.md)
- - [Point](docs/Point.md)
  - [PointBase](docs/PointBase.md)
  - [PointList](docs/PointList.md)
  - [PointRelationships](docs/PointRelationships.md)
+ - [PointRequest](docs/PointRequest.md)
  - [PointReturn](docs/PointReturn.md)
  - [PointValue](docs/PointValue.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
- - [Study](docs/Study.md)
  - [StudyBase](docs/StudyBase.md)
  - [StudyList](docs/StudyList.md)
  - [StudyRelationships](docs/StudyRelationships.md)
+ - [StudyRequest](docs/StudyRequest.md)
  - [StudyReturn](docs/StudyReturn.md)
- - [Studyset](docs/Studyset.md)
  - [StudysetBase](docs/StudysetBase.md)
  - [StudysetList](docs/StudysetList.md)
  - [StudysetRelationships](docs/StudysetRelationships.md)
+ - [StudysetRequest](docs/StudysetRequest.md)
  - [StudysetReturn](docs/StudysetReturn.md)
  - [User](docs/User.md)
  - [UserList](docs/UserList.md)

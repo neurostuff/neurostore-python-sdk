@@ -22,8 +22,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from neurostore_sdk.model.image import Image
 from neurostore_sdk.model.image_list import ImageList
+from neurostore_sdk.model.image_request import ImageRequest
 from neurostore_sdk.model.image_return import ImageReturn
 from neurostore_sdk.model.inline_response404 import InlineResponse404
 from neurostore_sdk.model.inline_response422 import InlineResponse422
@@ -253,7 +253,7 @@ class ImagesApi(object):
             params_map={
                 'all': [
                     'id',
-                    'image',
+                    'image_request',
                 ],
                 'required': [
                     'id',
@@ -273,15 +273,15 @@ class ImagesApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'image':
-                        (Image,),
+                    'image_request':
+                        (ImageRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'image': 'body',
+                    'image_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -309,7 +309,7 @@ class ImagesApi(object):
             },
             params_map={
                 'all': [
-                    'image',
+                    'image_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -325,13 +325,13 @@ class ImagesApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'image':
-                        (Image,),
+                    'image_request':
+                        (ImageRequest,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'image': 'body',
+                    'image_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -603,7 +603,7 @@ class ImagesApi(object):
             id (str):
 
         Keyword Args:
-            image (Image): [optional]
+            image_request (ImageRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -679,7 +679,7 @@ class ImagesApi(object):
 
 
         Keyword Args:
-            image (Image): [optional]
+            image_request (ImageRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

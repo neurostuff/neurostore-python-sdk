@@ -250,9 +250,9 @@ update a condition
 import time
 import neurostore_sdk
 from neurostore_sdk.api import conditions_api
-from neurostore_sdk.model.condition import Condition
 from neurostore_sdk.model.condition_return import ConditionReturn
 from neurostore_sdk.model.inline_response422 import InlineResponse422
+from neurostore_sdk.model.condition_request import ConditionRequest
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -275,7 +275,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = conditions_api.ConditionsApi(api_client)
     id = "id_example" # str | 
-    condition = Condition(None) # Condition |  (optional)
+    condition_request = ConditionRequest(None) # ConditionRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -289,7 +289,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # PUT/update a condition
-        api_response = api_instance.conditions_id_put(id, condition=condition)
+        api_response = api_instance.conditions_id_put(id, condition_request=condition_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling ConditionsApi->conditions_id_put: %s\n" % e)
@@ -301,7 +301,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
- **condition** | [**Condition**](Condition.md)|  | [optional]
+ **condition_request** | [**ConditionRequest**](ConditionRequest.md)|  | [optional]
 
 ### Return type
 
@@ -341,8 +341,8 @@ Create a condition
 import time
 import neurostore_sdk
 from neurostore_sdk.api import conditions_api
-from neurostore_sdk.model.condition import Condition
 from neurostore_sdk.model.condition_return import ConditionReturn
+from neurostore_sdk.model.condition_request import ConditionRequest
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -364,13 +364,13 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = conditions_api.ConditionsApi(api_client)
-    condition = Condition(None) # Condition |  (optional)
+    condition_request = ConditionRequest(None) # ConditionRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # POST/Create a condition
-        api_response = api_instance.conditions_post(condition=condition)
+        api_response = api_instance.conditions_post(condition_request=condition_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling ConditionsApi->conditions_post: %s\n" % e)
@@ -381,7 +381,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **condition** | [**Condition**](Condition.md)|  | [optional]
+ **condition_request** | [**ConditionRequest**](ConditionRequest.md)|  | [optional]
 
 ### Return type
 

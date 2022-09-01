@@ -31,10 +31,8 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.from_neurostore_sdk_model_study_import_study import FromNeurostoreSdkModelStudyImportStudy
-    from neurostore_sdk.model.globals_study_study import GlobalsStudyStudy
-    globals()['from neurostore_sdk.model.study import Study'] = from neurostore_sdk.model.study import Study
-    globals()['globals()['Study'] = Study'] = globals()['Study'] = Study
+    from neurostore_sdk.model.study_return import StudyReturn
+    globals()['StudyReturn'] = StudyReturn
 
 
 class StudysetRelationships(ModelNormal):
@@ -143,7 +141,7 @@ class StudysetRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): The collection of studies.. [optional]  # noqa: E501
+            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -225,7 +223,7 @@ class StudysetRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): The collection of studies.. [optional]  # noqa: E501
+            studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

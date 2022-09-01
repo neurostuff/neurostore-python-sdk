@@ -31,14 +31,8 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.from_neurostore_sdk_model_note_collection_import_note_collection import FromNeurostoreSdkModelNoteCollectionImportNoteCollection
-    from neurostore_sdk.model.from_neurostore_sdk_model_studyset_import_studyset import FromNeurostoreSdkModelStudysetImportStudyset
-    from neurostore_sdk.model.globals_note_collection_note_collection import GlobalsNoteCollectionNoteCollection
-    from neurostore_sdk.model.globals_studyset_studyset import GlobalsStudysetStudyset
-    globals()['from neurostore_sdk.model.note_collection import NoteCollection'] = from neurostore_sdk.model.note_collection import NoteCollection
-    globals()['from neurostore_sdk.model.studyset import Studyset'] = from neurostore_sdk.model.studyset import Studyset
-    globals()['globals()['NoteCollection'] = NoteCollection'] = globals()['NoteCollection'] = NoteCollection
-    globals()['globals()['Studyset'] = Studyset'] = globals()['Studyset'] = Studyset
+    from neurostore_sdk.model.note_collection_return import NoteCollectionReturn
+    globals()['NoteCollectionReturn'] = NoteCollectionReturn
 
 
 class AnnotationRelationships(ModelNormal):
@@ -94,8 +88,7 @@ class AnnotationRelationships(ModelNormal):
         """
         lazy_import()
         return {
-            'studyset': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'notes': ([NoteCollection],),  # noqa: E501
+            'notes': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -104,7 +97,6 @@ class AnnotationRelationships(ModelNormal):
 
 
     attribute_map = {
-        'studyset': 'studyset',  # noqa: E501
         'notes': 'notes',  # noqa: E501
     }
 
@@ -149,8 +141,7 @@ class AnnotationRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            studyset (bool, date, datetime, dict, float, int, list, str, none_type): The studyset the annotation is associated with. Each annotation is associated with one and only one studyset, but a studyset can have multiple annotations. The representation can either be a studyset object or a string indicating the location to find the studyset object.. [optional]  # noqa: E501
-            notes ([NoteCollection]): The collection of notes for each analysis within the studyset. Each analysis will have all note_keys with the appropriately typed values.. [optional]  # noqa: E501
+            notes ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -232,8 +223,7 @@ class AnnotationRelationships(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            studyset (bool, date, datetime, dict, float, int, list, str, none_type): The studyset the annotation is associated with. Each annotation is associated with one and only one studyset, but a studyset can have multiple annotations. The representation can either be a studyset object or a string indicating the location to find the studyset object.. [optional]  # noqa: E501
-            notes ([NoteCollection]): The collection of notes for each analysis within the studyset. Each analysis will have all note_keys with the appropriately typed values.. [optional]  # noqa: E501
+            notes ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
