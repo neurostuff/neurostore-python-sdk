@@ -91,7 +91,6 @@ class AnnotationExport(ModelNormal):
     }
 
     read_only_vars = {
-        'annotation_csv',  # noqa: E501
         'metadata',  # noqa: E501
     }
 
@@ -185,8 +184,11 @@ class AnnotationExport(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, annotation_csv, *args, **kwargs):  # noqa: E501
         """AnnotationExport - a model defined in OpenAPI
+
+        Args:
+            annotation_csv (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -245,6 +247,7 @@ class AnnotationExport(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.annotation_csv = annotation_csv
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

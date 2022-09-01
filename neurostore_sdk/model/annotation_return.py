@@ -98,7 +98,6 @@ class AnnotationReturn(ModelNormal):
 
     read_only_vars = {
         'metadata',  # noqa: E501
-        'annotation_csv',  # noqa: E501
     }
 
     _composed_schemas = {}
