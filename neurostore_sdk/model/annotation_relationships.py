@@ -31,7 +31,9 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from neurostore_sdk.model.note_collection_request import NoteCollectionRequest
     from neurostore_sdk.model.note_collection_return import NoteCollectionReturn
+    globals()['NoteCollectionRequest'] = NoteCollectionRequest
     globals()['NoteCollectionReturn'] = NoteCollectionReturn
 
 
