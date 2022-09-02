@@ -102,7 +102,7 @@ class AnnotationExport(ModelNormal):
         """AnnotationExport - a model defined in OpenAPI
 
         Args:
-            annotation_csv (str):
+            annotation_csv (str): annotation object expressed as a CSV
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,7 +188,7 @@ class AnnotationExport(ModelNormal):
         """AnnotationExport - a model defined in OpenAPI
 
         Args:
-            annotation_csv (str):
+            annotation_csv (str): annotation object expressed as a CSV
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

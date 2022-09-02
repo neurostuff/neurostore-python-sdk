@@ -140,7 +140,7 @@ class ReadableResourceAttributes(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): when was the resource last modified/updated.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class ReadableResourceAttributes(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): when was the resource last modified/updated.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

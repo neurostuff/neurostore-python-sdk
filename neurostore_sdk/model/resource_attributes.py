@@ -159,7 +159,7 @@ class ResourceAttributes(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): when was the resource last modified/updated.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
@@ -263,7 +263,7 @@ class ResourceAttributes(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): when was the resource last modified/updated.. [optional]  # noqa: E501
             id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
