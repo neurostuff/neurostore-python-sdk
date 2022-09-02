@@ -264,7 +264,7 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import analyses_api
 from neurostore_sdk.model.analysis_return import AnalysisReturn
-from neurostore_sdk.model.analysis import Analysis
+from neurostore_sdk.model.analysis_request import AnalysisRequest
 from neurostore_sdk.model.inline_response422 import InlineResponse422
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
@@ -288,7 +288,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = analyses_api.AnalysesApi(api_client)
     id = "id_example" # str | 
-    analysis = Analysis(None) # Analysis |  (optional)
+    analysis_request = AnalysisRequest(None) # AnalysisRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -302,7 +302,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # PUT/update an analysis
-        api_response = api_instance.analyses_id_put(id, analysis=analysis)
+        api_response = api_instance.analyses_id_put(id, analysis_request=analysis_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling AnalysesApi->analyses_id_put: %s\n" % e)
@@ -314,7 +314,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
- **analysis** | [**Analysis**](Analysis.md)|  | [optional]
+ **analysis_request** | [**AnalysisRequest**](AnalysisRequest.md)|  | [optional]
 
 ### Return type
 
@@ -355,7 +355,7 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import analyses_api
 from neurostore_sdk.model.analysis_return import AnalysisReturn
-from neurostore_sdk.model.analysis import Analysis
+from neurostore_sdk.model.analysis_request import AnalysisRequest
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -377,13 +377,13 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = analyses_api.AnalysesApi(api_client)
-    analysis = Analysis(None) # Analysis |  (optional)
+    analysis_request = AnalysisRequest(None) # AnalysisRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # POST/create an analysis
-        api_response = api_instance.analyses_post(analysis=analysis)
+        api_response = api_instance.analyses_post(analysis_request=analysis_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling AnalysesApi->analyses_post: %s\n" % e)
@@ -394,7 +394,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **analysis** | [**Analysis**](Analysis.md)|  | [optional]
+ **analysis_request** | [**AnalysisRequest**](AnalysisRequest.md)|  | [optional]
 
 ### Return type
 

@@ -22,8 +22,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from neurostore_sdk.model.condition import Condition
 from neurostore_sdk.model.condition_list import ConditionList
+from neurostore_sdk.model.condition_request import ConditionRequest
 from neurostore_sdk.model.condition_return import ConditionReturn
 from neurostore_sdk.model.inline_response404 import InlineResponse404
 from neurostore_sdk.model.inline_response422 import InlineResponse422
@@ -243,7 +243,7 @@ class ConditionsApi(object):
             params_map={
                 'all': [
                     'id',
-                    'condition',
+                    'condition_request',
                 ],
                 'required': [
                     'id',
@@ -263,15 +263,15 @@ class ConditionsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'condition':
-                        (Condition,),
+                    'condition_request':
+                        (ConditionRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'condition': 'body',
+                    'condition_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -299,7 +299,7 @@ class ConditionsApi(object):
             },
             params_map={
                 'all': [
-                    'condition',
+                    'condition_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -315,13 +315,13 @@ class ConditionsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'condition':
-                        (Condition,),
+                    'condition_request':
+                        (ConditionRequest,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'condition': 'body',
+                    'condition_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -591,7 +591,7 @@ class ConditionsApi(object):
             id (str):
 
         Keyword Args:
-            condition (Condition): [optional]
+            condition_request (ConditionRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -667,7 +667,7 @@ class ConditionsApi(object):
 
 
         Keyword Args:
-            condition (Condition): [optional]
+            condition_request (ConditionRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

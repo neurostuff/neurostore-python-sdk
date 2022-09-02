@@ -4,15 +4,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | short UUID specifying the location of this resource | [readonly] 
 **coordinates** | **[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
 **space** | **str, none_type** | Template space used to determine coordinate Examples include TAL or MNI. | [optional] 
 **kind** | **str, none_type** | Method of how point was derived (e.g., center of mass) | [optional] 
 **label_id** | **str, none_type** | If the point is associated with an image, this is the value the point takes in that image. | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str, none_type** |  | [optional] [readonly] 
+**updated_at** | **str, none_type** | when was the resource last modified/updated. | [optional] [readonly] 
+**id** | **str** | short UUID specifying the location of this resource | [optional] 
+**public** | **bool** | whether the resource is listed in public searches or not | [optional]  if omitted the server will use the default value of True
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 
-**public** | **bool** |  | [optional]  if omitted the server will use the default value of True
 **image** | **str, none_type** |  | [optional] 
 **value** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **x** | **float** |  | [optional] 

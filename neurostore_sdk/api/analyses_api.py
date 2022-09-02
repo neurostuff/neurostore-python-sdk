@@ -22,8 +22,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from neurostore_sdk.model.analysis import Analysis
 from neurostore_sdk.model.analysis_list import AnalysisList
+from neurostore_sdk.model.analysis_request import AnalysisRequest
 from neurostore_sdk.model.analysis_return import AnalysisReturn
 from neurostore_sdk.model.inline_response404 import InlineResponse404
 from neurostore_sdk.model.inline_response422 import InlineResponse422
@@ -253,7 +253,7 @@ class AnalysesApi(object):
             params_map={
                 'all': [
                     'id',
-                    'analysis',
+                    'analysis_request',
                 ],
                 'required': [
                     'id',
@@ -273,15 +273,15 @@ class AnalysesApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'analysis':
-                        (Analysis,),
+                    'analysis_request':
+                        (AnalysisRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'analysis': 'body',
+                    'analysis_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -309,7 +309,7 @@ class AnalysesApi(object):
             },
             params_map={
                 'all': [
-                    'analysis',
+                    'analysis_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -325,13 +325,13 @@ class AnalysesApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'analysis':
-                        (Analysis,),
+                    'analysis_request':
+                        (AnalysisRequest,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'analysis': 'body',
+                    'analysis_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -603,7 +603,7 @@ class AnalysesApi(object):
             id (str):
 
         Keyword Args:
-            analysis (Analysis): [optional]
+            analysis_request (AnalysisRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -679,7 +679,7 @@ class AnalysesApi(object):
 
 
         Keyword Args:
-            analysis (Analysis): [optional]
+            analysis_request (AnalysisRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

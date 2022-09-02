@@ -33,12 +33,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.point_base import PointBase
-    from neurostore_sdk.model.point_return_all_of import PointReturnAllOf
+    from neurostore_sdk.model.point_relationships import PointRelationships
     from neurostore_sdk.model.point_value import PointValue
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['Entity'] = Entity
     globals()['PointBase'] = PointBase
-    globals()['PointReturnAllOf'] = PointReturnAllOf
+    globals()['PointRelationships'] = PointRelationships
     globals()['PointValue'] = PointValue
     globals()['ResourceAttributes'] = ResourceAttributes
 
@@ -71,13 +71,13 @@ class PointReturn(ModelComposed):
     }
 
     validations = {
-        ('id',): {
-            'max_length': 12,
-            'min_length': 12,
-        },
         ('coordinates',): {
             'max_items': 3,
             'min_items': 3,
+        },
+        ('id',): {
+            'max_length': 12,
+            'min_length': 12,
         },
     }
 
@@ -104,15 +104,15 @@ class PointReturn(ModelComposed):
         """
         lazy_import()
         return {
-            'id': (str,),  # noqa: E501
             'coordinates': ([float],),  # noqa: E501
             'space': (str, none_type,),  # noqa: E501
             'kind': (str, none_type,),  # noqa: E501
             'label_id': (str, none_type,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (str, none_type,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
+            'id': (str,),  # noqa: E501
             'public': (bool,),  # noqa: E501
+            'user': (str, none_type,),  # noqa: E501
             'image': (str, none_type,),  # noqa: E501
             'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'x': (float,),  # noqa: E501
@@ -127,15 +127,15 @@ class PointReturn(ModelComposed):
 
 
     attribute_map = {
-        'id': 'id',  # noqa: E501
         'coordinates': 'coordinates',  # noqa: E501
         'space': 'space',  # noqa: E501
         'kind': 'kind',  # noqa: E501
         'label_id': 'label_id',  # noqa: E501
         'created_at': 'created_at',  # noqa: E501
         'updated_at': 'updated_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
+        'id': 'id',  # noqa: E501
         'public': 'public',  # noqa: E501
+        'user': 'user',  # noqa: E501
         'image': 'image',  # noqa: E501
         'value': 'value',  # noqa: E501
         'x': 'x',  # noqa: E501
@@ -145,7 +145,6 @@ class PointReturn(ModelComposed):
     }
 
     read_only_vars = {
-        'id',  # noqa: E501
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
@@ -157,7 +156,6 @@ class PointReturn(ModelComposed):
         """PointReturn - a model defined in OpenAPI
 
         Keyword Args:
-            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -193,9 +191,10 @@ class PointReturn(ModelComposed):
             kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
             label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): when was the resource last modified/updated.. [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             image (str, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
@@ -306,9 +305,10 @@ class PointReturn(ModelComposed):
             kind (str, none_type): Method of how point was derived (e.g., center of mass). [optional]  # noqa: E501
             label_id (str, none_type): If the point is associated with an image, this is the value the point takes in that image.. [optional]  # noqa: E501
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): when was the resource last modified/updated.. [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
             image (str, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             x (float): [optional]  # noqa: E501
@@ -381,7 +381,7 @@ class PointReturn(ModelComposed):
           ],
           'allOf': [
               PointBase,
-              PointReturnAllOf,
+              PointRelationships,
               ResourceAttributes,
           ],
           'oneOf': [

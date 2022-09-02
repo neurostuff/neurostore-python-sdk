@@ -285,7 +285,7 @@ Update a study.
 import time
 import neurostore_sdk
 from neurostore_sdk.api import studies_api
-from neurostore_sdk.model.study import Study
+from neurostore_sdk.model.study_request import StudyRequest
 from neurostore_sdk.model.study_return import StudyReturn
 from neurostore_sdk.model.inline_response422 import InlineResponse422
 from pprint import pprint
@@ -310,7 +310,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = studies_api.StudiesApi(api_client)
     id = "id_example" # str | 
-    study = Study(None) # Study |  (optional)
+    study_request = StudyRequest(None) # StudyRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -324,7 +324,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # PUT/update a study
-        api_response = api_instance.studies_id_put(id, study=study)
+        api_response = api_instance.studies_id_put(id, study_request=study_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling StudiesApi->studies_id_put: %s\n" % e)
@@ -336,7 +336,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
- **study** | [**Study**](Study.md)|  | [optional]
+ **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional]
 
 ### Return type
 
@@ -376,7 +376,7 @@ Create a study
 import time
 import neurostore_sdk
 from neurostore_sdk.api import studies_api
-from neurostore_sdk.model.study import Study
+from neurostore_sdk.model.study_request import StudyRequest
 from neurostore_sdk.model.study_return import StudyReturn
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
@@ -401,13 +401,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = studies_api.StudiesApi(api_client)
     source = "neurostore" # str | the source of the resource you would like to filter/copy from (optional) if omitted the server will use the default value of "neurostore"
     source_id = "1234567890ab" # str | id of the resource you are either filtering/copying on (optional)
-    study = Study(None) # Study |  (optional)
+    study_request = StudyRequest(None) # StudyRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # POST/create a study
-        api_response = api_instance.studies_post(source=source, source_id=source_id, study=study)
+        api_response = api_instance.studies_post(source=source, source_id=source_id, study_request=study_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling StudiesApi->studies_post: %s\n" % e)
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | **str**| the source of the resource you would like to filter/copy from | [optional] if omitted the server will use the default value of "neurostore"
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional]
- **study** | [**Study**](Study.md)|  | [optional]
+ **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional]
 
 ### Return type
 

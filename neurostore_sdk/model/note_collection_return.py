@@ -119,6 +119,14 @@ class NoteCollectionReturn(ModelComposed):
     }
 
     read_only_vars = {
+        'analysis',  # noqa: E501
+        'analysis_name',  # noqa: E501
+        'study',  # noqa: E501
+        'study_name',  # noqa: E501
+        'annotation',  # noqa: E501
+        'study_year',  # noqa: E501
+        'publication',  # noqa: E501
+        'authors',  # noqa: E501
     }
 
     @classmethod

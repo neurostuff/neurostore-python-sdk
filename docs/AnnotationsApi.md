@@ -248,7 +248,7 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import annotations_api
 from neurostore_sdk.model.annotation_return import AnnotationReturn
-from neurostore_sdk.model.annotation import Annotation
+from neurostore_sdk.model.annotation_request import AnnotationRequest
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -271,7 +271,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = annotations_api.AnnotationsApi(api_client)
     id = "id_example" # str | 
-    annotation = Annotation(None) # Annotation |  (optional)
+    annotation_request = AnnotationRequest(None) # AnnotationRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -285,7 +285,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Update an annotation
-        api_response = api_instance.annotations_id_put(id, annotation=annotation)
+        api_response = api_instance.annotations_id_put(id, annotation_request=annotation_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling AnnotationsApi->annotations_id_put: %s\n" % e)
@@ -297,7 +297,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
- **annotation** | [**Annotation**](Annotation.md)|  | [optional]
+ **annotation_request** | [**AnnotationRequest**](AnnotationRequest.md)|  | [optional]
 
 ### Return type
 
@@ -337,7 +337,7 @@ import time
 import neurostore_sdk
 from neurostore_sdk.api import annotations_api
 from neurostore_sdk.model.annotation_return import AnnotationReturn
-from neurostore_sdk.model.annotation import Annotation
+from neurostore_sdk.model.annotation_request import AnnotationRequest
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -361,13 +361,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = annotations_api.AnnotationsApi(api_client)
     source = "neurostore" # str | the source of the resource you would like to filter/copy from (optional) if omitted the server will use the default value of "neurostore"
     source_id = "1234567890ab" # str | id of the resource you are either filtering/copying on (optional)
-    annotation = Annotation(None) # Annotation |  (optional)
+    annotation_request = AnnotationRequest(None) # AnnotationRequest |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Post Annotation
-        api_response = api_instance.annotations_post(source=source, source_id=source_id, annotation=annotation)
+        api_response = api_instance.annotations_post(source=source, source_id=source_id, annotation_request=annotation_request)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling AnnotationsApi->annotations_post: %s\n" % e)
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | **str**| the source of the resource you would like to filter/copy from | [optional] if omitted the server will use the default value of "neurostore"
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional]
- **annotation** | [**Annotation**](Annotation.md)|  | [optional]
+ **annotation_request** | [**AnnotationRequest**](AnnotationRequest.md)|  | [optional]
 
 ### Return type
 

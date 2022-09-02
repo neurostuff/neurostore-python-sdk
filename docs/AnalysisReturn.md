@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | short UUID specifying the location of this resource | [readonly] 
 **name** | **str, none_type** | A name of the contrast being performed. | [optional] 
 **description** | **str, none_type** | A long form description of how the contrast was performed | [optional] 
 **weights** | **[float]** | Weight applied to each condition, must be the same length as the conditions attribute. | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str, none_type** |  | [optional] [readonly] 
+**updated_at** | **str, none_type** | when was the resource last modified/updated. | [optional] [readonly] 
+**id** | **str** | short UUID specifying the location of this resource | [optional] 
+**public** | **bool** | whether the resource is listed in public searches or not | [optional]  if omitted the server will use the default value of True
 **user** | **str, none_type** | who owns the resource | [optional] [readonly] 
-**public** | **bool** |  | [optional]  if omitted the server will use the default value of True
 **study** | **str** |  | [optional] 
 **images** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 
 **points** | **[bool, date, datetime, dict, float, int, list, str, none_type]** |  | [optional] 

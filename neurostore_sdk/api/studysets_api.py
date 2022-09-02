@@ -24,8 +24,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
 )
 from neurostore_sdk.model.inline_response404 import InlineResponse404
 from neurostore_sdk.model.inline_response422 import InlineResponse422
-from neurostore_sdk.model.studyset import Studyset
 from neurostore_sdk.model.studyset_list import StudysetList
+from neurostore_sdk.model.studyset_request import StudysetRequest
 from neurostore_sdk.model.studyset_return import StudysetReturn
 
 
@@ -289,7 +289,7 @@ class StudysetsApi(object):
             params_map={
                 'all': [
                     'id',
-                    'studyset',
+                    'studyset_request',
                 ],
                 'required': [
                     'id',
@@ -309,15 +309,15 @@ class StudysetsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'studyset':
-                        (Studyset,),
+                    'studyset_request':
+                        (StudysetRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'studyset': 'body',
+                    'studyset_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -345,7 +345,7 @@ class StudysetsApi(object):
             },
             params_map={
                 'all': [
-                    'studyset',
+                    'studyset_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -361,13 +361,13 @@ class StudysetsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'studyset':
-                        (Studyset,),
+                    'studyset_request':
+                        (StudysetRequest,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'studyset': 'body',
+                    'studyset_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -644,7 +644,7 @@ class StudysetsApi(object):
             id (str):
 
         Keyword Args:
-            studyset (Studyset): [optional]
+            studyset_request (StudysetRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -720,7 +720,7 @@ class StudysetsApi(object):
 
 
         Keyword Args:
-            studyset (Studyset): [optional]
+            studyset_request (StudysetRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

@@ -98,7 +98,6 @@ class AnnotationReturn(ModelNormal):
 
     read_only_vars = {
         'metadata',  # noqa: E501
-        'annotation_csv',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -140,7 +139,7 @@ class AnnotationReturn(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            annotation_csv (str): [optional]  # noqa: E501
+            annotation_csv (str): annotation object expressed as a CSV. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +222,7 @@ class AnnotationReturn(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            annotation_csv (str): [optional]  # noqa: E501
+            annotation_csv (str): annotation object expressed as a CSV. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

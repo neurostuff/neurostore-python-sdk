@@ -23,8 +23,8 @@ from neurostore_sdk.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from neurostore_sdk.model.inline_response422 import InlineResponse422
-from neurostore_sdk.model.point import Point
 from neurostore_sdk.model.point_list import PointList
+from neurostore_sdk.model.point_request import PointRequest
 from neurostore_sdk.model.point_return import PointReturn
 
 
@@ -191,7 +191,7 @@ class PointsApi(object):
             params_map={
                 'all': [
                     'id',
-                    'point',
+                    'point_request',
                 ],
                 'required': [
                     'id',
@@ -211,15 +211,15 @@ class PointsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'point':
-                        (Point,),
+                    'point_request':
+                        (PointRequest,),
                 },
                 'attribute_map': {
                     'id': 'id',
                 },
                 'location_map': {
                     'id': 'path',
-                    'point': 'body',
+                    'point_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -247,7 +247,7 @@ class PointsApi(object):
             },
             params_map={
                 'all': [
-                    'point',
+                    'point_request',
                 ],
                 'required': [],
                 'nullable': [
@@ -263,13 +263,13 @@ class PointsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'point':
-                        (Point,),
+                    'point_request':
+                        (PointRequest,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
-                    'point': 'body',
+                    'point_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -532,7 +532,7 @@ class PointsApi(object):
             id (str):
 
         Keyword Args:
-            point (Point): [optional]
+            point_request (PointRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -608,7 +608,7 @@ class PointsApi(object):
 
 
         Keyword Args:
-            point (Point): [optional]
+            point_request (PointRequest): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
