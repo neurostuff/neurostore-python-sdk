@@ -156,6 +156,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_user_resource_attributes.py
-test/test_userless_resource_attributes.py
 tox.ini
