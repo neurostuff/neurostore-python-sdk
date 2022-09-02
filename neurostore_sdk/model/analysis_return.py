@@ -108,13 +108,13 @@ class AnalysisReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
+            'user': (str, none_type,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'weights': ([float],),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'updated_at': (str, none_type,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
             'study': (str,),  # noqa: E501
             'images': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
@@ -128,13 +128,13 @@ class AnalysisReturn(ModelComposed):
 
 
     attribute_map = {
+        'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
+        'user': 'user',  # noqa: E501
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'description': 'description',  # noqa: E501
         'weights': 'weights',  # noqa: E501
-        'created_at': 'created_at',  # noqa: E501
-        'updated_at': 'updated_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
         'public': 'public',  # noqa: E501
         'study': 'study',  # noqa: E501
         'images': 'images',  # noqa: E501
@@ -143,7 +143,6 @@ class AnalysisReturn(ModelComposed):
     }
 
     read_only_vars = {
-        'id',  # noqa: E501
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
@@ -155,6 +154,9 @@ class AnalysisReturn(ModelComposed):
         """AnalysisReturn - a model defined in OpenAPI
 
         Keyword Args:
+            created_at (datetime): time the resource was created on the database
+            updated_at (str, none_type):
+            user (str, none_type): who owns the resource
             id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
@@ -189,10 +191,7 @@ class AnalysisReturn(ModelComposed):
             name (str, none_type): A name of the contrast being performed.. [optional]  # noqa: E501
             description (str, none_type): A long form description of how the contrast was performed. [optional]  # noqa: E501
             weights ([float]): Weight applied to each condition, must be the same length as the conditions attribute.. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             study (str): [optional]  # noqa: E501
             images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
@@ -266,6 +265,7 @@ class AnalysisReturn(ModelComposed):
         """AnalysisReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -299,10 +299,7 @@ class AnalysisReturn(ModelComposed):
             name (str, none_type): A name of the contrast being performed.. [optional]  # noqa: E501
             description (str, none_type): A long form description of how the contrast was performed. [optional]  # noqa: E501
             weights ([float]): Weight applied to each condition, must be the same length as the conditions attribute.. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             study (str): [optional]  # noqa: E501
             images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501

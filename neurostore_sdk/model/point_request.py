@@ -32,15 +32,15 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
-    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.model.point_base import PointBase
     from neurostore_sdk.model.point_relationships import PointRelationships
     from neurostore_sdk.model.point_value import PointValue
+    from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['Entity'] = Entity
-    globals()['NestedPutAttributes'] = NestedPutAttributes
     globals()['PointBase'] = PointBase
     globals()['PointRelationships'] = PointRelationships
     globals()['PointValue'] = PointValue
+    globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
 
 class PointRequest(ModelComposed):
@@ -74,6 +74,10 @@ class PointRequest(ModelComposed):
         ('coordinates',): {
             'max_items': 3,
             'min_items': 3,
+        },
+        ('id',): {
+            'max_length': 12,
+            'min_length': 12,
         },
     }
 
@@ -111,6 +115,7 @@ class PointRequest(ModelComposed):
             'z': (float,),  # noqa: E501
             'entities': ([Entity],),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -130,6 +135,7 @@ class PointRequest(ModelComposed):
         'z': 'z',  # noqa: E501
         'entities': 'entities',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
@@ -181,7 +187,8 @@ class PointRequest(ModelComposed):
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -291,7 +298,8 @@ class PointRequest(ModelComposed):
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -357,9 +365,9 @@ class PointRequest(ModelComposed):
           'anyOf': [
           ],
           'allOf': [
-              NestedPutAttributes,
               PointBase,
               PointRelationships,
+              WriteableResourceAttributes,
           ],
           'oneOf': [
           ],

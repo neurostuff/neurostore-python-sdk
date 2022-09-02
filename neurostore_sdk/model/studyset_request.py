@@ -35,10 +35,12 @@ def lazy_import():
     from neurostore_sdk.model.study_return import StudyReturn
     from neurostore_sdk.model.studyset_base import StudysetBase
     from neurostore_sdk.model.studyset_relationships import StudysetRelationships
+    from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['StudyRequest'] = StudyRequest
     globals()['StudyReturn'] = StudyReturn
     globals()['StudysetBase'] = StudysetBase
     globals()['StudysetRelationships'] = StudysetRelationships
+    globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
 
 class StudysetRequest(ModelComposed):
@@ -69,6 +71,10 @@ class StudysetRequest(ModelComposed):
     }
 
     validations = {
+        ('id',): {
+            'max_length': 12,
+            'min_length': 12,
+        },
     }
 
     @cached_property
@@ -100,6 +106,8 @@ class StudysetRequest(ModelComposed):
             'doi': (str, none_type,),  # noqa: E501
             'pmid': (str, none_type,),  # noqa: E501
             'studies': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'id': (str,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -114,6 +122,8 @@ class StudysetRequest(ModelComposed):
         'doi': 'doi',  # noqa: E501
         'pmid': 'pmid',  # noqa: E501
         'studies': 'studies',  # noqa: E501
+        'id': 'id',  # noqa: E501
+        'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
@@ -161,6 +171,8 @@ class StudysetRequest(ModelComposed):
             doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
             pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
             studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -266,6 +278,8 @@ class StudysetRequest(ModelComposed):
             doi (str, none_type): A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).. [optional]  # noqa: E501
             pmid (str, none_type): If the article connected to the studyset was published on PubMed, then link the ID here.. [optional]  # noqa: E501
             studies ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -333,6 +347,7 @@ class StudysetRequest(ModelComposed):
           'allOf': [
               StudysetBase,
               StudysetRelationships,
+              WriteableResourceAttributes,
           ],
           'oneOf': [
           ],

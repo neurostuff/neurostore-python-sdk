@@ -32,9 +32,9 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.condition_base import ConditionBase
-    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
+    from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['ConditionBase'] = ConditionBase
-    globals()['NestedPutAttributes'] = NestedPutAttributes
+    globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
 
 class ConditionRequest(ModelComposed):
@@ -65,6 +65,10 @@ class ConditionRequest(ModelComposed):
     }
 
     validations = {
+        ('id',): {
+            'max_length': 12,
+            'min_length': 12,
+        },
     }
 
     @cached_property
@@ -93,6 +97,7 @@ class ConditionRequest(ModelComposed):
             'name': (str, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -104,6 +109,7 @@ class ConditionRequest(ModelComposed):
         'name': 'name',  # noqa: E501
         'description': 'description',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
@@ -147,7 +153,8 @@ class ConditionRequest(ModelComposed):
                                 _visited_composed_classes = (Animal,)
             name (str, none_type): Name of the condition being applied in the contrast, either psychological, pharmacological, or group based.. [optional]  # noqa: E501
             description (str, none_type): Long form description of how the condition is operationalized and/or specific meaning.. [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -249,7 +256,8 @@ class ConditionRequest(ModelComposed):
                                 _visited_composed_classes = (Animal,)
             name (str, none_type): Name of the condition being applied in the contrast, either psychological, pharmacological, or group based.. [optional]  # noqa: E501
             description (str, none_type): Long form description of how the condition is operationalized and/or specific meaning.. [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -316,7 +324,7 @@ class ConditionRequest(ModelComposed):
           ],
           'allOf': [
               ConditionBase,
-              NestedPutAttributes,
+              WriteableResourceAttributes,
           ],
           'oneOf': [
           ],

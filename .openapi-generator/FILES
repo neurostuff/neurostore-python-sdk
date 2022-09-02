@@ -47,6 +47,7 @@ docs/PointRequest.md
 docs/PointReturn.md
 docs/PointValue.md
 docs/PointsApi.md
+docs/ReadableResourceAttributes.md
 docs/ResourceAttributes.md
 docs/StudiesApi.md
 docs/StudyBase.md
@@ -63,6 +64,7 @@ docs/StudysetsApi.md
 docs/User.md
 docs/UserApi.md
 docs/UserList.md
+docs/WriteableResourceAttributes.md
 git_push.sh
 neurostore_sdk/__init__.py
 neurostore_sdk/api/__init__.py
@@ -119,6 +121,7 @@ neurostore_sdk/model/point_relationships.py
 neurostore_sdk/model/point_request.py
 neurostore_sdk/model/point_return.py
 neurostore_sdk/model/point_value.py
+neurostore_sdk/model/readable_resource_attributes.py
 neurostore_sdk/model/resource_attributes.py
 neurostore_sdk/model/study_base.py
 neurostore_sdk/model/study_list.py
@@ -132,6 +135,7 @@ neurostore_sdk/model/studyset_request.py
 neurostore_sdk/model/studyset_return.py
 neurostore_sdk/model/user.py
 neurostore_sdk/model/user_list.py
+neurostore_sdk/model/writeable_resource_attributes.py
 neurostore_sdk/model_utils.py
 neurostore_sdk/models/__init__.py
 neurostore_sdk/rest.py
@@ -140,4 +144,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_readable_resource_attributes.py
+test/test_writeable_resource_attributes.py
 tox.ini

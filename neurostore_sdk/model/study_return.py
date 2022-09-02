@@ -106,6 +106,9 @@ class StudyReturn(ModelComposed):
         """
         lazy_import()
         return {
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
+            'user': (str, none_type,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'doi': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
@@ -115,9 +118,6 @@ class StudyReturn(ModelComposed):
             'pmid': (str, none_type,),  # noqa: E501
             'authors': (str, none_type,),  # noqa: E501
             'year': (int, none_type,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'updated_at': (str, none_type,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
             'public': (bool,),  # noqa: E501
             'source': (str, none_type,),  # noqa: E501
             'source_id': (str, none_type,),  # noqa: E501
@@ -131,6 +131,9 @@ class StudyReturn(ModelComposed):
 
 
     attribute_map = {
+        'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
+        'user': 'user',  # noqa: E501
         'id': 'id',  # noqa: E501
         'doi': 'doi',  # noqa: E501
         'name': 'name',  # noqa: E501
@@ -140,9 +143,6 @@ class StudyReturn(ModelComposed):
         'pmid': 'pmid',  # noqa: E501
         'authors': 'authors',  # noqa: E501
         'year': 'year',  # noqa: E501
-        'created_at': 'created_at',  # noqa: E501
-        'updated_at': 'updated_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
         'public': 'public',  # noqa: E501
         'source': 'source',  # noqa: E501
         'source_id': 'source_id',  # noqa: E501
@@ -151,7 +151,6 @@ class StudyReturn(ModelComposed):
     }
 
     read_only_vars = {
-        'id',  # noqa: E501
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
         'user',  # noqa: E501
@@ -164,6 +163,9 @@ class StudyReturn(ModelComposed):
         """StudyReturn - a model defined in OpenAPI
 
         Keyword Args:
+            created_at (datetime): time the resource was created on the database
+            updated_at (str, none_type):
+            user (str, none_type): who owns the resource
             id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
@@ -203,10 +205,7 @@ class StudyReturn(ModelComposed):
             pmid (str, none_type): If the study was published on PubMed, place the PubMed ID here.. [optional]  # noqa: E501
             authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
             year (int, none_type): The year this study was published.. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             source (str, none_type): [optional]  # noqa: E501
             source_id (str, none_type): [optional]  # noqa: E501
             source_updated_at (str, none_type): [optional]  # noqa: E501
@@ -280,6 +279,7 @@ class StudyReturn(ModelComposed):
         """StudyReturn - a model defined in OpenAPI
 
         Keyword Args:
+            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -318,10 +318,7 @@ class StudyReturn(ModelComposed):
             pmid (str, none_type): If the study was published on PubMed, place the PubMed ID here.. [optional]  # noqa: E501
             authors (str, none_type): The authors on the publication of this study.. [optional]  # noqa: E501
             year (int, none_type): The year this study was published.. [optional]  # noqa: E501
-            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
-            updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
-            public (bool): [optional] if omitted the server will use the default value of True  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
             source (str, none_type): [optional]  # noqa: E501
             source_id (str, none_type): [optional]  # noqa: E501
             source_updated_at (str, none_type): [optional]  # noqa: E501

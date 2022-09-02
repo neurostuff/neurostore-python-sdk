@@ -34,11 +34,11 @@ def lazy_import():
     from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.image_base import ImageBase
     from neurostore_sdk.model.image_relationships import ImageRelationships
-    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
+    from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['Entity'] = Entity
     globals()['ImageBase'] = ImageBase
     globals()['ImageRelationships'] = ImageRelationships
-    globals()['NestedPutAttributes'] = NestedPutAttributes
+    globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
 
 class ImageRequest(ModelComposed):
@@ -69,6 +69,10 @@ class ImageRequest(ModelComposed):
     }
 
     validations = {
+        ('id',): {
+            'max_length': 12,
+            'min_length': 12,
+        },
     }
 
     @cached_property
@@ -104,6 +108,7 @@ class ImageRequest(ModelComposed):
             'entities': ([Entity],),  # noqa: E501
             'analysis_name': (str, none_type,),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -122,6 +127,7 @@ class ImageRequest(ModelComposed):
         'entities': 'entities',  # noqa: E501
         'analysis_name': 'analysis_name',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
@@ -173,7 +179,8 @@ class ImageRequest(ModelComposed):
             analysis (str): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
             analysis_name (str, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -282,7 +289,8 @@ class ImageRequest(ModelComposed):
             analysis (str): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
             analysis_name (str, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -350,7 +358,7 @@ class ImageRequest(ModelComposed):
           'allOf': [
               ImageBase,
               ImageRelationships,
-              NestedPutAttributes,
+              WriteableResourceAttributes,
           ],
           'oneOf': [
           ],

@@ -173,6 +173,7 @@ Class | Method | HTTP request | Description
  - [PointRequest](docs/PointRequest.md)
  - [PointReturn](docs/PointReturn.md)
  - [PointValue](docs/PointValue.md)
+ - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
  - [StudyBase](docs/StudyBase.md)
  - [StudyList](docs/StudyList.md)
@@ -186,6 +187,7 @@ Class | Method | HTTP request | Description
  - [StudysetReturn](docs/StudysetReturn.md)
  - [User](docs/User.md)
  - [UserList](docs/UserList.md)
+ - [WriteableResourceAttributes](docs/WriteableResourceAttributes.md)
 
 
 ## Documentation For Authorization

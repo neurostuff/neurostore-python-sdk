@@ -48,6 +48,7 @@ from neurostore_sdk.model.point_relationships import PointRelationships
 from neurostore_sdk.model.point_request import PointRequest
 from neurostore_sdk.model.point_return import PointReturn
 from neurostore_sdk.model.point_value import PointValue
+from neurostore_sdk.model.readable_resource_attributes import ReadableResourceAttributes
 from neurostore_sdk.model.resource_attributes import ResourceAttributes
 from neurostore_sdk.model.study_base import StudyBase
 from neurostore_sdk.model.study_list import StudyList
@@ -61,3 +62,4 @@ from neurostore_sdk.model.studyset_request import StudysetRequest
 from neurostore_sdk.model.studyset_return import StudysetReturn
 from neurostore_sdk.model.user import User
 from neurostore_sdk.model.user_list import UserList
+from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes

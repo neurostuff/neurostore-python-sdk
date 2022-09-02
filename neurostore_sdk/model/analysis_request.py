@@ -37,18 +37,18 @@ def lazy_import():
     from neurostore_sdk.model.condition_return import ConditionReturn
     from neurostore_sdk.model.image_request import ImageRequest
     from neurostore_sdk.model.image_return import ImageReturn
-    from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.model.point_request import PointRequest
     from neurostore_sdk.model.point_return import PointReturn
+    from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['AnalysisBase'] = AnalysisBase
     globals()['AnalysisRelationships'] = AnalysisRelationships
     globals()['ConditionRequest'] = ConditionRequest
     globals()['ConditionReturn'] = ConditionReturn
     globals()['ImageRequest'] = ImageRequest
     globals()['ImageReturn'] = ImageReturn
-    globals()['NestedPutAttributes'] = NestedPutAttributes
     globals()['PointRequest'] = PointRequest
     globals()['PointReturn'] = PointReturn
+    globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
 
 class AnalysisRequest(ModelComposed):
@@ -79,6 +79,10 @@ class AnalysisRequest(ModelComposed):
     }
 
     validations = {
+        ('id',): {
+            'max_length': 12,
+            'min_length': 12,
+        },
     }
 
     @cached_property
@@ -112,6 +116,7 @@ class AnalysisRequest(ModelComposed):
             'points': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'conditions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'public': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -128,6 +133,7 @@ class AnalysisRequest(ModelComposed):
         'points': 'points',  # noqa: E501
         'conditions': 'conditions',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
@@ -176,7 +182,8 @@ class AnalysisRequest(ModelComposed):
             images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -283,7 +290,8 @@ class AnalysisRequest(ModelComposed):
             images ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             points ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
             conditions ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
+            public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -351,7 +359,7 @@ class AnalysisRequest(ModelComposed):
           'allOf': [
               AnalysisBase,
               AnalysisRelationships,
-              NestedPutAttributes,
+              WriteableResourceAttributes,
           ],
           'oneOf': [
           ],
