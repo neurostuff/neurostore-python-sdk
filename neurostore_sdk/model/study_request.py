@@ -32,14 +32,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.analysis_request import AnalysisRequest
-    from neurostore_sdk.model.analysis_return import AnalysisReturn
     from neurostore_sdk.model.study_base import StudyBase
-    from neurostore_sdk.model.study_relationships import StudyRelationships
+    from neurostore_sdk.model.study_request_relationships import StudyRequestRelationships
     from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['AnalysisRequest'] = AnalysisRequest
-    globals()['AnalysisReturn'] = AnalysisReturn
     globals()['StudyBase'] = StudyBase
-    globals()['StudyRelationships'] = StudyRelationships
+    globals()['StudyRequestRelationships'] = StudyRequestRelationships
     globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
 
@@ -362,7 +360,7 @@ class StudyRequest(ModelComposed):
           ],
           'allOf': [
               StudyBase,
-              StudyRelationships,
+              StudyRequestRelationships,
               WriteableResourceAttributes,
           ],
           'oneOf': [

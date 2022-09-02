@@ -33,16 +33,14 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.clone import Clone
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
-    from neurostore_sdk.model.study_request import StudyRequest
     from neurostore_sdk.model.study_return import StudyReturn
     from neurostore_sdk.model.studyset_base import StudysetBase
-    from neurostore_sdk.model.studyset_relationships import StudysetRelationships
+    from neurostore_sdk.model.studyset_return_relationships import StudysetReturnRelationships
     globals()['Clone'] = Clone
     globals()['ResourceAttributes'] = ResourceAttributes
-    globals()['StudyRequest'] = StudyRequest
     globals()['StudyReturn'] = StudyReturn
     globals()['StudysetBase'] = StudysetBase
-    globals()['StudysetRelationships'] = StudysetRelationships
+    globals()['StudysetReturnRelationships'] = StudysetReturnRelationships
 
 
 class StudysetReturn(ModelComposed):
@@ -375,7 +373,7 @@ class StudysetReturn(ModelComposed):
               Clone,
               ResourceAttributes,
               StudysetBase,
-              StudysetRelationships,
+              StudysetReturnRelationships,
           ],
           'oneOf': [
           ],
