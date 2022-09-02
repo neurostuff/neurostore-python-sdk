@@ -5,13 +5,12 @@ descriptor of level of analysis for a particular image/point (run, session, subj
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | time the resource was created on the database | [readonly] 
-**updated_at** | **str, none_type** |  | [readonly] 
-**user** | **str, none_type** | who owns the resource | [readonly] 
-**id** | **str** | short UUID specifying the location of this resource | 
 **label** | **str** |  | [optional] 
 **level** | **str** |  | [optional] 
 **analysis** | **str** |  | [optional] 
+**created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
+**updated_at** | **str, none_type** |  | [optional] [readonly] 
+**id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional]  if omitted the server will use the default value of True
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

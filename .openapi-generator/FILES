@@ -68,6 +68,8 @@ docs/StudysetsApi.md
 docs/User.md
 docs/UserApi.md
 docs/UserList.md
+docs/UserResourceAttributes.md
+docs/UserlessResourceAttributes.md
 docs/WriteableResourceAttributes.md
 git_push.sh
 neurostore_sdk/__init__.py
@@ -143,6 +145,8 @@ neurostore_sdk/model/studyset_return.py
 neurostore_sdk/model/studyset_return_relationships.py
 neurostore_sdk/model/user.py
 neurostore_sdk/model/user_list.py
+neurostore_sdk/model/user_resource_attributes.py
+neurostore_sdk/model/userless_resource_attributes.py
 neurostore_sdk/model/writeable_resource_attributes.py
 neurostore_sdk/model_utils.py
 neurostore_sdk/models/__init__.py
@@ -152,12 +156,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_analysis_request_relationships.py
-test/test_analysis_return_relationships.py
-test/test_annotation_request_relationships.py
-test/test_annotation_return_relationships.py
-test/test_study_request_relationships.py
-test/test_study_return_relationships.py
-test/test_studyset_request_relationships.py
-test/test_studyset_return_relationships.py
+test/test_user_resource_attributes.py
+test/test_userless_resource_attributes.py
 tox.ini

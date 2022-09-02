@@ -191,6 +191,8 @@ Class | Method | HTTP request | Description
  - [StudysetReturnRelationships](docs/StudysetReturnRelationships.md)
  - [User](docs/User.md)
  - [UserList](docs/UserList.md)
+ - [UserResourceAttributes](docs/UserResourceAttributes.md)
+ - [UserlessResourceAttributes](docs/UserlessResourceAttributes.md)
  - [WriteableResourceAttributes](docs/WriteableResourceAttributes.md)
 
 

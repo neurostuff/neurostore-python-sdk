@@ -4,10 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** | time the resource was created on the database | [readonly] 
-**updated_at** | **str, none_type** |  | [readonly] 
-**user** | **str, none_type** | who owns the resource | [readonly] 
-**id** | **str** | short UUID specifying the location of this resource | 
 **doi** | **str, none_type** | Digital object identifier of the study. | [optional] 
 **name** | **str, none_type** | Title of the study. | [optional] 
 **metadata** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** | Metadata associated with the study not covered by the other study attributes. | [optional] 
@@ -16,7 +12,11 @@ Name | Type | Description | Notes
 **pmid** | **str, none_type** | If the study was published on PubMed, place the PubMed ID here. | [optional] 
 **authors** | **str, none_type** | The authors on the publication of this study. | [optional] 
 **year** | **int, none_type** | The year this study was published. | [optional] 
+**created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
+**updated_at** | **str, none_type** |  | [optional] [readonly] 
+**id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional]  if omitted the server will use the default value of True
+**user** | **str, none_type** | who owns the resource | [optional] [readonly] 
 **source** | **str, none_type** |  | [optional] 
 **source_id** | **str, none_type** |  | [optional] 
 **source_updated_at** | **str, none_type** |  | [optional] [readonly] 

@@ -32,9 +32,9 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from neurostore_sdk.model.entity_all_of import EntityAllOf
-    from neurostore_sdk.model.resource_attributes import ResourceAttributes
+    from neurostore_sdk.model.userless_resource_attributes import UserlessResourceAttributes
     globals()['EntityAllOf'] = EntityAllOf
-    globals()['ResourceAttributes'] = ResourceAttributes
+    globals()['UserlessResourceAttributes'] = UserlessResourceAttributes
 
 
 class Entity(ModelComposed):
@@ -101,13 +101,12 @@ class Entity(ModelComposed):
         """
         lazy_import()
         return {
-            'created_at': (datetime,),  # noqa: E501
-            'updated_at': (str, none_type,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
             'label': (str,),  # noqa: E501
             'level': (str,),  # noqa: E501
             'analysis': (str,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
+            'id': (str,),  # noqa: E501
             'public': (bool,),  # noqa: E501
         }
 
@@ -117,20 +116,18 @@ class Entity(ModelComposed):
 
 
     attribute_map = {
-        'created_at': 'created_at',  # noqa: E501
-        'updated_at': 'updated_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
-        'id': 'id',  # noqa: E501
         'label': 'label',  # noqa: E501
         'level': 'level',  # noqa: E501
         'analysis': 'analysis',  # noqa: E501
+        'created_at': 'created_at',  # noqa: E501
+        'updated_at': 'updated_at',  # noqa: E501
+        'id': 'id',  # noqa: E501
         'public': 'public',  # noqa: E501
     }
 
     read_only_vars = {
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
-        'user',  # noqa: E501
     }
 
     @classmethod
@@ -139,10 +136,6 @@ class Entity(ModelComposed):
         """Entity - a model defined in OpenAPI
 
         Keyword Args:
-            created_at (datetime): time the resource was created on the database
-            updated_at (str, none_type):
-            user (str, none_type): who owns the resource
-            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -176,6 +169,9 @@ class Entity(ModelComposed):
             label (str): [optional]  # noqa: E501
             level (str): [optional]  # noqa: E501
             analysis (str): [optional]  # noqa: E501
+            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
@@ -246,7 +242,6 @@ class Entity(ModelComposed):
         """Entity - a model defined in OpenAPI
 
         Keyword Args:
-            id (str): short UUID specifying the location of this resource
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -280,6 +275,9 @@ class Entity(ModelComposed):
             label (str): [optional]  # noqa: E501
             level (str): [optional]  # noqa: E501
             analysis (str): [optional]  # noqa: E501
+            created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            id (str): short UUID specifying the location of this resource. [optional]  # noqa: E501
             public (bool): whether the resource is listed in public searches or not. [optional] if omitted the server will use the default value of True  # noqa: E501
         """
 
@@ -347,7 +345,7 @@ class Entity(ModelComposed):
           ],
           'allOf': [
               EntityAllOf,
-              ResourceAttributes,
+              UserlessResourceAttributes,
           ],
           'oneOf': [
           ],

@@ -84,7 +84,6 @@ class ReadableResourceAttributes(ModelNormal):
         return {
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (str, none_type,),  # noqa: E501
-            'user': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -95,13 +94,11 @@ class ReadableResourceAttributes(ModelNormal):
     attribute_map = {
         'created_at': 'created_at',  # noqa: E501
         'updated_at': 'updated_at',  # noqa: E501
-        'user': 'user',  # noqa: E501
     }
 
     read_only_vars = {
         'created_at',  # noqa: E501
         'updated_at',  # noqa: E501
-        'user',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -144,7 +141,6 @@ class ReadableResourceAttributes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -228,7 +224,6 @@ class ReadableResourceAttributes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             created_at (datetime): time the resource was created on the database. [optional]  # noqa: E501
             updated_at (str, none_type): [optional]  # noqa: E501
-            user (str, none_type): who owns the resource. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

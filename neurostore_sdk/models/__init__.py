@@ -66,4 +66,6 @@ from neurostore_sdk.model.studyset_return import StudysetReturn
 from neurostore_sdk.model.studyset_return_relationships import StudysetReturnRelationships
 from neurostore_sdk.model.user import User
 from neurostore_sdk.model.user_list import UserList
+from neurostore_sdk.model.user_resource_attributes import UserResourceAttributes
+from neurostore_sdk.model.userless_resource_attributes import UserlessResourceAttributes
 from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
