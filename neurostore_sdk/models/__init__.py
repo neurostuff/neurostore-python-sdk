@@ -58,6 +58,7 @@ from neurostore_sdk.model.study_request import StudyRequest
 from neurostore_sdk.model.study_request_relationships import StudyRequestRelationships
 from neurostore_sdk.model.study_return import StudyReturn
 from neurostore_sdk.model.study_return_all_of import StudyReturnAllOf
+from neurostore_sdk.model.study_return_all_of_studysets import StudyReturnAllOfStudysets
 from neurostore_sdk.model.study_return_relationships import StudyReturnRelationships
 from neurostore_sdk.model.studyset_base import StudysetBase
 from neurostore_sdk.model.studyset_list import StudysetList
