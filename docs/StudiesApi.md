@@ -62,12 +62,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = "authors_example" # str | search authors (optional)
     user_id = "user_id_example" # str | user id you want to filter by (optional)
     data_type = "coordinate" # str | whether searching for studies that contain coordinates, images, or both (optional)
+    studyset_owner = "studyset_owner_example" # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling StudiesApi->studies_get: %s\n" % e)
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional]
  **user_id** | **str**| user id you want to filter by | [optional]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional]
+ **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional]
 
 ### Return type
 
@@ -220,6 +222,7 @@ with neurostore_sdk.ApiClient() as api_client:
     api_instance = studies_api.StudiesApi(api_client)
     id = "id_example" # str | 
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
+    studyset_owner = "studyset_owner_example" # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -233,7 +236,7 @@ with neurostore_sdk.ApiClient() as api_client:
     # and optional values
     try:
         # GET a study
-        api_response = api_instance.studies_id_get(id, nested=nested)
+        api_response = api_instance.studies_id_get(id, nested=nested, studyset_owner=studyset_owner)
         pprint(api_response)
     except neurostore_sdk.ApiException as e:
         print("Exception when calling StudiesApi->studies_id_get: %s\n" % e)
@@ -246,6 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  |
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional]
+ **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional]
 
 ### Return type
 
