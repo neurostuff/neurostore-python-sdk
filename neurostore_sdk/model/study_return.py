@@ -35,11 +35,13 @@ def lazy_import():
     from neurostore_sdk.model.clone import Clone
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
     from neurostore_sdk.model.study_base import StudyBase
+    from neurostore_sdk.model.study_return_all_of import StudyReturnAllOf
     from neurostore_sdk.model.study_return_relationships import StudyReturnRelationships
     globals()['AnalysisReturn'] = AnalysisReturn
     globals()['Clone'] = Clone
     globals()['ResourceAttributes'] = ResourceAttributes
     globals()['StudyBase'] = StudyBase
+    globals()['StudyReturnAllOf'] = StudyReturnAllOf
     globals()['StudyReturnRelationships'] = StudyReturnRelationships
 
 
@@ -121,6 +123,7 @@ class StudyReturn(ModelComposed):
             'source_id': (str, none_type,),  # noqa: E501
             'source_updated_at': (str, none_type,),  # noqa: E501
             'analyses': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'studysets': ([str],),  # noqa: E501
         }
 
     @cached_property
@@ -146,6 +149,7 @@ class StudyReturn(ModelComposed):
         'source_id': 'source_id',  # noqa: E501
         'source_updated_at': 'source_updated_at',  # noqa: E501
         'analyses': 'analyses',  # noqa: E501
+        'studysets': 'studysets',  # noqa: E501
     }
 
     read_only_vars = {
@@ -208,6 +212,7 @@ class StudyReturn(ModelComposed):
             source_id (str, none_type): [optional]  # noqa: E501
             source_updated_at (str, none_type): [optional]  # noqa: E501
             analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            studysets ([str]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -324,6 +329,7 @@ class StudyReturn(ModelComposed):
             source_id (str, none_type): [optional]  # noqa: E501
             source_updated_at (str, none_type): [optional]  # noqa: E501
             analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            studysets ([str]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -392,6 +398,7 @@ class StudyReturn(ModelComposed):
               Clone,
               ResourceAttributes,
               StudyBase,
+              StudyReturnAllOf,
               StudyReturnRelationships,
           ],
           'oneOf': [
