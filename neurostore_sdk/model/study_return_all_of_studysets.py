@@ -84,6 +84,7 @@ class StudyReturnAllOfStudysets(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'id': (str,),  # noqa: E501
+            'description': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -94,6 +95,7 @@ class StudyReturnAllOfStudysets(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'id': 'id',  # noqa: E501
+        'description': 'description',  # noqa: E501
     }
 
     read_only_vars = {
@@ -139,6 +141,7 @@ class StudyReturnAllOfStudysets(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
+            description (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -222,6 +225,7 @@ class StudyReturnAllOfStudysets(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             name (str): [optional]  # noqa: E501
             id (str): [optional]  # noqa: E501
+            description (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
