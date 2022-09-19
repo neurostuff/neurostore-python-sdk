@@ -65,6 +65,7 @@ class StudiesApi(object):
                     'authors',
                     'user_id',
                     'data_type',
+                    'studyset_owner',
                 ],
                 'required': [],
                 'nullable': [
@@ -140,6 +141,8 @@ class StudiesApi(object):
                         (str,),
                     'data_type':
                         (str,),
+                    'studyset_owner':
+                        (str,),
                 },
                 'attribute_map': {
                     'search': 'search',
@@ -156,6 +159,7 @@ class StudiesApi(object):
                     'authors': 'authors',
                     'user_id': 'user_id',
                     'data_type': 'data_type',
+                    'studyset_owner': 'studyset_owner',
                 },
                 'location_map': {
                     'search': 'query',
@@ -172,6 +176,7 @@ class StudiesApi(object):
                     'authors': 'query',
                     'user_id': 'query',
                     'data_type': 'query',
+                    'studyset_owner': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -246,6 +251,7 @@ class StudiesApi(object):
                 'all': [
                     'id',
                     'nested',
+                    'studyset_owner',
                 ],
                 'required': [
                     'id',
@@ -267,14 +273,18 @@ class StudiesApi(object):
                         (str,),
                     'nested':
                         (bool,),
+                    'studyset_owner':
+                        (str,),
                 },
                 'attribute_map': {
                     'id': 'id',
                     'nested': 'nested',
+                    'studyset_owner': 'studyset_owner',
                 },
                 'location_map': {
                     'id': 'path',
                     'nested': 'query',
+                    'studyset_owner': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -443,6 +453,7 @@ class StudiesApi(object):
             authors (str): search authors. [optional]
             user_id (str): user id you want to filter by. [optional]
             data_type (str): whether searching for studies that contain coordinates, images, or both. [optional]
+            studyset_owner (str): for all studies filter which studysets are listed based on who owns the studyset. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -598,6 +609,7 @@ class StudiesApi(object):
 
         Keyword Args:
             nested (bool): whether to show the URI to a resource (false) or to embed the object in the response (true). [optional]
+            studyset_owner (str): for all studies filter which studysets are listed based on who owns the studyset. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

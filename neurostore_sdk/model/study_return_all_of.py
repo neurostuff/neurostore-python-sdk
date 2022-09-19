@@ -31,8 +31,8 @@ from neurostore_sdk.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from neurostore_sdk.model.analysis_return import AnalysisReturn
-    globals()['AnalysisReturn'] = AnalysisReturn
+    from neurostore_sdk.model.study_return_all_of_studysets import StudyReturnAllOfStudysets
+    globals()['StudyReturnAllOfStudysets'] = StudyReturnAllOfStudysets
 
 
 class StudyReturnAllOf(ModelNormal):
@@ -88,7 +88,7 @@ class StudyReturnAllOf(ModelNormal):
         """
         lazy_import()
         return {
-            'analyses': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'studysets': ([StudyReturnAllOfStudysets],),  # noqa: E501
         }
 
     @cached_property
@@ -97,7 +97,7 @@ class StudyReturnAllOf(ModelNormal):
 
 
     attribute_map = {
-        'analyses': 'analyses',  # noqa: E501
+        'studysets': 'studysets',  # noqa: E501
     }
 
     read_only_vars = {
@@ -141,7 +141,7 @@ class StudyReturnAllOf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            studysets ([StudyReturnAllOfStudysets]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class StudyReturnAllOf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            analyses ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            studysets ([StudyReturnAllOfStudysets]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
