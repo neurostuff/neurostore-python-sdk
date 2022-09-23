@@ -10,12 +10,14 @@
 # sys.setrecursionlimit(n)
 
 from neurostore_sdk.model.analysis_base import AnalysisBase
+from neurostore_sdk.model.analysis_common import AnalysisCommon
 from neurostore_sdk.model.analysis_list import AnalysisList
 from neurostore_sdk.model.analysis_request import AnalysisRequest
 from neurostore_sdk.model.analysis_request_relationships import AnalysisRequestRelationships
 from neurostore_sdk.model.analysis_return import AnalysisReturn
 from neurostore_sdk.model.analysis_return_relationships import AnalysisReturnRelationships
 from neurostore_sdk.model.annotation_base import AnnotationBase
+from neurostore_sdk.model.annotation_common import AnnotationCommon
 from neurostore_sdk.model.annotation_export import AnnotationExport
 from neurostore_sdk.model.annotation_list import AnnotationList
 from neurostore_sdk.model.annotation_request import AnnotationRequest
@@ -30,6 +32,7 @@ from neurostore_sdk.model.condition_return import ConditionReturn
 from neurostore_sdk.model.entity import Entity
 from neurostore_sdk.model.entity_all_of import EntityAllOf
 from neurostore_sdk.model.image_base import ImageBase
+from neurostore_sdk.model.image_common import ImageCommon
 from neurostore_sdk.model.image_list import ImageList
 from neurostore_sdk.model.image_relationships import ImageRelationships
 from neurostore_sdk.model.image_request import ImageRequest
@@ -45,6 +48,7 @@ from neurostore_sdk.model.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.model.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.model.note_collection_return_all_of import NoteCollectionReturnAllOf
 from neurostore_sdk.model.point_base import PointBase
+from neurostore_sdk.model.point_common import PointCommon
 from neurostore_sdk.model.point_list import PointList
 from neurostore_sdk.model.point_relationships import PointRelationships
 from neurostore_sdk.model.point_request import PointRequest

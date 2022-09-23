@@ -33,11 +33,13 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.point_base import PointBase
+    from neurostore_sdk.model.point_common import PointCommon
     from neurostore_sdk.model.point_relationships import PointRelationships
     from neurostore_sdk.model.point_value import PointValue
     from neurostore_sdk.model.resource_attributes import ResourceAttributes
     globals()['Entity'] = Entity
     globals()['PointBase'] = PointBase
+    globals()['PointCommon'] = PointCommon
     globals()['PointRelationships'] = PointRelationships
     globals()['PointValue'] = PointValue
     globals()['ResourceAttributes'] = ResourceAttributes
@@ -119,6 +121,7 @@ class PointReturn(ModelComposed):
             'y': (float,),  # noqa: E501
             'z': (float,),  # noqa: E501
             'entities': ([Entity],),  # noqa: E501
+            'analysis': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -142,6 +145,7 @@ class PointReturn(ModelComposed):
         'y': 'y',  # noqa: E501
         'z': 'z',  # noqa: E501
         'entities': 'entities',  # noqa: E501
+        'analysis': 'analysis',  # noqa: E501
     }
 
     read_only_vars = {
@@ -201,6 +205,7 @@ class PointReturn(ModelComposed):
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
+            analysis (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -315,6 +320,7 @@ class PointReturn(ModelComposed):
             y (float): [optional]  # noqa: E501
             z (float): [optional]  # noqa: E501
             entities ([Entity]): [optional]  # noqa: E501
+            analysis (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -381,6 +387,7 @@ class PointReturn(ModelComposed):
           ],
           'allOf': [
               PointBase,
+              PointCommon,
               PointRelationships,
               ResourceAttributes,
           ],

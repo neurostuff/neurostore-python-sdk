@@ -33,10 +33,12 @@ from neurostore_sdk.exceptions import ApiAttributeError
 def lazy_import():
     from neurostore_sdk.model.entity import Entity
     from neurostore_sdk.model.image_base import ImageBase
+    from neurostore_sdk.model.image_common import ImageCommon
     from neurostore_sdk.model.image_relationships import ImageRelationships
     from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes
     globals()['Entity'] = Entity
     globals()['ImageBase'] = ImageBase
+    globals()['ImageCommon'] = ImageCommon
     globals()['ImageRelationships'] = ImageRelationships
     globals()['WriteableResourceAttributes'] = WriteableResourceAttributes
 
@@ -357,6 +359,7 @@ class ImageRequest(ModelComposed):
           ],
           'allOf': [
               ImageBase,
+              ImageCommon,
               ImageRelationships,
               WriteableResourceAttributes,
           ],

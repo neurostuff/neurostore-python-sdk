@@ -5,12 +5,14 @@
 README.md
 docs/AnalysesApi.md
 docs/AnalysisBase.md
+docs/AnalysisCommon.md
 docs/AnalysisList.md
 docs/AnalysisRequest.md
 docs/AnalysisRequestRelationships.md
 docs/AnalysisReturn.md
 docs/AnalysisReturnRelationships.md
 docs/AnnotationBase.md
+docs/AnnotationCommon.md
 docs/AnnotationExport.md
 docs/AnnotationList.md
 docs/AnnotationRequest.md
@@ -27,6 +29,7 @@ docs/ConditionsApi.md
 docs/Entity.md
 docs/EntityAllOf.md
 docs/ImageBase.md
+docs/ImageCommon.md
 docs/ImageList.md
 docs/ImageRelationships.md
 docs/ImageRequest.md
@@ -43,6 +46,7 @@ docs/NoteCollectionRequest.md
 docs/NoteCollectionReturn.md
 docs/NoteCollectionReturnAllOf.md
 docs/PointBase.md
+docs/PointCommon.md
 docs/PointList.md
 docs/PointRelationships.md
 docs/PointRequest.md
@@ -91,12 +95,14 @@ neurostore_sdk/endpoint.py
 neurostore_sdk/exceptions.py
 neurostore_sdk/model/__init__.py
 neurostore_sdk/model/analysis_base.py
+neurostore_sdk/model/analysis_common.py
 neurostore_sdk/model/analysis_list.py
 neurostore_sdk/model/analysis_request.py
 neurostore_sdk/model/analysis_request_relationships.py
 neurostore_sdk/model/analysis_return.py
 neurostore_sdk/model/analysis_return_relationships.py
 neurostore_sdk/model/annotation_base.py
+neurostore_sdk/model/annotation_common.py
 neurostore_sdk/model/annotation_export.py
 neurostore_sdk/model/annotation_list.py
 neurostore_sdk/model/annotation_request.py
@@ -111,6 +117,7 @@ neurostore_sdk/model/condition_return.py
 neurostore_sdk/model/entity.py
 neurostore_sdk/model/entity_all_of.py
 neurostore_sdk/model/image_base.py
+neurostore_sdk/model/image_common.py
 neurostore_sdk/model/image_list.py
 neurostore_sdk/model/image_relationships.py
 neurostore_sdk/model/image_request.py
@@ -126,6 +133,7 @@ neurostore_sdk/model/note_collection_request.py
 neurostore_sdk/model/note_collection_return.py
 neurostore_sdk/model/note_collection_return_all_of.py
 neurostore_sdk/model/point_base.py
+neurostore_sdk/model/point_common.py
 neurostore_sdk/model/point_list.py
 neurostore_sdk/model/point_relationships.py
 neurostore_sdk/model/point_request.py
@@ -160,4 +168,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_analysis_common.py
+test/test_annotation_common.py
+test/test_image_common.py
+test/test_point_common.py
 tox.ini
