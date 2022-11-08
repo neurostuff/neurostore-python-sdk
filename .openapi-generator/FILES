@@ -168,8 +168,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_analysis_common.py
-test/test_annotation_common.py
-test/test_image_common.py
-test/test_point_common.py
 tox.ini
