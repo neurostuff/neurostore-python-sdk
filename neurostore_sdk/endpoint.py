@@ -10,8 +10,8 @@
 
 
 from neurostore_sdk.exceptions import (
-    ApiTypeError
-    ApiValueError
+    ApiTypeError,
+    ApiValueError,
 )
 
 from neurostore_sdk.model_utils import (
