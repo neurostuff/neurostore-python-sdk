@@ -9,6 +9,11 @@
 """
 
 
+from neurostore_sdk.exceptions import (
+    ApiTypeError
+    ApiValueError
+)
+
 from neurostore_sdk.model_utils import (
     ModelNormal,
     ModelSimple,
