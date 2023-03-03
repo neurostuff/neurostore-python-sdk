@@ -82,7 +82,7 @@ class ImagesApi(object):
                     },
                     ('page_size',): {
 
-                        'exclusive_maximum': 100,
+                        'exclusive_maximum': 30000,
                         'inclusive_minimum': 1,
                     },
                 },
