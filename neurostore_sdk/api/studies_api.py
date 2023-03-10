@@ -132,7 +132,7 @@ class StudiesApi(object):
                     'source_id':
                         (str,),
                     'unique':
-                        (bool,),
+                        (bool, date, datetime, dict, float, int, list, str, none_type,),
                     'source':
                         (str,),
                     'authors':
@@ -448,7 +448,7 @@ class StudiesApi(object):
             name (str): search the name field for a term. [optional]
             description (str): search description field for a term. [optional]
             source_id (str): id of the resource you are either filtering/copying on. [optional]
-            unique (bool): whether to list clones with originals. [optional]
+            unique (bool, date, datetime, dict, float, int, list, str, none_type): whether to list clones with originals. [optional]
             source (str): the source of the resource you would like to filter/copy from. [optional] if omitted the server will use the default value of "neurostore"
             authors (str): search authors. [optional]
             user_id (str): user id you want to filter by. [optional]
