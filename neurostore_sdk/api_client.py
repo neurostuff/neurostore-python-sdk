@@ -86,6 +86,7 @@ class ApiClient(object):
         self.conditions = apis.ConditionsApi(api_client=self)
         self.images = apis.ImagesApi(api_client=self)
         self.points = apis.PointsApi(api_client=self)
+        self.store = apis.StoreApi(api_client=self)
         self.studies = apis.StudiesApi(api_client=self)
         self.studysets = apis.StudysetsApi(api_client=self)
         self.user = apis.UserApi(api_client=self)

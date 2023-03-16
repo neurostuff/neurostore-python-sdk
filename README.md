@@ -116,6 +116,40 @@ Class | Method | HTTP request | Description
 *PointsApi* | [**points_id_get**](docs/PointsApi.md#points_id_get) | **GET** /points/{id} | GET a point
 *PointsApi* | [**points_id_put**](docs/PointsApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
 *PointsApi* | [**points_post**](docs/PointsApi.md#points_post) | **POST** /points/ | POST Points
+*StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
+*StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
+*StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
+*StoreApi* | [**analyses_id_put**](docs/StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
+*StoreApi* | [**analyses_post**](docs/StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+*StoreApi* | [**annotations_get**](docs/StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
+*StoreApi* | [**annotations_id_delete**](docs/StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
+*StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
+*StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
+*StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
+*StoreApi* | [**conditions_get**](docs/StoreApi.md#conditions_get) | **GET** /conditions/ | GET Conditions
+*StoreApi* | [**conditions_id_delete**](docs/StoreApi.md#conditions_id_delete) | **DELETE** /conditions/{id} | DELETE a condition
+*StoreApi* | [**conditions_id_get**](docs/StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
+*StoreApi* | [**conditions_id_put**](docs/StoreApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
+*StoreApi* | [**conditions_post**](docs/StoreApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*StoreApi* | [**images_get**](docs/StoreApi.md#images_get) | **GET** /images/ | GET a list of images
+*StoreApi* | [**images_id_delete**](docs/StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
+*StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
+*StoreApi* | [**images_id_put**](docs/StoreApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
+*StoreApi* | [**images_post**](docs/StoreApi.md#images_post) | **POST** /images/ | POST/create an image
+*StoreApi* | [**points_get**](docs/StoreApi.md#points_get) | **GET** /points/ | Get Points
+*StoreApi* | [**points_id_delete**](docs/StoreApi.md#points_id_delete) | **DELETE** /points/{id} | DELETE a point
+*StoreApi* | [**points_id_get**](docs/StoreApi.md#points_id_get) | **GET** /points/{id} | GET a point
+*StoreApi* | [**points_id_put**](docs/StoreApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
+*StoreApi* | [**points_post**](docs/StoreApi.md#points_post) | **POST** /points/ | POST Points
+*StoreApi* | [**studies_get**](docs/StoreApi.md#studies_get) | **GET** /studies/ | GET a list of studies
+*StoreApi* | [**studies_id_delete**](docs/StoreApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
+*StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
+*StoreApi* | [**studies_id_put**](docs/StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
+*StoreApi* | [**studies_post**](docs/StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+*StoreApi* | [**studysets_id_delete**](docs/StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
+*StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
+*StoreApi* | [**studysets_id_put**](docs/StoreApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
+*StoreApi* | [**studysets_post**](docs/StoreApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
 *StudiesApi* | [**studies_get**](docs/StudiesApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 *StudiesApi* | [**studies_id_delete**](docs/StudiesApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 *StudiesApi* | [**studies_id_get**](docs/StudiesApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
