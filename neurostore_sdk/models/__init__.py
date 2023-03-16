@@ -1,10 +1,12 @@
+# coding: utf-8
+
 # flake8: noqa
 
 # import all models into this package
 # if you have many models here with many references from one model to another this may
 # raise a RecursionError
 # to avoid this, import only the models that you directly need like:
-# from from neurostore_sdk.model.pet import Pet
+# from neurostore_sdk.model.pet import Pet
 # or import this package, but before doing it, use:
 # import sys
 # sys.setrecursionlimit(n)
@@ -30,23 +32,18 @@ from neurostore_sdk.model.condition_list import ConditionList
 from neurostore_sdk.model.condition_request import ConditionRequest
 from neurostore_sdk.model.condition_return import ConditionReturn
 from neurostore_sdk.model.entity import Entity
-from neurostore_sdk.model.entity_all_of import EntityAllOf
 from neurostore_sdk.model.image_base import ImageBase
 from neurostore_sdk.model.image_common import ImageCommon
 from neurostore_sdk.model.image_list import ImageList
 from neurostore_sdk.model.image_relationships import ImageRelationships
 from neurostore_sdk.model.image_request import ImageRequest
 from neurostore_sdk.model.image_return import ImageReturn
-from neurostore_sdk.model.inline_response404 import InlineResponse404
-from neurostore_sdk.model.inline_response422 import InlineResponse422
 from neurostore_sdk.model.json_ld import JsonLd
-from neurostore_sdk.model.json_ld_context import JsonLdContext
 from neurostore_sdk.model.metadata import Metadata
 from neurostore_sdk.model.nested_put_attributes import NestedPutAttributes
 from neurostore_sdk.model.note_collection_base import NoteCollectionBase
 from neurostore_sdk.model.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.model.note_collection_return import NoteCollectionReturn
-from neurostore_sdk.model.note_collection_return_all_of import NoteCollectionReturnAllOf
 from neurostore_sdk.model.point_base import PointBase
 from neurostore_sdk.model.point_common import PointCommon
 from neurostore_sdk.model.point_list import PointList
@@ -61,8 +58,6 @@ from neurostore_sdk.model.study_list import StudyList
 from neurostore_sdk.model.study_request import StudyRequest
 from neurostore_sdk.model.study_request_relationships import StudyRequestRelationships
 from neurostore_sdk.model.study_return import StudyReturn
-from neurostore_sdk.model.study_return_all_of import StudyReturnAllOf
-from neurostore_sdk.model.study_return_all_of_studysets import StudyReturnAllOfStudysets
 from neurostore_sdk.model.study_return_relationships import StudyReturnRelationships
 from neurostore_sdk.model.studyset_base import StudysetBase
 from neurostore_sdk.model.studyset_list import StudysetList
