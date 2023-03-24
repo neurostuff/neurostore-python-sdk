@@ -53,6 +53,7 @@ class AnnotationReturnRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['NoteCollectionReturn']:
