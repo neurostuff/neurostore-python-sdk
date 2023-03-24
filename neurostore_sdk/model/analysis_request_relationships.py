@@ -54,6 +54,7 @@ class AnalysisRequestRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['ImageRequest']:
@@ -140,6 +141,7 @@ class AnalysisRequestRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['PointRequest']:
@@ -226,6 +228,7 @@ class AnalysisRequestRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['ConditionRequest']:

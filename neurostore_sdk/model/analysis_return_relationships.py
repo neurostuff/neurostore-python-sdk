@@ -54,6 +54,7 @@ class AnalysisReturnRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['ImageReturn']:
@@ -140,6 +141,7 @@ class AnalysisReturnRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['PointReturn']:
@@ -226,6 +228,7 @@ class AnalysisReturnRelationships(
                     
                     
                         class MetaOapg:
+                            min_items = 1
                             
                             @staticmethod
                             def items() -> typing.Type['ConditionReturn']:
