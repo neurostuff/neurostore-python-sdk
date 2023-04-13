@@ -39,9 +39,66 @@ class Entity(
     class MetaOapg:
         
         class properties:
-            label = schemas.StrSchema
-            level = schemas.StrSchema
-            analysis = schemas.StrSchema
+            
+            
+            class label(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'label':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class level(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'level':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class analysis(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'analysis':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "label": label,
                 "level": level,
@@ -84,9 +141,9 @@ class Entity(
     def __new__(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
-        label: typing.Union[MetaOapg.properties.label, str, schemas.Unset] = schemas.unset,
-        level: typing.Union[MetaOapg.properties.level, str, schemas.Unset] = schemas.unset,
-        analysis: typing.Union[MetaOapg.properties.analysis, str, schemas.Unset] = schemas.unset,
+        label: typing.Union[MetaOapg.properties.label, None, str, schemas.Unset] = schemas.unset,
+        level: typing.Union[MetaOapg.properties.level, None, str, schemas.Unset] = schemas.unset,
+        analysis: typing.Union[MetaOapg.properties.analysis, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Entity':
