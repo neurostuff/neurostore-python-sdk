@@ -32,7 +32,7 @@ class Entity(
 
     Do not edit the class manually.
 
-    descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
+    WARNING: not currently used. descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
     """
 
 

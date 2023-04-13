@@ -12,6 +12,7 @@ Class Name | Input Type | Accessed Type | Description | Notes
 [StudysetBase](StudysetBase.md) | [**StudysetBase**](StudysetBase.md) | [**StudysetBase**](StudysetBase.md) |  | 
 [StudysetRequestRelationships](StudysetRequestRelationships.md) | [**StudysetRequestRelationships**](StudysetRequestRelationships.md) | [**StudysetRequestRelationships**](StudysetRequestRelationships.md) |  | 
 [WriteableResourceAttributes](WriteableResourceAttributes.md) | [**WriteableResourceAttributes**](WriteableResourceAttributes.md) | [**WriteableResourceAttributes**](WriteableResourceAttributes.md) |  | 
+[StudyCommon](StudyCommon.md) | [**StudyCommon**](StudyCommon.md) | [**StudyCommon**](StudyCommon.md) |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -55,6 +55,7 @@ docs/models/PointValue.md
 docs/models/ReadableResourceAttributes.md
 docs/models/ResourceAttributes.md
 docs/models/StudyBase.md
+docs/models/StudyCommon.md
 docs/models/StudyList.md
 docs/models/StudyRequest.md
 docs/models/StudyRequestRelationships.md
@@ -173,6 +174,8 @@ neurostore_sdk/model/resource_attributes.py
 neurostore_sdk/model/resource_attributes.pyi
 neurostore_sdk/model/study_base.py
 neurostore_sdk/model/study_base.pyi
+neurostore_sdk/model/study_common.py
+neurostore_sdk/model/study_common.pyi
 neurostore_sdk/model/study_list.py
 neurostore_sdk/model/study_list.pyi
 neurostore_sdk/model/study_request.py
@@ -214,4 +217,5 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
+test/test_models/test_study_common.py
 tox.ini
