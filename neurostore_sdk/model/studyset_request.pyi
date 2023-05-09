@@ -50,6 +50,7 @@ class StudysetRequest(
                 StudysetBase,
                 StudysetRequestRelationships,
                 WriteableResourceAttributes,
+                StudyCommon,
             ]
 
 
@@ -66,6 +67,7 @@ class StudysetRequest(
             **kwargs,
         )
 
+from neurostore_sdk.model.study_common import StudyCommon
 from neurostore_sdk.model.studyset_base import StudysetBase
 from neurostore_sdk.model.studyset_request_relationships import StudysetRequestRelationships
 from neurostore_sdk.model.writeable_resource_attributes import WriteableResourceAttributes

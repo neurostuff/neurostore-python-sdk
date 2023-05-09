@@ -40,17 +40,47 @@ class AnalysisCommon(
         
         class properties:
             study = schemas.StrSchema
+            
+            
+            class entities(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['Entity']:
+                        return Entity
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple['Entity'], typing.List['Entity']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'entities':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'Entity':
+                    return super().__getitem__(i)
             __annotations__ = {
                 "study": study,
+                "entities": entities,
             }
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["study"]) -> MetaOapg.properties.study: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["entities"]) -> MetaOapg.properties.entities: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["study", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["study", "entities", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -59,9 +89,12 @@ class AnalysisCommon(
     def get_item_oapg(self, name: typing_extensions.Literal["study"]) -> typing.Union[MetaOapg.properties.study, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["entities"]) -> typing.Union[MetaOapg.properties.entities, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["study", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["study", "entities", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -69,6 +102,7 @@ class AnalysisCommon(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         study: typing.Union[MetaOapg.properties.study, str, schemas.Unset] = schemas.unset,
+        entities: typing.Union[MetaOapg.properties.entities, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'AnalysisCommon':
@@ -76,6 +110,9 @@ class AnalysisCommon(
             cls,
             *_args,
             study=study,
+            entities=entities,
             _configuration=_configuration,
             **kwargs,
         )
+
+from neurostore_sdk.model.entity import Entity

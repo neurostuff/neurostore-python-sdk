@@ -54,6 +54,7 @@ from neurostore_sdk.model.point_value import PointValue
 from neurostore_sdk.model.readable_resource_attributes import ReadableResourceAttributes
 from neurostore_sdk.model.resource_attributes import ResourceAttributes
 from neurostore_sdk.model.study_base import StudyBase
+from neurostore_sdk.model.study_common import StudyCommon
 from neurostore_sdk.model.study_list import StudyList
 from neurostore_sdk.model.study_request import StudyRequest
 from neurostore_sdk.model.study_request_relationships import StudyRequestRelationships

@@ -13,6 +13,7 @@ Class Name | Input Type | Accessed Type | Description | Notes
 [ResourceAttributes](ResourceAttributes.md) | [**ResourceAttributes**](ResourceAttributes.md) | [**ResourceAttributes**](ResourceAttributes.md) |  | 
 [Clone](Clone.md) | [**Clone**](Clone.md) | [**Clone**](Clone.md) |  | 
 [StudysetReturnRelationships](StudysetReturnRelationships.md) | [**StudysetReturnRelationships**](StudysetReturnRelationships.md) | [**StudysetReturnRelationships**](StudysetReturnRelationships.md) |  | 
+[StudyCommon](StudyCommon.md) | [**StudyCommon**](StudyCommon.md) | [**StudyCommon**](StudyCommon.md) |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -64,6 +64,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
         'user_id': "user_id_example",
         'data_type': "coordinate",
         'studyset_owner': "studyset_owner_example",
+        'level': "group",
     }
     try:
         # GET a list of studies
@@ -104,6 +105,7 @@ authors | AuthorsSchema | | optional
 user_id | UserIdSchema | | optional
 data_type | DataTypeSchema | | optional
 studyset_owner | StudysetOwnerSchema | | optional
+level | LevelSchema | | optional
 
 
 # SearchSchema
@@ -210,6 +212,13 @@ str,  | str,  |  | must be one of ["coordinate", "image", "both", ]
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# LevelSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | must be one of ["group", "meta", ] if omitted the server will use the default value of "group"
 
 ### Return Types, Responses
 

@@ -51,6 +51,7 @@ class StudysetReturn(
                 ResourceAttributes,
                 Clone,
                 StudysetReturnRelationships,
+                StudyCommon,
             ]
 
 
@@ -69,5 +70,6 @@ class StudysetReturn(
 
 from neurostore_sdk.model.clone import Clone
 from neurostore_sdk.model.resource_attributes import ResourceAttributes
+from neurostore_sdk.model.study_common import StudyCommon
 from neurostore_sdk.model.studyset_base import StudysetBase
 from neurostore_sdk.model.studyset_return_relationships import StudysetReturnRelationships

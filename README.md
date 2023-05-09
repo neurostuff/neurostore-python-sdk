@@ -312,6 +312,7 @@ Class | Method | HTTP request | Description
  - [ReadableResourceAttributes](docs/models/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/models/ResourceAttributes.md)
  - [StudyBase](docs/models/StudyBase.md)
+ - [StudyCommon](docs/models/StudyCommon.md)
  - [StudyList](docs/models/StudyList.md)
  - [StudyRequest](docs/models/StudyRequest.md)
  - [StudyRequestRelationships](docs/models/StudyRequestRelationships.md)

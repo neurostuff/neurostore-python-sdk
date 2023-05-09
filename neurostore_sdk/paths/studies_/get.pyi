@@ -100,6 +100,20 @@ class DataTypeSchema(
     def BOTH(cls):
         return cls("both")
 StudysetOwnerSchema = schemas.StrSchema
+
+
+class LevelSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+    
+    @schemas.classproperty
+    def GROUP(cls):
+        return cls("group")
+    
+    @schemas.classproperty
+    def META(cls):
+        return cls("meta")
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -123,6 +137,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
         'user_id': typing.Union[UserIdSchema, str, ],
         'data_type': typing.Union[DataTypeSchema, str, ],
         'studyset_owner': typing.Union[StudysetOwnerSchema, str, ],
+        'level': typing.Union[LevelSchema, str, ],
     },
     total=False
 )
@@ -222,6 +237,12 @@ request_query_studyset_owner = api_client.QueryParameter(
     schema=StudysetOwnerSchema,
     explode=True,
 )
+request_query_level = api_client.QueryParameter(
+    name="level",
+    style=api_client.ParameterStyle.FORM,
+    schema=LevelSchema,
+    explode=True,
+)
 SchemaFor200ResponseBodyApplicationJson = StudyList
 
 
@@ -316,6 +337,7 @@ class BaseApi(api_client.Api):
             request_query_user_id,
             request_query_data_type,
             request_query_studyset_owner,
+            request_query_level,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

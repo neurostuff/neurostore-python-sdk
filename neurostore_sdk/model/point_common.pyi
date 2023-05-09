@@ -38,17 +38,46 @@ class PointCommon(
         
         class properties:
             analysis = schemas.StrSchema
+            
+            
+            class cluster_size(
+                schemas.NumberBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneDecimalMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, decimal.Decimal, int, float, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'cluster_size':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
+            subpeak = schemas.BoolSchema
             __annotations__ = {
                 "analysis": analysis,
+                "cluster_size": cluster_size,
+                "subpeak": subpeak,
             }
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["analysis"]) -> MetaOapg.properties.analysis: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["cluster_size"]) -> MetaOapg.properties.cluster_size: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["subpeak"]) -> MetaOapg.properties.subpeak: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["analysis", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["analysis", "cluster_size", "subpeak", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -57,9 +86,15 @@ class PointCommon(
     def get_item_oapg(self, name: typing_extensions.Literal["analysis"]) -> typing.Union[MetaOapg.properties.analysis, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["cluster_size"]) -> typing.Union[MetaOapg.properties.cluster_size, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["subpeak"]) -> typing.Union[MetaOapg.properties.subpeak, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["analysis", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["analysis", "cluster_size", "subpeak", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -67,6 +102,8 @@ class PointCommon(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         analysis: typing.Union[MetaOapg.properties.analysis, str, schemas.Unset] = schemas.unset,
+        cluster_size: typing.Union[MetaOapg.properties.cluster_size, None, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        subpeak: typing.Union[MetaOapg.properties.subpeak, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'PointCommon':
@@ -74,6 +111,8 @@ class PointCommon(
             cls,
             *_args,
             analysis=analysis,
+            cluster_size=cluster_size,
+            subpeak=subpeak,
             _configuration=_configuration,
             **kwargs,
         )
