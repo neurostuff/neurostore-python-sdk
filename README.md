@@ -145,10 +145,10 @@ from neurostore_sdk.apis.tags import analyses_api
 from neurostore_sdk.model.analysis_list import AnalysisList
 from neurostore_sdk.model.analysis_request import AnalysisRequest
 from neurostore_sdk.model.analysis_return import AnalysisReturn
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 
@@ -189,7 +189,7 @@ nested = True # bool | whether to show the URI to a resource (false) or to embed
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:80/api*
+All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

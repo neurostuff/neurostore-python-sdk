@@ -1,7 +1,7 @@
 <a name="__pageTop"></a>
 # neurostore_sdk.apis.tags.images_api.ImagesApi
 
-All URIs are relative to *http://localhost:80/api*
+All URIs are relative to *https://neurostore.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import neurostore_sdk
 from neurostore_sdk.apis.tags import images_api
 from neurostore_sdk.model.image_list import ImageList
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # Enter a context with an instance of the API client
@@ -188,10 +188,10 @@ delete an image
 import neurostore_sdk
 from neurostore_sdk.apis.tags import images_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -278,10 +278,10 @@ import neurostore_sdk
 from neurostore_sdk.apis.tags import images_api
 from neurostore_sdk.model.image_return import ImageReturn
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # Enter a context with an instance of the API client
@@ -393,10 +393,10 @@ from neurostore_sdk.apis.tags import images_api
 from neurostore_sdk.model.image_return import ImageReturn
 from neurostore_sdk.model.image_request import ImageRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -542,10 +542,10 @@ from neurostore_sdk.apis.tags import images_api
 from neurostore_sdk.model.image_return import ImageReturn
 from neurostore_sdk.model.image_request import ImageRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters
