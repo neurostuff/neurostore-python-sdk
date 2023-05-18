@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**analyses** | [**List[StudyRequestRelationshipsAnalysesInner]**](StudyRequestRelationshipsAnalysesInner.md) |  | [optional] 
+**analyses** | [**StudyRequestRelationshipsAnalyses**](StudyRequestRelationshipsAnalyses.md) |  | [optional] 
 
 ## Example
 

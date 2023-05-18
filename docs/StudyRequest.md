@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **pmid** | **str** | If the study was published on PubMed, place the PubMed ID here. | [optional] 
 **authors** | **str** | The authors on the publication of this study. | [optional] 
 **year** | **int** | The year this study was published. | [optional] 
-**analyses** | [**List[StudyRequestRelationshipsAnalysesInner]**](StudyRequestRelationshipsAnalysesInner.md) |  | [optional] 
+**analyses** | [**StudyRequestRelationshipsAnalyses**](StudyRequestRelationshipsAnalyses.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 

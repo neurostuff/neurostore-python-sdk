@@ -56,10 +56,10 @@ import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 
@@ -89,7 +89,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:80/api*
+All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -118,6 +118,40 @@ Class | Method | HTTP request | Description
 *PointsApi* | [**points_id_get**](docs/PointsApi.md#points_id_get) | **GET** /points/{id} | GET a point
 *PointsApi* | [**points_id_put**](docs/PointsApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
 *PointsApi* | [**points_post**](docs/PointsApi.md#points_post) | **POST** /points/ | POST Points
+*StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
+*StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
+*StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
+*StoreApi* | [**analyses_id_put**](docs/StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
+*StoreApi* | [**analyses_post**](docs/StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+*StoreApi* | [**annotations_get**](docs/StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
+*StoreApi* | [**annotations_id_delete**](docs/StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
+*StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
+*StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
+*StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
+*StoreApi* | [**conditions_get**](docs/StoreApi.md#conditions_get) | **GET** /conditions/ | GET Conditions
+*StoreApi* | [**conditions_id_delete**](docs/StoreApi.md#conditions_id_delete) | **DELETE** /conditions/{id} | DELETE a condition
+*StoreApi* | [**conditions_id_get**](docs/StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
+*StoreApi* | [**conditions_id_put**](docs/StoreApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
+*StoreApi* | [**conditions_post**](docs/StoreApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*StoreApi* | [**images_get**](docs/StoreApi.md#images_get) | **GET** /images/ | GET a list of images
+*StoreApi* | [**images_id_delete**](docs/StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
+*StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
+*StoreApi* | [**images_id_put**](docs/StoreApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
+*StoreApi* | [**images_post**](docs/StoreApi.md#images_post) | **POST** /images/ | POST/create an image
+*StoreApi* | [**points_get**](docs/StoreApi.md#points_get) | **GET** /points/ | Get Points
+*StoreApi* | [**points_id_delete**](docs/StoreApi.md#points_id_delete) | **DELETE** /points/{id} | DELETE a point
+*StoreApi* | [**points_id_get**](docs/StoreApi.md#points_id_get) | **GET** /points/{id} | GET a point
+*StoreApi* | [**points_id_put**](docs/StoreApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
+*StoreApi* | [**points_post**](docs/StoreApi.md#points_post) | **POST** /points/ | POST Points
+*StoreApi* | [**studies_get**](docs/StoreApi.md#studies_get) | **GET** /studies/ | GET a list of studies
+*StoreApi* | [**studies_id_delete**](docs/StoreApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
+*StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
+*StoreApi* | [**studies_id_put**](docs/StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
+*StoreApi* | [**studies_post**](docs/StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+*StoreApi* | [**studysets_id_delete**](docs/StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
+*StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
+*StoreApi* | [**studysets_id_put**](docs/StoreApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
+*StoreApi* | [**studysets_post**](docs/StoreApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
 *StudiesApi* | [**studies_get**](docs/StudiesApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 *StudiesApi* | [**studies_id_delete**](docs/StudiesApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 *StudiesApi* | [**studies_id_get**](docs/StudiesApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
@@ -141,14 +175,14 @@ Class | Method | HTTP request | Description
  - [AnalysisList](docs/AnalysisList.md)
  - [AnalysisRequest](docs/AnalysisRequest.md)
  - [AnalysisRequestRelationships](docs/AnalysisRequestRelationships.md)
- - [AnalysisRequestRelationshipsConditionsInner](docs/AnalysisRequestRelationshipsConditionsInner.md)
- - [AnalysisRequestRelationshipsImagesInner](docs/AnalysisRequestRelationshipsImagesInner.md)
- - [AnalysisRequestRelationshipsPointsInner](docs/AnalysisRequestRelationshipsPointsInner.md)
+ - [AnalysisRequestRelationshipsConditions](docs/AnalysisRequestRelationshipsConditions.md)
+ - [AnalysisRequestRelationshipsImages](docs/AnalysisRequestRelationshipsImages.md)
+ - [AnalysisRequestRelationshipsPoints](docs/AnalysisRequestRelationshipsPoints.md)
  - [AnalysisReturn](docs/AnalysisReturn.md)
  - [AnalysisReturnRelationships](docs/AnalysisReturnRelationships.md)
- - [AnalysisReturnRelationshipsConditionsInner](docs/AnalysisReturnRelationshipsConditionsInner.md)
- - [AnalysisReturnRelationshipsImagesInner](docs/AnalysisReturnRelationshipsImagesInner.md)
- - [AnalysisReturnRelationshipsPointsInner](docs/AnalysisReturnRelationshipsPointsInner.md)
+ - [AnalysisReturnRelationshipsConditions](docs/AnalysisReturnRelationshipsConditions.md)
+ - [AnalysisReturnRelationshipsImages](docs/AnalysisReturnRelationshipsImages.md)
+ - [AnalysisReturnRelationshipsPoints](docs/AnalysisReturnRelationshipsPoints.md)
  - [AnnotationBase](docs/AnnotationBase.md)
  - [AnnotationCommon](docs/AnnotationCommon.md)
  - [AnnotationExport](docs/AnnotationExport.md)
@@ -156,19 +190,18 @@ Class | Method | HTTP request | Description
  - [AnnotationRequest](docs/AnnotationRequest.md)
  - [AnnotationRequestOneOf](docs/AnnotationRequestOneOf.md)
  - [AnnotationRequestRelationships](docs/AnnotationRequestRelationships.md)
- - [AnnotationRequestRelationshipsNotesInner](docs/AnnotationRequestRelationshipsNotesInner.md)
+ - [AnnotationRequestRelationshipsNotes](docs/AnnotationRequestRelationshipsNotes.md)
  - [AnnotationReturn](docs/AnnotationReturn.md)
  - [AnnotationReturnOneOf](docs/AnnotationReturnOneOf.md)
  - [AnnotationReturnOneOf1](docs/AnnotationReturnOneOf1.md)
  - [AnnotationReturnRelationships](docs/AnnotationReturnRelationships.md)
- - [AnnotationReturnRelationshipsNotesInner](docs/AnnotationReturnRelationshipsNotesInner.md)
+ - [AnnotationReturnRelationshipsNotes](docs/AnnotationReturnRelationshipsNotes.md)
  - [Clone](docs/Clone.md)
  - [ConditionBase](docs/ConditionBase.md)
  - [ConditionList](docs/ConditionList.md)
  - [ConditionRequest](docs/ConditionRequest.md)
  - [ConditionReturn](docs/ConditionReturn.md)
  - [Entity](docs/Entity.md)
- - [EntityAllOf](docs/EntityAllOf.md)
  - [ImageBase](docs/ImageBase.md)
  - [ImageCommon](docs/ImageCommon.md)
  - [ImageList](docs/ImageList.md)
@@ -194,23 +227,24 @@ Class | Method | HTTP request | Description
  - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
  - [StudyBase](docs/StudyBase.md)
+ - [StudyCommon](docs/StudyCommon.md)
  - [StudyList](docs/StudyList.md)
  - [StudyRequest](docs/StudyRequest.md)
  - [StudyRequestRelationships](docs/StudyRequestRelationships.md)
- - [StudyRequestRelationshipsAnalysesInner](docs/StudyRequestRelationshipsAnalysesInner.md)
+ - [StudyRequestRelationshipsAnalyses](docs/StudyRequestRelationshipsAnalyses.md)
  - [StudyReturn](docs/StudyReturn.md)
  - [StudyReturnAllOf](docs/StudyReturnAllOf.md)
  - [StudyReturnAllOfStudysets](docs/StudyReturnAllOfStudysets.md)
  - [StudyReturnRelationships](docs/StudyReturnRelationships.md)
- - [StudyReturnRelationshipsAnalysesInner](docs/StudyReturnRelationshipsAnalysesInner.md)
+ - [StudyReturnRelationshipsAnalyses](docs/StudyReturnRelationshipsAnalyses.md)
  - [StudysetBase](docs/StudysetBase.md)
  - [StudysetList](docs/StudysetList.md)
  - [StudysetRequest](docs/StudysetRequest.md)
  - [StudysetRequestRelationships](docs/StudysetRequestRelationships.md)
- - [StudysetRequestRelationshipsStudiesInner](docs/StudysetRequestRelationshipsStudiesInner.md)
+ - [StudysetRequestRelationshipsStudies](docs/StudysetRequestRelationshipsStudies.md)
  - [StudysetReturn](docs/StudysetReturn.md)
  - [StudysetReturnRelationships](docs/StudysetReturnRelationships.md)
- - [StudysetReturnRelationshipsStudiesInner](docs/StudysetReturnRelationshipsStudiesInner.md)
+ - [StudysetReturnRelationshipsStudies](docs/StudysetReturnRelationshipsStudies.md)
  - [StudysetsIdGet404Response](docs/StudysetsIdGet404Response.md)
  - [StudysetsIdPut422Response](docs/StudysetsIdPut422Response.md)
  - [User](docs/User.md)

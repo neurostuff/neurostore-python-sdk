@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **study** | **str** |  | [optional] 
-**images** | [**List[AnalysisRequestRelationshipsImagesInner]**](AnalysisRequestRelationshipsImagesInner.md) |  | [optional] 
-**points** | [**List[AnalysisRequestRelationshipsPointsInner]**](AnalysisRequestRelationshipsPointsInner.md) |  | [optional] 
-**conditions** | [**List[AnalysisRequestRelationshipsConditionsInner]**](AnalysisRequestRelationshipsConditionsInner.md) |  | [optional] 
+**images** | [**AnalysisRequestRelationshipsImages**](AnalysisRequestRelationshipsImages.md) |  | [optional] 
+**points** | [**AnalysisRequestRelationshipsPoints**](AnalysisRequestRelationshipsPoints.md) |  | [optional] 
+**conditions** | [**AnalysisRequestRelationshipsConditions**](AnalysisRequestRelationshipsConditions.md) |  | [optional] 
 
 ## Example
 

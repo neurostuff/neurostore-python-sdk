@@ -1,6 +1,6 @@
 # neurostore_sdk.StudiesApi
 
-All URIs are relative to *http://localhost:80/api*
+All URIs are relative to *https://neurostore.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level)
 
 GET a list of studies
 
@@ -29,10 +29,10 @@ from neurostore_sdk.models.study_list import StudyList
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -64,10 +64,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
+    level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level)
         print("The response of StudiesApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -94,6 +95,7 @@ Name | Type | Description  | Notes
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
+ **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
 
 ### Return type
 
@@ -132,10 +134,10 @@ import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -205,10 +207,10 @@ from neurostore_sdk.models.study_return import StudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 
@@ -278,10 +280,10 @@ from neurostore_sdk.models.study_return import StudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -358,10 +360,10 @@ from neurostore_sdk.models.study_return import StudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:80/api
+# Defining the host is optional and defaults to https://neurostore.org/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
-    host = "http://localhost:80/api"
+    host = "https://neurostore.org/api"
 )
 
 # The client must configure the authentication and authorization parameters

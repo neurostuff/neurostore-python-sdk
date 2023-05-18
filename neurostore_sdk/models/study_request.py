@@ -19,9 +19,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conint, conlist, constr
-from neurostore_sdk.models.study_request_relationships_analyses_inner import StudyRequestRelationshipsAnalysesInner
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conint, constr
+from neurostore_sdk.models.study_request_relationships_analyses import StudyRequestRelationshipsAnalyses
 
 class StudyRequest(BaseModel):
     """
@@ -35,7 +35,7 @@ class StudyRequest(BaseModel):
     pmid: Optional[StrictStr] = Field(None, description="If the study was published on PubMed, place the PubMed ID here.")
     authors: Optional[StrictStr] = Field(None, description="The authors on the publication of this study.")
     year: Optional[conint(strict=True, le=9999, ge=0)] = Field(None, description="The year this study was published.")
-    analyses: Optional[conlist(StudyRequestRelationshipsAnalysesInner)] = None
+    analyses: Optional[StudyRequestRelationshipsAnalyses] = None
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "analyses", "id", "public"]
@@ -64,13 +64,9 @@ class StudyRequest(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in analyses (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of analyses
         if self.analyses:
-            for _item in self.analyses:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['analyses'] = _items
+            _dict['analyses'] = self.analyses.to_dict()
         # set to None if doi (nullable) is None
         # and __fields_set__ contains the field
         if self.doi is None and "doi" in self.__fields_set__:
@@ -131,7 +127,7 @@ class StudyRequest(BaseModel):
             "pmid": obj.get("pmid"),
             "authors": obj.get("authors"),
             "year": obj.get("year"),
-            "analyses": [StudyRequestRelationshipsAnalysesInner.from_dict(_item) for _item in obj.get("analyses")] if obj.get("analyses") is not None else None,
+            "analyses": StudyRequestRelationshipsAnalyses.from_dict(obj.get("analyses")) if obj.get("analyses") is not None else None,
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True
         })

@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, conlist
-from neurostore_sdk.models.studyset_return_relationships_studies_inner import StudysetReturnRelationshipsStudiesInner
+from typing import Optional
+from pydantic import BaseModel
+from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
 
 class StudysetReturnRelationships(BaseModel):
     """
     StudysetReturnRelationships
     """
-    studies: Optional[conlist(StudysetReturnRelationshipsStudiesInner)] = None
+    studies: Optional[StudysetReturnRelationshipsStudies] = None
     __properties = ["studies"]
 
     class Config:
@@ -54,13 +54,9 @@ class StudysetReturnRelationships(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in studies (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of studies
         if self.studies:
-            for _item in self.studies:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['studies'] = _items
+            _dict['studies'] = self.studies.to_dict()
         return _dict
 
     @classmethod
@@ -73,7 +69,7 @@ class StudysetReturnRelationships(BaseModel):
             return StudysetReturnRelationships.parse_obj(obj)
 
         _obj = StudysetReturnRelationships.parse_obj({
-            "studies": [StudysetReturnRelationshipsStudiesInner.from_dict(_item) for _item in obj.get("studies")] if obj.get("studies") is not None else None
+            "studies": StudysetReturnRelationshipsStudies.from_dict(obj.get("studies")) if obj.get("studies") is not None else None
         })
         return _obj
 

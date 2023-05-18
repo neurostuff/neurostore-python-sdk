@@ -22,7 +22,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conint, conlist, constr
 from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOfStudysets
-from neurostore_sdk.models.study_return_relationships_analyses_inner import StudyReturnRelationshipsAnalysesInner
+from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 
 class StudyReturn(BaseModel):
     """
@@ -44,7 +44,7 @@ class StudyReturn(BaseModel):
     source: Optional[StrictStr] = None
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
-    analyses: Optional[conlist(StudyReturnRelationshipsAnalysesInner)] = None
+    analyses: Optional[StudyReturnRelationshipsAnalyses] = None
     studysets: Optional[conlist(StudyReturnAllOfStudysets)] = None
     __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "source", "source_id", "source_updated_at", "analyses", "studysets"]
 
@@ -76,13 +76,9 @@ class StudyReturn(BaseModel):
                             "source_updated_at",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in analyses (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of analyses
         if self.analyses:
-            for _item in self.analyses:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['analyses'] = _items
+            _dict['analyses'] = self.analyses.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in studysets (list)
         _items = []
         if self.studysets:
@@ -183,7 +179,7 @@ class StudyReturn(BaseModel):
             "source": obj.get("source"),
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),
-            "analyses": [StudyReturnRelationshipsAnalysesInner.from_dict(_item) for _item in obj.get("analyses")] if obj.get("analyses") is not None else None,
+            "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj.get("analyses")) if obj.get("analyses") is not None else None,
             "studysets": [StudyReturnAllOfStudysets.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None
         })
         return _obj

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **str** | Long form description of the annotation. | [optional] 
 **metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
 **note_keys** | **object** | The keys (columns) in the annotation and the key&#39;s respective data type (such as an integer or string). | [optional] 
-**notes** | [**List[AnnotationRequestRelationshipsNotesInner]**](AnnotationRequestRelationshipsNotesInner.md) |  | [optional] 
+**notes** | [**AnnotationRequestRelationshipsNotes**](AnnotationRequestRelationshipsNotes.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **studyset** | **str** |  | [optional] 

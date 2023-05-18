@@ -19,20 +19,20 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, StrictStr, conlist
-from neurostore_sdk.models.analysis_return_relationships_conditions_inner import AnalysisReturnRelationshipsConditionsInner
-from neurostore_sdk.models.analysis_return_relationships_images_inner import AnalysisReturnRelationshipsImagesInner
-from neurostore_sdk.models.analysis_return_relationships_points_inner import AnalysisReturnRelationshipsPointsInner
+from typing import Optional
+from pydantic import BaseModel, StrictStr
+from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
+from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
+from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints
 
 class AnalysisReturnRelationships(BaseModel):
     """
     AnalysisReturnRelationships
     """
     study: Optional[StrictStr] = None
-    images: Optional[conlist(AnalysisReturnRelationshipsImagesInner)] = None
-    points: Optional[conlist(AnalysisReturnRelationshipsPointsInner)] = None
-    conditions: Optional[conlist(AnalysisReturnRelationshipsConditionsInner)] = None
+    images: Optional[AnalysisReturnRelationshipsImages] = None
+    points: Optional[AnalysisReturnRelationshipsPoints] = None
+    conditions: Optional[AnalysisReturnRelationshipsConditions] = None
     __properties = ["study", "images", "points", "conditions"]
 
     class Config:
@@ -59,27 +59,15 @@ class AnalysisReturnRelationships(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in images (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of images
         if self.images:
-            for _item in self.images:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['images'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in points (list)
-        _items = []
+            _dict['images'] = self.images.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of points
         if self.points:
-            for _item in self.points:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['points'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in conditions (list)
-        _items = []
+            _dict['points'] = self.points.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of conditions
         if self.conditions:
-            for _item in self.conditions:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['conditions'] = _items
+            _dict['conditions'] = self.conditions.to_dict()
         return _dict
 
     @classmethod
@@ -93,9 +81,9 @@ class AnalysisReturnRelationships(BaseModel):
 
         _obj = AnalysisReturnRelationships.parse_obj({
             "study": obj.get("study"),
-            "images": [AnalysisReturnRelationshipsImagesInner.from_dict(_item) for _item in obj.get("images")] if obj.get("images") is not None else None,
-            "points": [AnalysisReturnRelationshipsPointsInner.from_dict(_item) for _item in obj.get("points")] if obj.get("points") is not None else None,
-            "conditions": [AnalysisReturnRelationshipsConditionsInner.from_dict(_item) for _item in obj.get("conditions")] if obj.get("conditions") is not None else None
+            "images": AnalysisReturnRelationshipsImages.from_dict(obj.get("images")) if obj.get("images") is not None else None,
+            "points": AnalysisReturnRelationshipsPoints.from_dict(obj.get("points")) if obj.get("points") is not None else None,
+            "conditions": AnalysisReturnRelationshipsConditions.from_dict(obj.get("conditions")) if obj.get("conditions") is not None else None
         })
         return _obj
 

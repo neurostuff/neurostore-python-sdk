@@ -19,15 +19,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr
+from typing import List, Optional
+from pydantic import BaseModel, StrictStr, conlist
+from neurostore_sdk.models.entity import Entity
 
 class AnalysisCommon(BaseModel):
     """
     attributes common between request and return objects
     """
     study: Optional[StrictStr] = None
-    __properties = ["study"]
+    entities: Optional[conlist(Entity)] = None
+    __properties = ["study", "entities"]
 
     class Config:
         """Pydantic configuration"""
@@ -53,6 +55,13 @@ class AnalysisCommon(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
+        _items = []
+        if self.entities:
+            for _item in self.entities:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['entities'] = _items
         return _dict
 
     @classmethod
@@ -65,7 +74,8 @@ class AnalysisCommon(BaseModel):
             return AnalysisCommon.parse_obj(obj)
 
         _obj = AnalysisCommon.parse_obj({
-            "study": obj.get("study")
+            "study": obj.get("study"),
+            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None
         })
         return _obj
 

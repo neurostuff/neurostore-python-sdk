@@ -41,7 +41,9 @@ class PointRequest(BaseModel):
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     analysis: Optional[StrictStr] = None
-    __properties = ["coordinates", "space", "kind", "label_id", "image", "value", "x", "y", "z", "entities", "id", "public", "analysis"]
+    cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
+    subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
+    __properties = ["coordinates", "space", "kind", "label_id", "image", "value", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak"]
 
     class Config:
         """Pydantic configuration"""
@@ -97,6 +99,11 @@ class PointRequest(BaseModel):
         if self.image is None and "image" in self.__fields_set__:
             _dict['image'] = None
 
+        # set to None if cluster_size (nullable) is None
+        # and __fields_set__ contains the field
+        if self.cluster_size is None and "cluster_size" in self.__fields_set__:
+            _dict['cluster_size'] = None
+
         return _dict
 
     @classmethod
@@ -121,7 +128,9 @@ class PointRequest(BaseModel):
             "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
-            "analysis": obj.get("analysis")
+            "analysis": obj.get("analysis"),
+            "cluster_size": obj.get("cluster_size"),
+            "subpeak": obj.get("subpeak")
         })
         return _obj
 

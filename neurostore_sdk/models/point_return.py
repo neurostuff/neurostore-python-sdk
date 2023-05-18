@@ -44,7 +44,9 @@ class PointReturn(BaseModel):
     z: Optional[Union[StrictFloat, StrictInt]] = None
     entities: Optional[conlist(Entity)] = None
     analysis: Optional[StrictStr] = None
-    __properties = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "image", "value", "x", "y", "z", "entities", "analysis"]
+    cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
+    subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
+    __properties = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "image", "value", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak"]
 
     class Config:
         """Pydantic configuration"""
@@ -113,6 +115,11 @@ class PointReturn(BaseModel):
         if self.image is None and "image" in self.__fields_set__:
             _dict['image'] = None
 
+        # set to None if cluster_size (nullable) is None
+        # and __fields_set__ contains the field
+        if self.cluster_size is None and "cluster_size" in self.__fields_set__:
+            _dict['cluster_size'] = None
+
         return _dict
 
     @classmethod
@@ -140,7 +147,9 @@ class PointReturn(BaseModel):
             "y": obj.get("y"),
             "z": obj.get("z"),
             "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
-            "analysis": obj.get("analysis")
+            "analysis": obj.get("analysis"),
+            "cluster_size": obj.get("cluster_size"),
+            "subpeak": obj.get("subpeak")
         })
         return _obj
 
