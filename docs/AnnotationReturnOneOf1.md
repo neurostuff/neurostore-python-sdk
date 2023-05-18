@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **source** | **str** |  | [optional] 
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
-**notes** | [**List[AnnotationReturnRelationshipsNotesInner]**](AnnotationReturnRelationshipsNotesInner.md) |  | [optional] 
+**notes** | [**AnnotationReturnRelationshipsNotes**](AnnotationReturnRelationshipsNotes.md) |  | [optional] 
 **studyset** | **str** |  | [optional] 
 
 ## Example

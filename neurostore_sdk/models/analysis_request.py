@@ -21,9 +21,10 @@ import json
 
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
-from neurostore_sdk.models.analysis_request_relationships_conditions_inner import AnalysisRequestRelationshipsConditionsInner
-from neurostore_sdk.models.analysis_request_relationships_images_inner import AnalysisRequestRelationshipsImagesInner
-from neurostore_sdk.models.analysis_request_relationships_points_inner import AnalysisRequestRelationshipsPointsInner
+from neurostore_sdk.models.analysis_request_relationships_conditions import AnalysisRequestRelationshipsConditions
+from neurostore_sdk.models.analysis_request_relationships_images import AnalysisRequestRelationshipsImages
+from neurostore_sdk.models.analysis_request_relationships_points import AnalysisRequestRelationshipsPoints
+from neurostore_sdk.models.entity import Entity
 
 class AnalysisRequest(BaseModel):
     """
@@ -33,12 +34,13 @@ class AnalysisRequest(BaseModel):
     description: Optional[StrictStr] = Field(None, description="A long form description of how the contrast was performed")
     weights: Optional[conlist(Union[StrictFloat, StrictInt])] = Field(None, description="Weight applied to each condition, must be the same length as the conditions attribute.")
     study: Optional[StrictStr] = None
-    images: Optional[conlist(AnalysisRequestRelationshipsImagesInner)] = None
-    points: Optional[conlist(AnalysisRequestRelationshipsPointsInner)] = None
-    conditions: Optional[conlist(AnalysisRequestRelationshipsConditionsInner)] = None
+    images: Optional[AnalysisRequestRelationshipsImages] = None
+    points: Optional[AnalysisRequestRelationshipsPoints] = None
+    conditions: Optional[AnalysisRequestRelationshipsConditions] = None
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
-    __properties = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public"]
+    entities: Optional[conlist(Entity)] = None
+    __properties = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities"]
 
     class Config:
         """Pydantic configuration"""
@@ -64,27 +66,22 @@ class AnalysisRequest(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in images (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of images
         if self.images:
-            for _item in self.images:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['images'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in points (list)
-        _items = []
+            _dict['images'] = self.images.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of points
         if self.points:
-            for _item in self.points:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['points'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in conditions (list)
-        _items = []
+            _dict['points'] = self.points.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of conditions
         if self.conditions:
-            for _item in self.conditions:
+            _dict['conditions'] = self.conditions.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
+        _items = []
+        if self.entities:
+            for _item in self.entities:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['conditions'] = _items
+            _dict['entities'] = _items
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -111,11 +108,12 @@ class AnalysisRequest(BaseModel):
             "description": obj.get("description"),
             "weights": obj.get("weights"),
             "study": obj.get("study"),
-            "images": [AnalysisRequestRelationshipsImagesInner.from_dict(_item) for _item in obj.get("images")] if obj.get("images") is not None else None,
-            "points": [AnalysisRequestRelationshipsPointsInner.from_dict(_item) for _item in obj.get("points")] if obj.get("points") is not None else None,
-            "conditions": [AnalysisRequestRelationshipsConditionsInner.from_dict(_item) for _item in obj.get("conditions")] if obj.get("conditions") is not None else None,
+            "images": AnalysisRequestRelationshipsImages.from_dict(obj.get("images")) if obj.get("images") is not None else None,
+            "points": AnalysisRequestRelationshipsPoints.from_dict(obj.get("points")) if obj.get("points") is not None else None,
+            "conditions": AnalysisRequestRelationshipsConditions.from_dict(obj.get("conditions")) if obj.get("conditions") is not None else None,
             "id": obj.get("id"),
-            "public": obj.get("public") if obj.get("public") is not None else True
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None
         })
         return _obj
 

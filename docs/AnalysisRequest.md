@@ -8,11 +8,12 @@ Name | Type | Description | Notes
 **description** | **str** | A long form description of how the contrast was performed | [optional] 
 **weights** | **List[float]** | Weight applied to each condition, must be the same length as the conditions attribute. | [optional] 
 **study** | **str** |  | [optional] 
-**images** | [**List[AnalysisRequestRelationshipsImagesInner]**](AnalysisRequestRelationshipsImagesInner.md) |  | [optional] 
-**points** | [**List[AnalysisRequestRelationshipsPointsInner]**](AnalysisRequestRelationshipsPointsInner.md) |  | [optional] 
-**conditions** | [**List[AnalysisRequestRelationshipsConditionsInner]**](AnalysisRequestRelationshipsConditionsInner.md) |  | [optional] 
+**images** | [**AnalysisRequestRelationshipsImages**](AnalysisRequestRelationshipsImages.md) |  | [optional] 
+**points** | [**AnalysisRequestRelationshipsPoints**](AnalysisRequestRelationshipsPoints.md) |  | [optional] 
+**conditions** | [**AnalysisRequestRelationshipsConditions**](AnalysisRequestRelationshipsConditions.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
+**entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 
 ## Example
 

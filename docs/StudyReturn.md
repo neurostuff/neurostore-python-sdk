@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **source** | **str** |  | [optional] 
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
-**analyses** | [**List[StudyReturnRelationshipsAnalysesInner]**](StudyReturnRelationshipsAnalysesInner.md) |  | [optional] 
+**analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
 **studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
 
 ## Example

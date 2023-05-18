@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**studies** | [**List[StudysetReturnRelationshipsStudiesInner]**](StudysetReturnRelationshipsStudiesInner.md) |  | [optional] 
+**studies** | [**StudysetReturnRelationshipsStudies**](StudysetReturnRelationshipsStudies.md) |  | [optional] 
 
 ## Example
 

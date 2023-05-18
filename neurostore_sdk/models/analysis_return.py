@@ -21,9 +21,10 @@ import json
 from datetime import datetime
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
-from neurostore_sdk.models.analysis_return_relationships_conditions_inner import AnalysisReturnRelationshipsConditionsInner
-from neurostore_sdk.models.analysis_return_relationships_images_inner import AnalysisReturnRelationshipsImagesInner
-from neurostore_sdk.models.analysis_return_relationships_points_inner import AnalysisReturnRelationshipsPointsInner
+from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
+from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
+from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints
+from neurostore_sdk.models.entity import Entity
 
 class AnalysisReturn(BaseModel):
     """
@@ -38,10 +39,11 @@ class AnalysisReturn(BaseModel):
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
     study: Optional[StrictStr] = None
-    images: Optional[conlist(AnalysisReturnRelationshipsImagesInner)] = None
-    points: Optional[conlist(AnalysisReturnRelationshipsPointsInner)] = None
-    conditions: Optional[conlist(AnalysisReturnRelationshipsConditionsInner)] = None
-    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "study", "images", "points", "conditions"]
+    images: Optional[AnalysisReturnRelationshipsImages] = None
+    points: Optional[AnalysisReturnRelationshipsPoints] = None
+    conditions: Optional[AnalysisReturnRelationshipsConditions] = None
+    entities: Optional[conlist(Entity)] = None
+    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "study", "images", "points", "conditions", "entities"]
 
     class Config:
         """Pydantic configuration"""
@@ -70,27 +72,22 @@ class AnalysisReturn(BaseModel):
                             "user",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in images (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of images
         if self.images:
-            for _item in self.images:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['images'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in points (list)
-        _items = []
+            _dict['images'] = self.images.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of points
         if self.points:
-            for _item in self.points:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['points'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in conditions (list)
-        _items = []
+            _dict['points'] = self.points.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of conditions
         if self.conditions:
-            for _item in self.conditions:
+            _dict['conditions'] = self.conditions.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
+        _items = []
+        if self.entities:
+            for _item in self.entities:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['conditions'] = _items
+            _dict['entities'] = _items
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -132,9 +129,10 @@ class AnalysisReturn(BaseModel):
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
             "study": obj.get("study"),
-            "images": [AnalysisReturnRelationshipsImagesInner.from_dict(_item) for _item in obj.get("images")] if obj.get("images") is not None else None,
-            "points": [AnalysisReturnRelationshipsPointsInner.from_dict(_item) for _item in obj.get("points")] if obj.get("points") is not None else None,
-            "conditions": [AnalysisReturnRelationshipsConditionsInner.from_dict(_item) for _item in obj.get("conditions")] if obj.get("conditions") is not None else None
+            "images": AnalysisReturnRelationshipsImages.from_dict(obj.get("images")) if obj.get("images") is not None else None,
+            "points": AnalysisReturnRelationshipsPoints.from_dict(obj.get("points")) if obj.get("points") is not None else None,
+            "conditions": AnalysisReturnRelationshipsConditions.from_dict(obj.get("conditions")) if obj.get("conditions") is not None else None,
+            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None
         })
         return _obj
 

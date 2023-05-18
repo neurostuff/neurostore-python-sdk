@@ -18,32 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
+
 from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
+from pydantic import BaseModel, StrictStr
 
 class Entity(BaseModel):
     """
-    descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
+    WARNING: not currently used. descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
     """
     label: Optional[StrictStr] = None
     level: Optional[StrictStr] = None
     analysis: Optional[StrictStr] = None
-    created_at: Optional[datetime] = Field(None, description="time the resource was created on the database")
-    updated_at: Optional[StrictStr] = Field(None, description="when was the resource last modified/updated.")
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
-    public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
-    __properties = ["label", "level", "analysis", "created_at", "updated_at", "id", "public"]
-
-    @validator('level')
-    def level_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in ('run', 'session', 'subject', 'group', 'meta'):
-            raise ValueError("must be one of enum values ('run', 'session', 'subject', 'group', 'meta')")
-        return value
+    __properties = ["label", "level", "analysis"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,14 +53,22 @@ class Entity(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "created_at",
-                            "updated_at",
                           },
                           exclude_none=True)
-        # set to None if updated_at (nullable) is None
+        # set to None if label (nullable) is None
         # and __fields_set__ contains the field
-        if self.updated_at is None and "updated_at" in self.__fields_set__:
-            _dict['updated_at'] = None
+        if self.label is None and "label" in self.__fields_set__:
+            _dict['label'] = None
+
+        # set to None if level (nullable) is None
+        # and __fields_set__ contains the field
+        if self.level is None and "level" in self.__fields_set__:
+            _dict['level'] = None
+
+        # set to None if analysis (nullable) is None
+        # and __fields_set__ contains the field
+        if self.analysis is None and "analysis" in self.__fields_set__:
+            _dict['analysis'] = None
 
         return _dict
 
@@ -90,11 +84,7 @@ class Entity(BaseModel):
         _obj = Entity.parse_obj({
             "label": obj.get("label"),
             "level": obj.get("level"),
-            "analysis": obj.get("analysis"),
-            "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at"),
-            "id": obj.get("id"),
-            "public": obj.get("public") if obj.get("public") is not None else True
+            "analysis": obj.get("analysis")
         })
         return _obj
 

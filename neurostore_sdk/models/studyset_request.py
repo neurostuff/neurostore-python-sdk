@@ -19,23 +19,34 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, constr
-from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
+from neurostore_sdk.models.studyset_request_relationships_studies import StudysetRequestRelationshipsStudies
 
 class StudysetRequest(BaseModel):
     """
-    
+    StudysetRequest
     """
     name: Optional[StrictStr] = Field(None, description="Descriptive and human readable name of the studyset.")
     description: Optional[StrictStr] = Field(None, description="A longform description of the studyset.")
     publication: Optional[StrictStr] = Field(None, description="The journal/source the studyset is connected to if the studyset was published.")
     doi: Optional[StrictStr] = Field(None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
     pmid: Optional[StrictStr] = Field(None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
-    studies: Optional[conlist(StudysetRequestRelationshipsStudiesInner)] = None
+    studies: Optional[StudysetRequestRelationshipsStudies] = None
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
-    __properties = ["name", "description", "publication", "doi", "pmid", "studies", "id", "public"]
+    level: Optional[StrictStr] = None
+    __properties = ["name", "description", "publication", "doi", "pmid", "studies", "id", "public", "level"]
+
+    @validator('level')
+    def level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('group', 'meta'):
+            raise ValueError("must be one of enum values ('group', 'meta')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -61,13 +72,9 @@ class StudysetRequest(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in studies (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of studies
         if self.studies:
-            for _item in self.studies:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['studies'] = _items
+            _dict['studies'] = self.studies.to_dict()
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -110,9 +117,10 @@ class StudysetRequest(BaseModel):
             "publication": obj.get("publication"),
             "doi": obj.get("doi"),
             "pmid": obj.get("pmid"),
-            "studies": [StudysetRequestRelationshipsStudiesInner.from_dict(_item) for _item in obj.get("studies")] if obj.get("studies") is not None else None,
+            "studies": StudysetRequestRelationshipsStudies.from_dict(obj.get("studies")) if obj.get("studies") is not None else None,
             "id": obj.get("id"),
-            "public": obj.get("public") if obj.get("public") is not None else True
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "level": obj.get("level")
         })
         return _obj
 

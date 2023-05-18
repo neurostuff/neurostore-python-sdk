@@ -19,13 +19,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, constr
-from neurostore_sdk.models.studyset_return_relationships_studies_inner import StudysetReturnRelationshipsStudiesInner
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
+from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
 
 class StudysetReturn(BaseModel):
     """
-    
+    StudysetReturn
     """
     name: Optional[StrictStr] = Field(None, description="Descriptive and human readable name of the studyset.")
     description: Optional[StrictStr] = Field(None, description="A longform description of the studyset.")
@@ -40,8 +40,19 @@ class StudysetReturn(BaseModel):
     source: Optional[StrictStr] = None
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
-    studies: Optional[conlist(StudysetReturnRelationshipsStudiesInner)] = None
-    __properties = ["name", "description", "publication", "doi", "pmid", "created_at", "updated_at", "id", "public", "user", "source", "source_id", "source_updated_at", "studies"]
+    studies: Optional[StudysetReturnRelationshipsStudies] = None
+    level: Optional[StrictStr] = None
+    __properties = ["name", "description", "publication", "doi", "pmid", "created_at", "updated_at", "id", "public", "user", "source", "source_id", "source_updated_at", "studies", "level"]
+
+    @validator('level')
+    def level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('group', 'meta'):
+            raise ValueError("must be one of enum values ('group', 'meta')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -71,13 +82,9 @@ class StudysetReturn(BaseModel):
                             "source_updated_at",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in studies (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of studies
         if self.studies:
-            for _item in self.studies:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['studies'] = _items
+            _dict['studies'] = self.studies.to_dict()
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -153,7 +160,8 @@ class StudysetReturn(BaseModel):
             "source": obj.get("source"),
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),
-            "studies": [StudysetReturnRelationshipsStudiesInner.from_dict(_item) for _item in obj.get("studies")] if obj.get("studies") is not None else None
+            "studies": StudysetReturnRelationshipsStudies.from_dict(obj.get("studies")) if obj.get("studies") is not None else None,
+            "level": obj.get("level")
         })
         return _obj
 

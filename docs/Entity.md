@@ -1,6 +1,6 @@
 # Entity
 
-descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
+WARNING: not currently used. descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,10 +8,6 @@ Name | Type | Description | Notes
 **label** | **str** |  | [optional] 
 **level** | **str** |  | [optional] 
 **analysis** | **str** |  | [optional] 
-**created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
-**id** | **str** | short UUID specifying the location of this resource | [optional] 
-**public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 
 ## Example
 

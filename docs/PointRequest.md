@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **analysis** | **str** |  | [optional] 
+**cluster_size** | **float** | size of the cluster in cubic millimeters | [optional] 
+**subpeak** | **bool** | whether the reported peak is the max-peak statistic or a sub-maxmimal peak. | [optional] 
 
 ## Example
 

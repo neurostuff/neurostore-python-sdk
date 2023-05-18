@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, conlist
-from neurostore_sdk.models.study_request_relationships_analyses_inner import StudyRequestRelationshipsAnalysesInner
+from typing import Optional
+from pydantic import BaseModel
+from neurostore_sdk.models.study_request_relationships_analyses import StudyRequestRelationshipsAnalyses
 
 class StudyRequestRelationships(BaseModel):
     """
     StudyRequestRelationships
     """
-    analyses: Optional[conlist(StudyRequestRelationshipsAnalysesInner)] = None
+    analyses: Optional[StudyRequestRelationshipsAnalyses] = None
     __properties = ["analyses"]
 
     class Config:
@@ -54,13 +54,9 @@ class StudyRequestRelationships(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in analyses (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of analyses
         if self.analyses:
-            for _item in self.analyses:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['analyses'] = _items
+            _dict['analyses'] = self.analyses.to_dict()
         return _dict
 
     @classmethod
@@ -73,7 +69,7 @@ class StudyRequestRelationships(BaseModel):
             return StudyRequestRelationships.parse_obj(obj)
 
         _obj = StudyRequestRelationships.parse_obj({
-            "analyses": [StudyRequestRelationshipsAnalysesInner.from_dict(_item) for _item in obj.get("analyses")] if obj.get("analyses") is not None else None
+            "analyses": StudyRequestRelationshipsAnalyses.from_dict(obj.get("analyses")) if obj.get("analyses") is not None else None
         })
         return _obj
 

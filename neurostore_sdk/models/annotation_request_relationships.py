@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, conlist
-from neurostore_sdk.models.annotation_request_relationships_notes_inner import AnnotationRequestRelationshipsNotesInner
+from typing import Optional
+from pydantic import BaseModel
+from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes
 
 class AnnotationRequestRelationships(BaseModel):
     """
     AnnotationRequestRelationships
     """
-    notes: Optional[conlist(AnnotationRequestRelationshipsNotesInner)] = None
+    notes: Optional[AnnotationRequestRelationshipsNotes] = None
     __properties = ["notes"]
 
     class Config:
@@ -54,13 +54,9 @@ class AnnotationRequestRelationships(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in notes (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of notes
         if self.notes:
-            for _item in self.notes:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['notes'] = _items
+            _dict['notes'] = self.notes.to_dict()
         return _dict
 
     @classmethod
@@ -73,7 +69,7 @@ class AnnotationRequestRelationships(BaseModel):
             return AnnotationRequestRelationships.parse_obj(obj)
 
         _obj = AnnotationRequestRelationships.parse_obj({
-            "notes": [AnnotationRequestRelationshipsNotesInner.from_dict(_item) for _item in obj.get("notes")] if obj.get("notes") is not None else None
+            "notes": AnnotationRequestRelationshipsNotes.from_dict(obj.get("notes")) if obj.get("notes") is not None else None
         })
         return _obj
 

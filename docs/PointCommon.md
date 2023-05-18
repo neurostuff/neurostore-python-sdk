@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis** | **str** |  | [optional] 
+**cluster_size** | **float** | size of the cluster in cubic millimeters | [optional] 
+**subpeak** | **bool** | whether the reported peak is the max-peak statistic or a sub-maxmimal peak. | [optional] 
 
 ## Example
 

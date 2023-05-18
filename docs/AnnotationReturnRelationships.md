@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notes** | [**List[AnnotationReturnRelationshipsNotesInner]**](AnnotationReturnRelationshipsNotesInner.md) |  | [optional] 
+**notes** | [**AnnotationReturnRelationshipsNotes**](AnnotationReturnRelationshipsNotes.md) |  | [optional] 
 
 ## Example
 

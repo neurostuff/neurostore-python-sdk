@@ -13,9 +13,10 @@ Name | Type | Description | Notes
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 
 **study** | **str** |  | [optional] 
-**images** | [**List[AnalysisReturnRelationshipsImagesInner]**](AnalysisReturnRelationshipsImagesInner.md) |  | [optional] 
-**points** | [**List[AnalysisReturnRelationshipsPointsInner]**](AnalysisReturnRelationshipsPointsInner.md) |  | [optional] 
-**conditions** | [**List[AnalysisReturnRelationshipsConditionsInner]**](AnalysisReturnRelationshipsConditionsInner.md) |  | [optional] 
+**images** | [**AnalysisReturnRelationshipsImages**](AnalysisReturnRelationshipsImages.md) |  | [optional] 
+**points** | [**AnalysisReturnRelationshipsPoints**](AnalysisReturnRelationshipsPoints.md) |  | [optional] 
+**conditions** | [**AnalysisReturnRelationshipsConditions**](AnalysisReturnRelationshipsConditions.md) |  | [optional] 
+**entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 
 ## Example
 

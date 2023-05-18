@@ -1,7 +1,6 @@
 # StudysetReturn
 
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -18,7 +17,8 @@ Name | Type | Description | Notes
 **source** | **str** |  | [optional] 
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
-**studies** | [**List[StudysetReturnRelationshipsStudiesInner]**](StudysetReturnRelationshipsStudiesInner.md) |  | [optional] 
+**studies** | [**StudysetReturnRelationshipsStudies**](StudysetReturnRelationshipsStudies.md) |  | [optional] 
+**level** | **str** |  | [optional] 
 
 ## Example
 

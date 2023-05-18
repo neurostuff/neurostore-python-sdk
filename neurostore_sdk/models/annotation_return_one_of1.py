@@ -19,9 +19,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, constr
-from neurostore_sdk.models.annotation_return_relationships_notes_inner import AnnotationReturnRelationshipsNotesInner
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, constr
+from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
 
 class AnnotationReturnOneOf1(BaseModel):
     """
@@ -39,7 +39,7 @@ class AnnotationReturnOneOf1(BaseModel):
     source: Optional[StrictStr] = None
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
-    notes: Optional[conlist(AnnotationReturnRelationshipsNotesInner)] = None
+    notes: Optional[AnnotationReturnRelationshipsNotes] = None
     studyset: Optional[StrictStr] = None
     __properties = ["name", "description", "metadata", "note_keys", "created_at", "updated_at", "id", "public", "user", "source", "source_id", "source_updated_at", "notes", "studyset"]
 
@@ -71,13 +71,9 @@ class AnnotationReturnOneOf1(BaseModel):
                             "source_updated_at",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in notes (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of notes
         if self.notes:
-            for _item in self.notes:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['notes'] = _items
+            _dict['notes'] = self.notes.to_dict()
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -147,7 +143,7 @@ class AnnotationReturnOneOf1(BaseModel):
             "source": obj.get("source"),
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),
-            "notes": [AnnotationReturnRelationshipsNotesInner.from_dict(_item) for _item in obj.get("notes")] if obj.get("notes") is not None else None,
+            "notes": AnnotationReturnRelationshipsNotes.from_dict(obj.get("notes")) if obj.get("notes") is not None else None,
             "studyset": obj.get("studyset")
         })
         return _obj

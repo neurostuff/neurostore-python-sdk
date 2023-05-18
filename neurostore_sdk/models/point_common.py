@@ -19,15 +19,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr
+from typing import Optional, Union
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
 
 class PointCommon(BaseModel):
     """
     PointCommon
     """
     analysis: Optional[StrictStr] = None
-    __properties = ["analysis"]
+    cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
+    subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
+    __properties = ["analysis", "cluster_size", "subpeak"]
 
     class Config:
         """Pydantic configuration"""
@@ -53,6 +55,11 @@ class PointCommon(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # set to None if cluster_size (nullable) is None
+        # and __fields_set__ contains the field
+        if self.cluster_size is None and "cluster_size" in self.__fields_set__:
+            _dict['cluster_size'] = None
+
         return _dict
 
     @classmethod
@@ -65,7 +72,9 @@ class PointCommon(BaseModel):
             return PointCommon.parse_obj(obj)
 
         _obj = PointCommon.parse_obj({
-            "analysis": obj.get("analysis")
+            "analysis": obj.get("analysis"),
+            "cluster_size": obj.get("cluster_size"),
+            "subpeak": obj.get("subpeak")
         })
         return _obj
 
