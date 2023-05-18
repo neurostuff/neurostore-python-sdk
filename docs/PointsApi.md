@@ -20,13 +20,14 @@ list points in database
 
 ### Example
 
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import points_api
-from neurostore_sdk.model.point_list import PointList
+from neurostore_sdk.models.point_list import PointList
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -35,16 +36,16 @@ configuration = neurostore_sdk.Configuration(
 
 
 # Enter a context with an instance of the API client
-with neurostore_sdk.ApiClient() as api_client:
+with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = points_api.PointsApi(api_client)
+    api_instance = neurostore_sdk.PointsApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Get Points
         api_response = api_instance.points_get()
+        print("The response of PointsApi->points_get:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling PointsApi->points_get: %s\n" % e)
 ```
 
@@ -65,9 +66,7 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -84,12 +83,13 @@ delete a point
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import points_api
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -103,20 +103,19 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = points_api.PointsApi(api_client)
-    id = "id_example" # str | 
+    api_instance = neurostore_sdk.PointsApi(api_client)
+    id = 'id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
         # DELETE a point
         api_instance.points_id_delete(id)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling PointsApi->points_id_delete: %s\n" % e)
 ```
 
@@ -125,7 +124,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
+ **id** | **str**|  | 
 
 ### Return type
 
@@ -140,9 +139,7 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -158,13 +155,14 @@ Information about a particular MRI coordinate
 
 ### Example
 
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import points_api
-from neurostore_sdk.model.point_return import PointReturn
+from neurostore_sdk.models.point_return import PointReturn
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -173,17 +171,17 @@ configuration = neurostore_sdk.Configuration(
 
 
 # Enter a context with an instance of the API client
-with neurostore_sdk.ApiClient() as api_client:
+with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = points_api.PointsApi(api_client)
-    id = "id_example" # str | 
+    api_instance = neurostore_sdk.PointsApi(api_client)
+    id = 'id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
         # GET a point
         api_response = api_instance.points_id_get(id)
+        print("The response of PointsApi->points_id_get:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling PointsApi->points_id_get: %s\n" % e)
 ```
 
@@ -192,7 +190,7 @@ with neurostore_sdk.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
+ **id** | **str**|  | 
 
 ### Return type
 
@@ -207,9 +205,7 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -218,7 +214,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **points_id_put**
-> PointReturn points_id_put(id)
+> PointReturn points_id_put(id, point_request=point_request)
 
 PUT/update a point
 
@@ -227,15 +223,15 @@ Update a particular MRI coordinate.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import points_api
-from neurostore_sdk.model.point_return import PointReturn
-from neurostore_sdk.model.point_request import PointRequest
-from neurostore_sdk.model.inline_response422 import InlineResponse422
+from neurostore_sdk.models.point_request import PointRequest
+from neurostore_sdk.models.point_return import PointReturn
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -249,31 +245,22 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = points_api.PointsApi(api_client)
-    id = "id_example" # str | 
-    point_request = PointRequest(None) # PointRequest |  (optional)
+    api_instance = neurostore_sdk.PointsApi(api_client)
+    id = 'id_example' # str | 
+    point_request = neurostore_sdk.PointRequest() # PointRequest |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # PUT/update a point
-        api_response = api_instance.points_id_put(id)
-        pprint(api_response)
-    except neurostore_sdk.ApiException as e:
-        print("Exception when calling PointsApi->points_id_put: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # PUT/update a point
         api_response = api_instance.points_id_put(id, point_request=point_request)
+        print("The response of PointsApi->points_id_put:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling PointsApi->points_id_put: %s\n" % e)
 ```
 
@@ -282,8 +269,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **point_request** | [**PointRequest**](PointRequest.md)|  | [optional]
+ **id** | **str**|  | 
+ **point_request** | [**PointRequest**](PointRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -298,9 +285,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -309,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **points_post**
-> PointReturn points_post()
+> PointReturn points_post(point_request=point_request)
 
 POST Points
 
@@ -318,14 +303,15 @@ add a point to an analysis
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import points_api
-from neurostore_sdk.model.point_return import PointReturn
-from neurostore_sdk.model.point_request import PointRequest
+from neurostore_sdk.models.point_request import PointRequest
+from neurostore_sdk.models.point_return import PointReturn
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -339,22 +325,21 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = points_api.PointsApi(api_client)
-    point_request = PointRequest(None) # PointRequest |  (optional)
+    api_instance = neurostore_sdk.PointsApi(api_client)
+    point_request = neurostore_sdk.PointRequest() # PointRequest |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # POST Points
         api_response = api_instance.points_post(point_request=point_request)
+        print("The response of PointsApi->points_post:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling PointsApi->points_post: %s\n" % e)
 ```
 
@@ -363,7 +348,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **point_request** | [**PointRequest**](PointRequest.md)|  | [optional]
+ **point_request** | [**PointRequest**](PointRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -378,9 +363,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

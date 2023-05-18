@@ -4,14 +4,30 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image** | **str, none_type** |  | [optional] 
-**value** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**image** | **str** |  | [optional] 
+**value** | [**PointRelationshipsValue**](PointRelationshipsValue.md) |  | [optional] 
 **x** | **float** |  | [optional] 
 **y** | **float** |  | [optional] 
 **z** | **float** |  | [optional] 
-**entities** | [**[Entity]**](Entity.md) |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 
+## Example
+
+```python
+from neurostore_sdk.models.point_relationships import PointRelationships
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of PointRelationships from a JSON string
+point_relationships_instance = PointRelationships.from_json(json)
+# print the JSON string representation of the object
+print PointRelationships.to_json()
+
+# convert the object into a dict
+point_relationships_dict = point_relationships_instance.to_dict()
+# create an instance of PointRelationships from a dict
+point_relationships_form_dict = point_relationships.from_dict(point_relationships_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

@@ -9,11 +9,27 @@ Name | Type | Description | Notes
 **level** | **str** |  | [optional] 
 **analysis** | **str** |  | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str, none_type** | when was the resource last modified/updated. | [optional] [readonly] 
+**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
-**public** | **bool** | whether the resource is listed in public searches or not | [optional]  if omitted the server will use the default value of True
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 
+## Example
+
+```python
+from neurostore_sdk.models.entity import Entity
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Entity from a JSON string
+entity_instance = Entity.from_json(json)
+# print the JSON string representation of the object
+print Entity.to_json()
+
+# convert the object into a dict
+entity_dict = entity_instance.to_dict()
+# create an instance of Entity from a dict
+entity_form_dict = entity.from_dict(entity_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

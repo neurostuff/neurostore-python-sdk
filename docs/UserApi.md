@@ -20,13 +20,14 @@ get list of users
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import user_api
-from neurostore_sdk.model.user_list import UserList
+from neurostore_sdk.models.user_list import UserList
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -40,20 +41,20 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = user_api.UserApi(api_client)
+    api_instance = neurostore_sdk.UserApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # Your GET endpoint
         api_response = api_instance.users_get()
+        print("The response of UserApi->users_get:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling UserApi->users_get: %s\n" % e)
 ```
 
@@ -74,9 +75,7 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -92,13 +91,14 @@ get an individual user
 
 ### Example
 
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import user_api
-from neurostore_sdk.model.user import User
+from neurostore_sdk.models.user import User
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -107,17 +107,17 @@ configuration = neurostore_sdk.Configuration(
 
 
 # Enter a context with an instance of the API client
-with neurostore_sdk.ApiClient() as api_client:
+with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = user_api.UserApi(api_client)
-    id = "id_example" # str | 
+    api_instance = neurostore_sdk.UserApi(api_client)
+    id = 'id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Individual User Profile
         api_response = api_instance.users_id_get(id)
+        print("The response of UserApi->users_id_get:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling UserApi->users_id_get: %s\n" % e)
 ```
 
@@ -126,7 +126,7 @@ with neurostore_sdk.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
+ **id** | **str**|  | 
 
 ### Return type
 
@@ -141,9 +141,7 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -151,7 +149,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **users_id_put**
-> User users_id_put(id)
+> User users_id_put(id, user=user)
 
 Update Individual Profile
 
@@ -160,13 +158,14 @@ update an individual user
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import user_api
-from neurostore_sdk.model.user import User
+from neurostore_sdk.models.user import User
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -180,34 +179,22 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = user_api.UserApi(api_client)
-    id = "id_example" # str | 
-    user = User(
-        name="name_example",
-        neuroid="neuroid_example",
-    ) # User |  (optional)
+    api_instance = neurostore_sdk.UserApi(api_client)
+    id = 'id_example' # str | 
+    user = neurostore_sdk.User() # User |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Update Individual Profile
-        api_response = api_instance.users_id_put(id)
-        pprint(api_response)
-    except neurostore_sdk.ApiException as e:
-        print("Exception when calling UserApi->users_id_put: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Update Individual Profile
         api_response = api_instance.users_id_put(id, user=user)
+        print("The response of UserApi->users_id_put:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling UserApi->users_id_put: %s\n" % e)
 ```
 
@@ -216,8 +203,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **user** | [**User**](User.md)|  | [optional]
+ **id** | **str**|  | 
+ **user** | [**User**](User.md)|  | [optional] 
 
 ### Return type
 
@@ -232,9 +219,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -242,7 +227,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **users_post**
-> User users_post()
+> User users_post(user=user)
 
 
 
@@ -251,13 +236,14 @@ create a user
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import user_api
-from neurostore_sdk.model.user import User
+from neurostore_sdk.models.user import User
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -271,24 +257,21 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = user_api.UserApi(api_client)
-    user = User(
-        name="name_example",
-        neuroid="neuroid_example",
-    ) # User |  (optional)
+    api_instance = neurostore_sdk.UserApi(api_client)
+    user = neurostore_sdk.User() # User |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
+        # 
         api_response = api_instance.users_post(user=user)
+        print("The response of UserApi->users_post:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling UserApi->users_post: %s\n" % e)
 ```
 
@@ -297,7 +280,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)|  | [optional]
+ **user** | [**User**](User.md)|  | [optional] 
 
 ### Return type
 
@@ -312,9 +295,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

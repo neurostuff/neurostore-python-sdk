@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studies_get**
-> StudyList studies_get()
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner)
 
 GET a list of studies
 
@@ -21,13 +21,14 @@ List studies
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import studies_api
-from neurostore_sdk.model.study_list import StudyList
+from neurostore_sdk.models.study_list import StudyList
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -41,36 +42,35 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = studies_api.StudiesApi(api_client)
-    search = "imagin" # str | search for entries that contain the substring (optional)
-    sort = "created_at" # str | Parameter to sort results on (optional) if omitted the server will use the default value of "created_at"
-    page = 0 # int | page of results (optional)
+    api_instance = neurostore_sdk.StudiesApi(api_client)
+    search = 'imagin' # str | search for entries that contain the substring (optional)
+    sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
+    page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
-    page_size = 1 # int | number of results to show on a page (optional)
+    page_size = 56 # int | number of results to show on a page (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
-    name = "name_example" # str | search the name field for a term (optional)
-    description = "description_example" # str | search description field for a term (optional)
-    source_id = "1234567890ab" # str | id of the resource you are either filtering/copying on (optional)
-    unique = None # bool, date, datetime, dict, float, int, list, str, none_type | whether to list clones with originals (optional)
-    source = "neurostore" # str | the source of the resource you would like to filter/copy from (optional) if omitted the server will use the default value of "neurostore"
-    authors = "authors_example" # str | search authors (optional)
-    user_id = "user_id_example" # str | user id you want to filter by (optional)
-    data_type = "coordinate" # str | whether searching for studies that contain coordinates, images, or both (optional)
-    studyset_owner = "studyset_owner_example" # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
+    name = 'name_example' # str | search the name field for a term (optional)
+    description = 'description_example' # str | search description field for a term (optional)
+    source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
+    unique = None # object | whether to list clones with originals (optional)
+    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    authors = 'authors_example' # str | search authors (optional)
+    user_id = 'user_id_example' # str | user id you want to filter by (optional)
+    data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
+    studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # GET a list of studies
         api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner)
+        print("The response of StudiesApi->studies_get:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling StudiesApi->studies_get: %s\n" % e)
 ```
 
@@ -79,21 +79,21 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| search for entries that contain the substring | [optional]
- **sort** | **str**| Parameter to sort results on | [optional] if omitted the server will use the default value of "created_at"
- **page** | **int**| page of results | [optional]
- **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional]
- **page_size** | **int**| number of results to show on a page | [optional]
- **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional]
- **name** | **str**| search the name field for a term | [optional]
- **description** | **str**| search description field for a term | [optional]
- **source_id** | **str**| id of the resource you are either filtering/copying on | [optional]
- **unique** | **bool, date, datetime, dict, float, int, list, str, none_type**| whether to list clones with originals | [optional]
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] if omitted the server will use the default value of "neurostore"
- **authors** | **str**| search authors | [optional]
- **user_id** | **str**| user id you want to filter by | [optional]
- **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional]
- **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional]
+ **search** | **str**| search for entries that contain the substring | [optional] 
+ **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
+ **page** | **int**| page of results | [optional] 
+ **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
+ **page_size** | **int**| number of results to show on a page | [optional] 
+ **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
+ **name** | **str**| search the name field for a term | [optional] 
+ **description** | **str**| search description field for a term | [optional] 
+ **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
+ **unique** | [**object**](.md)| whether to list clones with originals | [optional] 
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **authors** | **str**| search authors | [optional] 
+ **user_id** | **str**| user id you want to filter by | [optional] 
+ **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
+ **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
 
 ### Return type
 
@@ -108,9 +108,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -127,12 +125,13 @@ delete a study
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import studies_api
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -146,20 +145,19 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = studies_api.StudiesApi(api_client)
-    id = "id_example" # str | 
+    api_instance = neurostore_sdk.StudiesApi(api_client)
+    id = 'id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
         # DELETE a study
         api_instance.studies_id_delete(id)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling StudiesApi->studies_id_delete: %s\n" % e)
 ```
 
@@ -168,7 +166,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
+ **id** | **str**|  | 
 
 ### Return type
 
@@ -183,9 +181,7 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -193,7 +189,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_id_get**
-> StudyReturn studies_id_get(id)
+> StudyReturn studies_id_get(id, nested=nested, studyset_owner=studyset_owner)
 
 GET a study
 
@@ -201,14 +197,14 @@ Get a study.
 
 ### Example
 
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import studies_api
-from neurostore_sdk.model.study_return import StudyReturn
-from neurostore_sdk.model.inline_response404 import InlineResponse404
+from neurostore_sdk.models.study_return import StudyReturn
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -217,28 +213,19 @@ configuration = neurostore_sdk.Configuration(
 
 
 # Enter a context with an instance of the API client
-with neurostore_sdk.ApiClient() as api_client:
+with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = studies_api.StudiesApi(api_client)
-    id = "id_example" # str | 
+    api_instance = neurostore_sdk.StudiesApi(api_client)
+    id = 'id_example' # str | 
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
-    studyset_owner = "studyset_owner_example" # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
+    studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # GET a study
-        api_response = api_instance.studies_id_get(id)
-        pprint(api_response)
-    except neurostore_sdk.ApiException as e:
-        print("Exception when calling StudiesApi->studies_id_get: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # GET a study
         api_response = api_instance.studies_id_get(id, nested=nested, studyset_owner=studyset_owner)
+        print("The response of StudiesApi->studies_id_get:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling StudiesApi->studies_id_get: %s\n" % e)
 ```
 
@@ -247,9 +234,9 @@ with neurostore_sdk.ApiClient() as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional]
- **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional]
+ **id** | **str**|  | 
+ **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
+ **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
 
 ### Return type
 
@@ -264,9 +251,7 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Study Found |  -  |
@@ -275,7 +260,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_id_put**
-> StudyReturn studies_id_put(id)
+> StudyReturn studies_id_put(id, study_request=study_request)
 
 PUT/update a study
 
@@ -284,15 +269,15 @@ Update a study.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import studies_api
-from neurostore_sdk.model.study_request import StudyRequest
-from neurostore_sdk.model.study_return import StudyReturn
-from neurostore_sdk.model.inline_response422 import InlineResponse422
+from neurostore_sdk.models.study_request import StudyRequest
+from neurostore_sdk.models.study_return import StudyReturn
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -306,31 +291,22 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = studies_api.StudiesApi(api_client)
-    id = "id_example" # str | 
-    study_request = StudyRequest(None) # StudyRequest |  (optional)
+    api_instance = neurostore_sdk.StudiesApi(api_client)
+    id = 'id_example' # str | 
+    study_request = neurostore_sdk.StudyRequest() # StudyRequest |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # PUT/update a study
-        api_response = api_instance.studies_id_put(id)
-        pprint(api_response)
-    except neurostore_sdk.ApiException as e:
-        print("Exception when calling StudiesApi->studies_id_put: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # PUT/update a study
         api_response = api_instance.studies_id_put(id, study_request=study_request)
+        print("The response of StudiesApi->studies_id_put:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling StudiesApi->studies_id_put: %s\n" % e)
 ```
 
@@ -339,8 +315,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional]
+ **id** | **str**|  | 
+ **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -355,9 +331,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -366,7 +340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_post**
-> StudyReturn studies_post()
+> StudyReturn studies_post(source=source, source_id=source_id, study_request=study_request)
 
 POST/create a study
 
@@ -375,14 +349,15 @@ Create a study
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
-
 ```python
 import time
+import os
 import neurostore_sdk
-from neurostore_sdk.api import studies_api
-from neurostore_sdk.model.study_request import StudyRequest
-from neurostore_sdk.model.study_return import StudyReturn
+from neurostore_sdk.models.study_request import StudyRequest
+from neurostore_sdk.models.study_return import StudyReturn
+from neurostore_sdk.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:80/api
 # See configuration.py for a list of all supported configuration parameters.
 configuration = neurostore_sdk.Configuration(
@@ -396,24 +371,23 @@ configuration = neurostore_sdk.Configuration(
 
 # Configure Bearer authorization: JSON-Web-Token
 configuration = neurostore_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = studies_api.StudiesApi(api_client)
-    source = "neurostore" # str | the source of the resource you would like to filter/copy from (optional) if omitted the server will use the default value of "neurostore"
-    source_id = "1234567890ab" # str | id of the resource you are either filtering/copying on (optional)
-    study_request = StudyRequest(None) # StudyRequest |  (optional)
+    api_instance = neurostore_sdk.StudiesApi(api_client)
+    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
+    study_request = neurostore_sdk.StudyRequest() # StudyRequest |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # POST/create a study
         api_response = api_instance.studies_post(source=source, source_id=source_id, study_request=study_request)
+        print("The response of StudiesApi->studies_post:\n")
         pprint(api_response)
-    except neurostore_sdk.ApiException as e:
+    except Exception as e:
         print("Exception when calling StudiesApi->studies_post: %s\n" % e)
 ```
 
@@ -422,9 +396,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] if omitted the server will use the default value of "neurostore"
- **source_id** | **str**| id of the resource you are either filtering/copying on | [optional]
- **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
+ **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -439,9 +413,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

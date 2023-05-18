@@ -4,15 +4,31 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str, none_type** | Name of the condition being applied in the contrast, either psychological, pharmacological, or group based. | [optional] 
-**description** | **str, none_type** | Long form description of how the condition is operationalized and/or specific meaning. | [optional] 
+**name** | **str** | Name of the condition being applied in the contrast, either psychological, pharmacological, or group based. | [optional] 
+**description** | **str** | Long form description of how the condition is operationalized and/or specific meaning. | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str, none_type** | when was the resource last modified/updated. | [optional] [readonly] 
+**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
-**public** | **bool** | whether the resource is listed in public searches or not | [optional]  if omitted the server will use the default value of True
-**user** | **str, none_type** | who owns the resource | [optional] [readonly] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
+**user** | **str** | who owns the resource | [optional] [readonly] 
 
+## Example
+
+```python
+from neurostore_sdk.models.condition_return import ConditionReturn
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ConditionReturn from a JSON string
+condition_return_instance = ConditionReturn.from_json(json)
+# print the JSON string representation of the object
+print ConditionReturn.to_json()
+
+# convert the object into a dict
+condition_return_dict = condition_return_instance.to_dict()
+# create an instance of ConditionReturn from a dict
+condition_return_form_dict = condition_return.from_dict(condition_return_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
