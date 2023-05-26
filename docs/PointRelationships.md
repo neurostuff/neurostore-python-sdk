@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **image** | **str** |  | [optional] 
-**value** | [**PointRelationshipsValue**](PointRelationshipsValue.md) |  | [optional] 
+**values** | [**PointRelationshipsValues**](PointRelationshipsValues.md) |  | [optional] 
 **x** | **float** |  | [optional] 
 **y** | **float** |  | [optional] 
 **z** | **float** |  | [optional] 

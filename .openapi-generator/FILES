@@ -57,7 +57,7 @@ docs/PointBase.md
 docs/PointCommon.md
 docs/PointList.md
 docs/PointRelationships.md
-docs/PointRelationshipsValue.md
+docs/PointRelationshipsValues.md
 docs/PointRequest.md
 docs/PointReturn.md
 docs/PointValue.md
@@ -161,7 +161,7 @@ neurostore_sdk/models/point_base.py
 neurostore_sdk/models/point_common.py
 neurostore_sdk/models/point_list.py
 neurostore_sdk/models/point_relationships.py
-neurostore_sdk/models/point_relationships_value.py
+neurostore_sdk/models/point_relationships_values.py
 neurostore_sdk/models/point_request.py
 neurostore_sdk/models/point_return.py
 neurostore_sdk/models/point_value.py
@@ -200,4 +200,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_point_relationships_values.py
 tox.ini
