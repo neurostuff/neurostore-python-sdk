@@ -104,6 +104,11 @@ class PointRequest(BaseModel):
         if self.cluster_size is None and "cluster_size" in self.__fields_set__:
             _dict['cluster_size'] = None
 
+        # set to None if subpeak (nullable) is None
+        # and __fields_set__ contains the field
+        if self.subpeak is None and "subpeak" in self.__fields_set__:
+            _dict['subpeak'] = None
+
         return _dict
 
     @classmethod
