@@ -32,7 +32,7 @@ class PointRelationshipsValues(BaseModel):
     PointRelationshipsValues
     """
     # data type: List[PointValue]
-    oneof_schema_1_validator: Optional[conlist(PointValue)] = None
+    oneof_schema_1_validator: Optional[conlist(PointValue, min_items=1)] = None
     # data type: List[str]
     oneof_schema_2_validator: Optional[conlist(StrictStr)] = None
     actual_instance: Any
