@@ -65,7 +65,7 @@ from neurostore_sdk.models.point_base import PointBase
 from neurostore_sdk.models.point_common import PointCommon
 from neurostore_sdk.models.point_list import PointList
 from neurostore_sdk.models.point_relationships import PointRelationships
-from neurostore_sdk.models.point_relationships_value import PointRelationshipsValue
+from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 from neurostore_sdk.models.point_request import PointRequest
 from neurostore_sdk.models.point_return import PointReturn
 from neurostore_sdk.models.point_value import PointValue

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 
 **image** | **str** |  | [optional] 
-**value** | [**PointRelationshipsValue**](PointRelationshipsValue.md) |  | [optional] 
+**values** | [**PointRelationshipsValues**](PointRelationshipsValues.md) |  | [optional] 
 **x** | **float** |  | [optional] 
 **y** | **float** |  | [optional] 
 **z** | **float** |  | [optional] 

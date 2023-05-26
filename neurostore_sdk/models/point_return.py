@@ -22,7 +22,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
 from neurostore_sdk.models.entity import Entity
-from neurostore_sdk.models.point_relationships_value import PointRelationshipsValue
+from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 
 class PointReturn(BaseModel):
     """
@@ -38,7 +38,7 @@ class PointReturn(BaseModel):
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
     image: Optional[StrictStr] = None
-    value: Optional[PointRelationshipsValue] = None
+    values: Optional[PointRelationshipsValues] = None
     x: Optional[Union[StrictFloat, StrictInt]] = None
     y: Optional[Union[StrictFloat, StrictInt]] = None
     z: Optional[Union[StrictFloat, StrictInt]] = None
@@ -46,7 +46,7 @@ class PointReturn(BaseModel):
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
-    __properties = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "image", "value", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak"]
+    __properties = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "image", "values", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak"]
 
     class Config:
         """Pydantic configuration"""
@@ -75,9 +75,9 @@ class PointReturn(BaseModel):
                             "user",
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of values
+        if self.values:
+            _dict['values'] = self.values.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
         if self.entities:
@@ -147,7 +147,7 @@ class PointReturn(BaseModel):
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
             "image": obj.get("image"),
-            "value": PointRelationshipsValue.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "values": PointRelationshipsValues.from_dict(obj.get("values")) if obj.get("values") is not None else None,
             "x": obj.get("x"),
             "y": obj.get("y"),
             "z": obj.get("z"),

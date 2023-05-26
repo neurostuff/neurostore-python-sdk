@@ -22,7 +22,7 @@ import json
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
 from neurostore_sdk.models.entity import Entity
-from neurostore_sdk.models.point_relationships_value import PointRelationshipsValue
+from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 
 class PointRequest(BaseModel):
     """
@@ -33,7 +33,7 @@ class PointRequest(BaseModel):
     kind: Optional[StrictStr] = Field(None, description="Method of how point was derived (e.g., center of mass)")
     label_id: Optional[StrictStr] = Field(None, description="If the point is associated with an image, this is the value the point takes in that image.")
     image: Optional[StrictStr] = None
-    value: Optional[PointRelationshipsValue] = None
+    values: Optional[PointRelationshipsValues] = None
     x: Optional[Union[StrictFloat, StrictInt]] = None
     y: Optional[Union[StrictFloat, StrictInt]] = None
     z: Optional[Union[StrictFloat, StrictInt]] = None
@@ -43,7 +43,7 @@ class PointRequest(BaseModel):
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
-    __properties = ["coordinates", "space", "kind", "label_id", "image", "value", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak"]
+    __properties = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,9 +69,9 @@ class PointRequest(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of values
+        if self.values:
+            _dict['values'] = self.values.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
         if self.entities:
@@ -126,7 +126,7 @@ class PointRequest(BaseModel):
             "kind": obj.get("kind"),
             "label_id": obj.get("label_id"),
             "image": obj.get("image"),
-            "value": PointRelationshipsValue.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "values": PointRelationshipsValues.from_dict(obj.get("values")) if obj.get("values") is not None else None,
             "x": obj.get("x"),
             "y": obj.get("y"),
             "z": obj.get("z"),

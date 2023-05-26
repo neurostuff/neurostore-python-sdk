@@ -22,19 +22,19 @@ import json
 from typing import List, Optional, Union
 from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr, conlist
 from neurostore_sdk.models.entity import Entity
-from neurostore_sdk.models.point_relationships_value import PointRelationshipsValue
+from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 
 class PointRelationships(BaseModel):
     """
     PointRelationships
     """
     image: Optional[StrictStr] = None
-    value: Optional[PointRelationshipsValue] = None
+    values: Optional[PointRelationshipsValues] = None
     x: Optional[Union[StrictFloat, StrictInt]] = None
     y: Optional[Union[StrictFloat, StrictInt]] = None
     z: Optional[Union[StrictFloat, StrictInt]] = None
     entities: Optional[conlist(Entity)] = None
-    __properties = ["image", "value", "x", "y", "z", "entities"]
+    __properties = ["image", "values", "x", "y", "z", "entities"]
 
     class Config:
         """Pydantic configuration"""
@@ -60,9 +60,9 @@ class PointRelationships(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of values
+        if self.values:
+            _dict['values'] = self.values.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
         if self.entities:
@@ -88,7 +88,7 @@ class PointRelationships(BaseModel):
 
         _obj = PointRelationships.parse_obj({
             "image": obj.get("image"),
-            "value": PointRelationshipsValue.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "values": PointRelationshipsValues.from_dict(obj.get("values")) if obj.get("values") is not None else None,
             "x": obj.get("x"),
             "y": obj.get("y"),
             "z": obj.get("z"),

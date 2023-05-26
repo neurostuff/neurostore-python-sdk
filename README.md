@@ -220,7 +220,7 @@ Class | Method | HTTP request | Description
  - [PointCommon](docs/PointCommon.md)
  - [PointList](docs/PointList.md)
  - [PointRelationships](docs/PointRelationships.md)
- - [PointRelationshipsValue](docs/PointRelationshipsValue.md)
+ - [PointRelationshipsValues](docs/PointRelationshipsValues.md)
  - [PointRequest](docs/PointRequest.md)
  - [PointReturn](docs/PointReturn.md)
  - [PointValue](docs/PointValue.md)

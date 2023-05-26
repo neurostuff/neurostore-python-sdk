@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **kind** | **str** | Method of how point was derived (e.g., center of mass) | [optional] 
 **label_id** | **str** | If the point is associated with an image, this is the value the point takes in that image. | [optional] 
 **image** | **str** |  | [optional] 
-**value** | [**PointRelationshipsValue**](PointRelationshipsValue.md) |  | [optional] 
+**values** | [**PointRelationshipsValues**](PointRelationshipsValues.md) |  | [optional] 
 **x** | **float** |  | [optional] 
 **y** | **float** |  | [optional] 
 **z** | **float** |  | [optional] 
