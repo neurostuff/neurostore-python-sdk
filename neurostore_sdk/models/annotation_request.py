@@ -14,125 +14,96 @@
 
 
 from __future__ import annotations
-from inspect import getfullargspec
-import json
 import pprint
 import re  # noqa: F401
+import json
 
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
-from neurostore_sdk.models.annotation_request_one_of import AnnotationRequestOneOf
-from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
-from typing import Any, List
-from pydantic import StrictStr, Field
 
-ANNOTATIONREQUEST_ONE_OF_SCHEMAS = ["AnnotationRequestOneOf", "AnnotationReturnOneOf"]
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, constr
+from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes
 
 class AnnotationRequest(BaseModel):
     """
     AnnotationRequest
     """
-    # data type: AnnotationReturnOneOf
-    oneof_schema_1_validator: Optional[AnnotationReturnOneOf] = None
-    # data type: AnnotationRequestOneOf
-    oneof_schema_2_validator: Optional[AnnotationRequestOneOf] = None
-    actual_instance: Any
-    one_of_schemas: List[str] = Field(ANNOTATIONREQUEST_ONE_OF_SCHEMAS, const=True)
+    name: Optional[StrictStr] = Field(None, description="Descriptive name for the annotation.")
+    description: Optional[StrictStr] = Field(None, description="Long form description of the annotation.")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
+    note_keys: Optional[Dict[str, Any]] = Field(None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
+    notes: Optional[AnnotationRequestRelationshipsNotes] = None
+    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
+    studyset: Optional[StrictStr] = None
+    __properties = ["name", "description", "metadata", "note_keys", "notes", "id", "public", "studyset"]
 
     class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
         validate_assignment = True
 
-    def __init__(self, *args, **kwargs):
-        if args:
-            if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
-            if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
-            super().__init__(actual_instance=args[0])
-        else:
-            super().__init__(**kwargs)
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.dict(by_alias=True))
 
-    @validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
-        instance = AnnotationRequest.construct()
-        error_messages = []
-        match = 0
-        # validate data type: AnnotationReturnOneOf
-        if not isinstance(v, AnnotationReturnOneOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationReturnOneOf`")
-        else:
-            match += 1
-        # validate data type: AnnotationRequestOneOf
-        if not isinstance(v, AnnotationRequestOneOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationRequestOneOf`")
-        else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in AnnotationRequest with oneOf schemas: AnnotationRequestOneOf, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
-        elif match == 0:
-            # no match
-            raise ValueError("No match found when setting `actual_instance` in AnnotationRequest with oneOf schemas: AnnotationRequestOneOf, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
-        else:
-            return v
-
-    @classmethod
-    def from_dict(cls, obj: dict) -> AnnotationRequest:
-        return cls.from_json(json.dumps(obj))
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> AnnotationRequest:
-        """Returns the object represented by the json string"""
-        instance = AnnotationRequest.construct()
-        error_messages = []
-        match = 0
+        """Create an instance of AnnotationRequest from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-        # deserialize data into AnnotationReturnOneOf
-        try:
-            instance.actual_instance = AnnotationReturnOneOf.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into AnnotationRequestOneOf
-        try:
-            instance.actual_instance = AnnotationRequestOneOf.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of notes
+        if self.notes:
+            _dict['notes'] = self.notes.to_dict()
+        # set to None if name (nullable) is None
+        # and __fields_set__ contains the field
+        if self.name is None and "name" in self.__fields_set__:
+            _dict['name'] = None
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into AnnotationRequest with oneOf schemas: AnnotationRequestOneOf, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
-        elif match == 0:
-            # no match
-            raise ValueError("No match found when deserializing the JSON string into AnnotationRequest with oneOf schemas: AnnotationRequestOneOf, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
-        else:
-            return instance
+        # set to None if description (nullable) is None
+        # and __fields_set__ contains the field
+        if self.description is None and "description" in self.__fields_set__:
+            _dict['description'] = None
 
-    def to_json(self) -> str:
-        """Returns the JSON representation of the actual instance"""
-        if self.actual_instance is None:
-            return "null"
+        # set to None if metadata (nullable) is None
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
+            _dict['metadata'] = None
 
-        to_json = getattr(self.actual_instance, "to_json", None)
-        if callable(to_json):
-            return self.actual_instance.to_json()
-        else:
-            return json.dumps(self.actual_instance)
+        # set to None if note_keys (nullable) is None
+        # and __fields_set__ contains the field
+        if self.note_keys is None and "note_keys" in self.__fields_set__:
+            _dict['note_keys'] = None
 
-    def to_dict(self) -> dict:
-        """Returns the dict representation of the actual instance"""
-        if self.actual_instance is None:
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: dict) -> AnnotationRequest:
+        """Create an instance of AnnotationRequest from a dict"""
+        if obj is None:
             return None
 
-        to_dict = getattr(self.actual_instance, "to_dict", None)
-        if callable(to_dict):
-            return self.actual_instance.to_dict()
-        else:
-            # primitive type
-            return self.actual_instance
+        if not isinstance(obj, dict):
+            return AnnotationRequest.parse_obj(obj)
 
-    def to_str(self) -> str:
-        """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        _obj = AnnotationRequest.parse_obj({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "metadata": obj.get("metadata"),
+            "note_keys": obj.get("note_keys"),
+            "notes": AnnotationRequestRelationshipsNotes.from_dict(obj.get("notes")) if obj.get("notes") is not None else None,
+            "id": obj.get("id"),
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "studyset": obj.get("studyset")
+        })
+        return _obj
 

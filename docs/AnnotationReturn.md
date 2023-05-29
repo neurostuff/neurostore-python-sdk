@@ -4,10 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
-**annotation_csv** | **str** | annotation object expressed as a CSV | 
 **name** | **str** | Descriptive name for the annotation. | [optional] 
 **description** | **str** | Long form description of the annotation. | [optional] 
+**metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
 **note_keys** | **object** | The keys (columns) in the annotation and the key&#39;s respective data type (such as an integer or string). | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 

@@ -4,10 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
-**annotation_csv** | **str** | annotation object expressed as a CSV | 
 **name** | **str** | Descriptive name for the annotation. | [optional] 
 **description** | **str** | Long form description of the annotation. | [optional] 
+**metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
 **note_keys** | **object** | The keys (columns) in the annotation and the key&#39;s respective data type (such as an integer or string). | [optional] 
 **notes** | [**AnnotationRequestRelationshipsNotes**](AnnotationRequestRelationshipsNotes.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
