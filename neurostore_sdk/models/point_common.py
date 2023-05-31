@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conint
 
 class PointCommon(BaseModel):
     """
@@ -29,7 +29,8 @@ class PointCommon(BaseModel):
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
-    __properties = ["analysis", "cluster_size", "subpeak"]
+    order: Optional[conint(strict=True, ge=0)] = None
+    __properties = ["analysis", "cluster_size", "subpeak", "order"]
 
     class Config:
         """Pydantic configuration"""
@@ -79,7 +80,8 @@ class PointCommon(BaseModel):
         _obj = PointCommon.parse_obj({
             "analysis": obj.get("analysis"),
             "cluster_size": obj.get("cluster_size"),
-            "subpeak": obj.get("subpeak")
+            "subpeak": obj.get("subpeak"),
+            "order": obj.get("order")
         })
         return _obj
 

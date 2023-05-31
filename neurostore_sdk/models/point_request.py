@@ -20,7 +20,7 @@ import json
 
 
 from typing import List, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conint, conlist, constr
 from neurostore_sdk.models.entity import Entity
 from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 
@@ -43,7 +43,8 @@ class PointRequest(BaseModel):
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
-    __properties = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak"]
+    order: Optional[conint(strict=True, ge=0)] = None
+    __properties = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak", "order"]
 
     class Config:
         """Pydantic configuration"""
@@ -135,7 +136,8 @@ class PointRequest(BaseModel):
             "public": obj.get("public") if obj.get("public") is not None else True,
             "analysis": obj.get("analysis"),
             "cluster_size": obj.get("cluster_size"),
-            "subpeak": obj.get("subpeak")
+            "subpeak": obj.get("subpeak"),
+            "order": obj.get("order")
         })
         return _obj
 
