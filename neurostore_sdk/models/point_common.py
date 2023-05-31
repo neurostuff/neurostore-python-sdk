@@ -29,7 +29,7 @@ class PointCommon(BaseModel):
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
-    order: Optional[conint(strict=True, ge=0)] = None
+    order: Optional[conint(strict=True, ge=0)] = Field(None, description="determines the row to display the coordinate")
     __properties = ["analysis", "cluster_size", "subpeak", "order"]
 
     class Config:
