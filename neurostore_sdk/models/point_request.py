@@ -20,7 +20,7 @@ import json
 
 
 from typing import List, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conint, conlist, constr
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
 from neurostore_sdk.models.entity import Entity
 from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 
@@ -43,7 +43,7 @@ class PointRequest(BaseModel):
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
-    order: Optional[conint(strict=True, ge=0)] = Field(None, description="determines the row to display the coordinate")
+    order: Optional[StrictInt] = Field(None, description="determines the row to display the coordinate")
     __properties = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak", "order"]
 
     class Config:
@@ -109,6 +109,11 @@ class PointRequest(BaseModel):
         # and __fields_set__ contains the field
         if self.subpeak is None and "subpeak" in self.__fields_set__:
             _dict['subpeak'] = None
+
+        # set to None if order (nullable) is None
+        # and __fields_set__ contains the field
+        if self.order is None and "order" in self.__fields_set__:
+            _dict['order'] = None
 
         return _dict
 
