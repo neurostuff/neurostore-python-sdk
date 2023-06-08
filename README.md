@@ -170,6 +170,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AbstractStudy](docs/AbstractStudy.md)
+ - [AbstractStudyVersions](docs/AbstractStudyVersions.md)
  - [AnalysisBase](docs/AnalysisBase.md)
  - [AnalysisCommon](docs/AnalysisCommon.md)
  - [AnalysisList](docs/AnalysisList.md)

@@ -3,6 +3,8 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
+docs/AbstractStudy.md
+docs/AbstractStudyVersions.md
 docs/AnalysesApi.md
 docs/AnalysisBase.md
 docs/AnalysisCommon.md
@@ -111,6 +113,8 @@ neurostore_sdk/api_response.py
 neurostore_sdk/configuration.py
 neurostore_sdk/exceptions.py
 neurostore_sdk/models/__init__.py
+neurostore_sdk/models/abstract_study.py
+neurostore_sdk/models/abstract_study_versions.py
 neurostore_sdk/models/analysis_base.py
 neurostore_sdk/models/analysis_common.py
 neurostore_sdk/models/analysis_list.py
@@ -200,4 +204,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_abstract_study.py
+test/test_abstract_study_versions.py
 tox.ini
