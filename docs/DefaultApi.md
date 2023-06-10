@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **abstract_studies_get**
-> AbstractStudyReturn abstract_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source)
+> AbstractStudyReturn abstract_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi)
 
 
 
@@ -47,10 +47,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    publication = 'publication_example' # str | search for papers from a particular journal (optional)
+    pmid = 'pmid_example' # str | search for particular pmid (optional)
+    doi = 'doi_example' # str | search for study with specific doi (optional)
 
     try:
         # 
-        api_response = api_instance.abstract_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source)
+        api_response = api_instance.abstract_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi)
         print("The response of DefaultApi->abstract_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,6 +76,9 @@ Name | Type | Description  | Notes
  **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **publication** | **str**| search for papers from a particular journal | [optional] 
+ **pmid** | **str**| search for particular pmid | [optional] 
+ **doi** | **str**| search for study with specific doi | [optional] 
 
 ### Return type
 
