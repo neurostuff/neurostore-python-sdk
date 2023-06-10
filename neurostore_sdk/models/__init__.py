@@ -16,6 +16,8 @@
 
 # import models into model package
 from neurostore_sdk.models.abstract_study import AbstractStudy
+from neurostore_sdk.models.abstract_study_list import AbstractStudyList
+from neurostore_sdk.models.abstract_study_return import AbstractStudyReturn
 from neurostore_sdk.models.abstract_study_versions import AbstractStudyVersions
 from neurostore_sdk.models.analysis_base import AnalysisBase
 from neurostore_sdk.models.analysis_common import AnalysisCommon

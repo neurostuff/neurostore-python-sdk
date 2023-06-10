@@ -108,6 +108,10 @@ Class | Method | HTTP request | Description
 *ConditionsApi* | [**conditions_id_get**](docs/ConditionsApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
 *ConditionsApi* | [**conditions_id_put**](docs/ConditionsApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
 *ConditionsApi* | [**conditions_post**](docs/ConditionsApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*DefaultApi* | [**abstract_studies_get**](docs/DefaultApi.md#abstract_studies_get) | **GET** /abstract-studies/ | 
+*DefaultApi* | [**abstract_studies_id_get**](docs/DefaultApi.md#abstract_studies_id_get) | **GET** /abstract-studies/{id} | Your GET endpoint
+*DefaultApi* | [**abstract_studies_id_put**](docs/DefaultApi.md#abstract_studies_id_put) | **PUT** /abstract-studies/{id} | 
+*DefaultApi* | [**abstract_studies_post**](docs/DefaultApi.md#abstract_studies_post) | **POST** /abstract-studies/ | 
 *ImagesApi* | [**images_get**](docs/ImagesApi.md#images_get) | **GET** /images/ | GET a list of images
 *ImagesApi* | [**images_id_delete**](docs/ImagesApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 *ImagesApi* | [**images_id_get**](docs/ImagesApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -171,6 +175,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AbstractStudy](docs/AbstractStudy.md)
+ - [AbstractStudyList](docs/AbstractStudyList.md)
+ - [AbstractStudyReturn](docs/AbstractStudyReturn.md)
  - [AbstractStudyVersions](docs/AbstractStudyVersions.md)
  - [AnalysisBase](docs/AnalysisBase.md)
  - [AnalysisCommon](docs/AnalysisCommon.md)
