@@ -3,10 +3,6 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
-docs/AbstractStudy.md
-docs/AbstractStudyList.md
-docs/AbstractStudyReturn.md
-docs/AbstractStudyVersions.md
 docs/AnalysesApi.md
 docs/AnalysisBase.md
 docs/AnalysisCommon.md
@@ -35,6 +31,10 @@ docs/AnnotationReturnOneOf1.md
 docs/AnnotationReturnRelationships.md
 docs/AnnotationReturnRelationshipsNotes.md
 docs/AnnotationsApi.md
+docs/BaseStudy.md
+docs/BaseStudyList.md
+docs/BaseStudyReturn.md
+docs/BaseStudyVersions.md
 docs/Clone.md
 docs/ConditionBase.md
 docs/ConditionList.md
@@ -117,10 +117,6 @@ neurostore_sdk/api_response.py
 neurostore_sdk/configuration.py
 neurostore_sdk/exceptions.py
 neurostore_sdk/models/__init__.py
-neurostore_sdk/models/abstract_study.py
-neurostore_sdk/models/abstract_study_list.py
-neurostore_sdk/models/abstract_study_return.py
-neurostore_sdk/models/abstract_study_versions.py
 neurostore_sdk/models/analysis_base.py
 neurostore_sdk/models/analysis_common.py
 neurostore_sdk/models/analysis_list.py
@@ -147,6 +143,10 @@ neurostore_sdk/models/annotation_return_one_of.py
 neurostore_sdk/models/annotation_return_one_of1.py
 neurostore_sdk/models/annotation_return_relationships.py
 neurostore_sdk/models/annotation_return_relationships_notes.py
+neurostore_sdk/models/base_study.py
+neurostore_sdk/models/base_study_list.py
+neurostore_sdk/models/base_study_return.py
+neurostore_sdk/models/base_study_versions.py
 neurostore_sdk/models/clone.py
 neurostore_sdk/models/condition_base.py
 neurostore_sdk/models/condition_list.py
@@ -210,4 +210,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_base_study.py
+test/test_base_study_list.py
+test/test_base_study_return.py
+test/test_base_study_versions.py
 tox.ini

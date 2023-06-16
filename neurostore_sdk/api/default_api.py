@@ -24,9 +24,9 @@ from pydantic import Field, StrictBool, StrictStr, conint, constr
 
 from typing import Optional
 
-from neurostore_sdk.models.abstract_study import AbstractStudy
-from neurostore_sdk.models.abstract_study_list import AbstractStudyList
-from neurostore_sdk.models.abstract_study_return import AbstractStudyReturn
+from neurostore_sdk.models.base_study import BaseStudy
+from neurostore_sdk.models.base_study_list import BaseStudyList
+from neurostore_sdk.models.base_study_return import BaseStudyReturn
 
 from neurostore_sdk.api_client import ApiClient
 from neurostore_sdk.api_response import ApiResponse
@@ -49,13 +49,13 @@ class DefaultApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def abstract_studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, **kwargs) -> AbstractStudyReturn:  # noqa: E501
+    def base_studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_get(search, sort, page, desc, page_size, name, description, authors, level, data_type, source, publication, pmid, doi, async_req=True)
+        >>> thread = api.base_studies_get(search, sort, page, desc, page_size, name, description, authors, level, data_type, source, publication, pmid, doi, async_req=True)
         >>> result = thread.get()
 
         :param search: search for entries that contain the substring
@@ -95,21 +95,21 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: AbstractStudyReturn
+        :rtype: BaseStudyReturn
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the abstract_studies_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.abstract_studies_get_with_http_info(search, sort, page, desc, page_size, name, description, authors, level, data_type, source, publication, pmid, doi, **kwargs)  # noqa: E501
+            raise ValueError("Error! Please call the base_studies_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.base_studies_get_with_http_info(search, sort, page, desc, page_size, name, description, authors, level, data_type, source, publication, pmid, doi, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def abstract_studies_get_with_http_info(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def base_studies_get_with_http_info(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_get_with_http_info(search, sort, page, desc, page_size, name, description, authors, level, data_type, source, publication, pmid, doi, async_req=True)
+        >>> thread = api.base_studies_get_with_http_info(search, sort, page, desc, page_size, name, description, authors, level, data_type, source, publication, pmid, doi, async_req=True)
         >>> result = thread.get()
 
         :param search: search for entries that contain the substring
@@ -162,7 +162,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(AbstractStudyReturn, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudyReturn, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -200,7 +200,7 @@ class DefaultApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method abstract_studies_get" % _key
+                    " to method base_studies_get" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -269,11 +269,11 @@ class DefaultApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "AbstractStudyReturn",
+            '200': "BaseStudyReturn",
         }
 
         return self.api_client.call_api(
-            '/abstract-studies/', 'GET',
+            '/base-studies/', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -290,13 +290,13 @@ class DefaultApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def abstract_studies_id_get(self, id : StrictStr, **kwargs) -> AbstractStudyReturn:  # noqa: E501
+    def base_studies_id_get(self, id : StrictStr, **kwargs) -> BaseStudyReturn:  # noqa: E501
         """Your GET endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_id_get(id, async_req=True)
+        >>> thread = api.base_studies_id_get(id, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
@@ -310,21 +310,21 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: AbstractStudyReturn
+        :rtype: BaseStudyReturn
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the abstract_studies_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.abstract_studies_id_get_with_http_info(id, **kwargs)  # noqa: E501
+            raise ValueError("Error! Please call the base_studies_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.base_studies_id_get_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def abstract_studies_id_get_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def base_studies_id_get_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Your GET endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_id_get_with_http_info(id, async_req=True)
+        >>> thread = api.base_studies_id_get_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
@@ -351,7 +351,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(AbstractStudyReturn, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudyReturn, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -376,7 +376,7 @@ class DefaultApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method abstract_studies_id_get" % _key
+                    " to method base_studies_id_get" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -406,11 +406,11 @@ class DefaultApi(object):
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "AbstractStudyReturn",
+            '200': "BaseStudyReturn",
         }
 
         return self.api_client.call_api(
-            '/abstract-studies/{id}', 'GET',
+            '/base-studies/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -427,19 +427,19 @@ class DefaultApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def abstract_studies_id_put(self, id : StrictStr, abstract_study : Optional[AbstractStudy] = None, **kwargs) -> AbstractStudyReturn:  # noqa: E501
+    def base_studies_id_put(self, id : StrictStr, base_study : Optional[BaseStudy] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_id_put(id, abstract_study, async_req=True)
+        >>> thread = api.base_studies_id_put(id, base_study, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param abstract_study:
-        :type abstract_study: AbstractStudy
+        :param base_study:
+        :type base_study: BaseStudy
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -449,27 +449,27 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: AbstractStudyReturn
+        :rtype: BaseStudyReturn
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the abstract_studies_id_put_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.abstract_studies_id_put_with_http_info(id, abstract_study, **kwargs)  # noqa: E501
+            raise ValueError("Error! Please call the base_studies_id_put_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.base_studies_id_put_with_http_info(id, base_study, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def abstract_studies_id_put_with_http_info(self, id : StrictStr, abstract_study : Optional[AbstractStudy] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def base_studies_id_put_with_http_info(self, id : StrictStr, base_study : Optional[BaseStudy] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_id_put_with_http_info(id, abstract_study, async_req=True)
+        >>> thread = api.base_studies_id_put_with_http_info(id, base_study, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param abstract_study:
-        :type abstract_study: AbstractStudy
+        :param base_study:
+        :type base_study: BaseStudy
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -492,14 +492,14 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(AbstractStudyReturn, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudyReturn, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'id',
-            'abstract_study'
+            'base_study'
         ]
         _all_params.extend(
             [
@@ -518,7 +518,7 @@ class DefaultApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method abstract_studies_id_put" % _key
+                    " to method base_studies_id_put" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -540,8 +540,8 @@ class DefaultApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['abstract_study'] is not None:
-            _body_params = _params['abstract_study']
+        if _params['base_study'] is not None:
+            _body_params = _params['base_study']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -558,11 +558,11 @@ class DefaultApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "AbstractStudyReturn",
+            '200': "BaseStudyReturn",
         }
 
         return self.api_client.call_api(
-            '/abstract-studies/{id}', 'PUT',
+            '/base-studies/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -579,17 +579,17 @@ class DefaultApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def abstract_studies_post(self, abstract_study : Optional[AbstractStudy] = None, **kwargs) -> AbstractStudyList:  # noqa: E501
+    def base_studies_post(self, base_study : Optional[BaseStudy] = None, **kwargs) -> BaseStudyList:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_post(abstract_study, async_req=True)
+        >>> thread = api.base_studies_post(base_study, async_req=True)
         >>> result = thread.get()
 
-        :param abstract_study:
-        :type abstract_study: AbstractStudy
+        :param base_study:
+        :type base_study: BaseStudy
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -599,25 +599,25 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: AbstractStudyList
+        :rtype: BaseStudyList
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the abstract_studies_post_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.abstract_studies_post_with_http_info(abstract_study, **kwargs)  # noqa: E501
+            raise ValueError("Error! Please call the base_studies_post_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.base_studies_post_with_http_info(base_study, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def abstract_studies_post_with_http_info(self, abstract_study : Optional[AbstractStudy] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def base_studies_post_with_http_info(self, base_study : Optional[BaseStudy] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.abstract_studies_post_with_http_info(abstract_study, async_req=True)
+        >>> thread = api.base_studies_post_with_http_info(base_study, async_req=True)
         >>> result = thread.get()
 
-        :param abstract_study:
-        :type abstract_study: AbstractStudy
+        :param base_study:
+        :type base_study: BaseStudy
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -640,13 +640,13 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(AbstractStudyList, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudyList, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'abstract_study'
+            'base_study'
         ]
         _all_params.extend(
             [
@@ -665,7 +665,7 @@ class DefaultApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method abstract_studies_post" % _key
+                    " to method base_studies_post" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -684,8 +684,8 @@ class DefaultApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['abstract_study'] is not None:
-            _body_params = _params['abstract_study']
+        if _params['base_study'] is not None:
+            _body_params = _params['base_study']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -702,11 +702,11 @@ class DefaultApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "AbstractStudyList",
+            '200': "BaseStudyList",
         }
 
         return self.api_client.call_api(
-            '/abstract-studies/', 'POST',
+            '/base-studies/', 'POST',
             _path_params,
             _query_params,
             _header_params,

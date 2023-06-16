@@ -4,14 +4,14 @@ All URIs are relative to *https://neurostore.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**abstract_studies_get**](DefaultApi.md#abstract_studies_get) | **GET** /abstract-studies/ | 
-[**abstract_studies_id_get**](DefaultApi.md#abstract_studies_id_get) | **GET** /abstract-studies/{id} | Your GET endpoint
-[**abstract_studies_id_put**](DefaultApi.md#abstract_studies_id_put) | **PUT** /abstract-studies/{id} | 
-[**abstract_studies_post**](DefaultApi.md#abstract_studies_post) | **POST** /abstract-studies/ | 
+[**base_studies_get**](DefaultApi.md#base_studies_get) | **GET** /base-studies/ | 
+[**base_studies_id_get**](DefaultApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
+[**base_studies_id_put**](DefaultApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
+[**base_studies_post**](DefaultApi.md#base_studies_post) | **POST** /base-studies/ | 
 
 
-# **abstract_studies_get**
-> AbstractStudyReturn abstract_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi)
+# **base_studies_get**
+> BaseStudyReturn base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi)
 
 
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 import time
 import os
 import neurostore_sdk
-from neurostore_sdk.models.abstract_study_return import AbstractStudyReturn
+from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -63,11 +63,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.abstract_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi)
-        print("The response of DefaultApi->abstract_studies_get:\n")
+        api_response = api_instance.base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi)
+        print("The response of DefaultApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->abstract_studies_get: %s\n" % e)
+        print("Exception when calling DefaultApi->base_studies_get: %s\n" % e)
 ```
 
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AbstractStudyReturn**](AbstractStudyReturn.md)
+[**BaseStudyReturn**](BaseStudyReturn.md)
 
 ### Authorization
 
@@ -110,8 +110,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **abstract_studies_id_get**
-> AbstractStudyReturn abstract_studies_id_get(id)
+# **base_studies_id_get**
+> BaseStudyReturn base_studies_id_get(id)
 
 Your GET endpoint
 
@@ -121,7 +121,7 @@ Your GET endpoint
 import time
 import os
 import neurostore_sdk
-from neurostore_sdk.models.abstract_study_return import AbstractStudyReturn
+from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -140,11 +140,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Your GET endpoint
-        api_response = api_instance.abstract_studies_id_get(id)
-        print("The response of DefaultApi->abstract_studies_id_get:\n")
+        api_response = api_instance.base_studies_id_get(id)
+        print("The response of DefaultApi->base_studies_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->abstract_studies_id_get: %s\n" % e)
+        print("Exception when calling DefaultApi->base_studies_id_get: %s\n" % e)
 ```
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AbstractStudyReturn**](AbstractStudyReturn.md)
+[**BaseStudyReturn**](BaseStudyReturn.md)
 
 ### Authorization
 
@@ -174,8 +174,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **abstract_studies_id_put**
-> AbstractStudyReturn abstract_studies_id_put(id, abstract_study=abstract_study)
+# **base_studies_id_put**
+> BaseStudyReturn base_studies_id_put(id, base_study=base_study)
 
 
 
@@ -186,8 +186,8 @@ No authorization required
 import time
 import os
 import neurostore_sdk
-from neurostore_sdk.models.abstract_study import AbstractStudy
-from neurostore_sdk.models.abstract_study_return import AbstractStudyReturn
+from neurostore_sdk.models.base_study import BaseStudy
+from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -212,15 +212,15 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.DefaultApi(api_client)
     id = 'id_example' # str | 
-    abstract_study = neurostore_sdk.AbstractStudy() # AbstractStudy |  (optional)
+    base_study = neurostore_sdk.BaseStudy() # BaseStudy |  (optional)
 
     try:
         # 
-        api_response = api_instance.abstract_studies_id_put(id, abstract_study=abstract_study)
-        print("The response of DefaultApi->abstract_studies_id_put:\n")
+        api_response = api_instance.base_studies_id_put(id, base_study=base_study)
+        print("The response of DefaultApi->base_studies_id_put:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->abstract_studies_id_put: %s\n" % e)
+        print("Exception when calling DefaultApi->base_studies_id_put: %s\n" % e)
 ```
 
 
@@ -229,11 +229,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **abstract_study** | [**AbstractStudy**](AbstractStudy.md)|  | [optional] 
+ **base_study** | [**BaseStudy**](BaseStudy.md)|  | [optional] 
 
 ### Return type
 
-[**AbstractStudyReturn**](AbstractStudyReturn.md)
+[**BaseStudyReturn**](BaseStudyReturn.md)
 
 ### Authorization
 
@@ -251,8 +251,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **abstract_studies_post**
-> AbstractStudyList abstract_studies_post(abstract_study=abstract_study)
+# **base_studies_post**
+> BaseStudyList base_studies_post(base_study=base_study)
 
 
 
@@ -263,8 +263,8 @@ Name | Type | Description  | Notes
 import time
 import os
 import neurostore_sdk
-from neurostore_sdk.models.abstract_study import AbstractStudy
-from neurostore_sdk.models.abstract_study_list import AbstractStudyList
+from neurostore_sdk.models.base_study import BaseStudy
+from neurostore_sdk.models.base_study_list import BaseStudyList
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -288,15 +288,15 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.DefaultApi(api_client)
-    abstract_study = neurostore_sdk.AbstractStudy() # AbstractStudy |  (optional)
+    base_study = neurostore_sdk.BaseStudy() # BaseStudy |  (optional)
 
     try:
         # 
-        api_response = api_instance.abstract_studies_post(abstract_study=abstract_study)
-        print("The response of DefaultApi->abstract_studies_post:\n")
+        api_response = api_instance.base_studies_post(base_study=base_study)
+        print("The response of DefaultApi->base_studies_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->abstract_studies_post: %s\n" % e)
+        print("Exception when calling DefaultApi->base_studies_post: %s\n" % e)
 ```
 
 
@@ -304,11 +304,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **abstract_study** | [**AbstractStudy**](AbstractStudy.md)|  | [optional] 
+ **base_study** | [**BaseStudy**](BaseStudy.md)|  | [optional] 
 
 ### Return type
 
-[**AbstractStudyList**](AbstractStudyList.md)
+[**BaseStudyList**](BaseStudyList.md)
 
 ### Authorization
 
