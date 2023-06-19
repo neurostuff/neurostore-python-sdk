@@ -108,6 +108,10 @@ Class | Method | HTTP request | Description
 *ConditionsApi* | [**conditions_id_get**](docs/ConditionsApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
 *ConditionsApi* | [**conditions_id_put**](docs/ConditionsApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
 *ConditionsApi* | [**conditions_post**](docs/ConditionsApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*DefaultApi* | [**base_studies_get**](docs/DefaultApi.md#base_studies_get) | **GET** /base-studies/ | 
+*DefaultApi* | [**base_studies_id_get**](docs/DefaultApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
+*DefaultApi* | [**base_studies_id_put**](docs/DefaultApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
+*DefaultApi* | [**base_studies_post**](docs/DefaultApi.md#base_studies_post) | **POST** /base-studies/ | 
 *ImagesApi* | [**images_get**](docs/ImagesApi.md#images_get) | **GET** /images/ | GET a list of images
 *ImagesApi* | [**images_id_delete**](docs/ImagesApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 *ImagesApi* | [**images_id_get**](docs/ImagesApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -196,6 +200,10 @@ Class | Method | HTTP request | Description
  - [AnnotationReturnOneOf1](docs/AnnotationReturnOneOf1.md)
  - [AnnotationReturnRelationships](docs/AnnotationReturnRelationships.md)
  - [AnnotationReturnRelationshipsNotes](docs/AnnotationReturnRelationshipsNotes.md)
+ - [BaseStudy](docs/BaseStudy.md)
+ - [BaseStudyList](docs/BaseStudyList.md)
+ - [BaseStudyReturn](docs/BaseStudyReturn.md)
+ - [BaseStudyVersions](docs/BaseStudyVersions.md)
  - [Clone](docs/Clone.md)
  - [ConditionBase](docs/ConditionBase.md)
  - [ConditionList](docs/ConditionList.md)

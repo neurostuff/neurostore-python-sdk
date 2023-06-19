@@ -41,6 +41,10 @@ from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
 from neurostore_sdk.models.annotation_return_one_of1 import AnnotationReturnOneOf1
 from neurostore_sdk.models.annotation_return_relationships import AnnotationReturnRelationships
 from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
+from neurostore_sdk.models.base_study import BaseStudy
+from neurostore_sdk.models.base_study_list import BaseStudyList
+from neurostore_sdk.models.base_study_return import BaseStudyReturn
+from neurostore_sdk.models.base_study_versions import BaseStudyVersions
 from neurostore_sdk.models.clone import Clone
 from neurostore_sdk.models.condition_base import ConditionBase
 from neurostore_sdk.models.condition_list import ConditionList
