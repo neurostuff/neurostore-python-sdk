@@ -210,9 +210,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_base_study.py
-test/test_base_study_list.py
-test/test_base_study_return.py
-test/test_base_study_versions.py
-test/test_default_api.py
 tox.ini
