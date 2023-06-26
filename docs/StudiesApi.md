@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi)
 
 GET a list of studies
 
@@ -65,10 +65,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
+    pmid = 'pmid_example' # str | search for particular pmid (optional)
+    doi = 'doi_example' # str | search for study with specific doi (optional)
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi)
         print("The response of StudiesApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -96,6 +98,8 @@ Name | Type | Description  | Notes
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
+ **pmid** | **str**| search for particular pmid | [optional] 
+ **doi** | **str**| search for study with specific doi | [optional] 
 
 ### Return type
 
