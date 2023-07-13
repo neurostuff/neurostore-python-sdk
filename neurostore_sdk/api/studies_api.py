@@ -457,14 +457,14 @@ class StudiesApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def studies_id_get(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, **kwargs) -> StudyReturn:  # noqa: E501
+    def studies_id_get(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, **kwargs) -> StudyReturn:  # noqa: E501
         """GET a study  # noqa: E501
 
         Get a study.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studies_id_get(id, nested, studyset_owner, async_req=True)
+        >>> thread = api.studies_id_get(id, nested, studyset_owner, flat, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
@@ -473,6 +473,8 @@ class StudiesApi(object):
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
+        :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
+        :type flat: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -487,17 +489,17 @@ class StudiesApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the studies_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.studies_id_get_with_http_info(id, nested, studyset_owner, **kwargs)  # noqa: E501
+        return self.studies_id_get_with_http_info(id, nested, studyset_owner, flat, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def studies_id_get_with_http_info(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def studies_id_get_with_http_info(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GET a study  # noqa: E501
 
         Get a study.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studies_id_get_with_http_info(id, nested, studyset_owner, async_req=True)
+        >>> thread = api.studies_id_get_with_http_info(id, nested, studyset_owner, flat, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
@@ -506,6 +508,8 @@ class StudiesApi(object):
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
+        :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
+        :type flat: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -536,7 +540,8 @@ class StudiesApi(object):
         _all_params = [
             'id',
             'nested',
-            'studyset_owner'
+            'studyset_owner',
+            'flat'
         ]
         _all_params.extend(
             [
@@ -575,6 +580,9 @@ class StudiesApi(object):
 
         if _params.get('studyset_owner') is not None:  # noqa: E501
             _query_params.append(('studyset_owner', _params['studyset_owner']))
+
+        if _params.get('flat') is not None:  # noqa: E501
+            _query_params.append(('flat', _params['flat'].value))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
