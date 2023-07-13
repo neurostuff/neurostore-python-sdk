@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
 
 GET a list of studies
 
@@ -67,10 +67,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
+    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
         print("The response of StudiesApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -100,6 +101,7 @@ Name | Type | Description  | Notes
  **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
+ **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
 
 ### Return type
 
