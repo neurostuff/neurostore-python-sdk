@@ -3821,14 +3821,14 @@ class StoreApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, source_id : Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None, unique : Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, user_id : Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, **kwargs) -> StudyList:  # noqa: E501
+    def studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, source_id : Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None, unique : Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, user_id : Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, **kwargs) -> StudyList:  # noqa: E501
         """GET a list of studies  # noqa: E501
 
         List studies  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studies_get(search, sort, page, desc, page_size, nested, name, description, source_id, unique, source, authors, user_id, data_type, studyset_owner, level, pmid, doi, async_req=True)
+        >>> thread = api.studies_get(search, sort, page, desc, page_size, nested, name, description, source_id, unique, source, authors, user_id, data_type, studyset_owner, level, pmid, doi, flat, async_req=True)
         >>> result = thread.get()
 
         :param search: search for entries that contain the substring
@@ -3867,6 +3867,8 @@ class StoreApi(object):
         :type pmid: str
         :param doi: search for study with specific doi
         :type doi: str
+        :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
+        :type flat: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -3881,17 +3883,17 @@ class StoreApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the studies_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.studies_get_with_http_info(search, sort, page, desc, page_size, nested, name, description, source_id, unique, source, authors, user_id, data_type, studyset_owner, level, pmid, doi, **kwargs)  # noqa: E501
+        return self.studies_get_with_http_info(search, sort, page, desc, page_size, nested, name, description, source_id, unique, source, authors, user_id, data_type, studyset_owner, level, pmid, doi, flat, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def studies_get_with_http_info(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, source_id : Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None, unique : Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, user_id : Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def studies_get_with_http_info(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, source_id : Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None, unique : Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, user_id : Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GET a list of studies  # noqa: E501
 
         List studies  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studies_get_with_http_info(search, sort, page, desc, page_size, nested, name, description, source_id, unique, source, authors, user_id, data_type, studyset_owner, level, pmid, doi, async_req=True)
+        >>> thread = api.studies_get_with_http_info(search, sort, page, desc, page_size, nested, name, description, source_id, unique, source, authors, user_id, data_type, studyset_owner, level, pmid, doi, flat, async_req=True)
         >>> result = thread.get()
 
         :param search: search for entries that contain the substring
@@ -3930,6 +3932,8 @@ class StoreApi(object):
         :type pmid: str
         :param doi: search for study with specific doi
         :type doi: str
+        :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
+        :type flat: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -3975,7 +3979,8 @@ class StoreApi(object):
             'studyset_owner',
             'level',
             'pmid',
-            'doi'
+            'doi',
+            'flat'
         ]
         _all_params.extend(
             [
@@ -4059,6 +4064,9 @@ class StoreApi(object):
 
         if _params.get('doi') is not None:  # noqa: E501
             _query_params.append(('doi', _params['doi']))
+
+        if _params.get('flat') is not None:  # noqa: E501
+            _query_params.append(('flat', _params['flat'].value))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -4229,14 +4237,14 @@ class StoreApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def studies_id_get(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, **kwargs) -> StudyReturn:  # noqa: E501
+    def studies_id_get(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, **kwargs) -> StudyReturn:  # noqa: E501
         """GET a study  # noqa: E501
 
         Get a study.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studies_id_get(id, nested, studyset_owner, async_req=True)
+        >>> thread = api.studies_id_get(id, nested, studyset_owner, flat, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
@@ -4245,6 +4253,8 @@ class StoreApi(object):
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
+        :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
+        :type flat: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -4259,17 +4269,17 @@ class StoreApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the studies_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.studies_id_get_with_http_info(id, nested, studyset_owner, **kwargs)  # noqa: E501
+        return self.studies_id_get_with_http_info(id, nested, studyset_owner, flat, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def studies_id_get_with_http_info(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def studies_id_get_with_http_info(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, studyset_owner : Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GET a study  # noqa: E501
 
         Get a study.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studies_id_get_with_http_info(id, nested, studyset_owner, async_req=True)
+        >>> thread = api.studies_id_get_with_http_info(id, nested, studyset_owner, flat, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
@@ -4278,6 +4288,8 @@ class StoreApi(object):
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
+        :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
+        :type flat: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -4308,7 +4320,8 @@ class StoreApi(object):
         _all_params = [
             'id',
             'nested',
-            'studyset_owner'
+            'studyset_owner',
+            'flat'
         ]
         _all_params.extend(
             [
@@ -4347,6 +4360,9 @@ class StoreApi(object):
 
         if _params.get('studyset_owner') is not None:  # noqa: E501
             _query_params.append(('studyset_owner', _params['studyset_owner']))
+
+        if _params.get('flat') is not None:  # noqa: E501
+            _query_params.append(('flat', _params['flat'].value))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
