@@ -66,6 +66,11 @@ class BaseStudy(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of versions
         if self.versions:
             _dict['versions'] = self.versions.to_dict()
+        # set to None if metadata (nullable) is None
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
+            _dict['metadata'] = None
+
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
