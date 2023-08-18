@@ -49,7 +49,7 @@ class DefaultApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def base_studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictStr], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
+    def base_studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, source : Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictStr], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictStr], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> BaseStudyList:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -99,7 +99,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BaseStudyReturn
+        :rtype: BaseStudyList
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -170,7 +170,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BaseStudyReturn, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudyList, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -285,7 +285,7 @@ class DefaultApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "BaseStudyReturn",
+            '200': "BaseStudyList",
         }
 
         return self.api_client.call_api(

@@ -22,13 +22,15 @@ import json
 from typing import List, Optional
 from pydantic import BaseModel, conlist
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
+from neurostore_sdk.models.metadata import Metadata
 
 class BaseStudyList(BaseModel):
     """
     BaseStudyList
     """
     results: Optional[conlist(BaseStudyReturn)] = None
-    __properties = ["results"]
+    metadata: Optional[Metadata] = None
+    __properties = ["results", "metadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -61,6 +63,9 @@ class BaseStudyList(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['results'] = _items
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         return _dict
 
     @classmethod
@@ -73,7 +78,8 @@ class BaseStudyList(BaseModel):
             return BaseStudyList.parse_obj(obj)
 
         _obj = BaseStudyList.parse_obj({
-            "results": [BaseStudyReturn.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None
+            "results": [BaseStudyReturn.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None,
+            "metadata": Metadata.from_dict(obj.get("metadata")) if obj.get("metadata") is not None else None
         })
         return _obj
 
