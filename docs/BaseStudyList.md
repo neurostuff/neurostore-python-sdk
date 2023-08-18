@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[BaseStudyReturn]**](BaseStudyReturn.md) |  | [optional] 
+**metadata** | [**Metadata**](Metadata.md) |  | [optional] 
 
 ## Example
 

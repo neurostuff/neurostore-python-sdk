@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyReturn base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+> BaseStudyList base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
 
 
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 import time
 import os
 import neurostore_sdk
-from neurostore_sdk.models.base_study_return import BaseStudyReturn
+from neurostore_sdk.models.base_study_list import BaseStudyList
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseStudyReturn**](BaseStudyReturn.md)
+[**BaseStudyList**](BaseStudyList.md)
 
 ### Authorization
 
