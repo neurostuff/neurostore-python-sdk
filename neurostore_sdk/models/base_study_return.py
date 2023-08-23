@@ -20,7 +20,7 @@ import json
 
 from datetime import datetime
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, constr
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, constr
 from neurostore_sdk.models.base_study_versions import BaseStudyVersions
 
 class BaseStudyReturn(BaseModel):
@@ -35,7 +35,7 @@ class BaseStudyReturn(BaseModel):
     doi: Optional[StrictStr] = None
     pmid: Optional[StrictStr] = None
     authors: Optional[StrictStr] = None
-    year: Optional[StrictStr] = None
+    year: Optional[StrictInt] = None
     level: Optional[StrictStr] = None
     created_at: Optional[datetime] = Field(None, description="time the resource was created on the database")
     updated_at: Optional[StrictStr] = Field(None, description="when was the resource last modified/updated.")

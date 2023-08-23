@@ -1955,7 +1955,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
-    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
 
     try:
         # GET a list of studies
@@ -1989,7 +1989,7 @@ Name | Type | Description  | Notes
  **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
- **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
 
 ### Return type
 
@@ -2115,7 +2115,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
-    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
 
     try:
         # GET a study
@@ -2134,7 +2134,7 @@ Name | Type | Description  | Notes
  **id** | **str**|  | 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
- **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
 
 ### Return type
 

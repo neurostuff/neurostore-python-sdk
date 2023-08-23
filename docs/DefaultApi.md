@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+> BaseStudyList base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
 
 
 
@@ -56,16 +56,15 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
-    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
-    info = 'info_example' # str | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
+    flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
 
     try:
         # 
-        api_response = api_instance.base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, source=source, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+        api_response = api_instance.base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
         print("The response of DefaultApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -87,12 +86,11 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
  **publication** | **str**| search for papers from a particular journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
- **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
- **info** | **str**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
+ **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
 
 ### Return type
 
@@ -141,8 +139,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.DefaultApi(api_client)
     id = 'id_example' # str | 
-    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
-    info = 'info_example' # str | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
+    flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
 
     try:
         # Your GET endpoint
@@ -159,8 +157,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
- **info** | **str**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
+ **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
 
 ### Return type
 
@@ -260,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_post**
-> BaseStudyList base_studies_post(base_study=base_study)
+> BaseStudyReturn base_studies_post(base_study=base_study)
 
 
 
@@ -272,7 +270,7 @@ import time
 import os
 import neurostore_sdk
 from neurostore_sdk.models.base_study import BaseStudy
-from neurostore_sdk.models.base_study_list import BaseStudyList
+from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -316,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseStudyList**](BaseStudyList.md)
+[**BaseStudyReturn**](BaseStudyReturn.md)
 
 ### Authorization
 

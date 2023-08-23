@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **doi** | **str** |  | [optional] 
 **pmid** | **str** |  | [optional] 
 **authors** | **str** |  | [optional] 
-**year** | **str** |  | [optional] 
+**year** | **int** |  | [optional] 
 **level** | **str** |  | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
