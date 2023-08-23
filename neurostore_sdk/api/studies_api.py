@@ -294,7 +294,7 @@ class StudiesApi(object):
             _query_params.append(('doi', _params['doi']))
 
         if _params.get('flat') is not None:  # noqa: E501
-            _query_params.append(('flat', _params['flat'].value))
+            _query_params.append(('flat', _params['flat']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -590,7 +590,7 @@ class StudiesApi(object):
             _query_params.append(('studyset_owner', _params['studyset_owner']))
 
         if _params.get('flat') is not None:  # noqa: E501
-            _query_params.append(('flat', _params['flat'].value))
+            _query_params.append(('flat', _params['flat']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))

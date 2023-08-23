@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **doi** | **str** |  | [optional] 
 **pmid** | **str** |  | [optional] 
 **authors** | **str** |  | [optional] 
-**year** | **str** |  | [optional] 
+**year** | **int** |  | [optional] 
 **level** | **str** |  | [optional] 
 
 ## Example

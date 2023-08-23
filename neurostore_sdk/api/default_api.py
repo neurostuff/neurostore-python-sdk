@@ -257,7 +257,7 @@ class DefaultApi(object):
             _query_params.append(('doi', _params['doi']))
 
         if _params.get('flat') is not None:  # noqa: E501
-            _query_params.append(('flat', _params['flat'].value))
+            _query_params.append(('flat', _params['flat']))
 
         if _params.get('info') is not None:  # noqa: E501
             _query_params.append(('info', _params['info']))
@@ -410,7 +410,7 @@ class DefaultApi(object):
         # process the query parameters
         _query_params = []
         if _params.get('flat') is not None:  # noqa: E501
-            _query_params.append(('flat', _params['flat'].value))
+            _query_params.append(('flat', _params['flat']))
 
         if _params.get('info') is not None:  # noqa: E501
             _query_params.append(('info', _params['info']))
@@ -603,7 +603,7 @@ class DefaultApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def base_studies_post(self, base_study : Optional[BaseStudy] = None, **kwargs) -> BaseStudyList:  # noqa: E501
+    def base_studies_post(self, base_study : Optional[BaseStudy] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -623,7 +623,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BaseStudyList
+        :rtype: BaseStudyReturn
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -664,7 +664,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BaseStudyList, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudyReturn, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -726,7 +726,7 @@ class DefaultApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "BaseStudyList",
+            '200': "BaseStudyReturn",
         }
 
         return self.api_client.call_api(

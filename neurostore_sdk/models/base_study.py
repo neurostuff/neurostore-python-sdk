@@ -20,7 +20,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictInt, StrictStr
 from neurostore_sdk.models.base_study_versions import BaseStudyVersions
 
 class BaseStudy(BaseModel):
@@ -35,7 +35,7 @@ class BaseStudy(BaseModel):
     doi: Optional[StrictStr] = None
     pmid: Optional[StrictStr] = None
     authors: Optional[StrictStr] = None
-    year: Optional[StrictStr] = None
+    year: Optional[StrictInt] = None
     level: Optional[StrictStr] = None
     __properties = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level"]
 
