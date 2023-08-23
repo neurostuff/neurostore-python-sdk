@@ -59,7 +59,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
-    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
 
     try:
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
  **publication** | **str**| search for papers from a particular journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
- **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
 
 ### Return type
@@ -139,7 +139,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.DefaultApi(api_client)
     id = 'id_example' # str | 
-    flat = 'flat_example' # str | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
 
     try:
@@ -157,7 +157,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **flat** | **str**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
 
 ### Return type
