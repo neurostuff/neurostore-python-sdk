@@ -200,6 +200,7 @@ Class | Method | HTTP request | Description
  - [AnnotationReturnOneOf1](docs/AnnotationReturnOneOf1.md)
  - [AnnotationReturnRelationships](docs/AnnotationReturnRelationships.md)
  - [AnnotationReturnRelationshipsNotes](docs/AnnotationReturnRelationshipsNotes.md)
+ - [BaseStudiesPostRequest](docs/BaseStudiesPostRequest.md)
  - [BaseStudy](docs/BaseStudy.md)
  - [BaseStudyList](docs/BaseStudyList.md)
  - [BaseStudyReturn](docs/BaseStudyReturn.md)

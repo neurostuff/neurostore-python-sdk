@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_post**
-> BaseStudyReturn base_studies_post(base_study=base_study)
+> BaseStudyReturn base_studies_post(base_studies_post_request=base_studies_post_request)
 
 
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 import time
 import os
 import neurostore_sdk
-from neurostore_sdk.models.base_study import BaseStudy
+from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
@@ -294,11 +294,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.DefaultApi(api_client)
-    base_study = neurostore_sdk.BaseStudy() # BaseStudy |  (optional)
+    base_studies_post_request = neurostore_sdk.BaseStudiesPostRequest() # BaseStudiesPostRequest |  (optional)
 
     try:
         # 
-        api_response = api_instance.base_studies_post(base_study=base_study)
+        api_response = api_instance.base_studies_post(base_studies_post_request=base_studies_post_request)
         print("The response of DefaultApi->base_studies_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -310,7 +310,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **base_study** | [**BaseStudy**](BaseStudy.md)|  | [optional] 
+ **base_studies_post_request** | [**BaseStudiesPostRequest**](BaseStudiesPostRequest.md)|  | [optional] 
 
 ### Return type
 

@@ -24,6 +24,7 @@ from pydantic import Field, StrictBool, StrictStr, conint, constr
 
 from typing import Optional
 
+from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
 from neurostore_sdk.models.base_study import BaseStudy
 from neurostore_sdk.models.base_study_list import BaseStudyList
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
@@ -603,17 +604,17 @@ class DefaultApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def base_studies_post(self, base_study : Optional[BaseStudy] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
+    def base_studies_post(self, base_studies_post_request : Optional[BaseStudiesPostRequest] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.base_studies_post(base_study, async_req=True)
+        >>> thread = api.base_studies_post(base_studies_post_request, async_req=True)
         >>> result = thread.get()
 
-        :param base_study:
-        :type base_study: BaseStudy
+        :param base_studies_post_request:
+        :type base_studies_post_request: BaseStudiesPostRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -628,20 +629,20 @@ class DefaultApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the base_studies_post_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.base_studies_post_with_http_info(base_study, **kwargs)  # noqa: E501
+        return self.base_studies_post_with_http_info(base_studies_post_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def base_studies_post_with_http_info(self, base_study : Optional[BaseStudy] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def base_studies_post_with_http_info(self, base_studies_post_request : Optional[BaseStudiesPostRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.base_studies_post_with_http_info(base_study, async_req=True)
+        >>> thread = api.base_studies_post_with_http_info(base_studies_post_request, async_req=True)
         >>> result = thread.get()
 
-        :param base_study:
-        :type base_study: BaseStudy
+        :param base_studies_post_request:
+        :type base_studies_post_request: BaseStudiesPostRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -670,7 +671,7 @@ class DefaultApi(object):
         _params = locals()
 
         _all_params = [
-            'base_study'
+            'base_studies_post_request'
         ]
         _all_params.extend(
             [
@@ -708,8 +709,8 @@ class DefaultApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['base_study'] is not None:
-            _body_params = _params['base_study']
+        if _params['base_studies_post_request'] is not None:
+            _body_params = _params['base_studies_post_request']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
