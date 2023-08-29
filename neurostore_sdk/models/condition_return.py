@@ -33,7 +33,8 @@ class ConditionReturn(BaseModel):
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
-    __properties = ["name", "description", "created_at", "updated_at", "id", "public", "user"]
+    username: Optional[StrictStr] = Field(None, description="human readable username")
+    __properties = ["name", "description", "created_at", "updated_at", "id", "public", "user", "username"]
 
     class Config:
         """Pydantic configuration"""
@@ -82,6 +83,11 @@ class ConditionReturn(BaseModel):
         if self.user is None and "user" in self.__fields_set__:
             _dict['user'] = None
 
+        # set to None if username (nullable) is None
+        # and __fields_set__ contains the field
+        if self.username is None and "username" in self.__fields_set__:
+            _dict['username'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +106,8 @@ class ConditionReturn(BaseModel):
             "updated_at": obj.get("updated_at"),
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
-            "user": obj.get("user")
+            "user": obj.get("user"),
+            "username": obj.get("username")
         })
         return _obj
 

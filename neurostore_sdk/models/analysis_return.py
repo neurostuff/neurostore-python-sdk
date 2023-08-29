@@ -38,12 +38,13 @@ class AnalysisReturn(BaseModel):
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
+    username: Optional[StrictStr] = Field(None, description="human readable username")
     study: Optional[StrictStr] = None
     images: Optional[AnalysisReturnRelationshipsImages] = None
     points: Optional[AnalysisReturnRelationshipsPoints] = None
     conditions: Optional[AnalysisReturnRelationshipsConditions] = None
     entities: Optional[conlist(Entity)] = None
-    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "study", "images", "points", "conditions", "entities"]
+    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities"]
 
     class Config:
         """Pydantic configuration"""
@@ -108,6 +109,11 @@ class AnalysisReturn(BaseModel):
         if self.user is None and "user" in self.__fields_set__:
             _dict['user'] = None
 
+        # set to None if username (nullable) is None
+        # and __fields_set__ contains the field
+        if self.username is None and "username" in self.__fields_set__:
+            _dict['username'] = None
+
         return _dict
 
     @classmethod
@@ -128,6 +134,7 @@ class AnalysisReturn(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
+            "username": obj.get("username"),
             "study": obj.get("study"),
             "images": AnalysisReturnRelationshipsImages.from_dict(obj.get("images")) if obj.get("images") is not None else None,
             "points": AnalysisReturnRelationshipsPoints.from_dict(obj.get("points")) if obj.get("points") is not None else None,

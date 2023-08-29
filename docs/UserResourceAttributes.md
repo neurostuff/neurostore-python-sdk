@@ -6,6 +6,7 @@ common resource attributes
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user** | **str** | who owns the resource | [optional] [readonly] 
+**username** | **str** | human readable username | [optional] 
 
 ## Example
 

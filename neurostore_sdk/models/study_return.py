@@ -41,12 +41,13 @@ class StudyReturn(BaseModel):
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
+    username: Optional[StrictStr] = Field(None, description="human readable username")
     source: Optional[StrictStr] = None
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
     analyses: Optional[StudyReturnRelationshipsAnalyses] = None
     studysets: Optional[conlist(StudyReturnAllOfStudysets)] = None
-    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "source", "source_id", "source_updated_at", "analyses", "studysets"]
+    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "studysets"]
 
     class Config:
         """Pydantic configuration"""
@@ -136,6 +137,11 @@ class StudyReturn(BaseModel):
         if self.user is None and "user" in self.__fields_set__:
             _dict['user'] = None
 
+        # set to None if username (nullable) is None
+        # and __fields_set__ contains the field
+        if self.username is None and "username" in self.__fields_set__:
+            _dict['username'] = None
+
         # set to None if source (nullable) is None
         # and __fields_set__ contains the field
         if self.source is None and "source" in self.__fields_set__:
@@ -176,6 +182,7 @@ class StudyReturn(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
+            "username": obj.get("username"),
             "source": obj.get("source"),
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),

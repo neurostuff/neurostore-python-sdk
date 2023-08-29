@@ -27,7 +27,8 @@ class UserResourceAttributes(BaseModel):
     common resource attributes
     """
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
-    __properties = ["user"]
+    username: Optional[StrictStr] = Field(None, description="human readable username")
+    __properties = ["user", "username"]
 
     class Config:
         """Pydantic configuration"""
@@ -59,6 +60,11 @@ class UserResourceAttributes(BaseModel):
         if self.user is None and "user" in self.__fields_set__:
             _dict['user'] = None
 
+        # set to None if username (nullable) is None
+        # and __fields_set__ contains the field
+        if self.username is None and "username" in self.__fields_set__:
+            _dict['username'] = None
+
         return _dict
 
     @classmethod
@@ -71,7 +77,8 @@ class UserResourceAttributes(BaseModel):
             return UserResourceAttributes.parse_obj(obj)
 
         _obj = UserResourceAttributes.parse_obj({
-            "user": obj.get("user")
+            "user": obj.get("user"),
+            "username": obj.get("username")
         })
         return _obj
 

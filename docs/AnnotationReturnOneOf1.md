@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 
+**username** | **str** | human readable username | [optional] 
 **source** | **str** |  | [optional] 
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 

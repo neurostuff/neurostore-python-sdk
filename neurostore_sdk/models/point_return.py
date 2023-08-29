@@ -37,6 +37,7 @@ class PointReturn(BaseModel):
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
+    username: Optional[StrictStr] = Field(None, description="human readable username")
     image: Optional[StrictStr] = None
     values: Optional[PointRelationshipsValues] = None
     x: Optional[Union[StrictFloat, StrictInt]] = None
@@ -47,7 +48,7 @@ class PointReturn(BaseModel):
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
     order: Optional[StrictInt] = Field(None, description="determines the row to display the coordinate")
-    __properties = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "image", "values", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak", "order"]
+    __properties = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "username", "image", "values", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak", "order"]
 
     class Config:
         """Pydantic configuration"""
@@ -111,6 +112,11 @@ class PointReturn(BaseModel):
         if self.user is None and "user" in self.__fields_set__:
             _dict['user'] = None
 
+        # set to None if username (nullable) is None
+        # and __fields_set__ contains the field
+        if self.username is None and "username" in self.__fields_set__:
+            _dict['username'] = None
+
         # set to None if image (nullable) is None
         # and __fields_set__ contains the field
         if self.image is None and "image" in self.__fields_set__:
@@ -152,6 +158,7 @@ class PointReturn(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
+            "username": obj.get("username"),
             "image": obj.get("image"),
             "values": PointRelationshipsValues.from_dict(obj.get("values")) if obj.get("values") is not None else None,
             "x": obj.get("x"),
