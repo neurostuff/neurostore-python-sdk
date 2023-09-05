@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_post**
-> BaseStudyReturn base_studies_post(base_studies_post_request=base_studies_post_request)
+> BaseStudiesPost200Response base_studies_post(base_studies_post_request=base_studies_post_request)
 
 
 
@@ -269,8 +269,8 @@ Name | Type | Description  | Notes
 import time
 import os
 import neurostore_sdk
+from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response
 from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
-from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseStudyReturn**](BaseStudyReturn.md)
+[**BaseStudiesPost200Response**](BaseStudiesPost200Response.md)
 
 ### Authorization
 

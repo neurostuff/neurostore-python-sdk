@@ -31,6 +31,7 @@ docs/AnnotationReturnOneOf1.md
 docs/AnnotationReturnRelationships.md
 docs/AnnotationReturnRelationshipsNotes.md
 docs/AnnotationsApi.md
+docs/BaseStudiesPost200Response.md
 docs/BaseStudiesPostRequest.md
 docs/BaseStudy.md
 docs/BaseStudyList.md
@@ -144,6 +145,7 @@ neurostore_sdk/models/annotation_return_one_of.py
 neurostore_sdk/models/annotation_return_one_of1.py
 neurostore_sdk/models/annotation_return_relationships.py
 neurostore_sdk/models/annotation_return_relationships_notes.py
+neurostore_sdk/models/base_studies_post200_response.py
 neurostore_sdk/models/base_studies_post_request.py
 neurostore_sdk/models/base_study.py
 neurostore_sdk/models/base_study_list.py
@@ -212,5 +214,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_base_studies_post_request.py
+test/test_base_studies_post200_response.py
 tox.ini

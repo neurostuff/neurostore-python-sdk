@@ -24,6 +24,7 @@ from pydantic import Field, StrictBool, StrictStr, conint, constr
 
 from typing import Optional
 
+from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response
 from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
 from neurostore_sdk.models.base_study import BaseStudy
 from neurostore_sdk.models.base_study_list import BaseStudyList
@@ -604,7 +605,7 @@ class DefaultApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def base_studies_post(self, base_studies_post_request : Optional[BaseStudiesPostRequest] = None, **kwargs) -> BaseStudyReturn:  # noqa: E501
+    def base_studies_post(self, base_studies_post_request : Optional[BaseStudiesPostRequest] = None, **kwargs) -> BaseStudiesPost200Response:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -624,7 +625,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BaseStudyReturn
+        :rtype: BaseStudiesPost200Response
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -665,7 +666,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BaseStudyReturn, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BaseStudiesPost200Response, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -727,7 +728,7 @@ class DefaultApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "BaseStudyReturn",
+            '200': "BaseStudiesPost200Response",
         }
 
         return self.api_client.call_api(
