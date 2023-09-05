@@ -81,7 +81,8 @@ docs/StudyRequestRelationships.md
 docs/StudyRequestRelationshipsAnalyses.md
 docs/StudyReturn.md
 docs/StudyReturnAllOf.md
-docs/StudyReturnAllOfStudysets.md
+docs/StudyReturnAllOfStudysetsInner.md
+docs/StudyReturnAllOfStudysetsInnerOneOf.md
 docs/StudyReturnRelationships.md
 docs/StudyReturnRelationshipsAnalyses.md
 docs/StudysetBase.md
@@ -189,7 +190,8 @@ neurostore_sdk/models/study_request_relationships.py
 neurostore_sdk/models/study_request_relationships_analyses.py
 neurostore_sdk/models/study_return.py
 neurostore_sdk/models/study_return_all_of.py
-neurostore_sdk/models/study_return_all_of_studysets.py
+neurostore_sdk/models/study_return_all_of_studysets_inner.py
+neurostore_sdk/models/study_return_all_of_studysets_inner_one_of.py
 neurostore_sdk/models/study_return_relationships.py
 neurostore_sdk/models/study_return_relationships_analyses.py
 neurostore_sdk/models/studyset_base.py
@@ -214,4 +216,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_study_return_all_of_studysets_inner.py
+test/test_study_return_all_of_studysets_inner_one_of.py
 tox.ini
