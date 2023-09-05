@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **source_updated_at** | **str** |  | [optional] [readonly] 
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
 **studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
+**has_coordinates** | **bool** |  | [optional] 
+**has_images** | **bool** |  | [optional] 
 
 ## Example
 
