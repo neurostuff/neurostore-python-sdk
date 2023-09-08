@@ -216,8 +216,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_base_studies_post200_response.py
-test/test_base_studies_post_request.py
-test/test_study_return_all_of_studysets_inner.py
-test/test_study_return_all_of_studysets_inner_one_of.py
 tox.ini
