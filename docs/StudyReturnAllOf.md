@@ -4,7 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
+**studysets** | [**List[StudyReturnAllOfStudysetsInner]**](StudyReturnAllOfStudysetsInner.md) |  | [optional] 
+**has_coordinates** | **bool** |  | [optional] 
+**has_images** | **bool** |  | [optional] 
 
 ## Example
 

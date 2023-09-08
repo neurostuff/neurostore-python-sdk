@@ -21,7 +21,7 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conint, conlist, constr
-from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOfStudysets
+from neurostore_sdk.models.study_return_all_of_studysets_inner import StudyReturnAllOfStudysetsInner
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 
 class StudyReturn(BaseModel):
@@ -46,8 +46,10 @@ class StudyReturn(BaseModel):
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
     analyses: Optional[StudyReturnRelationshipsAnalyses] = None
-    studysets: Optional[conlist(StudyReturnAllOfStudysets)] = None
-    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "studysets"]
+    studysets: Optional[conlist(StudyReturnAllOfStudysetsInner)] = None
+    has_coordinates: Optional[StrictBool] = None
+    has_images: Optional[StrictBool] = None
+    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "studysets", "has_coordinates", "has_images"]
 
     class Config:
         """Pydantic configuration"""
@@ -187,7 +189,9 @@ class StudyReturn(BaseModel):
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),
             "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj.get("analyses")) if obj.get("analyses") is not None else None,
-            "studysets": [StudyReturnAllOfStudysets.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None
+            "studysets": [StudyReturnAllOfStudysetsInner.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None,
+            "has_coordinates": obj.get("has_coordinates"),
+            "has_images": obj.get("has_images")
         })
         return _obj
 

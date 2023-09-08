@@ -20,15 +20,17 @@ import json
 
 
 from typing import List, Optional
-from pydantic import BaseModel, conlist
-from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOfStudysets
+from pydantic import BaseModel, StrictBool, conlist
+from neurostore_sdk.models.study_return_all_of_studysets_inner import StudyReturnAllOfStudysetsInner
 
 class StudyReturnAllOf(BaseModel):
     """
     StudyReturnAllOf
     """
-    studysets: Optional[conlist(StudyReturnAllOfStudysets)] = None
-    __properties = ["studysets"]
+    studysets: Optional[conlist(StudyReturnAllOfStudysetsInner)] = None
+    has_coordinates: Optional[StrictBool] = None
+    has_images: Optional[StrictBool] = None
+    __properties = ["studysets", "has_coordinates", "has_images"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +75,9 @@ class StudyReturnAllOf(BaseModel):
             return StudyReturnAllOf.parse_obj(obj)
 
         _obj = StudyReturnAllOf.parse_obj({
-            "studysets": [StudyReturnAllOfStudysets.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None
+            "studysets": [StudyReturnAllOfStudysetsInner.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None,
+            "has_coordinates": obj.get("has_coordinates"),
+            "has_images": obj.get("has_images")
         })
         return _obj
 

@@ -22,7 +22,9 @@ Name | Type | Description | Notes
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
-**studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
+**studysets** | [**List[StudyReturnAllOfStudysetsInner]**](StudyReturnAllOfStudysetsInner.md) |  | [optional] 
+**has_coordinates** | **bool** |  | [optional] 
+**has_images** | **bool** |  | [optional] 
 
 ## Example
 
