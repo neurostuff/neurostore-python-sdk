@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **studysets** | [**List[StudyReturnAllOfStudysetsInner]**](StudyReturnAllOfStudysetsInner.md) |  | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 
+**base_study** | **str** |  | [optional] 
 
 ## Example
 
