@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **doi** | **str** | A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI). | [optional] 
 **pmid** | **str** | If the article connected to the studyset was published on PubMed, then link the ID here. | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
+**updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 

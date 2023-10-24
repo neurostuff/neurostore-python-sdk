@@ -6,7 +6,7 @@ common attributes for user owned resources
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
+**updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 

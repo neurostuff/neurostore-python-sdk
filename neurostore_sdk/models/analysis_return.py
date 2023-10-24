@@ -34,7 +34,7 @@ class AnalysisReturn(BaseModel):
     description: Optional[StrictStr] = Field(None, description="A long form description of how the contrast was performed")
     weights: Optional[conlist(Union[StrictFloat, StrictInt])] = Field(None, description="Weight applied to each condition, must be the same length as the conditions attribute.")
     created_at: Optional[datetime] = Field(None, description="time the resource was created on the database")
-    updated_at: Optional[StrictStr] = Field(None, description="when was the resource last modified/updated.")
+    updated_at: Optional[StrictStr] = Field(None, description="when the resource was last modified/updated.")
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
