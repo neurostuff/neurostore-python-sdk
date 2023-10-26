@@ -185,7 +185,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studysets_id_get**
-> StudysetReturn studysets_id_get(id, nested=nested)
+> StudysetReturn studysets_id_get(id, nested=nested, gzip=gzip)
 
 GET a studyset
 
@@ -214,10 +214,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = neurostore_sdk.StudysetsApi(api_client)
     id = 'id_example' # str | 
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
+    gzip = True # bool | return the content as gzipped content (optional)
 
     try:
         # GET a studyset
-        api_response = api_instance.studysets_id_get(id, nested=nested)
+        api_response = api_instance.studysets_id_get(id, nested=nested, gzip=gzip)
         print("The response of StudysetsApi->studysets_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -231,6 +232,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
+ **gzip** | **bool**| return the content as gzipped content | [optional] 
 
 ### Return type
 
@@ -243,7 +245,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/gzip
 
 ### HTTP response details
 | Status code | Description | Response headers |

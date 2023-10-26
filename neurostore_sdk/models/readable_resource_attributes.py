@@ -27,7 +27,7 @@ class ReadableResourceAttributes(BaseModel):
     common readable resource attributes
     """
     created_at: Optional[datetime] = Field(None, description="time the resource was created on the database")
-    updated_at: Optional[StrictStr] = Field(None, description="when was the resource last modified/updated.")
+    updated_at: Optional[StrictStr] = Field(None, description="when the resource was last modified/updated.")
     __properties = ["created_at", "updated_at"]
 
     class Config:

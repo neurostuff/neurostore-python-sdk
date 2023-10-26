@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **authors** | **str** | The authors on the publication of this study. | [optional] 
 **year** | **int** | The year this study was published. | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
+**updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 

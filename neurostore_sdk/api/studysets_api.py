@@ -417,20 +417,22 @@ class StudysetsApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def studysets_id_get(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, **kwargs) -> StudysetReturn:  # noqa: E501
+    def studysets_id_get(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, gzip : Annotated[Optional[StrictBool], Field(description="return the content as gzipped content")] = None, **kwargs) -> StudysetReturn:  # noqa: E501
         """GET a studyset  # noqa: E501
 
         Retrieve the information of a studyset with the matching studyset ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studysets_id_get(id, nested, async_req=True)
+        >>> thread = api.studysets_id_get(id, nested, gzip, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param gzip: return the content as gzipped content
+        :type gzip: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -445,23 +447,25 @@ class StudysetsApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the studysets_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.studysets_id_get_with_http_info(id, nested, **kwargs)  # noqa: E501
+        return self.studysets_id_get_with_http_info(id, nested, gzip, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def studysets_id_get_with_http_info(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def studysets_id_get_with_http_info(self, id : StrictStr, nested : Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None, gzip : Annotated[Optional[StrictBool], Field(description="return the content as gzipped content")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GET a studyset  # noqa: E501
 
         Retrieve the information of a studyset with the matching studyset ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.studysets_id_get_with_http_info(id, nested, async_req=True)
+        >>> thread = api.studysets_id_get_with_http_info(id, nested, gzip, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param gzip: return the content as gzipped content
+        :type gzip: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -491,7 +495,8 @@ class StudysetsApi(object):
 
         _all_params = [
             'id',
-            'nested'
+            'nested',
+            'gzip'
         ]
         _all_params.extend(
             [
@@ -528,6 +533,9 @@ class StudysetsApi(object):
         if _params.get('nested') is not None:  # noqa: E501
             _query_params.append(('nested', _params['nested']))
 
+        if _params.get('gzip') is not None:  # noqa: E501
+            _query_params.append(('gzip', _params['gzip']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -537,7 +545,7 @@ class StudysetsApi(object):
         _body_params = None
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/gzip'])  # noqa: E501
 
         # authentication setting
         _auth_settings = []  # noqa: E501

@@ -6,7 +6,7 @@ common readable resource attributes
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
-**updated_at** | **str** | when was the resource last modified/updated. | [optional] [readonly] 
+**updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
 
 ## Example
 
