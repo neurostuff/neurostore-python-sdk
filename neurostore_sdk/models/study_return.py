@@ -49,7 +49,8 @@ class StudyReturn(BaseModel):
     studysets: Optional[conlist(StudyReturnAllOfStudysetsInner)] = None
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
-    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "studysets", "has_coordinates", "has_images"]
+    base_study: Optional[StrictStr] = None
+    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "studysets", "has_coordinates", "has_images", "base_study"]
 
     class Config:
         """Pydantic configuration"""
@@ -159,6 +160,11 @@ class StudyReturn(BaseModel):
         if self.source_updated_at is None and "source_updated_at" in self.__fields_set__:
             _dict['source_updated_at'] = None
 
+        # set to None if base_study (nullable) is None
+        # and __fields_set__ contains the field
+        if self.base_study is None and "base_study" in self.__fields_set__:
+            _dict['base_study'] = None
+
         return _dict
 
     @classmethod
@@ -191,7 +197,8 @@ class StudyReturn(BaseModel):
             "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj.get("analyses")) if obj.get("analyses") is not None else None,
             "studysets": [StudyReturnAllOfStudysetsInner.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None,
             "has_coordinates": obj.get("has_coordinates"),
-            "has_images": obj.get("has_images")
+            "has_images": obj.get("has_images"),
+            "base_study": obj.get("base_study")
         })
         return _obj
 
