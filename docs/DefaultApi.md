@@ -4,11 +4,69 @@ All URIs are relative to *https://neurostore.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**annotations_options**](DefaultApi.md#annotations_options) | **OPTIONS** /annotations/ | 
 [**base_studies_get**](DefaultApi.md#base_studies_get) | **GET** /base-studies/ | 
 [**base_studies_id_get**](DefaultApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
 [**base_studies_id_put**](DefaultApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
 [**base_studies_post**](DefaultApi.md#base_studies_post) | **POST** /base-studies/ | 
 
+
+# **annotations_options**
+> annotations_options()
+
+
+
+### Example
+
+```python
+import time
+import os
+import neurostore_sdk
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.DefaultApi(api_client)
+
+    try:
+        # 
+        api_instance.annotations_options()
+    except Exception as e:
+        print("Exception when calling DefaultApi->annotations_options: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
 > BaseStudyList base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)

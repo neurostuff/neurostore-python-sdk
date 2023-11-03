@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *ConditionsApi* | [**conditions_id_get**](docs/ConditionsApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
 *ConditionsApi* | [**conditions_id_put**](docs/ConditionsApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
 *ConditionsApi* | [**conditions_post**](docs/ConditionsApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*DefaultApi* | [**annotations_options**](docs/DefaultApi.md#annotations_options) | **OPTIONS** /annotations/ | 
 *DefaultApi* | [**base_studies_get**](docs/DefaultApi.md#base_studies_get) | **GET** /base-studies/ | 
 *DefaultApi* | [**base_studies_id_get**](docs/DefaultApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
 *DefaultApi* | [**base_studies_id_put**](docs/DefaultApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
