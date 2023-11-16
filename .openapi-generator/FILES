@@ -89,7 +89,6 @@ docs/StudysetBase.md
 docs/StudysetList.md
 docs/StudysetRequest.md
 docs/StudysetRequestRelationships.md
-docs/StudysetRequestRelationshipsStudies.md
 docs/StudysetReturn.md
 docs/StudysetReturnRelationships.md
 docs/StudysetReturnRelationshipsStudies.md
@@ -198,7 +197,6 @@ neurostore_sdk/models/studyset_base.py
 neurostore_sdk/models/studyset_list.py
 neurostore_sdk/models/studyset_request.py
 neurostore_sdk/models/studyset_request_relationships.py
-neurostore_sdk/models/studyset_request_relationships_studies.py
 neurostore_sdk/models/studyset_return.py
 neurostore_sdk/models/studyset_return_relationships.py
 neurostore_sdk/models/studyset_return_relationships_studies.py

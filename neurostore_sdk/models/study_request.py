@@ -25,7 +25,7 @@ from neurostore_sdk.models.study_request_relationships_analyses import StudyRequ
 
 class StudyRequest(BaseModel):
     """
-    StudyRequest
+    
     """
     doi: Optional[StrictStr] = Field(None, description="Digital object identifier of the study.")
     name: Optional[StrictStr] = Field(None, description="Title of the study.")
