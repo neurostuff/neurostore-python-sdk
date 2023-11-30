@@ -19,15 +19,14 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel
-from neurostore_sdk.models.studyset_request_relationships_studies import StudysetRequestRelationshipsStudies
+from typing import Any, List, Optional
+from pydantic import BaseModel, conlist
 
 class StudysetRequestRelationships(BaseModel):
     """
     StudysetRequestRelationships
     """
-    studies: Optional[StudysetRequestRelationshipsStudies] = None
+    studies: Optional[conlist(Any)] = None
     __properties = ["studies"]
 
     class Config:
@@ -54,9 +53,6 @@ class StudysetRequestRelationships(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of studies
-        if self.studies:
-            _dict['studies'] = self.studies.to_dict()
         return _dict
 
     @classmethod
@@ -69,7 +65,7 @@ class StudysetRequestRelationships(BaseModel):
             return StudysetRequestRelationships.parse_obj(obj)
 
         _obj = StudysetRequestRelationships.parse_obj({
-            "studies": StudysetRequestRelationshipsStudies.from_dict(obj.get("studies")) if obj.get("studies") is not None else None
+            "studies": obj.get("studies")
         })
         return _obj
 

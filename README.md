@@ -252,7 +252,6 @@ Class | Method | HTTP request | Description
  - [StudysetList](docs/StudysetList.md)
  - [StudysetRequest](docs/StudysetRequest.md)
  - [StudysetRequestRelationships](docs/StudysetRequestRelationships.md)
- - [StudysetRequestRelationshipsStudies](docs/StudysetRequestRelationshipsStudies.md)
  - [StudysetReturn](docs/StudysetReturn.md)
  - [StudysetReturnRelationships](docs/StudysetReturnRelationships.md)
  - [StudysetReturnRelationshipsStudies](docs/StudysetReturnRelationshipsStudies.md)

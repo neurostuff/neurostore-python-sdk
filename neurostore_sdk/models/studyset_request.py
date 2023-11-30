@@ -19,9 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
-from neurostore_sdk.models.studyset_request_relationships_studies import StudysetRequestRelationshipsStudies
+from typing import Any, List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, constr, validator
 
 class StudysetRequest(BaseModel):
     """
@@ -32,7 +31,7 @@ class StudysetRequest(BaseModel):
     publication: Optional[StrictStr] = Field(None, description="The journal/source the studyset is connected to if the studyset was published.")
     doi: Optional[StrictStr] = Field(None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
     pmid: Optional[StrictStr] = Field(None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
-    studies: Optional[StudysetRequestRelationshipsStudies] = None
+    studies: Optional[conlist(Any)] = None
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     level: Optional[StrictStr] = None
@@ -72,9 +71,6 @@ class StudysetRequest(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of studies
-        if self.studies:
-            _dict['studies'] = self.studies.to_dict()
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -117,7 +113,7 @@ class StudysetRequest(BaseModel):
             "publication": obj.get("publication"),
             "doi": obj.get("doi"),
             "pmid": obj.get("pmid"),
-            "studies": StudysetRequestRelationshipsStudies.from_dict(obj.get("studies")) if obj.get("studies") is not None else None,
+            "studies": obj.get("studies"),
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "level": obj.get("level")
