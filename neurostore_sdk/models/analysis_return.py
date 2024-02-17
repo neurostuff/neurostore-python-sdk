@@ -44,7 +44,8 @@ class AnalysisReturn(BaseModel):
     points: Optional[AnalysisReturnRelationshipsPoints] = None
     conditions: Optional[AnalysisReturnRelationshipsConditions] = None
     entities: Optional[conlist(Entity)] = None
-    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities"]
+    analysis: Optional[StrictInt] = None
+    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities", "analysis"]
 
     class Config:
         """Pydantic configuration"""
@@ -114,6 +115,11 @@ class AnalysisReturn(BaseModel):
         if self.username is None and "username" in self.__fields_set__:
             _dict['username'] = None
 
+        # set to None if analysis (nullable) is None
+        # and __fields_set__ contains the field
+        if self.analysis is None and "analysis" in self.__fields_set__:
+            _dict['analysis'] = None
+
         return _dict
 
     @classmethod
@@ -139,7 +145,8 @@ class AnalysisReturn(BaseModel):
             "images": AnalysisReturnRelationshipsImages.from_dict(obj.get("images")) if obj.get("images") is not None else None,
             "points": AnalysisReturnRelationshipsPoints.from_dict(obj.get("points")) if obj.get("points") is not None else None,
             "conditions": AnalysisReturnRelationshipsConditions.from_dict(obj.get("conditions")) if obj.get("conditions") is not None else None,
-            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None
+            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
+            "analysis": obj.get("analysis")
         })
         return _obj
 

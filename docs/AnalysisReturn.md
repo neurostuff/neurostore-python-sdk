@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **points** | [**AnalysisReturnRelationshipsPoints**](AnalysisReturnRelationshipsPoints.md) |  | [optional] 
 **conditions** | [**AnalysisReturnRelationshipsConditions**](AnalysisReturnRelationshipsConditions.md) |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
+**analysis** | **int** |  | [optional] 
 
 ## Example
 

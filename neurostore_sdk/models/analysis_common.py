@@ -20,7 +20,7 @@ import json
 
 
 from typing import List, Optional
-from pydantic import BaseModel, StrictStr, conlist
+from pydantic import BaseModel, StrictInt, StrictStr, conlist
 from neurostore_sdk.models.entity import Entity
 
 class AnalysisCommon(BaseModel):
@@ -29,7 +29,8 @@ class AnalysisCommon(BaseModel):
     """
     study: Optional[StrictStr] = None
     entities: Optional[conlist(Entity)] = None
-    __properties = ["study", "entities"]
+    analysis: Optional[StrictInt] = None
+    __properties = ["study", "entities", "analysis"]
 
     class Config:
         """Pydantic configuration"""
@@ -62,6 +63,11 @@ class AnalysisCommon(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['entities'] = _items
+        # set to None if analysis (nullable) is None
+        # and __fields_set__ contains the field
+        if self.analysis is None and "analysis" in self.__fields_set__:
+            _dict['analysis'] = None
+
         return _dict
 
     @classmethod
@@ -75,7 +81,8 @@ class AnalysisCommon(BaseModel):
 
         _obj = AnalysisCommon.parse_obj({
             "study": obj.get("study"),
-            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None
+            "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
+            "analysis": obj.get("analysis")
         })
         return _obj
 
