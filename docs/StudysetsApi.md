@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studysets_get**
-> StudysetList studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
+> StudysetList studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, return_all=return_all)
 
 GET a list of studysets
 
@@ -62,10 +62,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
+    return_all = True # bool | return all results at an endpoint (WARNING: could take a while) (optional)
 
     try:
         # GET a list of studysets
-        api_response = api_instance.studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
+        api_response = api_instance.studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, return_all=return_all)
         print("The response of StudysetsApi->studysets_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -90,6 +91,7 @@ Name | Type | Description  | Notes
  **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
+ **return_all** | **bool**| return all results at an endpoint (WARNING: could take a while) | [optional] 
 
 ### Return type
 

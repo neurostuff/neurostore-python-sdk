@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+> BaseStudyList base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, return_all=return_all)
 
 
 
@@ -61,10 +61,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     doi = 'doi_example' # str | search for study with specific doi (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
+    return_all = True # bool | return all results at an endpoint (WARNING: could take a while) (optional)
 
     try:
         # 
-        api_response = api_instance.base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+        api_response = api_instance.base_studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, return_all=return_all)
         print("The response of DefaultApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -91,6 +92,7 @@ Name | Type | Description  | Notes
  **doi** | **str**| search for study with specific doi | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
+ **return_all** | **bool**| return all results at an endpoint (WARNING: could take a while) | [optional] 
 
 ### Return type
 

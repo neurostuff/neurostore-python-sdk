@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, return_all=return_all)
 
 GET a list of studies
 
@@ -68,10 +68,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    return_all = True # bool | return all results at an endpoint (WARNING: could take a while) (optional)
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, return_all=return_all)
         print("The response of StudiesApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -102,6 +103,7 @@ Name | Type | Description  | Notes
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **return_all** | **bool**| return all results at an endpoint (WARNING: could take a while) | [optional] 
 
 ### Return type
 
