@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **study** | **str** |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
-**analysis** | **int** |  | [optional] 
+**order** | **int** |  | [optional] 
 
 ## Example
 

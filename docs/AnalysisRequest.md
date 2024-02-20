@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
-**analysis** | **int** |  | [optional] 
+**order** | **int** |  | [optional] 
 
 ## Example
 
