@@ -40,8 +40,8 @@ class AnalysisRequest(BaseModel):
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     entities: Optional[conlist(Entity)] = None
-    analysis: Optional[StrictInt] = None
-    __properties = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "analysis"]
+    order: Optional[StrictInt] = None
+    __properties = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "order"]
 
     class Config:
         """Pydantic configuration"""
@@ -93,10 +93,10 @@ class AnalysisRequest(BaseModel):
         if self.description is None and "description" in self.__fields_set__:
             _dict['description'] = None
 
-        # set to None if analysis (nullable) is None
+        # set to None if order (nullable) is None
         # and __fields_set__ contains the field
-        if self.analysis is None and "analysis" in self.__fields_set__:
-            _dict['analysis'] = None
+        if self.order is None and "order" in self.__fields_set__:
+            _dict['order'] = None
 
         return _dict
 
@@ -120,7 +120,7 @@ class AnalysisRequest(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
-            "analysis": obj.get("analysis")
+            "order": obj.get("order")
         })
         return _obj
 
