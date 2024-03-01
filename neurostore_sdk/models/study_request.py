@@ -25,7 +25,7 @@ from neurostore_sdk.models.study_request_relationships_analyses import StudyRequ
 
 class StudyRequest(BaseModel):
     """
-    
+    StudyRequest
     """
     doi: Optional[StrictStr] = Field(None, description="Digital object identifier of the study.")
     name: Optional[StrictStr] = Field(None, description="Title of the study.")
@@ -38,7 +38,8 @@ class StudyRequest(BaseModel):
     analyses: Optional[StudyRequestRelationshipsAnalyses] = None
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
-    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "analyses", "id", "public"]
+    pmcid: Optional[StrictStr] = None
+    __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "analyses", "id", "public", "pmcid"]
 
     class Config:
         """Pydantic configuration"""
@@ -107,6 +108,11 @@ class StudyRequest(BaseModel):
         if self.year is None and "year" in self.__fields_set__:
             _dict['year'] = None
 
+        # set to None if pmcid (nullable) is None
+        # and __fields_set__ contains the field
+        if self.pmcid is None and "pmcid" in self.__fields_set__:
+            _dict['pmcid'] = None
+
         return _dict
 
     @classmethod
@@ -129,7 +135,8 @@ class StudyRequest(BaseModel):
             "year": obj.get("year"),
             "analyses": StudyRequestRelationshipsAnalyses.from_dict(obj.get("analyses")) if obj.get("analyses") is not None else None,
             "id": obj.get("id"),
-            "public": obj.get("public") if obj.get("public") is not None else True
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "pmcid": obj.get("pmcid")
         })
         return _obj
 
