@@ -240,6 +240,7 @@ Class | Method | HTTP request | Description
  - [StudyCommon](docs/StudyCommon.md)
  - [StudyList](docs/StudyList.md)
  - [StudyRequest](docs/StudyRequest.md)
+ - [StudyRequestAllOf](docs/StudyRequestAllOf.md)
  - [StudyRequestRelationships](docs/StudyRequestRelationships.md)
  - [StudyRequestRelationshipsAnalyses](docs/StudyRequestRelationshipsAnalyses.md)
  - [StudyReturn](docs/StudyReturn.md)

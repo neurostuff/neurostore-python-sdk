@@ -1,7 +1,6 @@
 # StudyRequest
 
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -16,6 +15,7 @@ Name | Type | Description | Notes
 **analyses** | [**StudyRequestRelationshipsAnalyses**](StudyRequestRelationshipsAnalyses.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
+**pmcid** | **str** |  | [optional] 
 
 ## Example
 
