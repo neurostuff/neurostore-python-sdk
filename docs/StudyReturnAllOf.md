@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 
 **base_study** | **str** |  | [optional] 
+**pmcid** | **str** |  | [optional] 
 
 ## Example
 

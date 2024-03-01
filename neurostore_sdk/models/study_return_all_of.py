@@ -31,7 +31,8 @@ class StudyReturnAllOf(BaseModel):
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
     base_study: Optional[StrictStr] = None
-    __properties = ["studysets", "has_coordinates", "has_images", "base_study"]
+    pmcid: Optional[StrictStr] = None
+    __properties = ["studysets", "has_coordinates", "has_images", "base_study", "pmcid"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,6 +70,11 @@ class StudyReturnAllOf(BaseModel):
         if self.base_study is None and "base_study" in self.__fields_set__:
             _dict['base_study'] = None
 
+        # set to None if pmcid (nullable) is None
+        # and __fields_set__ contains the field
+        if self.pmcid is None and "pmcid" in self.__fields_set__:
+            _dict['pmcid'] = None
+
         return _dict
 
     @classmethod
@@ -84,7 +90,8 @@ class StudyReturnAllOf(BaseModel):
             "studysets": [StudyReturnAllOfStudysetsInner.from_dict(_item) for _item in obj.get("studysets")] if obj.get("studysets") is not None else None,
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),
-            "base_study": obj.get("base_study")
+            "base_study": obj.get("base_study"),
+            "pmcid": obj.get("pmcid")
         })
         return _obj
 

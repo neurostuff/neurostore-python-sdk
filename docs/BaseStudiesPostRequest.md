@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **authors** | **str** |  | [optional] 
 **year** | **int** |  | [optional] 
 **level** | **str** |  | [optional] 
+**pmcid** | **str** |  | [optional] 
 
 ## Example
 
