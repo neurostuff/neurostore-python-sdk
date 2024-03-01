@@ -37,13 +37,14 @@ class BaseStudyReturn(BaseModel):
     authors: Optional[StrictStr] = None
     year: Optional[StrictInt] = None
     level: Optional[StrictStr] = None
+    pmcid: Optional[StrictStr] = None
     created_at: Optional[datetime] = Field(None, description="time the resource was created on the database")
     updated_at: Optional[StrictStr] = Field(None, description="when the resource was last modified/updated.")
     id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
     username: Optional[StrictStr] = Field(None, description="human readable username")
-    __properties = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "created_at", "updated_at", "id", "public", "user", "username"]
+    __properties = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "pmcid", "created_at", "updated_at", "id", "public", "user", "username"]
 
     class Config:
         """Pydantic configuration"""
@@ -120,6 +121,11 @@ class BaseStudyReturn(BaseModel):
         if self.level is None and "level" in self.__fields_set__:
             _dict['level'] = None
 
+        # set to None if pmcid (nullable) is None
+        # and __fields_set__ contains the field
+        if self.pmcid is None and "pmcid" in self.__fields_set__:
+            _dict['pmcid'] = None
+
         # set to None if updated_at (nullable) is None
         # and __fields_set__ contains the field
         if self.updated_at is None and "updated_at" in self.__fields_set__:
@@ -157,6 +163,7 @@ class BaseStudyReturn(BaseModel):
             "authors": obj.get("authors"),
             "year": obj.get("year"),
             "level": obj.get("level"),
+            "pmcid": obj.get("pmcid"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
             "id": obj.get("id"),

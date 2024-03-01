@@ -37,7 +37,8 @@ class BaseStudy(BaseModel):
     authors: Optional[StrictStr] = None
     year: Optional[StrictInt] = None
     level: Optional[StrictStr] = None
-    __properties = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level"]
+    pmcid: Optional[StrictStr] = None
+    __properties = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "pmcid"]
 
     class Config:
         """Pydantic configuration"""
@@ -111,6 +112,11 @@ class BaseStudy(BaseModel):
         if self.level is None and "level" in self.__fields_set__:
             _dict['level'] = None
 
+        # set to None if pmcid (nullable) is None
+        # and __fields_set__ contains the field
+        if self.pmcid is None and "pmcid" in self.__fields_set__:
+            _dict['pmcid'] = None
+
         return _dict
 
     @classmethod
@@ -132,7 +138,8 @@ class BaseStudy(BaseModel):
             "pmid": obj.get("pmid"),
             "authors": obj.get("authors"),
             "year": obj.get("year"),
-            "level": obj.get("level")
+            "level": obj.get("level"),
+            "pmcid": obj.get("pmcid")
         })
         return _obj
 
