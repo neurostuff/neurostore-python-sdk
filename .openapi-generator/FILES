@@ -216,5 +216,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_study_request_all_of.py
 tox.ini
