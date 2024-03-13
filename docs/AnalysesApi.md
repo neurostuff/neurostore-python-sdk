@@ -455,7 +455,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **annotation_analyses_id_get**
-> annotation_analyses_id_get(id)
+> NoteCollectionReturn annotation_analyses_id_get(id)
 
 Your GET endpoint
 
@@ -466,6 +466,7 @@ Your GET endpoint
 import time
 import os
 import neurostore_sdk
+from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -493,7 +494,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Your GET endpoint
-        api_instance.annotation_analyses_id_get(id)
+        api_response = api_instance.annotation_analyses_id_get(id)
+        print("The response of AnalysesApi->annotation_analyses_id_get:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling AnalysesApi->annotation_analyses_id_get: %s\n" % e)
 ```
@@ -507,7 +510,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**NoteCollectionReturn**](NoteCollectionReturn.md)
 
 ### Authorization
 
@@ -516,8 +519,12 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

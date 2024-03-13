@@ -981,7 +981,7 @@ class StoreApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def annotation_analyses_id_get(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def annotation_analyses_id_get(self, id : StrictStr, **kwargs) -> NoteCollectionReturn:  # noqa: E501
         """Your GET endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1001,7 +1001,7 @@ class StoreApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: NoteCollectionReturn
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -1042,7 +1042,7 @@ class StoreApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(NoteCollectionReturn, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1089,10 +1089,16 @@ class StoreApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # authentication setting
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "NoteCollectionReturn",
+        }
 
         return self.api_client.call_api(
             '/annotation-analyses/{id}', 'GET',
