@@ -29,6 +29,7 @@ from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostReque
 from neurostore_sdk.models.base_study import BaseStudy
 from neurostore_sdk.models.base_study_list import BaseStudyList
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
+from neurostore_sdk.models.note_collection_list import NoteCollectionList
 
 from neurostore_sdk.api_client import ApiClient
 from neurostore_sdk.api_response import ApiResponse
@@ -49,6 +50,135 @@ class DefaultApi(object):
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+    @validate_arguments
+    def annotation_analyses_get(self, **kwargs) -> NoteCollectionList:  # noqa: E501
+        """Your GET endpoint  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.annotation_analyses_get(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: NoteCollectionList
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the annotation_analyses_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.annotation_analyses_get_with_http_info(**kwargs)  # noqa: E501
+
+    @validate_arguments
+    def annotation_analyses_get_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+        """Your GET endpoint  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.annotation_analyses_get_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(NoteCollectionList, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method annotation_analyses_get" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {
+            '200': "NoteCollectionList",
+        }
+
+        return self.api_client.call_api(
+            '/annotation-analyses/', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
     def base_studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> BaseStudyList:  # noqa: E501
@@ -733,6 +863,137 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/base-studies/', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_annotation_analyses_id(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+        """Your GET endpoint  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_annotation_analyses_id(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the get_annotation_analyses_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.get_annotation_analyses_id_with_http_info(id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_annotation_analyses_id_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+        """Your GET endpoint  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_annotation_analyses_id_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_annotation_analyses_id" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['id']:
+            _path_params['id'] = _params['id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # authentication setting
+        _auth_settings = []  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/annotation-analyses/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,

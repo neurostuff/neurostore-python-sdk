@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **study_year** | **int** |  | [optional] [readonly] 
 **publication** | **str** |  | [optional] [readonly] 
 **authors** | **str** |  | [optional] [readonly] 
+**id** | **str** |  | [optional] 
 
 ## Example
 

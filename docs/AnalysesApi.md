@@ -9,6 +9,9 @@ Method | HTTP request | Description
 [**analyses_id_get**](AnalysesApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
 [**analyses_id_put**](AnalysesApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
 [**analyses_post**](AnalysesApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+[**annotation_analyses_get**](AnalysesApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
+[**annotation_analyses_id_get**](AnalysesApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
+[**annotation_analyses_id_put**](AnalysesApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
 
 
 # **analyses_get**
@@ -373,6 +376,218 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AnalysisReturn**](AnalysisReturn.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **annotation_analyses_get**
+> NoteCollectionList annotation_analyses_get()
+
+Get annotation analyses
+
+### Example
+
+```python
+import time
+import os
+import neurostore_sdk
+from neurostore_sdk.models.note_collection_list import NoteCollectionList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.AnalysesApi(api_client)
+
+    try:
+        # Get annotation analyses
+        api_response = api_instance.annotation_analyses_get()
+        print("The response of AnalysesApi->annotation_analyses_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesApi->annotation_analyses_get: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NoteCollectionList**](NoteCollectionList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**2XX** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **annotation_analyses_id_get**
+> NoteCollectionReturn annotation_analyses_id_get(id)
+
+Your GET endpoint
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+```python
+import time
+import os
+import neurostore_sdk
+from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.AnalysesApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # Your GET endpoint
+        api_response = api_instance.annotation_analyses_id_get(id)
+        print("The response of AnalysesApi->annotation_analyses_id_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesApi->annotation_analyses_id_get: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**NoteCollectionReturn**](NoteCollectionReturn.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **annotation_analyses_id_put**
+> NoteCollectionReturn annotation_analyses_id_put(id, note_collection_request=note_collection_request)
+
+Your PUT endpoint
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+```python
+import time
+import os
+import neurostore_sdk
+from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
+from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.AnalysesApi(api_client)
+    id = 'id_example' # str | 
+    note_collection_request = neurostore_sdk.NoteCollectionRequest() # NoteCollectionRequest |  (optional)
+
+    try:
+        # Your PUT endpoint
+        api_response = api_instance.annotation_analyses_id_put(id, note_collection_request=note_collection_request)
+        print("The response of AnalysesApi->annotation_analyses_id_put:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AnalysesApi->annotation_analyses_id_put: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **note_collection_request** | [**NoteCollectionRequest**](NoteCollectionRequest.md)|  | [optional] 
+
+### Return type
+
+[**NoteCollectionReturn**](NoteCollectionReturn.md)
 
 ### Authorization
 

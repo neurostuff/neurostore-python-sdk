@@ -43,7 +43,6 @@ docs/ConditionList.md
 docs/ConditionRequest.md
 docs/ConditionReturn.md
 docs/ConditionsApi.md
-docs/DefaultApi.md
 docs/Entity.md
 docs/ImageBase.md
 docs/ImageCommon.md
@@ -57,6 +56,7 @@ docs/JsonLdContext.md
 docs/Metadata.md
 docs/NestedPutAttributes.md
 docs/NoteCollectionBase.md
+docs/NoteCollectionList.md
 docs/NoteCollectionRequest.md
 docs/NoteCollectionReturn.md
 docs/NoteCollectionReturnAllOf.md
@@ -108,7 +108,6 @@ neurostore_sdk/api/__init__.py
 neurostore_sdk/api/analyses_api.py
 neurostore_sdk/api/annotations_api.py
 neurostore_sdk/api/conditions_api.py
-neurostore_sdk/api/default_api.py
 neurostore_sdk/api/images_api.py
 neurostore_sdk/api/points_api.py
 neurostore_sdk/api/store_api.py
@@ -169,6 +168,7 @@ neurostore_sdk/models/json_ld_context.py
 neurostore_sdk/models/metadata.py
 neurostore_sdk/models/nested_put_attributes.py
 neurostore_sdk/models/note_collection_base.py
+neurostore_sdk/models/note_collection_list.py
 neurostore_sdk/models/note_collection_request.py
 neurostore_sdk/models/note_collection_return.py
 neurostore_sdk/models/note_collection_return_all_of.py
@@ -216,5 +216,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_study_request_all_of.py
 tox.ini
