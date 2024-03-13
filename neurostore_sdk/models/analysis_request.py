@@ -37,7 +37,7 @@ class AnalysisRequest(BaseModel):
     images: Optional[AnalysisRequestRelationshipsImages] = None
     points: Optional[AnalysisRequestRelationshipsPoints] = None
     conditions: Optional[AnalysisRequestRelationshipsConditions] = None
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     entities: Optional[conlist(Entity)] = None
     order: Optional[StrictInt] = None

@@ -38,7 +38,7 @@ class PointRequest(BaseModel):
     y: Optional[Union[StrictFloat, StrictInt]] = None
     z: Optional[Union[StrictFloat, StrictInt]] = None
     entities: Optional[conlist(Entity)] = None
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="size of the cluster in cubic millimeters")

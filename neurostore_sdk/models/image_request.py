@@ -36,7 +36,7 @@ class ImageRequest(BaseModel):
     analysis: Optional[StrictStr] = None
     entities: Optional[conlist(Entity)] = None
     analysis_name: Optional[StrictStr] = None
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     __properties = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "entities", "analysis_name", "id", "public"]
 

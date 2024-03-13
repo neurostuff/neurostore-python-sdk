@@ -32,7 +32,7 @@ class AnnotationRequestOneOf(BaseModel):
     metadata: Optional[Dict[str, Any]] = Field(None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
     note_keys: Optional[Dict[str, Any]] = Field(None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
     notes: Optional[AnnotationRequestRelationshipsNotes] = None
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     studyset: Optional[StrictStr] = None
     __properties = ["name", "description", "metadata", "note_keys", "notes", "id", "public", "studyset"]

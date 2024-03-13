@@ -32,7 +32,7 @@ class StudysetRequest(BaseModel):
     doi: Optional[StrictStr] = Field(None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
     pmid: Optional[StrictStr] = Field(None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
     studies: Optional[conlist(Any)] = None
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     level: Optional[StrictStr] = None
     __properties = ["name", "description", "publication", "doi", "pmid", "studies", "id", "public", "level"]
