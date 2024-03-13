@@ -21,7 +21,6 @@ __version__ = "0.0.1"
 from neurostore_sdk.api.analyses_api import AnalysesApi
 from neurostore_sdk.api.annotations_api import AnnotationsApi
 from neurostore_sdk.api.conditions_api import ConditionsApi
-from neurostore_sdk.api.default_api import DefaultApi
 from neurostore_sdk.api.images_api import ImagesApi
 from neurostore_sdk.api.points_api import PointsApi
 from neurostore_sdk.api.store_api import StoreApi
@@ -90,6 +89,7 @@ from neurostore_sdk.models.json_ld_context import JsonLdContext
 from neurostore_sdk.models.metadata import Metadata
 from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes
 from neurostore_sdk.models.note_collection_base import NoteCollectionBase
+from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.models.note_collection_return_all_of import NoteCollectionReturnAllOf
