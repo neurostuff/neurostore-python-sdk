@@ -34,7 +34,8 @@ class NoteCollectionReturnAllOf(BaseModel):
     study_year: Optional[StrictInt] = None
     publication: Optional[StrictStr] = None
     authors: Optional[StrictStr] = None
-    __properties = ["analysis", "analysis_name", "study", "study_name", "annotation", "study_year", "publication", "authors"]
+    id: Optional[StrictStr] = None
+    __properties = ["analysis", "analysis_name", "study", "study_name", "annotation", "study_year", "publication", "authors", "id"]
 
     class Config:
         """Pydantic configuration"""
@@ -112,7 +113,8 @@ class NoteCollectionReturnAllOf(BaseModel):
             "annotation": obj.get("annotation"),
             "study_year": obj.get("study_year"),
             "publication": obj.get("publication"),
-            "authors": obj.get("authors")
+            "authors": obj.get("authors"),
+            "id": obj.get("id")
         })
         return _obj
 

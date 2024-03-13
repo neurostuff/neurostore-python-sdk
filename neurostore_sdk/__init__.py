@@ -90,6 +90,7 @@ from neurostore_sdk.models.json_ld_context import JsonLdContext
 from neurostore_sdk.models.metadata import Metadata
 from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes
 from neurostore_sdk.models.note_collection_base import NoteCollectionBase
+from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.models.note_collection_return_all_of import NoteCollectionReturnAllOf
