@@ -98,6 +98,12 @@ Class | Method | HTTP request | Description
 *AnalysesApi* | [**analyses_id_get**](docs/AnalysesApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
 *AnalysesApi* | [**analyses_id_put**](docs/AnalysesApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
 *AnalysesApi* | [**analyses_post**](docs/AnalysesApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+*AnalysesApi* | [**annotation_analyses_get**](docs/AnalysesApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
+*AnalysesApi* | [**annotation_analyses_id_get**](docs/AnalysesApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
+*AnalysesApi* | [**annotation_analyses_id_put**](docs/AnalysesApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
+*AnnotationsApi* | [**annotation_analyses_get**](docs/AnnotationsApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
+*AnnotationsApi* | [**annotation_analyses_id_get**](docs/AnnotationsApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
+*AnnotationsApi* | [**annotation_analyses_id_put**](docs/AnnotationsApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
 *AnnotationsApi* | [**annotations_get**](docs/AnnotationsApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 *AnnotationsApi* | [**annotations_id_delete**](docs/AnnotationsApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 *AnnotationsApi* | [**annotations_id_get**](docs/AnnotationsApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
@@ -108,12 +114,6 @@ Class | Method | HTTP request | Description
 *ConditionsApi* | [**conditions_id_get**](docs/ConditionsApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
 *ConditionsApi* | [**conditions_id_put**](docs/ConditionsApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
 *ConditionsApi* | [**conditions_post**](docs/ConditionsApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
-*DefaultApi* | [**annotation_analyses_get**](docs/DefaultApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Your GET endpoint
-*DefaultApi* | [**base_studies_get**](docs/DefaultApi.md#base_studies_get) | **GET** /base-studies/ | 
-*DefaultApi* | [**base_studies_id_get**](docs/DefaultApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
-*DefaultApi* | [**base_studies_id_put**](docs/DefaultApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
-*DefaultApi* | [**base_studies_post**](docs/DefaultApi.md#base_studies_post) | **POST** /base-studies/ | 
-*DefaultApi* | [**get_annotation_analyses_id**](docs/DefaultApi.md#get_annotation_analyses_id) | **GET** /annotation-analyses/{id} | Your GET endpoint
 *ImagesApi* | [**images_get**](docs/ImagesApi.md#images_get) | **GET** /images/ | GET a list of images
 *ImagesApi* | [**images_id_delete**](docs/ImagesApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 *ImagesApi* | [**images_id_get**](docs/ImagesApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -129,11 +129,18 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
 *StoreApi* | [**analyses_id_put**](docs/StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
 *StoreApi* | [**analyses_post**](docs/StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+*StoreApi* | [**annotation_analyses_get**](docs/StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
+*StoreApi* | [**annotation_analyses_id_get**](docs/StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
+*StoreApi* | [**annotation_analyses_id_put**](docs/StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
 *StoreApi* | [**annotations_get**](docs/StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 *StoreApi* | [**annotations_id_delete**](docs/StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 *StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
 *StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
 *StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
+*StoreApi* | [**base_studies_get**](docs/StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
+*StoreApi* | [**base_studies_id_get**](docs/StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
+*StoreApi* | [**base_studies_id_put**](docs/StoreApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
+*StoreApi* | [**base_studies_post**](docs/StoreApi.md#base_studies_post) | **POST** /base-studies/ | 
 *StoreApi* | [**conditions_get**](docs/StoreApi.md#conditions_get) | **GET** /conditions/ | GET Conditions
 *StoreApi* | [**conditions_id_delete**](docs/StoreApi.md#conditions_id_delete) | **DELETE** /conditions/{id} | DELETE a condition
 *StoreApi* | [**conditions_id_get**](docs/StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
@@ -158,6 +165,10 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
 *StoreApi* | [**studysets_id_put**](docs/StoreApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
 *StoreApi* | [**studysets_post**](docs/StoreApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
+*StudiesApi* | [**base_studies_get**](docs/StudiesApi.md#base_studies_get) | **GET** /base-studies/ | 
+*StudiesApi* | [**base_studies_id_get**](docs/StudiesApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
+*StudiesApi* | [**base_studies_id_put**](docs/StudiesApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
+*StudiesApi* | [**base_studies_post**](docs/StudiesApi.md#base_studies_post) | **POST** /base-studies/ | 
 *StudiesApi* | [**studies_get**](docs/StudiesApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 *StudiesApi* | [**studies_id_delete**](docs/StudiesApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 *StudiesApi* | [**studies_id_get**](docs/StudiesApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
