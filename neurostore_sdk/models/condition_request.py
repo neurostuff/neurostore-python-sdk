@@ -28,7 +28,7 @@ class ConditionRequest(BaseModel):
     """
     name: Optional[StrictStr] = Field(None, description="Name of the condition being applied in the contrast, either psychological, pharmacological, or group based.")
     description: Optional[StrictStr] = Field(None, description="Long form description of how the condition is operationalized and/or specific meaning.")
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     __properties = ["name", "description", "id", "public"]
 

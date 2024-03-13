@@ -26,7 +26,7 @@ class WriteableResourceAttributes(BaseModel):
     """
     common resource attributes
     """
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     __properties = ["id", "public"]
 

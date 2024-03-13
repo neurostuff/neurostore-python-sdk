@@ -38,7 +38,7 @@ class StudyReturn(BaseModel):
     year: Optional[conint(strict=True, le=9999, ge=0)] = Field(None, description="The year this study was published.")
     created_at: Optional[datetime] = Field(None, description="time the resource was created on the database")
     updated_at: Optional[StrictStr] = Field(None, description="when the resource was last modified/updated.")
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(None, description="who owns the resource")
     username: Optional[StrictStr] = Field(None, description="human readable username")

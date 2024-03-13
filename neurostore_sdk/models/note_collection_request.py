@@ -27,7 +27,7 @@ class NoteCollectionRequest(BaseModel):
     NoteCollectionRequest
     """
     note: Optional[Dict[str, Any]] = Field(None, description="The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys.")
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     __properties = ["note", "id", "public"]
 

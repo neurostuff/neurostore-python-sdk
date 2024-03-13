@@ -36,7 +36,7 @@ class StudyRequest(BaseModel):
     authors: Optional[StrictStr] = Field(None, description="The authors on the publication of this study.")
     year: Optional[conint(strict=True, le=9999, ge=0)] = Field(None, description="The year this study was published.")
     analyses: Optional[StudyRequestRelationshipsAnalyses] = None
-    id: Optional[constr(strict=True, max_length=12, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
+    id: Optional[constr(strict=True, max_length=30, min_length=12)] = Field(None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     pmcid: Optional[StrictStr] = None
     __properties = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "analyses", "id", "public", "pmcid"]
