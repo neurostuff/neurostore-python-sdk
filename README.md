@@ -101,9 +101,11 @@ Class | Method | HTTP request | Description
 *AnalysesApi* | [**annotation_analyses_get**](docs/AnalysesApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 *AnalysesApi* | [**annotation_analyses_id_get**](docs/AnalysesApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 *AnalysesApi* | [**annotation_analyses_id_put**](docs/AnalysesApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
+*AnalysesApi* | [**annotation_analyses_put**](docs/AnalysesApi.md#annotation_analyses_put) | **PUT** /annotation-analyses/ | Your PUT endpoint
 *AnnotationsApi* | [**annotation_analyses_get**](docs/AnnotationsApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 *AnnotationsApi* | [**annotation_analyses_id_get**](docs/AnnotationsApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 *AnnotationsApi* | [**annotation_analyses_id_put**](docs/AnnotationsApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
+*AnnotationsApi* | [**annotation_analyses_put**](docs/AnnotationsApi.md#annotation_analyses_put) | **PUT** /annotation-analyses/ | Your PUT endpoint
 *AnnotationsApi* | [**annotations_get**](docs/AnnotationsApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 *AnnotationsApi* | [**annotations_id_delete**](docs/AnnotationsApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 *AnnotationsApi* | [**annotations_id_get**](docs/AnnotationsApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
@@ -132,6 +134,7 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**annotation_analyses_get**](docs/StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 *StoreApi* | [**annotation_analyses_id_get**](docs/StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 *StoreApi* | [**annotation_analyses_id_put**](docs/StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
+*StoreApi* | [**annotation_analyses_put**](docs/StoreApi.md#annotation_analyses_put) | **PUT** /annotation-analyses/ | Your PUT endpoint
 *StoreApi* | [**annotations_get**](docs/StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 *StoreApi* | [**annotations_id_delete**](docs/StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 *StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
