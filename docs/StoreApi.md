@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**annotation_analyses_get**](StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 [**annotation_analyses_id_get**](StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 [**annotation_analyses_id_put**](StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
-[**annotation_analyses_put**](StoreApi.md#annotation_analyses_put) | **PUT** /annotation-analyses/ | Your PUT endpoint
+[**annotation_analyses_post**](StoreApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
 [**annotations_get**](StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 [**annotations_id_delete**](StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 [**annotations_id_get**](StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
@@ -639,10 +639,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **annotation_analyses_put**
-> NoteCollectionReturn annotation_analyses_put(note_collection_request=note_collection_request)
+# **annotation_analyses_post**
+> NoteCollectionReturn annotation_analyses_post(note_collection_request=note_collection_request)
 
-Your PUT endpoint
+Your POST endpoint
 
 ### Example
 
@@ -669,12 +669,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     note_collection_request = [neurostore_sdk.NoteCollectionRequest()] # List[NoteCollectionRequest] |  (optional)
 
     try:
-        # Your PUT endpoint
-        api_response = api_instance.annotation_analyses_put(note_collection_request=note_collection_request)
-        print("The response of StoreApi->annotation_analyses_put:\n")
+        # Your POST endpoint
+        api_response = api_instance.annotation_analyses_post(note_collection_request=note_collection_request)
+        print("The response of StoreApi->annotation_analyses_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling StoreApi->annotation_analyses_put: %s\n" % e)
+        print("Exception when calling StoreApi->annotation_analyses_post: %s\n" % e)
 ```
 
 

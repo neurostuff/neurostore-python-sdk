@@ -1248,13 +1248,13 @@ class AnalysesApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def annotation_analyses_put(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> NoteCollectionReturn:  # noqa: E501
-        """Your PUT endpoint  # noqa: E501
+    def annotation_analyses_post(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> NoteCollectionReturn:  # noqa: E501
+        """Your POST endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.annotation_analyses_put(note_collection_request, async_req=True)
+        >>> thread = api.annotation_analyses_post(note_collection_request, async_req=True)
         >>> result = thread.get()
 
         :param note_collection_request:
@@ -1272,17 +1272,17 @@ class AnalysesApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the annotation_analyses_put_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.annotation_analyses_put_with_http_info(note_collection_request, **kwargs)  # noqa: E501
+            raise ValueError("Error! Please call the annotation_analyses_post_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.annotation_analyses_post_with_http_info(note_collection_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def annotation_analyses_put_with_http_info(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """Your PUT endpoint  # noqa: E501
+    def annotation_analyses_post_with_http_info(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Your POST endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.annotation_analyses_put_with_http_info(note_collection_request, async_req=True)
+        >>> thread = api.annotation_analyses_post_with_http_info(note_collection_request, async_req=True)
         >>> result = thread.get()
 
         :param note_collection_request:
@@ -1334,7 +1334,7 @@ class AnalysesApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method annotation_analyses_put" % _key
+                    " to method annotation_analyses_post" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -1375,7 +1375,7 @@ class AnalysesApi(object):
         }
 
         return self.api_client.call_api(
-            '/annotation-analyses/', 'PUT',
+            '/annotation-analyses/', 'POST',
             _path_params,
             _query_params,
             _header_params,
