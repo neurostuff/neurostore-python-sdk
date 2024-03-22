@@ -1273,6 +1273,7 @@ class StoreApi(object):
     def annotation_analyses_post(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> List[NoteCollectionReturn]:  # noqa: E501
         """Your POST endpoint  # noqa: E501
 
+        This endpoint does not allow for creation, only modification of existing annotation-analyses. If you wish to create an annotation-analysis, post to the annotations endpoint and/or add the analysis to the appropriate study in the studyset, and the annotation-analysis will be created automatically.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1301,6 +1302,7 @@ class StoreApi(object):
     def annotation_analyses_post_with_http_info(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Your POST endpoint  # noqa: E501
 
+        This endpoint does not allow for creation, only modification of existing annotation-analyses. If you wish to create an annotation-analysis, post to the annotations endpoint and/or add the analysis to the appropriate study in the studyset, and the annotation-analysis will be created automatically.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

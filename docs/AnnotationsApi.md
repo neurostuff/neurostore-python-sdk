@@ -232,6 +232,8 @@ Name | Type | Description  | Notes
 
 Your POST endpoint
 
+This endpoint does not allow for creation, only modification of existing annotation-analyses. If you wish to create an annotation-analysis, post to the annotations endpoint and/or add the analysis to the appropriate study in the studyset, and the annotation-analysis will be created automatically. 
+
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
