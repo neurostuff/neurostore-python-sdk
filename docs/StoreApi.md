@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**annotation_analyses_get**](StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 [**annotation_analyses_id_get**](StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 [**annotation_analyses_id_put**](StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
+[**annotation_analyses_post**](StoreApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
 [**annotations_get**](StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 [**annotations_id_delete**](StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 [**annotations_id_get**](StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
@@ -621,6 +622,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NoteCollectionReturn**](NoteCollectionReturn.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **annotation_analyses_post**
+> List[NoteCollectionReturn] annotation_analyses_post(note_collection_request=note_collection_request)
+
+Your POST endpoint
+
+This endpoint does not allow for creation, only modification of existing annotation-analyses. If you wish to create an annotation-analysis, post to the annotations endpoint and/or add the analysis to the appropriate study in the studyset, and the annotation-analysis will be created automatically. 
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+```python
+import time
+import os
+import neurostore_sdk
+from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
+from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    note_collection_request = [neurostore_sdk.NoteCollectionRequest()] # List[NoteCollectionRequest] |  (optional)
+
+    try:
+        # Your POST endpoint
+        api_response = api_instance.annotation_analyses_post(note_collection_request=note_collection_request)
+        print("The response of StoreApi->annotation_analyses_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->annotation_analyses_post: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **note_collection_request** | [**List[NoteCollectionRequest]**](NoteCollectionRequest.md)|  | [optional] 
+
+### Return type
+
+[**List[NoteCollectionReturn]**](NoteCollectionReturn.md)
 
 ### Authorization
 
