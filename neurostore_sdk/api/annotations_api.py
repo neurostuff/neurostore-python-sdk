@@ -22,7 +22,7 @@ from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictStr, conlist
 
-from typing import Optional
+from typing import List, Optional
 
 from neurostore_sdk.models.annotation_list import AnnotationList
 from neurostore_sdk.models.annotation_request import AnnotationRequest
@@ -471,7 +471,7 @@ class AnnotationsApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def annotation_analyses_post(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> NoteCollectionReturn:  # noqa: E501
+    def annotation_analyses_post(self, note_collection_request : Optional[conlist(NoteCollectionRequest)] = None, **kwargs) -> List[NoteCollectionReturn]:  # noqa: E501
         """Your POST endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -491,7 +491,7 @@ class AnnotationsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: NoteCollectionReturn
+        :rtype: List[NoteCollectionReturn]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -532,7 +532,7 @@ class AnnotationsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(NoteCollectionReturn, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(List[NoteCollectionReturn], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -594,7 +594,7 @@ class AnnotationsApi(object):
         _auth_settings = ['JSON-Web-Token']  # noqa: E501
 
         _response_types_map = {
-            '200': "NoteCollectionReturn",
+            '200': "List[NoteCollectionReturn]",
         }
 
         return self.api_client.call_api(

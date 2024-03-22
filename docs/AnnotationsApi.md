@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **annotation_analyses_post**
-> NoteCollectionReturn annotation_analyses_post(note_collection_request=note_collection_request)
+> List[NoteCollectionReturn] annotation_analyses_post(note_collection_request=note_collection_request)
 
 Your POST endpoint
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NoteCollectionReturn**](NoteCollectionReturn.md)
+[**List[NoteCollectionReturn]**](NoteCollectionReturn.md)
 
 ### Authorization
 
