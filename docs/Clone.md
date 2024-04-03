@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of Clone from a JSON string
 clone_instance = Clone.from_json(json)
 # print the JSON string representation of the object
-print Clone.to_json()
+print(Clone.to_json())
 
 # convert the object into a dict
 clone_dict = clone_instance.to_dict()

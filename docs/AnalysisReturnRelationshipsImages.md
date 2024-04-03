@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
@@ -15,7 +16,7 @@ json = "{}"
 # create an instance of AnalysisReturnRelationshipsImages from a JSON string
 analysis_return_relationships_images_instance = AnalysisReturnRelationshipsImages.from_json(json)
 # print the JSON string representation of the object
-print AnalysisReturnRelationshipsImages.to_json()
+print(AnalysisReturnRelationshipsImages.to_json())
 
 # convert the object into a dict
 analysis_return_relationships_images_dict = analysis_return_relationships_images_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** |  | [optional] 
@@ -32,7 +33,7 @@ json = "{}"
 # create an instance of BaseStudyReturn from a JSON string
 base_study_return_instance = BaseStudyReturn.from_json(json)
 # print the JSON string representation of the object
-print BaseStudyReturn.to_json()
+print(BaseStudyReturn.to_json())
 
 # convert the object into a dict
 base_study_return_dict = base_study_return_instance.to_dict()

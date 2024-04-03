@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[ConditionReturn]**](ConditionReturn.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ConditionList from a JSON string
 condition_list_instance = ConditionList.from_json(json)
 # print the JSON string representation of the object
-print ConditionList.to_json()
+print(ConditionList.to_json())
 
 # convert the object into a dict
 condition_list_dict = condition_list_instance.to_dict()

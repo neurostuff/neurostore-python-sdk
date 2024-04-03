@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **detail** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of StudysetsIdGet404Response from a JSON string
 studysets_id_get404_response_instance = StudysetsIdGet404Response.from_json(json)
 # print the JSON string representation of the object
-print StudysetsIdGet404Response.to_json()
+print(StudysetsIdGet404Response.to_json())
 
 # convert the object into a dict
 studysets_id_get404_response_dict = studysets_id_get404_response_instance.to_dict()

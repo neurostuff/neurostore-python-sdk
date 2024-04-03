@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Descriptive and human readable name of the studyset. | [optional] 
@@ -24,7 +25,7 @@ json = "{}"
 # create an instance of StudysetRequest from a JSON string
 studyset_request_instance = StudysetRequest.from_json(json)
 # print the JSON string representation of the object
-print StudysetRequest.to_json()
+print(StudysetRequest.to_json())
 
 # convert the object into a dict
 studyset_request_dict = studyset_request_instance.to_dict()

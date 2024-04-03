@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coordinates** | **List[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
@@ -31,7 +32,7 @@ json = "{}"
 # create an instance of PointRequest from a JSON string
 point_request_instance = PointRequest.from_json(json)
 # print the JSON string representation of the object
-print PointRequest.to_json()
+print(PointRequest.to_json())
 
 # convert the object into a dict
 point_request_dict = point_request_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** |  | [optional] 
@@ -32,7 +33,7 @@ json = "{}"
 # create an instance of BaseStudiesPost200Response from a JSON string
 base_studies_post200_response_instance = BaseStudiesPost200Response.from_json(json)
 # print the JSON string representation of the object
-print BaseStudiesPost200Response.to_json()
+print(BaseStudiesPost200Response.to_json())
 
 # convert the object into a dict
 base_studies_post200_response_dict = base_studies_post200_response_instance.to_dict()

@@ -3,6 +3,7 @@
 exporting an annotation as a CSV for easier editing
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** |  | [optional] [readonly] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of AnnotationExport from a JSON string
 annotation_export_instance = AnnotationExport.from_json(json)
 # print the JSON string representation of the object
-print AnnotationExport.to_json()
+print(AnnotationExport.to_json())
 
 # convert the object into a dict
 annotation_export_dict = annotation_export_instance.to_dict()

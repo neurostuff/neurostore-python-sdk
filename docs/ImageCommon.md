@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of ImageCommon from a JSON string
 image_common_instance = ImageCommon.from_json(json)
 # print the JSON string representation of the object
-print ImageCommon.to_json()
+print(ImageCommon.to_json())
 
 # convert the object into a dict
 image_common_dict = image_common_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **doi** | **str** | Digital object identifier of the study. | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of StudyBase from a JSON string
 study_base_instance = StudyBase.from_json(json)
 # print the JSON string representation of the object
-print StudyBase.to_json()
+print(StudyBase.to_json())
 
 # convert the object into a dict
 study_base_dict = study_base_instance.to_dict()

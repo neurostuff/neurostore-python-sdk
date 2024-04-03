@@ -20,9 +20,8 @@ Retrieve and list images.
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.image_list import ImageList
 from neurostore_sdk.rest import ApiException
@@ -59,7 +58,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -87,6 +88,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -103,9 +105,8 @@ delete an image
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
@@ -140,7 +141,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -160,6 +163,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -175,9 +179,8 @@ Retrieve information about a particular image from an analysis.
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.image_return import ImageReturn
 from neurostore_sdk.rest import ApiException
@@ -206,7 +209,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -226,6 +231,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -243,9 +249,8 @@ Update a specific image.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
@@ -285,7 +290,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -306,6 +313,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -323,9 +331,8 @@ Create an image
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
@@ -364,7 +371,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -384,6 +393,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

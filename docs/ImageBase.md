@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** | Metadata about image such as software and version used and other relevant data about how the image was produced. | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of ImageBase from a JSON string
 image_base_instance = ImageBase.from_json(json)
 # print the JSON string representation of the object
-print ImageBase.to_json()
+print(ImageBase.to_json())
 
 # convert the object into a dict
 image_base_dict = image_base_instance.to_dict()

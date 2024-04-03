@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of StudyReturnRelationships from a JSON string
 study_return_relationships_instance = StudyReturnRelationships.from_json(json)
 # print the JSON string representation of the object
-print StudyReturnRelationships.to_json()
+print(StudyReturnRelationships.to_json())
 
 # convert the object into a dict
 study_return_relationships_dict = study_return_relationships_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coordinates** | **List[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of PointBase from a JSON string
 point_base_instance = PointBase.from_json(json)
 # print the JSON string representation of the object
-print PointBase.to_json()
+print(PointBase.to_json())
 
 # convert the object into a dict
 point_base_dict = point_base_instance.to_dict()

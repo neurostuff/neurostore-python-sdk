@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notes** | [**AnnotationReturnRelationshipsNotes**](AnnotationReturnRelationshipsNotes.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of AnnotationReturnRelationships from a JSON string
 annotation_return_relationships_instance = AnnotationReturnRelationships.from_json(json)
 # print the JSON string representation of the object
-print AnnotationReturnRelationships.to_json()
+print(AnnotationReturnRelationships.to_json())
 
 # convert the object into a dict
 annotation_return_relationships_dict = annotation_return_relationships_instance.to_dict()
