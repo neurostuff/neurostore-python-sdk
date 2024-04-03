@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
@@ -15,7 +16,7 @@ json = "{}"
 # create an instance of PointRelationshipsValues from a JSON string
 point_relationships_values_instance = PointRelationshipsValues.from_json(json)
 # print the JSON string representation of the object
-print PointRelationshipsValues.to_json()
+print(PointRelationshipsValues.to_json())
 
 # convert the object into a dict
 point_relationships_values_dict = point_relationships_values_instance.to_dict()

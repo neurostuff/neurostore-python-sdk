@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **studyset** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of AnnotationCommon from a JSON string
 annotation_common_instance = AnnotationCommon.from_json(json)
 # print the JSON string representation of the object
-print AnnotationCommon.to_json()
+print(AnnotationCommon.to_json())
 
 # convert the object into a dict
 annotation_common_dict = annotation_common_instance.to_dict()

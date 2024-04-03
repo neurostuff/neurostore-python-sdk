@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
@@ -15,7 +16,7 @@ json = "{}"
 # create an instance of BaseStudyVersions from a JSON string
 base_study_versions_instance = BaseStudyVersions.from_json(json)
 # print the JSON string representation of the object
-print BaseStudyVersions.to_json()
+print(BaseStudyVersions.to_json())
 
 # convert the object into a dict
 base_study_versions_dict = base_study_versions_instance.to_dict()

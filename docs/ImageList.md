@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[ImageReturn]**](ImageReturn.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of ImageList from a JSON string
 image_list_instance = ImageList.from_json(json)
 # print the JSON string representation of the object
-print ImageList.to_json()
+print(ImageList.to_json())
 
 # convert the object into a dict
 image_list_dict = image_list_instance.to_dict()

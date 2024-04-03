@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
@@ -31,7 +32,7 @@ json = "{}"
 # create an instance of AnnotationReturn from a JSON string
 annotation_return_instance = AnnotationReturn.from_json(json)
 # print the JSON string representation of the object
-print AnnotationReturn.to_json()
+print(AnnotationReturn.to_json())
 
 # convert the object into a dict
 annotation_return_dict = annotation_return_instance.to_dict()

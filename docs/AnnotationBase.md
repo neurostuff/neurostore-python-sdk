@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Descriptive name for the annotation. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of AnnotationBase from a JSON string
 annotation_base_instance = AnnotationBase.from_json(json)
 # print the JSON string representation of the object
-print AnnotationBase.to_json()
+print(AnnotationBase.to_json())
 
 # convert the object into a dict
 annotation_base_dict = annotation_base_instance.to_dict()

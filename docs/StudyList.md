@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[StudyReturn]**](StudyReturn.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of StudyList from a JSON string
 study_list_instance = StudyList.from_json(json)
 # print the JSON string representation of the object
-print StudyList.to_json()
+print(StudyList.to_json())
 
 # convert the object into a dict
 study_list_dict = study_list_instance.to_dict()

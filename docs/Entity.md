@@ -3,6 +3,7 @@
 WARNING: not currently used. descriptor of level of analysis for a particular image/point (run, session, subject, group, meta)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of Entity from a JSON string
 entity_instance = Entity.from_json(json)
 # print the JSON string representation of the object
-print Entity.to_json()
+print(Entity.to_json())
 
 # convert the object into a dict
 entity_dict = entity_instance.to_dict()

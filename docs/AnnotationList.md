@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[AnnotationReturn]**](AnnotationReturn.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of AnnotationList from a JSON string
 annotation_list_instance = AnnotationList.from_json(json)
 # print the JSON string representation of the object
-print AnnotationList.to_json()
+print(AnnotationList.to_json())
 
 # convert the object into a dict
 annotation_list_dict = annotation_list_instance.to_dict()
