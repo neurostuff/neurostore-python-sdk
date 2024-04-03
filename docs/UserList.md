@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[User]**](User.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of UserList from a JSON string
 user_list_instance = UserList.from_json(json)
 # print the JSON string representation of the object
-print UserList.to_json()
+print(UserList.to_json())
 
 # convert the object into a dict
 user_list_dict = user_list_instance.to_dict()

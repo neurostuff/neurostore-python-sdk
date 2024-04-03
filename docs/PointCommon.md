@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of PointCommon from a JSON string
 point_common_instance = PointCommon.from_json(json)
 # print the JSON string representation of the object
-print PointCommon.to_json()
+print(PointCommon.to_json())
 
 # convert the object into a dict
 point_common_dict = point_common_instance.to_dict()

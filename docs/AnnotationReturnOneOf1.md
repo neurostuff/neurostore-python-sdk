@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Descriptive name for the annotation. | [optional] 
@@ -30,7 +31,7 @@ json = "{}"
 # create an instance of AnnotationReturnOneOf1 from a JSON string
 annotation_return_one_of1_instance = AnnotationReturnOneOf1.from_json(json)
 # print the JSON string representation of the object
-print AnnotationReturnOneOf1.to_json()
+print(AnnotationReturnOneOf1.to_json())
 
 # convert the object into a dict
 annotation_return_one_of1_dict = annotation_return_one_of1_instance.to_dict()

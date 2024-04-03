@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **level** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of StudyCommon from a JSON string
 study_common_instance = StudyCommon.from_json(json)
 # print the JSON string representation of the object
-print StudyCommon.to_json()
+print(StudyCommon.to_json())
 
 # convert the object into a dict
 study_common_dict = study_common_instance.to_dict()

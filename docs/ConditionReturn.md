@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the condition being applied in the contrast, either psychological, pharmacological, or group based. | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of ConditionReturn from a JSON string
 condition_return_instance = ConditionReturn.from_json(json)
 # print the JSON string representation of the object
-print ConditionReturn.to_json()
+print(ConditionReturn.to_json())
 
 # convert the object into a dict
 condition_return_dict = condition_return_instance.to_dict()

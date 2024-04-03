@@ -3,6 +3,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **kind** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of PointValue from a JSON string
 point_value_instance = PointValue.from_json(json)
 # print the JSON string representation of the object
-print PointValue.to_json()
+print(PointValue.to_json())
 
 # convert the object into a dict
 point_value_dict = point_value_instance.to_dict()

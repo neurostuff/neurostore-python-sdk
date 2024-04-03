@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of NestedPutAttributes from a JSON string
 nested_put_attributes_instance = NestedPutAttributes.from_json(json)
 # print the JSON string representation of the object
-print NestedPutAttributes.to_json()
+print(NestedPutAttributes.to_json())
 
 # convert the object into a dict
 nested_put_attributes_dict = nested_put_attributes_instance.to_dict()

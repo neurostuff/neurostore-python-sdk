@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | [**List[PointReturn]**](PointReturn.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of PointList from a JSON string
 point_list_instance = PointList.from_json(json)
 # print the JSON string representation of the object
-print PointList.to_json()
+print(PointList.to_json())
 
 # convert the object into a dict
 point_list_dict = point_list_instance.to_dict()

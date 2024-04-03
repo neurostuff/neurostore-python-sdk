@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **note** | **object** | The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys. | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of NoteCollectionRequest from a JSON string
 note_collection_request_instance = NoteCollectionRequest.from_json(json)
 # print the JSON string representation of the object
-print NoteCollectionRequest.to_json()
+print(NoteCollectionRequest.to_json())
 
 # convert the object into a dict
 note_collection_request_dict = note_collection_request_instance.to_dict()

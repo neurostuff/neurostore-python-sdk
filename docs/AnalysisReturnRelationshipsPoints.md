@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
@@ -15,7 +16,7 @@ json = "{}"
 # create an instance of AnalysisReturnRelationshipsPoints from a JSON string
 analysis_return_relationships_points_instance = AnalysisReturnRelationshipsPoints.from_json(json)
 # print the JSON string representation of the object
-print AnalysisReturnRelationshipsPoints.to_json()
+print(AnalysisReturnRelationshipsPoints.to_json())
 
 # convert the object into a dict
 analysis_return_relationships_points_dict = analysis_return_relationships_points_instance.to_dict()

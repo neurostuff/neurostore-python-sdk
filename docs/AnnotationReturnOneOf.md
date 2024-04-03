@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** |  | [optional] [readonly] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of AnnotationReturnOneOf from a JSON string
 annotation_return_one_of_instance = AnnotationReturnOneOf.from_json(json)
 # print the JSON string representation of the object
-print AnnotationReturnOneOf.to_json()
+print(AnnotationReturnOneOf.to_json())
 
 # convert the object into a dict
 annotation_return_one_of_dict = annotation_return_one_of_instance.to_dict()

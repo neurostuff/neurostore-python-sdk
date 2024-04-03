@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of StudyReturnAllOfStudysets from a JSON string
 study_return_all_of_studysets_instance = StudyReturnAllOfStudysets.from_json(json)
 # print the JSON string representation of the object
-print StudyReturnAllOfStudysets.to_json()
+print(StudyReturnAllOfStudysets.to_json())
 
 # convert the object into a dict
 study_return_all_of_studysets_dict = study_return_all_of_studysets_instance.to_dict()
