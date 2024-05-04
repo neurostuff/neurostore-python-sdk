@@ -99,6 +99,11 @@ class AnalysisRequest(BaseModel):
         if self.order is None and "order" in self.__fields_set__:
             _dict['order'] = None
 
+        # set to None if metadata (nullable) is None
+        # and __fields_set__ contains the field
+        if self.metadata is None and "metadata" in self.__fields_set__:
+            _dict['metadata'] = None
+
         return _dict
 
     @classmethod
