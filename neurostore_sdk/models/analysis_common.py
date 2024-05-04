@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, conlist
 from neurostore_sdk.models.entity import Entity
 
@@ -30,7 +30,8 @@ class AnalysisCommon(BaseModel):
     study: Optional[StrictStr] = None
     entities: Optional[conlist(Entity)] = None
     order: Optional[StrictInt] = None
-    __properties = ["study", "entities", "order"]
+    metadata: Optional[Dict[str, Any]] = None
+    __properties = ["study", "entities", "order", "metadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -82,7 +83,8 @@ class AnalysisCommon(BaseModel):
         _obj = AnalysisCommon.parse_obj({
             "study": obj.get("study"),
             "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

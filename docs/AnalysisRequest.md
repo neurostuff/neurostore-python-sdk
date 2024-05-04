@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
+**metadata** | **object** |  | [optional] 
 
 ## Example
 

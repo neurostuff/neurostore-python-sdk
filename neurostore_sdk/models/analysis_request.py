@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
 from neurostore_sdk.models.analysis_request_relationships_conditions import AnalysisRequestRelationshipsConditions
 from neurostore_sdk.models.analysis_request_relationships_images import AnalysisRequestRelationshipsImages
@@ -41,7 +41,8 @@ class AnalysisRequest(BaseModel):
     public: Optional[StrictBool] = Field(True, description="whether the resource is listed in public searches or not")
     entities: Optional[conlist(Entity)] = None
     order: Optional[StrictInt] = None
-    __properties = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "order"]
+    metadata: Optional[Dict[str, Any]] = None
+    __properties = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "order", "metadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -120,7 +121,8 @@ class AnalysisRequest(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

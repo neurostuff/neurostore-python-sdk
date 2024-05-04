@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr
 from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
 from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
@@ -45,7 +45,8 @@ class AnalysisReturn(BaseModel):
     conditions: Optional[AnalysisReturnRelationshipsConditions] = None
     entities: Optional[conlist(Entity)] = None
     order: Optional[StrictInt] = None
-    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities", "order"]
+    metadata: Optional[Dict[str, Any]] = None
+    __properties = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities", "order", "metadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -146,7 +147,8 @@ class AnalysisReturn(BaseModel):
             "points": AnalysisReturnRelationshipsPoints.from_dict(obj.get("points")) if obj.get("points") is not None else None,
             "conditions": AnalysisReturnRelationshipsConditions.from_dict(obj.get("conditions")) if obj.get("conditions") is not None else None,
             "entities": [Entity.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None,
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 
