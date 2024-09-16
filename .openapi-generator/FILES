@@ -22,12 +22,9 @@ docs/AnnotationCommon.md
 docs/AnnotationExport.md
 docs/AnnotationList.md
 docs/AnnotationRequest.md
-docs/AnnotationRequestOneOf.md
 docs/AnnotationRequestRelationships.md
 docs/AnnotationRequestRelationshipsNotes.md
 docs/AnnotationReturn.md
-docs/AnnotationReturnOneOf.md
-docs/AnnotationReturnOneOf1.md
 docs/AnnotationReturnRelationships.md
 docs/AnnotationReturnRelationshipsNotes.md
 docs/AnnotationsApi.md
@@ -137,12 +134,9 @@ neurostore_sdk/models/annotation_common.py
 neurostore_sdk/models/annotation_export.py
 neurostore_sdk/models/annotation_list.py
 neurostore_sdk/models/annotation_request.py
-neurostore_sdk/models/annotation_request_one_of.py
 neurostore_sdk/models/annotation_request_relationships.py
 neurostore_sdk/models/annotation_request_relationships_notes.py
 neurostore_sdk/models/annotation_return.py
-neurostore_sdk/models/annotation_return_one_of.py
-neurostore_sdk/models/annotation_return_one_of1.py
 neurostore_sdk/models/annotation_return_relationships.py
 neurostore_sdk/models/annotation_return_relationships_notes.py
 neurostore_sdk/models/base_studies_post200_response.py
