@@ -5,6 +5,11 @@ from neurostore_sdk.api.analyses_api import AnalysesApi
 from neurostore_sdk.api.annotations_api import AnnotationsApi
 from neurostore_sdk.api.conditions_api import ConditionsApi
 from neurostore_sdk.api.images_api import ImagesApi
+from neurostore_sdk.api.pipeline_configs_api import PipelineConfigsApi
+from neurostore_sdk.api.pipeline_run_result_votes_api import PipelineRunResultVotesApi
+from neurostore_sdk.api.pipeline_run_results_api import PipelineRunResultsApi
+from neurostore_sdk.api.pipeline_runs_api import PipelineRunsApi
+from neurostore_sdk.api.pipelines_api import PipelinesApi
 from neurostore_sdk.api.points_api import PointsApi
 from neurostore_sdk.api.store_api import StoreApi
 from neurostore_sdk.api.studies_api import StudiesApi

@@ -68,6 +68,16 @@ from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.models.note_collection_return_all_of import NoteCollectionReturnAllOf
+from neurostore_sdk.models.pipeline import Pipeline
+from neurostore_sdk.models.pipeline_config import PipelineConfig
+from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
+from neurostore_sdk.models.pipeline_list import PipelineList
+from neurostore_sdk.models.pipeline_run import PipelineRun
+from neurostore_sdk.models.pipeline_run_list import PipelineRunList
+from neurostore_sdk.models.pipeline_run_result import PipelineRunResult
+from neurostore_sdk.models.pipeline_run_result_list import PipelineRunResultList
+from neurostore_sdk.models.pipeline_run_result_vote import PipelineRunResultVote
+from neurostore_sdk.models.pipeline_run_result_vote_list import PipelineRunResultVoteList
 from neurostore_sdk.models.point_base import PointBase
 from neurostore_sdk.models.point_common import PointCommon
 from neurostore_sdk.models.point_list import PointList
