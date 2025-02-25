@@ -18,21 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisCommon(BaseModel):
+class PipelineRun(BaseModel):
     """
-    attributes common between request and return objects
+    PipelineRun
     """ # noqa: E501
-    study: Optional[StrictStr] = None
-    entities: Optional[List[Entity]] = None
-    order: Optional[StrictInt] = None
-    metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["study", "entities", "order", "metadata"]
+    id: Optional[StrictStr] = None
+    status: Optional[StrictStr] = None
+    started_at: Optional[StrictStr] = None
+    finished_at: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "status", "started_at", "finished_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +51,7 @@ class AnalysisCommon(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a JSON string"""
+        """Create an instance of PipelineRun from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,28 +72,11 @@ class AnalysisCommon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
-        _items = []
-        if self.entities:
-            for _item in self.entities:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['entities'] = _items
-        # set to None if order (nullable) is None
-        # and model_fields_set contains the field
-        if self.order is None and "order" in self.model_fields_set:
-            _dict['order'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a dict"""
+        """Create an instance of PipelineRun from a dict"""
         if obj is None:
             return None
 
@@ -102,10 +84,10 @@ class AnalysisCommon(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "study": obj.get("study"),
-            "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "order": obj.get("order"),
-            "metadata": obj.get("metadata")
+            "id": obj.get("id"),
+            "status": obj.get("status"),
+            "started_at": obj.get("started_at"),
+            "finished_at": obj.get("finished_at")
         })
         return _obj
 

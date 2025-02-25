@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **study** | **str** |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
+**metadata** | **object** |  | [optional] 
 
 ## Example
 

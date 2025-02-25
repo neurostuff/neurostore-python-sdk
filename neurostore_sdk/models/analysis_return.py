@@ -48,7 +48,8 @@ class AnalysisReturn(BaseModel):
     conditions: Optional[AnalysisReturnRelationshipsConditions] = None
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities", "order"]
+    metadata: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities", "order", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -141,6 +142,11 @@ class AnalysisReturn(BaseModel):
         if self.order is None and "order" in self.model_fields_set:
             _dict['order'] = None
 
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         return _dict
 
     @classmethod
@@ -167,7 +173,8 @@ class AnalysisReturn(BaseModel):
             "points": AnalysisReturnRelationshipsPoints.from_dict(obj["points"]) if obj.get("points") is not None else None,
             "conditions": AnalysisReturnRelationshipsConditions.from_dict(obj["conditions"]) if obj.get("conditions") is not None else None,
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

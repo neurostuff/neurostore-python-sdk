@@ -18,21 +18,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisCommon(BaseModel):
+class Pipeline(BaseModel):
     """
-    attributes common between request and return objects
+    Pipeline
     """ # noqa: E501
-    study: Optional[StrictStr] = None
-    entities: Optional[List[Entity]] = None
-    order: Optional[StrictInt] = None
-    metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["study", "entities", "order", "metadata"]
+    id: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    version: Optional[StrictStr] = None
+    study_dependent: Optional[StrictBool] = None
+    ace_compatible: Optional[StrictBool] = None
+    pubget_compatible: Optional[StrictBool] = None
+    derived_from: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "version", "study_dependent", "ace_compatible", "pubget_compatible", "derived_from"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +55,7 @@ class AnalysisCommon(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a JSON string"""
+        """Create an instance of Pipeline from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,28 +76,11 @@ class AnalysisCommon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
-        _items = []
-        if self.entities:
-            for _item in self.entities:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['entities'] = _items
-        # set to None if order (nullable) is None
-        # and model_fields_set contains the field
-        if self.order is None and "order" in self.model_fields_set:
-            _dict['order'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a dict"""
+        """Create an instance of Pipeline from a dict"""
         if obj is None:
             return None
 
@@ -102,10 +88,14 @@ class AnalysisCommon(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "study": obj.get("study"),
-            "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "order": obj.get("order"),
-            "metadata": obj.get("metadata")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "version": obj.get("version"),
+            "study_dependent": obj.get("study_dependent"),
+            "ace_compatible": obj.get("ace_compatible"),
+            "pubget_compatible": obj.get("pubget_compatible"),
+            "derived_from": obj.get("derived_from")
         })
         return _obj
 

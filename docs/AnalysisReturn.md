@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **conditions** | [**AnalysisReturnRelationshipsConditions**](AnalysisReturnRelationshipsConditions.md) |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
+**metadata** | **object** |  | [optional] 
 
 ## Example
 

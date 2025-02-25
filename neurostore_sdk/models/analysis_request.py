@@ -43,7 +43,8 @@ class AnalysisRequest(BaseModel):
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "order"]
+    metadata: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "order", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -115,6 +116,11 @@ class AnalysisRequest(BaseModel):
         if self.order is None and "order" in self.model_fields_set:
             _dict['order'] = None
 
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         return _dict
 
     @classmethod
@@ -137,7 +143,8 @@ class AnalysisRequest(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 
