@@ -54,15 +54,19 @@ class StudiesApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def base_studies_get(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> BaseStudyList:  # noqa: E501
+    def base_studies_get(self, feature_filter : Annotated[Optional[StrictStr], Field(description="Filter studies by features")] = None, feature_display : Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> BaseStudyList:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.base_studies_get(search, sort, page, desc, page_size, name, description, authors, level, data_type, publication, pmid, doi, flat, info, async_req=True)
+        >>> thread = api.base_studies_get(feature_filter, feature_display, search, sort, page, desc, page_size, name, description, authors, level, data_type, publication, pmid, doi, flat, info, async_req=True)
         >>> result = thread.get()
 
+        :param feature_filter: Filter studies by features
+        :type feature_filter: str
+        :param feature_display: display features from pipelines
+        :type feature_display: str
         :param search: search for entries that contain the substring
         :type search: str
         :param sort: Parameter to sort results on
@@ -107,18 +111,22 @@ class StudiesApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the base_studies_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.base_studies_get_with_http_info(search, sort, page, desc, page_size, name, description, authors, level, data_type, publication, pmid, doi, flat, info, **kwargs)  # noqa: E501
+        return self.base_studies_get_with_http_info(feature_filter, feature_display, search, sort, page, desc, page_size, name, description, authors, level, data_type, publication, pmid, doi, flat, info, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def base_studies_get_with_http_info(self, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def base_studies_get_with_http_info(self, feature_filter : Annotated[Optional[StrictStr], Field(description="Filter studies by features")] = None, feature_display : Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None, search : Annotated[Optional[constr(strict=True, min_length=1)], Field(description="search for entries that contain the substring")] = None, sort : Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None, page : Annotated[Optional[conint(strict=True, ge=0)], Field(description="page of results")] = None, desc : Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None, page_size : Annotated[Optional[conint(strict=True, lt=30000, ge=1)], Field(description="number of results to show on a page")] = None, name : Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None, description : Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None, authors : Annotated[Optional[StrictStr], Field(description="search authors")] = None, level : Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None, data_type : Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None, publication : Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None, pmid : Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None, doi : Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None, flat : Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None, info : Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.base_studies_get_with_http_info(search, sort, page, desc, page_size, name, description, authors, level, data_type, publication, pmid, doi, flat, info, async_req=True)
+        >>> thread = api.base_studies_get_with_http_info(feature_filter, feature_display, search, sort, page, desc, page_size, name, description, authors, level, data_type, publication, pmid, doi, flat, info, async_req=True)
         >>> result = thread.get()
 
+        :param feature_filter: Filter studies by features
+        :type feature_filter: str
+        :param feature_display: display features from pipelines
+        :type feature_display: str
         :param search: search for entries that contain the substring
         :type search: str
         :param sort: Parameter to sort results on
@@ -177,6 +185,8 @@ class StudiesApi(object):
         _params = locals()
 
         _all_params = [
+            'feature_filter',
+            'feature_display',
             'search',
             'sort',
             'page',
@@ -222,6 +232,12 @@ class StudiesApi(object):
 
         # process the query parameters
         _query_params = []
+        if _params.get('feature_filter') is not None:  # noqa: E501
+            _query_params.append(('feature_filter', _params['feature_filter']))
+
+        if _params.get('feature_display') is not None:  # noqa: E501
+            _query_params.append(('feature_display', _params['feature_display']))
+
         if _params.get('search') is not None:  # noqa: E501
             _query_params.append(('search', _params['search']))
 

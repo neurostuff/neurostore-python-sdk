@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**features** | **object** |  | [optional] 
 **metadata** | **object** |  | [optional] 
 **versions** | [**BaseStudyVersions**](BaseStudyVersions.md) |  | [optional] 
 **name** | **str** |  | [optional] 

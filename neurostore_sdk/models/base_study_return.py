@@ -27,6 +27,7 @@ class BaseStudyReturn(BaseModel):
     """
     BaseStudyReturn
     """
+    features: Optional[Dict[str, Any]] = None
     metadata: Optional[Dict[str, Any]] = None
     versions: Optional[BaseStudyVersions] = None
     name: Optional[StrictStr] = None
