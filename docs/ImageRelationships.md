@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis** | **str** |  | [optional] 
@@ -18,12 +19,12 @@ json = "{}"
 # create an instance of ImageRelationships from a JSON string
 image_relationships_instance = ImageRelationships.from_json(json)
 # print the JSON string representation of the object
-print ImageRelationships.to_json()
+print(ImageRelationships.to_json())
 
 # convert the object into a dict
 image_relationships_dict = image_relationships_instance.to_dict()
 # create an instance of ImageRelationships from a dict
-image_relationships_form_dict = image_relationships.from_dict(image_relationships_dict)
+image_relationships_from_dict = ImageRelationships.from_dict(image_relationships_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

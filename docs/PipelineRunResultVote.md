@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of PipelineRunResultVote from a JSON string
 pipeline_run_result_vote_instance = PipelineRunResultVote.from_json(json)
 # print the JSON string representation of the object
-print PipelineRunResultVote.to_json()
+print(PipelineRunResultVote.to_json())
 
 # convert the object into a dict
 pipeline_run_result_vote_dict = pipeline_run_result_vote_instance.to_dict()
 # create an instance of PipelineRunResultVote from a dict
-pipeline_run_result_vote_form_dict = pipeline_run_result_vote.from_dict(pipeline_run_result_vote_dict)
+pipeline_run_result_vote_from_dict = PipelineRunResultVote.from_dict(pipeline_run_result_vote_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

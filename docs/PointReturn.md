@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coordinates** | **List[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
@@ -35,12 +36,12 @@ json = "{}"
 # create an instance of PointReturn from a JSON string
 point_return_instance = PointReturn.from_json(json)
 # print the JSON string representation of the object
-print PointReturn.to_json()
+print(PointReturn.to_json())
 
 # convert the object into a dict
 point_return_dict = point_return_instance.to_dict()
 # create an instance of PointReturn from a dict
-point_return_form_dict = point_return.from_dict(point_return_dict)
+point_return_from_dict = PointReturn.from_dict(point_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

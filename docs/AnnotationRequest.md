@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
@@ -24,12 +25,12 @@ json = "{}"
 # create an instance of AnnotationRequest from a JSON string
 annotation_request_instance = AnnotationRequest.from_json(json)
 # print the JSON string representation of the object
-print AnnotationRequest.to_json()
+print(AnnotationRequest.to_json())
 
 # convert the object into a dict
 annotation_request_dict = annotation_request_instance.to_dict()
 # create an instance of AnnotationRequest from a dict
-annotation_request_form_dict = annotation_request.from_dict(annotation_request_dict)
+annotation_request_from_dict = AnnotationRequest.from_dict(annotation_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

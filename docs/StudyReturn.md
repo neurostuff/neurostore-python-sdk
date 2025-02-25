@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **doi** | **str** | Digital object identifier of the study. | [optional] 
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
-**studysets** | [**List[StudyReturnAllOfStudysetsInner]**](StudyReturnAllOfStudysetsInner.md) |  | [optional] 
+**studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 
 **base_study** | **str** |  | [optional] 
@@ -38,12 +39,12 @@ json = "{}"
 # create an instance of StudyReturn from a JSON string
 study_return_instance = StudyReturn.from_json(json)
 # print the JSON string representation of the object
-print StudyReturn.to_json()
+print(StudyReturn.to_json())
 
 # convert the object into a dict
 study_return_dict = study_return_instance.to_dict()
 # create an instance of StudyReturn from a dict
-study_return_form_dict = study_return.from_dict(study_return_dict)
+study_return_from_dict = StudyReturn.from_dict(study_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

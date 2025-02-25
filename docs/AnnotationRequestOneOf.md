@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Descriptive name for the annotation. | [optional] 
@@ -23,12 +24,12 @@ json = "{}"
 # create an instance of AnnotationRequestOneOf from a JSON string
 annotation_request_one_of_instance = AnnotationRequestOneOf.from_json(json)
 # print the JSON string representation of the object
-print AnnotationRequestOneOf.to_json()
+print(AnnotationRequestOneOf.to_json())
 
 # convert the object into a dict
 annotation_request_one_of_dict = annotation_request_one_of_instance.to_dict()
 # create an instance of AnnotationRequestOneOf from a dict
-annotation_request_one_of_form_dict = annotation_request_one_of.from_dict(annotation_request_one_of_dict)
+annotation_request_one_of_from_dict = AnnotationRequestOneOf.from_dict(annotation_request_one_of_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,6 +3,7 @@
 common resource attributes not tied to a specific user
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of UserlessResourceAttributes from a JSON string
 userless_resource_attributes_instance = UserlessResourceAttributes.from_json(json)
 # print the JSON string representation of the object
-print UserlessResourceAttributes.to_json()
+print(UserlessResourceAttributes.to_json())
 
 # convert the object into a dict
 userless_resource_attributes_dict = userless_resource_attributes_instance.to_dict()
 # create an instance of UserlessResourceAttributes from a dict
-userless_resource_attributes_form_dict = userless_resource_attributes.from_dict(userless_resource_attributes_dict)
+userless_resource_attributes_from_dict = UserlessResourceAttributes.from_dict(userless_resource_attributes_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

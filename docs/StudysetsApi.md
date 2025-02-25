@@ -21,9 +21,8 @@ Get a list of studysets.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.studyset_list import StudysetList
 from neurostore_sdk.rest import ApiException
@@ -59,7 +58,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     description = 'description_example' # str | search description field for a term (optional)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     unique = None # object | whether to list clones with originals (optional)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
 
@@ -73,7 +72,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -87,7 +88,7 @@ Name | Type | Description  | Notes
  **description** | **str**| search description field for a term | [optional] 
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **unique** | [**object**](.md)| whether to list clones with originals | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
 
@@ -105,6 +106,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -121,9 +123,8 @@ delete a studyset
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
@@ -158,7 +159,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -178,6 +181,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -193,9 +197,8 @@ Retrieve the information of a studyset with the matching studyset ID.
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.studyset_return import StudysetReturn
 from neurostore_sdk.rest import ApiException
@@ -226,7 +229,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -248,6 +253,7 @@ No authorization required
  - **Accept**: application/json, application/gzip
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | studyset found |  -  |
@@ -265,9 +271,8 @@ Update a studyset.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.studyset_request import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
@@ -307,7 +312,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -328,6 +335,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -345,9 +353,8 @@ Create a studyset.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.studyset_request import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
@@ -386,7 +393,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -406,6 +415,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

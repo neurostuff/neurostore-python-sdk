@@ -22,9 +22,8 @@ Get annotation analyses
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.rest import ApiException
@@ -52,7 +51,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -69,6 +70,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -84,9 +86,8 @@ Your GET endpoint
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.rest import ApiException
@@ -124,7 +125,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -144,6 +147,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -158,9 +162,8 @@ Your PUT endpoint
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
@@ -200,7 +203,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -221,6 +226,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -237,9 +243,8 @@ This endpoint does not allow for creation, only modification of existing annotat
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
@@ -278,7 +283,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -298,6 +305,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -313,9 +321,8 @@ get annotations for an available studyset
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.annotation_list import AnnotationList
 from neurostore_sdk.rest import ApiException
@@ -344,7 +351,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -364,6 +373,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -380,9 +390,8 @@ delete annotation
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
@@ -417,7 +426,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -437,6 +448,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -452,9 +464,8 @@ get an individual annotation
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.annotation_return import AnnotationReturn
 from neurostore_sdk.rest import ApiException
@@ -484,7 +495,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -505,6 +518,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -521,9 +535,8 @@ edit an existing annotation
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.annotation_request import AnnotationRequest
 from neurostore_sdk.models.annotation_return import AnnotationReturn
@@ -563,7 +576,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -584,6 +599,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -600,9 +616,8 @@ Create an annotation
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.annotation_request import AnnotationRequest
 from neurostore_sdk.models.annotation_return import AnnotationReturn
@@ -629,7 +644,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.AnnotationsApi(api_client)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     annotation_request = neurostore_sdk.AnnotationRequest() # AnnotationRequest |  (optional)
 
@@ -643,11 +658,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **annotation_request** | [**AnnotationRequest**](AnnotationRequest.md)|  | [optional] 
 
@@ -665,6 +682,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

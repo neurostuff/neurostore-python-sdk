@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** | Metadata about image such as software and version used and other relevant data about how the image was produced. | [optional] 
@@ -30,12 +31,12 @@ json = "{}"
 # create an instance of ImageReturn from a JSON string
 image_return_instance = ImageReturn.from_json(json)
 # print the JSON string representation of the object
-print ImageReturn.to_json()
+print(ImageReturn.to_json())
 
 # convert the object into a dict
 image_return_dict = image_return_instance.to_dict()
 # create an instance of ImageReturn from a dict
-image_return_form_dict = image_return.from_dict(image_return_dict)
+image_return_from_dict = ImageReturn.from_dict(image_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

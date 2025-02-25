@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Descriptive and human readable name of the studyset. | [optional] 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of StudysetBase from a JSON string
 studyset_base_instance = StudysetBase.from_json(json)
 # print the JSON string representation of the object
-print StudysetBase.to_json()
+print(StudysetBase.to_json())
 
 # convert the object into a dict
 studyset_base_dict = studyset_base_instance.to_dict()
 # create an instance of StudysetBase from a dict
-studyset_base_form_dict = studyset_base.from_dict(studyset_base_dict)
+studyset_base_from_dict = StudysetBase.from_dict(studyset_base_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

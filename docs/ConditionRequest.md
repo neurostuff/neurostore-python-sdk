@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the condition being applied in the contrast, either psychological, pharmacological, or group based. | [optional] 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of ConditionRequest from a JSON string
 condition_request_instance = ConditionRequest.from_json(json)
 # print the JSON string representation of the object
-print ConditionRequest.to_json()
+print(ConditionRequest.to_json())
 
 # convert the object into a dict
 condition_request_dict = condition_request_instance.to_dict()
 # create an instance of ConditionRequest from a dict
-condition_request_form_dict = condition_request.from_dict(condition_request_dict)
+condition_request_from_dict = ConditionRequest.from_dict(condition_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

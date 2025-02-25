@@ -18,9 +18,8 @@ GET a list of pipeline runs
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.pipeline_run_list import PipelineRunList
 from neurostore_sdk.rest import ApiException
@@ -48,7 +47,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -65,6 +66,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -78,9 +80,8 @@ DELETE a pipeline run by ID
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
@@ -106,7 +107,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -126,6 +129,7 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
@@ -139,9 +143,8 @@ GET a pipeline run by ID
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.pipeline_run import PipelineRun
 from neurostore_sdk.rest import ApiException
@@ -170,7 +173,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -190,6 +195,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -203,9 +209,8 @@ PUT/update a pipeline run by ID
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.pipeline_run import PipelineRun
 from neurostore_sdk.rest import ApiException
@@ -233,7 +238,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -254,6 +261,7 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -267,9 +275,8 @@ POST/create a pipeline run
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.pipeline_run import PipelineRun
 from neurostore_sdk.rest import ApiException
@@ -296,7 +303,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -316,6 +325,7 @@ No authorization required
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |

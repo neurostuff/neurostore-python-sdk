@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **note** | **object** | The note will contain all note_keys as keys and have a value of either null or the value type specified in note_keys. | [optional] 
@@ -25,12 +26,12 @@ json = "{}"
 # create an instance of NoteCollectionReturn from a JSON string
 note_collection_return_instance = NoteCollectionReturn.from_json(json)
 # print the JSON string representation of the object
-print NoteCollectionReturn.to_json()
+print(NoteCollectionReturn.to_json())
 
 # convert the object into a dict
 note_collection_return_dict = note_collection_return_instance.to_dict()
 # create an instance of NoteCollectionReturn from a dict
-note_collection_return_form_dict = note_collection_return.from_dict(note_collection_return_dict)
+note_collection_return_from_dict = NoteCollectionReturn.from_dict(note_collection_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

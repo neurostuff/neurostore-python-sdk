@@ -24,9 +24,8 @@ List all analyses performed across studies.
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.analysis_list import AnalysisList
 from neurostore_sdk.rest import ApiException
@@ -62,7 +61,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -89,6 +90,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -105,9 +107,8 @@ delete an analysis
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
@@ -142,7 +143,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -162,6 +165,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -177,9 +181,8 @@ Information pertaining to a particular analysis within a study.
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.analysis_return import AnalysisReturn
 from neurostore_sdk.rest import ApiException
@@ -209,7 +212,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -230,6 +235,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -247,9 +253,8 @@ Update an existing analysis.
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.analysis_request import AnalysisRequest
 from neurostore_sdk.models.analysis_return import AnalysisReturn
@@ -289,7 +294,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -310,6 +317,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -327,9 +335,8 @@ create an analysis
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.analysis_request import AnalysisRequest
 from neurostore_sdk.models.analysis_return import AnalysisReturn
@@ -368,7 +375,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -388,6 +397,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -401,9 +411,8 @@ Get annotation analyses
 
 ### Example
 
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.rest import ApiException
@@ -431,7 +440,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -448,6 +459,7 @@ No authorization required
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -463,9 +475,8 @@ Your GET endpoint
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.rest import ApiException
@@ -503,7 +514,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -523,6 +536,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -537,9 +551,8 @@ Your PUT endpoint
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
@@ -579,7 +592,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -600,6 +615,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -616,9 +632,8 @@ This endpoint does not allow for creation, only modification of existing annotat
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
+
 ```python
-import time
-import os
 import neurostore_sdk
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
@@ -657,7 +672,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -677,6 +694,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

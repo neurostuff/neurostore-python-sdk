@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** | Metadata about image such as software and version used and other relevant data about how the image was produced. | [optional] 
@@ -26,12 +27,12 @@ json = "{}"
 # create an instance of ImageRequest from a JSON string
 image_request_instance = ImageRequest.from_json(json)
 # print the JSON string representation of the object
-print ImageRequest.to_json()
+print(ImageRequest.to_json())
 
 # convert the object into a dict
 image_request_dict = image_request_instance.to_dict()
 # create an instance of ImageRequest from a dict
-image_request_form_dict = image_request.from_dict(image_request_dict)
+image_request_from_dict = ImageRequest.from_dict(image_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

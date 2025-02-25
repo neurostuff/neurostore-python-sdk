@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** |  | [optional] 
@@ -32,12 +33,12 @@ json = "{}"
 # create an instance of BaseStudyReturn from a JSON string
 base_study_return_instance = BaseStudyReturn.from_json(json)
 # print the JSON string representation of the object
-print BaseStudyReturn.to_json()
+print(BaseStudyReturn.to_json())
 
 # convert the object into a dict
 base_study_return_dict = base_study_return_instance.to_dict()
 # create an instance of BaseStudyReturn from a dict
-base_study_return_form_dict = base_study_return.from_dict(base_study_return_dict)
+base_study_return_from_dict = BaseStudyReturn.from_dict(base_study_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
