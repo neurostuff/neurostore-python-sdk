@@ -29,7 +29,7 @@ print(StudyBase.to_json())
 # convert the object into a dict
 study_base_dict = study_base_instance.to_dict()
 # create an instance of StudyBase from a dict
-study_base_form_dict = study_base.from_dict(study_base_dict)
+study_base_from_dict = StudyBase.from_dict(study_base_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -33,7 +33,7 @@ print(AnalysisRequest.to_json())
 # convert the object into a dict
 analysis_request_dict = analysis_request_instance.to_dict()
 # create an instance of AnalysisRequest from a dict
-analysis_request_form_dict = analysis_request.from_dict(analysis_request_dict)
+analysis_request_from_dict = AnalysisRequest.from_dict(analysis_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

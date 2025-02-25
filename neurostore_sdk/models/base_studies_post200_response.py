@@ -20,7 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, f
 from typing import Any, List, Optional
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 BASESTUDIESPOST200RESPONSE_ONE_OF_SCHEMAS = ["BaseStudyReturn", "List[BaseStudyReturn]"]
@@ -34,7 +34,7 @@ class BaseStudiesPost200Response(BaseModel):
     # data type: List[BaseStudyReturn]
     oneof_schema_2_validator: Optional[List[BaseStudyReturn]] = None
     actual_instance: Optional[Union[BaseStudyReturn, List[BaseStudyReturn]]] = None
-    one_of_schemas: List[str] = Field(default=Literal["BaseStudyReturn", "List[BaseStudyReturn]"])
+    one_of_schemas: Set[str] = { "BaseStudyReturn", "List[BaseStudyReturn]" }
 
     model_config = ConfigDict(
         validate_assignment=True,

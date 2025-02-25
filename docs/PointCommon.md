@@ -25,7 +25,7 @@ print(PointCommon.to_json())
 # convert the object into a dict
 point_common_dict = point_common_instance.to_dict()
 # create an instance of PointCommon from a dict
-point_common_form_dict = point_common.from_dict(point_common_dict)
+point_common_from_dict = PointCommon.from_dict(point_common_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

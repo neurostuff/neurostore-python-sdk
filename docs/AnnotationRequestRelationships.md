@@ -22,7 +22,7 @@ print(AnnotationRequestRelationships.to_json())
 # convert the object into a dict
 annotation_request_relationships_dict = annotation_request_relationships_instance.to_dict()
 # create an instance of AnnotationRequestRelationships from a dict
-annotation_request_relationships_form_dict = annotation_request_relationships.from_dict(annotation_request_relationships_dict)
+annotation_request_relationships_from_dict = AnnotationRequestRelationships.from_dict(annotation_request_relationships_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

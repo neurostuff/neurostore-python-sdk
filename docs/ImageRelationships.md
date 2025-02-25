@@ -24,7 +24,7 @@ print(ImageRelationships.to_json())
 # convert the object into a dict
 image_relationships_dict = image_relationships_instance.to_dict()
 # create an instance of ImageRelationships from a dict
-image_relationships_form_dict = image_relationships.from_dict(image_relationships_dict)
+image_relationships_from_dict = ImageRelationships.from_dict(image_relationships_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

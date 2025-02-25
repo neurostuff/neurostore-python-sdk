@@ -21,7 +21,7 @@ from typing import Any, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.point_request import PointRequest
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 ANALYSISREQUESTRELATIONSHIPSPOINTS_ONE_OF_SCHEMAS = ["List[PointRequest]", "List[str]"]
@@ -35,7 +35,7 @@ class AnalysisRequestRelationshipsPoints(BaseModel):
     # data type: List[str]
     oneof_schema_2_validator: Optional[List[StrictStr]] = None
     actual_instance: Optional[Union[List[PointRequest], List[str]]] = None
-    one_of_schemas: List[str] = Field(default=Literal["List[PointRequest]", "List[str]"])
+    one_of_schemas: Set[str] = { "List[PointRequest]", "List[str]" }
 
     model_config = ConfigDict(
         validate_assignment=True,

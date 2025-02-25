@@ -23,7 +23,7 @@ print(PipelineRunResultList.to_json())
 # convert the object into a dict
 pipeline_run_result_list_dict = pipeline_run_result_list_instance.to_dict()
 # create an instance of PipelineRunResultList from a dict
-pipeline_run_result_list_form_dict = pipeline_run_result_list.from_dict(pipeline_run_result_list_dict)
+pipeline_run_result_list_from_dict = PipelineRunResultList.from_dict(pipeline_run_result_list_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

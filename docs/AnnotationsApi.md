@@ -644,7 +644,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.AnnotationsApi(api_client)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     annotation_request = neurostore_sdk.AnnotationRequest() # AnnotationRequest |  (optional)
 
@@ -664,7 +664,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **annotation_request** | [**AnnotationRequest**](AnnotationRequest.md)|  | [optional] 
 

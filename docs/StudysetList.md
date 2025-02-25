@@ -23,7 +23,7 @@ print(StudysetList.to_json())
 # convert the object into a dict
 studyset_list_dict = studyset_list_instance.to_dict()
 # create an instance of StudysetList from a dict
-studyset_list_form_dict = studyset_list.from_dict(studyset_list_dict)
+studyset_list_from_dict = StudysetList.from_dict(studyset_list_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

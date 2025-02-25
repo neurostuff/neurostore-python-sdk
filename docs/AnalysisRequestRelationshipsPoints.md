@@ -21,7 +21,7 @@ print(AnalysisRequestRelationshipsPoints.to_json())
 # convert the object into a dict
 analysis_request_relationships_points_dict = analysis_request_relationships_points_instance.to_dict()
 # create an instance of AnalysisRequestRelationshipsPoints from a dict
-analysis_request_relationships_points_form_dict = analysis_request_relationships_points.from_dict(analysis_request_relationships_points_dict)
+analysis_request_relationships_points_from_dict = AnalysisRequestRelationshipsPoints.from_dict(analysis_request_relationships_points_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

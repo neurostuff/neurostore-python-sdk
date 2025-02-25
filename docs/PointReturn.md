@@ -41,7 +41,7 @@ print(PointReturn.to_json())
 # convert the object into a dict
 point_return_dict = point_return_instance.to_dict()
 # create an instance of PointReturn from a dict
-point_return_form_dict = point_return.from_dict(point_return_dict)
+point_return_from_dict = PointReturn.from_dict(point_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

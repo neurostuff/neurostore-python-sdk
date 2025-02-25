@@ -21,7 +21,7 @@ from typing import Any, List, Optional
 from neurostore_sdk.models.annotation_request_one_of import AnnotationRequestOneOf
 from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 ANNOTATIONREQUEST_ONE_OF_SCHEMAS = ["AnnotationRequestOneOf", "AnnotationReturnOneOf"]
@@ -35,7 +35,7 @@ class AnnotationRequest(BaseModel):
     # data type: AnnotationRequestOneOf
     oneof_schema_2_validator: Optional[AnnotationRequestOneOf] = None
     actual_instance: Optional[Union[AnnotationRequestOneOf, AnnotationReturnOneOf]] = None
-    one_of_schemas: List[str] = Field(default=Literal["AnnotationRequestOneOf", "AnnotationReturnOneOf"])
+    one_of_schemas: Set[str] = { "AnnotationRequestOneOf", "AnnotationReturnOneOf" }
 
     model_config = ConfigDict(
         validate_assignment=True,

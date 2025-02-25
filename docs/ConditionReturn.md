@@ -29,7 +29,7 @@ print(ConditionReturn.to_json())
 # convert the object into a dict
 condition_return_dict = condition_return_instance.to_dict()
 # create an instance of ConditionReturn from a dict
-condition_return_form_dict = condition_return.from_dict(condition_return_dict)
+condition_return_from_dict = ConditionReturn.from_dict(condition_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -26,7 +26,7 @@ print(UserlessResourceAttributes.to_json())
 # convert the object into a dict
 userless_resource_attributes_dict = userless_resource_attributes_instance.to_dict()
 # create an instance of UserlessResourceAttributes from a dict
-userless_resource_attributes_form_dict = userless_resource_attributes.from_dict(userless_resource_attributes_dict)
+userless_resource_attributes_from_dict = UserlessResourceAttributes.from_dict(userless_resource_attributes_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

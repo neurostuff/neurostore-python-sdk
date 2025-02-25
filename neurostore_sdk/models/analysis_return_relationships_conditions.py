@@ -21,7 +21,7 @@ from typing import Any, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.condition_return import ConditionReturn
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 ANALYSISRETURNRELATIONSHIPSCONDITIONS_ONE_OF_SCHEMAS = ["List[ConditionReturn]", "List[str]"]
@@ -35,7 +35,7 @@ class AnalysisReturnRelationshipsConditions(BaseModel):
     # data type: List[str]
     oneof_schema_2_validator: Optional[List[StrictStr]] = None
     actual_instance: Optional[Union[List[ConditionReturn], List[str]]] = None
-    one_of_schemas: List[str] = Field(default=Literal["List[ConditionReturn]", "List[str]"])
+    one_of_schemas: Set[str] = { "List[ConditionReturn]", "List[str]" }
 
     model_config = ConfigDict(
         validate_assignment=True,

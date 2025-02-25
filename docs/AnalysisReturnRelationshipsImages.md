@@ -21,7 +21,7 @@ print(AnalysisReturnRelationshipsImages.to_json())
 # convert the object into a dict
 analysis_return_relationships_images_dict = analysis_return_relationships_images_instance.to_dict()
 # create an instance of AnalysisReturnRelationshipsImages from a dict
-analysis_return_relationships_images_form_dict = analysis_return_relationships_images.from_dict(analysis_return_relationships_images_dict)
+analysis_return_relationships_images_from_dict = AnalysisReturnRelationshipsImages.from_dict(analysis_return_relationships_images_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

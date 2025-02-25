@@ -21,7 +21,7 @@ from typing import Any, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 ANNOTATIONREQUESTRELATIONSHIPSNOTES_ONE_OF_SCHEMAS = ["List[NoteCollectionRequest]", "List[str]"]
@@ -35,7 +35,7 @@ class AnnotationRequestRelationshipsNotes(BaseModel):
     # data type: List[str]
     oneof_schema_2_validator: Optional[List[StrictStr]] = None
     actual_instance: Optional[Union[List[NoteCollectionRequest], List[str]]] = None
-    one_of_schemas: List[str] = Field(default=Literal["List[NoteCollectionRequest]", "List[str]"])
+    one_of_schemas: Set[str] = { "List[NoteCollectionRequest]", "List[str]" }
 
     model_config = ConfigDict(
         validate_assignment=True,

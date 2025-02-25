@@ -109,9 +109,9 @@ class StudyReturn(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in studysets (list)
         _items = []
         if self.studysets:
-            for _item in self.studysets:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_studysets in self.studysets:
+                if _item_studysets:
+                    _items.append(_item_studysets.to_dict())
             _dict['studysets'] = _items
         # set to None if doi (nullable) is None
         # and model_fields_set contains the field

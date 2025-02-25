@@ -37,7 +37,7 @@ print(AnalysisReturn.to_json())
 # convert the object into a dict
 analysis_return_dict = analysis_return_instance.to_dict()
 # create an instance of AnalysisReturn from a dict
-analysis_return_form_dict = analysis_return.from_dict(analysis_return_dict)
+analysis_return_from_dict = AnalysisReturn.from_dict(analysis_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -33,7 +33,7 @@ print(StudyRequest.to_json())
 # convert the object into a dict
 study_request_dict = study_request_instance.to_dict()
 # create an instance of StudyRequest from a dict
-study_request_form_dict = study_request.from_dict(study_request_dict)
+study_request_from_dict = StudyRequest.from_dict(study_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

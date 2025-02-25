@@ -20,7 +20,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, f
 from typing import Any, List, Optional
 from neurostore_sdk.models.base_study import BaseStudy
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 BASESTUDIESPOSTREQUEST_ONE_OF_SCHEMAS = ["BaseStudy", "List[BaseStudy]"]
@@ -34,7 +34,7 @@ class BaseStudiesPostRequest(BaseModel):
     # data type: List[BaseStudy]
     oneof_schema_2_validator: Optional[List[BaseStudy]] = None
     actual_instance: Optional[Union[BaseStudy, List[BaseStudy]]] = None
-    one_of_schemas: List[str] = Field(default=Literal["BaseStudy", "List[BaseStudy]"])
+    one_of_schemas: Set[str] = { "BaseStudy", "List[BaseStudy]" }
 
     model_config = ConfigDict(
         validate_assignment=True,

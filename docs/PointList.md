@@ -23,7 +23,7 @@ print(PointList.to_json())
 # convert the object into a dict
 point_list_dict = point_list_instance.to_dict()
 # create an instance of PointList from a dict
-point_list_form_dict = point_list.from_dict(point_list_dict)
+point_list_from_dict = PointList.from_dict(point_list_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -36,7 +36,7 @@ print(AnnotationReturnOneOf1.to_json())
 # convert the object into a dict
 annotation_return_one_of1_dict = annotation_return_one_of1_instance.to_dict()
 # create an instance of AnnotationReturnOneOf1 from a dict
-annotation_return_one_of1_form_dict = annotation_return_one_of1.from_dict(annotation_return_one_of1_dict)
+annotation_return_one_of1_from_dict = AnnotationReturnOneOf1.from_dict(annotation_return_one_of1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

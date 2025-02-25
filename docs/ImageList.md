@@ -23,7 +23,7 @@ print(ImageList.to_json())
 # convert the object into a dict
 image_list_dict = image_list_instance.to_dict()
 # create an instance of ImageList from a dict
-image_list_form_dict = image_list.from_dict(image_list_dict)
+image_list_from_dict = ImageList.from_dict(image_list_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

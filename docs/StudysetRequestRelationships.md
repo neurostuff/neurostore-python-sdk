@@ -22,7 +22,7 @@ print(StudysetRequestRelationships.to_json())
 # convert the object into a dict
 studyset_request_relationships_dict = studyset_request_relationships_instance.to_dict()
 # create an instance of StudysetRequestRelationships from a dict
-studyset_request_relationships_form_dict = studyset_request_relationships.from_dict(studyset_request_relationships_dict)
+studyset_request_relationships_from_dict = StudysetRequestRelationships.from_dict(studyset_request_relationships_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

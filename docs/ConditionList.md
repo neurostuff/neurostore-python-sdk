@@ -23,7 +23,7 @@ print(ConditionList.to_json())
 # convert the object into a dict
 condition_list_dict = condition_list_instance.to_dict()
 # create an instance of ConditionList from a dict
-condition_list_form_dict = condition_list.from_dict(condition_list_dict)
+condition_list_from_dict = ConditionList.from_dict(condition_list_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

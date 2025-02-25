@@ -22,7 +22,7 @@ print(ImageCommon.to_json())
 # convert the object into a dict
 image_common_dict = image_common_instance.to_dict()
 # create an instance of ImageCommon from a dict
-image_common_form_dict = image_common.from_dict(image_common_dict)
+image_common_from_dict = ImageCommon.from_dict(image_common_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

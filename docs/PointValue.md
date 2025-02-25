@@ -24,7 +24,7 @@ print(PointValue.to_json())
 # convert the object into a dict
 point_value_dict = point_value_instance.to_dict()
 # create an instance of PointValue from a dict
-point_value_form_dict = point_value.from_dict(point_value_dict)
+point_value_from_dict = PointValue.from_dict(point_value_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

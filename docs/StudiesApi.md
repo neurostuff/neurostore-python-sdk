@@ -58,7 +58,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
     authors = 'authors_example' # str | search authors (optional)
-    level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
+    level = group # str | select between studies with group results or meta results (optional) (default to group)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
  **authors** | **str**| search authors | [optional] 
- **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
+ **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **publication** | **str**| search for papers from a particular journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
@@ -392,12 +392,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     description = 'description_example' # str | search description field for a term (optional)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     unique = None # object | whether to list clones with originals (optional)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
-    level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
+    level = group # str | select between studies with group results or meta results (optional) (default to group)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
@@ -428,12 +428,12 @@ Name | Type | Description  | Notes
  **description** | **str**| search description field for a term | [optional] 
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **unique** | [**object**](.md)| whether to list clones with originals | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
- **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
+ **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
@@ -729,7 +729,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StudiesApi(api_client)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     study_request = neurostore_sdk.StudyRequest() # StudyRequest |  (optional)
 
@@ -749,7 +749,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional] 
 

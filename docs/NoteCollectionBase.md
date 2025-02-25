@@ -22,7 +22,7 @@ print(NoteCollectionBase.to_json())
 # convert the object into a dict
 note_collection_base_dict = note_collection_base_instance.to_dict()
 # create an instance of NoteCollectionBase from a dict
-note_collection_base_form_dict = note_collection_base.from_dict(note_collection_base_dict)
+note_collection_base_from_dict = NoteCollectionBase.from_dict(note_collection_base_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

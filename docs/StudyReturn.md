@@ -44,7 +44,7 @@ print(StudyReturn.to_json())
 # convert the object into a dict
 study_return_dict = study_return_instance.to_dict()
 # create an instance of StudyReturn from a dict
-study_return_form_dict = study_return.from_dict(study_return_dict)
+study_return_from_dict = StudyReturn.from_dict(study_return_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(JsonLdContext.to_json())
 # convert the object into a dict
 json_ld_context_dict = json_ld_context_instance.to_dict()
 # create an instance of JsonLdContext from a dict
-json_ld_context_form_dict = json_ld_context.from_dict(json_ld_context_dict)
+json_ld_context_from_dict = JsonLdContext.from_dict(json_ld_context_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

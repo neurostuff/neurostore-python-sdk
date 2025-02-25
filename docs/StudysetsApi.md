@@ -58,7 +58,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     description = 'description_example' # str | search description field for a term (optional)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     unique = None # object | whether to list clones with originals (optional)
-    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
  **description** | **str**| search description field for a term | [optional] 
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **unique** | [**object**](.md)| whether to list clones with originals | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
 
