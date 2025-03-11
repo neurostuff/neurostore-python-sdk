@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pipeline_study_results_get**
-> PipelineStudyResultList pipeline_study_results_get()
+> PipelineStudyResultList pipeline_study_results_get(feature_filter=feature_filter)
 
 GET a list of pipeline run results
 
@@ -37,10 +37,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
+    feature_filter = ['feature_filter_example'] # List[str] | Filter results by feature content using jsonpath syntax (optional)
 
     try:
         # GET a list of pipeline run results
-        api_response = api_instance.pipeline_study_results_get()
+        api_response = api_instance.pipeline_study_results_get(feature_filter=feature_filter)
         print("The response of PipelineStudyResultsApi->pipeline_study_results_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -49,7 +50,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **feature_filter** | [**List[str]**](str.md)| Filter results by feature content using jsonpath syntax | [optional] 
 
 ### Return type
 

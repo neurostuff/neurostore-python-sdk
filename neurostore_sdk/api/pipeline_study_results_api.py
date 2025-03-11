@@ -20,7 +20,7 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
+from pydantic import Field, StrictStr, conlist
 
 from typing import Optional
 
@@ -48,15 +48,17 @@ class PipelineStudyResultsApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def pipeline_study_results_get(self, **kwargs) -> PipelineStudyResultList:  # noqa: E501
+    def pipeline_study_results_get(self, feature_filter : Annotated[Optional[conlist(StrictStr)], Field(description="Filter results by feature content using jsonpath syntax")] = None, **kwargs) -> PipelineStudyResultList:  # noqa: E501
         """GET a list of pipeline run results  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.pipeline_study_results_get(async_req=True)
+        >>> thread = api.pipeline_study_results_get(feature_filter, async_req=True)
         >>> result = thread.get()
 
+        :param feature_filter: Filter results by feature content using jsonpath syntax
+        :type feature_filter: List[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -71,18 +73,20 @@ class PipelineStudyResultsApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the pipeline_study_results_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.pipeline_study_results_get_with_http_info(**kwargs)  # noqa: E501
+        return self.pipeline_study_results_get_with_http_info(feature_filter, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def pipeline_study_results_get_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def pipeline_study_results_get_with_http_info(self, feature_filter : Annotated[Optional[conlist(StrictStr)], Field(description="Filter results by feature content using jsonpath syntax")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GET a list of pipeline run results  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.pipeline_study_results_get_with_http_info(async_req=True)
+        >>> thread = api.pipeline_study_results_get_with_http_info(feature_filter, async_req=True)
         >>> result = thread.get()
 
+        :param feature_filter: Filter results by feature content using jsonpath syntax
+        :type feature_filter: List[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -111,6 +115,7 @@ class PipelineStudyResultsApi(object):
         _params = locals()
 
         _all_params = [
+            'feature_filter'
         ]
         _all_params.extend(
             [
@@ -141,6 +146,10 @@ class PipelineStudyResultsApi(object):
 
         # process the query parameters
         _query_params = []
+        if _params.get('feature_filter') is not None:  # noqa: E501
+            _query_params.append(('feature_filter', _params['feature_filter']))
+            _collection_formats['feature_filter'] = 'multi'
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

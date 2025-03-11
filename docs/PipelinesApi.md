@@ -267,6 +267,7 @@ POST/create a pipeline
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 ```python
 import time
 import os
@@ -281,6 +282,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -308,7 +318,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -319,6 +329,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**401** | Unauthorized - Authentication required |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
