@@ -4005,6 +4005,8 @@ class StoreApi:
     @validate_call
     def base_studies_get(
         self,
+        feature_filter: Annotated[Optional[StrictStr], Field(description="Filter studies by features")] = None,
+        feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -4036,6 +4038,10 @@ class StoreApi:
         """
 
 
+        :param feature_filter: Filter studies by features
+        :type feature_filter: str
+        :param feature_display: display features from pipelines
+        :type feature_display: str
         :param search: search for entries that contain the substring
         :type search: str
         :param sort: Parameter to sort results on
@@ -4089,6 +4095,8 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            feature_filter=feature_filter,
+            feature_display=feature_display,
             search=search,
             sort=sort,
             page=page,
@@ -4127,6 +4135,8 @@ class StoreApi:
     @validate_call
     def base_studies_get_with_http_info(
         self,
+        feature_filter: Annotated[Optional[StrictStr], Field(description="Filter studies by features")] = None,
+        feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -4158,6 +4168,10 @@ class StoreApi:
         """
 
 
+        :param feature_filter: Filter studies by features
+        :type feature_filter: str
+        :param feature_display: display features from pipelines
+        :type feature_display: str
         :param search: search for entries that contain the substring
         :type search: str
         :param sort: Parameter to sort results on
@@ -4211,6 +4225,8 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            feature_filter=feature_filter,
+            feature_display=feature_display,
             search=search,
             sort=sort,
             page=page,
@@ -4249,6 +4265,8 @@ class StoreApi:
     @validate_call
     def base_studies_get_without_preload_content(
         self,
+        feature_filter: Annotated[Optional[StrictStr], Field(description="Filter studies by features")] = None,
+        feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -4280,6 +4298,10 @@ class StoreApi:
         """
 
 
+        :param feature_filter: Filter studies by features
+        :type feature_filter: str
+        :param feature_display: display features from pipelines
+        :type feature_display: str
         :param search: search for entries that contain the substring
         :type search: str
         :param sort: Parameter to sort results on
@@ -4333,6 +4355,8 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            feature_filter=feature_filter,
+            feature_display=feature_display,
             search=search,
             sort=sort,
             page=page,
@@ -4366,6 +4390,8 @@ class StoreApi:
 
     def _base_studies_get_serialize(
         self,
+        feature_filter,
+        feature_display,
         search,
         sort,
         page,
@@ -4403,6 +4429,14 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if feature_filter is not None:
+            
+            _query_params.append(('feature_filter', feature_filter))
+            
+        if feature_display is not None:
+            
+            _query_params.append(('feature_display', feature_display))
+            
         if search is not None:
             
             _query_params.append(('search', search))

@@ -30,6 +30,7 @@ class BaseStudyReturn(BaseModel):
     """
     BaseStudyReturn
     """ # noqa: E501
+    features: Optional[Dict[str, Any]] = None
     metadata: Optional[Dict[str, Any]] = None
     versions: Optional[BaseStudyVersions] = None
     name: Optional[StrictStr] = None

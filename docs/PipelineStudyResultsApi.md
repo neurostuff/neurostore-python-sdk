@@ -1,27 +1,27 @@
-# neurostore_sdk.PipelinesApi
+# neurostore_sdk.PipelineStudyResultsApi
 
 All URIs are relative to *https://neurostore.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**pipelines_get**](PipelinesApi.md#pipelines_get) | **GET** /pipelines/ | GET a list of pipelines
-[**pipelines_id_delete**](PipelinesApi.md#pipelines_id_delete) | **DELETE** /pipelines/{id} | DELETE a pipeline by ID
-[**pipelines_id_get**](PipelinesApi.md#pipelines_id_get) | **GET** /pipelines/{id} | GET a pipeline by ID
-[**pipelines_id_put**](PipelinesApi.md#pipelines_id_put) | **PUT** /pipelines/{id} | PUT/update a pipeline by ID
-[**pipelines_post**](PipelinesApi.md#pipelines_post) | **POST** /pipelines/ | POST/create a pipeline
+[**pipeline_study_results_get**](PipelineStudyResultsApi.md#pipeline_study_results_get) | **GET** /pipeline-study-results/ | GET a list of pipeline run results
+[**pipeline_study_results_pipeline_study_result_id_delete**](PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_delete) | **DELETE** /pipeline-study-results/{pipeline_study_result_id} | DELETE a pipeline run result by ID
+[**pipeline_study_results_pipeline_study_result_id_get**](PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_get) | **GET** /pipeline-study-results/{pipeline_study_result_id} | GET a pipeline run result by ID
+[**pipeline_study_results_pipeline_study_result_id_put**](PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_put) | **PUT** /pipeline-study-results/{pipeline_study_result_id} | PUT/update a pipeline run result by ID
+[**pipeline_study_results_post**](PipelineStudyResultsApi.md#pipeline_study_results_post) | **POST** /pipeline-study-results/ | POST/create a pipeline run result
 
 
-# **pipelines_get**
-> PipelineList pipelines_get()
+# **pipeline_study_results_get**
+> PipelineStudyResultList pipeline_study_results_get(feature_filter=feature_filter)
 
-GET a list of pipelines
+GET a list of pipeline run results
 
 ### Example
 
 
 ```python
 import neurostore_sdk
-from neurostore_sdk.models.pipeline_list import PipelineList
+from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -35,26 +35,30 @@ configuration = neurostore_sdk.Configuration(
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.PipelinesApi(api_client)
+    api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
+    feature_filter = ['feature_filter_example'] # List[str] | Filter results by feature content using jsonpath syntax (optional)
 
     try:
-        # GET a list of pipelines
-        api_response = api_instance.pipelines_get()
-        print("The response of PipelinesApi->pipelines_get:\n")
+        # GET a list of pipeline run results
+        api_response = api_instance.pipeline_study_results_get(feature_filter=feature_filter)
+        print("The response of PipelineStudyResultsApi->pipeline_study_results_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PipelinesApi->pipelines_get: %s\n" % e)
+        print("Exception when calling PipelineStudyResultsApi->pipeline_study_results_get: %s\n" % e)
 ```
 
 
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **feature_filter** | [**List[str]**](str.md)| Filter results by feature content using jsonpath syntax | [optional] 
 
 ### Return type
 
-[**PipelineList**](PipelineList.md)
+[**PipelineStudyResultList**](PipelineStudyResultList.md)
 
 ### Authorization
 
@@ -73,10 +77,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pipelines_id_delete**
-> pipelines_id_delete(id)
+# **pipeline_study_results_pipeline_study_result_id_delete**
+> pipeline_study_results_pipeline_study_result_id_delete(pipeline_study_result_id)
 
-DELETE a pipeline by ID
+DELETE a pipeline run result by ID
 
 ### Example
 
@@ -96,14 +100,14 @@ configuration = neurostore_sdk.Configuration(
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.PipelinesApi(api_client)
-    id = 'id_example' # str | 
+    api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
+    pipeline_study_result_id = 'pipeline_study_result_id_example' # str | 
 
     try:
-        # DELETE a pipeline by ID
-        api_instance.pipelines_id_delete(id)
+        # DELETE a pipeline run result by ID
+        api_instance.pipeline_study_results_pipeline_study_result_id_delete(pipeline_study_result_id)
     except Exception as e:
-        print("Exception when calling PipelinesApi->pipelines_id_delete: %s\n" % e)
+        print("Exception when calling PipelineStudyResultsApi->pipeline_study_results_pipeline_study_result_id_delete: %s\n" % e)
 ```
 
 
@@ -113,7 +117,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **pipeline_study_result_id** | **str**|  | 
 
 ### Return type
 
@@ -136,17 +140,17 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pipelines_id_get**
-> Pipeline pipelines_id_get(id)
+# **pipeline_study_results_pipeline_study_result_id_get**
+> PipelineStudyResult pipeline_study_results_pipeline_study_result_id_get(pipeline_study_result_id)
 
-GET a pipeline by ID
+GET a pipeline run result by ID
 
 ### Example
 
 
 ```python
 import neurostore_sdk
-from neurostore_sdk.models.pipeline import Pipeline
+from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -160,16 +164,16 @@ configuration = neurostore_sdk.Configuration(
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.PipelinesApi(api_client)
-    id = 'id_example' # str | 
+    api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
+    pipeline_study_result_id = 'pipeline_study_result_id_example' # str | 
 
     try:
-        # GET a pipeline by ID
-        api_response = api_instance.pipelines_id_get(id)
-        print("The response of PipelinesApi->pipelines_id_get:\n")
+        # GET a pipeline run result by ID
+        api_response = api_instance.pipeline_study_results_pipeline_study_result_id_get(pipeline_study_result_id)
+        print("The response of PipelineStudyResultsApi->pipeline_study_results_pipeline_study_result_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PipelinesApi->pipelines_id_get: %s\n" % e)
+        print("Exception when calling PipelineStudyResultsApi->pipeline_study_results_pipeline_study_result_id_get: %s\n" % e)
 ```
 
 
@@ -179,11 +183,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
+ **pipeline_study_result_id** | **str**|  | 
 
 ### Return type
 
-[**Pipeline**](Pipeline.md)
+[**PipelineStudyResult**](PipelineStudyResult.md)
 
 ### Authorization
 
@@ -202,17 +206,17 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pipelines_id_put**
-> pipelines_id_put(id, pipeline=pipeline)
+# **pipeline_study_results_pipeline_study_result_id_put**
+> pipeline_study_results_pipeline_study_result_id_put(pipeline_study_result_id, pipeline_study_result=pipeline_study_result)
 
-PUT/update a pipeline by ID
+PUT/update a pipeline run result by ID
 
 ### Example
 
 
 ```python
 import neurostore_sdk
-from neurostore_sdk.models.pipeline import Pipeline
+from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -226,15 +230,15 @@ configuration = neurostore_sdk.Configuration(
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.PipelinesApi(api_client)
-    id = 'id_example' # str | 
-    pipeline = neurostore_sdk.Pipeline() # Pipeline |  (optional)
+    api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
+    pipeline_study_result_id = 'pipeline_study_result_id_example' # str | 
+    pipeline_study_result = neurostore_sdk.PipelineStudyResult() # PipelineStudyResult |  (optional)
 
     try:
-        # PUT/update a pipeline by ID
-        api_instance.pipelines_id_put(id, pipeline=pipeline)
+        # PUT/update a pipeline run result by ID
+        api_instance.pipeline_study_results_pipeline_study_result_id_put(pipeline_study_result_id, pipeline_study_result=pipeline_study_result)
     except Exception as e:
-        print("Exception when calling PipelinesApi->pipelines_id_put: %s\n" % e)
+        print("Exception when calling PipelineStudyResultsApi->pipeline_study_results_pipeline_study_result_id_put: %s\n" % e)
 ```
 
 
@@ -244,8 +248,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
- **pipeline** | [**Pipeline**](Pipeline.md)|  | [optional] 
+ **pipeline_study_result_id** | **str**|  | 
+ **pipeline_study_result** | [**PipelineStudyResult**](PipelineStudyResult.md)|  | [optional] 
 
 ### Return type
 
@@ -268,18 +272,17 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pipelines_post**
-> pipelines_post(pipeline=pipeline)
+# **pipeline_study_results_post**
+> pipeline_study_results_post(pipeline_study_result=pipeline_study_result)
 
-POST/create a pipeline
+POST/create a pipeline run result
 
 ### Example
 
-* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
-from neurostore_sdk.models.pipeline import Pipeline
+from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -289,27 +292,18 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: JSON-Web-Token
-configuration = neurostore_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.PipelinesApi(api_client)
-    pipeline = neurostore_sdk.Pipeline() # Pipeline |  (optional)
+    api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
+    pipeline_study_result = neurostore_sdk.PipelineStudyResult() # PipelineStudyResult |  (optional)
 
     try:
-        # POST/create a pipeline
-        api_instance.pipelines_post(pipeline=pipeline)
+        # POST/create a pipeline run result
+        api_instance.pipeline_study_results_post(pipeline_study_result=pipeline_study_result)
     except Exception as e:
-        print("Exception when calling PipelinesApi->pipelines_post: %s\n" % e)
+        print("Exception when calling PipelineStudyResultsApi->pipeline_study_results_post: %s\n" % e)
 ```
 
 
@@ -319,7 +313,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipeline** | [**Pipeline**](Pipeline.md)|  | [optional] 
+ **pipeline_study_result** | [**PipelineStudyResult**](PipelineStudyResult.md)|  | [optional] 
 
 ### Return type
 
@@ -327,7 +321,7 @@ void (empty response body)
 
 ### Authorization
 
-[JSON-Web-Token](../README.md#JSON-Web-Token)
+No authorization required
 
 ### HTTP request headers
 
@@ -339,7 +333,6 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
-**401** | Unauthorized - Authentication required |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

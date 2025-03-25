@@ -23,9 +23,7 @@ from neurostore_sdk.api.annotations_api import AnnotationsApi
 from neurostore_sdk.api.conditions_api import ConditionsApi
 from neurostore_sdk.api.images_api import ImagesApi
 from neurostore_sdk.api.pipeline_configs_api import PipelineConfigsApi
-from neurostore_sdk.api.pipeline_run_result_votes_api import PipelineRunResultVotesApi
-from neurostore_sdk.api.pipeline_run_results_api import PipelineRunResultsApi
-from neurostore_sdk.api.pipeline_runs_api import PipelineRunsApi
+from neurostore_sdk.api.pipeline_study_results_api import PipelineStudyResultsApi
 from neurostore_sdk.api.pipelines_api import PipelinesApi
 from neurostore_sdk.api.points_api import PointsApi
 from neurostore_sdk.api.store_api import StoreApi
@@ -99,12 +97,8 @@ from neurostore_sdk.models.pipeline import Pipeline
 from neurostore_sdk.models.pipeline_config import PipelineConfig
 from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
 from neurostore_sdk.models.pipeline_list import PipelineList
-from neurostore_sdk.models.pipeline_run import PipelineRun
-from neurostore_sdk.models.pipeline_run_list import PipelineRunList
-from neurostore_sdk.models.pipeline_run_result import PipelineRunResult
-from neurostore_sdk.models.pipeline_run_result_list import PipelineRunResultList
-from neurostore_sdk.models.pipeline_run_result_vote import PipelineRunResultVote
-from neurostore_sdk.models.pipeline_run_result_vote_list import PipelineRunResultVoteList
+from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
+from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
 from neurostore_sdk.models.point_base import PointBase
 from neurostore_sdk.models.point_common import PointCommon
 from neurostore_sdk.models.point_list import PointList

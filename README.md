@@ -126,21 +126,11 @@ Class | Method | HTTP request | Description
 *PipelineConfigsApi* | [**pipeline_configs_id_get**](docs/PipelineConfigsApi.md#pipeline_configs_id_get) | **GET** /pipeline-configs/{id} | GET a pipeline config by ID
 *PipelineConfigsApi* | [**pipeline_configs_id_put**](docs/PipelineConfigsApi.md#pipeline_configs_id_put) | **PUT** /pipeline-configs/{id} | PUT/update a pipeline config by ID
 *PipelineConfigsApi* | [**pipeline_configs_post**](docs/PipelineConfigsApi.md#pipeline_configs_post) | **POST** /pipeline-configs/ | POST/create a pipeline config
-*PipelineRunResultVotesApi* | [**pipeline_run_result_votes_get**](docs/PipelineRunResultVotesApi.md#pipeline_run_result_votes_get) | **GET** /pipeline-run-result-votes/ | GET a list of pipeline run result votes
-*PipelineRunResultVotesApi* | [**pipeline_run_result_votes_pipeline_run_result_vote_id_delete**](docs/PipelineRunResultVotesApi.md#pipeline_run_result_votes_pipeline_run_result_vote_id_delete) | **DELETE** /pipeline-run-result-votes/{pipeline_run_result_vote_id} | DELETE a pipeline run result vote by ID
-*PipelineRunResultVotesApi* | [**pipeline_run_result_votes_pipeline_run_result_vote_id_get**](docs/PipelineRunResultVotesApi.md#pipeline_run_result_votes_pipeline_run_result_vote_id_get) | **GET** /pipeline-run-result-votes/{pipeline_run_result_vote_id} | GET a pipeline run result vote by ID
-*PipelineRunResultVotesApi* | [**pipeline_run_result_votes_pipeline_run_result_vote_id_put**](docs/PipelineRunResultVotesApi.md#pipeline_run_result_votes_pipeline_run_result_vote_id_put) | **PUT** /pipeline-run-result-votes/{pipeline_run_result_vote_id} | PUT/update a pipeline run result vote by ID
-*PipelineRunResultVotesApi* | [**pipeline_run_result_votes_post**](docs/PipelineRunResultVotesApi.md#pipeline_run_result_votes_post) | **POST** /pipeline-run-result-votes/ | POST/create a pipeline run result vote
-*PipelineRunResultsApi* | [**pipeline_run_results_get**](docs/PipelineRunResultsApi.md#pipeline_run_results_get) | **GET** /pipeline-run-results/ | GET a list of pipeline run results
-*PipelineRunResultsApi* | [**pipeline_run_results_pipeline_run_result_id_delete**](docs/PipelineRunResultsApi.md#pipeline_run_results_pipeline_run_result_id_delete) | **DELETE** /pipeline-run-results/{pipeline_run_result_id} | DELETE a pipeline run result by ID
-*PipelineRunResultsApi* | [**pipeline_run_results_pipeline_run_result_id_get**](docs/PipelineRunResultsApi.md#pipeline_run_results_pipeline_run_result_id_get) | **GET** /pipeline-run-results/{pipeline_run_result_id} | GET a pipeline run result by ID
-*PipelineRunResultsApi* | [**pipeline_run_results_pipeline_run_result_id_put**](docs/PipelineRunResultsApi.md#pipeline_run_results_pipeline_run_result_id_put) | **PUT** /pipeline-run-results/{pipeline_run_result_id} | PUT/update a pipeline run result by ID
-*PipelineRunResultsApi* | [**pipeline_run_results_post**](docs/PipelineRunResultsApi.md#pipeline_run_results_post) | **POST** /pipeline-run-results/ | POST/create a pipeline run result
-*PipelineRunsApi* | [**pipeline_runs_get**](docs/PipelineRunsApi.md#pipeline_runs_get) | **GET** /pipeline-runs/ | GET a list of pipeline runs
-*PipelineRunsApi* | [**pipeline_runs_pipeline_run_id_delete**](docs/PipelineRunsApi.md#pipeline_runs_pipeline_run_id_delete) | **DELETE** /pipeline-runs/{pipeline_run_id} | DELETE a pipeline run by ID
-*PipelineRunsApi* | [**pipeline_runs_pipeline_run_id_get**](docs/PipelineRunsApi.md#pipeline_runs_pipeline_run_id_get) | **GET** /pipeline-runs/{pipeline_run_id} | GET a pipeline run by ID
-*PipelineRunsApi* | [**pipeline_runs_pipeline_run_id_put**](docs/PipelineRunsApi.md#pipeline_runs_pipeline_run_id_put) | **PUT** /pipeline-runs/{pipeline_run_id} | PUT/update a pipeline run by ID
-*PipelineRunsApi* | [**pipeline_runs_post**](docs/PipelineRunsApi.md#pipeline_runs_post) | **POST** /pipeline-runs/ | POST/create a pipeline run
+*PipelineStudyResultsApi* | [**pipeline_study_results_get**](docs/PipelineStudyResultsApi.md#pipeline_study_results_get) | **GET** /pipeline-study-results/ | GET a list of pipeline run results
+*PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_delete**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_delete) | **DELETE** /pipeline-study-results/{pipeline_study_result_id} | DELETE a pipeline run result by ID
+*PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_get**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_get) | **GET** /pipeline-study-results/{pipeline_study_result_id} | GET a pipeline run result by ID
+*PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_put**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_put) | **PUT** /pipeline-study-results/{pipeline_study_result_id} | PUT/update a pipeline run result by ID
+*PipelineStudyResultsApi* | [**pipeline_study_results_post**](docs/PipelineStudyResultsApi.md#pipeline_study_results_post) | **POST** /pipeline-study-results/ | POST/create a pipeline run result
 *PipelinesApi* | [**pipelines_get**](docs/PipelinesApi.md#pipelines_get) | **GET** /pipelines/ | GET a list of pipelines
 *PipelinesApi* | [**pipelines_id_delete**](docs/PipelinesApi.md#pipelines_id_delete) | **DELETE** /pipelines/{id} | DELETE a pipeline by ID
 *PipelinesApi* | [**pipelines_id_get**](docs/PipelinesApi.md#pipelines_id_get) | **GET** /pipelines/{id} | GET a pipeline by ID
@@ -269,12 +259,8 @@ Class | Method | HTTP request | Description
  - [PipelineConfig](docs/PipelineConfig.md)
  - [PipelineConfigList](docs/PipelineConfigList.md)
  - [PipelineList](docs/PipelineList.md)
- - [PipelineRun](docs/PipelineRun.md)
- - [PipelineRunList](docs/PipelineRunList.md)
- - [PipelineRunResult](docs/PipelineRunResult.md)
- - [PipelineRunResultList](docs/PipelineRunResultList.md)
- - [PipelineRunResultVote](docs/PipelineRunResultVote.md)
- - [PipelineRunResultVoteList](docs/PipelineRunResultVoteList.md)
+ - [PipelineStudyResult](docs/PipelineStudyResult.md)
+ - [PipelineStudyResultList](docs/PipelineStudyResultList.md)
  - [PointBase](docs/PointBase.md)
  - [PointCommon](docs/PointCommon.md)
  - [PointList](docs/PointList.md)
