@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pipeline_study_results_get**
-> PipelineStudyResultList pipeline_study_results_get(feature_filter=feature_filter)
+> PipelineStudyResultList pipeline_study_results_get(feature_filter=feature_filter, study_id=study_id)
 
 GET a list of pipeline run results
 
@@ -37,10 +37,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
     feature_filter = ['feature_filter_example'] # List[str] | Filter results by feature content using jsonpath syntax (optional)
+    study_id = ['study_id_example'] # List[str] | Filter results by base study ID (optional)
 
     try:
         # GET a list of pipeline run results
-        api_response = api_instance.pipeline_study_results_get(feature_filter=feature_filter)
+        api_response = api_instance.pipeline_study_results_get(feature_filter=feature_filter, study_id=study_id)
         print("The response of PipelineStudyResultsApi->pipeline_study_results_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -55,6 +56,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feature_filter** | [**List[str]**](str.md)| Filter results by feature content using jsonpath syntax | [optional] 
+ **study_id** | [**List[str]**](str.md)| Filter results by base study ID | [optional] 
 
 ### Return type
 
