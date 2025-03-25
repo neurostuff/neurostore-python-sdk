@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(feature_filter=feature_filter, feature_display=feature_display, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+> BaseStudyList base_studies_get(feature_filter=feature_filter, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
 
 
 
@@ -52,6 +52,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = neurostore_sdk.StudiesApi(api_client)
     feature_filter = 'feature_filter_example' # str | Filter studies by features (optional)
     feature_display = 'feature_display_example' # str | display features from pipelines (optional)
+    feature_flatten = True # bool |  (optional)
     search = 'imagin' # str | search for entries that contain the substring (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
@@ -70,7 +71,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(feature_filter=feature_filter, feature_display=feature_display, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+        api_response = api_instance.base_studies_get(feature_filter=feature_filter, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
         print("The response of StudiesApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -86,6 +87,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feature_filter** | **str**| Filter studies by features | [optional] 
  **feature_display** | **str**| display features from pipelines | [optional] 
+ **feature_flatten** | **bool**|  | [optional] 
  **search** | **str**| search for entries that contain the substring | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
