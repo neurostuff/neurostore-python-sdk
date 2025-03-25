@@ -45,6 +45,7 @@ class PipelineStudyResultsApi:
     def pipeline_study_results_get(
         self,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content using jsonpath syntax")] = None,
+        study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,6 +64,8 @@ class PipelineStudyResultsApi:
 
         :param feature_filter: Filter results by feature content using jsonpath syntax
         :type feature_filter: List[str]
+        :param study_id: Filter results by base study ID
+        :type study_id: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class PipelineStudyResultsApi:
 
         _param = self._pipeline_study_results_get_serialize(
             feature_filter=feature_filter,
+            study_id=study_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,6 +115,7 @@ class PipelineStudyResultsApi:
     def pipeline_study_results_get_with_http_info(
         self,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content using jsonpath syntax")] = None,
+        study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,6 +134,8 @@ class PipelineStudyResultsApi:
 
         :param feature_filter: Filter results by feature content using jsonpath syntax
         :type feature_filter: List[str]
+        :param study_id: Filter results by base study ID
+        :type study_id: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -153,6 +160,7 @@ class PipelineStudyResultsApi:
 
         _param = self._pipeline_study_results_get_serialize(
             feature_filter=feature_filter,
+            study_id=study_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -177,6 +185,7 @@ class PipelineStudyResultsApi:
     def pipeline_study_results_get_without_preload_content(
         self,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content using jsonpath syntax")] = None,
+        study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -195,6 +204,8 @@ class PipelineStudyResultsApi:
 
         :param feature_filter: Filter results by feature content using jsonpath syntax
         :type feature_filter: List[str]
+        :param study_id: Filter results by base study ID
+        :type study_id: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -219,6 +230,7 @@ class PipelineStudyResultsApi:
 
         _param = self._pipeline_study_results_get_serialize(
             feature_filter=feature_filter,
+            study_id=study_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,6 +250,7 @@ class PipelineStudyResultsApi:
     def _pipeline_study_results_get_serialize(
         self,
         feature_filter,
+        study_id,
         _request_auth,
         _content_type,
         _headers,
@@ -248,6 +261,7 @@ class PipelineStudyResultsApi:
 
         _collection_formats: Dict[str, str] = {
             'feature_filter': 'multi',
+            'study_id': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -264,6 +278,10 @@ class PipelineStudyResultsApi:
         if feature_filter is not None:
             
             _query_params.append(('feature_filter', feature_filter))
+            
+        if study_id is not None:
+            
+            _query_params.append(('study_id', study_id))
             
         # process the header parameters
         # process the form parameters

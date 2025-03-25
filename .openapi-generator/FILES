@@ -219,7 +219,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_pipeline_study_result.py
-test/test_pipeline_study_result_list.py
-test/test_pipeline_study_results_api.py
 tox.ini
