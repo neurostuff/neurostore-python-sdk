@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pipeline_study_results_get**
-> PipelineStudyResultList pipeline_study_results_get(feature_filter=feature_filter, study_id=study_id)
+> PipelineStudyResultList pipeline_study_results_get(feature_filter=feature_filter, feature_config=feature_config, study_id=study_id, version=version)
 
 GET a list of pipeline run results
 
@@ -36,12 +36,14 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.PipelineStudyResultsApi(api_client)
-    feature_filter = ['feature_filter_example'] # List[str] | Filter results by feature content using jsonpath syntax (optional)
+    feature_filter = ['feature_filter_example'] # List[str] | Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
+    feature_config = ['feature_config_example'] # List[str] | Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
     study_id = ['study_id_example'] # List[str] | Filter results by base study ID (optional)
+    version = 'version_example' # str | Filter results by pipeline config version (optional)
 
     try:
         # GET a list of pipeline run results
-        api_response = api_instance.pipeline_study_results_get(feature_filter=feature_filter, study_id=study_id)
+        api_response = api_instance.pipeline_study_results_get(feature_filter=feature_filter, feature_config=feature_config, study_id=study_id, version=version)
         print("The response of PipelineStudyResultsApi->pipeline_study_results_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -55,8 +57,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feature_filter** | [**List[str]**](str.md)| Filter results by feature content using jsonpath syntax | [optional] 
+ **feature_filter** | [**List[str]**](str.md)| Filter results by feature content. Format: \&quot;PipelineName[:version]:field_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:groups.diagnosis&#x3D;ADHD\&quot; (specific version)   - \&quot;TestPipeline:groups.diagnosis&#x3D;ADHD\&quot; (any version)  Field path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
+ **feature_config** | [**List[str]**](str.md)| Filter results by pipeline config content. Format: \&quot;PipelineName[:version]:config_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:preprocessing.smoothing&#x3D;8\&quot; (specific version)   - \&quot;TestPipeline:model.type&#x3D;linear\&quot; (any version)  Config path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
  **study_id** | [**List[str]**](str.md)| Filter results by base study ID | [optional] 
+ **version** | **str**| Filter results by pipeline config version | [optional] 
 
 ### Return type
 
