@@ -44,8 +44,8 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get(
         self,
-        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
-        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
@@ -64,9 +64,9 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
-        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
-        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
@@ -122,8 +122,8 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get_with_http_info(
         self,
-        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
-        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
@@ -142,9 +142,9 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
-        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
-        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
@@ -200,8 +200,8 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get_without_preload_content(
         self,
-        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
-        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
@@ -220,9 +220,9 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
-        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (any version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
-        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]

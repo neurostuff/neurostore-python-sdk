@@ -4006,7 +4006,7 @@ class StoreApi:
     def base_studies_get(
         self,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
-        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
@@ -4042,7 +4042,7 @@ class StoreApi:
 
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
-        :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
         :param feature_display: display features from pipelines
         :type feature_display: str
@@ -4144,7 +4144,7 @@ class StoreApi:
     def base_studies_get_with_http_info(
         self,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
-        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
@@ -4180,7 +4180,7 @@ class StoreApi:
 
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
-        :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
         :param feature_display: display features from pipelines
         :type feature_display: str
@@ -4282,7 +4282,7 @@ class StoreApi:
     def base_studies_get_without_preload_content(
         self,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
-        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
@@ -4318,7 +4318,7 @@ class StoreApi:
 
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
-        :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (any version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
         :param feature_display: display features from pipelines
         :type feature_display: str
