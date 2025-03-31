@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(feature_filter=feature_filter, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+> BaseStudyList base_studies_get(feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
 
 
 
@@ -50,7 +50,8 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StudiesApi(api_client)
-    feature_filter = 'feature_filter_example' # str | Filter studies by features (optional)
+    feature_filter = ['feature_filter_example'] # List[str] | Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
+    pipeline_config = ['pipeline_config_example'] # List[str] | Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
     feature_display = 'feature_display_example' # str | display features from pipelines (optional)
     feature_flatten = True # bool |  (optional)
     search = 'imagin' # str | search for entries that contain the substring (optional)
@@ -71,7 +72,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(feature_filter=feature_filter, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+        api_response = api_instance.base_studies_get(feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
         print("The response of StudiesApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -85,7 +86,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **feature_filter** | **str**| Filter studies by features | [optional] 
+ **feature_filter** | [**List[str]**](str.md)| Filter studies by feature content. Format: \&quot;PipelineName[:version]:field_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:predictions.age_mean&gt;20\&quot; (specific version)   - \&quot;TestPipeline:groups.diagnosis&#x3D;ADHD\&quot; (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
+ **pipeline_config** | [**List[str]**](str.md)| Filter studies by pipeline config content. Format: \&quot;PipelineName[:version]:config_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:settings.min_age&#x3D;20\&quot; (specific version)   - \&quot;TestPipeline:model.type&#x3D;linear\&quot; (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
  **feature_display** | **str**| display features from pipelines | [optional] 
  **feature_flatten** | **bool**|  | [optional] 
  **search** | **str**| search for entries that contain the substring | [optional] 

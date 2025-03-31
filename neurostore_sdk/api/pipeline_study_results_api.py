@@ -44,8 +44,10 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get(
         self,
-        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content using jsonpath syntax")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
+        version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,10 +64,14 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
-        :param feature_filter: Filter results by feature content using jsonpath syntax
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type pipeline_config: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
+        :param version: Filter results by pipeline config version
+        :type version: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90,7 +96,9 @@ class PipelineStudyResultsApi:
 
         _param = self._pipeline_study_results_get_serialize(
             feature_filter=feature_filter,
+            pipeline_config=pipeline_config,
             study_id=study_id,
+            version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -114,8 +122,10 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get_with_http_info(
         self,
-        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content using jsonpath syntax")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
+        version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,10 +142,14 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
-        :param feature_filter: Filter results by feature content using jsonpath syntax
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type pipeline_config: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
+        :param version: Filter results by pipeline config version
+        :type version: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,7 +174,9 @@ class PipelineStudyResultsApi:
 
         _param = self._pipeline_study_results_get_serialize(
             feature_filter=feature_filter,
+            pipeline_config=pipeline_config,
             study_id=study_id,
+            version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -184,8 +200,10 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get_without_preload_content(
         self,
-        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content using jsonpath syntax")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
+        version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -202,10 +220,14 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
-        :param feature_filter: Filter results by feature content using jsonpath syntax
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type pipeline_config: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
+        :param version: Filter results by pipeline config version
+        :type version: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +252,9 @@ class PipelineStudyResultsApi:
 
         _param = self._pipeline_study_results_get_serialize(
             feature_filter=feature_filter,
+            pipeline_config=pipeline_config,
             study_id=study_id,
+            version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -250,7 +274,9 @@ class PipelineStudyResultsApi:
     def _pipeline_study_results_get_serialize(
         self,
         feature_filter,
+        pipeline_config,
         study_id,
+        version,
         _request_auth,
         _content_type,
         _headers,
@@ -261,6 +287,7 @@ class PipelineStudyResultsApi:
 
         _collection_formats: Dict[str, str] = {
             'feature_filter': 'multi',
+            'pipeline_config': 'multi',
             'study_id': 'multi',
         }
 
@@ -279,9 +306,17 @@ class PipelineStudyResultsApi:
             
             _query_params.append(('feature_filter', feature_filter))
             
+        if pipeline_config is not None:
+            
+            _query_params.append(('pipeline_config', pipeline_config))
+            
         if study_id is not None:
             
             _query_params.append(('study_id', study_id))
+            
+        if version is not None:
+            
+            _query_params.append(('version', version))
             
         # process the header parameters
         # process the form parameters
