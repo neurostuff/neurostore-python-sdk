@@ -76,6 +76,16 @@ class Pipeline(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if derived_from (nullable) is None
+        # and model_fields_set contains the field
+        if self.derived_from is None and "derived_from" in self.model_fields_set:
+            _dict['derived_from'] = None
+
         return _dict
 
     @classmethod
