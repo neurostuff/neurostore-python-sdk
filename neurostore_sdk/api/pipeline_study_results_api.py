@@ -47,6 +47,7 @@ class PipelineStudyResultsApi:
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_flatten: Optional[StrictBool] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_display: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
@@ -71,6 +72,8 @@ class PipelineStudyResultsApi:
         :type feature_flatten: bool
         :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
+        :param feature_display: Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. 
+        :type feature_display: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
         :param version: Filter results by pipeline config version
@@ -101,6 +104,7 @@ class PipelineStudyResultsApi:
             feature_filter=feature_filter,
             feature_flatten=feature_flatten,
             pipeline_config=pipeline_config,
+            feature_display=feature_display,
             study_id=study_id,
             version=version,
             _request_auth=_request_auth,
@@ -129,6 +133,7 @@ class PipelineStudyResultsApi:
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_flatten: Optional[StrictBool] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_display: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
@@ -153,6 +158,8 @@ class PipelineStudyResultsApi:
         :type feature_flatten: bool
         :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
+        :param feature_display: Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. 
+        :type feature_display: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
         :param version: Filter results by pipeline config version
@@ -183,6 +190,7 @@ class PipelineStudyResultsApi:
             feature_filter=feature_filter,
             feature_flatten=feature_flatten,
             pipeline_config=pipeline_config,
+            feature_display=feature_display,
             study_id=study_id,
             version=version,
             _request_auth=_request_auth,
@@ -211,6 +219,7 @@ class PipelineStudyResultsApi:
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_flatten: Optional[StrictBool] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_display: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. ")] = None,
         study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
         version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
         _request_timeout: Union[
@@ -235,6 +244,8 @@ class PipelineStudyResultsApi:
         :type feature_flatten: bool
         :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type pipeline_config: List[str]
+        :param feature_display: Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. 
+        :type feature_display: List[str]
         :param study_id: Filter results by base study ID
         :type study_id: List[str]
         :param version: Filter results by pipeline config version
@@ -265,6 +276,7 @@ class PipelineStudyResultsApi:
             feature_filter=feature_filter,
             feature_flatten=feature_flatten,
             pipeline_config=pipeline_config,
+            feature_display=feature_display,
             study_id=study_id,
             version=version,
             _request_auth=_request_auth,
@@ -288,6 +300,7 @@ class PipelineStudyResultsApi:
         feature_filter,
         feature_flatten,
         pipeline_config,
+        feature_display,
         study_id,
         version,
         _request_auth,
@@ -301,6 +314,7 @@ class PipelineStudyResultsApi:
         _collection_formats: Dict[str, str] = {
             'feature_filter': 'multi',
             'pipeline_config': 'multi',
+            'feature_display': 'multi',
             'study_id': 'multi',
         }
 
@@ -326,6 +340,10 @@ class PipelineStudyResultsApi:
         if pipeline_config is not None:
             
             _query_params.append(('pipeline_config', pipeline_config))
+            
+        if feature_display is not None:
+            
+            _query_params.append(('feature_display', feature_display))
             
         if study_id is not None:
             
