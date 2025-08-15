@@ -53,6 +53,7 @@ class AnalysesApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -83,6 +84,8 @@ class AnalysesApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -117,6 +120,7 @@ class AnalysesApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             nested=nested,
@@ -148,6 +152,7 @@ class AnalysesApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -178,6 +183,8 @@ class AnalysesApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -212,6 +219,7 @@ class AnalysesApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             nested=nested,
@@ -243,6 +251,7 @@ class AnalysesApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -273,6 +282,8 @@ class AnalysesApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -307,6 +318,7 @@ class AnalysesApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             nested=nested,
@@ -333,6 +345,7 @@ class AnalysesApi:
         page,
         desc,
         page_size,
+        paginate,
         name,
         description,
         nested,
@@ -377,6 +390,10 @@ class AnalysesApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if name is not None:
             
@@ -1529,6 +1546,7 @@ class AnalysesApi:
     @validate_call
     def annotation_analyses_get(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1545,6 +1563,8 @@ class AnalysesApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1568,6 +1588,7 @@ class AnalysesApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1592,6 +1613,7 @@ class AnalysesApi:
     @validate_call
     def annotation_analyses_get_with_http_info(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1608,6 +1630,8 @@ class AnalysesApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1631,6 +1655,7 @@ class AnalysesApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1655,6 +1680,7 @@ class AnalysesApi:
     @validate_call
     def annotation_analyses_get_without_preload_content(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1671,6 +1697,8 @@ class AnalysesApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1694,6 +1722,7 @@ class AnalysesApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1713,6 +1742,7 @@ class AnalysesApi:
 
     def _annotation_analyses_get_serialize(
         self,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -1735,6 +1765,10 @@ class AnalysesApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

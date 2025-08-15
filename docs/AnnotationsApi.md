@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **annotation_analyses_get**
-> NoteCollectionList annotation_analyses_get()
+> NoteCollectionList annotation_analyses_get(paginate=paginate)
 
 Get annotation analyses
 
@@ -40,10 +40,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.AnnotationsApi(api_client)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # Get annotation analyses
-        api_response = api_instance.annotation_analyses_get()
+        api_response = api_instance.annotation_analyses_get(paginate=paginate)
         print("The response of AnnotationsApi->annotation_analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -54,7 +55,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 
@@ -313,7 +317,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **annotations_get**
-> AnnotationList annotations_get(studyset_id=studyset_id)
+> AnnotationList annotations_get(studyset_id=studyset_id, paginate=paginate)
 
 Your GET endpoint
 
@@ -340,10 +344,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.AnnotationsApi(api_client)
     studyset_id = 'studyset_id_example' # str | see all annotations connected to this studyset (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # Your GET endpoint
-        api_response = api_instance.annotations_get(studyset_id=studyset_id)
+        api_response = api_instance.annotations_get(studyset_id=studyset_id, paginate=paginate)
         print("The response of AnnotationsApi->annotations_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -358,6 +363,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **studyset_id** | **str**| see all annotations connected to this studyset | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **analysis** | **str** |  | [optional] 
 **cluster_size** | **float** | size of the cluster in cubic millimeters | [optional] 
 **subpeak** | **bool** | whether the reported peak is the max-peak statistic or a sub-maxmimal peak. | [optional] 
+**deactivation** | **bool** | wheather the coordinate represents an decrease in activation relative to a baseline | [optional] 
 **order** | **int** | determines the row to display the coordinate | [optional] 
 
 ## Example

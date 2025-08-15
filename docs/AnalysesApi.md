@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested)
+> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
 
 GET list of analyses
 
@@ -47,13 +47,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
         print("The response of AnalysesApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,6 +73,7 @@ Name | Type | Description  | Notes
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
@@ -405,7 +407,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **annotation_analyses_get**
-> NoteCollectionList annotation_analyses_get()
+> NoteCollectionList annotation_analyses_get(paginate=paginate)
 
 Get annotation analyses
 
@@ -429,10 +431,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.AnalysesApi(api_client)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # Get annotation analyses
-        api_response = api_instance.annotation_analyses_get()
+        api_response = api_instance.annotation_analyses_get(paginate=paginate)
         print("The response of AnalysesApi->annotation_analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -443,7 +446,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 

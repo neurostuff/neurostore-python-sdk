@@ -17,8 +17,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
+from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
+from typing_extensions import Annotated
 from neurostore_sdk.models.pipeline import Pipeline
 from neurostore_sdk.models.pipeline_list import PipelineList
 
@@ -43,6 +44,7 @@ class PipelinesApi:
     @validate_call
     def pipelines_get(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,6 +61,8 @@ class PipelinesApi:
         """GET a list of pipelines
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -82,6 +86,7 @@ class PipelinesApi:
         """ # noqa: E501
 
         _param = self._pipelines_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -105,6 +110,7 @@ class PipelinesApi:
     @validate_call
     def pipelines_get_with_http_info(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -121,6 +127,8 @@ class PipelinesApi:
         """GET a list of pipelines
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -144,6 +152,7 @@ class PipelinesApi:
         """ # noqa: E501
 
         _param = self._pipelines_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -167,6 +176,7 @@ class PipelinesApi:
     @validate_call
     def pipelines_get_without_preload_content(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -183,6 +193,8 @@ class PipelinesApi:
         """GET a list of pipelines
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -206,6 +218,7 @@ class PipelinesApi:
         """ # noqa: E501
 
         _param = self._pipelines_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -224,6 +237,7 @@ class PipelinesApi:
 
     def _pipelines_get_serialize(
         self,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -246,6 +260,10 @@ class PipelinesApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.pipeline_config import PipelineConfig
@@ -45,6 +45,7 @@ class PipelineConfigsApi:
     def pipeline_configs_get(
         self,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Filter configs by pipeline name")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,6 +64,8 @@ class PipelineConfigsApi:
 
         :param pipeline: Filter configs by pipeline name
         :type pipeline: List[str]
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class PipelineConfigsApi:
 
         _param = self._pipeline_configs_get_serialize(
             pipeline=pipeline,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,6 +115,7 @@ class PipelineConfigsApi:
     def pipeline_configs_get_with_http_info(
         self,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Filter configs by pipeline name")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,6 +134,8 @@ class PipelineConfigsApi:
 
         :param pipeline: Filter configs by pipeline name
         :type pipeline: List[str]
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -153,6 +160,7 @@ class PipelineConfigsApi:
 
         _param = self._pipeline_configs_get_serialize(
             pipeline=pipeline,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -177,6 +185,7 @@ class PipelineConfigsApi:
     def pipeline_configs_get_without_preload_content(
         self,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Filter configs by pipeline name")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -195,6 +204,8 @@ class PipelineConfigsApi:
 
         :param pipeline: Filter configs by pipeline name
         :type pipeline: List[str]
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -219,6 +230,7 @@ class PipelineConfigsApi:
 
         _param = self._pipeline_configs_get_serialize(
             pipeline=pipeline,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,6 +250,7 @@ class PipelineConfigsApi:
     def _pipeline_configs_get_serialize(
         self,
         pipeline,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -264,6 +277,10 @@ class PipelineConfigsApi:
         if pipeline is not None:
             
             _query_params.append(('pipeline', pipeline))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         # process the header parameters
         # process the form parameters

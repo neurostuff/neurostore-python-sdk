@@ -50,6 +50,7 @@ class ConditionsApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         _request_timeout: Union[
@@ -79,6 +80,8 @@ class ConditionsApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -111,6 +114,7 @@ class ConditionsApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             _request_auth=_request_auth,
@@ -141,6 +145,7 @@ class ConditionsApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         _request_timeout: Union[
@@ -170,6 +175,8 @@ class ConditionsApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -202,6 +209,7 @@ class ConditionsApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             _request_auth=_request_auth,
@@ -232,6 +240,7 @@ class ConditionsApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         _request_timeout: Union[
@@ -261,6 +270,8 @@ class ConditionsApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -293,6 +304,7 @@ class ConditionsApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             _request_auth=_request_auth,
@@ -318,6 +330,7 @@ class ConditionsApi:
         page,
         desc,
         page_size,
+        paginate,
         name,
         description,
         _request_auth,
@@ -361,6 +374,10 @@ class ConditionsApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if name is not None:
             

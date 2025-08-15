@@ -49,7 +49,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested)
+> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
 
 GET list of analyses
 
@@ -80,13 +80,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
         print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -105,6 +106,7 @@ Name | Type | Description  | Notes
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
@@ -438,7 +440,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **annotation_analyses_get**
-> NoteCollectionList annotation_analyses_get()
+> NoteCollectionList annotation_analyses_get(paginate=paginate)
 
 Get annotation analyses
 
@@ -462,10 +464,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # Get annotation analyses
-        api_response = api_instance.annotation_analyses_get()
+        api_response = api_instance.annotation_analyses_get(paginate=paginate)
         print("The response of StoreApi->annotation_analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -476,7 +479,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 
@@ -735,7 +741,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **annotations_get**
-> AnnotationList annotations_get(studyset_id=studyset_id)
+> AnnotationList annotations_get(studyset_id=studyset_id, paginate=paginate)
 
 Your GET endpoint
 
@@ -762,10 +768,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     studyset_id = 'studyset_id_example' # str | see all annotations connected to this studyset (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # Your GET endpoint
-        api_response = api_instance.annotations_get(studyset_id=studyset_id)
+        api_response = api_instance.annotations_get(studyset_id=studyset_id, paginate=paginate)
         print("The response of StoreApi->annotations_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -780,6 +787,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **studyset_id** | **str**| see all annotations connected to this studyset | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 
@@ -1112,7 +1120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+> BaseStudyList base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -1146,6 +1154,12 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    year_min = 56 # int | Minimum publication year (inclusive) for study search (optional)
+    x = 10 # float | X coordinate for spatial query (requires y, z, and radius) (optional)
+    y = 20 # float | Y coordinate for spatial query (requires x, z, and radius) (optional)
+    z = 30 # float | Z coordinate for spatial query (requires x, y, and radius) (optional)
+    radius = 6 # float | Radius for spatial query (requires x, y, and z) (optional)
+    year_max = 2020 # int | Maximum publication year (inclusive) for study search (optional)
     feature_filter = ['feature_filter_example'] # List[str] | Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
     pipeline_config = ['pipeline_config_example'] # List[str] | Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
     feature_display = 'feature_display_example' # str | display features from pipelines (optional)
@@ -1165,10 +1179,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     doi = 'doi_example' # str | search for study with specific doi (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # 
-        api_response = api_instance.base_studies_get(feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info)
+        api_response = api_instance.base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
         print("The response of StoreApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1182,6 +1197,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **year_min** | **int**| Minimum publication year (inclusive) for study search | [optional] 
+ **x** | **float**| X coordinate for spatial query (requires y, z, and radius) | [optional] 
+ **y** | **float**| Y coordinate for spatial query (requires x, z, and radius) | [optional] 
+ **z** | **float**| Z coordinate for spatial query (requires x, y, and radius) | [optional] 
+ **radius** | **float**| Radius for spatial query (requires x, y, and z) | [optional] 
+ **year_max** | **int**| Maximum publication year (inclusive) for study search | [optional] 
  **feature_filter** | [**List[str]**](str.md)| Filter studies by feature content. Format: \&quot;PipelineName[:version]:field_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:predictions.age_mean&gt;20\&quot; (specific version)   - \&quot;TestPipeline:groups.diagnosis&#x3D;ADHD\&quot; (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
  **pipeline_config** | [**List[str]**](str.md)| Filter studies by pipeline config content. Format: \&quot;PipelineName[:version]:config_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:settings.min_age&#x3D;20\&quot; (specific version)   - \&quot;TestPipeline:model.type&#x3D;linear\&quot; (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
  **feature_display** | **str**| display features from pipelines | [optional] 
@@ -1201,6 +1222,7 @@ Name | Type | Description  | Notes
  **doi** | **str**| search for study with specific doi | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 
@@ -1450,7 +1472,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **conditions_get**
-> ConditionList conditions_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description)
+> ConditionList conditions_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description)
 
 GET Conditions
 
@@ -1481,12 +1503,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
 
     try:
         # GET Conditions
-        api_response = api_instance.conditions_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description)
+        api_response = api_instance.conditions_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description)
         print("The response of StoreApi->conditions_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1505,6 +1528,7 @@ Name | Type | Description  | Notes
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
 
@@ -1835,7 +1859,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **images_get**
-> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, filename=filename, analysis_name=analysis_name, value_type=value_type, space=space)
+> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, analysis_name=analysis_name, value_type=value_type, space=space)
 
 GET a list of images
 
@@ -1866,6 +1890,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     filename = 'filename_example' # str | search filename field (optional)
     analysis_name = 'analysis_name_example' # str | search analysis_name field (optional)
     value_type = 'value_type_example' # str | search value_type field (optional)
@@ -1873,7 +1898,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of images
-        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, filename=filename, analysis_name=analysis_name, value_type=value_type, space=space)
+        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, analysis_name=analysis_name, value_type=value_type, space=space)
         print("The response of StoreApi->images_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1892,6 +1917,7 @@ Name | Type | Description  | Notes
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **filename** | **str**| search filename field | [optional] 
  **analysis_name** | **str**| search analysis_name field | [optional] 
  **value_type** | **str**| search value_type field | [optional] 
@@ -2224,7 +2250,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **points_get**
-> PointList points_get()
+> PointList points_get(paginate=paginate)
 
 Get Points
 
@@ -2250,10 +2276,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # Get Points
-        api_response = api_instance.points_get()
+        api_response = api_instance.points_get(paginate=paginate)
         print("The response of StoreApi->points_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -2264,7 +2291,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 
@@ -2593,7 +2623,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
 
 GET a list of studies
 
@@ -2634,6 +2664,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
@@ -2651,7 +2682,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
         print("The response of StoreApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -2670,6 +2701,7 @@ Name | Type | Description  | Notes
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 

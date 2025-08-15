@@ -18,25 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PipelineStudyResult(BaseModel):
+class PipelineStudyResultSearch(BaseModel):
     """
-    PipelineStudyResult
+    PipelineStudyResultSearch
     """ # noqa: E501
-    id: StrictStr
-    pipeline_config_id: Optional[StrictStr] = None
-    base_study_id: Optional[StrictStr] = None
-    config_id: Optional[StrictStr] = None
-    date_executed: Optional[datetime] = None
-    file_inputs: Optional[Dict[str, Any]] = None
-    result_data: Optional[Dict[str, Any]] = None
-    status: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "pipeline_config_id", "base_study_id", "config_id", "date_executed", "file_inputs", "result_data", "status"]
+    study_ids: List[StrictStr]
+    __properties: ClassVar[List[str]] = ["study_ids"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +48,7 @@ class PipelineStudyResult(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PipelineStudyResult from a JSON string"""
+        """Create an instance of PipelineStudyResultSearch from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +73,7 @@ class PipelineStudyResult(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PipelineStudyResult from a dict"""
+        """Create an instance of PipelineStudyResultSearch from a dict"""
         if obj is None:
             return None
 
@@ -89,14 +81,7 @@ class PipelineStudyResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "pipeline_config_id": obj.get("pipeline_config_id"),
-            "base_study_id": obj.get("base_study_id"),
-            "config_id": obj.get("config_id"),
-            "date_executed": obj.get("date_executed"),
-            "file_inputs": obj.get("file_inputs"),
-            "result_data": obj.get("result_data"),
-            "status": obj.get("status")
+            "study_ids": obj.get("study_ids")
         })
         return _obj
 

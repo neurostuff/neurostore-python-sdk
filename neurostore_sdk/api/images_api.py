@@ -50,6 +50,7 @@ class ImagesApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
@@ -81,6 +82,8 @@ class ImagesApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param filename: search filename field
         :type filename: str
         :param analysis_name: search analysis_name field
@@ -117,6 +120,7 @@ class ImagesApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             filename=filename,
             analysis_name=analysis_name,
             value_type=value_type,
@@ -149,6 +153,7 @@ class ImagesApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
@@ -180,6 +185,8 @@ class ImagesApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param filename: search filename field
         :type filename: str
         :param analysis_name: search analysis_name field
@@ -216,6 +223,7 @@ class ImagesApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             filename=filename,
             analysis_name=analysis_name,
             value_type=value_type,
@@ -248,6 +256,7 @@ class ImagesApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
@@ -279,6 +288,8 @@ class ImagesApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param filename: search filename field
         :type filename: str
         :param analysis_name: search analysis_name field
@@ -315,6 +326,7 @@ class ImagesApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             filename=filename,
             analysis_name=analysis_name,
             value_type=value_type,
@@ -342,6 +354,7 @@ class ImagesApi:
         page,
         desc,
         page_size,
+        paginate,
         filename,
         analysis_name,
         value_type,
@@ -387,6 +400,10 @@ class ImagesApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if filename is not None:
             

@@ -22,6 +22,7 @@ from typing import List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
+from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost
 
 from neurostore_sdk.api_client import ApiClient, RequestSerialized
 from neurostore_sdk.api_response import ApiResponse
@@ -44,6 +45,7 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_flatten: Optional[StrictBool] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
@@ -66,6 +68,8 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
         :param feature_flatten:
@@ -101,6 +105,7 @@ class PipelineStudyResultsApi:
         """ # noqa: E501
 
         _param = self._pipeline_study_results_get_serialize(
+            paginate=paginate,
             feature_filter=feature_filter,
             feature_flatten=feature_flatten,
             pipeline_config=pipeline_config,
@@ -130,6 +135,7 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get_with_http_info(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_flatten: Optional[StrictBool] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
@@ -152,6 +158,8 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
         :param feature_flatten:
@@ -187,6 +195,7 @@ class PipelineStudyResultsApi:
         """ # noqa: E501
 
         _param = self._pipeline_study_results_get_serialize(
+            paginate=paginate,
             feature_filter=feature_filter,
             feature_flatten=feature_flatten,
             pipeline_config=pipeline_config,
@@ -216,6 +225,7 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_get_without_preload_content(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_flatten: Optional[StrictBool] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
@@ -238,6 +248,8 @@ class PipelineStudyResultsApi:
         """GET a list of pipeline run results
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
         :param feature_flatten:
@@ -273,6 +285,7 @@ class PipelineStudyResultsApi:
         """ # noqa: E501
 
         _param = self._pipeline_study_results_get_serialize(
+            paginate=paginate,
             feature_filter=feature_filter,
             feature_flatten=feature_flatten,
             pipeline_config=pipeline_config,
@@ -297,6 +310,7 @@ class PipelineStudyResultsApi:
 
     def _pipeline_study_results_get_serialize(
         self,
+        paginate,
         feature_filter,
         feature_flatten,
         pipeline_config,
@@ -329,6 +343,10 @@ class PipelineStudyResultsApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
         if feature_filter is not None:
             
             _query_params.append(('feature_filter', feature_filter))
@@ -1177,7 +1195,14 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_post(
         self,
-        pipeline_study_result: Optional[PipelineStudyResult] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_flatten: Optional[StrictBool] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_display: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. ")] = None,
+        study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
+        version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
+        pipeline_study_result_post: Optional[PipelineStudyResultPost] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1190,12 +1215,26 @@ class PipelineStudyResultsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> PipelineStudyResultList:
         """POST/create a pipeline run result
 
 
-        :param pipeline_study_result:
-        :type pipeline_study_result: PipelineStudyResult
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type feature_filter: List[str]
+        :param feature_flatten:
+        :type feature_flatten: bool
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type pipeline_config: List[str]
+        :param feature_display: Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. 
+        :type feature_display: List[str]
+        :param study_id: Filter results by base study ID
+        :type study_id: List[str]
+        :param version: Filter results by pipeline config version
+        :type version: str
+        :param pipeline_study_result_post:
+        :type pipeline_study_result_post: PipelineStudyResultPost
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1219,7 +1258,14 @@ class PipelineStudyResultsApi:
         """ # noqa: E501
 
         _param = self._pipeline_study_results_post_serialize(
-            pipeline_study_result=pipeline_study_result,
+            paginate=paginate,
+            feature_filter=feature_filter,
+            feature_flatten=feature_flatten,
+            pipeline_config=pipeline_config,
+            feature_display=feature_display,
+            study_id=study_id,
+            version=version,
+            pipeline_study_result_post=pipeline_study_result_post,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1228,6 +1274,7 @@ class PipelineStudyResultsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
+            '200': "PipelineStudyResultList",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1243,7 +1290,14 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_post_with_http_info(
         self,
-        pipeline_study_result: Optional[PipelineStudyResult] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_flatten: Optional[StrictBool] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_display: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. ")] = None,
+        study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
+        version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
+        pipeline_study_result_post: Optional[PipelineStudyResultPost] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1256,12 +1310,26 @@ class PipelineStudyResultsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[PipelineStudyResultList]:
         """POST/create a pipeline run result
 
 
-        :param pipeline_study_result:
-        :type pipeline_study_result: PipelineStudyResult
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type feature_filter: List[str]
+        :param feature_flatten:
+        :type feature_flatten: bool
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type pipeline_config: List[str]
+        :param feature_display: Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. 
+        :type feature_display: List[str]
+        :param study_id: Filter results by base study ID
+        :type study_id: List[str]
+        :param version: Filter results by pipeline config version
+        :type version: str
+        :param pipeline_study_result_post:
+        :type pipeline_study_result_post: PipelineStudyResultPost
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1285,7 +1353,14 @@ class PipelineStudyResultsApi:
         """ # noqa: E501
 
         _param = self._pipeline_study_results_post_serialize(
-            pipeline_study_result=pipeline_study_result,
+            paginate=paginate,
+            feature_filter=feature_filter,
+            feature_flatten=feature_flatten,
+            pipeline_config=pipeline_config,
+            feature_display=feature_display,
+            study_id=study_id,
+            version=version,
+            pipeline_study_result_post=pipeline_study_result_post,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1294,6 +1369,7 @@ class PipelineStudyResultsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
+            '200': "PipelineStudyResultList",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1309,7 +1385,14 @@ class PipelineStudyResultsApi:
     @validate_call
     def pipeline_study_results_post_without_preload_content(
         self,
-        pipeline_study_result: Optional[PipelineStudyResult] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_flatten: Optional[StrictBool] = None,
+        pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
+        feature_display: Annotated[Optional[List[StrictStr]], Field(description="Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. ")] = None,
+        study_id: Annotated[Optional[List[StrictStr]], Field(description="Filter results by base study ID")] = None,
+        version: Annotated[Optional[StrictStr], Field(description="Filter results by pipeline config version")] = None,
+        pipeline_study_result_post: Optional[PipelineStudyResultPost] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1326,8 +1409,22 @@ class PipelineStudyResultsApi:
         """POST/create a pipeline run result
 
 
-        :param pipeline_study_result:
-        :type pipeline_study_result: PipelineStudyResult
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param feature_filter: Filter results by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:groups.diagnosis=ADHD\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type feature_filter: List[str]
+        :param feature_flatten:
+        :type feature_flatten: bool
+        :param pipeline_config: Filter results by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:preprocessing.smoothing=8\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
+        :type pipeline_config: List[str]
+        :param feature_display: Filter results by pipeline name and optionally version. Format: \"pipeline_name[:version]\". Examples:   - \"TestPipeline\" (all results from pipeline)   - \"TestPipeline:1.0.0\" (results from specific version) Multiple values can be provided to get results from multiple pipelines/versions. 
+        :type feature_display: List[str]
+        :param study_id: Filter results by base study ID
+        :type study_id: List[str]
+        :param version: Filter results by pipeline config version
+        :type version: str
+        :param pipeline_study_result_post:
+        :type pipeline_study_result_post: PipelineStudyResultPost
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1351,7 +1448,14 @@ class PipelineStudyResultsApi:
         """ # noqa: E501
 
         _param = self._pipeline_study_results_post_serialize(
-            pipeline_study_result=pipeline_study_result,
+            paginate=paginate,
+            feature_filter=feature_filter,
+            feature_flatten=feature_flatten,
+            pipeline_config=pipeline_config,
+            feature_display=feature_display,
+            study_id=study_id,
+            version=version,
+            pipeline_study_result_post=pipeline_study_result_post,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1360,6 +1464,7 @@ class PipelineStudyResultsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
+            '200': "PipelineStudyResultList",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1370,7 +1475,14 @@ class PipelineStudyResultsApi:
 
     def _pipeline_study_results_post_serialize(
         self,
-        pipeline_study_result,
+        paginate,
+        feature_filter,
+        feature_flatten,
+        pipeline_config,
+        feature_display,
+        study_id,
+        version,
+        pipeline_study_result_post,
         _request_auth,
         _content_type,
         _headers,
@@ -1380,6 +1492,10 @@ class PipelineStudyResultsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'feature_filter': 'multi',
+            'pipeline_config': 'multi',
+            'feature_display': 'multi',
+            'study_id': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1393,13 +1509,48 @@ class PipelineStudyResultsApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
+        if feature_filter is not None:
+            
+            _query_params.append(('feature_filter', feature_filter))
+            
+        if feature_flatten is not None:
+            
+            _query_params.append(('feature_flatten', feature_flatten))
+            
+        if pipeline_config is not None:
+            
+            _query_params.append(('pipeline_config', pipeline_config))
+            
+        if feature_display is not None:
+            
+            _query_params.append(('feature_display', feature_display))
+            
+        if study_id is not None:
+            
+            _query_params.append(('study_id', study_id))
+            
+        if version is not None:
+            
+            _query_params.append(('version', version))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if pipeline_study_result is not None:
-            _body_params = pipeline_study_result
+        if pipeline_study_result_post is not None:
+            _body_params = pipeline_study_result_post
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:

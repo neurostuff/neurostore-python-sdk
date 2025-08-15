@@ -17,8 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr, field_validator
-from typing import Any, List, Optional
+from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from typing import Any, List, Optional, Union
 from typing_extensions import Annotated
 from neurostore_sdk.models.analysis_list import AnalysisList
 from neurostore_sdk.models.analysis_request import AnalysisRequest
@@ -75,6 +75,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -105,6 +106,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -139,6 +142,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             nested=nested,
@@ -170,6 +174,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -200,6 +205,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -234,6 +241,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             nested=nested,
@@ -265,6 +273,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -295,6 +304,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -329,6 +340,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             nested=nested,
@@ -355,6 +367,7 @@ class StoreApi:
         page,
         desc,
         page_size,
+        paginate,
         name,
         description,
         nested,
@@ -399,6 +412,10 @@ class StoreApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if name is not None:
             
@@ -1551,6 +1568,7 @@ class StoreApi:
     @validate_call
     def annotation_analyses_get(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1567,6 +1585,8 @@ class StoreApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1590,6 +1610,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1614,6 +1635,7 @@ class StoreApi:
     @validate_call
     def annotation_analyses_get_with_http_info(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1630,6 +1652,8 @@ class StoreApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1653,6 +1677,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1677,6 +1702,7 @@ class StoreApi:
     @validate_call
     def annotation_analyses_get_without_preload_content(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1693,6 +1719,8 @@ class StoreApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1716,6 +1744,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1735,6 +1764,7 @@ class StoreApi:
 
     def _annotation_analyses_get_serialize(
         self,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -1757,6 +1787,10 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2616,6 +2650,7 @@ class StoreApi:
     def annotations_get(
         self,
         studyset_id: Annotated[Optional[StrictStr], Field(description="see all annotations connected to this studyset")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2635,6 +2670,8 @@ class StoreApi:
 
         :param studyset_id: see all annotations connected to this studyset
         :type studyset_id: str
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2659,6 +2696,7 @@ class StoreApi:
 
         _param = self._annotations_get_serialize(
             studyset_id=studyset_id,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2683,6 +2721,7 @@ class StoreApi:
     def annotations_get_with_http_info(
         self,
         studyset_id: Annotated[Optional[StrictStr], Field(description="see all annotations connected to this studyset")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2702,6 +2741,8 @@ class StoreApi:
 
         :param studyset_id: see all annotations connected to this studyset
         :type studyset_id: str
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2726,6 +2767,7 @@ class StoreApi:
 
         _param = self._annotations_get_serialize(
             studyset_id=studyset_id,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2750,6 +2792,7 @@ class StoreApi:
     def annotations_get_without_preload_content(
         self,
         studyset_id: Annotated[Optional[StrictStr], Field(description="see all annotations connected to this studyset")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2769,6 +2812,8 @@ class StoreApi:
 
         :param studyset_id: see all annotations connected to this studyset
         :type studyset_id: str
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2793,6 +2838,7 @@ class StoreApi:
 
         _param = self._annotations_get_serialize(
             studyset_id=studyset_id,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2812,6 +2858,7 @@ class StoreApi:
     def _annotations_get_serialize(
         self,
         studyset_id,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -2837,6 +2884,10 @@ class StoreApi:
         if studyset_id is not None:
             
             _query_params.append(('studyset_id', studyset_id))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         # process the header parameters
         # process the form parameters
@@ -4005,6 +4056,12 @@ class StoreApi:
     @validate_call
     def base_studies_get(
         self,
+        year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
+        x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
+        y: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Y coordinate for spatial query (requires x, z, and radius)")] = None,
+        z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
+        radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
+        year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -4024,6 +4081,7 @@ class StoreApi:
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4040,6 +4098,18 @@ class StoreApi:
         """
 
 
+        :param year_min: Minimum publication year (inclusive) for study search
+        :type year_min: int
+        :param x: X coordinate for spatial query (requires y, z, and radius)
+        :type x: float
+        :param y: Y coordinate for spatial query (requires x, z, and radius)
+        :type y: float
+        :param z: Z coordinate for spatial query (requires x, y, and radius)
+        :type z: float
+        :param radius: Radius for spatial query (requires x, y, and z)
+        :type radius: float
+        :param year_max: Maximum publication year (inclusive) for study search
+        :type year_max: int
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
         :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
@@ -4078,6 +4148,8 @@ class StoreApi:
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
         :type info: bool
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4101,6 +4173,12 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            year_min=year_min,
+            x=x,
+            y=y,
+            z=z,
+            radius=radius,
+            year_max=year_max,
             feature_filter=feature_filter,
             pipeline_config=pipeline_config,
             feature_display=feature_display,
@@ -4120,6 +4198,7 @@ class StoreApi:
             doi=doi,
             flat=flat,
             info=info,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4143,6 +4222,12 @@ class StoreApi:
     @validate_call
     def base_studies_get_with_http_info(
         self,
+        year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
+        x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
+        y: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Y coordinate for spatial query (requires x, z, and radius)")] = None,
+        z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
+        radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
+        year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -4162,6 +4247,7 @@ class StoreApi:
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4178,6 +4264,18 @@ class StoreApi:
         """
 
 
+        :param year_min: Minimum publication year (inclusive) for study search
+        :type year_min: int
+        :param x: X coordinate for spatial query (requires y, z, and radius)
+        :type x: float
+        :param y: Y coordinate for spatial query (requires x, z, and radius)
+        :type y: float
+        :param z: Z coordinate for spatial query (requires x, y, and radius)
+        :type z: float
+        :param radius: Radius for spatial query (requires x, y, and z)
+        :type radius: float
+        :param year_max: Maximum publication year (inclusive) for study search
+        :type year_max: int
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
         :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
@@ -4216,6 +4314,8 @@ class StoreApi:
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
         :type info: bool
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4239,6 +4339,12 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            year_min=year_min,
+            x=x,
+            y=y,
+            z=z,
+            radius=radius,
+            year_max=year_max,
             feature_filter=feature_filter,
             pipeline_config=pipeline_config,
             feature_display=feature_display,
@@ -4258,6 +4364,7 @@ class StoreApi:
             doi=doi,
             flat=flat,
             info=info,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4281,6 +4388,12 @@ class StoreApi:
     @validate_call
     def base_studies_get_without_preload_content(
         self,
+        year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
+        x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
+        y: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Y coordinate for spatial query (requires x, z, and radius)")] = None,
+        z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
+        radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
+        year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -4300,6 +4413,7 @@ class StoreApi:
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4316,6 +4430,18 @@ class StoreApi:
         """
 
 
+        :param year_min: Minimum publication year (inclusive) for study search
+        :type year_min: int
+        :param x: X coordinate for spatial query (requires y, z, and radius)
+        :type x: float
+        :param y: Y coordinate for spatial query (requires x, z, and radius)
+        :type y: float
+        :param z: Z coordinate for spatial query (requires x, y, and radius)
+        :type z: float
+        :param radius: Radius for spatial query (requires x, y, and z)
+        :type radius: float
+        :param year_max: Maximum publication year (inclusive) for study search
+        :type year_max: int
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
         :param pipeline_config: Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
@@ -4354,6 +4480,8 @@ class StoreApi:
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
         :type info: bool
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4377,6 +4505,12 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            year_min=year_min,
+            x=x,
+            y=y,
+            z=z,
+            radius=radius,
+            year_max=year_max,
             feature_filter=feature_filter,
             pipeline_config=pipeline_config,
             feature_display=feature_display,
@@ -4396,6 +4530,7 @@ class StoreApi:
             doi=doi,
             flat=flat,
             info=info,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4414,6 +4549,12 @@ class StoreApi:
 
     def _base_studies_get_serialize(
         self,
+        year_min,
+        x,
+        y,
+        z,
+        radius,
+        year_max,
         feature_filter,
         pipeline_config,
         feature_display,
@@ -4433,6 +4574,7 @@ class StoreApi:
         doi,
         flat,
         info,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -4457,6 +4599,30 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if year_min is not None:
+            
+            _query_params.append(('year_min', year_min))
+            
+        if x is not None:
+            
+            _query_params.append(('x', x))
+            
+        if y is not None:
+            
+            _query_params.append(('y', y))
+            
+        if z is not None:
+            
+            _query_params.append(('z', z))
+            
+        if radius is not None:
+            
+            _query_params.append(('radius', radius))
+            
+        if year_max is not None:
+            
+            _query_params.append(('year_max', year_max))
+            
         if feature_filter is not None:
             
             _query_params.append(('feature_filter', feature_filter))
@@ -4532,6 +4698,10 @@ class StoreApi:
         if info is not None:
             
             _query_params.append(('info', info))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         # process the header parameters
         # process the form parameters
@@ -5426,6 +5596,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         _request_timeout: Union[
@@ -5455,6 +5626,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -5487,6 +5660,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             _request_auth=_request_auth,
@@ -5517,6 +5691,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         _request_timeout: Union[
@@ -5546,6 +5721,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -5578,6 +5755,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             _request_auth=_request_auth,
@@ -5608,6 +5786,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         _request_timeout: Union[
@@ -5637,6 +5816,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param name: search the name field for a term
         :type name: str
         :param description: search description field for a term
@@ -5669,6 +5850,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             name=name,
             description=description,
             _request_auth=_request_auth,
@@ -5694,6 +5876,7 @@ class StoreApi:
         page,
         desc,
         page_size,
+        paginate,
         name,
         description,
         _request_auth,
@@ -5737,6 +5920,10 @@ class StoreApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if name is not None:
             
@@ -6873,6 +7060,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
@@ -6904,6 +7092,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param filename: search filename field
         :type filename: str
         :param analysis_name: search analysis_name field
@@ -6940,6 +7130,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             filename=filename,
             analysis_name=analysis_name,
             value_type=value_type,
@@ -6972,6 +7163,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
@@ -7003,6 +7195,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param filename: search filename field
         :type filename: str
         :param analysis_name: search analysis_name field
@@ -7039,6 +7233,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             filename=filename,
             analysis_name=analysis_name,
             value_type=value_type,
@@ -7071,6 +7266,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
@@ -7102,6 +7298,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param filename: search filename field
         :type filename: str
         :param analysis_name: search analysis_name field
@@ -7138,6 +7336,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             filename=filename,
             analysis_name=analysis_name,
             value_type=value_type,
@@ -7165,6 +7364,7 @@ class StoreApi:
         page,
         desc,
         page_size,
+        paginate,
         filename,
         analysis_name,
         value_type,
@@ -7210,6 +7410,10 @@ class StoreApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if filename is not None:
             
@@ -8349,6 +8553,7 @@ class StoreApi:
     @validate_call
     def points_get(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8366,6 +8571,8 @@ class StoreApi:
 
         list points in database
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8389,6 +8596,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._points_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8412,6 +8620,7 @@ class StoreApi:
     @validate_call
     def points_get_with_http_info(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8429,6 +8638,8 @@ class StoreApi:
 
         list points in database
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8452,6 +8663,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._points_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8475,6 +8687,7 @@ class StoreApi:
     @validate_call
     def points_get_without_preload_content(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8492,6 +8705,8 @@ class StoreApi:
 
         list points in database
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8515,6 +8730,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._points_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8533,6 +8749,7 @@ class StoreApi:
 
     def _points_get_serialize(
         self,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -8555,6 +8772,10 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -9682,6 +9903,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
@@ -9723,6 +9945,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param name: search the name field for a term
@@ -9779,6 +10003,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             nested=nested,
             name=name,
             description=description,
@@ -9821,6 +10046,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
@@ -9862,6 +10088,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param name: search the name field for a term
@@ -9918,6 +10146,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             nested=nested,
             name=name,
             description=description,
@@ -9960,6 +10189,7 @@ class StoreApi:
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
@@ -10001,6 +10231,8 @@ class StoreApi:
         :type desc: bool
         :param page_size: number of results to show on a page
         :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param name: search the name field for a term
@@ -10057,6 +10289,7 @@ class StoreApi:
             page=page,
             desc=desc,
             page_size=page_size,
+            paginate=paginate,
             nested=nested,
             name=name,
             description=description,
@@ -10094,6 +10327,7 @@ class StoreApi:
         page,
         desc,
         page_size,
+        paginate,
         nested,
         name,
         description,
@@ -10149,6 +10383,10 @@ class StoreApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         if nested is not None:
             

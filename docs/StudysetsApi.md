@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **studysets_get**
-> StudysetList studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
+> StudysetList studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
 
 GET a list of studysets
 
@@ -53,6 +53,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
@@ -64,7 +65,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of studysets
-        api_response = api_instance.studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
+        api_response = api_instance.studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
         print("The response of StudysetsApi->studysets_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -83,6 +84,7 @@ Name | Type | Description  | Notes
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 

@@ -48,6 +48,7 @@ class AnnotationsApi:
     @validate_call
     def annotation_analyses_get(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,6 +65,8 @@ class AnnotationsApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class AnnotationsApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,6 +115,7 @@ class AnnotationsApi:
     @validate_call
     def annotation_analyses_get_with_http_info(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,6 +132,8 @@ class AnnotationsApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,6 +157,7 @@ class AnnotationsApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,6 +182,7 @@ class AnnotationsApi:
     @validate_call
     def annotation_analyses_get_without_preload_content(
         self,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -190,6 +199,8 @@ class AnnotationsApi:
         """Get annotation analyses
 
 
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -213,6 +224,7 @@ class AnnotationsApi:
         """ # noqa: E501
 
         _param = self._annotation_analyses_get_serialize(
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -232,6 +244,7 @@ class AnnotationsApi:
 
     def _annotation_analyses_get_serialize(
         self,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -254,6 +267,10 @@ class AnnotationsApi:
 
         # process the path parameters
         # process the query parameters
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1113,6 +1130,7 @@ class AnnotationsApi:
     def annotations_get(
         self,
         studyset_id: Annotated[Optional[StrictStr], Field(description="see all annotations connected to this studyset")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1132,6 +1150,8 @@ class AnnotationsApi:
 
         :param studyset_id: see all annotations connected to this studyset
         :type studyset_id: str
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1156,6 +1176,7 @@ class AnnotationsApi:
 
         _param = self._annotations_get_serialize(
             studyset_id=studyset_id,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1180,6 +1201,7 @@ class AnnotationsApi:
     def annotations_get_with_http_info(
         self,
         studyset_id: Annotated[Optional[StrictStr], Field(description="see all annotations connected to this studyset")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1199,6 +1221,8 @@ class AnnotationsApi:
 
         :param studyset_id: see all annotations connected to this studyset
         :type studyset_id: str
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1223,6 +1247,7 @@ class AnnotationsApi:
 
         _param = self._annotations_get_serialize(
             studyset_id=studyset_id,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1247,6 +1272,7 @@ class AnnotationsApi:
     def annotations_get_without_preload_content(
         self,
         studyset_id: Annotated[Optional[StrictStr], Field(description="see all annotations connected to this studyset")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1266,6 +1292,8 @@ class AnnotationsApi:
 
         :param studyset_id: see all annotations connected to this studyset
         :type studyset_id: str
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1290,6 +1318,7 @@ class AnnotationsApi:
 
         _param = self._annotations_get_serialize(
             studyset_id=studyset_id,
+            paginate=paginate,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1309,6 +1338,7 @@ class AnnotationsApi:
     def _annotations_get_serialize(
         self,
         studyset_id,
+        paginate,
         _request_auth,
         _content_type,
         _headers,
@@ -1334,6 +1364,10 @@ class AnnotationsApi:
         if studyset_id is not None:
             
             _query_params.append(('studyset_id', studyset_id))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
             
         # process the header parameters
         # process the form parameters

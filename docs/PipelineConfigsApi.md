@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pipeline_configs_get**
-> PipelineConfigList pipeline_configs_get(pipeline=pipeline)
+> PipelineConfigList pipeline_configs_get(pipeline=pipeline, paginate=paginate)
 
 GET a list of pipeline configs
 
@@ -37,10 +37,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.PipelineConfigsApi(api_client)
     pipeline = ['pipeline_example'] # List[str] | Filter configs by pipeline name (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # GET a list of pipeline configs
-        api_response = api_instance.pipeline_configs_get(pipeline=pipeline)
+        api_response = api_instance.pipeline_configs_get(pipeline=pipeline, paginate=paginate)
         print("The response of PipelineConfigsApi->pipeline_configs_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -55,6 +56,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pipeline** | [**List[str]**](str.md)| Filter configs by pipeline name | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 

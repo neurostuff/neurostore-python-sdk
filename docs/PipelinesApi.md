@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pipelines_get**
-> PipelineList pipelines_get()
+> PipelineList pipelines_get(paginate=paginate)
 
 GET a list of pipelines
 
@@ -36,10 +36,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.PipelinesApi(api_client)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # GET a list of pipelines
-        api_response = api_instance.pipelines_get()
+        api_response = api_instance.pipelines_get(paginate=paginate)
         print("The response of PipelinesApi->pipelines_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -50,7 +51,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
 
 ### Return type
 

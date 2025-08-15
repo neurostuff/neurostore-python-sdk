@@ -99,6 +99,8 @@ from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
 from neurostore_sdk.models.pipeline_list import PipelineList
 from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
+from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost
+from neurostore_sdk.models.pipeline_study_result_search import PipelineStudyResultSearch
 from neurostore_sdk.models.point_base import PointBase
 from neurostore_sdk.models.point_common import PointCommon
 from neurostore_sdk.models.point_list import PointList

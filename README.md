@@ -73,13 +73,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
         print("The response of AnalysesApi->analyses_get:\n")
         pprint(api_response)
     except ApiException as e:
@@ -261,6 +262,8 @@ Class | Method | HTTP request | Description
  - [PipelineList](docs/PipelineList.md)
  - [PipelineStudyResult](docs/PipelineStudyResult.md)
  - [PipelineStudyResultList](docs/PipelineStudyResultList.md)
+ - [PipelineStudyResultPost](docs/PipelineStudyResultPost.md)
+ - [PipelineStudyResultSearch](docs/PipelineStudyResultSearch.md)
  - [PointBase](docs/PointBase.md)
  - [PointCommon](docs/PointCommon.md)
  - [PointList](docs/PointList.md)

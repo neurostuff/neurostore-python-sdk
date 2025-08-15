@@ -64,6 +64,8 @@ docs/PipelineConfigsApi.md
 docs/PipelineList.md
 docs/PipelineStudyResult.md
 docs/PipelineStudyResultList.md
+docs/PipelineStudyResultPost.md
+docs/PipelineStudyResultSearch.md
 docs/PipelineStudyResultsApi.md
 docs/PipelinesApi.md
 docs/PointBase.md
@@ -179,6 +181,8 @@ neurostore_sdk/models/pipeline_config_list.py
 neurostore_sdk/models/pipeline_list.py
 neurostore_sdk/models/pipeline_study_result.py
 neurostore_sdk/models/pipeline_study_result_list.py
+neurostore_sdk/models/pipeline_study_result_post.py
+neurostore_sdk/models/pipeline_study_result_search.py
 neurostore_sdk/models/point_base.py
 neurostore_sdk/models/point_common.py
 neurostore_sdk/models/point_list.py
@@ -219,4 +223,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_pipeline_study_result_post.py
+test/test_pipeline_study_result_search.py
 tox.ini
