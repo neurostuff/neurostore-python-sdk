@@ -223,6 +223,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_pipeline_study_result_post.py
-test/test_pipeline_study_result_search.py
 tox.ini
