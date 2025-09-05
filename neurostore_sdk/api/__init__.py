@@ -6,6 +6,7 @@ from neurostore_sdk.api.annotations_api import AnnotationsApi
 from neurostore_sdk.api.conditions_api import ConditionsApi
 from neurostore_sdk.api.images_api import ImagesApi
 from neurostore_sdk.api.pipeline_configs_api import PipelineConfigsApi
+from neurostore_sdk.api.pipeline_embeddings_api import PipelineEmbeddingsApi
 from neurostore_sdk.api.pipeline_study_results_api import PipelineStudyResultsApi
 from neurostore_sdk.api.pipelines_api import PipelinesApi
 from neurostore_sdk.api.points_api import PointsApi

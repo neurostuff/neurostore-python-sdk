@@ -4065,6 +4065,10 @@ class StoreApi:
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
+        semantic_search: Annotated[Optional[StrictStr], Field(description="Semantic search query string")] = None,
+        pipeline_config_id: Annotated[Optional[StrictStr], Field(description="Pipeline configuration identifier to filter studies")] = None,
+        distance_threshold: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Distance threshold for semantic search (default 0.5)")] = None,
+        overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
@@ -4116,6 +4120,14 @@ class StoreApi:
         :type pipeline_config: List[str]
         :param feature_display: display features from pipelines
         :type feature_display: str
+        :param semantic_search: Semantic search query string
+        :type semantic_search: str
+        :param pipeline_config_id: Pipeline configuration identifier to filter studies
+        :type pipeline_config_id: str
+        :param distance_threshold: Distance threshold for semantic search (default 0.5)
+        :type distance_threshold: float
+        :param overall_cap: Maximum number of overall results to return (default 3000)
+        :type overall_cap: int
         :param feature_flatten:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
@@ -4182,6 +4194,10 @@ class StoreApi:
             feature_filter=feature_filter,
             pipeline_config=pipeline_config,
             feature_display=feature_display,
+            semantic_search=semantic_search,
+            pipeline_config_id=pipeline_config_id,
+            distance_threshold=distance_threshold,
+            overall_cap=overall_cap,
             feature_flatten=feature_flatten,
             search=search,
             sort=sort,
@@ -4231,6 +4247,10 @@ class StoreApi:
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
+        semantic_search: Annotated[Optional[StrictStr], Field(description="Semantic search query string")] = None,
+        pipeline_config_id: Annotated[Optional[StrictStr], Field(description="Pipeline configuration identifier to filter studies")] = None,
+        distance_threshold: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Distance threshold for semantic search (default 0.5)")] = None,
+        overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
@@ -4282,6 +4302,14 @@ class StoreApi:
         :type pipeline_config: List[str]
         :param feature_display: display features from pipelines
         :type feature_display: str
+        :param semantic_search: Semantic search query string
+        :type semantic_search: str
+        :param pipeline_config_id: Pipeline configuration identifier to filter studies
+        :type pipeline_config_id: str
+        :param distance_threshold: Distance threshold for semantic search (default 0.5)
+        :type distance_threshold: float
+        :param overall_cap: Maximum number of overall results to return (default 3000)
+        :type overall_cap: int
         :param feature_flatten:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
@@ -4348,6 +4376,10 @@ class StoreApi:
             feature_filter=feature_filter,
             pipeline_config=pipeline_config,
             feature_display=feature_display,
+            semantic_search=semantic_search,
+            pipeline_config_id=pipeline_config_id,
+            distance_threshold=distance_threshold,
+            overall_cap=overall_cap,
             feature_flatten=feature_flatten,
             search=search,
             sort=sort,
@@ -4397,6 +4429,10 @@ class StoreApi:
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
+        semantic_search: Annotated[Optional[StrictStr], Field(description="Semantic search query string")] = None,
+        pipeline_config_id: Annotated[Optional[StrictStr], Field(description="Pipeline configuration identifier to filter studies")] = None,
+        distance_threshold: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Distance threshold for semantic search (default 0.5)")] = None,
+        overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
@@ -4448,6 +4484,14 @@ class StoreApi:
         :type pipeline_config: List[str]
         :param feature_display: display features from pipelines
         :type feature_display: str
+        :param semantic_search: Semantic search query string
+        :type semantic_search: str
+        :param pipeline_config_id: Pipeline configuration identifier to filter studies
+        :type pipeline_config_id: str
+        :param distance_threshold: Distance threshold for semantic search (default 0.5)
+        :type distance_threshold: float
+        :param overall_cap: Maximum number of overall results to return (default 3000)
+        :type overall_cap: int
         :param feature_flatten:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
@@ -4514,6 +4558,10 @@ class StoreApi:
             feature_filter=feature_filter,
             pipeline_config=pipeline_config,
             feature_display=feature_display,
+            semantic_search=semantic_search,
+            pipeline_config_id=pipeline_config_id,
+            distance_threshold=distance_threshold,
+            overall_cap=overall_cap,
             feature_flatten=feature_flatten,
             search=search,
             sort=sort,
@@ -4558,6 +4606,10 @@ class StoreApi:
         feature_filter,
         pipeline_config,
         feature_display,
+        semantic_search,
+        pipeline_config_id,
+        distance_threshold,
+        overall_cap,
         feature_flatten,
         search,
         sort,
@@ -4634,6 +4686,22 @@ class StoreApi:
         if feature_display is not None:
             
             _query_params.append(('feature_display', feature_display))
+            
+        if semantic_search is not None:
+            
+            _query_params.append(('semantic_search', semantic_search))
+            
+        if pipeline_config_id is not None:
+            
+            _query_params.append(('pipeline_config_id', pipeline_config_id))
+            
+        if distance_threshold is not None:
+            
+            _query_params.append(('distance_threshold', distance_threshold))
+            
+        if overall_cap is not None:
+            
+            _query_params.append(('overall_cap', overall_cap))
             
         if feature_flatten is not None:
             

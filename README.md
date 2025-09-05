@@ -127,6 +127,8 @@ Class | Method | HTTP request | Description
 *PipelineConfigsApi* | [**pipeline_configs_id_get**](docs/PipelineConfigsApi.md#pipeline_configs_id_get) | **GET** /pipeline-configs/{id} | GET a pipeline config by ID
 *PipelineConfigsApi* | [**pipeline_configs_id_put**](docs/PipelineConfigsApi.md#pipeline_configs_id_put) | **PUT** /pipeline-configs/{id} | PUT/update a pipeline config by ID
 *PipelineConfigsApi* | [**pipeline_configs_post**](docs/PipelineConfigsApi.md#pipeline_configs_post) | **POST** /pipeline-configs/ | POST/create a pipeline config
+*PipelineEmbeddingsApi* | [**pipeline_embeddings_get**](docs/PipelineEmbeddingsApi.md#pipeline_embeddings_get) | **GET** /pipeline-embeddings/ | List pipeline embeddings
+*PipelineEmbeddingsApi* | [**pipeline_embeddings_id_get**](docs/PipelineEmbeddingsApi.md#pipeline_embeddings_id_get) | **GET** /pipeline-embeddings/{id} | Get a pipeline embedding by id
 *PipelineStudyResultsApi* | [**pipeline_study_results_get**](docs/PipelineStudyResultsApi.md#pipeline_study_results_get) | **GET** /pipeline-study-results/ | GET a list of pipeline run results
 *PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_delete**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_delete) | **DELETE** /pipeline-study-results/{pipeline_study_result_id} | DELETE a pipeline run result by ID
 *PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_get**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_get) | **GET** /pipeline-study-results/{pipeline_study_result_id} | GET a pipeline run result by ID
@@ -259,6 +261,8 @@ Class | Method | HTTP request | Description
  - [Pipeline](docs/Pipeline.md)
  - [PipelineConfig](docs/PipelineConfig.md)
  - [PipelineConfigList](docs/PipelineConfigList.md)
+ - [PipelineEmbedding](docs/PipelineEmbedding.md)
+ - [PipelineEmbeddingList](docs/PipelineEmbeddingList.md)
  - [PipelineList](docs/PipelineList.md)
  - [PipelineStudyResult](docs/PipelineStudyResult.md)
  - [PipelineStudyResultList](docs/PipelineStudyResultList.md)
