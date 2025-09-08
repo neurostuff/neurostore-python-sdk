@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.pipeline_config import PipelineConfig
@@ -46,6 +46,8 @@ class PipelineConfigsApi:
         self,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Filter configs by pipeline name")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        has_embeddings: Annotated[Optional[StrictBool], Field(description="Filter configs as whether they have embeddings saved.")] = None,
+        embedding_dimensions: Annotated[Optional[StrictInt], Field(description="Filter configs by number of dimensions in the embeddings.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,6 +68,10 @@ class PipelineConfigsApi:
         :type pipeline: List[str]
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
+        :param has_embeddings: Filter configs as whether they have embeddings saved.
+        :type has_embeddings: bool
+        :param embedding_dimensions: Filter configs by number of dimensions in the embeddings.
+        :type embedding_dimensions: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,6 +97,8 @@ class PipelineConfigsApi:
         _param = self._pipeline_configs_get_serialize(
             pipeline=pipeline,
             paginate=paginate,
+            has_embeddings=has_embeddings,
+            embedding_dimensions=embedding_dimensions,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,6 +124,8 @@ class PipelineConfigsApi:
         self,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Filter configs by pipeline name")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        has_embeddings: Annotated[Optional[StrictBool], Field(description="Filter configs as whether they have embeddings saved.")] = None,
+        embedding_dimensions: Annotated[Optional[StrictInt], Field(description="Filter configs by number of dimensions in the embeddings.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,6 +146,10 @@ class PipelineConfigsApi:
         :type pipeline: List[str]
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
+        :param has_embeddings: Filter configs as whether they have embeddings saved.
+        :type has_embeddings: bool
+        :param embedding_dimensions: Filter configs by number of dimensions in the embeddings.
+        :type embedding_dimensions: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,6 +175,8 @@ class PipelineConfigsApi:
         _param = self._pipeline_configs_get_serialize(
             pipeline=pipeline,
             paginate=paginate,
+            has_embeddings=has_embeddings,
+            embedding_dimensions=embedding_dimensions,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -186,6 +202,8 @@ class PipelineConfigsApi:
         self,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Filter configs by pipeline name")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        has_embeddings: Annotated[Optional[StrictBool], Field(description="Filter configs as whether they have embeddings saved.")] = None,
+        embedding_dimensions: Annotated[Optional[StrictInt], Field(description="Filter configs by number of dimensions in the embeddings.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -206,6 +224,10 @@ class PipelineConfigsApi:
         :type pipeline: List[str]
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
+        :param has_embeddings: Filter configs as whether they have embeddings saved.
+        :type has_embeddings: bool
+        :param embedding_dimensions: Filter configs by number of dimensions in the embeddings.
+        :type embedding_dimensions: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -231,6 +253,8 @@ class PipelineConfigsApi:
         _param = self._pipeline_configs_get_serialize(
             pipeline=pipeline,
             paginate=paginate,
+            has_embeddings=has_embeddings,
+            embedding_dimensions=embedding_dimensions,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -251,6 +275,8 @@ class PipelineConfigsApi:
         self,
         pipeline,
         paginate,
+        has_embeddings,
+        embedding_dimensions,
         _request_auth,
         _content_type,
         _headers,
@@ -281,6 +307,14 @@ class PipelineConfigsApi:
         if paginate is not None:
             
             _query_params.append(('paginate', paginate))
+            
+        if has_embeddings is not None:
+            
+            _query_params.append(('has_embeddings', has_embeddings))
+            
+        if embedding_dimensions is not None:
+            
+            _query_params.append(('embedding_dimensions', embedding_dimensions))
             
         # process the header parameters
         # process the form parameters
