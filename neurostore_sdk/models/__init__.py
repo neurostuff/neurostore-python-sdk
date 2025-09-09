@@ -68,6 +68,8 @@ from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.models.pipeline import Pipeline
 from neurostore_sdk.models.pipeline_config import PipelineConfig
 from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
+from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding
+from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList
 from neurostore_sdk.models.pipeline_list import PipelineList
 from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList

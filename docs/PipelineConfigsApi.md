@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pipeline_configs_get**
-> PipelineConfigList pipeline_configs_get(pipeline=pipeline, paginate=paginate)
+> PipelineConfigList pipeline_configs_get(pipeline=pipeline, paginate=paginate, has_embeddings=has_embeddings, embedding_dimensions=embedding_dimensions)
 
 GET a list of pipeline configs
 
@@ -38,10 +38,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = neurostore_sdk.PipelineConfigsApi(api_client)
     pipeline = ['pipeline_example'] # List[str] | Filter configs by pipeline name (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
+    has_embeddings = True # bool | Filter configs as whether they have embeddings saved. (optional)
+    embedding_dimensions = 56 # int | Filter configs by number of dimensions in the embeddings. (optional)
 
     try:
         # GET a list of pipeline configs
-        api_response = api_instance.pipeline_configs_get(pipeline=pipeline, paginate=paginate)
+        api_response = api_instance.pipeline_configs_get(pipeline=pipeline, paginate=paginate, has_embeddings=has_embeddings, embedding_dimensions=embedding_dimensions)
         print("The response of PipelineConfigsApi->pipeline_configs_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -57,6 +59,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pipeline** | [**List[str]**](str.md)| Filter configs by pipeline name | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
+ **has_embeddings** | **bool**| Filter configs as whether they have embeddings saved. | [optional] 
+ **embedding_dimensions** | **int**| Filter configs by number of dimensions in the embeddings. | [optional] 
 
 ### Return type
 

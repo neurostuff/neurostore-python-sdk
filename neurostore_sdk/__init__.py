@@ -23,6 +23,7 @@ from neurostore_sdk.api.annotations_api import AnnotationsApi
 from neurostore_sdk.api.conditions_api import ConditionsApi
 from neurostore_sdk.api.images_api import ImagesApi
 from neurostore_sdk.api.pipeline_configs_api import PipelineConfigsApi
+from neurostore_sdk.api.pipeline_embeddings_api import PipelineEmbeddingsApi
 from neurostore_sdk.api.pipeline_study_results_api import PipelineStudyResultsApi
 from neurostore_sdk.api.pipelines_api import PipelinesApi
 from neurostore_sdk.api.points_api import PointsApi
@@ -96,6 +97,8 @@ from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
 from neurostore_sdk.models.pipeline import Pipeline
 from neurostore_sdk.models.pipeline_config import PipelineConfig
 from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
+from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding
+from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList
 from neurostore_sdk.models.pipeline_list import PipelineList
 from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
