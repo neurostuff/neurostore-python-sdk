@@ -354,7 +354,7 @@ class PipelineEmbeddingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PipelineEmbedding",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,7 +421,7 @@ class PipelineEmbeddingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PipelineEmbedding",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -488,7 +488,7 @@ class PipelineEmbeddingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PipelineEmbedding",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

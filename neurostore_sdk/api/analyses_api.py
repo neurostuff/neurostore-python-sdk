@@ -756,7 +756,7 @@ class AnalysesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -828,7 +828,7 @@ class AnalysesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -900,7 +900,7 @@ class AnalysesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1036,7 +1036,7 @@ class AnalysesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1108,7 +1108,7 @@ class AnalysesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1180,7 +1180,7 @@ class AnalysesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

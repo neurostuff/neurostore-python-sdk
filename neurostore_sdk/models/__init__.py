@@ -53,6 +53,8 @@ from neurostore_sdk.models.condition_list import ConditionList
 from neurostore_sdk.models.condition_request import ConditionRequest
 from neurostore_sdk.models.condition_return import ConditionReturn
 from neurostore_sdk.models.entity import Entity
+from neurostore_sdk.models.error_detail import ErrorDetail
+from neurostore_sdk.models.error_response import ErrorResponse
 from neurostore_sdk.models.image_base import ImageBase
 from neurostore_sdk.models.image_common import ImageCommon
 from neurostore_sdk.models.image_list import ImageList
@@ -102,8 +104,6 @@ from neurostore_sdk.models.studyset_request_relationships import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
 from neurostore_sdk.models.studyset_return_relationships import StudysetReturnRelationships
 from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
-from neurostore_sdk.models.studysets_id_get404_response import StudysetsIdGet404Response
-from neurostore_sdk.models.studysets_id_put422_response import StudysetsIdPut422Response
 from neurostore_sdk.models.user import User
 from neurostore_sdk.models.user_list import UserList
 from neurostore_sdk.models.userless_resource_attributes import UserlessResourceAttributes

@@ -778,7 +778,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -850,7 +850,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -922,7 +922,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1058,7 +1058,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1130,7 +1130,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1202,7 +1202,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AnalysisReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6346,7 +6346,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConditionReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6414,7 +6414,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConditionReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6482,7 +6482,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConditionReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6613,7 +6613,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConditionReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6685,7 +6685,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConditionReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6757,7 +6757,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConditionReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7844,7 +7844,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7912,7 +7912,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7980,7 +7980,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8111,7 +8111,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8183,7 +8183,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8255,7 +8255,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9456,7 +9456,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PointReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9528,7 +9528,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PointReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9600,7 +9600,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PointReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10870,7 +10870,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudyReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10950,7 +10950,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudyReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11030,7 +11030,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudyReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11176,7 +11176,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudyReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11248,7 +11248,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudyReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11320,7 +11320,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudyReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12034,7 +12034,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudysetReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12110,7 +12110,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudysetReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12186,7 +12186,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudysetReturn",
-            '404': "StudysetsIdGet404Response",
+            '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12328,7 +12328,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudysetReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12400,7 +12400,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudysetReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12472,7 +12472,7 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "StudysetReturn",
-            '422': "StudysetsIdPut422Response",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

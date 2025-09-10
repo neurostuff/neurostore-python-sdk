@@ -44,6 +44,8 @@ docs/ConditionRequest.md
 docs/ConditionReturn.md
 docs/ConditionsApi.md
 docs/Entity.md
+docs/ErrorDetail.md
+docs/ErrorResponse.md
 docs/ImageBase.md
 docs/ImageCommon.md
 docs/ImageList.md
@@ -102,8 +104,6 @@ docs/StudysetReturn.md
 docs/StudysetReturnRelationships.md
 docs/StudysetReturnRelationshipsStudies.md
 docs/StudysetsApi.md
-docs/StudysetsIdGet404Response.md
-docs/StudysetsIdPut422Response.md
 docs/User.md
 docs/UserApi.md
 docs/UserList.md
@@ -167,6 +167,8 @@ neurostore_sdk/models/condition_list.py
 neurostore_sdk/models/condition_request.py
 neurostore_sdk/models/condition_return.py
 neurostore_sdk/models/entity.py
+neurostore_sdk/models/error_detail.py
+neurostore_sdk/models/error_response.py
 neurostore_sdk/models/image_base.py
 neurostore_sdk/models/image_common.py
 neurostore_sdk/models/image_list.py
@@ -216,8 +218,6 @@ neurostore_sdk/models/studyset_request_relationships.py
 neurostore_sdk/models/studyset_return.py
 neurostore_sdk/models/studyset_return_relationships.py
 neurostore_sdk/models/studyset_return_relationships_studies.py
-neurostore_sdk/models/studysets_id_get404_response.py
-neurostore_sdk/models/studysets_id_put422_response.py
 neurostore_sdk/models/user.py
 neurostore_sdk/models/user_list.py
 neurostore_sdk/models/userless_resource_attributes.py
@@ -229,7 +229,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_pipeline_embedding.py
-test/test_pipeline_embedding_list.py
-test/test_pipeline_embeddings_api.py
+test/test_error_detail.py
+test/test_error_response.py
 tox.ini
