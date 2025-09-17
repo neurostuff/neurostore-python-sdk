@@ -3292,11 +3292,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studysets_post**
-> StudysetReturn studysets_post(studyset_request=studyset_request)
+> StudysetReturn studysets_post(source_id=source_id, source=source, copy_annotations=copy_annotations, studyset_request=studyset_request)
 
 POST/create a studyset
 
-Create a studyset.
+Create a studyset. When `source_id` is provided, Neurostore clones an existing studyset owned by any user into a new studyset owned by the caller, copying studies and (by default) annotations.
 
 ### Example
 
@@ -3329,11 +3329,14 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
+    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
+    copy_annotations = True # bool | When cloning a studyset, copy annotations and their notes when true (default). (optional) (default to True)
     studyset_request = neurostore_sdk.StudysetRequest() # StudysetRequest |  (optional)
 
     try:
         # POST/create a studyset
-        api_response = api_instance.studysets_post(studyset_request=studyset_request)
+        api_response = api_instance.studysets_post(source_id=source_id, source=source, copy_annotations=copy_annotations, studyset_request=studyset_request)
         print("The response of StoreApi->studysets_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -3347,6 +3350,9 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
+ **copy_annotations** | **bool**| When cloning a studyset, copy annotations and their notes when true (default). | [optional] [default to True]
  **studyset_request** | [**StudysetRequest**](StudysetRequest.md)|  | [optional] 
 
 ### Return type

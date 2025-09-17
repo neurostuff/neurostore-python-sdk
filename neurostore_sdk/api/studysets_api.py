@@ -1373,6 +1373,9 @@ class StudysetsApi:
     @validate_call
     def studysets_post(
         self,
+        source_id: Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None,
+        source: Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None,
+        copy_annotations: Annotated[Optional[StrictBool], Field(description="When cloning a studyset, copy annotations and their notes when true (default).")] = None,
         studyset_request: Optional[StudysetRequest] = None,
         _request_timeout: Union[
             None,
@@ -1389,8 +1392,14 @@ class StudysetsApi:
     ) -> StudysetReturn:
         """POST/create a studyset
 
-        Create a studyset.
+        Create a studyset. When `source_id` is provided, Neurostore clones an existing studyset owned by any user into a new studyset owned by the caller, copying studies and (by default) annotations.
 
+        :param source_id: id of the resource you are either filtering/copying on
+        :type source_id: str
+        :param source: the source of the resource you would like to filter/copy from
+        :type source: str
+        :param copy_annotations: When cloning a studyset, copy annotations and their notes when true (default).
+        :type copy_annotations: bool
         :param studyset_request:
         :type studyset_request: StudysetRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1416,6 +1425,9 @@ class StudysetsApi:
         """ # noqa: E501
 
         _param = self._studysets_post_serialize(
+            source_id=source_id,
+            source=source,
+            copy_annotations=copy_annotations,
             studyset_request=studyset_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1440,6 +1452,9 @@ class StudysetsApi:
     @validate_call
     def studysets_post_with_http_info(
         self,
+        source_id: Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None,
+        source: Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None,
+        copy_annotations: Annotated[Optional[StrictBool], Field(description="When cloning a studyset, copy annotations and their notes when true (default).")] = None,
         studyset_request: Optional[StudysetRequest] = None,
         _request_timeout: Union[
             None,
@@ -1456,8 +1471,14 @@ class StudysetsApi:
     ) -> ApiResponse[StudysetReturn]:
         """POST/create a studyset
 
-        Create a studyset.
+        Create a studyset. When `source_id` is provided, Neurostore clones an existing studyset owned by any user into a new studyset owned by the caller, copying studies and (by default) annotations.
 
+        :param source_id: id of the resource you are either filtering/copying on
+        :type source_id: str
+        :param source: the source of the resource you would like to filter/copy from
+        :type source: str
+        :param copy_annotations: When cloning a studyset, copy annotations and their notes when true (default).
+        :type copy_annotations: bool
         :param studyset_request:
         :type studyset_request: StudysetRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1483,6 +1504,9 @@ class StudysetsApi:
         """ # noqa: E501
 
         _param = self._studysets_post_serialize(
+            source_id=source_id,
+            source=source,
+            copy_annotations=copy_annotations,
             studyset_request=studyset_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1507,6 +1531,9 @@ class StudysetsApi:
     @validate_call
     def studysets_post_without_preload_content(
         self,
+        source_id: Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None,
+        source: Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None,
+        copy_annotations: Annotated[Optional[StrictBool], Field(description="When cloning a studyset, copy annotations and their notes when true (default).")] = None,
         studyset_request: Optional[StudysetRequest] = None,
         _request_timeout: Union[
             None,
@@ -1523,8 +1550,14 @@ class StudysetsApi:
     ) -> RESTResponseType:
         """POST/create a studyset
 
-        Create a studyset.
+        Create a studyset. When `source_id` is provided, Neurostore clones an existing studyset owned by any user into a new studyset owned by the caller, copying studies and (by default) annotations.
 
+        :param source_id: id of the resource you are either filtering/copying on
+        :type source_id: str
+        :param source: the source of the resource you would like to filter/copy from
+        :type source: str
+        :param copy_annotations: When cloning a studyset, copy annotations and their notes when true (default).
+        :type copy_annotations: bool
         :param studyset_request:
         :type studyset_request: StudysetRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1550,6 +1583,9 @@ class StudysetsApi:
         """ # noqa: E501
 
         _param = self._studysets_post_serialize(
+            source_id=source_id,
+            source=source,
+            copy_annotations=copy_annotations,
             studyset_request=studyset_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1569,6 +1605,9 @@ class StudysetsApi:
 
     def _studysets_post_serialize(
         self,
+        source_id,
+        source,
+        copy_annotations,
         studyset_request,
         _request_auth,
         _content_type,
@@ -1592,6 +1631,18 @@ class StudysetsApi:
 
         # process the path parameters
         # process the query parameters
+        if source_id is not None:
+            
+            _query_params.append(('source_id', source_id))
+            
+        if source is not None:
+            
+            _query_params.append(('source', source))
+            
+        if copy_annotations is not None:
+            
+            _query_params.append(('copy_annotations', copy_annotations))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
