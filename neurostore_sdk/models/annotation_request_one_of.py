@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner
 from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,11 +34,12 @@ class AnnotationRequestOneOf(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.")
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
     note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
+    pipelines: Optional[List[AnnotationPipelineExtensionPipelinesInner]] = Field(default=None, description="Optional pipeline descriptors used to populate annotation notes with feature columns. Each entry should include the pipeline name and the list of columns to import, along with optional version and config id. ")
     notes: Optional[AnnotationRequestRelationshipsNotes] = None
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     studyset: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "metadata", "note_keys", "notes", "id", "public", "studyset"]
+    __properties: ClassVar[List[str]] = ["name", "description", "metadata", "note_keys", "pipelines", "notes", "id", "public", "studyset"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,13 @@ class AnnotationRequestOneOf(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in pipelines (list)
+        _items = []
+        if self.pipelines:
+            for _item_pipelines in self.pipelines:
+                if _item_pipelines:
+                    _items.append(_item_pipelines.to_dict())
+            _dict['pipelines'] = _items
         # override the default output from pydantic by calling `to_dict()` of notes
         if self.notes:
             _dict['notes'] = self.notes.to_dict()
@@ -117,6 +126,7 @@ class AnnotationRequestOneOf(BaseModel):
             "description": obj.get("description"),
             "metadata": obj.get("metadata"),
             "note_keys": obj.get("note_keys"),
+            "pipelines": [AnnotationPipelineExtensionPipelinesInner.from_dict(_item) for _item in obj["pipelines"]] if obj.get("pipelines") is not None else None,
             "notes": AnnotationRequestRelationshipsNotes.from_dict(obj["notes"]) if obj.get("notes") is not None else None,
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,

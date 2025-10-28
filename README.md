@@ -225,6 +225,8 @@ Class | Method | HTTP request | Description
  - [AnnotationCommon](docs/AnnotationCommon.md)
  - [AnnotationExport](docs/AnnotationExport.md)
  - [AnnotationList](docs/AnnotationList.md)
+ - [AnnotationPipelineExtension](docs/AnnotationPipelineExtension.md)
+ - [AnnotationPipelineExtensionPipelinesInner](docs/AnnotationPipelineExtensionPipelinesInner.md)
  - [AnnotationRequest](docs/AnnotationRequest.md)
  - [AnnotationRequestOneOf](docs/AnnotationRequestOneOf.md)
  - [AnnotationRequestRelationships](docs/AnnotationRequestRelationships.md)

@@ -21,6 +21,8 @@ docs/AnnotationBase.md
 docs/AnnotationCommon.md
 docs/AnnotationExport.md
 docs/AnnotationList.md
+docs/AnnotationPipelineExtension.md
+docs/AnnotationPipelineExtensionPipelinesInner.md
 docs/AnnotationRequest.md
 docs/AnnotationRequestOneOf.md
 docs/AnnotationRequestRelationships.md
@@ -146,6 +148,8 @@ neurostore_sdk/models/annotation_base.py
 neurostore_sdk/models/annotation_common.py
 neurostore_sdk/models/annotation_export.py
 neurostore_sdk/models/annotation_list.py
+neurostore_sdk/models/annotation_pipeline_extension.py
+neurostore_sdk/models/annotation_pipeline_extension_pipelines_inner.py
 neurostore_sdk/models/annotation_request.py
 neurostore_sdk/models/annotation_request_one_of.py
 neurostore_sdk/models/annotation_request_relationships.py
@@ -229,4 +233,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_annotation_pipeline_extension.py
+test/test_annotation_pipeline_extension_pipelines_inner.py
 tox.ini
