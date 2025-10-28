@@ -30,10 +30,10 @@ class AnnotationRequest(BaseModel):
     """
     AnnotationRequest
     """
-    # data type: AnnotationReturnOneOf
-    oneof_schema_1_validator: Optional[AnnotationReturnOneOf] = None
     # data type: AnnotationRequestOneOf
-    oneof_schema_2_validator: Optional[AnnotationRequestOneOf] = None
+    oneof_schema_1_validator: Optional[AnnotationRequestOneOf] = None
+    # data type: AnnotationReturnOneOf
+    oneof_schema_2_validator: Optional[AnnotationReturnOneOf] = None
     actual_instance: Optional[Union[AnnotationRequestOneOf, AnnotationReturnOneOf]] = None
     one_of_schemas: Set[str] = { "AnnotationRequestOneOf", "AnnotationReturnOneOf" }
 
@@ -58,14 +58,14 @@ class AnnotationRequest(BaseModel):
         instance = AnnotationRequest.model_construct()
         error_messages = []
         match = 0
-        # validate data type: AnnotationReturnOneOf
-        if not isinstance(v, AnnotationReturnOneOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationReturnOneOf`")
-        else:
-            match += 1
         # validate data type: AnnotationRequestOneOf
         if not isinstance(v, AnnotationRequestOneOf):
             error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationRequestOneOf`")
+        else:
+            match += 1
+        # validate data type: AnnotationReturnOneOf
+        if not isinstance(v, AnnotationReturnOneOf):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationReturnOneOf`")
         else:
             match += 1
         if match > 1:
@@ -88,15 +88,15 @@ class AnnotationRequest(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into AnnotationReturnOneOf
-        try:
-            instance.actual_instance = AnnotationReturnOneOf.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
         # deserialize data into AnnotationRequestOneOf
         try:
             instance.actual_instance = AnnotationRequestOneOf.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into AnnotationReturnOneOf
+        try:
+            instance.actual_instance = AnnotationReturnOneOf.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))

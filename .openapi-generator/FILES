@@ -233,6 +233,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_annotation_pipeline_extension.py
-test/test_annotation_pipeline_extension_pipelines_inner.py
 tox.ini

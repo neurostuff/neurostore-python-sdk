@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
-**annotation_csv** | **str** | annotation object expressed as a CSV | 
 **name** | **str** | Descriptive name for the annotation. | [optional] 
 **description** | **str** | Long form description of the annotation. | [optional] 
+**metadata** | **object** |  | [optional] [readonly] 
 **note_keys** | **object** | The keys (columns) in the annotation and the key&#39;s respective data type (such as an integer or string). | [optional] 
 **pipelines** | [**List[AnnotationPipelineExtensionPipelinesInner]**](AnnotationPipelineExtensionPipelinesInner.md) | Optional pipeline descriptors used to populate annotation notes with feature columns. Each entry should include the pipeline name and the list of columns to import, along with optional version and config id.  | [optional] 
 **notes** | [**AnnotationRequestRelationshipsNotes**](AnnotationRequestRelationshipsNotes.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **studyset** | **str** |  | [optional] 
+**annotation_csv** | **str** | annotation object expressed as a CSV | 
 
 ## Example
 
