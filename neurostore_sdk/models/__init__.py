@@ -48,7 +48,7 @@ from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostReque
 from neurostore_sdk.models.base_study import BaseStudy
 from neurostore_sdk.models.base_study_list import BaseStudyList
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
-from neurostore_sdk.models.base_study_versions import BaseStudyVersions
+from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from neurostore_sdk.models.clone import Clone
 from neurostore_sdk.models.condition_base import ConditionBase
 from neurostore_sdk.models.condition_list import ConditionList

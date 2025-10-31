@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | **object** |  | [optional] 
-**versions** | [**BaseStudyVersions**](BaseStudyVersions.md) |  | [optional] 
+**versions** | [**List[BaseStudyVersionsInner]**](BaseStudyVersionsInner.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **publication** | **str** |  | [optional] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **authors** | **str** |  | [optional] 
 **year** | **int** |  | [optional] 
 **level** | **str** |  | [optional] 
+**is_oa** | **bool** |  | [optional] 
 **pmcid** | **str** |  | [optional] 
 
 ## Example

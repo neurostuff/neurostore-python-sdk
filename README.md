@@ -241,7 +241,7 @@ Class | Method | HTTP request | Description
  - [BaseStudy](docs/BaseStudy.md)
  - [BaseStudyList](docs/BaseStudyList.md)
  - [BaseStudyReturn](docs/BaseStudyReturn.md)
- - [BaseStudyVersions](docs/BaseStudyVersions.md)
+ - [BaseStudyVersionsInner](docs/BaseStudyVersionsInner.md)
  - [Clone](docs/Clone.md)
  - [ConditionBase](docs/ConditionBase.md)
  - [ConditionList](docs/ConditionList.md)

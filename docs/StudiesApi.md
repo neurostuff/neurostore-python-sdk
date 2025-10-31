@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -74,6 +74,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     level = group # str | select between studies with group results or meta results (optional) (default to group)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
+    is_oa = True # bool |  (optional)
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
@@ -83,7 +84,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
         print("The response of StudiesApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -121,6 +122,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
+ **is_oa** | **bool**|  | [optional] 
  **publication** | **str**| search for papers from a particular journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 

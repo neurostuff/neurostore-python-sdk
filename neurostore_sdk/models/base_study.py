@@ -18,9 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.base_study_versions import BaseStudyVersions
+from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class BaseStudy(BaseModel):
     BaseStudy
     """ # noqa: E501
     metadata: Optional[Dict[str, Any]] = None
-    versions: Optional[BaseStudyVersions] = None
+    versions: Optional[List[BaseStudyVersionsInner]] = None
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     publication: Optional[StrictStr] = None
@@ -38,8 +38,9 @@ class BaseStudy(BaseModel):
     authors: Optional[StrictStr] = None
     year: Optional[StrictInt] = None
     level: Optional[StrictStr] = None
+    is_oa: Optional[StrictBool] = None
     pmcid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "pmcid"]
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,9 +81,13 @@ class BaseStudy(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of versions
+        # override the default output from pydantic by calling `to_dict()` of each item in versions (list)
+        _items = []
         if self.versions:
-            _dict['versions'] = self.versions.to_dict()
+            for _item_versions in self.versions:
+                if _item_versions:
+                    _items.append(_item_versions.to_dict())
+            _dict['versions'] = _items
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -128,6 +133,11 @@ class BaseStudy(BaseModel):
         if self.level is None and "level" in self.model_fields_set:
             _dict['level'] = None
 
+        # set to None if is_oa (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_oa is None and "is_oa" in self.model_fields_set:
+            _dict['is_oa'] = None
+
         # set to None if pmcid (nullable) is None
         # and model_fields_set contains the field
         if self.pmcid is None and "pmcid" in self.model_fields_set:
@@ -146,7 +156,7 @@ class BaseStudy(BaseModel):
 
         _obj = cls.model_validate({
             "metadata": obj.get("metadata"),
-            "versions": BaseStudyVersions.from_dict(obj["versions"]) if obj.get("versions") is not None else None,
+            "versions": [BaseStudyVersionsInner.from_dict(_item) for _item in obj["versions"]] if obj.get("versions") is not None else None,
             "name": obj.get("name"),
             "description": obj.get("description"),
             "publication": obj.get("publication"),
@@ -155,6 +165,7 @@ class BaseStudy(BaseModel):
             "authors": obj.get("authors"),
             "year": obj.get("year"),
             "level": obj.get("level"),
+            "is_oa": obj.get("is_oa"),
             "pmcid": obj.get("pmcid")
         })
         return _obj

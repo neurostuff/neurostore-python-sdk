@@ -4080,6 +4080,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
@@ -4150,6 +4151,8 @@ class StoreApi:
         :type level: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param is_oa:
+        :type is_oa: bool
         :param publication: search for papers from a particular journal
         :type publication: str
         :param pmid: search for particular pmid
@@ -4209,6 +4212,7 @@ class StoreApi:
             authors=authors,
             level=level,
             data_type=data_type,
+            is_oa=is_oa,
             publication=publication,
             pmid=pmid,
             doi=doi,
@@ -4262,6 +4266,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
@@ -4332,6 +4337,8 @@ class StoreApi:
         :type level: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param is_oa:
+        :type is_oa: bool
         :param publication: search for papers from a particular journal
         :type publication: str
         :param pmid: search for particular pmid
@@ -4391,6 +4398,7 @@ class StoreApi:
             authors=authors,
             level=level,
             data_type=data_type,
+            is_oa=is_oa,
             publication=publication,
             pmid=pmid,
             doi=doi,
@@ -4444,6 +4452,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
@@ -4514,6 +4523,8 @@ class StoreApi:
         :type level: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param is_oa:
+        :type is_oa: bool
         :param publication: search for papers from a particular journal
         :type publication: str
         :param pmid: search for particular pmid
@@ -4573,6 +4584,7 @@ class StoreApi:
             authors=authors,
             level=level,
             data_type=data_type,
+            is_oa=is_oa,
             publication=publication,
             pmid=pmid,
             doi=doi,
@@ -4621,6 +4633,7 @@ class StoreApi:
         authors,
         level,
         data_type,
+        is_oa,
         publication,
         pmid,
         doi,
@@ -4746,6 +4759,10 @@ class StoreApi:
         if data_type is not None:
             
             _query_params.append(('data_type', data_type))
+            
+        if is_oa is not None:
+            
+            _query_params.append(('is_oa', is_oa))
             
         if publication is not None:
             
