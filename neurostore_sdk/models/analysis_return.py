@@ -46,10 +46,11 @@ class AnalysisReturn(BaseModel):
     images: Optional[AnalysisReturnRelationshipsImages] = None
     points: Optional[AnalysisReturnRelationshipsPoints] = None
     conditions: Optional[AnalysisReturnRelationshipsConditions] = None
+    table_id: Optional[StrictStr] = None
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "entities", "order", "metadata"]
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -137,6 +138,11 @@ class AnalysisReturn(BaseModel):
         if self.username is None and "username" in self.model_fields_set:
             _dict['username'] = None
 
+        # set to None if table_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.table_id is None and "table_id" in self.model_fields_set:
+            _dict['table_id'] = None
+
         # set to None if order (nullable) is None
         # and model_fields_set contains the field
         if self.order is None and "order" in self.model_fields_set:
@@ -172,6 +178,7 @@ class AnalysisReturn(BaseModel):
             "images": AnalysisReturnRelationshipsImages.from_dict(obj["images"]) if obj.get("images") is not None else None,
             "points": AnalysisReturnRelationshipsPoints.from_dict(obj["points"]) if obj.get("points") is not None else None,
             "conditions": AnalysisReturnRelationshipsConditions.from_dict(obj["conditions"]) if obj.get("conditions") is not None else None,
+            "table_id": obj.get("table_id"),
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "order": obj.get("order"),
             "metadata": obj.get("metadata")

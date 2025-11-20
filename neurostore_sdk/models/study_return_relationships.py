@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 from typing import Optional, Set
@@ -29,7 +29,8 @@ class StudyReturnRelationships(BaseModel):
     StudyReturnRelationships
     """ # noqa: E501
     analyses: Optional[StudyReturnRelationshipsAnalyses] = None
-    __properties: ClassVar[List[str]] = ["analyses"]
+    tables: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["analyses", "tables"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,7 +86,8 @@ class StudyReturnRelationships(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj["analyses"]) if obj.get("analyses") is not None else None
+            "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj["analyses"]) if obj.get("analyses") is not None else None,
+            "tables": obj.get("tables")
         })
         return _obj
 

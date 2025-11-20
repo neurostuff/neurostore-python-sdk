@@ -106,6 +106,13 @@ docs/StudysetReturn.md
 docs/StudysetReturnRelationships.md
 docs/StudysetReturnRelationshipsStudies.md
 docs/StudysetsApi.md
+docs/TableCommon.md
+docs/TableList.md
+docs/TableRequest.md
+docs/TableRequestRelationships.md
+docs/TableReturn.md
+docs/TableReturnRelationships.md
+docs/TablesApi.md
 docs/User.md
 docs/UserApi.md
 docs/UserList.md
@@ -125,6 +132,7 @@ neurostore_sdk/api/points_api.py
 neurostore_sdk/api/store_api.py
 neurostore_sdk/api/studies_api.py
 neurostore_sdk/api/studysets_api.py
+neurostore_sdk/api/tables_api.py
 neurostore_sdk/api/user_api.py
 neurostore_sdk/api_client.py
 neurostore_sdk/api_response.py
@@ -222,6 +230,12 @@ neurostore_sdk/models/studyset_request_relationships.py
 neurostore_sdk/models/studyset_return.py
 neurostore_sdk/models/studyset_return_relationships.py
 neurostore_sdk/models/studyset_return_relationships_studies.py
+neurostore_sdk/models/table_common.py
+neurostore_sdk/models/table_list.py
+neurostore_sdk/models/table_request.py
+neurostore_sdk/models/table_request_relationships.py
+neurostore_sdk/models/table_return.py
+neurostore_sdk/models/table_return_relationships.py
 neurostore_sdk/models/user.py
 neurostore_sdk/models/user_list.py
 neurostore_sdk/models/userless_resource_attributes.py
@@ -233,5 +247,11 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_base_study_versions_inner.py
+test/test_table_common.py
+test/test_table_list.py
+test/test_table_request.py
+test/test_table_request_relationships.py
+test/test_table_return.py
+test/test_table_return_relationships.py
+test/test_tables_api.py
 tox.ini

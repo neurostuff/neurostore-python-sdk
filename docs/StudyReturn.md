@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
+**tables** | **List[str]** |  | [optional] 
 **studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 

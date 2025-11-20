@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **images** | [**AnalysisReturnRelationshipsImages**](AnalysisReturnRelationshipsImages.md) |  | [optional] 
 **points** | [**AnalysisReturnRelationshipsPoints**](AnalysisReturnRelationshipsPoints.md) |  | [optional] 
 **conditions** | [**AnalysisReturnRelationshipsConditions**](AnalysisReturnRelationshipsConditions.md) |  | [optional] 
+**table_id** | **str** |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 

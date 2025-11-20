@@ -13,5 +13,6 @@ from neurostore_sdk.api.points_api import PointsApi
 from neurostore_sdk.api.store_api import StoreApi
 from neurostore_sdk.api.studies_api import StudiesApi
 from neurostore_sdk.api.studysets_api import StudysetsApi
+from neurostore_sdk.api.tables_api import TablesApi
 from neurostore_sdk.api.user_api import UserApi
 

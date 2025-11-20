@@ -49,12 +49,13 @@ class StudyReturn(BaseModel):
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
     analyses: Optional[StudyReturnRelationshipsAnalyses] = None
+    tables: Optional[List[StrictStr]] = None
     studysets: Optional[List[StudyReturnAllOfStudysets]] = None
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
     base_study: Optional[StrictStr] = None
     pmcid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "studysets", "has_coordinates", "has_images", "base_study", "pmcid"]
+    __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "tables", "studysets", "has_coordinates", "has_images", "base_study", "pmcid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -223,6 +224,7 @@ class StudyReturn(BaseModel):
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),
             "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj["analyses"]) if obj.get("analyses") is not None else None,
+            "tables": obj.get("tables"),
             "studysets": [StudyReturnAllOfStudysets.from_dict(_item) for _item in obj["studysets"]] if obj.get("studysets") is not None else None,
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),

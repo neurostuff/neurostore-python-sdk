@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
+> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
 
 GET list of analyses
 
@@ -48,13 +48,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
+    study = 'study_example' # str | Filter tables by study id (optional)
     name = 'name_example' # str | search the name field for a term (optional)
-    description = 'description_example' # str | search description field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
         print("The response of AnalysesApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
+ **study** | **str**| Filter tables by study id | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
- **description** | **str**| search description field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
 
 ### Return type

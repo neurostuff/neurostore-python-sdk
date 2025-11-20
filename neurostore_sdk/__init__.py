@@ -30,6 +30,7 @@ from neurostore_sdk.api.points_api import PointsApi
 from neurostore_sdk.api.store_api import StoreApi
 from neurostore_sdk.api.studies_api import StudiesApi
 from neurostore_sdk.api.studysets_api import StudysetsApi
+from neurostore_sdk.api.tables_api import TablesApi
 from neurostore_sdk.api.user_api import UserApi
 
 # import ApiClient
@@ -135,6 +136,12 @@ from neurostore_sdk.models.studyset_request_relationships import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
 from neurostore_sdk.models.studyset_return_relationships import StudysetReturnRelationships
 from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
+from neurostore_sdk.models.table_common import TableCommon
+from neurostore_sdk.models.table_list import TableList
+from neurostore_sdk.models.table_request import TableRequest
+from neurostore_sdk.models.table_request_relationships import TableRequestRelationships
+from neurostore_sdk.models.table_return import TableReturn
+from neurostore_sdk.models.table_return_relationships import TableReturnRelationships
 from neurostore_sdk.models.user import User
 from neurostore_sdk.models.user_list import UserList
 from neurostore_sdk.models.userless_resource_attributes import UserlessResourceAttributes

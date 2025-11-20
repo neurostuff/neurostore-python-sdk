@@ -74,13 +74,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
+    study = 'study_example' # str | Filter tables by study id (optional)
     name = 'name_example' # str | search the name field for a term (optional)
-    description = 'description_example' # str | search description field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
         print("The response of AnalysesApi->analyses_get:\n")
         pprint(api_response)
     except ApiException as e:
@@ -186,6 +186,11 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
 *StoreApi* | [**studysets_id_put**](docs/StoreApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
 *StoreApi* | [**studysets_post**](docs/StoreApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
+*StoreApi* | [**tables_get**](docs/StoreApi.md#tables_get) | **GET** /tables/ | GET list of tables
+*StoreApi* | [**tables_id_delete**](docs/StoreApi.md#tables_id_delete) | **DELETE** /tables/{id} | DELETE a table
+*StoreApi* | [**tables_id_get**](docs/StoreApi.md#tables_id_get) | **GET** /tables/{id} | GET a table
+*StoreApi* | [**tables_id_put**](docs/StoreApi.md#tables_id_put) | **PUT** /tables/{id} | PUT/update a table
+*StoreApi* | [**tables_post**](docs/StoreApi.md#tables_post) | **POST** /tables/ | POST/create a table
 *StudiesApi* | [**base_studies_get**](docs/StudiesApi.md#base_studies_get) | **GET** /base-studies/ | 
 *StudiesApi* | [**base_studies_id_get**](docs/StudiesApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
 *StudiesApi* | [**base_studies_id_put**](docs/StudiesApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
@@ -200,6 +205,11 @@ Class | Method | HTTP request | Description
 *StudysetsApi* | [**studysets_id_get**](docs/StudysetsApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
 *StudysetsApi* | [**studysets_id_put**](docs/StudysetsApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
 *StudysetsApi* | [**studysets_post**](docs/StudysetsApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
+*TablesApi* | [**tables_get**](docs/TablesApi.md#tables_get) | **GET** /tables/ | GET list of tables
+*TablesApi* | [**tables_id_delete**](docs/TablesApi.md#tables_id_delete) | **DELETE** /tables/{id} | DELETE a table
+*TablesApi* | [**tables_id_get**](docs/TablesApi.md#tables_id_get) | **GET** /tables/{id} | GET a table
+*TablesApi* | [**tables_id_put**](docs/TablesApi.md#tables_id_put) | **PUT** /tables/{id} | PUT/update a table
+*TablesApi* | [**tables_post**](docs/TablesApi.md#tables_post) | **POST** /tables/ | POST/create a table
 *UserApi* | [**users_get**](docs/UserApi.md#users_get) | **GET** /users/ | Your GET endpoint
 *UserApi* | [**users_id_get**](docs/UserApi.md#users_id_get) | **GET** /users/{id} | Individual User Profile
 *UserApi* | [**users_id_put**](docs/UserApi.md#users_id_put) | **PUT** /users/{id} | Update Individual Profile
@@ -299,6 +309,12 @@ Class | Method | HTTP request | Description
  - [StudysetReturn](docs/StudysetReturn.md)
  - [StudysetReturnRelationships](docs/StudysetReturnRelationships.md)
  - [StudysetReturnRelationshipsStudies](docs/StudysetReturnRelationshipsStudies.md)
+ - [TableCommon](docs/TableCommon.md)
+ - [TableList](docs/TableList.md)
+ - [TableRequest](docs/TableRequest.md)
+ - [TableRequestRelationships](docs/TableRequestRelationships.md)
+ - [TableReturn](docs/TableReturn.md)
+ - [TableReturnRelationships](docs/TableReturnRelationships.md)
  - [User](docs/User.md)
  - [UserList](docs/UserList.md)
  - [UserlessResourceAttributes](docs/UserlessResourceAttributes.md)

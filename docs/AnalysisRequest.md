@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **conditions** | [**AnalysisRequestRelationshipsConditions**](AnalysisRequestRelationshipsConditions.md) |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
+**table_id** | **str** |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 

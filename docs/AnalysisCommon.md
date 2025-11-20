@@ -7,6 +7,7 @@ attributes common between request and return objects
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **study** | **str** |  | [optional] 
+**table_id** | **str** |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 

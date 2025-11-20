@@ -41,10 +41,11 @@ class AnalysisRequest(BaseModel):
     conditions: Optional[AnalysisRequestRelationshipsConditions] = None
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
+    table_id: Optional[StrictStr] = None
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "entities", "order", "metadata"]
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "table_id", "entities", "order", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +112,11 @@ class AnalysisRequest(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if table_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.table_id is None and "table_id" in self.model_fields_set:
+            _dict['table_id'] = None
+
         # set to None if order (nullable) is None
         # and model_fields_set contains the field
         if self.order is None and "order" in self.model_fields_set:
@@ -142,6 +148,7 @@ class AnalysisRequest(BaseModel):
             "conditions": AnalysisRequestRelationshipsConditions.from_dict(obj["conditions"]) if obj.get("conditions") is not None else None,
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
+            "table_id": obj.get("table_id"),
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "order": obj.get("order"),
             "metadata": obj.get("metadata")

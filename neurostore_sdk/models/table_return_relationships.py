@@ -18,22 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.entity import Entity
+from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisCommon(BaseModel):
+class TableReturnRelationships(BaseModel):
     """
-    attributes common between request and return objects
+    TableReturnRelationships
     """ # noqa: E501
     study: Optional[StrictStr] = None
-    table_id: Optional[StrictStr] = None
-    entities: Optional[List[Entity]] = None
-    order: Optional[StrictInt] = None
-    metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["study", "table_id", "entities", "order", "metadata"]
+    analyses: Optional[StudyReturnRelationshipsAnalyses] = None
+    __properties: ClassVar[List[str]] = ["study", "analyses"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +50,7 @@ class AnalysisCommon(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a JSON string"""
+        """Create an instance of TableReturnRelationships from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,33 +71,14 @@ class AnalysisCommon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
-        _items = []
-        if self.entities:
-            for _item_entities in self.entities:
-                if _item_entities:
-                    _items.append(_item_entities.to_dict())
-            _dict['entities'] = _items
-        # set to None if table_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.table_id is None and "table_id" in self.model_fields_set:
-            _dict['table_id'] = None
-
-        # set to None if order (nullable) is None
-        # and model_fields_set contains the field
-        if self.order is None and "order" in self.model_fields_set:
-            _dict['order'] = None
-
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of analyses
+        if self.analyses:
+            _dict['analyses'] = self.analyses.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a dict"""
+        """Create an instance of TableReturnRelationships from a dict"""
         if obj is None:
             return None
 
@@ -109,10 +87,7 @@ class AnalysisCommon(BaseModel):
 
         _obj = cls.model_validate({
             "study": obj.get("study"),
-            "table_id": obj.get("table_id"),
-            "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "order": obj.get("order"),
-            "metadata": obj.get("metadata")
+            "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj["analyses"]) if obj.get("analyses") is not None else None
         })
         return _obj
 

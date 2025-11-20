@@ -48,6 +48,9 @@ from neurostore_sdk.models.study_request import StudyRequest
 from neurostore_sdk.models.study_return import StudyReturn
 from neurostore_sdk.models.studyset_request import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
+from neurostore_sdk.models.table_list import TableList
+from neurostore_sdk.models.table_request import TableRequest
+from neurostore_sdk.models.table_return import TableReturn
 
 from neurostore_sdk.api_client import ApiClient, RequestSerialized
 from neurostore_sdk.api_response import ApiResponse
@@ -76,8 +79,8 @@ class StoreApi:
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         _request_timeout: Union[
             None,
@@ -108,10 +111,10 @@ class StoreApi:
         :type page_size: int
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
+        :param study: Filter tables by study id
+        :type study: str
         :param name: search the name field for a term
         :type name: str
-        :param description: search description field for a term
-        :type description: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -143,8 +146,8 @@ class StoreApi:
             desc=desc,
             page_size=page_size,
             paginate=paginate,
+            study=study,
             name=name,
-            description=description,
             nested=nested,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -175,8 +178,8 @@ class StoreApi:
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         _request_timeout: Union[
             None,
@@ -207,10 +210,10 @@ class StoreApi:
         :type page_size: int
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
+        :param study: Filter tables by study id
+        :type study: str
         :param name: search the name field for a term
         :type name: str
-        :param description: search description field for a term
-        :type description: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -242,8 +245,8 @@ class StoreApi:
             desc=desc,
             page_size=page_size,
             paginate=paginate,
+            study=study,
             name=name,
-            description=description,
             nested=nested,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -274,8 +277,8 @@ class StoreApi:
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
-        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         _request_timeout: Union[
             None,
@@ -306,10 +309,10 @@ class StoreApi:
         :type page_size: int
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
+        :param study: Filter tables by study id
+        :type study: str
         :param name: search the name field for a term
         :type name: str
-        :param description: search description field for a term
-        :type description: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -341,8 +344,8 @@ class StoreApi:
             desc=desc,
             page_size=page_size,
             paginate=paginate,
+            study=study,
             name=name,
-            description=description,
             nested=nested,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -368,8 +371,8 @@ class StoreApi:
         desc,
         page_size,
         paginate,
+        study,
         name,
-        description,
         nested,
         _request_auth,
         _content_type,
@@ -417,13 +420,13 @@ class StoreApi:
             
             _query_params.append(('paginate', paginate))
             
+        if study is not None:
+            
+            _query_params.append(('study', study))
+            
         if name is not None:
             
             _query_params.append(('name', name))
-            
-        if description is not None:
-            
-            _query_params.append(('description', description))
             
         if nested is not None:
             
@@ -12888,6 +12891,1504 @@ class StoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/studysets/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def tables_get(
+        self,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
+        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TableList:
+        """GET list of tables
+
+        List all tables across studies.
+
+        :param search: search for entries that contain the substring
+        :type search: str
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param name: search the name field for a term
+        :type name: str
+        :param description: search description field for a term
+        :type description: str
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_get_serialize(
+            search=search,
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            name=name,
+            description=description,
+            nested=nested,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def tables_get_with_http_info(
+        self,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
+        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TableList]:
+        """GET list of tables
+
+        List all tables across studies.
+
+        :param search: search for entries that contain the substring
+        :type search: str
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param name: search the name field for a term
+        :type name: str
+        :param description: search description field for a term
+        :type description: str
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_get_serialize(
+            search=search,
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            name=name,
+            description=description,
+            nested=nested,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def tables_get_without_preload_content(
+        self,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
+        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET list of tables
+
+        List all tables across studies.
+
+        :param search: search for entries that contain the substring
+        :type search: str
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param name: search the name field for a term
+        :type name: str
+        :param description: search description field for a term
+        :type description: str
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_get_serialize(
+            search=search,
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            name=name,
+            description=description,
+            nested=nested,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _tables_get_serialize(
+        self,
+        search,
+        sort,
+        page,
+        desc,
+        page_size,
+        paginate,
+        name,
+        description,
+        nested,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if search is not None:
+            
+            _query_params.append(('search', search))
+            
+        if sort is not None:
+            
+            _query_params.append(('sort', sort))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if desc is not None:
+            
+            _query_params.append(('desc', desc))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
+        if name is not None:
+            
+            _query_params.append(('name', name))
+            
+        if description is not None:
+            
+            _query_params.append(('description', description))
+            
+        if nested is not None:
+            
+            _query_params.append(('nested', nested))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tables/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def tables_id_delete(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """DELETE a table
+
+        delete a table
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_delete_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def tables_id_delete_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """DELETE a table
+
+        delete a table
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_delete_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def tables_id_delete_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """DELETE a table
+
+        delete a table
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_delete_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _tables_id_delete_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/tables/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def tables_id_get(
+        self,
+        id: StrictStr,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TableReturn:
+        """GET a table
+
+        Information about a specific table.
+
+        :param id: (required)
+        :type id: str
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_get_serialize(
+            id=id,
+            nested=nested,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def tables_id_get_with_http_info(
+        self,
+        id: StrictStr,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TableReturn]:
+        """GET a table
+
+        Information about a specific table.
+
+        :param id: (required)
+        :type id: str
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_get_serialize(
+            id=id,
+            nested=nested,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def tables_id_get_without_preload_content(
+        self,
+        id: StrictStr,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET a table
+
+        Information about a specific table.
+
+        :param id: (required)
+        :type id: str
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_get_serialize(
+            id=id,
+            nested=nested,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _tables_id_get_serialize(
+        self,
+        id,
+        nested,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if nested is not None:
+            
+            _query_params.append(('nested', nested))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/tables/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def tables_id_put(
+        self,
+        id: StrictStr,
+        table_request: Optional[TableRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TableReturn:
+        """PUT/update a table
+
+        update a table
+
+        :param id: (required)
+        :type id: str
+        :param table_request:
+        :type table_request: TableRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_put_serialize(
+            id=id,
+            table_request=table_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def tables_id_put_with_http_info(
+        self,
+        id: StrictStr,
+        table_request: Optional[TableRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TableReturn]:
+        """PUT/update a table
+
+        update a table
+
+        :param id: (required)
+        :type id: str
+        :param table_request:
+        :type table_request: TableRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_put_serialize(
+            id=id,
+            table_request=table_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def tables_id_put_without_preload_content(
+        self,
+        id: StrictStr,
+        table_request: Optional[TableRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """PUT/update a table
+
+        update a table
+
+        :param id: (required)
+        :type id: str
+        :param table_request:
+        :type table_request: TableRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_id_put_serialize(
+            id=id,
+            table_request=table_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _tables_id_put_serialize(
+        self,
+        id,
+        table_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if table_request is not None:
+            _body_params = table_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/tables/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def tables_post(
+        self,
+        table_request: Optional[TableRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TableReturn:
+        """POST/create a table
+
+        create a table
+
+        :param table_request:
+        :type table_request: TableRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_post_serialize(
+            table_request=table_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def tables_post_with_http_info(
+        self,
+        table_request: Optional[TableRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TableReturn]:
+        """POST/create a table
+
+        create a table
+
+        :param table_request:
+        :type table_request: TableRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_post_serialize(
+            table_request=table_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def tables_post_without_preload_content(
+        self,
+        table_request: Optional[TableRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """POST/create a table
+
+        create a table
+
+        :param table_request:
+        :type table_request: TableRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._tables_post_serialize(
+            table_request=table_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TableReturn",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _tables_post_serialize(
+        self,
+        table_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if table_request is not None:
+            _body_params = table_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/tables/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -18,22 +18,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.entity import Entity
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisCommon(BaseModel):
+class TableRequest(BaseModel):
     """
-    attributes common between request and return objects
+    TableRequest
     """ # noqa: E501
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
+    t_id: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    footer: Optional[StrictStr] = None
+    caption: Optional[StrictStr] = None
     study: Optional[StrictStr] = None
-    table_id: Optional[StrictStr] = None
-    entities: Optional[List[Entity]] = None
-    order: Optional[StrictInt] = None
-    metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["study", "table_id", "entities", "order", "metadata"]
+    __properties: ClassVar[List[str]] = ["id", "public", "t_id", "name", "footer", "caption", "study"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +55,7 @@ class AnalysisCommon(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a JSON string"""
+        """Create an instance of TableRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,33 +76,31 @@ class AnalysisCommon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
-        _items = []
-        if self.entities:
-            for _item_entities in self.entities:
-                if _item_entities:
-                    _items.append(_item_entities.to_dict())
-            _dict['entities'] = _items
-        # set to None if table_id (nullable) is None
+        # set to None if t_id (nullable) is None
         # and model_fields_set contains the field
-        if self.table_id is None and "table_id" in self.model_fields_set:
-            _dict['table_id'] = None
+        if self.t_id is None and "t_id" in self.model_fields_set:
+            _dict['t_id'] = None
 
-        # set to None if order (nullable) is None
+        # set to None if name (nullable) is None
         # and model_fields_set contains the field
-        if self.order is None and "order" in self.model_fields_set:
-            _dict['order'] = None
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
-        # set to None if metadata (nullable) is None
+        # set to None if footer (nullable) is None
         # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
+        if self.footer is None and "footer" in self.model_fields_set:
+            _dict['footer'] = None
+
+        # set to None if caption (nullable) is None
+        # and model_fields_set contains the field
+        if self.caption is None and "caption" in self.model_fields_set:
+            _dict['caption'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisCommon from a dict"""
+        """Create an instance of TableRequest from a dict"""
         if obj is None:
             return None
 
@@ -108,11 +108,13 @@ class AnalysisCommon(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "study": obj.get("study"),
-            "table_id": obj.get("table_id"),
-            "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "order": obj.get("order"),
-            "metadata": obj.get("metadata")
+            "id": obj.get("id"),
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "t_id": obj.get("t_id"),
+            "name": obj.get("name"),
+            "footer": obj.get("footer"),
+            "caption": obj.get("caption"),
+            "study": obj.get("study")
         })
         return _obj
 
