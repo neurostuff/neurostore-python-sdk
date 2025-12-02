@@ -4059,6 +4059,7 @@ class StoreApi:
     @validate_call
     def base_studies_get(
         self,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
         x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
         y: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Y coordinate for spatial query (requires x, z, and radius)")] = None,
@@ -4106,6 +4107,8 @@ class StoreApi:
         """
 
 
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
         :param year_min: Minimum publication year (inclusive) for study search
         :type year_min: int
         :param x: X coordinate for spatial query (requires y, z, and radius)
@@ -4191,6 +4194,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            nested=nested,
             year_min=year_min,
             x=x,
             y=y,
@@ -4245,6 +4249,7 @@ class StoreApi:
     @validate_call
     def base_studies_get_with_http_info(
         self,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
         x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
         y: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Y coordinate for spatial query (requires x, z, and radius)")] = None,
@@ -4292,6 +4297,8 @@ class StoreApi:
         """
 
 
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
         :param year_min: Minimum publication year (inclusive) for study search
         :type year_min: int
         :param x: X coordinate for spatial query (requires y, z, and radius)
@@ -4377,6 +4384,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            nested=nested,
             year_min=year_min,
             x=x,
             y=y,
@@ -4431,6 +4439,7 @@ class StoreApi:
     @validate_call
     def base_studies_get_without_preload_content(
         self,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
         x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
         y: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Y coordinate for spatial query (requires x, z, and radius)")] = None,
@@ -4478,6 +4487,8 @@ class StoreApi:
         """
 
 
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
         :param year_min: Minimum publication year (inclusive) for study search
         :type year_min: int
         :param x: X coordinate for spatial query (requires y, z, and radius)
@@ -4563,6 +4574,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            nested=nested,
             year_min=year_min,
             x=x,
             y=y,
@@ -4612,6 +4624,7 @@ class StoreApi:
 
     def _base_studies_get_serialize(
         self,
+        nested,
         year_min,
         x,
         y,
@@ -4667,6 +4680,10 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if nested is not None:
+            
+            _query_params.append(('nested', nested))
+            
         if year_min is not None:
             
             _query_params.append(('year_min', year_min))
@@ -4834,6 +4851,7 @@ class StoreApi:
         id: StrictStr,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4856,6 +4874,8 @@ class StoreApi:
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
         :type info: bool
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4882,6 +4902,7 @@ class StoreApi:
             id=id,
             flat=flat,
             info=info,
+            nested=nested,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4908,6 +4929,7 @@ class StoreApi:
         id: StrictStr,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4930,6 +4952,8 @@ class StoreApi:
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
         :type info: bool
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4956,6 +4980,7 @@ class StoreApi:
             id=id,
             flat=flat,
             info=info,
+            nested=nested,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4982,6 +5007,7 @@ class StoreApi:
         id: StrictStr,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
+        nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5004,6 +5030,8 @@ class StoreApi:
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
         :type info: bool
+        :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
+        :type nested: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5030,6 +5058,7 @@ class StoreApi:
             id=id,
             flat=flat,
             info=info,
+            nested=nested,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5051,6 +5080,7 @@ class StoreApi:
         id,
         flat,
         info,
+        nested,
         _request_auth,
         _content_type,
         _headers,
@@ -5082,6 +5112,10 @@ class StoreApi:
         if info is not None:
             
             _query_params.append(('info', info))
+            
+        if nested is not None:
+            
+            _query_params.append(('nested', nested))
             
         # process the header parameters
         # process the form parameters

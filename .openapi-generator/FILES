@@ -247,11 +247,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_table_common.py
-test/test_table_list.py
-test/test_table_request.py
-test/test_table_request_relationships.py
-test/test_table_return.py
-test/test_table_return_relationships.py
-test/test_tables_api.py
 tox.ini

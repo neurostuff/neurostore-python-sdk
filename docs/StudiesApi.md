@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -50,6 +50,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StudiesApi(api_client)
+    nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     year_min = 56 # int | Minimum publication year (inclusive) for study search (optional)
     x = 10 # float | X coordinate for spatial query (requires y, z, and radius) (optional)
     y = 20 # float | Y coordinate for spatial query (requires x, z, and radius) (optional)
@@ -84,7 +85,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
         print("The response of StudiesApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -98,6 +99,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **year_min** | **int**| Minimum publication year (inclusive) for study search | [optional] 
  **x** | **float**| X coordinate for spatial query (requires y, z, and radius) | [optional] 
  **y** | **float**| Y coordinate for spatial query (requires x, z, and radius) | [optional] 
@@ -152,7 +154,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_id_get**
-> BaseStudyReturn base_studies_id_get(id, flat=flat, info=info)
+> BaseStudyReturn base_studies_id_get(id, flat=flat, info=info, nested=nested)
 
 Your GET endpoint
 
@@ -179,10 +181,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     id = 'id_example' # str | 
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
+    nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # Your GET endpoint
-        api_response = api_instance.base_studies_id_get(id, flat=flat, info=info)
+        api_response = api_instance.base_studies_id_get(id, flat=flat, info=info, nested=nested)
         print("The response of StudiesApi->base_studies_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -199,6 +202,7 @@ Name | Type | Description  | Notes
  **id** | **str**|  | 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
+ **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
 
 ### Return type
 
