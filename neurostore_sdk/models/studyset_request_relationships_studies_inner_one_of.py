@@ -18,18 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StudysetRequestRelationships(BaseModel):
+class StudysetRequestRelationshipsStudiesInnerOneOf(BaseModel):
     """
-    StudysetRequestRelationships
+    StudysetRequestRelationshipsStudiesInnerOneOf
     """ # noqa: E501
-    studies: Optional[List[StudysetRequestRelationshipsStudiesInner]] = Field(default=None, description="Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment. ")
-    __properties: ClassVar[List[str]] = ["studies"]
+    id: StrictStr
+    curation_stub_uuid: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "curation_stub_uuid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class StudysetRequestRelationships(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StudysetRequestRelationships from a JSON string"""
+        """Create an instance of StudysetRequestRelationshipsStudiesInnerOneOf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,18 +70,11 @@ class StudysetRequestRelationships(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in studies (list)
-        _items = []
-        if self.studies:
-            for _item_studies in self.studies:
-                if _item_studies:
-                    _items.append(_item_studies.to_dict())
-            _dict['studies'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StudysetRequestRelationships from a dict"""
+        """Create an instance of StudysetRequestRelationshipsStudiesInnerOneOf from a dict"""
         if obj is None:
             return None
 
@@ -89,7 +82,8 @@ class StudysetRequestRelationships(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "studies": [StudysetRequestRelationshipsStudiesInner.from_dict(_item) for _item in obj["studies"]] if obj.get("studies") is not None else None
+            "id": obj.get("id"),
+            "curation_stub_uuid": obj.get("curation_stub_uuid")
         })
         return _obj
 

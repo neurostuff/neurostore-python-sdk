@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**studies** | **List[object]** |  | [optional] 
+**studies** | [**List[StudysetRequestRelationshipsStudiesInner]**](StudysetRequestRelationshipsStudiesInner.md) | Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment.  | [optional] 
 
 ## Example
 

@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +34,7 @@ class StudysetRequest(BaseModel):
     publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.")
     doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
     pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
-    studies: Optional[List[Dict[str, Any]]] = None
+    studies: Optional[List[StudysetRequestRelationshipsStudiesInner]] = Field(default=None, description="Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment. ")
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     level: Optional[StrictStr] = None
@@ -88,6 +89,13 @@ class StudysetRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in studies (list)
+        _items = []
+        if self.studies:
+            for _item_studies in self.studies:
+                if _item_studies:
+                    _items.append(_item_studies.to_dict())
+            _dict['studies'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -130,7 +138,7 @@ class StudysetRequest(BaseModel):
             "publication": obj.get("publication"),
             "doi": obj.get("doi"),
             "pmid": obj.get("pmid"),
-            "studies": obj.get("studies"),
+            "studies": [StudysetRequestRelationshipsStudiesInner.from_dict(_item) for _item in obj["studies"]] if obj.get("studies") is not None else None,
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "level": obj.get("level")
