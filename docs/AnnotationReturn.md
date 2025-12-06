@@ -5,10 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | **object** | object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation. | [optional] 
-**annotation_csv** | **str** | annotation object expressed as a CSV | 
 **name** | **str** | Descriptive name for the annotation. | [optional] 
 **description** | **str** | Long form description of the annotation. | [optional] 
+**metadata** | **object** |  | [optional] [readonly] 
 **note_keys** | **object** | The keys (columns) in the annotation and the key&#39;s respective data type (such as an integer or string). | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
@@ -21,6 +20,7 @@ Name | Type | Description | Notes
 **source_updated_at** | **str** |  | [optional] [readonly] 
 **notes** | [**AnnotationReturnRelationshipsNotes**](AnnotationReturnRelationshipsNotes.md) |  | [optional] 
 **studyset** | **str** |  | [optional] 
+**annotation_csv** | **str** | annotation object expressed as a CSV | 
 
 ## Example
 

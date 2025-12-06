@@ -30,7 +30,6 @@ class BaseStudyReturn(BaseModel):
     """
     BaseStudyReturn
     """ # noqa: E501
-    features: Optional[Dict[str, Any]] = None
     metadata: Optional[Dict[str, Any]] = None
     versions: Optional[List[BaseStudyVersionsInner]] = None
     name: Optional[StrictStr] = None
@@ -49,7 +48,8 @@ class BaseStudyReturn(BaseModel):
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "created_at", "updated_at", "id", "public", "user", "username"]
+    features: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "created_at", "updated_at", "id", "public", "user", "username", "features"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -202,7 +202,8 @@ class BaseStudyReturn(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "features": obj.get("features")
         })
         return _obj
 

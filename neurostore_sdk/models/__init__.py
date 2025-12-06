@@ -13,7 +13,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from neurostore_sdk.models.analysis_base import AnalysisBase
 from neurostore_sdk.models.analysis_common import AnalysisCommon
@@ -40,7 +39,6 @@ from neurostore_sdk.models.annotation_request_relationships import AnnotationReq
 from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes
 from neurostore_sdk.models.annotation_return import AnnotationReturn
 from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
-from neurostore_sdk.models.annotation_return_one_of1 import AnnotationReturnOneOf1
 from neurostore_sdk.models.annotation_return_relationships import AnnotationReturnRelationships
 from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
 from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response
@@ -117,3 +115,4 @@ from neurostore_sdk.models.table_return_relationships import TableReturnRelation
 from neurostore_sdk.models.user import User
 from neurostore_sdk.models.user_list import UserList
 from neurostore_sdk.models.userless_resource_attributes import UserlessResourceAttributes
+

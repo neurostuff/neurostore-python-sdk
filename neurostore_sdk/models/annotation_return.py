@@ -18,24 +18,24 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
+from neurostore_sdk.models.annotation_export import AnnotationExport
 from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
-from neurostore_sdk.models.annotation_return_one_of1 import AnnotationReturnOneOf1
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-ANNOTATIONRETURN_ONE_OF_SCHEMAS = ["AnnotationReturnOneOf", "AnnotationReturnOneOf1"]
+ANNOTATIONRETURN_ONE_OF_SCHEMAS = ["AnnotationExport", "AnnotationReturnOneOf"]
 
 class AnnotationReturn(BaseModel):
     """
     AnnotationReturn
     """
+    # data type: AnnotationExport
+    oneof_schema_1_validator: Optional[AnnotationExport] = None
     # data type: AnnotationReturnOneOf
-    oneof_schema_1_validator: Optional[AnnotationReturnOneOf] = None
-    # data type: AnnotationReturnOneOf1
-    oneof_schema_2_validator: Optional[AnnotationReturnOneOf1] = None
-    actual_instance: Optional[Union[AnnotationReturnOneOf, AnnotationReturnOneOf1]] = None
-    one_of_schemas: Set[str] = { "AnnotationReturnOneOf", "AnnotationReturnOneOf1" }
+    oneof_schema_2_validator: Optional[AnnotationReturnOneOf] = None
+    actual_instance: Optional[Union[AnnotationExport, AnnotationReturnOneOf]] = None
+    one_of_schemas: Set[str] = { "AnnotationExport", "AnnotationReturnOneOf" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -58,22 +58,22 @@ class AnnotationReturn(BaseModel):
         instance = AnnotationReturn.model_construct()
         error_messages = []
         match = 0
+        # validate data type: AnnotationExport
+        if not isinstance(v, AnnotationExport):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationExport`")
+        else:
+            match += 1
         # validate data type: AnnotationReturnOneOf
         if not isinstance(v, AnnotationReturnOneOf):
             error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationReturnOneOf`")
         else:
             match += 1
-        # validate data type: AnnotationReturnOneOf1
-        if not isinstance(v, AnnotationReturnOneOf1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `AnnotationReturnOneOf1`")
-        else:
-            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in AnnotationReturn with oneOf schemas: AnnotationReturnOneOf, AnnotationReturnOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in AnnotationReturn with oneOf schemas: AnnotationExport, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in AnnotationReturn with oneOf schemas: AnnotationReturnOneOf, AnnotationReturnOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in AnnotationReturn with oneOf schemas: AnnotationExport, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -88,25 +88,25 @@ class AnnotationReturn(BaseModel):
         error_messages = []
         match = 0
 
+        # deserialize data into AnnotationExport
+        try:
+            instance.actual_instance = AnnotationExport.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
         # deserialize data into AnnotationReturnOneOf
         try:
             instance.actual_instance = AnnotationReturnOneOf.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into AnnotationReturnOneOf1
-        try:
-            instance.actual_instance = AnnotationReturnOneOf1.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into AnnotationReturn with oneOf schemas: AnnotationReturnOneOf, AnnotationReturnOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into AnnotationReturn with oneOf schemas: AnnotationExport, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into AnnotationReturn with oneOf schemas: AnnotationReturnOneOf, AnnotationReturnOneOf1. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into AnnotationReturn with oneOf schemas: AnnotationExport, AnnotationReturnOneOf. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -120,7 +120,7 @@ class AnnotationReturn(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], AnnotationReturnOneOf, AnnotationReturnOneOf1]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], AnnotationExport, AnnotationReturnOneOf]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

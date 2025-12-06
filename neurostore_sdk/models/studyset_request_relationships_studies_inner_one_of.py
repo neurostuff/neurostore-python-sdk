@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class StudysetRequestRelationshipsStudiesInnerOneOf(BaseModel):
     StudysetRequestRelationshipsStudiesInnerOneOf
     """ # noqa: E501
     id: StrictStr
-    curation_stub_uuid: Optional[StrictStr] = None
+    curation_stub_uuid: Optional[UUID] = None
     __properties: ClassVar[List[str]] = ["id", "curation_stub_uuid"]
 
     model_config = ConfigDict(

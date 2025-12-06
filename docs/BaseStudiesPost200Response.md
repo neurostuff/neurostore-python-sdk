@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**features** | **object** |  | [optional] 
 **metadata** | **object** |  | [optional] 
 **versions** | [**List[BaseStudyVersionsInner]**](BaseStudyVersionsInner.md) |  | [optional] 
 **name** | **str** |  | [optional] 
@@ -24,6 +23,7 @@ Name | Type | Description | Notes
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
+**features** | **object** |  | [optional] 
 
 ## Example
 

@@ -18,8 +18,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,9 +30,22 @@ class AnnotationReturnOneOf(BaseModel):
     """
     AnnotationReturnOneOf
     """ # noqa: E501
-    metadata: Optional[Dict[str, Any]] = None
-    annotation_csv: StrictStr = Field(description="annotation object expressed as a CSV")
-    __properties: ClassVar[List[str]] = ["metadata", "annotation_csv"]
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.")
+    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
+    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
+    user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
+    username: Optional[StrictStr] = Field(default=None, description="human readable username")
+    source: Optional[StrictStr] = None
+    source_id: Optional[StrictStr] = None
+    source_updated_at: Optional[StrictStr] = None
+    notes: Optional[AnnotationReturnRelationshipsNotes] = None
+    studyset: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "metadata", "note_keys", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "notes", "studyset"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,9 +78,15 @@ class AnnotationReturnOneOf(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "metadata",
+            "created_at",
+            "updated_at",
+            "user",
+            "source_updated_at",
         ])
 
         _dict = self.model_dump(
@@ -72,10 +94,58 @@ class AnnotationReturnOneOf(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of notes
+        if self.notes:
+            _dict['notes'] = self.notes.to_dict()
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
+
+        # set to None if note_keys (nullable) is None
+        # and model_fields_set contains the field
+        if self.note_keys is None and "note_keys" in self.model_fields_set:
+            _dict['note_keys'] = None
+
+        # set to None if updated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.updated_at is None and "updated_at" in self.model_fields_set:
+            _dict['updated_at'] = None
+
+        # set to None if user (nullable) is None
+        # and model_fields_set contains the field
+        if self.user is None and "user" in self.model_fields_set:
+            _dict['user'] = None
+
+        # set to None if username (nullable) is None
+        # and model_fields_set contains the field
+        if self.username is None and "username" in self.model_fields_set:
+            _dict['username'] = None
+
+        # set to None if source (nullable) is None
+        # and model_fields_set contains the field
+        if self.source is None and "source" in self.model_fields_set:
+            _dict['source'] = None
+
+        # set to None if source_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_id is None and "source_id" in self.model_fields_set:
+            _dict['source_id'] = None
+
+        # set to None if source_updated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_updated_at is None and "source_updated_at" in self.model_fields_set:
+            _dict['source_updated_at'] = None
 
         return _dict
 
@@ -89,8 +159,21 @@ class AnnotationReturnOneOf(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
             "metadata": obj.get("metadata"),
-            "annotation_csv": obj.get("annotation_csv")
+            "note_keys": obj.get("note_keys"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "id": obj.get("id"),
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "user": obj.get("user"),
+            "username": obj.get("username"),
+            "source": obj.get("source"),
+            "source_id": obj.get("source_id"),
+            "source_updated_at": obj.get("source_updated_at"),
+            "notes": AnnotationReturnRelationshipsNotes.from_dict(obj["notes"]) if obj.get("notes") is not None else None,
+            "studyset": obj.get("studyset")
         })
         return _obj
 
