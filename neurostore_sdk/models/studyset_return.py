@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
+from neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner import StudysetReturnRelationshipsStudysetStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -44,9 +45,10 @@ class StudysetReturn(BaseModel):
     source: Optional[StrictStr] = None
     source_id: Optional[StrictStr] = None
     source_updated_at: Optional[StrictStr] = None
+    studyset_studies: Optional[List[StudysetReturnRelationshipsStudysetStudiesInner]] = Field(default=None, description="Association records for studies in this studyset (includes stub UUIDs for mapping).")
     studies: Optional[StudysetReturnRelationshipsStudies] = None
     level: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "publication", "doi", "pmid", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "studies", "level"]
+    __properties: ClassVar[List[str]] = ["name", "description", "publication", "doi", "pmid", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "studyset_studies", "studies", "level"]
 
     @field_validator('level')
     def level_validate_enum(cls, value):
@@ -105,6 +107,13 @@ class StudysetReturn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in studyset_studies (list)
+        _items = []
+        if self.studyset_studies:
+            for _item_studyset_studies in self.studyset_studies:
+                if _item_studyset_studies:
+                    _items.append(_item_studyset_studies.to_dict())
+            _dict['studyset_studies'] = _items
         # override the default output from pydantic by calling `to_dict()` of studies
         if self.studies:
             _dict['studies'] = self.studies.to_dict()
@@ -189,6 +198,7 @@ class StudysetReturn(BaseModel):
             "source": obj.get("source"),
             "source_id": obj.get("source_id"),
             "source_updated_at": obj.get("source_updated_at"),
+            "studyset_studies": [StudysetReturnRelationshipsStudysetStudiesInner.from_dict(_item) for _item in obj["studyset_studies"]] if obj.get("studyset_studies") is not None else None,
             "studies": StudysetReturnRelationshipsStudies.from_dict(obj["studies"]) if obj.get("studies") is not None else None,
             "level": obj.get("level")
         })

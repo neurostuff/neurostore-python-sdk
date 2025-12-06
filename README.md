@@ -310,6 +310,7 @@ Class | Method | HTTP request | Description
  - [StudysetReturn](docs/StudysetReturn.md)
  - [StudysetReturnRelationships](docs/StudysetReturnRelationships.md)
  - [StudysetReturnRelationshipsStudies](docs/StudysetReturnRelationshipsStudies.md)
+ - [StudysetReturnRelationshipsStudysetStudiesInner](docs/StudysetReturnRelationshipsStudysetStudiesInner.md)
  - [TableCommon](docs/TableCommon.md)
  - [TableList](docs/TableList.md)
  - [TableRequest](docs/TableRequest.md)

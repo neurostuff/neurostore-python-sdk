@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **source** | **str** |  | [optional] 
 **source_id** | **str** |  | [optional] 
 **source_updated_at** | **str** |  | [optional] [readonly] 
+**studyset_studies** | [**List[StudysetReturnRelationshipsStudysetStudiesInner]**](StudysetReturnRelationshipsStudysetStudiesInner.md) | Association records for studies in this studyset (includes stub UUIDs for mapping). | [optional] 
 **studies** | [**StudysetReturnRelationshipsStudies**](StudysetReturnRelationshipsStudies.md) |  | [optional] 
 **level** | **str** |  | [optional] 
 

@@ -18,20 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
-from neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner import StudysetReturnRelationshipsStudysetStudiesInner
+from uuid import UUID
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StudysetReturnRelationships(BaseModel):
+class StudysetReturnRelationshipsStudysetStudiesInner(BaseModel):
     """
-    StudysetReturnRelationships
+    StudysetReturnRelationshipsStudysetStudiesInner
     """ # noqa: E501
-    studyset_studies: Optional[List[StudysetReturnRelationshipsStudysetStudiesInner]] = Field(default=None, description="Association records for studies in this studyset (includes stub UUIDs for mapping).")
-    studies: Optional[StudysetReturnRelationshipsStudies] = None
-    __properties: ClassVar[List[str]] = ["studyset_studies", "studies"]
+    id: Optional[StrictStr] = None
+    curation_stub_uuid: Optional[UUID] = None
+    __properties: ClassVar[List[str]] = ["id", "curation_stub_uuid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +50,7 @@ class StudysetReturnRelationships(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StudysetReturnRelationships from a JSON string"""
+        """Create an instance of StudysetReturnRelationshipsStudysetStudiesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,21 +71,16 @@ class StudysetReturnRelationships(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in studyset_studies (list)
-        _items = []
-        if self.studyset_studies:
-            for _item_studyset_studies in self.studyset_studies:
-                if _item_studyset_studies:
-                    _items.append(_item_studyset_studies.to_dict())
-            _dict['studyset_studies'] = _items
-        # override the default output from pydantic by calling `to_dict()` of studies
-        if self.studies:
-            _dict['studies'] = self.studies.to_dict()
+        # set to None if curation_stub_uuid (nullable) is None
+        # and model_fields_set contains the field
+        if self.curation_stub_uuid is None and "curation_stub_uuid" in self.model_fields_set:
+            _dict['curation_stub_uuid'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StudysetReturnRelationships from a dict"""
+        """Create an instance of StudysetReturnRelationshipsStudysetStudiesInner from a dict"""
         if obj is None:
             return None
 
@@ -94,8 +88,8 @@ class StudysetReturnRelationships(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "studyset_studies": [StudysetReturnRelationshipsStudysetStudiesInner.from_dict(_item) for _item in obj["studyset_studies"]] if obj.get("studyset_studies") is not None else None,
-            "studies": StudysetReturnRelationshipsStudies.from_dict(obj["studies"]) if obj.get("studies") is not None else None
+            "id": obj.get("id"),
+            "curation_stub_uuid": obj.get("curation_stub_uuid")
         })
         return _obj
 

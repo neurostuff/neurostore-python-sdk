@@ -134,6 +134,7 @@ __all__ = [
     "StudysetReturn",
     "StudysetReturnRelationships",
     "StudysetReturnRelationshipsStudies",
+    "StudysetReturnRelationshipsStudysetStudiesInner",
     "TableCommon",
     "TableList",
     "TableRequest",
@@ -265,6 +266,7 @@ from neurostore_sdk.models.studyset_request_relationships_studies_inner_any_of i
 from neurostore_sdk.models.studyset_return import StudysetReturn as StudysetReturn
 from neurostore_sdk.models.studyset_return_relationships import StudysetReturnRelationships as StudysetReturnRelationships
 from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies as StudysetReturnRelationshipsStudies
+from neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner import StudysetReturnRelationshipsStudysetStudiesInner as StudysetReturnRelationshipsStudysetStudiesInner
 from neurostore_sdk.models.table_common import TableCommon as TableCommon
 from neurostore_sdk.models.table_list import TableList as TableList
 from neurostore_sdk.models.table_request import TableRequest as TableRequest

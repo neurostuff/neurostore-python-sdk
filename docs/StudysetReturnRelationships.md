@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**studyset_studies** | [**List[StudysetReturnRelationshipsStudysetStudiesInner]**](StudysetReturnRelationshipsStudysetStudiesInner.md) | Association records for studies in this studyset (includes stub UUIDs for mapping). | [optional] 
 **studies** | [**StudysetReturnRelationshipsStudies**](StudysetReturnRelationshipsStudies.md) |  | [optional] 
 
 ## Example
