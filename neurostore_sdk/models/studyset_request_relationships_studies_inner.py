@@ -14,33 +14,41 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
 import json
 import pprint
+import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Any, List, Optional
-from neurostore_sdk.models.studyset_request_relationships_studies_inner_one_of import StudysetRequestRelationshipsStudiesInnerOneOf
-from pydantic import StrictStr, Field
-from typing import Union, List, Set, Optional, Dict
+from typing import Optional
+from neurostore_sdk.models.study_request import StudyRequest
+from neurostore_sdk.models.studyset_request_relationships_studies_inner_any_of import StudysetRequestRelationshipsStudiesInnerAnyOf
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
+from pydantic import Field
 
-STUDYSETREQUESTRELATIONSHIPSSTUDIESINNER_ONE_OF_SCHEMAS = ["StudysetRequestRelationshipsStudiesInnerOneOf", "str"]
+STUDYSETREQUESTRELATIONSHIPSSTUDIESINNER_ANY_OF_SCHEMAS = ["StudyRequest", "StudysetRequestRelationshipsStudiesInnerAnyOf", "str"]
 
 class StudysetRequestRelationshipsStudiesInner(BaseModel):
     """
     StudysetRequestRelationshipsStudiesInner
     """
+
     # data type: str
-    oneof_schema_1_validator: Optional[StrictStr] = None
-    # data type: StudysetRequestRelationshipsStudiesInnerOneOf
-    oneof_schema_2_validator: Optional[StudysetRequestRelationshipsStudiesInnerOneOf] = None
-    actual_instance: Optional[Union[StudysetRequestRelationshipsStudiesInnerOneOf, str]] = None
-    one_of_schemas: Set[str] = { "StudysetRequestRelationshipsStudiesInnerOneOf", "str" }
+    anyof_schema_1_validator: Optional[StrictStr] = None
+    # data type: StudysetRequestRelationshipsStudiesInnerAnyOf
+    anyof_schema_2_validator: Optional[StudysetRequestRelationshipsStudiesInnerAnyOf] = None
+    # data type: StudyRequest
+    anyof_schema_3_validator: Optional[StudyRequest] = None
+    if TYPE_CHECKING:
+        actual_instance: Optional[Union[StudyRequest, StudysetRequestRelationshipsStudiesInnerAnyOf, str]] = None
+    else:
+        actual_instance: Any = None
+    any_of_schemas: Set[str] = { "StudyRequest", "StudysetRequestRelationshipsStudiesInnerAnyOf", "str" }
 
-    model_config = ConfigDict(
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -53,32 +61,35 @@ class StudysetRequestRelationshipsStudiesInner(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
+    def actual_instance_must_validate_anyof(cls, v):
         instance = StudysetRequestRelationshipsStudiesInner.model_construct()
         error_messages = []
-        match = 0
         # validate data type: str
         try:
-            instance.oneof_schema_1_validator = v
-            match += 1
+            instance.anyof_schema_1_validator = v
+            return v
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: StudysetRequestRelationshipsStudiesInnerOneOf
-        if not isinstance(v, StudysetRequestRelationshipsStudiesInnerOneOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `StudysetRequestRelationshipsStudiesInnerOneOf`")
+        # validate data type: StudysetRequestRelationshipsStudiesInnerAnyOf
+        if not isinstance(v, StudysetRequestRelationshipsStudiesInnerAnyOf):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `StudysetRequestRelationshipsStudiesInnerAnyOf`")
         else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in StudysetRequestRelationshipsStudiesInner with oneOf schemas: StudysetRequestRelationshipsStudiesInnerOneOf, str. Details: " + ", ".join(error_messages))
-        elif match == 0:
+            return v
+
+        # validate data type: StudyRequest
+        if not isinstance(v, StudyRequest):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `StudyRequest`")
+        else:
+            return v
+
+        if error_messages:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in StudysetRequestRelationshipsStudiesInner with oneOf schemas: StudysetRequestRelationshipsStudiesInnerOneOf, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in StudysetRequestRelationshipsStudiesInner with anyOf schemas: StudyRequest, StudysetRequestRelationshipsStudiesInnerAnyOf, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -86,30 +97,31 @@ class StudysetRequestRelationshipsStudiesInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        match = 0
-
         # deserialize data into str
         try:
             # validation
-            instance.oneof_schema_1_validator = json.loads(json_str)
+            instance.anyof_schema_1_validator = json.loads(json_str)
             # assign value to actual_instance
-            instance.actual_instance = instance.oneof_schema_1_validator
-            match += 1
+            instance.actual_instance = instance.anyof_schema_1_validator
+            return instance
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into StudysetRequestRelationshipsStudiesInnerOneOf
+        # anyof_schema_2_validator: Optional[StudysetRequestRelationshipsStudiesInnerAnyOf] = None
         try:
-            instance.actual_instance = StudysetRequestRelationshipsStudiesInnerOneOf.from_json(json_str)
-            match += 1
+            instance.actual_instance = StudysetRequestRelationshipsStudiesInnerAnyOf.from_json(json_str)
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
+        # anyof_schema_3_validator: Optional[StudyRequest] = None
+        try:
+            instance.actual_instance = StudyRequest.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into StudysetRequestRelationshipsStudiesInner with oneOf schemas: StudysetRequestRelationshipsStudiesInnerOneOf, str. Details: " + ", ".join(error_messages))
-        elif match == 0:
+        if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into StudysetRequestRelationshipsStudiesInner with oneOf schemas: StudysetRequestRelationshipsStudiesInnerOneOf, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into StudysetRequestRelationshipsStudiesInner with anyOf schemas: StudyRequest, StudysetRequestRelationshipsStudiesInnerAnyOf, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -123,7 +135,7 @@ class StudysetRequestRelationshipsStudiesInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], StudysetRequestRelationshipsStudiesInnerOneOf, str]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], StudyRequest, StudysetRequestRelationshipsStudiesInnerAnyOf, str]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -131,7 +143,6 @@ class StudysetRequestRelationshipsStudiesInner(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
-            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

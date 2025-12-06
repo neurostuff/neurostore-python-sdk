@@ -5,8 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
+**id** | **str** | short UUID specifying the location of this resource | 
 **curation_stub_uuid** | **str** |  | [optional] 
+**doi** | **str** | Digital object identifier of the study. | [optional] 
+**name** | **str** | Title of the study. | [optional] 
+**metadata** | **object** | Metadata associated with the study not covered by the other study attributes. | [optional] 
+**description** | **str** | Long form description of the study, typically the abstract. | [optional] 
+**publication** | **str** | The journal/place of publication for the study. | [optional] 
+**pmid** | **str** | If the study was published on PubMed, place the PubMed ID here. | [optional] 
+**authors** | **str** | The authors on the publication of this study. | [optional] 
+**year** | **int** | The year this study was published. | [optional] 
+**analyses** | [**StudyRequestRelationshipsAnalyses**](StudyRequestRelationshipsAnalyses.md) |  | [optional] 
+**public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
+**pmcid** | **str** |  | [optional] 
 
 ## Example
 

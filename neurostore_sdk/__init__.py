@@ -130,7 +130,7 @@ __all__ = [
     "StudysetRequest",
     "StudysetRequestRelationships",
     "StudysetRequestRelationshipsStudiesInner",
-    "StudysetRequestRelationshipsStudiesInnerOneOf",
+    "StudysetRequestRelationshipsStudiesInnerAnyOf",
     "StudysetReturn",
     "StudysetReturnRelationships",
     "StudysetReturnRelationshipsStudies",
@@ -261,7 +261,7 @@ from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest
 from neurostore_sdk.models.studyset_request_relationships import StudysetRequestRelationships as StudysetRequestRelationships
 from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner as StudysetRequestRelationshipsStudiesInner
-from neurostore_sdk.models.studyset_request_relationships_studies_inner_one_of import StudysetRequestRelationshipsStudiesInnerOneOf as StudysetRequestRelationshipsStudiesInnerOneOf
+from neurostore_sdk.models.studyset_request_relationships_studies_inner_any_of import StudysetRequestRelationshipsStudiesInnerAnyOf as StudysetRequestRelationshipsStudiesInnerAnyOf
 from neurostore_sdk.models.studyset_return import StudysetReturn as StudysetReturn
 from neurostore_sdk.models.studyset_return_relationships import StudysetReturnRelationships as StudysetReturnRelationships
 from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies as StudysetReturnRelationshipsStudies

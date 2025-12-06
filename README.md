@@ -306,7 +306,7 @@ Class | Method | HTTP request | Description
  - [StudysetRequest](docs/StudysetRequest.md)
  - [StudysetRequestRelationships](docs/StudysetRequestRelationships.md)
  - [StudysetRequestRelationshipsStudiesInner](docs/StudysetRequestRelationshipsStudiesInner.md)
- - [StudysetRequestRelationshipsStudiesInnerOneOf](docs/StudysetRequestRelationshipsStudiesInnerOneOf.md)
+ - [StudysetRequestRelationshipsStudiesInnerAnyOf](docs/StudysetRequestRelationshipsStudiesInnerAnyOf.md)
  - [StudysetReturn](docs/StudysetReturn.md)
  - [StudysetReturnRelationships](docs/StudysetReturnRelationships.md)
  - [StudysetReturnRelationshipsStudies](docs/StudysetReturnRelationshipsStudies.md)
