@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +30,8 @@ class StudysetRequestRelationships(BaseModel):
     StudysetRequestRelationships
     """ # noqa: E501
     studies: Optional[List[StudysetRequestRelationshipsStudiesInner]] = Field(default=None, description="Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment. ")
-    __properties: ClassVar[List[str]] = ["studies"]
+    curation_stub_map: Optional[Dict[str, UUID]] = Field(default=None, description="Accepts a map of each study ID to the curation stub UUID used to keep curation/extraction alignment. ")
+    __properties: ClassVar[List[str]] = ["studies", "curation_stub_map"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +91,8 @@ class StudysetRequestRelationships(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "studies": [StudysetRequestRelationshipsStudiesInner.from_dict(_item) for _item in obj["studies"]] if obj.get("studies") is not None else None
+            "studies": [StudysetRequestRelationshipsStudiesInner.from_dict(_item) for _item in obj["studies"]] if obj.get("studies") is not None else None,
+            "curation_stub_map": obj.get("curation_stub_map")
         })
         return _obj
 

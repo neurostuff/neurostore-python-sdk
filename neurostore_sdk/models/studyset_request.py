@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from uuid import UUID
 from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,10 +36,11 @@ class StudysetRequest(BaseModel):
     doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
     pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
     studies: Optional[List[StudysetRequestRelationshipsStudiesInner]] = Field(default=None, description="Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment. ")
+    curation_stub_map: Optional[Dict[str, UUID]] = Field(default=None, description="Accepts a map of each study ID to the curation stub UUID used to keep curation/extraction alignment. ")
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     level: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "publication", "doi", "pmid", "studies", "id", "public", "level"]
+    __properties: ClassVar[List[str]] = ["name", "description", "publication", "doi", "pmid", "studies", "curation_stub_map", "id", "public", "level"]
 
     @field_validator('level')
     def level_validate_enum(cls, value):
@@ -139,6 +141,7 @@ class StudysetRequest(BaseModel):
             "doi": obj.get("doi"),
             "pmid": obj.get("pmid"),
             "studies": [StudysetRequestRelationshipsStudiesInner.from_dict(_item) for _item in obj["studies"]] if obj.get("studies") is not None else None,
+            "curation_stub_map": obj.get("curation_stub_map"),
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "level": obj.get("level")

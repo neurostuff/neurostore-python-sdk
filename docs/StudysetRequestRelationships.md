@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **studies** | [**List[StudysetRequestRelationshipsStudiesInner]**](StudysetRequestRelationshipsStudiesInner.md) | Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment.  | [optional] 
+**curation_stub_map** | **Dict[str, str]** | Accepts a map of each study ID to the curation stub UUID used to keep curation/extraction alignment.  | [optional] 
 
 ## Example
 
