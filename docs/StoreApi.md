@@ -1127,7 +1127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -1190,13 +1190,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
+    neurovault_id = 'neurovault_id_example' # str | search for study with specific neurovault id (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
 
     try:
         # 
-        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
         print("The response of StoreApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1239,6 +1240,7 @@ Name | Type | Description  | Notes
  **publication** | **str**| search for papers from a particular journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
+ **neurovault_id** | **str**| search for study with specific neurovault id | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]

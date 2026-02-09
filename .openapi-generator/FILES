@@ -36,6 +36,7 @@ docs/BaseStudiesPost200Response.md
 docs/BaseStudiesPostRequest.md
 docs/BaseStudy.md
 docs/BaseStudyList.md
+docs/BaseStudyNeurovaultId.md
 docs/BaseStudyReturn.md
 docs/BaseStudyVersionsInner.md
 docs/Clone.md
@@ -172,6 +173,7 @@ neurostore_sdk/models/base_studies_post200_response.py
 neurostore_sdk/models/base_studies_post_request.py
 neurostore_sdk/models/base_study.py
 neurostore_sdk/models/base_study_list.py
+neurostore_sdk/models/base_study_neurovault_id.py
 neurostore_sdk/models/base_study_return.py
 neurostore_sdk/models/base_study_versions_inner.py
 neurostore_sdk/models/clone.py
@@ -251,4 +253,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_base_study_neurovault_id.py
 tox.ini

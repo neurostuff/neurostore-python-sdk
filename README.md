@@ -249,6 +249,7 @@ Class | Method | HTTP request | Description
  - [BaseStudiesPostRequest](docs/BaseStudiesPostRequest.md)
  - [BaseStudy](docs/BaseStudy.md)
  - [BaseStudyList](docs/BaseStudyList.md)
+ - [BaseStudyNeurovaultId](docs/BaseStudyNeurovaultId.md)
  - [BaseStudyReturn](docs/BaseStudyReturn.md)
  - [BaseStudyVersionsInner](docs/BaseStudyVersionsInner.md)
  - [Clone](docs/Clone.md)

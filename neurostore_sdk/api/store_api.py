@@ -4088,6 +4088,7 @@ class StoreApi:
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
+        neurovault_id: Annotated[Optional[StrictStr], Field(description="search for study with specific neurovault id")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
@@ -4165,6 +4166,8 @@ class StoreApi:
         :type pmid: str
         :param doi: search for study with specific doi
         :type doi: str
+        :param neurovault_id: search for study with specific neurovault id
+        :type neurovault_id: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
@@ -4223,6 +4226,7 @@ class StoreApi:
             publication=publication,
             pmid=pmid,
             doi=doi,
+            neurovault_id=neurovault_id,
             flat=flat,
             info=info,
             paginate=paginate,
@@ -4278,6 +4282,7 @@ class StoreApi:
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
+        neurovault_id: Annotated[Optional[StrictStr], Field(description="search for study with specific neurovault id")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
@@ -4355,6 +4360,8 @@ class StoreApi:
         :type pmid: str
         :param doi: search for study with specific doi
         :type doi: str
+        :param neurovault_id: search for study with specific neurovault id
+        :type neurovault_id: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
@@ -4413,6 +4420,7 @@ class StoreApi:
             publication=publication,
             pmid=pmid,
             doi=doi,
+            neurovault_id=neurovault_id,
             flat=flat,
             info=info,
             paginate=paginate,
@@ -4468,6 +4476,7 @@ class StoreApi:
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
+        neurovault_id: Annotated[Optional[StrictStr], Field(description="search for study with specific neurovault id")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
@@ -4545,6 +4554,8 @@ class StoreApi:
         :type pmid: str
         :param doi: search for study with specific doi
         :type doi: str
+        :param neurovault_id: search for study with specific neurovault id
+        :type neurovault_id: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
@@ -4603,6 +4614,7 @@ class StoreApi:
             publication=publication,
             pmid=pmid,
             doi=doi,
+            neurovault_id=neurovault_id,
             flat=flat,
             info=info,
             paginate=paginate,
@@ -4653,6 +4665,7 @@ class StoreApi:
         publication,
         pmid,
         doi,
+        neurovault_id,
         flat,
         info,
         paginate,
@@ -4795,6 +4808,10 @@ class StoreApi:
         if doi is not None:
             
             _query_params.append(('doi', doi))
+            
+        if neurovault_id is not None:
+            
+            _query_params.append(('neurovault_id', neurovault_id))
             
         if flat is not None:
             
