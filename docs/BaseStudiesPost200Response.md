@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **level** | **str** |  | [optional] 
 **is_oa** | **bool** |  | [optional] 
 **pmcid** | **str** |  | [optional] 
-**neurovault_id** | [**BaseStudyNeurovaultId**](BaseStudyNeurovaultId.md) |  | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 

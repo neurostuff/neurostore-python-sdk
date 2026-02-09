@@ -22,7 +22,6 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from neurostore_sdk.models.base_study_neurovault_id import BaseStudyNeurovaultId
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -43,7 +42,6 @@ class BaseStudyReturn(BaseModel):
     level: Optional[StrictStr] = None
     is_oa: Optional[StrictBool] = None
     pmcid: Optional[StrictStr] = None
-    neurovault_id: Optional[BaseStudyNeurovaultId] = None
     created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
@@ -51,7 +49,7 @@ class BaseStudyReturn(BaseModel):
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
     features: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "neurovault_id", "created_at", "updated_at", "id", "public", "user", "username", "features"]
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "created_at", "updated_at", "id", "public", "user", "username", "features"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -105,9 +103,6 @@ class BaseStudyReturn(BaseModel):
                 if _item_versions:
                     _items.append(_item_versions.to_dict())
             _dict['versions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of neurovault_id
-        if self.neurovault_id:
-            _dict['neurovault_id'] = self.neurovault_id.to_dict()
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -163,11 +158,6 @@ class BaseStudyReturn(BaseModel):
         if self.pmcid is None and "pmcid" in self.model_fields_set:
             _dict['pmcid'] = None
 
-        # set to None if neurovault_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.neurovault_id is None and "neurovault_id" in self.model_fields_set:
-            _dict['neurovault_id'] = None
-
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field
         if self.updated_at is None and "updated_at" in self.model_fields_set:
@@ -207,7 +197,6 @@ class BaseStudyReturn(BaseModel):
             "level": obj.get("level"),
             "is_oa": obj.get("is_oa"),
             "pmcid": obj.get("pmcid"),
-            "neurovault_id": BaseStudyNeurovaultId.from_dict(obj["neurovault_id"]) if obj.get("neurovault_id") is not None else None,
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
             "id": obj.get("id"),

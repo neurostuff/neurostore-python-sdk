@@ -20,7 +20,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.base_study_neurovault_id import BaseStudyNeurovaultId
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,8 +40,7 @@ class BaseStudy(BaseModel):
     level: Optional[StrictStr] = None
     is_oa: Optional[StrictBool] = None
     pmcid: Optional[StrictStr] = None
-    neurovault_id: Optional[BaseStudyNeurovaultId] = None
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "neurovault_id"]
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +88,6 @@ class BaseStudy(BaseModel):
                 if _item_versions:
                     _items.append(_item_versions.to_dict())
             _dict['versions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of neurovault_id
-        if self.neurovault_id:
-            _dict['neurovault_id'] = self.neurovault_id.to_dict()
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -148,11 +143,6 @@ class BaseStudy(BaseModel):
         if self.pmcid is None and "pmcid" in self.model_fields_set:
             _dict['pmcid'] = None
 
-        # set to None if neurovault_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.neurovault_id is None and "neurovault_id" in self.model_fields_set:
-            _dict['neurovault_id'] = None
-
         return _dict
 
     @classmethod
@@ -176,8 +166,7 @@ class BaseStudy(BaseModel):
             "year": obj.get("year"),
             "level": obj.get("level"),
             "is_oa": obj.get("is_oa"),
-            "pmcid": obj.get("pmcid"),
-            "neurovault_id": BaseStudyNeurovaultId.from_dict(obj["neurovault_id"]) if obj.get("neurovault_id") is not None else None
+            "pmcid": obj.get("pmcid")
         })
         return _obj
 

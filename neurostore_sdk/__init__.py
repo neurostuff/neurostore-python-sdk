@@ -73,7 +73,6 @@ __all__ = [
     "BaseStudiesPostRequest",
     "BaseStudy",
     "BaseStudyList",
-    "BaseStudyNeurovaultId",
     "BaseStudyReturn",
     "BaseStudyVersionsInner",
     "Clone",
@@ -206,7 +205,6 @@ from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost2
 from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest as BaseStudiesPostRequest
 from neurostore_sdk.models.base_study import BaseStudy as BaseStudy
 from neurostore_sdk.models.base_study_list import BaseStudyList as BaseStudyList
-from neurostore_sdk.models.base_study_neurovault_id import BaseStudyNeurovaultId as BaseStudyNeurovaultId
 from neurostore_sdk.models.base_study_return import BaseStudyReturn as BaseStudyReturn
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner as BaseStudyVersionsInner
 from neurostore_sdk.models.clone import Clone as Clone

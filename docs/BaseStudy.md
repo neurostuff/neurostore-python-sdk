@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **level** | **str** |  | [optional] 
 **is_oa** | **bool** |  | [optional] 
 **pmcid** | **str** |  | [optional] 
-**neurovault_id** | [**BaseStudyNeurovaultId**](BaseStudyNeurovaultId.md) |  | [optional] 
 
 ## Example
 
