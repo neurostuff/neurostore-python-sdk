@@ -48,8 +48,13 @@ class BaseStudyReturn(BaseModel):
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
+    has_coordinates: Optional[StrictBool] = None
+    has_images: Optional[StrictBool] = None
+    has_z_maps: Optional[StrictBool] = None
+    has_t_maps: Optional[StrictBool] = None
+    has_beta_and_variance_maps: Optional[StrictBool] = None
     features: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "created_at", "updated_at", "id", "public", "user", "username", "features"]
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "created_at", "updated_at", "id", "public", "user", "username", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -203,6 +208,11 @@ class BaseStudyReturn(BaseModel):
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
             "username": obj.get("username"),
+            "has_coordinates": obj.get("has_coordinates"),
+            "has_images": obj.get("has_images"),
+            "has_z_maps": obj.get("has_z_maps"),
+            "has_t_maps": obj.get("has_t_maps"),
+            "has_beta_and_variance_maps": obj.get("has_beta_and_variance_maps"),
             "features": obj.get("features")
         })
         return _obj

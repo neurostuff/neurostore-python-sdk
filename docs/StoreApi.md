@@ -1127,7 +1127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -1186,6 +1186,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     level = group # str | select between studies with group results or meta results (optional) (default to group)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
+    map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     is_oa = True # bool |  (optional)
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
@@ -1197,7 +1198,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
         print("The response of StoreApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1236,6 +1237,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
+ **map_type** | **str**| filter by stored map-type flags | [optional] 
  **is_oa** | **bool**|  | [optional] 
  **publication** | **str**| search for papers from a particular journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
@@ -2646,7 +2648,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
 
 GET a list of studies
 
@@ -2697,6 +2699,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
+    map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     level = group # str | select between studies with group results or meta results (optional) (default to group)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
@@ -2705,7 +2708,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
         print("The response of StoreApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -2734,6 +2737,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
+ **map_type** | **str**| filter by stored map-type flags | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
  **pmid** | **str**| search for particular pmid | [optional] 

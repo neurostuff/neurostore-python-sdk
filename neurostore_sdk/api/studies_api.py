@@ -75,6 +75,7 @@ class StudiesApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
@@ -149,6 +150,8 @@ class StudiesApi:
         :type level: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param map_type: filter by stored map-type flags
+        :type map_type: str
         :param is_oa:
         :type is_oa: bool
         :param publication: search for papers from a particular journal
@@ -213,6 +216,7 @@ class StudiesApi:
             authors=authors,
             level=level,
             data_type=data_type,
+            map_type=map_type,
             is_oa=is_oa,
             publication=publication,
             pmid=pmid,
@@ -269,6 +273,7 @@ class StudiesApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
@@ -343,6 +348,8 @@ class StudiesApi:
         :type level: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param map_type: filter by stored map-type flags
+        :type map_type: str
         :param is_oa:
         :type is_oa: bool
         :param publication: search for papers from a particular journal
@@ -407,6 +414,7 @@ class StudiesApi:
             authors=authors,
             level=level,
             data_type=data_type,
+            map_type=map_type,
             is_oa=is_oa,
             publication=publication,
             pmid=pmid,
@@ -463,6 +471,7 @@ class StudiesApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
@@ -537,6 +546,8 @@ class StudiesApi:
         :type level: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param map_type: filter by stored map-type flags
+        :type map_type: str
         :param is_oa:
         :type is_oa: bool
         :param publication: search for papers from a particular journal
@@ -601,6 +612,7 @@ class StudiesApi:
             authors=authors,
             level=level,
             data_type=data_type,
+            map_type=map_type,
             is_oa=is_oa,
             publication=publication,
             pmid=pmid,
@@ -652,6 +664,7 @@ class StudiesApi:
         authors,
         level,
         data_type,
+        map_type,
         is_oa,
         publication,
         pmid,
@@ -783,6 +796,10 @@ class StudiesApi:
         if data_type is not None:
             
             _query_params.append(('data_type', data_type))
+            
+        if map_type is not None:
+            
+            _query_params.append(('map_type', map_type))
             
         if is_oa is not None:
             
@@ -1736,6 +1753,7 @@ class StudiesApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
@@ -1788,6 +1806,8 @@ class StudiesApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param map_type: filter by stored map-type flags
+        :type map_type: str
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
         :param level: select between studies with group results or meta results
@@ -1836,6 +1856,7 @@ class StudiesApi:
             authors=authors,
             user_id=user_id,
             data_type=data_type,
+            map_type=map_type,
             studyset_owner=studyset_owner,
             level=level,
             pmid=pmid,
@@ -1879,6 +1900,7 @@ class StudiesApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
@@ -1931,6 +1953,8 @@ class StudiesApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param map_type: filter by stored map-type flags
+        :type map_type: str
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
         :param level: select between studies with group results or meta results
@@ -1979,6 +2003,7 @@ class StudiesApi:
             authors=authors,
             user_id=user_id,
             data_type=data_type,
+            map_type=map_type,
             studyset_owner=studyset_owner,
             level=level,
             pmid=pmid,
@@ -2022,6 +2047,7 @@ class StudiesApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
@@ -2074,6 +2100,8 @@ class StudiesApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param map_type: filter by stored map-type flags
+        :type map_type: str
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
         :type studyset_owner: str
         :param level: select between studies with group results or meta results
@@ -2122,6 +2150,7 @@ class StudiesApi:
             authors=authors,
             user_id=user_id,
             data_type=data_type,
+            map_type=map_type,
             studyset_owner=studyset_owner,
             level=level,
             pmid=pmid,
@@ -2160,6 +2189,7 @@ class StudiesApi:
         authors,
         user_id,
         data_type,
+        map_type,
         studyset_owner,
         level,
         pmid,
@@ -2246,6 +2276,10 @@ class StudiesApi:
         if data_type is not None:
             
             _query_params.append(('data_type', data_type))
+            
+        if map_type is not None:
+            
+            _query_params.append(('map_type', map_type))
             
         if studyset_owner is not None:
             

@@ -27,6 +27,9 @@ Name | Type | Description | Notes
 **studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 
+**has_z_maps** | **bool** |  | [optional] 
+**has_t_maps** | **bool** |  | [optional] 
+**has_beta_and_variance_maps** | **bool** |  | [optional] 
 **base_study** | **str** |  | [optional] 
 **pmcid** | **str** |  | [optional] 
 

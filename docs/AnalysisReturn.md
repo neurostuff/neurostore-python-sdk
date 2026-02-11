@@ -22,6 +22,11 @@ Name | Type | Description | Notes
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 
+**has_coordinates** | **bool** |  | [optional] 
+**has_images** | **bool** |  | [optional] 
+**has_z_maps** | **bool** |  | [optional] 
+**has_t_maps** | **bool** |  | [optional] 
+**has_beta_and_variance_maps** | **bool** |  | [optional] 
 
 ## Example
 

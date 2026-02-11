@@ -23,6 +23,11 @@ Name | Type | Description | Notes
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
+**has_coordinates** | **bool** |  | [optional] 
+**has_images** | **bool** |  | [optional] 
+**has_z_maps** | **bool** |  | [optional] 
+**has_t_maps** | **bool** |  | [optional] 
+**has_beta_and_variance_maps** | **bool** |  | [optional] 
 **features** | **object** |  | [optional] 
 
 ## Example

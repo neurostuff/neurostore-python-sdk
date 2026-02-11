@@ -53,9 +53,12 @@ class StudyReturn(BaseModel):
     studysets: Optional[List[StudyReturnAllOfStudysets]] = None
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
+    has_z_maps: Optional[StrictBool] = None
+    has_t_maps: Optional[StrictBool] = None
+    has_beta_and_variance_maps: Optional[StrictBool] = None
     base_study: Optional[StrictStr] = None
     pmcid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "tables", "studysets", "has_coordinates", "has_images", "base_study", "pmcid"]
+    __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "tables", "studysets", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "base_study", "pmcid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -228,6 +231,9 @@ class StudyReturn(BaseModel):
             "studysets": [StudyReturnAllOfStudysets.from_dict(_item) for _item in obj["studysets"]] if obj.get("studysets") is not None else None,
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),
+            "has_z_maps": obj.get("has_z_maps"),
+            "has_t_maps": obj.get("has_t_maps"),
+            "has_beta_and_variance_maps": obj.get("has_beta_and_variance_maps"),
             "base_study": obj.get("base_study"),
             "pmcid": obj.get("pmcid")
         })

@@ -50,7 +50,12 @@ class AnalysisReturn(BaseModel):
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata"]
+    has_coordinates: Optional[StrictBool] = None
+    has_images: Optional[StrictBool] = None
+    has_z_maps: Optional[StrictBool] = None
+    has_t_maps: Optional[StrictBool] = None
+    has_beta_and_variance_maps: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -181,7 +186,12 @@ class AnalysisReturn(BaseModel):
             "table_id": obj.get("table_id"),
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "order": obj.get("order"),
-            "metadata": obj.get("metadata")
+            "metadata": obj.get("metadata"),
+            "has_coordinates": obj.get("has_coordinates"),
+            "has_images": obj.get("has_images"),
+            "has_z_maps": obj.get("has_z_maps"),
+            "has_t_maps": obj.get("has_t_maps"),
+            "has_beta_and_variance_maps": obj.get("has_beta_and_variance_maps")
         })
         return _obj
 
