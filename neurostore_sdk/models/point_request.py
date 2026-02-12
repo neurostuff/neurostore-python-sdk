@@ -46,8 +46,9 @@ class PointRequest(BaseModel):
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(default=None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
     deactivation: Optional[StrictBool] = Field(default=None, description="wheather the coordinate represents an decrease in activation relative to a baseline")
+    is_seed: Optional[StrictBool] = Field(default=None, description="whether the coordinate is marked as a seed location")
     order: Optional[StrictInt] = Field(default=None, description="determines the row to display the coordinate")
-    __properties: ClassVar[List[str]] = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak", "deactivation", "order"]
+    __properties: ClassVar[List[str]] = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak", "deactivation", "is_seed", "order"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -133,6 +134,11 @@ class PointRequest(BaseModel):
         if self.deactivation is None and "deactivation" in self.model_fields_set:
             _dict['deactivation'] = None
 
+        # set to None if is_seed (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_seed is None and "is_seed" in self.model_fields_set:
+            _dict['is_seed'] = None
+
         # set to None if order (nullable) is None
         # and model_fields_set contains the field
         if self.order is None and "order" in self.model_fields_set:
@@ -166,6 +172,7 @@ class PointRequest(BaseModel):
             "cluster_size": obj.get("cluster_size"),
             "subpeak": obj.get("subpeak"),
             "deactivation": obj.get("deactivation"),
+            "is_seed": obj.get("is_seed"),
             "order": obj.get("order")
         })
         return _obj
