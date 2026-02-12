@@ -31,7 +31,7 @@ class PointReturn(BaseModel):
     """
     PointReturn
     """ # noqa: E501
-    coordinates: Optional[Annotated[List[Optional[Union[StrictFloat, StrictInt]]], Field(min_length=3, max_length=3)]] = Field(default=None, description="Location of the significant coordinate in three dimensional space.")
+    coordinates: Optional[Annotated[List[Union[StrictFloat, StrictInt]], Field(min_length=3, max_length=3)]] = Field(default=None, description="Location of the significant coordinate in three dimensional space.")
     space: Optional[StrictStr] = Field(default=None, description="Template space used to determine coordinate Examples include TAL or MNI.")
     kind: Optional[StrictStr] = Field(default=None, description="Method of how point was derived (e.g., center of mass)")
     label_id: Optional[StrictStr] = Field(default=None, description="If the point is associated with an image, this is the value the point takes in that image.")
@@ -51,9 +51,8 @@ class PointReturn(BaseModel):
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="size of the cluster in cubic millimeters")
     subpeak: Optional[StrictBool] = Field(default=None, description="whether the reported peak is the max-peak statistic or a sub-maxmimal peak.")
     deactivation: Optional[StrictBool] = Field(default=None, description="wheather the coordinate represents an decrease in activation relative to a baseline")
-    is_seed: Optional[StrictBool] = Field(default=None, description="whether the coordinate is marked as a seed location")
     order: Optional[StrictInt] = Field(default=None, description="determines the row to display the coordinate")
-    __properties: ClassVar[List[str]] = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "username", "image", "values", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak", "deactivation", "is_seed", "order"]
+    __properties: ClassVar[List[str]] = ["coordinates", "space", "kind", "label_id", "created_at", "updated_at", "id", "public", "user", "username", "image", "values", "x", "y", "z", "entities", "analysis", "cluster_size", "subpeak", "deactivation", "order"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -145,21 +144,6 @@ class PointReturn(BaseModel):
         if self.image is None and "image" in self.model_fields_set:
             _dict['image'] = None
 
-        # set to None if x (nullable) is None
-        # and model_fields_set contains the field
-        if self.x is None and "x" in self.model_fields_set:
-            _dict['x'] = None
-
-        # set to None if y (nullable) is None
-        # and model_fields_set contains the field
-        if self.y is None and "y" in self.model_fields_set:
-            _dict['y'] = None
-
-        # set to None if z (nullable) is None
-        # and model_fields_set contains the field
-        if self.z is None and "z" in self.model_fields_set:
-            _dict['z'] = None
-
         # set to None if cluster_size (nullable) is None
         # and model_fields_set contains the field
         if self.cluster_size is None and "cluster_size" in self.model_fields_set:
@@ -174,11 +158,6 @@ class PointReturn(BaseModel):
         # and model_fields_set contains the field
         if self.deactivation is None and "deactivation" in self.model_fields_set:
             _dict['deactivation'] = None
-
-        # set to None if is_seed (nullable) is None
-        # and model_fields_set contains the field
-        if self.is_seed is None and "is_seed" in self.model_fields_set:
-            _dict['is_seed'] = None
 
         # set to None if order (nullable) is None
         # and model_fields_set contains the field
@@ -217,7 +196,6 @@ class PointReturn(BaseModel):
             "cluster_size": obj.get("cluster_size"),
             "subpeak": obj.get("subpeak"),
             "deactivation": obj.get("deactivation"),
-            "is_seed": obj.get("is_seed"),
             "order": obj.get("order")
         })
         return _obj

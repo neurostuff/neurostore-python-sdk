@@ -12081,7 +12081,6 @@ class StoreApi:
         self,
         id: StrictStr,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
-        summary: Annotated[Optional[StrictBool], Field(description="return a lightweight summary payload with study metadata and per-analysis coordinate counts; incompatible with nested")] = None,
         gzip: Annotated[Optional[StrictBool], Field(description="return the content as gzipped content")] = None,
         _request_timeout: Union[
             None,
@@ -12104,8 +12103,6 @@ class StoreApi:
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
-        :param summary: return a lightweight summary payload with study metadata and per-analysis coordinate counts; incompatible with nested
-        :type summary: bool
         :param gzip: return the content as gzipped content
         :type gzip: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -12133,7 +12130,6 @@ class StoreApi:
         _param = self._studysets_id_get_serialize(
             id=id,
             nested=nested,
-            summary=summary,
             gzip=gzip,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12161,7 +12157,6 @@ class StoreApi:
         self,
         id: StrictStr,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
-        summary: Annotated[Optional[StrictBool], Field(description="return a lightweight summary payload with study metadata and per-analysis coordinate counts; incompatible with nested")] = None,
         gzip: Annotated[Optional[StrictBool], Field(description="return the content as gzipped content")] = None,
         _request_timeout: Union[
             None,
@@ -12184,8 +12179,6 @@ class StoreApi:
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
-        :param summary: return a lightweight summary payload with study metadata and per-analysis coordinate counts; incompatible with nested
-        :type summary: bool
         :param gzip: return the content as gzipped content
         :type gzip: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -12213,7 +12206,6 @@ class StoreApi:
         _param = self._studysets_id_get_serialize(
             id=id,
             nested=nested,
-            summary=summary,
             gzip=gzip,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12241,7 +12233,6 @@ class StoreApi:
         self,
         id: StrictStr,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
-        summary: Annotated[Optional[StrictBool], Field(description="return a lightweight summary payload with study metadata and per-analysis coordinate counts; incompatible with nested")] = None,
         gzip: Annotated[Optional[StrictBool], Field(description="return the content as gzipped content")] = None,
         _request_timeout: Union[
             None,
@@ -12264,8 +12255,6 @@ class StoreApi:
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
-        :param summary: return a lightweight summary payload with study metadata and per-analysis coordinate counts; incompatible with nested
-        :type summary: bool
         :param gzip: return the content as gzipped content
         :type gzip: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -12293,7 +12282,6 @@ class StoreApi:
         _param = self._studysets_id_get_serialize(
             id=id,
             nested=nested,
-            summary=summary,
             gzip=gzip,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12316,7 +12304,6 @@ class StoreApi:
         self,
         id,
         nested,
-        summary,
         gzip,
         _request_auth,
         _content_type,
@@ -12345,10 +12332,6 @@ class StoreApi:
         if nested is not None:
             
             _query_params.append(('nested', nested))
-            
-        if summary is not None:
-            
-            _query_params.append(('summary', summary))
             
         if gzip is not None:
             

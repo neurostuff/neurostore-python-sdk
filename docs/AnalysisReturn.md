@@ -22,7 +22,6 @@ Name | Type | Description | Notes
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 
-**point_count** | **int** | Number of point coordinates linked to this analysis. | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 
 **has_z_maps** | **bool** |  | [optional] 

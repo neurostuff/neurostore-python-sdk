@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coordinates** | **List[Optional[float]]** | Location of the significant coordinate in three dimensional space. | [optional] 
+**coordinates** | **List[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
 **space** | **str** | Template space used to determine coordinate Examples include TAL or MNI. | [optional] 
 **kind** | **str** | Method of how point was derived (e.g., center of mass) | [optional] 
 **label_id** | **str** | If the point is associated with an image, this is the value the point takes in that image. | [optional] 
@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **cluster_size** | **float** | size of the cluster in cubic millimeters | [optional] 
 **subpeak** | **bool** | whether the reported peak is the max-peak statistic or a sub-maxmimal peak. | [optional] 
 **deactivation** | **bool** | wheather the coordinate represents an decrease in activation relative to a baseline | [optional] 
-**is_seed** | **bool** | whether the coordinate is marked as a seed location | [optional] 
 **order** | **int** | determines the row to display the coordinate | [optional] 
 
 ## Example
