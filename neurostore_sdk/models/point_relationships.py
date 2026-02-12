@@ -91,6 +91,21 @@ class PointRelationships(BaseModel):
         if self.image is None and "image" in self.model_fields_set:
             _dict['image'] = None
 
+        # set to None if x (nullable) is None
+        # and model_fields_set contains the field
+        if self.x is None and "x" in self.model_fields_set:
+            _dict['x'] = None
+
+        # set to None if y (nullable) is None
+        # and model_fields_set contains the field
+        if self.y is None and "y" in self.model_fields_set:
+            _dict['y'] = None
+
+        # set to None if z (nullable) is None
+        # and model_fields_set contains the field
+        if self.z is None and "z" in self.model_fields_set:
+            _dict['z'] = None
+
         return _dict
 
     @classmethod

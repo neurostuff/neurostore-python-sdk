@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coordinates** | **List[float]** | Location of the significant coordinate in three dimensional space. | [optional] 
+**coordinates** | **List[Optional[float]]** | Location of the significant coordinate in three dimensional space. | [optional] 
 **space** | **str** | Template space used to determine coordinate Examples include TAL or MNI. | [optional] 
 **kind** | **str** | Method of how point was derived (e.g., center of mass) | [optional] 
 **label_id** | **str** | If the point is associated with an image, this is the value the point takes in that image. | [optional] 
