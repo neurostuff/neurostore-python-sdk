@@ -103,10 +103,6 @@ Class | Method | HTTP request | Description
 *AnalysesApi* | [**annotation_analyses_id_get**](docs/AnalysesApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 *AnalysesApi* | [**annotation_analyses_id_put**](docs/AnalysesApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
 *AnalysesApi* | [**annotation_analyses_post**](docs/AnalysesApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
-*AnnotationsApi* | [**annotation_analyses_get**](docs/AnnotationsApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
-*AnnotationsApi* | [**annotation_analyses_id_get**](docs/AnnotationsApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
-*AnnotationsApi* | [**annotation_analyses_id_put**](docs/AnnotationsApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
-*AnnotationsApi* | [**annotation_analyses_post**](docs/AnnotationsApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
 *AnnotationsApi* | [**annotations_get**](docs/AnnotationsApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
 *AnnotationsApi* | [**annotations_id_delete**](docs/AnnotationsApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
 *AnnotationsApi* | [**annotations_id_get**](docs/AnnotationsApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
@@ -144,39 +140,6 @@ Class | Method | HTTP request | Description
 *PointsApi* | [**points_id_get**](docs/PointsApi.md#points_id_get) | **GET** /points/{id} | GET a point
 *PointsApi* | [**points_id_put**](docs/PointsApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
 *PointsApi* | [**points_post**](docs/PointsApi.md#points_post) | **POST** /points/ | POST Points
-*StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
-*StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
-*StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
-*StoreApi* | [**analyses_id_put**](docs/StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
-*StoreApi* | [**analyses_post**](docs/StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
-*StoreApi* | [**annotation_analyses_get**](docs/StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
-*StoreApi* | [**annotation_analyses_id_get**](docs/StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
-*StoreApi* | [**annotation_analyses_id_put**](docs/StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
-*StoreApi* | [**annotation_analyses_post**](docs/StoreApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
-*StoreApi* | [**annotations_get**](docs/StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
-*StoreApi* | [**annotations_id_delete**](docs/StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
-*StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
-*StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
-*StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
-*StoreApi* | [**base_studies_get**](docs/StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
-*StoreApi* | [**base_studies_id_get**](docs/StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
-*StoreApi* | [**base_studies_id_put**](docs/StoreApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
-*StoreApi* | [**base_studies_post**](docs/StoreApi.md#base_studies_post) | **POST** /base-studies/ | 
-*StoreApi* | [**conditions_get**](docs/StoreApi.md#conditions_get) | **GET** /conditions/ | GET Conditions
-*StoreApi* | [**conditions_id_delete**](docs/StoreApi.md#conditions_id_delete) | **DELETE** /conditions/{id} | DELETE a condition
-*StoreApi* | [**conditions_id_get**](docs/StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
-*StoreApi* | [**conditions_id_put**](docs/StoreApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
-*StoreApi* | [**conditions_post**](docs/StoreApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
-*StoreApi* | [**images_get**](docs/StoreApi.md#images_get) | **GET** /images/ | GET a list of images
-*StoreApi* | [**images_id_delete**](docs/StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
-*StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
-*StoreApi* | [**images_id_put**](docs/StoreApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
-*StoreApi* | [**images_post**](docs/StoreApi.md#images_post) | **POST** /images/ | POST/create an image
-*StoreApi* | [**points_get**](docs/StoreApi.md#points_get) | **GET** /points/ | Get Points
-*StoreApi* | [**points_id_delete**](docs/StoreApi.md#points_id_delete) | **DELETE** /points/{id} | DELETE a point
-*StoreApi* | [**points_id_get**](docs/StoreApi.md#points_id_get) | **GET** /points/{id} | GET a point
-*StoreApi* | [**points_id_put**](docs/StoreApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
-*StoreApi* | [**points_post**](docs/StoreApi.md#points_post) | **POST** /points/ | POST Points
 *StoreApi* | [**studies_get**](docs/StoreApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 *StoreApi* | [**studies_id_delete**](docs/StoreApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 *StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
@@ -186,25 +149,11 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
 *StoreApi* | [**studysets_id_put**](docs/StoreApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
 *StoreApi* | [**studysets_post**](docs/StoreApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
-*StoreApi* | [**tables_get**](docs/StoreApi.md#tables_get) | **GET** /tables/ | GET list of tables
-*StoreApi* | [**tables_id_delete**](docs/StoreApi.md#tables_id_delete) | **DELETE** /tables/{id} | DELETE a table
-*StoreApi* | [**tables_id_get**](docs/StoreApi.md#tables_id_get) | **GET** /tables/{id} | GET a table
-*StoreApi* | [**tables_id_put**](docs/StoreApi.md#tables_id_put) | **PUT** /tables/{id} | PUT/update a table
-*StoreApi* | [**tables_post**](docs/StoreApi.md#tables_post) | **POST** /tables/ | POST/create a table
 *StudiesApi* | [**base_studies_get**](docs/StudiesApi.md#base_studies_get) | **GET** /base-studies/ | 
 *StudiesApi* | [**base_studies_id_get**](docs/StudiesApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
 *StudiesApi* | [**base_studies_id_put**](docs/StudiesApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
 *StudiesApi* | [**base_studies_post**](docs/StudiesApi.md#base_studies_post) | **POST** /base-studies/ | 
-*StudiesApi* | [**studies_get**](docs/StudiesApi.md#studies_get) | **GET** /studies/ | GET a list of studies
-*StudiesApi* | [**studies_id_delete**](docs/StudiesApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
-*StudiesApi* | [**studies_id_get**](docs/StudiesApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
-*StudiesApi* | [**studies_id_put**](docs/StudiesApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
-*StudiesApi* | [**studies_post**](docs/StudiesApi.md#studies_post) | **POST** /studies/ | POST/create a study
 *StudysetsApi* | [**studysets_get**](docs/StudysetsApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
-*StudysetsApi* | [**studysets_id_delete**](docs/StudysetsApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
-*StudysetsApi* | [**studysets_id_get**](docs/StudysetsApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
-*StudysetsApi* | [**studysets_id_put**](docs/StudysetsApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
-*StudysetsApi* | [**studysets_post**](docs/StudysetsApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
 *TablesApi* | [**tables_get**](docs/TablesApi.md#tables_get) | **GET** /tables/ | GET list of tables
 *TablesApi* | [**tables_id_delete**](docs/TablesApi.md#tables_id_delete) | **DELETE** /tables/{id} | DELETE a table
 *TablesApi* | [**tables_id_get**](docs/TablesApi.md#tables_id_get) | **GET** /tables/{id} | GET a table
@@ -265,7 +214,9 @@ Class | Method | HTTP request | Description
  - [ImageRelationships](docs/ImageRelationships.md)
  - [ImageRequest](docs/ImageRequest.md)
  - [ImageReturn](docs/ImageReturn.md)
+ - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
+ - [Metadata](docs/Metadata.md)
  - [NestedPutAttributes](docs/NestedPutAttributes.md)
  - [NoteCollectionBase](docs/NoteCollectionBase.md)
  - [NoteCollectionList](docs/NoteCollectionList.md)
@@ -289,6 +240,7 @@ Class | Method | HTTP request | Description
  - [PointRequest](docs/PointRequest.md)
  - [PointReturn](docs/PointReturn.md)
  - [PointValue](docs/PointValue.md)
+ - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
  - [StudyBase](docs/StudyBase.md)
  - [StudyCommon](docs/StudyCommon.md)
@@ -319,7 +271,9 @@ Class | Method | HTTP request | Description
  - [TableReturnRelationships](docs/TableReturnRelationships.md)
  - [User](docs/User.md)
  - [UserList](docs/UserList.md)
+ - [UserResourceAttributes](docs/UserResourceAttributes.md)
  - [UserlessResourceAttributes](docs/UserlessResourceAttributes.md)
+ - [WriteableResourceAttributes](docs/WriteableResourceAttributes.md)
 
 
 <a id="documentation-for-authorization"></a>
@@ -338,3 +292,46 @@ Authentication schemes defined for the API:
 jamesdkent21@gmail.com
 
 
+
+<!-- neurostuff-sdk-helpers:start -->
+## Neurostuff SDK Helpers
+
+The generator adds two helper modules to reduce import friction:
+
+1. `sdk.py`: a single facade for endpoint groups.
+2. `auth.py`: Auth0 refresh-token exchange + automatic bearer token refresh.
+
+### Minimal usage
+
+```python
+from neurostore_sdk.sdk import SDK
+
+sdk = SDK(host="https://example.org/api", access_token="<access-token>")
+studysets_api = sdk.studysets
+result = studysets_api.studysets_get()
+```
+
+### Auth0 refresh-token usage
+
+```python
+from neurostore_sdk.sdk import SDK
+
+sdk = SDK.from_auth0_refresh_token(
+    domain="your-tenant.us.auth0.com",
+    client_id="<auth0-client-id>",
+    refresh_token="<auth0-refresh-token>",
+    audience="<optional-audience>",
+)
+
+# Access token is exchanged and refreshed automatically per request.
+users = sdk.users.users_get()
+```
+
+You can also use environment variables:
+`AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, `AUTH0_REFRESH_TOKEN`, plus optional
+`AUTH0_AUDIENCE`, `AUTH0_CLIENT_SECRET`, `AUTH0_SCOPE`.
+
+```python
+sdk = SDK.from_auth0_env(prefix="AUTH0")
+```
+<!-- neurostuff-sdk-helpers:end -->

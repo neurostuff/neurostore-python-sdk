@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.metadata import Metadata
 from neurostore_sdk.models.studyset_return import StudysetReturn
 from typing import Optional, Set
 from typing_extensions import Self

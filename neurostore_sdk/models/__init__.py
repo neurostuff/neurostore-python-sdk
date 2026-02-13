@@ -13,7 +13,123 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-# import models into model package
+if __import__("typing").TYPE_CHECKING:
+    # import models into model package
+    from neurostore_sdk.models.analysis_base import AnalysisBase
+    from neurostore_sdk.models.analysis_common import AnalysisCommon
+    from neurostore_sdk.models.analysis_list import AnalysisList
+    from neurostore_sdk.models.analysis_request import AnalysisRequest
+    from neurostore_sdk.models.analysis_request_relationships import AnalysisRequestRelationships
+    from neurostore_sdk.models.analysis_request_relationships_conditions import AnalysisRequestRelationshipsConditions
+    from neurostore_sdk.models.analysis_request_relationships_images import AnalysisRequestRelationshipsImages
+    from neurostore_sdk.models.analysis_request_relationships_points import AnalysisRequestRelationshipsPoints
+    from neurostore_sdk.models.analysis_return import AnalysisReturn
+    from neurostore_sdk.models.analysis_return_relationships import AnalysisReturnRelationships
+    from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
+    from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
+    from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints
+    from neurostore_sdk.models.annotation_base import AnnotationBase
+    from neurostore_sdk.models.annotation_common import AnnotationCommon
+    from neurostore_sdk.models.annotation_export import AnnotationExport
+    from neurostore_sdk.models.annotation_list import AnnotationList
+    from neurostore_sdk.models.annotation_pipeline_extension import AnnotationPipelineExtension
+    from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner
+    from neurostore_sdk.models.annotation_request import AnnotationRequest
+    from neurostore_sdk.models.annotation_request_one_of import AnnotationRequestOneOf
+    from neurostore_sdk.models.annotation_request_relationships import AnnotationRequestRelationships
+    from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes
+    from neurostore_sdk.models.annotation_return import AnnotationReturn
+    from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
+    from neurostore_sdk.models.annotation_return_relationships import AnnotationReturnRelationships
+    from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
+    from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response
+    from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
+    from neurostore_sdk.models.base_study import BaseStudy
+    from neurostore_sdk.models.base_study_list import BaseStudyList
+    from neurostore_sdk.models.base_study_return import BaseStudyReturn
+    from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
+    from neurostore_sdk.models.clone import Clone
+    from neurostore_sdk.models.condition_base import ConditionBase
+    from neurostore_sdk.models.condition_list import ConditionList
+    from neurostore_sdk.models.condition_request import ConditionRequest
+    from neurostore_sdk.models.condition_return import ConditionReturn
+    from neurostore_sdk.models.entity import Entity
+    from neurostore_sdk.models.error_detail import ErrorDetail
+    from neurostore_sdk.models.error_response import ErrorResponse
+    from neurostore_sdk.models.image_base import ImageBase
+    from neurostore_sdk.models.image_common import ImageCommon
+    from neurostore_sdk.models.image_list import ImageList
+    from neurostore_sdk.models.image_relationships import ImageRelationships
+    from neurostore_sdk.models.image_request import ImageRequest
+    from neurostore_sdk.models.image_return import ImageReturn
+    from neurostore_sdk.models.json_ld import JsonLd
+    from neurostore_sdk.models.json_ld_context import JsonLdContext
+    from neurostore_sdk.models.metadata import Metadata
+    from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes
+    from neurostore_sdk.models.note_collection_base import NoteCollectionBase
+    from neurostore_sdk.models.note_collection_list import NoteCollectionList
+    from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
+    from neurostore_sdk.models.note_collection_return import NoteCollectionReturn
+    from neurostore_sdk.models.pipeline import Pipeline
+    from neurostore_sdk.models.pipeline_config import PipelineConfig
+    from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
+    from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding
+    from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList
+    from neurostore_sdk.models.pipeline_list import PipelineList
+    from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
+    from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
+    from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost
+    from neurostore_sdk.models.pipeline_study_result_search import PipelineStudyResultSearch
+    from neurostore_sdk.models.point_base import PointBase
+    from neurostore_sdk.models.point_common import PointCommon
+    from neurostore_sdk.models.point_list import PointList
+    from neurostore_sdk.models.point_relationships import PointRelationships
+    from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
+    from neurostore_sdk.models.point_request import PointRequest
+    from neurostore_sdk.models.point_return import PointReturn
+    from neurostore_sdk.models.point_value import PointValue
+    from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes
+    from neurostore_sdk.models.resource_attributes import ResourceAttributes
+    from neurostore_sdk.models.study_base import StudyBase
+    from neurostore_sdk.models.study_common import StudyCommon
+    from neurostore_sdk.models.study_list import StudyList
+    from neurostore_sdk.models.study_request import StudyRequest
+    from neurostore_sdk.models.study_request_relationships import StudyRequestRelationships
+    from neurostore_sdk.models.study_request_relationships_analyses import StudyRequestRelationshipsAnalyses
+    from neurostore_sdk.models.study_return import StudyReturn
+    from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOfStudysets
+    from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyReturnAllOfStudysetsOneOf
+    from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships
+    from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
+    from neurostore_sdk.models.studyset_base import StudysetBase
+    from neurostore_sdk.models.studyset_list import StudysetList
+    from neurostore_sdk.models.studyset_request import StudysetRequest
+    from neurostore_sdk.models.studyset_request_relationships import StudysetRequestRelationships
+    from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
+    from neurostore_sdk.models.studyset_request_relationships_studies_inner_any_of import StudysetRequestRelationshipsStudiesInnerAnyOf
+    from neurostore_sdk.models.studyset_return import StudysetReturn
+    from neurostore_sdk.models.studyset_return_relationships import StudysetReturnRelationships
+    from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies
+    from neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner import StudysetReturnRelationshipsStudysetStudiesInner
+    from neurostore_sdk.models.table_common import TableCommon
+    from neurostore_sdk.models.table_list import TableList
+    from neurostore_sdk.models.table_request import TableRequest
+    from neurostore_sdk.models.table_request_relationships import TableRequestRelationships
+    from neurostore_sdk.models.table_return import TableReturn
+    from neurostore_sdk.models.table_return_relationships import TableReturnRelationships
+    from neurostore_sdk.models.user import User
+    from neurostore_sdk.models.user_list import UserList
+    from neurostore_sdk.models.user_resource_attributes import UserResourceAttributes
+    from neurostore_sdk.models.userless_resource_attributes import UserlessResourceAttributes
+    from neurostore_sdk.models.writeable_resource_attributes import WriteableResourceAttributes
+    
+else:
+    from lazy_imports import LazyModule, as_package, load
+
+    load(
+        LazyModule(
+            *as_package(__file__),
+            """# import models into model package
 from neurostore_sdk.models.analysis_base import AnalysisBase
 from neurostore_sdk.models.analysis_common import AnalysisCommon
 from neurostore_sdk.models.analysis_list import AnalysisList
@@ -61,7 +177,9 @@ from neurostore_sdk.models.image_list import ImageList
 from neurostore_sdk.models.image_relationships import ImageRelationships
 from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
+from neurostore_sdk.models.json_ld import JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext
+from neurostore_sdk.models.metadata import Metadata
 from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes
 from neurostore_sdk.models.note_collection_base import NoteCollectionBase
 from neurostore_sdk.models.note_collection_list import NoteCollectionList
@@ -85,6 +203,7 @@ from neurostore_sdk.models.point_relationships_values import PointRelationshipsV
 from neurostore_sdk.models.point_request import PointRequest
 from neurostore_sdk.models.point_return import PointReturn
 from neurostore_sdk.models.point_value import PointValue
+from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes
 from neurostore_sdk.models.resource_attributes import ResourceAttributes
 from neurostore_sdk.models.study_base import StudyBase
 from neurostore_sdk.models.study_common import StudyCommon
@@ -115,5 +234,12 @@ from neurostore_sdk.models.table_return import TableReturn
 from neurostore_sdk.models.table_return_relationships import TableReturnRelationships
 from neurostore_sdk.models.user import User
 from neurostore_sdk.models.user_list import UserList
+from neurostore_sdk.models.user_resource_attributes import UserResourceAttributes
 from neurostore_sdk.models.userless_resource_attributes import UserlessResourceAttributes
+from neurostore_sdk.models.writeable_resource_attributes import WriteableResourceAttributes
 
+""",
+            name=__name__,
+            doc=__doc__,
+        )
+    )
