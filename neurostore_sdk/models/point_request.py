@@ -30,7 +30,7 @@ class PointRequest(BaseModel):
     """
     PointRequest
     """ # noqa: E501
-    coordinates: Optional[Annotated[List[Union[StrictFloat, StrictInt]], Field(min_length=3, max_length=3)]] = Field(default=None, description="Location of the significant coordinate in three dimensional space.")
+    coordinates: Optional[Annotated[List[Optional[Union[StrictFloat, StrictInt]]], Field(min_length=3, max_length=3)]] = Field(default=None, description="Location of the significant coordinate in three dimensional space.")
     space: Optional[StrictStr] = Field(default=None, description="Template space used to determine coordinate Examples include TAL or MNI.")
     kind: Optional[StrictStr] = Field(default=None, description="Method of how point was derived (e.g., center of mass)")
     label_id: Optional[StrictStr] = Field(default=None, description="If the point is associated with an image, this is the value the point takes in that image.")
