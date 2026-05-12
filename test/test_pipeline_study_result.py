@@ -38,10 +38,16 @@ class TestPipelineStudyResult(unittest.TestCase):
             return PipelineStudyResult(
                 id = '',
                 pipeline_config_id = '',
-                data = None
+                base_study_id = '',
+                config_id = '',
+                date_executed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                file_inputs = neurostore_sdk.models.file_inputs.file_inputs(),
+                result_data = neurostore_sdk.models.result_data.result_data(),
+                status = ''
             )
         else:
             return PipelineStudyResult(
+                id = '',
         )
         """
 

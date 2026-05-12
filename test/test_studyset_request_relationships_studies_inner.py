@@ -36,12 +36,23 @@ class TestStudysetRequestRelationshipsStudiesInner(unittest.TestCase):
         model = StudysetRequestRelationshipsStudiesInner()
         if include_optional:
             return StudysetRequestRelationshipsStudiesInner(
-                id = '',
-                curation_stub_uuid = ''
+                id = '38jobTomPDqt',
+                curation_stub_uuid = '',
+                doi = '10.1016/S0926-6410(97)00020-7',
+                name = 'Functional magnetic resonance imaging of category-specific cortical activation: evidence for semantic maps.',
+                metadata = neurostore_sdk.models.metadata.metadata(),
+                description = 'This is my very scientific abstract.',
+                publication = 'Journal of Super Important Science.',
+                pmid = '35998675',
+                authors = 'Strange, M.',
+                year = 1991,
+                analyses = None,
+                public = True,
+                pmcid = ''
             )
         else:
             return StudysetRequestRelationshipsStudiesInner(
-                id = '',
+                id = '38jobTomPDqt',
         )
         """
 

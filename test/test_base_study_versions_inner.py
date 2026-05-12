@@ -54,11 +54,17 @@ class TestBaseStudyVersionsInner(unittest.TestCase):
                 source_id = '',
                 source_updated_at = '',
                 analyses = None,
+                tables = [
+                    ''
+                    ],
                 studysets = [
                     null
                     ],
                 has_coordinates = True,
                 has_images = True,
+                has_z_maps = True,
+                has_t_maps = True,
+                has_beta_and_variance_maps = True,
                 base_study = '',
                 pmcid = ''
             )
