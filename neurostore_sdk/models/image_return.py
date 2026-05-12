@@ -37,6 +37,7 @@ class ImageReturn(BaseModel):
     value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.")
     add_date: Optional[datetime] = Field(default=None, description="Date the image was added.")
     analysis: Optional[StrictStr] = None
+    study: Optional[StrictStr] = None
     entities: Optional[List[Entity]] = None
     analysis_name: Optional[StrictStr] = None
     created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
@@ -45,7 +46,7 @@ class ImageReturn(BaseModel):
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
-    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username"]
+    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -131,6 +132,16 @@ class ImageReturn(BaseModel):
         if self.add_date is None and "add_date" in self.model_fields_set:
             _dict['add_date'] = None
 
+        # set to None if analysis (nullable) is None
+        # and model_fields_set contains the field
+        if self.analysis is None and "analysis" in self.model_fields_set:
+            _dict['analysis'] = None
+
+        # set to None if study (nullable) is None
+        # and model_fields_set contains the field
+        if self.study is None and "study" in self.model_fields_set:
+            _dict['study'] = None
+
         # set to None if analysis_name (nullable) is None
         # and model_fields_set contains the field
         if self.analysis_name is None and "analysis_name" in self.model_fields_set:
@@ -170,6 +181,7 @@ class ImageReturn(BaseModel):
             "value_type": obj.get("value_type"),
             "add_date": obj.get("add_date"),
             "analysis": obj.get("analysis"),
+            "study": obj.get("study"),
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "analysis_name": obj.get("analysis_name"),
             "created_at": obj.get("created_at"),

@@ -29,9 +29,10 @@ class ImageRelationships(BaseModel):
     ImageRelationships
     """ # noqa: E501
     analysis: Optional[StrictStr] = None
+    study: Optional[StrictStr] = None
     entities: Optional[List[Entity]] = None
     analysis_name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["analysis", "entities", "analysis_name"]
+    __properties: ClassVar[List[str]] = ["analysis", "study", "entities", "analysis_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +80,16 @@ class ImageRelationships(BaseModel):
                 if _item_entities:
                     _items.append(_item_entities.to_dict())
             _dict['entities'] = _items
+        # set to None if analysis (nullable) is None
+        # and model_fields_set contains the field
+        if self.analysis is None and "analysis" in self.model_fields_set:
+            _dict['analysis'] = None
+
+        # set to None if study (nullable) is None
+        # and model_fields_set contains the field
+        if self.study is None and "study" in self.model_fields_set:
+            _dict['study'] = None
+
         # set to None if analysis_name (nullable) is None
         # and model_fields_set contains the field
         if self.analysis_name is None and "analysis_name" in self.model_fields_set:
@@ -97,6 +108,7 @@ class ImageRelationships(BaseModel):
 
         _obj = cls.model_validate({
             "analysis": obj.get("analysis"),
+            "study": obj.get("study"),
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "analysis_name": obj.get("analysis_name")
         })

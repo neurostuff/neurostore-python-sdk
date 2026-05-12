@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis** | **str** |  | [optional] 
+**study** | **str** |  | [optional] 
 
 ## Example
 

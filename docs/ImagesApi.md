@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **images_get**
-> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, analysis_name=analysis_name, value_type=value_type, space=space)
+> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space)
 
 GET a list of images
 
@@ -45,13 +45,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     filename = 'filename_example' # str | search filename field (optional)
+    study = 'study_example' # str | Filter images by study id (optional)
     analysis_name = 'analysis_name_example' # str | search analysis_name field (optional)
     value_type = 'value_type_example' # str | search value_type field (optional)
     space = 'space_example' # str | search space field (optional)
 
     try:
         # GET a list of images
-        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, analysis_name=analysis_name, value_type=value_type, space=space)
+        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space)
         print("The response of ImagesApi->images_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,6 +73,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| number of results to show on a page | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **filename** | **str**| search filename field | [optional] 
+ **study** | **str**| Filter images by study id | [optional] 
  **analysis_name** | **str**| search analysis_name field | [optional] 
  **value_type** | **str**| search value_type field | [optional] 
  **space** | **str**| search space field | [optional] 

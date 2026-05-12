@@ -28,7 +28,8 @@ class ImageCommon(BaseModel):
     ImageCommon
     """ # noqa: E501
     analysis: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["analysis"]
+    study: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["analysis", "study"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +70,16 @@ class ImageCommon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if analysis (nullable) is None
+        # and model_fields_set contains the field
+        if self.analysis is None and "analysis" in self.model_fields_set:
+            _dict['analysis'] = None
+
+        # set to None if study (nullable) is None
+        # and model_fields_set contains the field
+        if self.study is None and "study" in self.model_fields_set:
+            _dict['study'] = None
+
         return _dict
 
     @classmethod
@@ -81,7 +92,8 @@ class ImageCommon(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analysis": obj.get("analysis")
+            "analysis": obj.get("analysis"),
+            "study": obj.get("study")
         })
         return _obj
 

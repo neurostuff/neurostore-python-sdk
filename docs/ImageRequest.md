@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **value_type** | **str** | The values the image represents. For example, T-statistic or Z-statistic, or Betas. | [optional] 
 **add_date** | **datetime** | Date the image was added. | [optional] [readonly] 
 **analysis** | **str** |  | [optional] 
+**study** | **str** |  | [optional] 
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **analysis_name** | **str** |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
