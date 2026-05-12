@@ -19,20 +19,7 @@ __version__ = "0.0.1"
 
 # Define package exports
 __all__ = [
-    "AnalysesApi",
-    "AnnotationsApi",
-    "ConditionsApi",
-    "ImagesApi",
-    "PipelineConfigsApi",
-    "PipelineEmbeddingsApi",
-    "PipelineStudyResultsApi",
-    "PipelinesApi",
-    "PointsApi",
     "StoreApi",
-    "StudiesApi",
-    "StudysetsApi",
-    "TablesApi",
-    "UserApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -153,20 +140,7 @@ __all__ = [
 
 if __import__("typing").TYPE_CHECKING:
     # import apis into sdk package
-    from neurostore_sdk.api.analyses_api import AnalysesApi as AnalysesApi
-    from neurostore_sdk.api.annotations_api import AnnotationsApi as AnnotationsApi
-    from neurostore_sdk.api.conditions_api import ConditionsApi as ConditionsApi
-    from neurostore_sdk.api.images_api import ImagesApi as ImagesApi
-    from neurostore_sdk.api.pipeline_configs_api import PipelineConfigsApi as PipelineConfigsApi
-    from neurostore_sdk.api.pipeline_embeddings_api import PipelineEmbeddingsApi as PipelineEmbeddingsApi
-    from neurostore_sdk.api.pipeline_study_results_api import PipelineStudyResultsApi as PipelineStudyResultsApi
-    from neurostore_sdk.api.pipelines_api import PipelinesApi as PipelinesApi
-    from neurostore_sdk.api.points_api import PointsApi as PointsApi
     from neurostore_sdk.api.store_api import StoreApi as StoreApi
-    from neurostore_sdk.api.studies_api import StudiesApi as StudiesApi
-    from neurostore_sdk.api.studysets_api import StudysetsApi as StudysetsApi
-    from neurostore_sdk.api.tables_api import TablesApi as TablesApi
-    from neurostore_sdk.api.user_api import UserApi as UserApi
     
     # import ApiClient
     from neurostore_sdk.api_response import ApiResponse as ApiResponse
@@ -297,20 +271,7 @@ else:
             ("__version__", __version__),
             ("__all__", __all__),
             """# import apis into sdk package
-from neurostore_sdk.api.analyses_api import AnalysesApi as AnalysesApi
-from neurostore_sdk.api.annotations_api import AnnotationsApi as AnnotationsApi
-from neurostore_sdk.api.conditions_api import ConditionsApi as ConditionsApi
-from neurostore_sdk.api.images_api import ImagesApi as ImagesApi
-from neurostore_sdk.api.pipeline_configs_api import PipelineConfigsApi as PipelineConfigsApi
-from neurostore_sdk.api.pipeline_embeddings_api import PipelineEmbeddingsApi as PipelineEmbeddingsApi
-from neurostore_sdk.api.pipeline_study_results_api import PipelineStudyResultsApi as PipelineStudyResultsApi
-from neurostore_sdk.api.pipelines_api import PipelinesApi as PipelinesApi
-from neurostore_sdk.api.points_api import PointsApi as PointsApi
 from neurostore_sdk.api.store_api import StoreApi as StoreApi
-from neurostore_sdk.api.studies_api import StudiesApi as StudiesApi
-from neurostore_sdk.api.studysets_api import StudysetsApi as StudysetsApi
-from neurostore_sdk.api.tables_api import TablesApi as TablesApi
-from neurostore_sdk.api.user_api import UserApi as UserApi
 
 # import ApiClient
 from neurostore_sdk.api_response import ApiResponse as ApiResponse

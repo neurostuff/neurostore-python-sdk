@@ -67,7 +67,7 @@ configuration = neurostore_sdk.Configuration(
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.AnalysesApi(api_client)
+    api_instance = neurostore_sdk.StoreApi(api_client)
     search = 'imagin' # str | search for entries that contain the substring (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
@@ -81,10 +81,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     try:
         # GET list of analyses
         api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
-        print("The response of AnalysesApi->analyses_get:\n")
+        print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AnalysesApi->analyses_get: %s\n" % e)
+        print("Exception when calling StoreApi->analyses_get: %s\n" % e)
 
 ```
 
@@ -94,75 +94,75 @@ All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AnalysesApi* | [**analyses_get**](docs/AnalysesApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
-*AnalysesApi* | [**analyses_id_delete**](docs/AnalysesApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
-*AnalysesApi* | [**analyses_id_get**](docs/AnalysesApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
-*AnalysesApi* | [**analyses_id_put**](docs/AnalysesApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
-*AnalysesApi* | [**analyses_post**](docs/AnalysesApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
-*AnalysesApi* | [**annotation_analyses_get**](docs/AnalysesApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
-*AnalysesApi* | [**annotation_analyses_id_get**](docs/AnalysesApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
-*AnalysesApi* | [**annotation_analyses_id_put**](docs/AnalysesApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
-*AnalysesApi* | [**annotation_analyses_post**](docs/AnalysesApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
-*AnnotationsApi* | [**annotations_get**](docs/AnnotationsApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
-*AnnotationsApi* | [**annotations_id_delete**](docs/AnnotationsApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
-*AnnotationsApi* | [**annotations_id_get**](docs/AnnotationsApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
-*AnnotationsApi* | [**annotations_id_put**](docs/AnnotationsApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
-*AnnotationsApi* | [**annotations_post**](docs/AnnotationsApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
-*ConditionsApi* | [**conditions_get**](docs/ConditionsApi.md#conditions_get) | **GET** /conditions/ | GET Conditions
-*ConditionsApi* | [**conditions_id_delete**](docs/ConditionsApi.md#conditions_id_delete) | **DELETE** /conditions/{id} | DELETE a condition
-*ConditionsApi* | [**conditions_id_get**](docs/ConditionsApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
-*ConditionsApi* | [**conditions_id_put**](docs/ConditionsApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
-*ConditionsApi* | [**conditions_post**](docs/ConditionsApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
-*ImagesApi* | [**images_get**](docs/ImagesApi.md#images_get) | **GET** /images/ | GET a list of images
-*ImagesApi* | [**images_id_delete**](docs/ImagesApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
-*ImagesApi* | [**images_id_get**](docs/ImagesApi.md#images_id_get) | **GET** /images/{id} | GET an image
-*ImagesApi* | [**images_id_put**](docs/ImagesApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
-*ImagesApi* | [**images_post**](docs/ImagesApi.md#images_post) | **POST** /images/ | POST/create an image
-*PipelineConfigsApi* | [**pipeline_configs_get**](docs/PipelineConfigsApi.md#pipeline_configs_get) | **GET** /pipeline-configs/ | GET a list of pipeline configs
-*PipelineConfigsApi* | [**pipeline_configs_id_delete**](docs/PipelineConfigsApi.md#pipeline_configs_id_delete) | **DELETE** /pipeline-configs/{id} | DELETE a pipeline config by ID
-*PipelineConfigsApi* | [**pipeline_configs_id_get**](docs/PipelineConfigsApi.md#pipeline_configs_id_get) | **GET** /pipeline-configs/{id} | GET a pipeline config by ID
-*PipelineConfigsApi* | [**pipeline_configs_id_put**](docs/PipelineConfigsApi.md#pipeline_configs_id_put) | **PUT** /pipeline-configs/{id} | PUT/update a pipeline config by ID
-*PipelineConfigsApi* | [**pipeline_configs_post**](docs/PipelineConfigsApi.md#pipeline_configs_post) | **POST** /pipeline-configs/ | POST/create a pipeline config
-*PipelineEmbeddingsApi* | [**pipeline_embeddings_get**](docs/PipelineEmbeddingsApi.md#pipeline_embeddings_get) | **GET** /pipeline-embeddings/ | List pipeline embeddings
-*PipelineEmbeddingsApi* | [**pipeline_embeddings_id_get**](docs/PipelineEmbeddingsApi.md#pipeline_embeddings_id_get) | **GET** /pipeline-embeddings/{id} | Get a pipeline embedding by id
-*PipelineStudyResultsApi* | [**pipeline_study_results_get**](docs/PipelineStudyResultsApi.md#pipeline_study_results_get) | **GET** /pipeline-study-results/ | GET a list of pipeline run results
-*PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_delete**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_delete) | **DELETE** /pipeline-study-results/{pipeline_study_result_id} | DELETE a pipeline run result by ID
-*PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_get**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_get) | **GET** /pipeline-study-results/{pipeline_study_result_id} | GET a pipeline run result by ID
-*PipelineStudyResultsApi* | [**pipeline_study_results_pipeline_study_result_id_put**](docs/PipelineStudyResultsApi.md#pipeline_study_results_pipeline_study_result_id_put) | **PUT** /pipeline-study-results/{pipeline_study_result_id} | PUT/update a pipeline run result by ID
-*PipelineStudyResultsApi* | [**pipeline_study_results_post**](docs/PipelineStudyResultsApi.md#pipeline_study_results_post) | **POST** /pipeline-study-results/ | POST/create a pipeline run result
-*PipelinesApi* | [**pipelines_get**](docs/PipelinesApi.md#pipelines_get) | **GET** /pipelines/ | GET a list of pipelines
-*PipelinesApi* | [**pipelines_id_delete**](docs/PipelinesApi.md#pipelines_id_delete) | **DELETE** /pipelines/{id} | DELETE a pipeline by ID
-*PipelinesApi* | [**pipelines_id_get**](docs/PipelinesApi.md#pipelines_id_get) | **GET** /pipelines/{id} | GET a pipeline by ID
-*PipelinesApi* | [**pipelines_id_put**](docs/PipelinesApi.md#pipelines_id_put) | **PUT** /pipelines/{id} | PUT/update a pipeline by ID
-*PipelinesApi* | [**pipelines_post**](docs/PipelinesApi.md#pipelines_post) | **POST** /pipelines/ | POST/create a pipeline
-*PointsApi* | [**points_get**](docs/PointsApi.md#points_get) | **GET** /points/ | Get Points
-*PointsApi* | [**points_id_delete**](docs/PointsApi.md#points_id_delete) | **DELETE** /points/{id} | DELETE a point
-*PointsApi* | [**points_id_get**](docs/PointsApi.md#points_id_get) | **GET** /points/{id} | GET a point
-*PointsApi* | [**points_id_put**](docs/PointsApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
-*PointsApi* | [**points_post**](docs/PointsApi.md#points_post) | **POST** /points/ | POST Points
+*StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
+*StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
+*StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
+*StoreApi* | [**analyses_id_put**](docs/StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
+*StoreApi* | [**analyses_post**](docs/StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+*StoreApi* | [**annotation_analyses_get**](docs/StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
+*StoreApi* | [**annotation_analyses_id_get**](docs/StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
+*StoreApi* | [**annotation_analyses_id_put**](docs/StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
+*StoreApi* | [**annotation_analyses_post**](docs/StoreApi.md#annotation_analyses_post) | **POST** /annotation-analyses/ | Your POST endpoint
+*StoreApi* | [**annotations_get**](docs/StoreApi.md#annotations_get) | **GET** /annotations/ | Your GET endpoint
+*StoreApi* | [**annotations_id_delete**](docs/StoreApi.md#annotations_id_delete) | **DELETE** /annotations/{id} | DELETE an annotation
+*StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
+*StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
+*StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
+*StoreApi* | [**base_studies_get**](docs/StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
+*StoreApi* | [**base_studies_id_get**](docs/StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
+*StoreApi* | [**base_studies_id_put**](docs/StoreApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
+*StoreApi* | [**base_studies_post**](docs/StoreApi.md#base_studies_post) | **POST** /base-studies/ | 
+*StoreApi* | [**conditions_get**](docs/StoreApi.md#conditions_get) | **GET** /conditions/ | GET Conditions
+*StoreApi* | [**conditions_id_delete**](docs/StoreApi.md#conditions_id_delete) | **DELETE** /conditions/{id} | DELETE a condition
+*StoreApi* | [**conditions_id_get**](docs/StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
+*StoreApi* | [**conditions_id_put**](docs/StoreApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
+*StoreApi* | [**conditions_post**](docs/StoreApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*StoreApi* | [**images_get**](docs/StoreApi.md#images_get) | **GET** /images/ | GET a list of images
+*StoreApi* | [**images_id_delete**](docs/StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
+*StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
+*StoreApi* | [**images_id_put**](docs/StoreApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
+*StoreApi* | [**images_post**](docs/StoreApi.md#images_post) | **POST** /images/ | POST/create an image
+*StoreApi* | [**pipeline_configs_get**](docs/StoreApi.md#pipeline_configs_get) | **GET** /pipeline-configs/ | GET a list of pipeline configs
+*StoreApi* | [**pipeline_configs_id_delete**](docs/StoreApi.md#pipeline_configs_id_delete) | **DELETE** /pipeline-configs/{id} | DELETE a pipeline config by ID
+*StoreApi* | [**pipeline_configs_id_get**](docs/StoreApi.md#pipeline_configs_id_get) | **GET** /pipeline-configs/{id} | GET a pipeline config by ID
+*StoreApi* | [**pipeline_configs_id_put**](docs/StoreApi.md#pipeline_configs_id_put) | **PUT** /pipeline-configs/{id} | PUT/update a pipeline config by ID
+*StoreApi* | [**pipeline_configs_post**](docs/StoreApi.md#pipeline_configs_post) | **POST** /pipeline-configs/ | POST/create a pipeline config
+*StoreApi* | [**pipeline_embeddings_get**](docs/StoreApi.md#pipeline_embeddings_get) | **GET** /pipeline-embeddings/ | List pipeline embeddings
+*StoreApi* | [**pipeline_embeddings_id_get**](docs/StoreApi.md#pipeline_embeddings_id_get) | **GET** /pipeline-embeddings/{id} | Get a pipeline embedding by id
+*StoreApi* | [**pipeline_study_results_get**](docs/StoreApi.md#pipeline_study_results_get) | **GET** /pipeline-study-results/ | GET a list of pipeline run results
+*StoreApi* | [**pipeline_study_results_pipeline_study_result_id_delete**](docs/StoreApi.md#pipeline_study_results_pipeline_study_result_id_delete) | **DELETE** /pipeline-study-results/{pipeline_study_result_id} | DELETE a pipeline run result by ID
+*StoreApi* | [**pipeline_study_results_pipeline_study_result_id_get**](docs/StoreApi.md#pipeline_study_results_pipeline_study_result_id_get) | **GET** /pipeline-study-results/{pipeline_study_result_id} | GET a pipeline run result by ID
+*StoreApi* | [**pipeline_study_results_pipeline_study_result_id_put**](docs/StoreApi.md#pipeline_study_results_pipeline_study_result_id_put) | **PUT** /pipeline-study-results/{pipeline_study_result_id} | PUT/update a pipeline run result by ID
+*StoreApi* | [**pipeline_study_results_post**](docs/StoreApi.md#pipeline_study_results_post) | **POST** /pipeline-study-results/ | POST/create a pipeline run result
+*StoreApi* | [**pipelines_get**](docs/StoreApi.md#pipelines_get) | **GET** /pipelines/ | GET a list of pipelines
+*StoreApi* | [**pipelines_id_delete**](docs/StoreApi.md#pipelines_id_delete) | **DELETE** /pipelines/{id} | DELETE a pipeline by ID
+*StoreApi* | [**pipelines_id_get**](docs/StoreApi.md#pipelines_id_get) | **GET** /pipelines/{id} | GET a pipeline by ID
+*StoreApi* | [**pipelines_id_put**](docs/StoreApi.md#pipelines_id_put) | **PUT** /pipelines/{id} | PUT/update a pipeline by ID
+*StoreApi* | [**pipelines_post**](docs/StoreApi.md#pipelines_post) | **POST** /pipelines/ | POST/create a pipeline
+*StoreApi* | [**points_get**](docs/StoreApi.md#points_get) | **GET** /points/ | Get Points
+*StoreApi* | [**points_id_delete**](docs/StoreApi.md#points_id_delete) | **DELETE** /points/{id} | DELETE a point
+*StoreApi* | [**points_id_get**](docs/StoreApi.md#points_id_get) | **GET** /points/{id} | GET a point
+*StoreApi* | [**points_id_put**](docs/StoreApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
+*StoreApi* | [**points_post**](docs/StoreApi.md#points_post) | **POST** /points/ | POST Points
 *StoreApi* | [**studies_get**](docs/StoreApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 *StoreApi* | [**studies_id_delete**](docs/StoreApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 *StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
 *StoreApi* | [**studies_id_put**](docs/StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
 *StoreApi* | [**studies_post**](docs/StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+*StoreApi* | [**studysets_get**](docs/StoreApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
 *StoreApi* | [**studysets_id_delete**](docs/StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
 *StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
 *StoreApi* | [**studysets_id_put**](docs/StoreApi.md#studysets_id_put) | **PUT** /studysets/{id} | PUT/update a studyset
 *StoreApi* | [**studysets_post**](docs/StoreApi.md#studysets_post) | **POST** /studysets/ | POST/create a studyset
-*StudiesApi* | [**base_studies_get**](docs/StudiesApi.md#base_studies_get) | **GET** /base-studies/ | 
-*StudiesApi* | [**base_studies_id_get**](docs/StudiesApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
-*StudiesApi* | [**base_studies_id_put**](docs/StudiesApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
-*StudiesApi* | [**base_studies_post**](docs/StudiesApi.md#base_studies_post) | **POST** /base-studies/ | 
-*StudysetsApi* | [**studysets_get**](docs/StudysetsApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
-*TablesApi* | [**tables_get**](docs/TablesApi.md#tables_get) | **GET** /tables/ | GET list of tables
-*TablesApi* | [**tables_id_delete**](docs/TablesApi.md#tables_id_delete) | **DELETE** /tables/{id} | DELETE a table
-*TablesApi* | [**tables_id_get**](docs/TablesApi.md#tables_id_get) | **GET** /tables/{id} | GET a table
-*TablesApi* | [**tables_id_put**](docs/TablesApi.md#tables_id_put) | **PUT** /tables/{id} | PUT/update a table
-*TablesApi* | [**tables_post**](docs/TablesApi.md#tables_post) | **POST** /tables/ | POST/create a table
-*UserApi* | [**users_get**](docs/UserApi.md#users_get) | **GET** /users/ | Your GET endpoint
-*UserApi* | [**users_id_get**](docs/UserApi.md#users_id_get) | **GET** /users/{id} | Individual User Profile
-*UserApi* | [**users_id_put**](docs/UserApi.md#users_id_put) | **PUT** /users/{id} | Update Individual Profile
-*UserApi* | [**users_post**](docs/UserApi.md#users_post) | **POST** /users/ | 
+*StoreApi* | [**tables_get**](docs/StoreApi.md#tables_get) | **GET** /tables/ | GET list of tables
+*StoreApi* | [**tables_id_delete**](docs/StoreApi.md#tables_id_delete) | **DELETE** /tables/{id} | DELETE a table
+*StoreApi* | [**tables_id_get**](docs/StoreApi.md#tables_id_get) | **GET** /tables/{id} | GET a table
+*StoreApi* | [**tables_id_put**](docs/StoreApi.md#tables_id_put) | **PUT** /tables/{id} | PUT/update a table
+*StoreApi* | [**tables_post**](docs/StoreApi.md#tables_post) | **POST** /tables/ | POST/create a table
+*StoreApi* | [**users_get**](docs/StoreApi.md#users_get) | **GET** /users/ | Your GET endpoint
+*StoreApi* | [**users_id_get**](docs/StoreApi.md#users_id_get) | **GET** /users/{id} | Individual User Profile
+*StoreApi* | [**users_id_put**](docs/StoreApi.md#users_id_put) | **PUT** /users/{id} | Update Individual Profile
+*StoreApi* | [**users_post**](docs/StoreApi.md#users_post) | **POST** /users/ | 
 
 
 ## Documentation For Models
