@@ -89,11 +89,7 @@ class PointReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "created_at",
-            "updated_at",
-            "user",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -101,13 +97,13 @@ class PointReturn(BaseModel):
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of values
-        if self.values:
+        if self.values is not None:
             _dict['values'] = self.values.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
-        if self.entities:
+        if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities:
+                if _item_entities is not None:
                     _items.append(_item_entities.to_dict())
             _dict['entities'] = _items
         # set to None if space (nullable) is None

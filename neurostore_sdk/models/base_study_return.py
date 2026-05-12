@@ -90,11 +90,7 @@ class BaseStudyReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "created_at",
-            "updated_at",
-            "user",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -103,9 +99,9 @@ class BaseStudyReturn(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of each item in versions (list)
         _items = []
-        if self.versions:
+        if self.versions is not None:
             for _item_versions in self.versions:
-                if _item_versions:
+                if _item_versions is not None:
                     _items.append(_item_versions.to_dict())
             _dict['versions'] = _items
         # set to None if metadata (nullable) is None

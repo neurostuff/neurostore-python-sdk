@@ -66,8 +66,7 @@ class AnalysisCommon(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -76,9 +75,9 @@ class AnalysisCommon(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
-        if self.entities:
+        if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities:
+                if _item_entities is not None:
                     _items.append(_item_entities.to_dict())
             _dict['entities'] = _items
         # set to None if table_id (nullable) is None

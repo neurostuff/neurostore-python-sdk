@@ -64,9 +64,7 @@ class Clone(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "source_updated_at",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,

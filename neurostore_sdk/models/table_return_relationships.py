@@ -63,8 +63,7 @@ class TableReturnRelationships(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -72,7 +71,7 @@ class TableReturnRelationships(BaseModel):
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of analyses
-        if self.analyses:
+        if self.analyses is not None:
             _dict['analyses'] = self.analyses.to_dict()
         return _dict
 

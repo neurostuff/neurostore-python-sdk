@@ -63,8 +63,7 @@ class PipelineRunResultList(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -73,13 +72,13 @@ class PipelineRunResultList(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
-        if self.results:
+        if self.results is not None:
             for _item_results in self.results:
-                if _item_results:
+                if _item_results is not None:
                     _items.append(_item_results.to_dict())
             _dict['results'] = _items
         # override the default output from pydantic by calling `to_dict()` of metadata
-        if self.metadata:
+        if self.metadata is not None:
             _dict['metadata'] = self.metadata.to_dict()
         return _dict
 

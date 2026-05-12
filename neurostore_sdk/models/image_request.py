@@ -75,9 +75,7 @@ class ImageRequest(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "add_date",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -86,9 +84,9 @@ class ImageRequest(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
-        if self.entities:
+        if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities:
+                if _item_entities is not None:
                     _items.append(_item_entities.to_dict())
             _dict['entities'] = _items
         # set to None if metadata (nullable) is None

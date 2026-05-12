@@ -60,7 +60,7 @@ class StudyReturnAllOf(BaseModel):
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in studysets (list)
         _items = []
-        if self.studysets:
+        if self.studysets is not None:
             for _item in self.studysets:
                 if _item:
                     _items.append(_item.to_dict())

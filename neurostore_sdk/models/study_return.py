@@ -95,12 +95,7 @@ class StudyReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "created_at",
-            "updated_at",
-            "user",
-            "source_updated_at",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -108,13 +103,13 @@ class StudyReturn(BaseModel):
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of analyses
-        if self.analyses:
+        if self.analyses is not None:
             _dict['analyses'] = self.analyses.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in studysets (list)
         _items = []
-        if self.studysets:
+        if self.studysets is not None:
             for _item_studysets in self.studysets:
-                if _item_studysets:
+                if _item_studysets is not None:
                     _items.append(_item_studysets.to_dict())
             _dict['studysets'] = _items
         # set to None if doi (nullable) is None

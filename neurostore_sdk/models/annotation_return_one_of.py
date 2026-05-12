@@ -82,12 +82,7 @@ class AnnotationReturnOneOf(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "created_at",
-            "updated_at",
-            "user",
-            "source_updated_at",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -95,7 +90,7 @@ class AnnotationReturnOneOf(BaseModel):
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of notes
-        if self.notes:
+        if self.notes is not None:
             _dict['notes'] = self.notes.to_dict()
         # set to None if name (nullable) is None
         # and model_fields_set contains the field

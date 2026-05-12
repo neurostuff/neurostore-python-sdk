@@ -67,8 +67,7 @@ class AnalysisRequestRelationships(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -76,13 +75,13 @@ class AnalysisRequestRelationships(BaseModel):
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of images
-        if self.images:
+        if self.images is not None:
             _dict['images'] = self.images.to_dict()
         # override the default output from pydantic by calling `to_dict()` of points
-        if self.points:
+        if self.points is not None:
             _dict['points'] = self.points.to_dict()
         # override the default output from pydantic by calling `to_dict()` of conditions
-        if self.conditions:
+        if self.conditions is not None:
             _dict['conditions'] = self.conditions.to_dict()
         return _dict
 

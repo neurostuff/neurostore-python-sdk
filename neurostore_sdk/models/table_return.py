@@ -78,11 +78,7 @@ class TableReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([
-            "created_at",
-            "updated_at",
-            "user",
-        ])
+        excluded_fields: Set[str] = set([])
 
         _dict = self.model_dump(
             by_alias=True,
@@ -90,7 +86,7 @@ class TableReturn(BaseModel):
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of analyses
-        if self.analyses:
+        if self.analyses is not None:
             _dict['analyses'] = self.analyses.to_dict()
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field
