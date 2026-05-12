@@ -43,6 +43,7 @@ class TestImageReturn(unittest.TestCase):
                 value_type = 'Z',
                 add_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 analysis = '',
+                study = '',
                 entities = [
                     neurostore_sdk.models.entity.entity(
                         label = '', 

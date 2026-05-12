@@ -7230,6 +7230,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
+        study: Annotated[Optional[StrictStr], Field(description="Filter images by study id")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
         space: Annotated[Optional[StrictStr], Field(description="search space field")] = None,
@@ -7264,6 +7265,8 @@ class StoreApi:
         :type paginate: bool
         :param filename: search filename field
         :type filename: str
+        :param study: Filter images by study id
+        :type study: str
         :param analysis_name: search analysis_name field
         :type analysis_name: str
         :param value_type: search value_type field
@@ -7300,6 +7303,7 @@ class StoreApi:
             page_size=page_size,
             paginate=paginate,
             filename=filename,
+            study=study,
             analysis_name=analysis_name,
             value_type=value_type,
             space=space,
@@ -7333,6 +7337,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
+        study: Annotated[Optional[StrictStr], Field(description="Filter images by study id")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
         space: Annotated[Optional[StrictStr], Field(description="search space field")] = None,
@@ -7367,6 +7372,8 @@ class StoreApi:
         :type paginate: bool
         :param filename: search filename field
         :type filename: str
+        :param study: Filter images by study id
+        :type study: str
         :param analysis_name: search analysis_name field
         :type analysis_name: str
         :param value_type: search value_type field
@@ -7403,6 +7410,7 @@ class StoreApi:
             page_size=page_size,
             paginate=paginate,
             filename=filename,
+            study=study,
             analysis_name=analysis_name,
             value_type=value_type,
             space=space,
@@ -7436,6 +7444,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         filename: Annotated[Optional[StrictStr], Field(description="search filename field")] = None,
+        study: Annotated[Optional[StrictStr], Field(description="Filter images by study id")] = None,
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
         space: Annotated[Optional[StrictStr], Field(description="search space field")] = None,
@@ -7470,6 +7479,8 @@ class StoreApi:
         :type paginate: bool
         :param filename: search filename field
         :type filename: str
+        :param study: Filter images by study id
+        :type study: str
         :param analysis_name: search analysis_name field
         :type analysis_name: str
         :param value_type: search value_type field
@@ -7506,6 +7517,7 @@ class StoreApi:
             page_size=page_size,
             paginate=paginate,
             filename=filename,
+            study=study,
             analysis_name=analysis_name,
             value_type=value_type,
             space=space,
@@ -7534,6 +7546,7 @@ class StoreApi:
         page_size,
         paginate,
         filename,
+        study,
         analysis_name,
         value_type,
         space,
@@ -7586,6 +7599,10 @@ class StoreApi:
         if filename is not None:
             
             _query_params.append(('filename', filename))
+            
+        if study is not None:
+            
+            _query_params.append(('study', study))
             
         if analysis_name is not None:
             

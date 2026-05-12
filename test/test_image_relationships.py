@@ -37,6 +37,7 @@ class TestImageRelationships(unittest.TestCase):
         if include_optional:
             return ImageRelationships(
                 analysis = '',
+                study = '',
                 entities = [
                     neurostore_sdk.models.entity.entity(
                         label = '', 

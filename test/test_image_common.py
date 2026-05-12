@@ -36,7 +36,8 @@ class TestImageCommon(unittest.TestCase):
         model = ImageCommon()
         if include_optional:
             return ImageCommon(
-                analysis = ''
+                analysis = '',
+                study = ''
             )
         else:
             return ImageCommon(
