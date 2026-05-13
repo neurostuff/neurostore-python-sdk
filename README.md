@@ -67,24 +67,16 @@ configuration = neurostore_sdk.Configuration(
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.StoreApi(api_client)
-    search = 'imagin' # str | search for entries that contain the substring (optional)
-    sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
-    page = 56 # int | page of results (optional)
-    desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
-    page_size = 56 # int | number of results to show on a page (optional)
-    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
-    study = 'study_example' # str | Filter tables by study id (optional)
-    name = 'name_example' # str | search the name field for a term (optional)
-    nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
+    api_instance = neurostore_sdk.NeurostoreStudysetReleasesApi(api_client)
+    version = 'version_example' # str | nightly, latest, or a monthly release in YYYY-MM format.
 
     try:
-        # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
-        print("The response of StoreApi->analyses_get:\n")
+        # Download NeuroStore studyset release tarball
+        api_response = api_instance.neurostore_resources_neurostore_studyset_releases_download(version)
+        print("The response of NeurostoreStudysetReleasesApi->neurostore_resources_neurostore_studyset_releases_download:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling StoreApi->analyses_get: %s\n" % e)
+        print("Exception when calling NeurostoreStudysetReleasesApi->neurostore_resources_neurostore_studyset_releases_download: %s\n" % e)
 
 ```
 
@@ -94,6 +86,9 @@ All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*NeurostoreStudysetReleasesApi* | [**neurostore_resources_neurostore_studyset_releases_download**](docs/NeurostoreStudysetReleasesApi.md#neurostore_resources_neurostore_studyset_releases_download) | **GET** /neurostore-studyset-releases/{version}/download | Download NeuroStore studyset release tarball
+*NeurostoreStudysetReleasesApi* | [**neurostore_resources_neurostore_studyset_releases_get**](docs/NeurostoreStudysetReleasesApi.md#neurostore_resources_neurostore_studyset_releases_get) | **GET** /neurostore-studyset-releases/{version} | GET NeuroStore studyset release manifest
+*NeurostoreStudysetReleasesApi* | [**neurostore_resources_neurostore_studyset_releases_search**](docs/NeurostoreStudysetReleasesApi.md#neurostore_resources_neurostore_studyset_releases_search) | **GET** /neurostore-studyset-releases/ | GET NeuroStore studyset release list
 *StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
 *StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
 *StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
@@ -218,6 +213,8 @@ Class | Method | HTTP request | Description
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)
  - [NestedPutAttributes](docs/NestedPutAttributes.md)
+ - [NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response](docs/NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response.md)
+ - [NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata](docs/NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata.md)
  - [NoteCollectionBase](docs/NoteCollectionBase.md)
  - [NoteCollectionList](docs/NoteCollectionList.md)
  - [NoteCollectionRequest](docs/NoteCollectionRequest.md)

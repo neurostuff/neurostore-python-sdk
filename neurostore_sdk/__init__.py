@@ -19,6 +19,7 @@ __version__ = "1.1"
 
 # Define package exports
 __all__ = [
+    "NeurostoreStudysetReleasesApi",
     "StoreApi",
     "ApiResponse",
     "ApiClient",
@@ -80,6 +81,8 @@ __all__ = [
     "JsonLdContext",
     "Metadata",
     "NestedPutAttributes",
+    "NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response",
+    "NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata",
     "NoteCollectionBase",
     "NoteCollectionList",
     "NoteCollectionRequest",
@@ -140,6 +143,7 @@ __all__ = [
 
 if __import__("typing").TYPE_CHECKING:
     # import apis into sdk package
+    from neurostore_sdk.api.neurostore_studyset_releases_api import NeurostoreStudysetReleasesApi as NeurostoreStudysetReleasesApi
     from neurostore_sdk.api.store_api import StoreApi as StoreApi
     
     # import ApiClient
@@ -205,6 +209,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
     from neurostore_sdk.models.metadata import Metadata as Metadata
     from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
+    from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response import NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response as NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response
+    from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response_metadata import NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata as NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata
     from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
     from neurostore_sdk.models.note_collection_list import NoteCollectionList as NoteCollectionList
     from neurostore_sdk.models.note_collection_request import NoteCollectionRequest as NoteCollectionRequest
@@ -271,6 +277,7 @@ else:
             ("__version__", __version__),
             ("__all__", __all__),
             """# import apis into sdk package
+from neurostore_sdk.api.neurostore_studyset_releases_api import NeurostoreStudysetReleasesApi as NeurostoreStudysetReleasesApi
 from neurostore_sdk.api.store_api import StoreApi as StoreApi
 
 # import ApiClient
@@ -336,6 +343,8 @@ from neurostore_sdk.models.json_ld import JsonLd as JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
 from neurostore_sdk.models.metadata import Metadata as Metadata
 from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
+from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response import NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response as NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response
+from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response_metadata import NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata as NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata
 from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
 from neurostore_sdk.models.note_collection_list import NoteCollectionList as NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest as NoteCollectionRequest
