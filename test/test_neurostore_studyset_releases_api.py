@@ -27,24 +27,24 @@ class TestNeurostoreStudysetReleasesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_neurostore_resources_neurostore_studyset_releases_download(self) -> None:
-        """Test case for neurostore_resources_neurostore_studyset_releases_download
+    def test_neurostore_studyset_releases_get(self) -> None:
+        """Test case for neurostore_studyset_releases_get
+
+        GET NeuroStore studyset release list
+        """
+        pass
+
+    def test_neurostore_studyset_releases_version_download_get(self) -> None:
+        """Test case for neurostore_studyset_releases_version_download_get
 
         Download NeuroStore studyset release tarball
         """
         pass
 
-    def test_neurostore_resources_neurostore_studyset_releases_get(self) -> None:
-        """Test case for neurostore_resources_neurostore_studyset_releases_get
+    def test_neurostore_studyset_releases_version_get(self) -> None:
+        """Test case for neurostore_studyset_releases_version_get
 
         GET NeuroStore studyset release manifest
-        """
-        pass
-
-    def test_neurostore_resources_neurostore_studyset_releases_search(self) -> None:
-        """Test case for neurostore_resources_neurostore_studyset_releases_search
-
-        GET NeuroStore studyset release list
         """
         pass
 

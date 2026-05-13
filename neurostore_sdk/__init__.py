@@ -81,8 +81,8 @@ __all__ = [
     "JsonLdContext",
     "Metadata",
     "NestedPutAttributes",
-    "NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response",
-    "NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata",
+    "NeurostoreStudysetReleasesGet200Response",
+    "NeurostoreStudysetReleasesGet200ResponseMetadata",
     "NoteCollectionBase",
     "NoteCollectionList",
     "NoteCollectionRequest",
@@ -209,8 +209,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
     from neurostore_sdk.models.metadata import Metadata as Metadata
     from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
-    from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response import NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response as NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response
-    from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response_metadata import NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata as NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata
+    from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
+    from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata as NeurostoreStudysetReleasesGet200ResponseMetadata
     from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
     from neurostore_sdk.models.note_collection_list import NoteCollectionList as NoteCollectionList
     from neurostore_sdk.models.note_collection_request import NoteCollectionRequest as NoteCollectionRequest
@@ -343,8 +343,8 @@ from neurostore_sdk.models.json_ld import JsonLd as JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
 from neurostore_sdk.models.metadata import Metadata as Metadata
 from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
-from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response import NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response as NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response
-from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response_metadata import NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata as NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata
+from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
+from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata as NeurostoreStudysetReleasesGet200ResponseMetadata
 from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
 from neurostore_sdk.models.note_collection_list import NoteCollectionList as NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest as NoteCollectionRequest

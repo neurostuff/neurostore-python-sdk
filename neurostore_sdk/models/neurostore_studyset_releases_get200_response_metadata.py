@@ -23,9 +23,9 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata(BaseModel):
+class NeurostoreStudysetReleasesGet200ResponseMetadata(BaseModel):
     """
-    NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata
+    NeurostoreStudysetReleasesGet200ResponseMetadata
     """ # noqa: E501
     total_count: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["total_count"]
@@ -48,7 +48,7 @@ class NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata(Bas
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata from a JSON string"""
+        """Create an instance of NeurostoreStudysetReleasesGet200ResponseMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,7 +72,7 @@ class NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata(Bas
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata from a dict"""
+        """Create an instance of NeurostoreStudysetReleasesGet200ResponseMetadata from a dict"""
         if obj is None:
             return None
 

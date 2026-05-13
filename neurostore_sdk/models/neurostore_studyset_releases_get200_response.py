@@ -20,15 +20,15 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response_metadata import NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata
+from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
-class NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response(BaseModel):
+class NeurostoreStudysetReleasesGet200Response(BaseModel):
     """
-    NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response
+    NeurostoreStudysetReleasesGet200Response
     """ # noqa: E501
-    metadata: Optional[NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata] = None
+    metadata: Optional[NeurostoreStudysetReleasesGet200ResponseMetadata] = None
     results: Optional[List[Dict[str, Any]]] = None
     __properties: ClassVar[List[str]] = ["metadata", "results"]
 
@@ -50,7 +50,7 @@ class NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response from a JSON string"""
+        """Create an instance of NeurostoreStudysetReleasesGet200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +77,7 @@ class NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response from a dict"""
+        """Create an instance of NeurostoreStudysetReleasesGet200Response from a dict"""
         if obj is None:
             return None
 
@@ -85,7 +85,7 @@ class NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "metadata": NeurostoreResourcesNeurostoreStudysetReleasesSearch200ResponseMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": NeurostoreStudysetReleasesGet200ResponseMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "results": obj.get("results")
         })
         return _obj

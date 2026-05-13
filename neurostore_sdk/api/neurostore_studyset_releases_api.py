@@ -20,7 +20,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBytes, StrictStr
 from typing import Any, Dict, Tuple, Union
 from typing_extensions import Annotated
-from neurostore_sdk.models.neurostore_resources_neurostore_studyset_releases_search200_response import NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response
+from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response
 
 from neurostore_sdk.api_client import ApiClient, RequestSerialized
 from neurostore_sdk.api_response import ApiResponse
@@ -41,7 +41,249 @@ class NeurostoreStudysetReleasesApi:
 
 
     @validate_call
-    def neurostore_resources_neurostore_studyset_releases_download(
+    def neurostore_studyset_releases_get(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NeurostoreStudysetReleasesGet200Response:
+        """GET NeuroStore studyset release list
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._neurostore_studyset_releases_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NeurostoreStudysetReleasesGet200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def neurostore_studyset_releases_get_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NeurostoreStudysetReleasesGet200Response]:
+        """GET NeuroStore studyset release list
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._neurostore_studyset_releases_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NeurostoreStudysetReleasesGet200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def neurostore_studyset_releases_get_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET NeuroStore studyset release list
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._neurostore_studyset_releases_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NeurostoreStudysetReleasesGet200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _neurostore_studyset_releases_get_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/neurostore-studyset-releases/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def neurostore_studyset_releases_version_download_get(
         self,
         version: Annotated[StrictStr, Field(description="nightly, latest, or a monthly release in YYYY-MM format.")],
         _request_timeout: Union[
@@ -84,7 +326,7 @@ class NeurostoreStudysetReleasesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_neurostore_studyset_releases_download_serialize(
+        _param = self._neurostore_studyset_releases_version_download_get_serialize(
             version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -108,7 +350,7 @@ class NeurostoreStudysetReleasesApi:
 
 
     @validate_call
-    def neurostore_resources_neurostore_studyset_releases_download_with_http_info(
+    def neurostore_studyset_releases_version_download_get_with_http_info(
         self,
         version: Annotated[StrictStr, Field(description="nightly, latest, or a monthly release in YYYY-MM format.")],
         _request_timeout: Union[
@@ -151,7 +393,7 @@ class NeurostoreStudysetReleasesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_neurostore_studyset_releases_download_serialize(
+        _param = self._neurostore_studyset_releases_version_download_get_serialize(
             version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -175,7 +417,7 @@ class NeurostoreStudysetReleasesApi:
 
 
     @validate_call
-    def neurostore_resources_neurostore_studyset_releases_download_without_preload_content(
+    def neurostore_studyset_releases_version_download_get_without_preload_content(
         self,
         version: Annotated[StrictStr, Field(description="nightly, latest, or a monthly release in YYYY-MM format.")],
         _request_timeout: Union[
@@ -218,7 +460,7 @@ class NeurostoreStudysetReleasesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_neurostore_studyset_releases_download_serialize(
+        _param = self._neurostore_studyset_releases_version_download_get_serialize(
             version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -237,7 +479,7 @@ class NeurostoreStudysetReleasesApi:
         return response_data.response
 
 
-    def _neurostore_resources_neurostore_studyset_releases_download_serialize(
+    def _neurostore_studyset_releases_version_download_get_serialize(
         self,
         version,
         _request_auth,
@@ -302,7 +544,7 @@ class NeurostoreStudysetReleasesApi:
 
 
     @validate_call
-    def neurostore_resources_neurostore_studyset_releases_get(
+    def neurostore_studyset_releases_version_get(
         self,
         version: Annotated[StrictStr, Field(description="nightly, latest, or a monthly release in YYYY-MM format.")],
         _request_timeout: Union[
@@ -345,7 +587,7 @@ class NeurostoreStudysetReleasesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_neurostore_studyset_releases_get_serialize(
+        _param = self._neurostore_studyset_releases_version_get_serialize(
             version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -369,7 +611,7 @@ class NeurostoreStudysetReleasesApi:
 
 
     @validate_call
-    def neurostore_resources_neurostore_studyset_releases_get_with_http_info(
+    def neurostore_studyset_releases_version_get_with_http_info(
         self,
         version: Annotated[StrictStr, Field(description="nightly, latest, or a monthly release in YYYY-MM format.")],
         _request_timeout: Union[
@@ -412,7 +654,7 @@ class NeurostoreStudysetReleasesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_neurostore_studyset_releases_get_serialize(
+        _param = self._neurostore_studyset_releases_version_get_serialize(
             version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -436,7 +678,7 @@ class NeurostoreStudysetReleasesApi:
 
 
     @validate_call
-    def neurostore_resources_neurostore_studyset_releases_get_without_preload_content(
+    def neurostore_studyset_releases_version_get_without_preload_content(
         self,
         version: Annotated[StrictStr, Field(description="nightly, latest, or a monthly release in YYYY-MM format.")],
         _request_timeout: Union[
@@ -479,7 +721,7 @@ class NeurostoreStudysetReleasesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_neurostore_studyset_releases_get_serialize(
+        _param = self._neurostore_studyset_releases_version_get_serialize(
             version=version,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -498,7 +740,7 @@ class NeurostoreStudysetReleasesApi:
         return response_data.response
 
 
-    def _neurostore_resources_neurostore_studyset_releases_get_serialize(
+    def _neurostore_studyset_releases_version_get_serialize(
         self,
         version,
         _request_auth,
@@ -546,248 +788,6 @@ class NeurostoreStudysetReleasesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/neurostore-studyset-releases/{version}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def neurostore_resources_neurostore_studyset_releases_search(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response:
-        """GET NeuroStore studyset release list
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_neurostore_studyset_releases_search_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def neurostore_resources_neurostore_studyset_releases_search_with_http_info(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response]:
-        """GET NeuroStore studyset release list
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_neurostore_studyset_releases_search_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def neurostore_resources_neurostore_studyset_releases_search_without_preload_content(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """GET NeuroStore studyset release list
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_neurostore_studyset_releases_search_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "NeurostoreResourcesNeurostoreStudysetReleasesSearch200Response",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _neurostore_resources_neurostore_studyset_releases_search_serialize(
-        self,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/neurostore-studyset-releases/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
