@@ -1,6 +1,6 @@
 [project]
 name = "neurostore_sdk"
-version = "1.1"
+version = "1.2"
 description = "neurostore api"
 authors = [
   {name = "James D Kent",email = "jamesdkent21@gmail.com"},
