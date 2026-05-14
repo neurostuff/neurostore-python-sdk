@@ -223,6 +223,27 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_neurostore_studyset_releases_get(self) -> None:
+        """Test case for neurostore_studyset_releases_get
+
+        GET NeuroStore studyset release list
+        """
+        pass
+
+    def test_neurostore_studyset_releases_version_download_get(self) -> None:
+        """Test case for neurostore_studyset_releases_version_download_get
+
+        Download NeuroStore studyset release tarball
+        """
+        pass
+
+    def test_neurostore_studyset_releases_version_get(self) -> None:
+        """Test case for neurostore_studyset_releases_version_get
+
+        GET NeuroStore studyset release manifest
+        """
+        pass
+
     def test_pipeline_configs_get(self) -> None:
         """Test case for pipeline_configs_get
 

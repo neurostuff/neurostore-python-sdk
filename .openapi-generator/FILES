@@ -54,7 +54,6 @@ docs/JsonLd.md
 docs/JsonLdContext.md
 docs/Metadata.md
 docs/NestedPutAttributes.md
-docs/NeurostoreStudysetReleasesApi.md
 docs/NeurostoreStudysetReleasesGet200Response.md
 docs/NeurostoreStudysetReleasesGet200ResponseMetadata.md
 docs/NoteCollectionBase.md
@@ -117,7 +116,6 @@ docs/WriteableResourceAttributes.md
 git_push.sh
 neurostore_sdk/__init__.py
 neurostore_sdk/api/__init__.py
-neurostore_sdk/api/neurostore_studyset_releases_api.py
 neurostore_sdk/api/store_api.py
 neurostore_sdk/api_client.py
 neurostore_sdk/api_response.py
@@ -292,7 +290,6 @@ test/test_json_ld.py
 test/test_json_ld_context.py
 test/test_metadata.py
 test/test_nested_put_attributes.py
-test/test_neurostore_studyset_releases_api.py
 test/test_neurostore_studyset_releases_get200_response.py
 test/test_neurostore_studyset_releases_get200_response_metadata.py
 test/test_note_collection_base.py

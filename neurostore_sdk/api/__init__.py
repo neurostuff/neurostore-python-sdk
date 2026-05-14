@@ -2,7 +2,6 @@
 
 if __import__("typing").TYPE_CHECKING:
     # import apis into api package
-    from neurostore_sdk.api.neurostore_studyset_releases_api import NeurostoreStudysetReleasesApi
     from neurostore_sdk.api.store_api import StoreApi
     
 else:
@@ -12,7 +11,6 @@ else:
         LazyModule(
             *as_package(__file__),
             """# import apis into api package
-from neurostore_sdk.api.neurostore_studyset_releases_api import NeurostoreStudysetReleasesApi
 from neurostore_sdk.api.store_api import StoreApi
 
 """,

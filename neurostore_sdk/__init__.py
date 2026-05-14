@@ -19,7 +19,6 @@ __version__ = "1.2"
 
 # Define package exports
 __all__ = [
-    "NeurostoreStudysetReleasesApi",
     "StoreApi",
     "ApiResponse",
     "ApiClient",
@@ -143,7 +142,6 @@ __all__ = [
 
 if __import__("typing").TYPE_CHECKING:
     # import apis into sdk package
-    from neurostore_sdk.api.neurostore_studyset_releases_api import NeurostoreStudysetReleasesApi as NeurostoreStudysetReleasesApi
     from neurostore_sdk.api.store_api import StoreApi as StoreApi
     
     # import ApiClient
@@ -277,7 +275,6 @@ else:
             ("__version__", __version__),
             ("__all__", __all__),
             """# import apis into sdk package
-from neurostore_sdk.api.neurostore_studyset_releases_api import NeurostoreStudysetReleasesApi as NeurostoreStudysetReleasesApi
 from neurostore_sdk.api.store_api import StoreApi as StoreApi
 
 # import ApiClient
