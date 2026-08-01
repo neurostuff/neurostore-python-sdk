@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 
+**source_id** | **str** | ID of the analysis this one was cloned from, if any. | [optional] [readonly] 
 **point_count** | **int** | Number of point coordinates linked to this analysis. | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 

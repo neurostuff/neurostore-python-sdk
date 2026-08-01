@@ -50,13 +50,14 @@ class AnalysisReturn(BaseModel):
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
+    source_id: Optional[StrictStr] = Field(default=None, description="ID of the analysis this one was cloned from, if any.")
     point_count: Optional[StrictInt] = Field(default=None, description="Number of point coordinates linked to this analysis.")
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
     has_z_maps: Optional[StrictBool] = None
     has_t_maps: Optional[StrictBool] = None
     has_beta_and_variance_maps: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "point_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "source_id", "point_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,6 +89,7 @@ class AnalysisReturn(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
@@ -155,6 +157,11 @@ class AnalysisReturn(BaseModel):
         if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
 
+        # set to None if source_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_id is None and "source_id" in self.model_fields_set:
+            _dict['source_id'] = None
+
         # set to None if point_count (nullable) is None
         # and model_fields_set contains the field
         if self.point_count is None and "point_count" in self.model_fields_set:
@@ -189,6 +196,7 @@ class AnalysisReturn(BaseModel):
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "order": obj.get("order"),
             "metadata": obj.get("metadata"),
+            "source_id": obj.get("source_id"),
             "point_count": obj.get("point_count"),
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),
