@@ -56,7 +56,8 @@ class TestImageReturn(unittest.TestCase):
                 id = '38jobTomPDqt',
                 public = True,
                 user = '',
-                username = ''
+                username = '',
+                order = 56
             )
         else:
             return ImageReturn(

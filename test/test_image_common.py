@@ -37,7 +37,8 @@ class TestImageCommon(unittest.TestCase):
         if include_optional:
             return ImageCommon(
                 analysis = '',
-                study = ''
+                study = '',
+                order = 56
             )
         else:
             return ImageCommon(

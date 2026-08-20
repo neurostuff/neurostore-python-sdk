@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **analysis_name** | **str** |  | [optional] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
+**order** | **int** | determines the position to display the image within its analysis (or study, when the image has no analysis) | [optional] 
 
 ## Example
 

@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.entity import Entity
@@ -42,7 +42,8 @@ class ImageRequest(BaseModel):
     analysis_name: Optional[StrictStr] = None
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
-    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "id", "public"]
+    order: Optional[StrictInt] = Field(default=None, description="determines the position to display the image within its analysis (or study, when the image has no analysis)")
+    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "id", "public", "order"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -135,6 +136,11 @@ class ImageRequest(BaseModel):
         if self.analysis_name is None and "analysis_name" in self.model_fields_set:
             _dict['analysis_name'] = None
 
+        # set to None if order (nullable) is None
+        # and model_fields_set contains the field
+        if self.order is None and "order" in self.model_fields_set:
+            _dict['order'] = None
+
         return _dict
 
     @classmethod
@@ -158,7 +164,8 @@ class ImageRequest(BaseModel):
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "analysis_name": obj.get("analysis_name"),
             "id": obj.get("id"),
-            "public": obj.get("public") if obj.get("public") is not None else True
+            "public": obj.get("public") if obj.get("public") is not None else True,
+            "order": obj.get("order")
         })
         return _obj
 

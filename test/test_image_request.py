@@ -52,7 +52,8 @@ class TestImageRequest(unittest.TestCase):
                     ],
                 analysis_name = '',
                 id = '38jobTomPDqt',
-                public = True
+                public = True,
+                order = 56
             )
         else:
             return ImageRequest(

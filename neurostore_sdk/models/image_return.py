@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.entity import Entity
@@ -46,7 +46,8 @@ class ImageReturn(BaseModel):
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
-    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username"]
+    order: Optional[StrictInt] = Field(default=None, description="determines the position to display the image within its analysis (or study, when the image has no analysis)")
+    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username", "order"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -157,6 +158,11 @@ class ImageReturn(BaseModel):
         if self.username is None and "username" in self.model_fields_set:
             _dict['username'] = None
 
+        # set to None if order (nullable) is None
+        # and model_fields_set contains the field
+        if self.order is None and "order" in self.model_fields_set:
+            _dict['order'] = None
+
         return _dict
 
     @classmethod
@@ -184,7 +190,8 @@ class ImageReturn(BaseModel):
             "id": obj.get("id"),
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "order": obj.get("order")
         })
         return _obj
 

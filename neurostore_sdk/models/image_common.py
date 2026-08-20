@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,8 @@ class ImageCommon(BaseModel):
     """ # noqa: E501
     analysis: Optional[StrictStr] = None
     study: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["analysis", "study"]
+    order: Optional[StrictInt] = Field(default=None, description="determines the position to display the image within its analysis (or study, when the image has no analysis)")
+    __properties: ClassVar[List[str]] = ["analysis", "study", "order"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +80,11 @@ class ImageCommon(BaseModel):
         if self.study is None and "study" in self.model_fields_set:
             _dict['study'] = None
 
+        # set to None if order (nullable) is None
+        # and model_fields_set contains the field
+        if self.order is None and "order" in self.model_fields_set:
+            _dict['order'] = None
+
         return _dict
 
     @classmethod
@@ -92,7 +98,8 @@ class ImageCommon(BaseModel):
 
         _obj = cls.model_validate({
             "analysis": obj.get("analysis"),
-            "study": obj.get("study")
+            "study": obj.get("study"),
+            "order": obj.get("order")
         })
         return _obj
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analysis** | **str** |  | [optional] 
 **study** | **str** |  | [optional] 
+**order** | **int** | determines the position to display the image within its analysis (or study, when the image has no analysis) | [optional] 
 
 ## Example
 

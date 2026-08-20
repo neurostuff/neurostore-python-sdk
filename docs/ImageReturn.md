@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
 **user** | **str** | who owns the resource | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
+**order** | **int** | determines the position to display the image within its analysis (or study, when the image has no analysis) | [optional] 
 
 ## Example
 
