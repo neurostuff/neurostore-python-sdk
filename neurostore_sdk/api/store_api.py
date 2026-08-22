@@ -95,6 +95,8 @@ class StoreApi:
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,6 +132,10 @@ class StoreApi:
         :type name: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -162,6 +168,8 @@ class StoreApi:
             study=study,
             name=name,
             nested=nested,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -194,6 +202,8 @@ class StoreApi:
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -229,6 +239,10 @@ class StoreApi:
         :type name: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -261,6 +275,8 @@ class StoreApi:
             study=study,
             name=name,
             nested=nested,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -293,6 +309,8 @@ class StoreApi:
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -328,6 +346,10 @@ class StoreApi:
         :type name: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -360,6 +382,8 @@ class StoreApi:
             study=study,
             name=name,
             nested=nested,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -387,6 +411,8 @@ class StoreApi:
         study,
         name,
         nested,
+        image_metadata,
+        image_value_summary,
         _request_auth,
         _content_type,
         _headers,
@@ -444,6 +470,14 @@ class StoreApi:
         if nested is not None:
             
             _query_params.append(('nested', nested))
+            
+        if image_metadata is not None:
+            
+            _query_params.append(('image_metadata', image_metadata))
+            
+        if image_value_summary is not None:
+            
+            _query_params.append(('image_value_summary', image_value_summary))
             
         # process the header parameters
         # process the form parameters
@@ -740,6 +774,8 @@ class StoreApi:
         self,
         id: StrictStr,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -761,6 +797,10 @@ class StoreApi:
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -786,6 +826,8 @@ class StoreApi:
         _param = self._analyses_id_get_serialize(
             id=id,
             nested=nested,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -812,6 +854,8 @@ class StoreApi:
         self,
         id: StrictStr,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -833,6 +877,10 @@ class StoreApi:
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -858,6 +906,8 @@ class StoreApi:
         _param = self._analyses_id_get_serialize(
             id=id,
             nested=nested,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -884,6 +934,8 @@ class StoreApi:
         self,
         id: StrictStr,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -905,6 +957,10 @@ class StoreApi:
         :type id: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -930,6 +986,8 @@ class StoreApi:
         _param = self._analyses_id_get_serialize(
             id=id,
             nested=nested,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -951,6 +1009,8 @@ class StoreApi:
         self,
         id,
         nested,
+        image_metadata,
+        image_value_summary,
         _request_auth,
         _content_type,
         _headers,
@@ -978,6 +1038,14 @@ class StoreApi:
         if nested is not None:
             
             _query_params.append(('nested', nested))
+            
+        if image_metadata is not None:
+            
+            _query_params.append(('image_metadata', image_metadata))
+            
+        if image_value_summary is not None:
+            
+            _query_params.append(('image_value_summary', image_value_summary))
             
         # process the header parameters
         # process the form parameters
@@ -7235,6 +7303,8 @@ class StoreApi:
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
         space: Annotated[Optional[StrictStr], Field(description="search space field")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7274,6 +7344,10 @@ class StoreApi:
         :type value_type: str
         :param space: search space field
         :type space: str
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7308,6 +7382,8 @@ class StoreApi:
             analysis_name=analysis_name,
             value_type=value_type,
             space=space,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7342,6 +7418,8 @@ class StoreApi:
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
         space: Annotated[Optional[StrictStr], Field(description="search space field")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7381,6 +7459,10 @@ class StoreApi:
         :type value_type: str
         :param space: search space field
         :type space: str
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7415,6 +7497,8 @@ class StoreApi:
             analysis_name=analysis_name,
             value_type=value_type,
             space=space,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7449,6 +7533,8 @@ class StoreApi:
         analysis_name: Annotated[Optional[StrictStr], Field(description="search analysis_name field")] = None,
         value_type: Annotated[Optional[StrictStr], Field(description="search value_type field")] = None,
         space: Annotated[Optional[StrictStr], Field(description="search space field")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7488,6 +7574,10 @@ class StoreApi:
         :type value_type: str
         :param space: search space field
         :type space: str
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7522,6 +7612,8 @@ class StoreApi:
             analysis_name=analysis_name,
             value_type=value_type,
             space=space,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7551,6 +7643,8 @@ class StoreApi:
         analysis_name,
         value_type,
         space,
+        image_metadata,
+        image_value_summary,
         _request_auth,
         _content_type,
         _headers,
@@ -7616,6 +7710,14 @@ class StoreApi:
         if space is not None:
             
             _query_params.append(('space', space))
+            
+        if image_metadata is not None:
+            
+            _query_params.append(('image_metadata', image_metadata))
+            
+        if image_value_summary is not None:
+            
+            _query_params.append(('image_value_summary', image_value_summary))
             
         # process the header parameters
         # process the form parameters
@@ -7911,6 +8013,8 @@ class StoreApi:
     def images_id_get(
         self,
         id: StrictStr,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7930,6 +8034,10 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7954,6 +8062,8 @@ class StoreApi:
 
         _param = self._images_id_get_serialize(
             id=id,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7979,6 +8089,8 @@ class StoreApi:
     def images_id_get_with_http_info(
         self,
         id: StrictStr,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7998,6 +8110,10 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8022,6 +8138,8 @@ class StoreApi:
 
         _param = self._images_id_get_serialize(
             id=id,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8047,6 +8165,8 @@ class StoreApi:
     def images_id_get_without_preload_content(
         self,
         id: StrictStr,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8066,6 +8186,10 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8090,6 +8214,8 @@ class StoreApi:
 
         _param = self._images_id_get_serialize(
             id=id,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8110,6 +8236,8 @@ class StoreApi:
     def _images_id_get_serialize(
         self,
         id,
+        image_metadata,
+        image_value_summary,
         _request_auth,
         _content_type,
         _headers,
@@ -8134,6 +8262,14 @@ class StoreApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if image_metadata is not None:
+            
+            _query_params.append(('image_metadata', image_metadata))
+            
+        if image_value_summary is not None:
+            
+            _query_params.append(('image_value_summary', image_value_summary))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -15603,6 +15739,8 @@ class StoreApi:
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15662,6 +15800,10 @@ class StoreApi:
         :type doi: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15706,6 +15848,8 @@ class StoreApi:
             pmid=pmid,
             doi=doi,
             flat=flat,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15750,6 +15894,8 @@ class StoreApi:
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15809,6 +15955,10 @@ class StoreApi:
         :type doi: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15853,6 +16003,8 @@ class StoreApi:
             pmid=pmid,
             doi=doi,
             flat=flat,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15897,6 +16049,8 @@ class StoreApi:
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15956,6 +16110,10 @@ class StoreApi:
         :type doi: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16000,6 +16158,8 @@ class StoreApi:
             pmid=pmid,
             doi=doi,
             flat=flat,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16039,6 +16199,8 @@ class StoreApi:
         pmid,
         doi,
         flat,
+        image_metadata,
+        image_value_summary,
         _request_auth,
         _content_type,
         _headers,
@@ -16144,6 +16306,14 @@ class StoreApi:
         if flat is not None:
             
             _query_params.append(('flat', flat))
+            
+        if image_metadata is not None:
+            
+            _query_params.append(('image_metadata', image_metadata))
+            
+        if image_value_summary is not None:
+            
+            _query_params.append(('image_value_summary', image_value_summary))
             
         # process the header parameters
         # process the form parameters
@@ -16443,6 +16613,8 @@ class StoreApi:
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16468,6 +16640,10 @@ class StoreApi:
         :type studyset_owner: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16495,6 +16671,8 @@ class StoreApi:
             nested=nested,
             studyset_owner=studyset_owner,
             flat=flat,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16523,6 +16701,8 @@ class StoreApi:
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16548,6 +16728,10 @@ class StoreApi:
         :type studyset_owner: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16575,6 +16759,8 @@ class StoreApi:
             nested=nested,
             studyset_owner=studyset_owner,
             flat=flat,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16603,6 +16789,8 @@ class StoreApi:
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
+        image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
+        image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16628,6 +16816,10 @@ class StoreApi:
         :type studyset_owner: str
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
+        :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
+        :type image_metadata: bool
+        :param image_value_summary: include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.
+        :type image_value_summary: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16655,6 +16847,8 @@ class StoreApi:
             nested=nested,
             studyset_owner=studyset_owner,
             flat=flat,
+            image_metadata=image_metadata,
+            image_value_summary=image_value_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -16678,6 +16872,8 @@ class StoreApi:
         nested,
         studyset_owner,
         flat,
+        image_metadata,
+        image_value_summary,
         _request_auth,
         _content_type,
         _headers,
@@ -16713,6 +16909,14 @@ class StoreApi:
         if flat is not None:
             
             _query_params.append(('flat', flat))
+            
+        if image_metadata is not None:
+            
+            _query_params.append(('image_metadata', image_metadata))
+            
+        if image_value_summary is not None:
+            
+            _query_params.append(('image_value_summary', image_value_summary))
             
         # process the header parameters
         # process the form parameters

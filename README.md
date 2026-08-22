@@ -77,10 +77,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     study = 'study_example' # str | Filter tables by study id (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except ApiException as e:
@@ -213,10 +215,13 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](docs/ErrorResponse.md)
  - [ImageBase](docs/ImageBase.md)
  - [ImageCommon](docs/ImageCommon.md)
+ - [ImageDetail](docs/ImageDetail.md)
  - [ImageList](docs/ImageList.md)
  - [ImageRelationships](docs/ImageRelationships.md)
  - [ImageRequest](docs/ImageRequest.md)
  - [ImageReturn](docs/ImageReturn.md)
+ - [ImageValueSummary](docs/ImageValueSummary.md)
+ - [ImageValueSummaryHistogram](docs/ImageValueSummaryHistogram.md)
  - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)

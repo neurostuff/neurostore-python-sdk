@@ -15,10 +15,10 @@
 
 import unittest
 
-from neurostore_sdk.models.image_return import ImageReturn
+from neurostore_sdk.models.image_detail import ImageDetail
 
-class TestImageReturn(unittest.TestCase):
-    """ImageReturn unit test stubs"""
+class TestImageDetail(unittest.TestCase):
+    """ImageDetail unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,38 +26,16 @@ class TestImageReturn(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ImageReturn:
-        """Test ImageReturn
+    def make_instance(self, include_optional) -> ImageDetail:
+        """Test ImageDetail
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ImageReturn`
+        # uncomment below to create an instance of `ImageDetail`
         """
-        model = ImageReturn()
+        model = ImageDetail()
         if include_optional:
-            return ImageReturn(
-                metadata = neurostore_sdk.models.metadata.metadata(),
-                url = 'https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz',
-                filename = 'Positive_RPEs_zstat.nii.gz',
-                space = 'MNI152NLin2009aAsym',
-                value_type = 'Z',
-                add_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                analysis = '',
-                study = '',
-                entities = [
-                    neurostore_sdk.models.entity.entity(
-                        label = '', 
-                        level = '', 
-                        analysis = '', )
-                    ],
-                analysis_name = '',
-                created_at = '2021-01-16T20:50:38.009318Z',
-                updated_at = '',
-                id = '38jobTomPDqt',
-                public = True,
-                user = '',
-                username = '',
-                order = 56,
+            return ImageDetail(
                 value_summary = neurostore_sdk.models.image_value_summary.image-value-summary(
                     status = '', 
                     error = '', 
@@ -88,12 +66,12 @@ class TestImageReturn(unittest.TestCase):
                         overflow = 56, ), )
             )
         else:
-            return ImageReturn(
+            return ImageDetail(
         )
         """
 
-    def testImageReturn(self):
-        """Test ImageReturn"""
+    def testImageDetail(self):
+        """Test ImageDetail"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

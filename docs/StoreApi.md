@@ -79,7 +79,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
+> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET list of analyses
 
@@ -114,10 +114,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     study = 'study_example' # str | Filter tables by study id (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -140,6 +142,8 @@ Name | Type | Description  | Notes
  **study** | **str**| Filter tables by study id | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
+ **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
+ **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
 
 ### Return type
 
@@ -238,7 +242,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **analyses_id_get**
-> AnalysisReturn analyses_id_get(id, nested=nested)
+> AnalysisReturn analyses_id_get(id, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET an analysis
 
@@ -266,10 +270,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = neurostore_sdk.StoreApi(api_client)
     id = 'id_example' # str | 
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET an analysis
-        api_response = api_instance.analyses_id_get(id, nested=nested)
+        api_response = api_instance.analyses_id_get(id, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -285,6 +291,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
+ **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
+ **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
 
 ### Return type
 
@@ -1909,7 +1917,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **images_get**
-> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space)
+> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a list of images
 
@@ -1946,10 +1954,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     analysis_name = 'analysis_name_example' # str | search analysis_name field (optional)
     value_type = 'value_type_example' # str | search value_type field (optional)
     space = 'space_example' # str | search space field (optional)
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET a list of images
-        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space)
+        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->images_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1974,6 +1984,8 @@ Name | Type | Description  | Notes
  **analysis_name** | **str**| search analysis_name field | [optional] 
  **value_type** | **str**| search value_type field | [optional] 
  **space** | **str**| search space field | [optional] 
+ **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
+ **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
 
 ### Return type
 
@@ -2072,7 +2084,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **images_id_get**
-> ImageReturn images_id_get(id)
+> ImageReturn images_id_get(id, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET an image
 
@@ -2099,10 +2111,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     id = 'id_example' # str | 
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET an image
-        api_response = api_instance.images_id_get(id)
+        api_response = api_instance.images_id_get(id, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->images_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -2117,6 +2131,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
+ **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
+ **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
 
 ### Return type
 
@@ -4024,7 +4040,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a list of studies
 
@@ -4081,10 +4097,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -4119,6 +4137,8 @@ Name | Type | Description  | Notes
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
+ **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
 
 ### Return type
 
@@ -4217,7 +4237,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_id_get**
-> StudyReturn studies_id_get(id, nested=nested, studyset_owner=studyset_owner, flat=flat)
+> StudyReturn studies_id_get(id, nested=nested, studyset_owner=studyset_owner, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a study
 
@@ -4247,10 +4267,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
+    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
+    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET a study
-        api_response = api_instance.studies_id_get(id, nested=nested, studyset_owner=studyset_owner, flat=flat)
+        api_response = api_instance.studies_id_get(id, nested=nested, studyset_owner=studyset_owner, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->studies_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -4268,6 +4290,8 @@ Name | Type | Description  | Notes
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
+ **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
+ **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
 
 ### Return type
 

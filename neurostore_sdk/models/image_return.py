@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.entity import Entity
+from neurostore_sdk.models.image_value_summary import ImageValueSummary
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -47,7 +48,8 @@ class ImageReturn(BaseModel):
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
     order: Optional[StrictInt] = Field(default=None, description="determines the position to display the image within its analysis (or study, when the image has no analysis)")
-    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username", "order"]
+    value_summary: Optional[ImageValueSummary] = None
+    __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username", "order", "value_summary"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +100,9 @@ class ImageReturn(BaseModel):
                 if _item_entities is not None:
                     _items.append(_item_entities.to_dict())
             _dict['entities'] = _items
+        # override the default output from pydantic by calling `to_dict()` of value_summary
+        if self.value_summary is not None:
+            _dict['value_summary'] = self.value_summary.to_dict()
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -163,6 +168,11 @@ class ImageReturn(BaseModel):
         if self.order is None and "order" in self.model_fields_set:
             _dict['order'] = None
 
+        # set to None if value_summary (nullable) is None
+        # and model_fields_set contains the field
+        if self.value_summary is None and "value_summary" in self.model_fields_set:
+            _dict['value_summary'] = None
+
         return _dict
 
     @classmethod
@@ -191,7 +201,8 @@ class ImageReturn(BaseModel):
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
             "username": obj.get("username"),
-            "order": obj.get("order")
+            "order": obj.get("order"),
+            "value_summary": ImageValueSummary.from_dict(obj["value_summary"]) if obj.get("value_summary") is not None else None
         })
         return _obj
 

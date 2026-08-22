@@ -58,10 +58,13 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.error_response import ErrorResponse
     from neurostore_sdk.models.image_base import ImageBase
     from neurostore_sdk.models.image_common import ImageCommon
+    from neurostore_sdk.models.image_detail import ImageDetail
     from neurostore_sdk.models.image_list import ImageList
     from neurostore_sdk.models.image_relationships import ImageRelationships
     from neurostore_sdk.models.image_request import ImageRequest
     from neurostore_sdk.models.image_return import ImageReturn
+    from neurostore_sdk.models.image_value_summary import ImageValueSummary
+    from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram
     from neurostore_sdk.models.json_ld import JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext
     from neurostore_sdk.models.metadata import Metadata
@@ -175,10 +178,13 @@ from neurostore_sdk.models.error_detail import ErrorDetail
 from neurostore_sdk.models.error_response import ErrorResponse
 from neurostore_sdk.models.image_base import ImageBase
 from neurostore_sdk.models.image_common import ImageCommon
+from neurostore_sdk.models.image_detail import ImageDetail
 from neurostore_sdk.models.image_list import ImageList
 from neurostore_sdk.models.image_relationships import ImageRelationships
 from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
+from neurostore_sdk.models.image_value_summary import ImageValueSummary
+from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram
 from neurostore_sdk.models.json_ld import JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext
 from neurostore_sdk.models.metadata import Metadata

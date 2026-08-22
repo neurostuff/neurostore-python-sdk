@@ -72,10 +72,13 @@ __all__ = [
     "ErrorResponse",
     "ImageBase",
     "ImageCommon",
+    "ImageDetail",
     "ImageList",
     "ImageRelationships",
     "ImageRequest",
     "ImageReturn",
+    "ImageValueSummary",
+    "ImageValueSummaryHistogram",
     "JsonLd",
     "JsonLdContext",
     "Metadata",
@@ -199,10 +202,13 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.error_response import ErrorResponse as ErrorResponse
     from neurostore_sdk.models.image_base import ImageBase as ImageBase
     from neurostore_sdk.models.image_common import ImageCommon as ImageCommon
+    from neurostore_sdk.models.image_detail import ImageDetail as ImageDetail
     from neurostore_sdk.models.image_list import ImageList as ImageList
     from neurostore_sdk.models.image_relationships import ImageRelationships as ImageRelationships
     from neurostore_sdk.models.image_request import ImageRequest as ImageRequest
     from neurostore_sdk.models.image_return import ImageReturn as ImageReturn
+    from neurostore_sdk.models.image_value_summary import ImageValueSummary as ImageValueSummary
+    from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram as ImageValueSummaryHistogram
     from neurostore_sdk.models.json_ld import JsonLd as JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
     from neurostore_sdk.models.metadata import Metadata as Metadata
@@ -332,10 +338,13 @@ from neurostore_sdk.models.error_detail import ErrorDetail as ErrorDetail
 from neurostore_sdk.models.error_response import ErrorResponse as ErrorResponse
 from neurostore_sdk.models.image_base import ImageBase as ImageBase
 from neurostore_sdk.models.image_common import ImageCommon as ImageCommon
+from neurostore_sdk.models.image_detail import ImageDetail as ImageDetail
 from neurostore_sdk.models.image_list import ImageList as ImageList
 from neurostore_sdk.models.image_relationships import ImageRelationships as ImageRelationships
 from neurostore_sdk.models.image_request import ImageRequest as ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn as ImageReturn
+from neurostore_sdk.models.image_value_summary import ImageValueSummary as ImageValueSummary
+from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram as ImageValueSummaryHistogram
 from neurostore_sdk.models.json_ld import JsonLd as JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
 from neurostore_sdk.models.metadata import Metadata as Metadata
