@@ -52,12 +52,13 @@ class AnalysisReturn(BaseModel):
     metadata: Optional[Dict[str, Any]] = None
     source_id: Optional[StrictStr] = Field(default=None, description="ID of the analysis this one was cloned from, if any.")
     point_count: Optional[StrictInt] = Field(default=None, description="Number of point coordinates linked to this analysis.")
+    image_count: Optional[StrictInt] = Field(default=None, description="Number of images linked to this analysis.")
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
     has_z_maps: Optional[StrictBool] = None
     has_t_maps: Optional[StrictBool] = None
     has_beta_and_variance_maps: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "source_id", "point_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -167,6 +168,11 @@ class AnalysisReturn(BaseModel):
         if self.point_count is None and "point_count" in self.model_fields_set:
             _dict['point_count'] = None
 
+        # set to None if image_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.image_count is None and "image_count" in self.model_fields_set:
+            _dict['image_count'] = None
+
         return _dict
 
     @classmethod
@@ -198,6 +204,7 @@ class AnalysisReturn(BaseModel):
             "metadata": obj.get("metadata"),
             "source_id": obj.get("source_id"),
             "point_count": obj.get("point_count"),
+            "image_count": obj.get("image_count"),
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),
             "has_z_maps": obj.get("has_z_maps"),
