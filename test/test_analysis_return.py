@@ -62,7 +62,6 @@ class TestAnalysisReturn(unittest.TestCase):
                 metadata = neurostore_sdk.models.metadata.metadata(),
                 source_id = '',
                 point_count = 56,
-                image_count = 56,
                 has_coordinates = True,
                 has_images = True,
                 has_z_maps = True,
