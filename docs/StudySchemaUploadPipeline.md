@@ -1,12 +1,14 @@
 # StudySchemaUploadPipeline
 
-The pipeline that produced the record (name; default pondie).
+The pipeline run that produced the record.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
+**name** | **str** | Default pondie. | [optional] 
+**version** | **str** | Default the record&#39;s extraction_metadata.extractor_version. | [optional] 
+**commit** | **str** | The commit of the code that produced the record. Two commits of one version are different configs. | [optional] 
 
 ## Example
 

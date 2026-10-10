@@ -18,17 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 class StudySchemaUploadPipeline(BaseModel):
     """
-    The pipeline that produced the record (name; default pondie).
+    The pipeline run that produced the record.
     """ # noqa: E501
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    name: Optional[StrictStr] = Field(default=None, description="Default pondie.")
+    version: Optional[StrictStr] = Field(default=None, description="Default the record's extraction_metadata.extractor_version.")
+    commit: Optional[StrictStr] = Field(default=None, description="The commit of the code that produced the record. Two commits of one version are different configs.")
+    __properties: ClassVar[List[str]] = ["name", "version", "commit"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,7 +82,9 @@ class StudySchemaUploadPipeline(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "version": obj.get("version"),
+            "commit": obj.get("commit")
         })
         return _obj
 

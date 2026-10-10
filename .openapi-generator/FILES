@@ -69,6 +69,8 @@ docs/PipelineConfigList.md
 docs/PipelineEmbedding.md
 docs/PipelineEmbeddingList.md
 docs/PipelineList.md
+docs/PipelineRunProvenance.md
+docs/PipelineRunProvenanceSchema.md
 docs/PipelineStudyResult.md
 docs/PipelineStudyResultList.md
 docs/PipelineStudyResultPost.md
@@ -97,6 +99,7 @@ docs/StudyReturnRelationships.md
 docs/StudyReturnRelationshipsAnalyses.md
 docs/StudySchemaUpload.md
 docs/StudySchemaUploadPipeline.md
+docs/StudySchemaUploadsPost200Response.md
 docs/StudysetBase.md
 docs/StudysetList.md
 docs/StudysetRequest.md
@@ -193,6 +196,8 @@ neurostore_sdk/models/pipeline_config_list.py
 neurostore_sdk/models/pipeline_embedding.py
 neurostore_sdk/models/pipeline_embedding_list.py
 neurostore_sdk/models/pipeline_list.py
+neurostore_sdk/models/pipeline_run_provenance.py
+neurostore_sdk/models/pipeline_run_provenance_schema.py
 neurostore_sdk/models/pipeline_study_result.py
 neurostore_sdk/models/pipeline_study_result_list.py
 neurostore_sdk/models/pipeline_study_result_post.py
@@ -220,6 +225,7 @@ neurostore_sdk/models/study_return_relationships.py
 neurostore_sdk/models/study_return_relationships_analyses.py
 neurostore_sdk/models/study_schema_upload.py
 neurostore_sdk/models/study_schema_upload_pipeline.py
+neurostore_sdk/models/study_schema_uploads_post200_response.py
 neurostore_sdk/models/studyset_base.py
 neurostore_sdk/models/studyset_list.py
 neurostore_sdk/models/studyset_request.py
@@ -315,6 +321,8 @@ test/test_pipeline_config_list.py
 test/test_pipeline_embedding.py
 test/test_pipeline_embedding_list.py
 test/test_pipeline_list.py
+test/test_pipeline_run_provenance.py
+test/test_pipeline_run_provenance_schema.py
 test/test_pipeline_study_result.py
 test/test_pipeline_study_result_list.py
 test/test_pipeline_study_result_post.py
@@ -343,6 +351,7 @@ test/test_study_return_relationships.py
 test/test_study_return_relationships_analyses.py
 test/test_study_schema_upload.py
 test/test_study_schema_upload_pipeline.py
+test/test_study_schema_uploads_post200_response.py
 test/test_studyset_base.py
 test/test_studyset_list.py
 test/test_studyset_request.py

@@ -81,6 +81,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding
     from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList
     from neurostore_sdk.models.pipeline_list import PipelineList
+    from neurostore_sdk.models.pipeline_run_provenance import PipelineRunProvenance
+    from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProvenanceSchema
     from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
     from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
     from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost
@@ -108,6 +110,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
     from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
     from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline
+    from neurostore_sdk.models.study_schema_uploads_post200_response import StudySchemaUploadsPost200Response
     from neurostore_sdk.models.studyset_base import StudysetBase
     from neurostore_sdk.models.studyset_list import StudysetList
     from neurostore_sdk.models.studyset_request import StudysetRequest
@@ -203,6 +206,8 @@ from neurostore_sdk.models.pipeline_config_list import PipelineConfigList
 from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding
 from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList
 from neurostore_sdk.models.pipeline_list import PipelineList
+from neurostore_sdk.models.pipeline_run_provenance import PipelineRunProvenance
+from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProvenanceSchema
 from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult
 from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList
 from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost
@@ -230,6 +235,7 @@ from neurostore_sdk.models.study_return_relationships import StudyReturnRelation
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
 from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline
+from neurostore_sdk.models.study_schema_uploads_post200_response import StudySchemaUploadsPost200Response
 from neurostore_sdk.models.studyset_base import StudysetBase
 from neurostore_sdk.models.studyset_list import StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest

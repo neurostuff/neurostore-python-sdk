@@ -4482,11 +4482,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **study_schema_uploads_post**
-> Dict[str, object] study_schema_uploads_post(study_schema_upload=study_schema_upload)
+> StudySchemaUploadsPost200Response study_schema_uploads_post(study_schema_upload=study_schema_upload)
 
 Store a coordinate parse, a revision, an extraction record, or a parse with its record
 
-The pipeline's one writer. Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims and votes to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only.
+Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part.
 
 
 ### Example
@@ -4496,6 +4496,7 @@ The pipeline's one writer. Takes study_schema's CoordinateParse (alone, or as a 
 ```python
 import neurostore_sdk
 from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
+from neurostore_sdk.models.study_schema_uploads_post200_response import StudySchemaUploadsPost200Response
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4541,7 +4542,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+[**StudySchemaUploadsPost200Response**](StudySchemaUploadsPost200Response.md)
 
 ### Authorization
 

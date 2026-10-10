@@ -36,7 +36,9 @@ class TestStudySchemaUploadPipeline(unittest.TestCase):
         model = StudySchemaUploadPipeline()
         if include_optional:
             return StudySchemaUploadPipeline(
-                name = ''
+                name = '',
+                version = '',
+                commit = ''
             )
         else:
             return StudySchemaUploadPipeline(

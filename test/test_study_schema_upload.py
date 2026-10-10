@@ -42,7 +42,9 @@ class TestStudySchemaUpload(unittest.TestCase):
                 parse_id = '',
                 base_study_id = '',
                 pipeline = neurostore_sdk.models.study_schema_upload_pipeline.study_schema_upload_pipeline(
-                    name = '', )
+                    name = '', 
+                    version = '', 
+                    commit = '', )
             )
         else:
             return StudySchemaUpload(
