@@ -33,8 +33,9 @@ class StudySchemaUpload(BaseModel):
     parsed_paper: Optional[Dict[str, Any]] = Field(default=None, description="The ParsedPaper the parse read, for table captions and the bibliography.")
     parse_id: Optional[StrictStr] = Field(default=None, description="For a record uploaded alone, the parse_id of the stored parse it read.")
     base_study_id: Optional[StrictStr] = Field(default=None, description="The base study; otherwise found by the parse header's identifiers.")
+    run_id: Optional[StrictStr] = Field(default=None, description="The caller's id for the pipeline run, stored on each result the upload writes. Re-uploading the same documents with the same run_id returns the same results and adds none; a run_id that already stored a different document for the paper is refused (422). ")
     pipeline: Optional[StudySchemaUploadPipeline] = None
-    __properties: ClassVar[List[str]] = ["coordinate_parse", "record", "parsed_paper", "parse_id", "base_study_id", "pipeline"]
+    __properties: ClassVar[List[str]] = ["coordinate_parse", "record", "parsed_paper", "parse_id", "base_study_id", "run_id", "pipeline"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,6 +95,7 @@ class StudySchemaUpload(BaseModel):
             "parsed_paper": obj.get("parsed_paper"),
             "parse_id": obj.get("parse_id"),
             "base_study_id": obj.get("base_study_id"),
+            "run_id": obj.get("run_id"),
             "pipeline": StudySchemaUploadPipeline.from_dict(obj["pipeline"]) if obj.get("pipeline") is not None else None
         })
         return _obj

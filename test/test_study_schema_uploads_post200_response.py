@@ -40,6 +40,7 @@ class TestStudySchemaUploadsPost200Response(unittest.TestCase):
                     'key' : neurostore_sdk.models.pipeline_run_provenance.pipeline-run-provenance(
                         result_id = '', 
                         config_id = '', 
+                        run_id = '', 
                         pipeline = '', 
                         version = '', 
                         commit = '', 

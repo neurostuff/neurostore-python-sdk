@@ -38,6 +38,7 @@ class TestPipelineRunProvenance(unittest.TestCase):
             return PipelineRunProvenance(
                 result_id = '',
                 config_id = '',
+                run_id = '',
                 pipeline = '',
                 version = '',
                 commit = '',

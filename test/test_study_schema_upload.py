@@ -41,6 +41,7 @@ class TestStudySchemaUpload(unittest.TestCase):
                 parsed_paper = { },
                 parse_id = '',
                 base_study_id = '',
+                run_id = '',
                 pipeline = neurostore_sdk.models.study_schema_upload_pipeline.study_schema_upload_pipeline(
                     name = '', 
                     version = '', 

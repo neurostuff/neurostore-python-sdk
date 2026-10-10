@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **parsed_paper** | **Dict[str, object]** | The ParsedPaper the parse read, for table captions and the bibliography. | [optional] 
 **parse_id** | **str** | For a record uploaded alone, the parse_id of the stored parse it read. | [optional] 
 **base_study_id** | **str** | The base study; otherwise found by the parse header&#39;s identifiers. | [optional] 
+**run_id** | **str** | The caller&#39;s id for the pipeline run, stored on each result the upload writes. Re-uploading the same documents with the same run_id returns the same results and adds none; a run_id that already stored a different document for the paper is refused (422).  | [optional] 
 **pipeline** | [**StudySchemaUploadPipeline**](StudySchemaUploadPipeline.md) |  | [optional] 
 
 ## Example

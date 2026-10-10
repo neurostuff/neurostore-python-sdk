@@ -31,6 +31,7 @@ class PipelineRunProvenance(BaseModel):
     """ # noqa: E501
     result_id: Optional[StrictStr] = Field(default=None, description="The pipeline-study-result that stores the document.")
     config_id: Optional[StrictStr] = None
+    run_id: Optional[StrictStr] = Field(default=None, description="The caller's run id the result was uploaded with.")
     pipeline: Optional[StrictStr] = None
     version: Optional[StrictStr] = None
     commit: Optional[StrictStr] = None
@@ -39,7 +40,7 @@ class PipelineRunProvenance(BaseModel):
     date_executed: Optional[datetime] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["result_id", "config_id", "pipeline", "version", "commit", "schema", "parse_version", "date_executed", "created_at", "updated_at"]
+    __properties: ClassVar[List[str]] = ["result_id", "config_id", "run_id", "pipeline", "version", "commit", "schema", "parse_version", "date_executed", "created_at", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +83,11 @@ class PipelineRunProvenance(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of var_schema
         if self.var_schema is not None:
             _dict['schema'] = self.var_schema.to_dict()
+        # set to None if run_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.run_id is None and "run_id" in self.model_fields_set:
+            _dict['run_id'] = None
+
         # set to None if commit (nullable) is None
         # and model_fields_set contains the field
         if self.commit is None and "commit" in self.model_fields_set:
@@ -106,6 +112,7 @@ class PipelineRunProvenance(BaseModel):
         _obj = cls.model_validate({
             "result_id": obj.get("result_id"),
             "config_id": obj.get("config_id"),
+            "run_id": obj.get("run_id"),
             "pipeline": obj.get("pipeline"),
             "version": obj.get("version"),
             "commit": obj.get("commit"),

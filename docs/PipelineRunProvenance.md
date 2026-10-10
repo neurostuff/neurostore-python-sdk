@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **result_id** | **str** | The pipeline-study-result that stores the document. | [optional] 
 **config_id** | **str** |  | [optional] 
+**run_id** | **str** | The caller&#39;s run id the result was uploaded with. | [optional] 
 **pipeline** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 
 **commit** | **str** |  | [optional] 
