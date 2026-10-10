@@ -4482,7 +4482,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **study_schema_uploads_post**
-> StudySchemaUploadsPost200Response study_schema_uploads_post(study_schema_upload=study_schema_upload)
+> StudySchemaUploadSummary study_schema_uploads_post(study_schema_upload=study_schema_upload)
 
 Store a coordinate parse, a revision, an extraction record, or a parse with its record
 
@@ -4496,7 +4496,7 @@ Takes study_schema's CoordinateParse (alone, or as a revision with revision_of s
 ```python
 import neurostore_sdk
 from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
-from neurostore_sdk.models.study_schema_uploads_post200_response import StudySchemaUploadsPost200Response
+from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -4542,7 +4542,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StudySchemaUploadsPost200Response**](StudySchemaUploadsPost200Response.md)
+[**StudySchemaUploadSummary**](StudySchemaUploadSummary.md)
 
 ### Authorization
 
@@ -4558,9 +4558,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | What the upload changed |  -  |
+**400** | The body names no document, or cannot locate its base study. Field error codes: MISSING (parse_id for a record uploaded alone; base_study_id for a record without a parse), MISMATCH (parse_id differs from the uploaded parse&#39;s), and an error on coordinate_parse/header/identifiers when a new paper has no doi, pmid or pmcid.  |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  * X-Request-ID -  <br>  |
-**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
+**422** | Unprocessable. Field error codes: SCHEMA (a document fails study_schema&#39;s JSON Schema), KEY_MISMATCH (an analysis key is not its cells&#39; key), DUPLICATE_KEY, NOT_CURRENT (a stored parse that is no longer current, or a revision of one), UNKNOWN_PARSE (a record&#39;s parse_id or a revision&#39;s revision_of is not stored for the paper), MISSING / UNKNOWN_KEY (a revision&#39;s verdicts leave a key out, or name a replacement it does not hold), RUN_ID_REUSED (the run_id already stored a different document for the paper).  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

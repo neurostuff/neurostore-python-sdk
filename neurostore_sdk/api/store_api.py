@@ -57,7 +57,7 @@ from neurostore_sdk.models.study_list import StudyList
 from neurostore_sdk.models.study_request import StudyRequest
 from neurostore_sdk.models.study_return import StudyReturn
 from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
-from neurostore_sdk.models.study_schema_uploads_post200_response import StudySchemaUploadsPost200Response
+from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary
 from neurostore_sdk.models.studyset_list import StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
@@ -17572,7 +17572,7 @@ class StoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> StudySchemaUploadsPost200Response:
+    ) -> StudySchemaUploadSummary:
         """Store a coordinate parse, a revision, an extraction record, or a parse with its record
 
         Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part. 
@@ -17610,7 +17610,8 @@ class StoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StudySchemaUploadsPost200Response",
+            '200': "StudySchemaUploadSummary",
+            '400': "ErrorResponse",
             '403': None,
             '404': "ErrorResponse",
             '422': "ErrorResponse",
@@ -17642,7 +17643,7 @@ class StoreApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[StudySchemaUploadsPost200Response]:
+    ) -> ApiResponse[StudySchemaUploadSummary]:
         """Store a coordinate parse, a revision, an extraction record, or a parse with its record
 
         Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part. 
@@ -17680,7 +17681,8 @@ class StoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StudySchemaUploadsPost200Response",
+            '200': "StudySchemaUploadSummary",
+            '400': "ErrorResponse",
             '403': None,
             '404': "ErrorResponse",
             '422': "ErrorResponse",
@@ -17750,7 +17752,8 @@ class StoreApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StudySchemaUploadsPost200Response",
+            '200': "StudySchemaUploadSummary",
+            '400': "ErrorResponse",
             '403': None,
             '404': "ErrorResponse",
             '422': "ErrorResponse",

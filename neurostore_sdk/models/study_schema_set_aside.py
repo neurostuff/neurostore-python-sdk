@@ -18,19 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.pipeline_run_provenance import PipelineRunProvenance
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StudySchemaUploadsPost200Response(BaseModel):
+class StudySchemaSetAside(BaseModel):
     """
-    StudySchemaUploadsPost200Response
+    StudySchemaSetAside
     """ # noqa: E501
-    provenance: Optional[Dict[str, PipelineRunProvenance]] = Field(default=None, description="The stored run behind each part of the upload, keyed parse and record.")
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["provenance"]
+    entity: Optional[StrictStr] = Field(default=None, description="Class[key] for an entity, or absent for an analysis row.")
+    key: Optional[StrictStr] = None
+    reason: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["entity", "key", "reason"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class StudySchemaUploadsPost200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StudySchemaUploadsPost200Response from a JSON string"""
+        """Create an instance of StudySchemaSetAside from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,7 +62,6 @@ class StudySchemaUploadsPost200Response(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([])
 
@@ -71,23 +70,11 @@ class StudySchemaUploadsPost200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each value in provenance (dict)
-        _field_dict = {}
-        if self.provenance is not None:
-            for _key_provenance in self.provenance:
-                if self.provenance[_key_provenance]:
-                    _field_dict[_key_provenance] = self.provenance[_key_provenance].to_dict()
-            _dict['provenance'] = _field_dict
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StudySchemaUploadsPost200Response from a dict"""
+        """Create an instance of StudySchemaSetAside from a dict"""
         if obj is None:
             return None
 
@@ -95,18 +82,10 @@ class StudySchemaUploadsPost200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "provenance": dict(
-                (_k, PipelineRunProvenance.from_dict(_v))
-                for _k, _v in obj["provenance"].items()
-            )
-            if obj.get("provenance") is not None
-            else None
+            "entity": obj.get("entity"),
+            "key": obj.get("key"),
+            "reason": obj.get("reason")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 
