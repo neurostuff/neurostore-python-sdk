@@ -95,6 +95,8 @@ __all__ = [
     "PipelineEmbedding",
     "PipelineEmbeddingList",
     "PipelineList",
+    "PipelineRunProvenance",
+    "PipelineRunProvenanceSchema",
     "PipelineStudyResult",
     "PipelineStudyResultList",
     "PipelineStudyResultPost",
@@ -120,6 +122,18 @@ __all__ = [
     "StudyReturnAllOfStudysetsOneOf",
     "StudyReturnRelationships",
     "StudyReturnRelationshipsAnalyses",
+    "StudySchemaCarried",
+    "StudySchemaSetAside",
+    "StudySchemaUpload",
+    "StudySchemaUploadPipeline",
+    "StudySchemaUploadSummary",
+    "StudySchemaUploadSummaryRecord",
+    "StudySchemaUploadSummaryRecordAnalyses",
+    "StudySchemaUploadSummaryRecordAnalysesSupersededInner",
+    "StudySchemaUploadSummaryRecordClaims",
+    "StudySchemaUploadSummarySetAsideResolvedInner",
+    "StudySchemaUploadSummarySkeleton",
+    "StudySchemaUploadSummarySkeletonAliasedInner",
     "StudysetBase",
     "StudysetList",
     "StudysetRequest",
@@ -225,6 +239,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding as PipelineEmbedding
     from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList as PipelineEmbeddingList
     from neurostore_sdk.models.pipeline_list import PipelineList as PipelineList
+    from neurostore_sdk.models.pipeline_run_provenance import PipelineRunProvenance as PipelineRunProvenance
+    from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProvenanceSchema as PipelineRunProvenanceSchema
     from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult as PipelineStudyResult
     from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList as PipelineStudyResultList
     from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost as PipelineStudyResultPost
@@ -250,6 +266,18 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyReturnAllOfStudysetsOneOf as StudyReturnAllOfStudysetsOneOf
     from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
     from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
+    from neurostore_sdk.models.study_schema_carried import StudySchemaCarried as StudySchemaCarried
+    from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside as StudySchemaSetAside
+    from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
+    from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
+    from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary as StudySchemaUploadSummary
+    from neurostore_sdk.models.study_schema_upload_summary_record import StudySchemaUploadSummaryRecord as StudySchemaUploadSummaryRecord
+    from neurostore_sdk.models.study_schema_upload_summary_record_analyses import StudySchemaUploadSummaryRecordAnalyses as StudySchemaUploadSummaryRecordAnalyses
+    from neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner import StudySchemaUploadSummaryRecordAnalysesSupersededInner as StudySchemaUploadSummaryRecordAnalysesSupersededInner
+    from neurostore_sdk.models.study_schema_upload_summary_record_claims import StudySchemaUploadSummaryRecordClaims as StudySchemaUploadSummaryRecordClaims
+    from neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner import StudySchemaUploadSummarySetAsideResolvedInner as StudySchemaUploadSummarySetAsideResolvedInner
+    from neurostore_sdk.models.study_schema_upload_summary_skeleton import StudySchemaUploadSummarySkeleton as StudySchemaUploadSummarySkeleton
+    from neurostore_sdk.models.study_schema_upload_summary_skeleton_aliased_inner import StudySchemaUploadSummarySkeletonAliasedInner as StudySchemaUploadSummarySkeletonAliasedInner
     from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
     from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
     from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest
@@ -361,6 +389,8 @@ from neurostore_sdk.models.pipeline_config_list import PipelineConfigList as Pip
 from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding as PipelineEmbedding
 from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList as PipelineEmbeddingList
 from neurostore_sdk.models.pipeline_list import PipelineList as PipelineList
+from neurostore_sdk.models.pipeline_run_provenance import PipelineRunProvenance as PipelineRunProvenance
+from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProvenanceSchema as PipelineRunProvenanceSchema
 from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult as PipelineStudyResult
 from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList as PipelineStudyResultList
 from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost as PipelineStudyResultPost
@@ -386,6 +416,18 @@ from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOf
 from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyReturnAllOfStudysetsOneOf as StudyReturnAllOfStudysetsOneOf
 from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
+from neurostore_sdk.models.study_schema_carried import StudySchemaCarried as StudySchemaCarried
+from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside as StudySchemaSetAside
+from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
+from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
+from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary as StudySchemaUploadSummary
+from neurostore_sdk.models.study_schema_upload_summary_record import StudySchemaUploadSummaryRecord as StudySchemaUploadSummaryRecord
+from neurostore_sdk.models.study_schema_upload_summary_record_analyses import StudySchemaUploadSummaryRecordAnalyses as StudySchemaUploadSummaryRecordAnalyses
+from neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner import StudySchemaUploadSummaryRecordAnalysesSupersededInner as StudySchemaUploadSummaryRecordAnalysesSupersededInner
+from neurostore_sdk.models.study_schema_upload_summary_record_claims import StudySchemaUploadSummaryRecordClaims as StudySchemaUploadSummaryRecordClaims
+from neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner import StudySchemaUploadSummarySetAsideResolvedInner as StudySchemaUploadSummarySetAsideResolvedInner
+from neurostore_sdk.models.study_schema_upload_summary_skeleton import StudySchemaUploadSummarySkeleton as StudySchemaUploadSummarySkeleton
+from neurostore_sdk.models.study_schema_upload_summary_skeleton_aliased_inner import StudySchemaUploadSummarySkeletonAliasedInner as StudySchemaUploadSummarySkeletonAliasedInner
 from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
 from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest

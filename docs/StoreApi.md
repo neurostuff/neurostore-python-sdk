@@ -62,6 +62,7 @@ Method | HTTP request | Description
 [**studies_id_get**](StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
 [**studies_id_put**](StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
 [**studies_post**](StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+[**study_schema_uploads_post**](StoreApi.md#study_schema_uploads_post) | **POST** /study-schema-uploads/ | Store a coordinate parse, a revision, an extraction record, or a parse with its record
 [**studysets_get**](StoreApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
 [**studysets_id_delete**](StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
 [**studysets_id_get**](StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
@@ -4477,6 +4478,90 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **study_schema_uploads_post**
+> StudySchemaUploadSummary study_schema_uploads_post(study_schema_upload=study_schema_upload)
+
+Store a coordinate parse, a revision, an extraction record, or a parse with its record
+
+Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
+from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    study_schema_upload = neurostore_sdk.StudySchemaUpload() # StudySchemaUpload |  (optional)
+
+    try:
+        # Store a coordinate parse, a revision, an extraction record, or a parse with its record
+        api_response = api_instance.study_schema_uploads_post(study_schema_upload=study_schema_upload)
+        print("The response of StoreApi->study_schema_uploads_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->study_schema_uploads_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **study_schema_upload** | [**StudySchemaUpload**](StudySchemaUpload.md)|  | [optional] 
+
+### Return type
+
+[**StudySchemaUploadSummary**](StudySchemaUploadSummary.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | What the upload changed |  -  |
+**400** | The body names no document, or cannot locate its base study. Field error codes: MISSING (parse_id for a record uploaded alone; base_study_id for a record without a parse), MISMATCH (parse_id differs from the uploaded parse&#39;s), and an error on coordinate_parse/header/identifiers when a new paper has no doi, pmid or pmcid.  |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+**422** | Unprocessable. Field error codes: SCHEMA (a document fails study_schema&#39;s JSON Schema), KEY_MISMATCH (an analysis key is not its cells&#39; key), DUPLICATE_KEY, NOT_CURRENT (a stored parse that is no longer current, or a revision of one), UNKNOWN_PARSE (a record&#39;s parse_id or a revision&#39;s revision_of is not stored for the paper), MISSING / UNKNOWN_KEY (a revision&#39;s verdicts leave a key out, or name a replacement it does not hold), RUN_ID_REUSED (the run_id already stored a different document for the paper).  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

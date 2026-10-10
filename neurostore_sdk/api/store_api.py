@@ -56,6 +56,8 @@ from neurostore_sdk.models.point_return import PointReturn
 from neurostore_sdk.models.study_list import StudyList
 from neurostore_sdk.models.study_request import StudyRequest
 from neurostore_sdk.models.study_return import StudyReturn
+from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
+from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary
 from neurostore_sdk.models.studyset_list import StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest
 from neurostore_sdk.models.studyset_return import StudysetReturn
@@ -17539,6 +17541,292 @@ class StoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/studies/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def study_schema_uploads_post(
+        self,
+        study_schema_upload: Optional[StudySchemaUpload] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> StudySchemaUploadSummary:
+        """Store a coordinate parse, a revision, an extraction record, or a parse with its record
+
+        Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part. 
+
+        :param study_schema_upload:
+        :type study_schema_upload: StudySchemaUpload
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._study_schema_uploads_post_serialize(
+            study_schema_upload=study_schema_upload,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "StudySchemaUploadSummary",
+            '400': "ErrorResponse",
+            '403': None,
+            '404': "ErrorResponse",
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def study_schema_uploads_post_with_http_info(
+        self,
+        study_schema_upload: Optional[StudySchemaUpload] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[StudySchemaUploadSummary]:
+        """Store a coordinate parse, a revision, an extraction record, or a parse with its record
+
+        Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part. 
+
+        :param study_schema_upload:
+        :type study_schema_upload: StudySchemaUpload
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._study_schema_uploads_post_serialize(
+            study_schema_upload=study_schema_upload,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "StudySchemaUploadSummary",
+            '400': "ErrorResponse",
+            '403': None,
+            '404': "ErrorResponse",
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def study_schema_uploads_post_without_preload_content(
+        self,
+        study_schema_upload: Optional[StudySchemaUpload] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Store a coordinate parse, a revision, an extraction record, or a parse with its record
+
+        Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only. This is a transaction rather than a resource: one upload is atomic across the study, its analyses and points, the claims and the history version it writes, so it either lands whole or not at all, which separate resource calls could not guarantee. The response's provenance names the stored run behind each part. 
+
+        :param study_schema_upload:
+        :type study_schema_upload: StudySchemaUpload
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._study_schema_uploads_post_serialize(
+            study_schema_upload=study_schema_upload,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "StudySchemaUploadSummary",
+            '400': "ErrorResponse",
+            '403': None,
+            '404': "ErrorResponse",
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _study_schema_uploads_post_serialize(
+        self,
+        study_schema_upload,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if study_schema_upload is not None:
+            _body_params = study_schema_upload
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/study-schema-uploads/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

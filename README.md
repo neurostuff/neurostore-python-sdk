@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
 *StoreApi* | [**studies_id_put**](docs/StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
 *StoreApi* | [**studies_post**](docs/StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+*StoreApi* | [**study_schema_uploads_post**](docs/StoreApi.md#study_schema_uploads_post) | **POST** /study-schema-uploads/ | Store a coordinate parse, a revision, an extraction record, or a parse with its record
 *StoreApi* | [**studysets_get**](docs/StoreApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
 *StoreApi* | [**studysets_id_delete**](docs/StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
 *StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
@@ -238,6 +239,8 @@ Class | Method | HTTP request | Description
  - [PipelineEmbedding](docs/PipelineEmbedding.md)
  - [PipelineEmbeddingList](docs/PipelineEmbeddingList.md)
  - [PipelineList](docs/PipelineList.md)
+ - [PipelineRunProvenance](docs/PipelineRunProvenance.md)
+ - [PipelineRunProvenanceSchema](docs/PipelineRunProvenanceSchema.md)
  - [PipelineStudyResult](docs/PipelineStudyResult.md)
  - [PipelineStudyResultList](docs/PipelineStudyResultList.md)
  - [PipelineStudyResultPost](docs/PipelineStudyResultPost.md)
@@ -263,6 +266,18 @@ Class | Method | HTTP request | Description
  - [StudyReturnAllOfStudysetsOneOf](docs/StudyReturnAllOfStudysetsOneOf.md)
  - [StudyReturnRelationships](docs/StudyReturnRelationships.md)
  - [StudyReturnRelationshipsAnalyses](docs/StudyReturnRelationshipsAnalyses.md)
+ - [StudySchemaCarried](docs/StudySchemaCarried.md)
+ - [StudySchemaSetAside](docs/StudySchemaSetAside.md)
+ - [StudySchemaUpload](docs/StudySchemaUpload.md)
+ - [StudySchemaUploadPipeline](docs/StudySchemaUploadPipeline.md)
+ - [StudySchemaUploadSummary](docs/StudySchemaUploadSummary.md)
+ - [StudySchemaUploadSummaryRecord](docs/StudySchemaUploadSummaryRecord.md)
+ - [StudySchemaUploadSummaryRecordAnalyses](docs/StudySchemaUploadSummaryRecordAnalyses.md)
+ - [StudySchemaUploadSummaryRecordAnalysesSupersededInner](docs/StudySchemaUploadSummaryRecordAnalysesSupersededInner.md)
+ - [StudySchemaUploadSummaryRecordClaims](docs/StudySchemaUploadSummaryRecordClaims.md)
+ - [StudySchemaUploadSummarySetAsideResolvedInner](docs/StudySchemaUploadSummarySetAsideResolvedInner.md)
+ - [StudySchemaUploadSummarySkeleton](docs/StudySchemaUploadSummarySkeleton.md)
+ - [StudySchemaUploadSummarySkeletonAliasedInner](docs/StudySchemaUploadSummarySkeletonAliasedInner.md)
  - [StudysetBase](docs/StudysetBase.md)
  - [StudysetList](docs/StudysetList.md)
  - [StudysetRequest](docs/StudysetRequest.md)
