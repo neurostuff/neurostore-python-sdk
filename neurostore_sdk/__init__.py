@@ -120,6 +120,8 @@ __all__ = [
     "StudyReturnAllOfStudysetsOneOf",
     "StudyReturnRelationships",
     "StudyReturnRelationshipsAnalyses",
+    "StudySchemaUpload",
+    "StudySchemaUploadPipeline",
     "StudysetBase",
     "StudysetList",
     "StudysetRequest",
@@ -250,6 +252,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyReturnAllOfStudysetsOneOf as StudyReturnAllOfStudysetsOneOf
     from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
     from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
+    from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
+    from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
     from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
     from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
     from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest
@@ -386,6 +390,8 @@ from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOf
 from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyReturnAllOfStudysetsOneOf as StudyReturnAllOfStudysetsOneOf
 from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
+from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
+from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
 from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
 from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest

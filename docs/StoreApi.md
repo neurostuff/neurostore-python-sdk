@@ -62,6 +62,7 @@ Method | HTTP request | Description
 [**studies_id_get**](StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
 [**studies_id_put**](StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
 [**studies_post**](StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+[**study_schema_uploads_post**](StoreApi.md#study_schema_uploads_post) | **POST** /study-schema-uploads/ | Store a coordinate parse, a revision, an extraction record, or a parse with its record
 [**studysets_get**](StoreApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
 [**studysets_id_delete**](StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
 [**studysets_id_get**](StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
@@ -4477,6 +4478,88 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **study_schema_uploads_post**
+> Dict[str, object] study_schema_uploads_post(study_schema_upload=study_schema_upload)
+
+Store a coordinate parse, a revision, an extraction record, or a parse with its record
+
+The pipeline's one writer. Takes study_schema's CoordinateParse (alone, or as a revision with revision_of set) and/or an extraction record that read it. Analyses are keyed by the parse's cell keys and stored as Analysis.source_id; a new version keeps the analyses it drops as non-public history; a revision's split and merge verdicts copy claims and votes to the replacements (carried_from). The documents are validated against study_schema's JSON Schema by the service, not here. Admin only.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    study_schema_upload = neurostore_sdk.StudySchemaUpload() # StudySchemaUpload |  (optional)
+
+    try:
+        # Store a coordinate parse, a revision, an extraction record, or a parse with its record
+        api_response = api_instance.study_schema_uploads_post(study_schema_upload=study_schema_upload)
+        print("The response of StoreApi->study_schema_uploads_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->study_schema_uploads_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **study_schema_upload** | [**StudySchemaUpload**](StudySchemaUpload.md)|  | [optional] 
+
+### Return type
+
+**Dict[str, object]**
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | What the upload changed |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

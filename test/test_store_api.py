@@ -433,6 +433,13 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_study_schema_uploads_post(self) -> None:
+        """Test case for study_schema_uploads_post
+
+        Store a coordinate parse, a revision, an extraction record, or a parse with its record
+        """
+        pass
+
     def test_studysets_get(self) -> None:
         """Test case for studysets_get
 

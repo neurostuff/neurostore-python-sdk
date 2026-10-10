@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
 *StoreApi* | [**studies_id_put**](docs/StoreApi.md#studies_id_put) | **PUT** /studies/{id} | PUT/update a study
 *StoreApi* | [**studies_post**](docs/StoreApi.md#studies_post) | **POST** /studies/ | POST/create a study
+*StoreApi* | [**study_schema_uploads_post**](docs/StoreApi.md#study_schema_uploads_post) | **POST** /study-schema-uploads/ | Store a coordinate parse, a revision, an extraction record, or a parse with its record
 *StoreApi* | [**studysets_get**](docs/StoreApi.md#studysets_get) | **GET** /studysets/ | GET a list of studysets
 *StoreApi* | [**studysets_id_delete**](docs/StoreApi.md#studysets_id_delete) | **DELETE** /studysets/{id} | DELETE a studyset
 *StoreApi* | [**studysets_id_get**](docs/StoreApi.md#studysets_id_get) | **GET** /studysets/{id} | GET a studyset
@@ -263,6 +264,8 @@ Class | Method | HTTP request | Description
  - [StudyReturnAllOfStudysetsOneOf](docs/StudyReturnAllOfStudysetsOneOf.md)
  - [StudyReturnRelationships](docs/StudyReturnRelationships.md)
  - [StudyReturnRelationshipsAnalyses](docs/StudyReturnRelationshipsAnalyses.md)
+ - [StudySchemaUpload](docs/StudySchemaUpload.md)
+ - [StudySchemaUploadPipeline](docs/StudySchemaUploadPipeline.md)
  - [StudysetBase](docs/StudysetBase.md)
  - [StudysetList](docs/StudysetList.md)
  - [StudysetRequest](docs/StudysetRequest.md)
