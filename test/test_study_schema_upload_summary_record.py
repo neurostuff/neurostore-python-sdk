@@ -56,13 +56,44 @@ class TestStudySchemaUploadSummaryRecord(unittest.TestCase):
                                 ], 
                             reason = '', )
                         ], ),
+                condition_conflicts = [
+                    neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner.study_schema_upload_summary_record_condition_conflicts_inner(
+                        key = '', 
+                        cells = [
+                            neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner(
+                                term = '', 
+                                level = '', 
+                                reason = 'both_directions', 
+                                name = '', )
+                            ], )
+                    ],
                 claims = neurostore_sdk.models.study_schema_upload_summary_record_claims.study_schema_upload_summary_record_claims(
                     created = 56, 
                     matched = 56, 
                     rejected_paths = [
                         ''
                         ], 
-                    unkeyed_entities = [
+                    entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.study_schema_upload_summary_record_claims_entities(
+                        created = 56, 
+                        matched = 56, ), 
+                    unlocated = [
+                        ''
+                        ], 
+                    unidentified = [
+                        ''
+                        ], 
+                    duplicates = [
+                        ''
+                        ], 
+                    rename_candidates = [
+                        neurostore_sdk.models.study_schema_rename_candidate.study-schema-rename-candidate(
+                            class = '', 
+                            from = '', 
+                            to = '', 
+                            entity_id = '', 
+                            candidate_id = '', )
+                        ], 
+                    released_aliases = [
                         ''
                         ], 
                     parked_entities = [

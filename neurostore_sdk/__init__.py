@@ -123,6 +123,7 @@ __all__ = [
     "StudyReturnRelationships",
     "StudyReturnRelationshipsAnalyses",
     "StudySchemaCarried",
+    "StudySchemaRenameCandidate",
     "StudySchemaSetAside",
     "StudySchemaUpload",
     "StudySchemaUploadPipeline",
@@ -131,9 +132,14 @@ __all__ = [
     "StudySchemaUploadSummaryRecordAnalyses",
     "StudySchemaUploadSummaryRecordAnalysesSupersededInner",
     "StudySchemaUploadSummaryRecordClaims",
+    "StudySchemaUploadSummaryRecordClaimsEntities",
+    "StudySchemaUploadSummaryRecordConditionConflictsInner",
+    "StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner",
     "StudySchemaUploadSummarySetAsideResolvedInner",
     "StudySchemaUploadSummarySkeleton",
+    "StudySchemaUploadSummarySkeletonAliasConflictsInner",
     "StudySchemaUploadSummarySkeletonAliasedInner",
+    "StudySchemaUploadSummarySkeletonOrphanedClaimsInner",
     "StudysetBase",
     "StudysetList",
     "StudysetRequest",
@@ -267,6 +273,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
     from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
     from neurostore_sdk.models.study_schema_carried import StudySchemaCarried as StudySchemaCarried
+    from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate as StudySchemaRenameCandidate
     from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside as StudySchemaSetAside
     from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
     from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
@@ -275,9 +282,14 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.study_schema_upload_summary_record_analyses import StudySchemaUploadSummaryRecordAnalyses as StudySchemaUploadSummaryRecordAnalyses
     from neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner import StudySchemaUploadSummaryRecordAnalysesSupersededInner as StudySchemaUploadSummaryRecordAnalysesSupersededInner
     from neurostore_sdk.models.study_schema_upload_summary_record_claims import StudySchemaUploadSummaryRecordClaims as StudySchemaUploadSummaryRecordClaims
+    from neurostore_sdk.models.study_schema_upload_summary_record_claims_entities import StudySchemaUploadSummaryRecordClaimsEntities as StudySchemaUploadSummaryRecordClaimsEntities
+    from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner import StudySchemaUploadSummaryRecordConditionConflictsInner as StudySchemaUploadSummaryRecordConditionConflictsInner
+    from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner import StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner as StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner
     from neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner import StudySchemaUploadSummarySetAsideResolvedInner as StudySchemaUploadSummarySetAsideResolvedInner
     from neurostore_sdk.models.study_schema_upload_summary_skeleton import StudySchemaUploadSummarySkeleton as StudySchemaUploadSummarySkeleton
+    from neurostore_sdk.models.study_schema_upload_summary_skeleton_alias_conflicts_inner import StudySchemaUploadSummarySkeletonAliasConflictsInner as StudySchemaUploadSummarySkeletonAliasConflictsInner
     from neurostore_sdk.models.study_schema_upload_summary_skeleton_aliased_inner import StudySchemaUploadSummarySkeletonAliasedInner as StudySchemaUploadSummarySkeletonAliasedInner
+    from neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner import StudySchemaUploadSummarySkeletonOrphanedClaimsInner as StudySchemaUploadSummarySkeletonOrphanedClaimsInner
     from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
     from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
     from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest
@@ -417,6 +429,7 @@ from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyRetu
 from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
 from neurostore_sdk.models.study_schema_carried import StudySchemaCarried as StudySchemaCarried
+from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate as StudySchemaRenameCandidate
 from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside as StudySchemaSetAside
 from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
 from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
@@ -425,9 +438,14 @@ from neurostore_sdk.models.study_schema_upload_summary_record import StudySchema
 from neurostore_sdk.models.study_schema_upload_summary_record_analyses import StudySchemaUploadSummaryRecordAnalyses as StudySchemaUploadSummaryRecordAnalyses
 from neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner import StudySchemaUploadSummaryRecordAnalysesSupersededInner as StudySchemaUploadSummaryRecordAnalysesSupersededInner
 from neurostore_sdk.models.study_schema_upload_summary_record_claims import StudySchemaUploadSummaryRecordClaims as StudySchemaUploadSummaryRecordClaims
+from neurostore_sdk.models.study_schema_upload_summary_record_claims_entities import StudySchemaUploadSummaryRecordClaimsEntities as StudySchemaUploadSummaryRecordClaimsEntities
+from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner import StudySchemaUploadSummaryRecordConditionConflictsInner as StudySchemaUploadSummaryRecordConditionConflictsInner
+from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner import StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner as StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner
 from neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner import StudySchemaUploadSummarySetAsideResolvedInner as StudySchemaUploadSummarySetAsideResolvedInner
 from neurostore_sdk.models.study_schema_upload_summary_skeleton import StudySchemaUploadSummarySkeleton as StudySchemaUploadSummarySkeleton
+from neurostore_sdk.models.study_schema_upload_summary_skeleton_alias_conflicts_inner import StudySchemaUploadSummarySkeletonAliasConflictsInner as StudySchemaUploadSummarySkeletonAliasConflictsInner
 from neurostore_sdk.models.study_schema_upload_summary_skeleton_aliased_inner import StudySchemaUploadSummarySkeletonAliasedInner as StudySchemaUploadSummarySkeletonAliasedInner
+from neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner import StudySchemaUploadSummarySkeletonOrphanedClaimsInner as StudySchemaUploadSummarySkeletonOrphanedClaimsInner
 from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
 from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
 from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest

@@ -20,7 +20,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate
 from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside
+from neurostore_sdk.models.study_schema_upload_summary_record_claims_entities import StudySchemaUploadSummaryRecordClaimsEntities
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,9 +33,14 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
     created: Optional[StrictInt] = None
     matched: Optional[StrictInt] = None
     rejected_paths: Optional[List[StrictStr]] = None
-    unkeyed_entities: Optional[List[StrictStr]] = Field(default=None, description="Record entities with no key to identify them by.")
+    entities: Optional[StudySchemaUploadSummaryRecordClaimsEntities] = None
+    unlocated: Optional[List[StrictStr]] = Field(default=None, description="Paths of analysis or coordinate-set items with no cells or spans to locate them by; they are not stored as entities.")
+    unidentified: Optional[List[StrictStr]] = Field(default=None, description="Paths of entity lists that are not lists, and of their items that are not objects; not stored as entities.")
+    duplicates: Optional[List[StrictStr]] = Field(default=None, description="Paths of items whose hash an earlier item of the record already has (one analysis read twice from the same cells under the same name); not stored.")
+    rename_candidates: Optional[List[StudySchemaRenameCandidate]] = Field(default=None, description="Entities the record names differently from a stored entity in the same place. They are linked as renamed_by_extractor candidates; claims stay on the old entity until a curator links them. ")
+    released_aliases: Optional[List[StrictStr]] = Field(default=None, description="Paths of new items whose hash was an alias of another entity; the alias is dropped.")
     parked_entities: Optional[List[StudySchemaSetAside]] = Field(default=None, description="Set-aside entities: positional keys, or keys no stored parse holds (resolved later by a parse that holds them; see set_aside_resolved). ")
-    __properties: ClassVar[List[str]] = ["created", "matched", "rejected_paths", "unkeyed_entities", "parked_entities"]
+    __properties: ClassVar[List[str]] = ["created", "matched", "rejected_paths", "entities", "unlocated", "unidentified", "duplicates", "rename_candidates", "released_aliases", "parked_entities"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,6 +80,16 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of entities
+        if self.entities is not None:
+            _dict['entities'] = self.entities.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in rename_candidates (list)
+        _items = []
+        if self.rename_candidates is not None:
+            for _item_rename_candidates in self.rename_candidates:
+                if _item_rename_candidates is not None:
+                    _items.append(_item_rename_candidates.to_dict())
+            _dict['rename_candidates'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in parked_entities (list)
         _items = []
         if self.parked_entities is not None:
@@ -95,7 +112,12 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
             "created": obj.get("created"),
             "matched": obj.get("matched"),
             "rejected_paths": obj.get("rejected_paths"),
-            "unkeyed_entities": obj.get("unkeyed_entities"),
+            "entities": StudySchemaUploadSummaryRecordClaimsEntities.from_dict(obj["entities"]) if obj.get("entities") is not None else None,
+            "unlocated": obj.get("unlocated"),
+            "unidentified": obj.get("unidentified"),
+            "duplicates": obj.get("duplicates"),
+            "rename_candidates": [StudySchemaRenameCandidate.from_dict(_item) for _item in obj["rename_candidates"]] if obj.get("rename_candidates") is not None else None,
+            "released_aliases": obj.get("released_aliases"),
             "parked_entities": [StudySchemaSetAside.from_dict(_item) for _item in obj["parked_entities"]] if obj.get("parked_entities") is not None else None
         })
         return _obj

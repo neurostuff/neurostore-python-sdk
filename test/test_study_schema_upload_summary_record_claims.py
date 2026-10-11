@@ -41,7 +41,27 @@ class TestStudySchemaUploadSummaryRecordClaims(unittest.TestCase):
                 rejected_paths = [
                     ''
                     ],
-                unkeyed_entities = [
+                entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.study_schema_upload_summary_record_claims_entities(
+                    created = 56, 
+                    matched = 56, ),
+                unlocated = [
+                    ''
+                    ],
+                unidentified = [
+                    ''
+                    ],
+                duplicates = [
+                    ''
+                    ],
+                rename_candidates = [
+                    neurostore_sdk.models.study_schema_rename_candidate.study-schema-rename-candidate(
+                        class = '', 
+                        from = '', 
+                        to = '', 
+                        entity_id = '', 
+                        candidate_id = '', )
+                    ],
+                released_aliases = [
                     ''
                     ],
                 parked_entities = [
