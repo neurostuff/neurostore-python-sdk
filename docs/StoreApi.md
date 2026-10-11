@@ -80,7 +80,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET list of analyses
 
@@ -113,6 +113,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     study = 'study_example' # str | Filter tables by study id (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
@@ -120,7 +121,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -141,6 +142,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| number of results to show on a page | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **study** | **str**| Filter tables by study id | [optional] 
+ **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
@@ -4041,7 +4043,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a list of studies
 
@@ -4092,6 +4094,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     level = group # str | select between studies with group results or meta results (optional) (default to group)
@@ -4103,7 +4106,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -4132,6 +4135,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
+ **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **map_type** | **str**| filter by stored map-type flags | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to group]

@@ -45,7 +45,11 @@ class TestAnalysisCommon(unittest.TestCase):
                         analysis = '', )
                     ],
                 order = 56,
-                metadata = None
+                metadata = None,
+                role = '',
+                relabelled_by = '',
+                outcome = 'significant_effect',
+                from_prior_study = True
             )
         else:
             return AnalysisCommon(

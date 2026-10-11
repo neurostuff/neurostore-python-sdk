@@ -95,6 +95,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
+        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
@@ -130,6 +131,8 @@ class StoreApi:
         :type paginate: bool
         :param study: Filter tables by study id
         :type study: str
+        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :type role: str
         :param name: search the name field for a term
         :type name: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
@@ -168,6 +171,7 @@ class StoreApi:
             page_size=page_size,
             paginate=paginate,
             study=study,
+            role=role,
             name=name,
             nested=nested,
             image_metadata=image_metadata,
@@ -202,6 +206,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
+        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
@@ -237,6 +242,8 @@ class StoreApi:
         :type paginate: bool
         :param study: Filter tables by study id
         :type study: str
+        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :type role: str
         :param name: search the name field for a term
         :type name: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
@@ -275,6 +282,7 @@ class StoreApi:
             page_size=page_size,
             paginate=paginate,
             study=study,
+            role=role,
             name=name,
             nested=nested,
             image_metadata=image_metadata,
@@ -309,6 +317,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
+        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
@@ -344,6 +353,8 @@ class StoreApi:
         :type paginate: bool
         :param study: Filter tables by study id
         :type study: str
+        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :type role: str
         :param name: search the name field for a term
         :type name: str
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
@@ -382,6 +393,7 @@ class StoreApi:
             page_size=page_size,
             paginate=paginate,
             study=study,
+            role=role,
             name=name,
             nested=nested,
             image_metadata=image_metadata,
@@ -411,6 +423,7 @@ class StoreApi:
         page_size,
         paginate,
         study,
+        role,
         name,
         nested,
         image_metadata,
@@ -464,6 +477,10 @@ class StoreApi:
         if study is not None:
             
             _query_params.append(('study', study))
+            
+        if role is not None:
+            
+            _query_params.append(('role', role))
             
         if name is not None:
             
@@ -15735,6 +15752,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
@@ -15790,6 +15808,8 @@ class StoreApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :type role: str
         :param map_type: filter by stored map-type flags
         :type map_type: str
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
@@ -15844,6 +15864,7 @@ class StoreApi:
             authors=authors,
             user_id=user_id,
             data_type=data_type,
+            role=role,
             map_type=map_type,
             studyset_owner=studyset_owner,
             level=level,
@@ -15890,6 +15911,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
@@ -15945,6 +15967,8 @@ class StoreApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :type role: str
         :param map_type: filter by stored map-type flags
         :type map_type: str
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
@@ -15999,6 +16023,7 @@ class StoreApi:
             authors=authors,
             user_id=user_id,
             data_type=data_type,
+            role=role,
             map_type=map_type,
             studyset_owner=studyset_owner,
             level=level,
@@ -16045,6 +16070,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
+        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
@@ -16100,6 +16126,8 @@ class StoreApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
+        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :type role: str
         :param map_type: filter by stored map-type flags
         :type map_type: str
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
@@ -16154,6 +16182,7 @@ class StoreApi:
             authors=authors,
             user_id=user_id,
             data_type=data_type,
+            role=role,
             map_type=map_type,
             studyset_owner=studyset_owner,
             level=level,
@@ -16195,6 +16224,7 @@ class StoreApi:
         authors,
         user_id,
         data_type,
+        role,
         map_type,
         studyset_owner,
         level,
@@ -16284,6 +16314,10 @@ class StoreApi:
         if data_type is not None:
             
             _query_params.append(('data_type', data_type))
+            
+        if role is not None:
+            
+            _query_params.append(('role', role))
             
         if map_type is not None:
             
