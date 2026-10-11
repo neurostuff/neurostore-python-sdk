@@ -51,8 +51,8 @@ class AnalysisReturn(BaseModel):
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
     role: Optional[StrictStr] = Field(default=None, description="What the coordinates are for (study_schema CoordinateRole): `result`, `anchor`, `localization`, `reference` or `other`; an open vocabulary, so the source's own wording may appear. Only a result is released in a studyset. Null on an analysis from before roles, which is read as a result, except on a set the study_schema ingester wrote, which is unclassified.")
-    role_source: Optional[StrictStr] = Field(default=None, description="The parse_id of the reviewed revision whose relabel verdict set `role`; a later parse does not replace a relabelled role. Null while the role is the classifier's.")
-    outcome: Optional[StrictStr] = Field(default=None, description="Whether anything survived the analysis's threshold (study_schema AnalysisOutcome), from the extraction record. Set only on results.")
+    relabelled_by: Optional[StrictStr] = Field(default=None, description="The parse_id of the reviewed revision whose relabel verdict set `role`; a later parse does not replace a relabelled role. Null while the role is the classifier's, whose name and version are in `metadata.role_source` (study_schema's `role_source`).")
+    outcome: Optional[StrictStr] = Field(default=None, description="Whether anything survived the analysis's threshold (study_schema AnalysisOutcome), from the extraction record. The ingester sets it only on results.")
     from_prior_study: Optional[StrictBool] = Field(default=None, description="The coordinates are quoted from an earlier study, not this one's.")
     source_id: Optional[StrictStr] = Field(default=None, description="ID of the analysis this one was cloned from, if any.")
     point_count: Optional[StrictInt] = Field(default=None, description="Number of point coordinates linked to this analysis.")
@@ -62,7 +62,7 @@ class AnalysisReturn(BaseModel):
     has_z_maps: Optional[StrictBool] = None
     has_t_maps: Optional[StrictBool] = None
     has_beta_and_variance_maps: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "role", "role_source", "outcome", "from_prior_study", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "role", "relabelled_by", "outcome", "from_prior_study", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
 
     @field_validator('outcome')
     def outcome_validate_enum(cls, value):
@@ -177,10 +177,10 @@ class AnalysisReturn(BaseModel):
         if self.role is None and "role" in self.model_fields_set:
             _dict['role'] = None
 
-        # set to None if role_source (nullable) is None
+        # set to None if relabelled_by (nullable) is None
         # and model_fields_set contains the field
-        if self.role_source is None and "role_source" in self.model_fields_set:
-            _dict['role_source'] = None
+        if self.relabelled_by is None and "relabelled_by" in self.model_fields_set:
+            _dict['relabelled_by'] = None
 
         # set to None if outcome (nullable) is None
         # and model_fields_set contains the field
@@ -237,7 +237,7 @@ class AnalysisReturn(BaseModel):
             "order": obj.get("order"),
             "metadata": obj.get("metadata"),
             "role": obj.get("role"),
-            "role_source": obj.get("role_source"),
+            "relabelled_by": obj.get("relabelled_by"),
             "outcome": obj.get("outcome"),
             "from_prior_study": obj.get("from_prior_study"),
             "source_id": obj.get("source_id"),

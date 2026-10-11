@@ -57,7 +57,7 @@ class TestAnalysisRequest(unittest.TestCase):
                 order = 56,
                 metadata = neurostore_sdk.models.metadata.metadata(),
                 role = '',
-                role_source = '',
+                relabelled_by = '',
                 outcome = 'significant_effect',
                 from_prior_study = True
             )
