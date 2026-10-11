@@ -67,7 +67,7 @@ class TestStudySchemaUploadSummarySkeleton(unittest.TestCase):
                         class = '', 
                         entity_id = '', 
                         claims = 56, 
-                        reason = '', )
+                        reason = 'no_successor', )
                     ]
             )
         else:

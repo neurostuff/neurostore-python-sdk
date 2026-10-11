@@ -29,7 +29,7 @@ class StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner(BaseModel)
     """ # noqa: E501
     term: Optional[StrictStr] = None
     level: Optional[StrictStr] = Field(default=None, description="The cell's level, or its label when it has no level.")
-    reason: Optional[StrictStr] = Field(default=None, description="both_directions: the cell is listed both positive and negative. shared_name: two cells would name the same condition. ")
+    reason: Optional[StrictStr] = Field(default=None, description="both_directions: a level is given both positive and negative; one conflict per level, even when it appears under two labels. shared_name: two cells would name the same condition. ")
     name: Optional[StrictStr] = Field(default=None, description="The condition name the cells share. Only for shared_name.")
     __properties: ClassVar[List[str]] = ["term", "level", "reason", "name"]
 

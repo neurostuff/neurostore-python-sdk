@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **term** | **str** |  | [optional] 
 **level** | **str** | The cell&#39;s level, or its label when it has no level. | [optional] 
-**reason** | **str** | both_directions: the cell is listed both positive and negative. shared_name: two cells would name the same condition.  | [optional] 
+**reason** | **str** | both_directions: a level is given both positive and negative; one conflict per level, even when it appears under two labels. shared_name: two cells would name the same condition.  | [optional] 
 **name** | **str** | The condition name the cells share. Only for shared_name. | [optional] 
 
 ## Example

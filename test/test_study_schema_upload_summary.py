@@ -72,7 +72,7 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
                             class = '', 
                             entity_id = '', 
                             claims = 56, 
-                            reason = '', )
+                            reason = 'no_successor', )
                         ], ),
                 carried = neurostore_sdk.models.study_schema_carried.study-schema-carried(
                     claims = 56, ),

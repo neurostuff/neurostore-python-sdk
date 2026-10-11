@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,8 +31,18 @@ class StudySchemaUploadSummarySkeletonOrphanedClaimsInner(BaseModel):
     var_class: Optional[StrictStr] = Field(default=None, description="The entity class.", alias="class")
     entity_id: Optional[StrictStr] = None
     claims: Optional[StrictInt] = Field(default=None, description="How many claims the entity holds.")
-    reason: Optional[StrictStr] = Field(default=None, description="Why the claims stayed; free text.")
+    reason: Optional[StrictStr] = Field(default=None, description="Why the claims stayed. not_carried: the upload is a revision and the analysis is neither linked nor split or merged. alias_conflict: an original parse, and the key is in alias_conflicts. no_successor: an original parse with no successor. ")
     __properties: ClassVar[List[str]] = ["key", "class", "entity_id", "claims", "reason"]
+
+    @field_validator('reason')
+    def reason_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['no_successor', 'alias_conflict', 'not_carried']):
+            raise ValueError("must be one of enum values ('no_successor', 'alias_conflict', 'not_carried')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

@@ -40,7 +40,7 @@ class TestStudySchemaUploadSummarySkeletonOrphanedClaimsInner(unittest.TestCase)
                 var_class = '',
                 entity_id = '',
                 claims = 56,
-                reason = ''
+                reason = 'no_successor'
             )
         else:
             return StudySchemaUploadSummarySkeletonOrphanedClaimsInner(
