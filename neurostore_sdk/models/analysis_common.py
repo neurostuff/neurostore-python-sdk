@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
@@ -33,7 +33,21 @@ class AnalysisCommon(BaseModel):
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["study", "table_id", "entities", "order", "metadata"]
+    role: Optional[StrictStr] = Field(default=None, description="What the coordinates are for (study_schema CoordinateRole): `result`, `anchor`, `localization`, `reference` or `other`; an open vocabulary, so the source's own wording may appear. Only a result is released in a studyset. Null on an analysis from before roles, which is read as a result, except on a set the study_schema ingester wrote, which is unclassified.")
+    role_source: Optional[StrictStr] = Field(default=None, description="The parse_id of the reviewed revision whose relabel verdict set `role`; a later parse does not replace a relabelled role. Null while the role is the classifier's.")
+    outcome: Optional[StrictStr] = Field(default=None, description="Whether anything survived the analysis's threshold (study_schema AnalysisOutcome), from the extraction record. Set only on results.")
+    from_prior_study: Optional[StrictBool] = Field(default=None, description="The coordinates are quoted from an earlier study, not this one's.")
+    __properties: ClassVar[List[str]] = ["study", "table_id", "entities", "order", "metadata", "role", "role_source", "outcome", "from_prior_study"]
+
+    @field_validator('outcome')
+    def outcome_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['significant_effect', 'no_significant_effect']):
+            raise ValueError("must be one of enum values ('significant_effect', 'no_significant_effect')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,6 +109,26 @@ class AnalysisCommon(BaseModel):
         if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
 
+        # set to None if role (nullable) is None
+        # and model_fields_set contains the field
+        if self.role is None and "role" in self.model_fields_set:
+            _dict['role'] = None
+
+        # set to None if role_source (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_source is None and "role_source" in self.model_fields_set:
+            _dict['role_source'] = None
+
+        # set to None if outcome (nullable) is None
+        # and model_fields_set contains the field
+        if self.outcome is None and "outcome" in self.model_fields_set:
+            _dict['outcome'] = None
+
+        # set to None if from_prior_study (nullable) is None
+        # and model_fields_set contains the field
+        if self.from_prior_study is None and "from_prior_study" in self.model_fields_set:
+            _dict['from_prior_study'] = None
+
         return _dict
 
     @classmethod
@@ -111,7 +145,11 @@ class AnalysisCommon(BaseModel):
             "table_id": obj.get("table_id"),
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "order": obj.get("order"),
-            "metadata": obj.get("metadata")
+            "metadata": obj.get("metadata"),
+            "role": obj.get("role"),
+            "role_source": obj.get("role_source"),
+            "outcome": obj.get("outcome"),
+            "from_prior_study": obj.get("from_prior_study")
         })
         return _obj
 

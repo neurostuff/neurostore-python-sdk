@@ -113,7 +113,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     study = 'study_example' # str | Filter tables by study id (optional)
-    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role outside the study_schema pipeline's versions (one from before roles); a pipeline analysis with no role matches no value. Without `role`, analyses of every role are listed. (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| number of results to show on a page | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **study** | **str**| Filter tables by study id | [optional] 
- **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role outside the study_schema pipeline&#39;s versions (one from before roles); a pipeline analysis with no role matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
+ **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
@@ -4094,7 +4094,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
-    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role outside the study_schema pipeline's versions (one from before roles); a pipeline analysis with no role matches no value. Without `role`, analyses of every role are listed. (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     level = group # str | select between studies with group results or meta results (optional) (default to group)
@@ -4135,7 +4135,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
- **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role outside the study_schema pipeline&#39;s versions (one from before roles); a pipeline analysis with no role matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
+ **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **map_type** | **str**| filter by stored map-type flags | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to group]

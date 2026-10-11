@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
@@ -50,6 +50,10 @@ class AnalysisReturn(BaseModel):
     entities: Optional[List[Entity]] = None
     order: Optional[StrictInt] = None
     metadata: Optional[Dict[str, Any]] = None
+    role: Optional[StrictStr] = Field(default=None, description="What the coordinates are for (study_schema CoordinateRole): `result`, `anchor`, `localization`, `reference` or `other`; an open vocabulary, so the source's own wording may appear. Only a result is released in a studyset. Null on an analysis from before roles, which is read as a result, except on a set the study_schema ingester wrote, which is unclassified.")
+    role_source: Optional[StrictStr] = Field(default=None, description="The parse_id of the reviewed revision whose relabel verdict set `role`; a later parse does not replace a relabelled role. Null while the role is the classifier's.")
+    outcome: Optional[StrictStr] = Field(default=None, description="Whether anything survived the analysis's threshold (study_schema AnalysisOutcome), from the extraction record. Set only on results.")
+    from_prior_study: Optional[StrictBool] = Field(default=None, description="The coordinates are quoted from an earlier study, not this one's.")
     source_id: Optional[StrictStr] = Field(default=None, description="ID of the analysis this one was cloned from, if any.")
     point_count: Optional[StrictInt] = Field(default=None, description="Number of point coordinates linked to this analysis.")
     image_count: Optional[StrictInt] = Field(default=None, description="Number of images linked to this analysis.")
@@ -58,7 +62,17 @@ class AnalysisReturn(BaseModel):
     has_z_maps: Optional[StrictBool] = None
     has_t_maps: Optional[StrictBool] = None
     has_beta_and_variance_maps: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "role", "role_source", "outcome", "from_prior_study", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
+
+    @field_validator('outcome')
+    def outcome_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['significant_effect', 'no_significant_effect']):
+            raise ValueError("must be one of enum values ('significant_effect', 'no_significant_effect')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -158,6 +172,26 @@ class AnalysisReturn(BaseModel):
         if self.metadata is None and "metadata" in self.model_fields_set:
             _dict['metadata'] = None
 
+        # set to None if role (nullable) is None
+        # and model_fields_set contains the field
+        if self.role is None and "role" in self.model_fields_set:
+            _dict['role'] = None
+
+        # set to None if role_source (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_source is None and "role_source" in self.model_fields_set:
+            _dict['role_source'] = None
+
+        # set to None if outcome (nullable) is None
+        # and model_fields_set contains the field
+        if self.outcome is None and "outcome" in self.model_fields_set:
+            _dict['outcome'] = None
+
+        # set to None if from_prior_study (nullable) is None
+        # and model_fields_set contains the field
+        if self.from_prior_study is None and "from_prior_study" in self.model_fields_set:
+            _dict['from_prior_study'] = None
+
         # set to None if source_id (nullable) is None
         # and model_fields_set contains the field
         if self.source_id is None and "source_id" in self.model_fields_set:
@@ -202,6 +236,10 @@ class AnalysisReturn(BaseModel):
             "entities": [Entity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "order": obj.get("order"),
             "metadata": obj.get("metadata"),
+            "role": obj.get("role"),
+            "role_source": obj.get("role_source"),
+            "outcome": obj.get("outcome"),
+            "from_prior_study": obj.get("from_prior_study"),
             "source_id": obj.get("source_id"),
             "point_count": obj.get("point_count"),
             "image_count": obj.get("image_count"),

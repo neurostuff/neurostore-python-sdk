@@ -75,7 +75,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     study = 'study_example' # str | Filter tables by study id (optional)
-    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role outside the study_schema pipeline's versions (one from before roles); a pipeline analysis with no role matches no value. Without `role`, analyses of every role are listed. (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)

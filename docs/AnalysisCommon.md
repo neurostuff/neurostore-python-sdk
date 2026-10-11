@@ -11,6 +11,10 @@ Name | Type | Description | Notes
 **entities** | [**List[Entity]**](Entity.md) |  | [optional] 
 **order** | **int** |  | [optional] 
 **metadata** | **object** |  | [optional] 
+**role** | **str** | What the coordinates are for (study_schema CoordinateRole): &#x60;result&#x60;, &#x60;anchor&#x60;, &#x60;localization&#x60;, &#x60;reference&#x60; or &#x60;other&#x60;; an open vocabulary, so the source&#39;s own wording may appear. Only a result is released in a studyset. Null on an analysis from before roles, which is read as a result, except on a set the study_schema ingester wrote, which is unclassified. | [optional] 
+**role_source** | **str** | The parse_id of the reviewed revision whose relabel verdict set &#x60;role&#x60;; a later parse does not replace a relabelled role. Null while the role is the classifier&#39;s. | [optional] 
+**outcome** | **str** | Whether anything survived the analysis&#39;s threshold (study_schema AnalysisOutcome), from the extraction record. Set only on results. | [optional] 
+**from_prior_study** | **bool** | The coordinates are quoted from an earlier study, not this one&#39;s. | [optional] 
 
 ## Example
 
