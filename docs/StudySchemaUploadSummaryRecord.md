@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config_id** | **str** |  | [optional] 
 **analyses** | [**StudySchemaUploadSummaryRecordAnalyses**](StudySchemaUploadSummaryRecordAnalyses.md) |  | [optional] 
+**condition_conflicts** | [**List[StudySchemaUploadSummaryRecordConditionConflictsInner]**](StudySchemaUploadSummaryRecordConditionConflictsInner.md) | Record analyses whose effect cells set no conditions (the analysis gets none) because the cells contradict each other. One entry per record entry, keyed by its key, or its local_id when it has none.  | [optional] 
 **claims** | [**StudySchemaUploadSummaryRecordClaims**](StudySchemaUploadSummaryRecordClaims.md) |  | [optional] 
 **carried** | [**StudySchemaCarried**](StudySchemaCarried.md) |  | [optional] 
 

@@ -39,13 +39,35 @@ class TestStudySchemaUploadSummarySkeleton(unittest.TestCase):
                 created = 56,
                 updated = 56,
                 superseded = 56,
-                not_uploaded = [
-                    ''
-                    ],
+                omitted_analyses = 56,
                 aliased = [
                     neurostore_sdk.models.study_schema_upload_summary_skeleton_aliased_inner.study_schema_upload_summary_skeleton_aliased_inner(
                         from = '', 
                         to = '', )
+                    ],
+                alias_conflicts = [
+                    neurostore_sdk.models.study_schema_upload_summary_skeleton_alias_conflicts_inner.study_schema_upload_summary_skeleton_alias_conflicts_inner(
+                        class = '', 
+                        from = '', 
+                        to = '', 
+                        entity_id = '', 
+                        holder_id = '', )
+                    ],
+                rename_candidates = [
+                    neurostore_sdk.models.study_schema_rename_candidate.study-schema-rename-candidate(
+                        class = '', 
+                        from = '', 
+                        to = '', 
+                        entity_id = '', 
+                        candidate_id = '', )
+                    ],
+                orphaned_claims = [
+                    neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner.study_schema_upload_summary_skeleton_orphaned_claims_inner(
+                        key = '', 
+                        class = '', 
+                        entity_id = '', 
+                        claims = 56, 
+                        reason = 'no_successor', )
                     ]
             )
         else:

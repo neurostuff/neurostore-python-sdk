@@ -18,11 +18,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.study_schema_carried import StudySchemaCarried
 from neurostore_sdk.models.study_schema_upload_summary_record_analyses import StudySchemaUploadSummaryRecordAnalyses
 from neurostore_sdk.models.study_schema_upload_summary_record_claims import StudySchemaUploadSummaryRecordClaims
+from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner import StudySchemaUploadSummaryRecordConditionConflictsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,9 +33,10 @@ class StudySchemaUploadSummaryRecord(BaseModel):
     """ # noqa: E501
     config_id: Optional[StrictStr] = None
     analyses: Optional[StudySchemaUploadSummaryRecordAnalyses] = None
+    condition_conflicts: Optional[List[StudySchemaUploadSummaryRecordConditionConflictsInner]] = Field(default=None, description="Record analyses whose effect cells set no conditions (the analysis gets none) because the cells contradict each other. One entry per record entry, keyed by its key, or its local_id when it has none. ")
     claims: Optional[StudySchemaUploadSummaryRecordClaims] = None
     carried: Optional[StudySchemaCarried] = None
-    __properties: ClassVar[List[str]] = ["config_id", "analyses", "claims", "carried"]
+    __properties: ClassVar[List[str]] = ["config_id", "analyses", "condition_conflicts", "claims", "carried"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +79,13 @@ class StudySchemaUploadSummaryRecord(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of analyses
         if self.analyses is not None:
             _dict['analyses'] = self.analyses.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in condition_conflicts (list)
+        _items = []
+        if self.condition_conflicts is not None:
+            for _item_condition_conflicts in self.condition_conflicts:
+                if _item_condition_conflicts is not None:
+                    _items.append(_item_condition_conflicts.to_dict())
+            _dict['condition_conflicts'] = _items
         # override the default output from pydantic by calling `to_dict()` of claims
         if self.claims is not None:
             _dict['claims'] = self.claims.to_dict()
@@ -97,6 +106,7 @@ class StudySchemaUploadSummaryRecord(BaseModel):
         _obj = cls.model_validate({
             "config_id": obj.get("config_id"),
             "analyses": StudySchemaUploadSummaryRecordAnalyses.from_dict(obj["analyses"]) if obj.get("analyses") is not None else None,
+            "condition_conflicts": [StudySchemaUploadSummaryRecordConditionConflictsInner.from_dict(_item) for _item in obj["condition_conflicts"]] if obj.get("condition_conflicts") is not None else None,
             "claims": StudySchemaUploadSummaryRecordClaims.from_dict(obj["claims"]) if obj.get("claims") is not None else None,
             "carried": StudySchemaCarried.from_dict(obj["carried"]) if obj.get("carried") is not None else None
         })
