@@ -32,7 +32,7 @@ class StudySchemaUploadSummarySkeleton(BaseModel):
     updated: Optional[StrictInt] = None
     superseded: Optional[StrictInt] = Field(default=None, description="Analyses moved to the history study because this version dropped their key.")
     omitted_analyses: Optional[StrictInt] = Field(default=None, description="How many text or figure analyses the parse lists as read and left out. Their reasons are kept in the study's metadata, not returned here. ")
-    orphaned_claims: Optional[List[StudySchemaUploadSummarySkeletonOrphanedClaimsInner]] = Field(default=None, description="Entities that hold claims and stayed on a superseded (history) analysis, not copied by a split or merge verdict. A changed name or point gives a new key, so the new analysis starts with no claims and the old one's are reported here. Always present; empty when none. ")
+    orphaned_claims: Optional[List[StudySchemaUploadSummarySkeletonOrphanedClaimsInner]] = Field(default=None, description="Entities that hold claims and stayed on a superseded (history) analysis, not copied by a split or merge verdict. A changed name, space or point gives a new key, so the new analysis starts with no claims and the old one's are reported here. Always present; empty when none. ")
     __properties: ClassVar[List[str]] = ["created", "updated", "superseded", "omitted_analyses", "orphaned_claims"]
 
     model_config = ConfigDict(
