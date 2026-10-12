@@ -10,10 +10,7 @@ Name | Type | Description | Notes
 **updated** | **int** |  | [optional] 
 **superseded** | **int** | Analyses moved to the history study because this version dropped their key. | [optional] 
 **omitted_analyses** | **int** | How many text or figure analyses the parse lists as read and left out. Their reasons are kept in the study&#39;s metadata, not returned here.  | [optional] 
-**aliased** | [**List[StudySchemaUploadSummarySkeletonAliasedInner]**](StudySchemaUploadSummarySkeletonAliasedInner.md) | Analyses an original re-parse reads from other cells (same table and name, new key), one pair each; their entities keep the old hash as an alias.  | [optional] 
-**alias_conflicts** | [**List[StudySchemaUploadSummarySkeletonAliasConflictsInner]**](StudySchemaUploadSummarySkeletonAliasConflictsInner.md) | Re-read analyses whose new hash already belongs to another entity; nothing is re-hashed for that entity class and its claims stay where they are. Present for an original parse, absent for a revision.  | [optional] 
-**rename_candidates** | [**List[StudySchemaRenameCandidate]**](StudySchemaRenameCandidate.md) | Analyses read from the same place under a new name. Each old entity is linked to a candidate entity for the new name as renamed_by_extractor; no claims move. Present for an original parse, absent for a revision.  | [optional] 
-**orphaned_claims** | [**List[StudySchemaUploadSummarySkeletonOrphanedClaimsInner]**](StudySchemaUploadSummarySkeletonOrphanedClaimsInner.md) | Entities that hold claims and stayed on a superseded (history) analysis: not re-hashed onto a successor, not linked as a rename candidate, and not copied by a split or merge verdict. Always present; empty when none.  | [optional] 
+**orphaned_claims** | [**List[StudySchemaUploadSummarySkeletonOrphanedClaimsInner]**](StudySchemaUploadSummarySkeletonOrphanedClaimsInner.md) | Entities that hold claims and stayed on a superseded (history) analysis, not copied by a split or merge verdict. A changed name or point gives a new key, so the new analysis starts with no claims and the old one&#39;s are reported here. Always present; empty when none.  | [optional] 
 
 ## Example
 

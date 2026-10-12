@@ -20,9 +20,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate
-from neurostore_sdk.models.study_schema_upload_summary_skeleton_alias_conflicts_inner import StudySchemaUploadSummarySkeletonAliasConflictsInner
-from neurostore_sdk.models.study_schema_upload_summary_skeleton_aliased_inner import StudySchemaUploadSummarySkeletonAliasedInner
 from neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner import StudySchemaUploadSummarySkeletonOrphanedClaimsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,11 +32,8 @@ class StudySchemaUploadSummarySkeleton(BaseModel):
     updated: Optional[StrictInt] = None
     superseded: Optional[StrictInt] = Field(default=None, description="Analyses moved to the history study because this version dropped their key.")
     omitted_analyses: Optional[StrictInt] = Field(default=None, description="How many text or figure analyses the parse lists as read and left out. Their reasons are kept in the study's metadata, not returned here. ")
-    aliased: Optional[List[StudySchemaUploadSummarySkeletonAliasedInner]] = Field(default=None, description="Analyses an original re-parse reads from other cells (same table and name, new key), one pair each; their entities keep the old hash as an alias. ")
-    alias_conflicts: Optional[List[StudySchemaUploadSummarySkeletonAliasConflictsInner]] = Field(default=None, description="Re-read analyses whose new hash already belongs to another entity; nothing is re-hashed for that entity class and its claims stay where they are. Present for an original parse, absent for a revision. ")
-    rename_candidates: Optional[List[StudySchemaRenameCandidate]] = Field(default=None, description="Analyses read from the same place under a new name. Each old entity is linked to a candidate entity for the new name as renamed_by_extractor; no claims move. Present for an original parse, absent for a revision. ")
-    orphaned_claims: Optional[List[StudySchemaUploadSummarySkeletonOrphanedClaimsInner]] = Field(default=None, description="Entities that hold claims and stayed on a superseded (history) analysis: not re-hashed onto a successor, not linked as a rename candidate, and not copied by a split or merge verdict. Always present; empty when none. ")
-    __properties: ClassVar[List[str]] = ["created", "updated", "superseded", "omitted_analyses", "aliased", "alias_conflicts", "rename_candidates", "orphaned_claims"]
+    orphaned_claims: Optional[List[StudySchemaUploadSummarySkeletonOrphanedClaimsInner]] = Field(default=None, description="Entities that hold claims and stayed on a superseded (history) analysis, not copied by a split or merge verdict. A changed name or point gives a new key, so the new analysis starts with no claims and the old one's are reported here. Always present; empty when none. ")
+    __properties: ClassVar[List[str]] = ["created", "updated", "superseded", "omitted_analyses", "orphaned_claims"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,27 +73,6 @@ class StudySchemaUploadSummarySkeleton(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in aliased (list)
-        _items = []
-        if self.aliased is not None:
-            for _item_aliased in self.aliased:
-                if _item_aliased is not None:
-                    _items.append(_item_aliased.to_dict())
-            _dict['aliased'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in alias_conflicts (list)
-        _items = []
-        if self.alias_conflicts is not None:
-            for _item_alias_conflicts in self.alias_conflicts:
-                if _item_alias_conflicts is not None:
-                    _items.append(_item_alias_conflicts.to_dict())
-            _dict['alias_conflicts'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in rename_candidates (list)
-        _items = []
-        if self.rename_candidates is not None:
-            for _item_rename_candidates in self.rename_candidates:
-                if _item_rename_candidates is not None:
-                    _items.append(_item_rename_candidates.to_dict())
-            _dict['rename_candidates'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in orphaned_claims (list)
         _items = []
         if self.orphaned_claims is not None:
@@ -123,9 +96,6 @@ class StudySchemaUploadSummarySkeleton(BaseModel):
             "updated": obj.get("updated"),
             "superseded": obj.get("superseded"),
             "omitted_analyses": obj.get("omitted_analyses"),
-            "aliased": [StudySchemaUploadSummarySkeletonAliasedInner.from_dict(_item) for _item in obj["aliased"]] if obj.get("aliased") is not None else None,
-            "alias_conflicts": [StudySchemaUploadSummarySkeletonAliasConflictsInner.from_dict(_item) for _item in obj["alias_conflicts"]] if obj.get("alias_conflicts") is not None else None,
-            "rename_candidates": [StudySchemaRenameCandidate.from_dict(_item) for _item in obj["rename_candidates"]] if obj.get("rename_candidates") is not None else None,
             "orphaned_claims": [StudySchemaUploadSummarySkeletonOrphanedClaimsInner.from_dict(_item) for _item in obj["orphaned_claims"]] if obj.get("orphaned_claims") is not None else None
         })
         return _obj

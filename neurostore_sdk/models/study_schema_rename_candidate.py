@@ -28,8 +28,8 @@ class StudySchemaRenameCandidate(BaseModel):
     StudySchemaRenameCandidate
     """ # noqa: E501
     var_class: Optional[StrictStr] = Field(default=None, alias="class")
-    var_from: Optional[StrictStr] = Field(default=None, description="The old name or key.", alias="from")
-    to: Optional[StrictStr] = Field(default=None, description="The new name or key.")
+    var_from: Optional[StrictStr] = Field(default=None, description="The old name.", alias="from")
+    to: Optional[StrictStr] = Field(default=None, description="The new name.")
     entity_id: Optional[StrictStr] = Field(default=None, description="The old entity.")
     candidate_id: Optional[StrictStr] = Field(default=None, description="The entity for the new name.")
     __properties: ClassVar[List[str]] = ["class", "from", "to", "entity_id", "candidate_id"]

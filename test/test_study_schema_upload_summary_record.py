@@ -93,9 +93,6 @@ class TestStudySchemaUploadSummaryRecord(unittest.TestCase):
                             entity_id = '', 
                             candidate_id = '', )
                         ], 
-                    released_aliases = [
-                        ''
-                        ], 
                     parked_entities = [
                         neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
                             entity = '', 

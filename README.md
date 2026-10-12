@@ -282,8 +282,6 @@ Class | Method | HTTP request | Description
  - [StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner](docs/StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner.md)
  - [StudySchemaUploadSummarySetAsideResolvedInner](docs/StudySchemaUploadSummarySetAsideResolvedInner.md)
  - [StudySchemaUploadSummarySkeleton](docs/StudySchemaUploadSummarySkeleton.md)
- - [StudySchemaUploadSummarySkeletonAliasConflictsInner](docs/StudySchemaUploadSummarySkeletonAliasConflictsInner.md)
- - [StudySchemaUploadSummarySkeletonAliasedInner](docs/StudySchemaUploadSummarySkeletonAliasedInner.md)
  - [StudySchemaUploadSummarySkeletonOrphanedClaimsInner](docs/StudySchemaUploadSummarySkeletonOrphanedClaimsInner.md)
  - [StudysetBase](docs/StudysetBase.md)
  - [StudysetList](docs/StudysetList.md)
