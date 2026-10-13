@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_class** | **str** |  | [optional] 
-**var_from** | **str** | The old name or key. | [optional] 
-**to** | **str** | The new name or key. | [optional] 
+**var_from** | **str** | The old name. | [optional] 
+**to** | **str** | The new name. | [optional] 
 **entity_id** | **str** | The old entity. | [optional] 
 **candidate_id** | **str** | The entity for the new name. | [optional] 
 

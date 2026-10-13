@@ -34,13 +34,12 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
     matched: Optional[StrictInt] = None
     rejected_paths: Optional[List[StrictStr]] = None
     entities: Optional[StudySchemaUploadSummaryRecordClaimsEntities] = None
-    unlocated: Optional[List[StrictStr]] = Field(default=None, description="Paths of analysis or coordinate-set items with no cells or spans to locate them by; they are not stored as entities.")
+    unlocated: Optional[List[StrictStr]] = Field(default=None, description="Paths of analysis or coordinate-set items that name no content key; they are not stored as entities.")
     unidentified: Optional[List[StrictStr]] = Field(default=None, description="Paths of entity lists that are not lists, and of their items that are not objects; not stored as entities.")
-    duplicates: Optional[List[StrictStr]] = Field(default=None, description="Paths of items whose hash an earlier item of the record already has (one analysis read twice from the same cells under the same name); not stored.")
-    rename_candidates: Optional[List[StudySchemaRenameCandidate]] = Field(default=None, description="Entities the record names differently from a stored entity in the same place. They are linked as renamed_by_extractor candidates; claims stay on the old entity until a curator links them. ")
-    released_aliases: Optional[List[StrictStr]] = Field(default=None, description="Paths of new items whose hash was an alias of another entity; the alias is dropped.")
+    duplicates: Optional[List[StrictStr]] = Field(default=None, description="Paths of items whose hash an earlier item of the record already has (two items naming one content key); not stored.")
+    rename_candidates: Optional[List[StudySchemaRenameCandidate]] = Field(default=None, description="Entities the record names differently from a stored sibling of the same class and parent, each the only unmatched one there. They are linked as renamed_by_extractor candidates; claims stay on the old entity until a curator links them. Analyses and coordinate sets are never candidates: a new name is a new key. ")
     parked_entities: Optional[List[StudySchemaSetAside]] = Field(default=None, description="Set-aside entities: positional keys, or keys no stored parse holds (resolved later by a parse that holds them; see set_aside_resolved). ")
-    __properties: ClassVar[List[str]] = ["created", "matched", "rejected_paths", "entities", "unlocated", "unidentified", "duplicates", "rename_candidates", "released_aliases", "parked_entities"]
+    __properties: ClassVar[List[str]] = ["created", "matched", "rejected_paths", "entities", "unlocated", "unidentified", "duplicates", "rename_candidates", "parked_entities"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -117,7 +116,6 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
             "unidentified": obj.get("unidentified"),
             "duplicates": obj.get("duplicates"),
             "rename_candidates": [StudySchemaRenameCandidate.from_dict(_item) for _item in obj["rename_candidates"]] if obj.get("rename_candidates") is not None else None,
-            "released_aliases": obj.get("released_aliases"),
             "parked_entities": [StudySchemaSetAside.from_dict(_item) for _item in obj["parked_entities"]] if obj.get("parked_entities") is not None else None
         })
         return _obj
