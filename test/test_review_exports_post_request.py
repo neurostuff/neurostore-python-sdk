@@ -15,10 +15,10 @@
 
 import unittest
 
-from neurostore_sdk.models.neurostore_resources_review_review_exports_view_post_request import NeurostoreResourcesReviewReviewExportsViewPostRequest
+from neurostore_sdk.models.review_exports_post_request import ReviewExportsPostRequest
 
-class TestNeurostoreResourcesReviewReviewExportsViewPostRequest(unittest.TestCase):
-    """NeurostoreResourcesReviewReviewExportsViewPostRequest unit test stubs"""
+class TestReviewExportsPostRequest(unittest.TestCase):
+    """ReviewExportsPostRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestNeurostoreResourcesReviewReviewExportsViewPostRequest(unittest.TestCas
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> NeurostoreResourcesReviewReviewExportsViewPostRequest:
-        """Test NeurostoreResourcesReviewReviewExportsViewPostRequest
+    def make_instance(self, include_optional) -> ReviewExportsPostRequest:
+        """Test ReviewExportsPostRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `NeurostoreResourcesReviewReviewExportsViewPostRequest`
+        # uncomment below to create an instance of `ReviewExportsPostRequest`
         """
-        model = NeurostoreResourcesReviewReviewExportsViewPostRequest()
+        model = ReviewExportsPostRequest()
         if include_optional:
-            return NeurostoreResourcesReviewReviewExportsViewPostRequest(
+            return ReviewExportsPostRequest(
                 source_ids = [
                     ''
                     ],
@@ -51,12 +51,12 @@ class TestNeurostoreResourcesReviewReviewExportsViewPostRequest(unittest.TestCas
                 include_unreviewed = True
             )
         else:
-            return NeurostoreResourcesReviewReviewExportsViewPostRequest(
+            return ReviewExportsPostRequest(
         )
         """
 
-    def testNeurostoreResourcesReviewReviewExportsViewPostRequest(self):
-        """Test NeurostoreResourcesReviewReviewExportsViewPostRequest"""
+    def testReviewExportsPostRequest(self):
+        """Test ReviewExportsPostRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

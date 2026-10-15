@@ -27,64 +27,64 @@ class TestReviewApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_neurostore_resources_review_review_bundles_view_get(self) -> None:
-        """Test case for neurostore_resources_review_review_bundles_view_get
-
-        Everything the review app needs to open one paper for the caller
-        """
-        pass
-
-    def test_neurostore_resources_review_review_export_view_get(self) -> None:
-        """Test case for neurostore_resources_review_review_export_view_get
-
-        Export one review as a study_schema layout zip
-        """
-        pass
-
-    def test_neurostore_resources_review_review_exports_view_post(self) -> None:
-        """Test case for neurostore_resources_review_review_exports_view_post
+    def test_review_exports_post(self) -> None:
+        """Test case for review_exports_post
 
         Export the reviews that match the filters as a zip of layout trees
         """
         pass
 
-    def test_neurostore_resources_review_review_imports_view_post(self) -> None:
-        """Test case for neurostore_resources_review_review_imports_view_post
+    def test_review_imports_post(self) -> None:
+        """Test case for review_imports_post
 
         Load the papers of a study_schema layout zip for review
         """
         pass
 
-    def test_neurostore_resources_review_review_ops_view_post(self) -> None:
-        """Test case for neurostore_resources_review_review_ops_view_post
+    def test_review_reviews_id_export_get(self) -> None:
+        """Test case for review_reviews_id_export_get
 
-        Apply a batch of the owner's ops to their review
+        Export one review as a study_schema layout zip
         """
         pass
 
-    def test_neurostore_resources_review_review_sources_view_search(self) -> None:
-        """Test case for neurostore_resources_review_review_sources_view_search
-
-        List papers loaded for review, with each reviewer's progress
-        """
-        pass
-
-    def test_neurostore_resources_review_reviews_view_get(self) -> None:
-        """Test case for neurostore_resources_review_reviews_view_get
+    def test_review_reviews_id_get(self) -> None:
+        """Test case for review_reviews_id_get
 
         One reviewer's review of a paper
         """
         pass
 
-    def test_neurostore_resources_review_reviews_view_patch(self) -> None:
-        """Test case for neurostore_resources_review_reviews_view_patch
+    def test_review_reviews_id_ops_post(self) -> None:
+        """Test case for review_reviews_id_ops_post
+
+        Apply a batch of the owner's ops to their review
+        """
+        pass
+
+    def test_review_reviews_id_patch(self) -> None:
+        """Test case for review_reviews_id_patch
 
         Submit, reopen, or mark as the reference review
         """
         pass
 
-    def test_neurostore_resources_review_source_reviews_view_put(self) -> None:
-        """Test case for neurostore_resources_review_source_reviews_view_put
+    def test_review_sources_get(self) -> None:
+        """Test case for review_sources_get
+
+        List papers loaded for review, with each reviewer's progress
+        """
+        pass
+
+    def test_review_sources_id_bundle_get(self) -> None:
+        """Test case for review_sources_id_bundle_get
+
+        Everything the review app needs to open one paper for the caller
+        """
+        pass
+
+    def test_review_sources_id_review_put(self) -> None:
+        """Test case for review_sources_id_review_put
 
         Start the caller's review of a paper
         """

@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
 from typing import Any, Dict, Optional, Tuple, Union
 from typing_extensions import Annotated
-from neurostore_sdk.models.neurostore_resources_review_review_exports_view_post_request import NeurostoreResourcesReviewReviewExportsViewPostRequest
 from neurostore_sdk.models.review_detail import ReviewDetail
+from neurostore_sdk.models.review_exports_post_request import ReviewExportsPostRequest
 from neurostore_sdk.models.review_import_report import ReviewImportReport
 from neurostore_sdk.models.review_op_batch import ReviewOpBatch
 from neurostore_sdk.models.review_op_result import ReviewOpResult
@@ -48,547 +48,9 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_bundles_view_get(
+    def review_exports_post(
         self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
-        """Everything the review app needs to open one paper for the caller
-
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_review_bundles_view_get_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def neurostore_resources_review_review_bundles_view_get_with_http_info(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
-        """Everything the review app needs to open one paper for the caller
-
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_review_bundles_view_get_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def neurostore_resources_review_review_bundles_view_get_without_preload_content(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Everything the review app needs to open one paper for the caller
-
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_review_bundles_view_get_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _neurostore_resources_review_review_bundles_view_get_serialize(
-        self,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'JSON-Web-Token'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/review/sources/{id}/bundle',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def neurostore_resources_review_review_export_view_get(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
-        """Export one review as a study_schema layout zip
-
-        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_review_export_view_get_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def neurostore_resources_review_review_export_view_get_with_http_info(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
-        """Export one review as a study_schema layout zip
-
-        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_review_export_view_get_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def neurostore_resources_review_review_export_view_get_without_preload_content(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Export one review as a study_schema layout zip
-
-        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_review_export_view_get_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _neurostore_resources_review_review_export_view_get_serialize(
-        self,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/zip', 
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'JSON-Web-Token'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/review/reviews/{id}/export',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def neurostore_resources_review_review_exports_view_post(
-        self,
-        neurostore_resources_review_review_exports_view_post_request: Optional[NeurostoreResourcesReviewReviewExportsViewPostRequest] = None,
+        review_exports_post_request: Optional[ReviewExportsPostRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -606,8 +68,8 @@ class ReviewApi:
 
         One layout tree per reviewer, under the reviewer's id. A source with no review is included, as loaded under _source/, only when include_unreviewed is true. An empty filter list means no filter. include_unreviewed cannot be combined with user_ids or states; that request is refused with 422. The whole zip is built in memory before the response is sent, so split a large export with source_ids or base_study_ids. 
 
-        :param neurostore_resources_review_review_exports_view_post_request:
-        :type neurostore_resources_review_review_exports_view_post_request: NeurostoreResourcesReviewReviewExportsViewPostRequest
+        :param review_exports_post_request:
+        :type review_exports_post_request: ReviewExportsPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -630,8 +92,8 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_exports_view_post_serialize(
-            neurostore_resources_review_review_exports_view_post_request=neurostore_resources_review_review_exports_view_post_request,
+        _param = self._review_exports_post_serialize(
+            review_exports_post_request=review_exports_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -656,9 +118,9 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_exports_view_post_with_http_info(
+    def review_exports_post_with_http_info(
         self,
-        neurostore_resources_review_review_exports_view_post_request: Optional[NeurostoreResourcesReviewReviewExportsViewPostRequest] = None,
+        review_exports_post_request: Optional[ReviewExportsPostRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -676,8 +138,8 @@ class ReviewApi:
 
         One layout tree per reviewer, under the reviewer's id. A source with no review is included, as loaded under _source/, only when include_unreviewed is true. An empty filter list means no filter. include_unreviewed cannot be combined with user_ids or states; that request is refused with 422. The whole zip is built in memory before the response is sent, so split a large export with source_ids or base_study_ids. 
 
-        :param neurostore_resources_review_review_exports_view_post_request:
-        :type neurostore_resources_review_review_exports_view_post_request: NeurostoreResourcesReviewReviewExportsViewPostRequest
+        :param review_exports_post_request:
+        :type review_exports_post_request: ReviewExportsPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -700,8 +162,8 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_exports_view_post_serialize(
-            neurostore_resources_review_review_exports_view_post_request=neurostore_resources_review_review_exports_view_post_request,
+        _param = self._review_exports_post_serialize(
+            review_exports_post_request=review_exports_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -726,9 +188,9 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_exports_view_post_without_preload_content(
+    def review_exports_post_without_preload_content(
         self,
-        neurostore_resources_review_review_exports_view_post_request: Optional[NeurostoreResourcesReviewReviewExportsViewPostRequest] = None,
+        review_exports_post_request: Optional[ReviewExportsPostRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -746,8 +208,8 @@ class ReviewApi:
 
         One layout tree per reviewer, under the reviewer's id. A source with no review is included, as loaded under _source/, only when include_unreviewed is true. An empty filter list means no filter. include_unreviewed cannot be combined with user_ids or states; that request is refused with 422. The whole zip is built in memory before the response is sent, so split a large export with source_ids or base_study_ids. 
 
-        :param neurostore_resources_review_review_exports_view_post_request:
-        :type neurostore_resources_review_review_exports_view_post_request: NeurostoreResourcesReviewReviewExportsViewPostRequest
+        :param review_exports_post_request:
+        :type review_exports_post_request: ReviewExportsPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -770,8 +232,8 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_exports_view_post_serialize(
-            neurostore_resources_review_review_exports_view_post_request=neurostore_resources_review_review_exports_view_post_request,
+        _param = self._review_exports_post_serialize(
+            review_exports_post_request=review_exports_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -791,9 +253,9 @@ class ReviewApi:
         return response_data.response
 
 
-    def _neurostore_resources_review_review_exports_view_post_serialize(
+    def _review_exports_post_serialize(
         self,
-        neurostore_resources_review_review_exports_view_post_request,
+        review_exports_post_request,
         _request_auth,
         _content_type,
         _headers,
@@ -819,8 +281,8 @@ class ReviewApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if neurostore_resources_review_review_exports_view_post_request is not None:
-            _body_params = neurostore_resources_review_review_exports_view_post_request
+        if review_exports_post_request is not None:
+            _body_params = review_exports_post_request
 
 
         # set the HTTP header `Accept`
@@ -869,7 +331,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_imports_view_post(
+    def review_imports_post(
         self,
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout, at most 200 MB.")],
         _request_timeout: Union[
@@ -913,7 +375,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_imports_view_post_serialize(
+        _param = self._review_imports_post_serialize(
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -940,7 +402,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_imports_view_post_with_http_info(
+    def review_imports_post_with_http_info(
         self,
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout, at most 200 MB.")],
         _request_timeout: Union[
@@ -984,7 +446,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_imports_view_post_serialize(
+        _param = self._review_imports_post_serialize(
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1011,7 +473,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_imports_view_post_without_preload_content(
+    def review_imports_post_without_preload_content(
         self,
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout, at most 200 MB.")],
         _request_timeout: Union[
@@ -1055,7 +517,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_imports_view_post_serialize(
+        _param = self._review_imports_post_serialize(
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1077,7 +539,7 @@ class ReviewApi:
         return response_data.response
 
 
-    def _neurostore_resources_review_review_imports_view_post_serialize(
+    def _review_imports_post_serialize(
         self,
         file,
         _request_auth,
@@ -1155,7 +617,548 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_ops_view_post(
+    def review_reviews_id_export_get(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> bytearray:
+        """Export one review as a study_schema layout zip
+
+        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_export_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def review_reviews_id_export_get_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[bytearray]:
+        """Export one review as a study_schema layout zip
+
+        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_export_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def review_reviews_id_export_get_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Export one review as a study_schema layout zip
+
+        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_export_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _review_reviews_id_export_get_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/zip', 
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/review/reviews/{id}/export',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def review_reviews_id_get(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ReviewDetail:
+        """One reviewer's review of a paper
+
+        Any reviewer may read any review.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ReviewDetail",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def review_reviews_id_get_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ReviewDetail]:
+        """One reviewer's review of a paper
+
+        Any reviewer may read any review.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ReviewDetail",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def review_reviews_id_get_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """One reviewer's review of a paper
+
+        Any reviewer may read any review.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ReviewDetail",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _review_reviews_id_get_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/review/reviews/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def review_reviews_id_ops_post(
         self,
         id: StrictStr,
         review_op_batch: Optional[ReviewOpBatch] = None,
@@ -1202,7 +1205,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_ops_view_post_serialize(
+        _param = self._review_reviews_id_ops_post_serialize(
             id=id,
             review_op_batch=review_op_batch,
             _request_auth=_request_auth,
@@ -1231,7 +1234,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_ops_view_post_with_http_info(
+    def review_reviews_id_ops_post_with_http_info(
         self,
         id: StrictStr,
         review_op_batch: Optional[ReviewOpBatch] = None,
@@ -1278,7 +1281,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_ops_view_post_serialize(
+        _param = self._review_reviews_id_ops_post_serialize(
             id=id,
             review_op_batch=review_op_batch,
             _request_auth=_request_auth,
@@ -1307,7 +1310,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_ops_view_post_without_preload_content(
+    def review_reviews_id_ops_post_without_preload_content(
         self,
         id: StrictStr,
         review_op_batch: Optional[ReviewOpBatch] = None,
@@ -1354,7 +1357,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_ops_view_post_serialize(
+        _param = self._review_reviews_id_ops_post_serialize(
             id=id,
             review_op_batch=review_op_batch,
             _request_auth=_request_auth,
@@ -1378,7 +1381,7 @@ class ReviewApi:
         return response_data.response
 
 
-    def _neurostore_resources_review_review_ops_view_post_serialize(
+    def _review_reviews_id_ops_post_serialize(
         self,
         id,
         review_op_batch,
@@ -1459,7 +1462,308 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_sources_view_search(
+    def review_reviews_id_patch(
+        self,
+        id: StrictStr,
+        review_state_patch: Optional[ReviewStatePatch] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ReviewSummary:
+        """Submit, reopen, or mark as the reference review
+
+        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
+
+        :param id: (required)
+        :type id: str
+        :param review_state_patch:
+        :type review_state_patch: ReviewStatePatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_patch_serialize(
+            id=id,
+            review_state_patch=review_state_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ReviewSummary",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+            '409': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def review_reviews_id_patch_with_http_info(
+        self,
+        id: StrictStr,
+        review_state_patch: Optional[ReviewStatePatch] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ReviewSummary]:
+        """Submit, reopen, or mark as the reference review
+
+        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
+
+        :param id: (required)
+        :type id: str
+        :param review_state_patch:
+        :type review_state_patch: ReviewStatePatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_patch_serialize(
+            id=id,
+            review_state_patch=review_state_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ReviewSummary",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+            '409': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def review_reviews_id_patch_without_preload_content(
+        self,
+        id: StrictStr,
+        review_state_patch: Optional[ReviewStatePatch] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Submit, reopen, or mark as the reference review
+
+        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
+
+        :param id: (required)
+        :type id: str
+        :param review_state_patch:
+        :type review_state_patch: ReviewStatePatch
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._review_reviews_id_patch_serialize(
+            id=id,
+            review_state_patch=review_state_patch,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ReviewSummary",
+            '401': None,
+            '403': None,
+            '404': "ErrorResponse",
+            '409': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _review_reviews_id_patch_serialize(
+        self,
+        id,
+        review_state_patch,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if review_state_patch is not None:
+            _body_params = review_state_patch
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/review/reviews/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def review_sources_get(
         self,
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         page_size: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
@@ -1511,7 +1815,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_sources_view_search_serialize(
+        _param = self._review_sources_get_serialize(
             page=page,
             page_size=page_size,
             base_study_id=base_study_id,
@@ -1540,7 +1844,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_sources_view_search_with_http_info(
+    def review_sources_get_with_http_info(
         self,
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         page_size: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
@@ -1592,7 +1896,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_sources_view_search_serialize(
+        _param = self._review_sources_get_serialize(
             page=page,
             page_size=page_size,
             base_study_id=base_study_id,
@@ -1621,7 +1925,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_review_sources_view_search_without_preload_content(
+    def review_sources_get_without_preload_content(
         self,
         page: Optional[Annotated[int, Field(strict=True, ge=1)]] = None,
         page_size: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = None,
@@ -1673,7 +1977,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_review_sources_view_search_serialize(
+        _param = self._review_sources_get_serialize(
             page=page,
             page_size=page_size,
             base_study_id=base_study_id,
@@ -1697,7 +2001,7 @@ class ReviewApi:
         return response_data.response
 
 
-    def _neurostore_resources_review_review_sources_view_search_serialize(
+    def _review_sources_get_serialize(
         self,
         page,
         page_size,
@@ -1779,7 +2083,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_reviews_view_get(
+    def review_sources_id_bundle_get(
         self,
         id: StrictStr,
         _request_timeout: Union[
@@ -1794,10 +2098,9 @@ class ReviewApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ReviewDetail:
-        """One reviewer's review of a paper
+    ) -> object:
+        """Everything the review app needs to open one paper for the caller
 
-        Any reviewer may read any review.
 
         :param id: (required)
         :type id: str
@@ -1823,7 +2126,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_reviews_view_get_serialize(
+        _param = self._review_sources_id_bundle_get_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1832,7 +2135,7 @@ class ReviewApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ReviewDetail",
+            '200': "object",
             '401': None,
             '403': None,
             '404': "ErrorResponse",
@@ -1849,7 +2152,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_reviews_view_get_with_http_info(
+    def review_sources_id_bundle_get_with_http_info(
         self,
         id: StrictStr,
         _request_timeout: Union[
@@ -1864,10 +2167,9 @@ class ReviewApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ReviewDetail]:
-        """One reviewer's review of a paper
+    ) -> ApiResponse[object]:
+        """Everything the review app needs to open one paper for the caller
 
-        Any reviewer may read any review.
 
         :param id: (required)
         :type id: str
@@ -1893,7 +2195,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_reviews_view_get_serialize(
+        _param = self._review_sources_id_bundle_get_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1902,7 +2204,7 @@ class ReviewApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ReviewDetail",
+            '200': "object",
             '401': None,
             '403': None,
             '404': "ErrorResponse",
@@ -1919,7 +2221,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_reviews_view_get_without_preload_content(
+    def review_sources_id_bundle_get_without_preload_content(
         self,
         id: StrictStr,
         _request_timeout: Union[
@@ -1935,9 +2237,8 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One reviewer's review of a paper
+        """Everything the review app needs to open one paper for the caller
 
-        Any reviewer may read any review.
 
         :param id: (required)
         :type id: str
@@ -1963,7 +2264,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_reviews_view_get_serialize(
+        _param = self._review_sources_id_bundle_get_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1972,7 +2273,7 @@ class ReviewApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ReviewDetail",
+            '200': "object",
             '401': None,
             '403': None,
             '404': "ErrorResponse",
@@ -1984,7 +2285,7 @@ class ReviewApi:
         return response_data.response
 
 
-    def _neurostore_resources_review_reviews_view_get_serialize(
+    def _review_sources_id_bundle_get_serialize(
         self,
         id,
         _request_auth,
@@ -2032,7 +2333,7 @@ class ReviewApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/review/reviews/{id}',
+            resource_path='/review/sources/{id}/bundle',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2049,308 +2350,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_reviews_view_patch(
-        self,
-        id: StrictStr,
-        review_state_patch: Optional[ReviewStatePatch] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ReviewSummary:
-        """Submit, reopen, or mark as the reference review
-
-        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
-
-        :param id: (required)
-        :type id: str
-        :param review_state_patch:
-        :type review_state_patch: ReviewStatePatch
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_reviews_view_patch_serialize(
-            id=id,
-            review_state_patch=review_state_patch,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ReviewSummary",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-            '409': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def neurostore_resources_review_reviews_view_patch_with_http_info(
-        self,
-        id: StrictStr,
-        review_state_patch: Optional[ReviewStatePatch] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ReviewSummary]:
-        """Submit, reopen, or mark as the reference review
-
-        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
-
-        :param id: (required)
-        :type id: str
-        :param review_state_patch:
-        :type review_state_patch: ReviewStatePatch
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_reviews_view_patch_serialize(
-            id=id,
-            review_state_patch=review_state_patch,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ReviewSummary",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-            '409': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def neurostore_resources_review_reviews_view_patch_without_preload_content(
-        self,
-        id: StrictStr,
-        review_state_patch: Optional[ReviewStatePatch] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Submit, reopen, or mark as the reference review
-
-        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
-
-        :param id: (required)
-        :type id: str
-        :param review_state_patch:
-        :type review_state_patch: ReviewStatePatch
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._neurostore_resources_review_reviews_view_patch_serialize(
-            id=id,
-            review_state_patch=review_state_patch,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ReviewSummary",
-            '401': None,
-            '403': None,
-            '404': "ErrorResponse",
-            '409': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _neurostore_resources_review_reviews_view_patch_serialize(
-        self,
-        id,
-        review_state_patch,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if review_state_patch is not None:
-            _body_params = review_state_patch
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'JSON-Web-Token'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PATCH',
-            resource_path='/review/reviews/{id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def neurostore_resources_review_source_reviews_view_put(
+    def review_sources_id_review_put(
         self,
         id: StrictStr,
         _request_timeout: Union[
@@ -2394,7 +2394,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_source_reviews_view_put_serialize(
+        _param = self._review_sources_id_review_put_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2421,7 +2421,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_source_reviews_view_put_with_http_info(
+    def review_sources_id_review_put_with_http_info(
         self,
         id: StrictStr,
         _request_timeout: Union[
@@ -2465,7 +2465,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_source_reviews_view_put_serialize(
+        _param = self._review_sources_id_review_put_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2492,7 +2492,7 @@ class ReviewApi:
 
 
     @validate_call
-    def neurostore_resources_review_source_reviews_view_put_without_preload_content(
+    def review_sources_id_review_put_without_preload_content(
         self,
         id: StrictStr,
         _request_timeout: Union[
@@ -2536,7 +2536,7 @@ class ReviewApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._neurostore_resources_review_source_reviews_view_put_serialize(
+        _param = self._review_sources_id_review_put_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2558,7 +2558,7 @@ class ReviewApi:
         return response_data.response
 
 
-    def _neurostore_resources_review_source_reviews_view_put_serialize(
+    def _review_sources_id_review_put_serialize(
         self,
         id,
         _request_auth,

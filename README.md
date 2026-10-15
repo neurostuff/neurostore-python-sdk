@@ -77,15 +77,15 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.ReviewApi(api_client)
-    id = 'id_example' # str | 
+    review_exports_post_request = neurostore_sdk.ReviewExportsPostRequest() # ReviewExportsPostRequest |  (optional)
 
     try:
-        # Everything the review app needs to open one paper for the caller
-        api_response = api_instance.neurostore_resources_review_review_bundles_view_get(id)
-        print("The response of ReviewApi->neurostore_resources_review_review_bundles_view_get:\n")
+        # Export the reviews that match the filters as a zip of layout trees
+        api_response = api_instance.review_exports_post(review_exports_post_request=review_exports_post_request)
+        print("The response of ReviewApi->review_exports_post:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ReviewApi->neurostore_resources_review_review_bundles_view_get: %s\n" % e)
+        print("Exception when calling ReviewApi->review_exports_post: %s\n" % e)
 
 ```
 
@@ -95,15 +95,15 @@ All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ReviewApi* | [**neurostore_resources_review_review_bundles_view_get**](docs/ReviewApi.md#neurostore_resources_review_review_bundles_view_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
-*ReviewApi* | [**neurostore_resources_review_review_export_view_get**](docs/ReviewApi.md#neurostore_resources_review_review_export_view_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
-*ReviewApi* | [**neurostore_resources_review_review_exports_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_exports_view_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
-*ReviewApi* | [**neurostore_resources_review_review_imports_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_imports_view_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
-*ReviewApi* | [**neurostore_resources_review_review_ops_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_ops_view_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
-*ReviewApi* | [**neurostore_resources_review_review_sources_view_search**](docs/ReviewApi.md#neurostore_resources_review_review_sources_view_search) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
-*ReviewApi* | [**neurostore_resources_review_reviews_view_get**](docs/ReviewApi.md#neurostore_resources_review_reviews_view_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
-*ReviewApi* | [**neurostore_resources_review_reviews_view_patch**](docs/ReviewApi.md#neurostore_resources_review_reviews_view_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, or mark as the reference review
-*ReviewApi* | [**neurostore_resources_review_source_reviews_view_put**](docs/ReviewApi.md#neurostore_resources_review_source_reviews_view_put) | **PUT** /review/sources/{id}/review | Start the caller&#39;s review of a paper
+*ReviewApi* | [**review_exports_post**](docs/ReviewApi.md#review_exports_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
+*ReviewApi* | [**review_imports_post**](docs/ReviewApi.md#review_imports_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
+*ReviewApi* | [**review_reviews_id_export_get**](docs/ReviewApi.md#review_reviews_id_export_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
+*ReviewApi* | [**review_reviews_id_get**](docs/ReviewApi.md#review_reviews_id_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
+*ReviewApi* | [**review_reviews_id_ops_post**](docs/ReviewApi.md#review_reviews_id_ops_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
+*ReviewApi* | [**review_reviews_id_patch**](docs/ReviewApi.md#review_reviews_id_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, or mark as the reference review
+*ReviewApi* | [**review_sources_get**](docs/ReviewApi.md#review_sources_get) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
+*ReviewApi* | [**review_sources_id_bundle_get**](docs/ReviewApi.md#review_sources_id_bundle_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
+*ReviewApi* | [**review_sources_id_review_put**](docs/ReviewApi.md#review_sources_id_review_put) | **PUT** /review/sources/{id}/review | Start the caller&#39;s review of a paper
 *StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
 *StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
 *StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
@@ -237,7 +237,6 @@ Class | Method | HTTP request | Description
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)
  - [NestedPutAttributes](docs/NestedPutAttributes.md)
- - [NeurostoreResourcesReviewReviewExportsViewPostRequest](docs/NeurostoreResourcesReviewReviewExportsViewPostRequest.md)
  - [NeurostoreStudysetReleasesGet200Response](docs/NeurostoreStudysetReleasesGet200Response.md)
  - [NeurostoreStudysetReleasesGet200ResponseMetadata](docs/NeurostoreStudysetReleasesGet200ResponseMetadata.md)
  - [NoteCollectionBase](docs/NoteCollectionBase.md)
@@ -267,6 +266,7 @@ Class | Method | HTTP request | Description
  - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
  - [ReviewDetail](docs/ReviewDetail.md)
+ - [ReviewExportsPostRequest](docs/ReviewExportsPostRequest.md)
  - [ReviewImportReport](docs/ReviewImportReport.md)
  - [ReviewImportReportFailedInner](docs/ReviewImportReportFailedInner.md)
  - [ReviewImportReportLoadedInner](docs/ReviewImportReportLoadedInner.md)

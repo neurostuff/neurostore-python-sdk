@@ -85,7 +85,6 @@ __all__ = [
     "JsonLdContext",
     "Metadata",
     "NestedPutAttributes",
-    "NeurostoreResourcesReviewReviewExportsViewPostRequest",
     "NeurostoreStudysetReleasesGet200Response",
     "NeurostoreStudysetReleasesGet200ResponseMetadata",
     "NoteCollectionBase",
@@ -115,6 +114,7 @@ __all__ = [
     "ReadableResourceAttributes",
     "ResourceAttributes",
     "ReviewDetail",
+    "ReviewExportsPostRequest",
     "ReviewImportReport",
     "ReviewImportReportFailedInner",
     "ReviewImportReportLoadedInner",
@@ -249,7 +249,6 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
     from neurostore_sdk.models.metadata import Metadata as Metadata
     from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
-    from neurostore_sdk.models.neurostore_resources_review_review_exports_view_post_request import NeurostoreResourcesReviewReviewExportsViewPostRequest as NeurostoreResourcesReviewReviewExportsViewPostRequest
     from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
     from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata as NeurostoreStudysetReleasesGet200ResponseMetadata
     from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
@@ -279,6 +278,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
     from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
     from neurostore_sdk.models.review_detail import ReviewDetail as ReviewDetail
+    from neurostore_sdk.models.review_exports_post_request import ReviewExportsPostRequest as ReviewExportsPostRequest
     from neurostore_sdk.models.review_import_report import ReviewImportReport as ReviewImportReport
     from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner as ReviewImportReportFailedInner
     from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner as ReviewImportReportLoadedInner
@@ -419,7 +419,6 @@ from neurostore_sdk.models.json_ld import JsonLd as JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
 from neurostore_sdk.models.metadata import Metadata as Metadata
 from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
-from neurostore_sdk.models.neurostore_resources_review_review_exports_view_post_request import NeurostoreResourcesReviewReviewExportsViewPostRequest as NeurostoreResourcesReviewReviewExportsViewPostRequest
 from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
 from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata as NeurostoreStudysetReleasesGet200ResponseMetadata
 from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
@@ -449,6 +448,7 @@ from neurostore_sdk.models.point_value import PointValue as PointValue
 from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
 from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
 from neurostore_sdk.models.review_detail import ReviewDetail as ReviewDetail
+from neurostore_sdk.models.review_exports_post_request import ReviewExportsPostRequest as ReviewExportsPostRequest
 from neurostore_sdk.models.review_import_report import ReviewImportReport as ReviewImportReport
 from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner as ReviewImportReportFailedInner
 from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner as ReviewImportReportLoadedInner
