@@ -758,6 +758,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  * X-Request-ID -  <br>  |
+**409** | The source&#39;s stored documents no longer validate against study_schema (for example after a schema upgrade), so no review is started. Each problem is one error with code source_invalid; re-import the source.  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

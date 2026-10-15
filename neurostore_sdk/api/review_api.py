@@ -2408,6 +2408,7 @@ class ReviewApi:
             '401': None,
             '403': None,
             '404': "ErrorResponse",
+            '409': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2479,6 +2480,7 @@ class ReviewApi:
             '401': None,
             '403': None,
             '404': "ErrorResponse",
+            '409': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2550,6 +2552,7 @@ class ReviewApi:
             '401': None,
             '403': None,
             '404': "ErrorResponse",
+            '409': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
