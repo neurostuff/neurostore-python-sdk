@@ -34,7 +34,8 @@ class ReviewOpResult(BaseModel):
     provenance: Optional[Dict[str, Any]] = None
     annotations: Optional[Dict[str, Any]] = None
     hidden: Optional[Dict[str, Any]] = Field(default=None, description="The hidden set of the new record, as in the bundle.")
-    __properties: ClassVar[List[str]] = ["ops", "last_seq", "record", "coordinate_revision", "provenance", "annotations", "hidden"]
+    entities: Optional[List[Dict[str, Any]]] = Field(default=None, description="The entity index of the new record, as in the bundle.")
+    __properties: ClassVar[List[str]] = ["ops", "last_seq", "record", "coordinate_revision", "provenance", "annotations", "hidden", "entities"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -97,7 +98,8 @@ class ReviewOpResult(BaseModel):
             "coordinate_revision": obj.get("coordinate_revision"),
             "provenance": obj.get("provenance"),
             "annotations": obj.get("annotations"),
-            "hidden": obj.get("hidden")
+            "hidden": obj.get("hidden"),
+            "entities": obj.get("entities")
         })
         return _obj
 

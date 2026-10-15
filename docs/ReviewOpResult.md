@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **provenance** | **object** |  | [optional] 
 **annotations** | **object** |  | [optional] 
 **hidden** | **object** | The hidden set of the new record, as in the bundle. | [optional] 
+**entities** | **List[object]** | The entity index of the new record, as in the bundle. | [optional] 
 
 ## Example
 

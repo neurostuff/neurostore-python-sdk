@@ -44,7 +44,10 @@ class TestReviewOpResult(unittest.TestCase):
                 coordinate_revision = None,
                 provenance = None,
                 annotations = None,
-                hidden = None
+                hidden = None,
+                entities = [
+                    None
+                    ]
             )
         else:
             return ReviewOpResult(
