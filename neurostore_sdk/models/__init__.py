@@ -99,6 +99,10 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes
     from neurostore_sdk.models.resource_attributes import ResourceAttributes
     from neurostore_sdk.models.review_detail import ReviewDetail
+    from neurostore_sdk.models.review_import_report import ReviewImportReport
+    from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner
+    from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner
+    from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImportReportSkippedInner
     from neurostore_sdk.models.review_op_batch import ReviewOpBatch
     from neurostore_sdk.models.review_op_result import ReviewOpResult
     from neurostore_sdk.models.review_progress import ReviewProgress
@@ -247,6 +251,10 @@ from neurostore_sdk.models.point_value import PointValue
 from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes
 from neurostore_sdk.models.resource_attributes import ResourceAttributes
 from neurostore_sdk.models.review_detail import ReviewDetail
+from neurostore_sdk.models.review_import_report import ReviewImportReport
+from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner
+from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner
+from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImportReportSkippedInner
 from neurostore_sdk.models.review_op_batch import ReviewOpBatch
 from neurostore_sdk.models.review_op_result import ReviewOpResult
 from neurostore_sdk.models.review_progress import ReviewProgress

@@ -114,6 +114,10 @@ __all__ = [
     "ReadableResourceAttributes",
     "ResourceAttributes",
     "ReviewDetail",
+    "ReviewImportReport",
+    "ReviewImportReportFailedInner",
+    "ReviewImportReportLoadedInner",
+    "ReviewImportReportSkippedInner",
     "ReviewOpBatch",
     "ReviewOpResult",
     "ReviewProgress",
@@ -273,6 +277,10 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
     from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
     from neurostore_sdk.models.review_detail import ReviewDetail as ReviewDetail
+    from neurostore_sdk.models.review_import_report import ReviewImportReport as ReviewImportReport
+    from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner as ReviewImportReportFailedInner
+    from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner as ReviewImportReportLoadedInner
+    from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImportReportSkippedInner as ReviewImportReportSkippedInner
     from neurostore_sdk.models.review_op_batch import ReviewOpBatch as ReviewOpBatch
     from neurostore_sdk.models.review_op_result import ReviewOpResult as ReviewOpResult
     from neurostore_sdk.models.review_progress import ReviewProgress as ReviewProgress
@@ -438,6 +446,10 @@ from neurostore_sdk.models.point_value import PointValue as PointValue
 from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
 from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
 from neurostore_sdk.models.review_detail import ReviewDetail as ReviewDetail
+from neurostore_sdk.models.review_import_report import ReviewImportReport as ReviewImportReport
+from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner as ReviewImportReportFailedInner
+from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner as ReviewImportReportLoadedInner
+from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImportReportSkippedInner as ReviewImportReportSkippedInner
 from neurostore_sdk.models.review_op_batch import ReviewOpBatch as ReviewOpBatch
 from neurostore_sdk.models.review_op_result import ReviewOpResult as ReviewOpResult
 from neurostore_sdk.models.review_progress import ReviewProgress as ReviewProgress

@@ -88,6 +88,10 @@ docs/ReadableResourceAttributes.md
 docs/ResourceAttributes.md
 docs/ReviewApi.md
 docs/ReviewDetail.md
+docs/ReviewImportReport.md
+docs/ReviewImportReportFailedInner.md
+docs/ReviewImportReportLoadedInner.md
+docs/ReviewImportReportSkippedInner.md
 docs/ReviewOpBatch.md
 docs/ReviewOpResult.md
 docs/ReviewProgress.md
@@ -239,6 +243,10 @@ neurostore_sdk/models/point_value.py
 neurostore_sdk/models/readable_resource_attributes.py
 neurostore_sdk/models/resource_attributes.py
 neurostore_sdk/models/review_detail.py
+neurostore_sdk/models/review_import_report.py
+neurostore_sdk/models/review_import_report_failed_inner.py
+neurostore_sdk/models/review_import_report_loaded_inner.py
+neurostore_sdk/models/review_import_report_skipped_inner.py
 neurostore_sdk/models/review_op_batch.py
 neurostore_sdk/models/review_op_result.py
 neurostore_sdk/models/review_progress.py
@@ -388,6 +396,10 @@ test/test_readable_resource_attributes.py
 test/test_resource_attributes.py
 test/test_review_api.py
 test/test_review_detail.py
+test/test_review_import_report.py
+test/test_review_import_report_failed_inner.py
+test/test_review_import_report_loaded_inner.py
+test/test_review_import_report_skipped_inner.py
 test/test_review_op_batch.py
 test/test_review_op_result.py
 test/test_review_progress.py

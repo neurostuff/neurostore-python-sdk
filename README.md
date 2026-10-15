@@ -96,6 +96,7 @@ All URIs are relative to *https://neurostore.org/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ReviewApi* | [**neurostore_resources_review_review_bundles_view_get**](docs/ReviewApi.md#neurostore_resources_review_review_bundles_view_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
+*ReviewApi* | [**neurostore_resources_review_review_imports_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_imports_view_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
 *ReviewApi* | [**neurostore_resources_review_review_ops_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_ops_view_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
 *ReviewApi* | [**neurostore_resources_review_review_sources_view_search**](docs/ReviewApi.md#neurostore_resources_review_review_sources_view_search) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
 *ReviewApi* | [**neurostore_resources_review_reviews_view_get**](docs/ReviewApi.md#neurostore_resources_review_reviews_view_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
@@ -263,6 +264,10 @@ Class | Method | HTTP request | Description
  - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
  - [ReviewDetail](docs/ReviewDetail.md)
+ - [ReviewImportReport](docs/ReviewImportReport.md)
+ - [ReviewImportReportFailedInner](docs/ReviewImportReportFailedInner.md)
+ - [ReviewImportReportLoadedInner](docs/ReviewImportReportLoadedInner.md)
+ - [ReviewImportReportSkippedInner](docs/ReviewImportReportSkippedInner.md)
  - [ReviewOpBatch](docs/ReviewOpBatch.md)
  - [ReviewOpResult](docs/ReviewOpResult.md)
  - [ReviewProgress](docs/ReviewProgress.md)

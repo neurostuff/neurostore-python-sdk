@@ -34,6 +34,13 @@ class TestReviewApi(unittest.TestCase):
         """
         pass
 
+    def test_neurostore_resources_review_review_imports_view_post(self) -> None:
+        """Test case for neurostore_resources_review_review_imports_view_post
+
+        Load the papers of a study_schema layout zip for review
+        """
+        pass
+
     def test_neurostore_resources_review_review_ops_view_post(self) -> None:
         """Test case for neurostore_resources_review_review_ops_view_post
 
