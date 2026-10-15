@@ -34,6 +34,20 @@ class TestReviewApi(unittest.TestCase):
         """
         pass
 
+    def test_neurostore_resources_review_review_export_view_get(self) -> None:
+        """Test case for neurostore_resources_review_review_export_view_get
+
+        Export one review as a study_schema layout zip
+        """
+        pass
+
+    def test_neurostore_resources_review_review_exports_view_post(self) -> None:
+        """Test case for neurostore_resources_review_review_exports_view_post
+
+        Export the reviews that match the filters as a zip of layout trees
+        """
+        pass
+
     def test_neurostore_resources_review_review_imports_view_post(self) -> None:
         """Test case for neurostore_resources_review_review_imports_view_post
 

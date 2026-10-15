@@ -96,6 +96,8 @@ All URIs are relative to *https://neurostore.org/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ReviewApi* | [**neurostore_resources_review_review_bundles_view_get**](docs/ReviewApi.md#neurostore_resources_review_review_bundles_view_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
+*ReviewApi* | [**neurostore_resources_review_review_export_view_get**](docs/ReviewApi.md#neurostore_resources_review_review_export_view_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
+*ReviewApi* | [**neurostore_resources_review_review_exports_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_exports_view_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
 *ReviewApi* | [**neurostore_resources_review_review_imports_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_imports_view_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
 *ReviewApi* | [**neurostore_resources_review_review_ops_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_ops_view_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
 *ReviewApi* | [**neurostore_resources_review_review_sources_view_search**](docs/ReviewApi.md#neurostore_resources_review_review_sources_view_search) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
@@ -235,6 +237,7 @@ Class | Method | HTTP request | Description
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)
  - [NestedPutAttributes](docs/NestedPutAttributes.md)
+ - [NeurostoreResourcesReviewReviewExportsViewPostRequest](docs/NeurostoreResourcesReviewReviewExportsViewPostRequest.md)
  - [NeurostoreStudysetReleasesGet200Response](docs/NeurostoreStudysetReleasesGet200Response.md)
  - [NeurostoreStudysetReleasesGet200ResponseMetadata](docs/NeurostoreStudysetReleasesGet200ResponseMetadata.md)
  - [NoteCollectionBase](docs/NoteCollectionBase.md)
