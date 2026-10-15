@@ -41,6 +41,7 @@ class TestReviewSource(unittest.TestCase):
                 label = '',
                 origin = 'upload',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                total = 56,
                 reviews = [
                     neurostore_sdk.models.review_progress.review-progress(
                         user_id = '', 
@@ -49,7 +50,8 @@ class TestReviewSource(unittest.TestCase):
                         last_seq = 56, 
                         updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         edited = 56, 
-                        verified = 56, )
+                        verified = 56, 
+                        reviewed = 56, )
                     ]
             )
         else:

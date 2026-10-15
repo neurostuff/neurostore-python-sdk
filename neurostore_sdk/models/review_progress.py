@@ -36,7 +36,8 @@ class ReviewProgress(BaseModel):
     updated_at: Optional[datetime] = None
     edited: Optional[StrictInt] = Field(default=None, description="Targets the reviewer edited, added or removed.")
     verified: Optional[StrictInt] = Field(default=None, description="Targets the reviewer checked and left unchanged.")
-    __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "last_seq", "updated_at", "edited", "verified"]
+    reviewed: Optional[StrictInt] = Field(default=None, description="Judgeable targets of the source that the reviewer verified, edited, added or removed.")
+    __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "last_seq", "updated_at", "edited", "verified", "reviewed"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,7 +105,8 @@ class ReviewProgress(BaseModel):
             "last_seq": obj.get("last_seq"),
             "updated_at": obj.get("updated_at"),
             "edited": obj.get("edited"),
-            "verified": obj.get("verified")
+            "verified": obj.get("verified"),
+            "reviewed": obj.get("reviewed")
         })
         return _obj
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **label** | **str** |  | [optional] 
 **origin** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
+**total** | **int** | Targets a reviewer can judge in the source&#39;s record, its extracted values and its coordinate parse&#39;s analyses. | [optional] 
 **reviews** | [**List[ReviewProgress]**](ReviewProgress.md) |  | [optional] 
 
 ## Example

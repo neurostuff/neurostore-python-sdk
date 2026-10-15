@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.review_progress import ReviewProgress
 from typing import Optional, Set
@@ -34,8 +34,9 @@ class ReviewSource(BaseModel):
     label: Optional[StrictStr] = None
     origin: Optional[StrictStr] = None
     created_at: Optional[datetime] = None
+    total: Optional[StrictInt] = Field(default=None, description="Targets a reviewer can judge in the source's record, its extracted values and its coordinate parse's analyses.")
     reviews: Optional[List[ReviewProgress]] = None
-    __properties: ClassVar[List[str]] = ["id", "base_study_id", "label", "origin", "created_at", "reviews"]
+    __properties: ClassVar[List[str]] = ["id", "base_study_id", "label", "origin", "created_at", "total", "reviews"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
@@ -114,6 +115,7 @@ class ReviewSource(BaseModel):
             "label": obj.get("label"),
             "origin": obj.get("origin"),
             "created_at": obj.get("created_at"),
+            "total": obj.get("total"),
             "reviews": [ReviewProgress.from_dict(_item) for _item in obj["reviews"]] if obj.get("reviews") is not None else None
         })
         return _obj

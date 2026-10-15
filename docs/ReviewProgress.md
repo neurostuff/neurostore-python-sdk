@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **updated_at** | **datetime** |  | [optional] 
 **edited** | **int** | Targets the reviewer edited, added or removed. | [optional] 
 **verified** | **int** | Targets the reviewer checked and left unchanged. | [optional] 
+**reviewed** | **int** | Judgeable targets of the source that the reviewer verified, edited, added or removed. | [optional] 
 
 ## Example
 
