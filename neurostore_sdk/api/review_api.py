@@ -333,7 +333,7 @@ class ReviewApi:
     ) -> bytearray:
         """Export one review as a study_schema layout zip
 
-        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The whole zip is built in memory before the response is sent. 
+        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
 
         :param id: (required)
         :type id: str
@@ -403,7 +403,7 @@ class ReviewApi:
     ) -> ApiResponse[bytearray]:
         """Export one review as a study_schema layout zip
 
-        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The whole zip is built in memory before the response is sent. 
+        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
 
         :param id: (required)
         :type id: str
@@ -473,7 +473,7 @@ class ReviewApi:
     ) -> RESTResponseType:
         """Export one review as a study_schema layout zip
 
-        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The whole zip is built in memory before the response is sent. 
+        Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent. 
 
         :param id: (required)
         :type id: str

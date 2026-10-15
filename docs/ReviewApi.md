@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 Export one review as a study_schema layout zip
 
-Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The whole zip is built in memory before the response is sent.
+Any reviewer may export any review. The zip holds the paper's documents and text, the review's record, its coordinate revision when it has one, and its ops in seq order. The record is never changed by the export; run/provenance/<id>.json beside it names the review, its state and the source record it derives from. The whole zip is built in memory before the response is sent.
 
 
 ### Example
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  * X-Request-ID -  <br>  |
 **409** | The review is not in_progress, expected_last_seq is not the review&#39;s last_seq (the body carries last_seq), or only some of the batch&#39;s client_op_ids are stored  |  -  |
-**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
+**422** | The batch does not validate, an op cannot be applied, or the record would fail study_schema. Each refused op is one error: field ops/&lt;index&gt;, code REJECTED, and context with op_index (an integer) and client_op_id. The message names the problem. A problem with the batch as a whole has field ops and no op index. Nothing is applied.  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
