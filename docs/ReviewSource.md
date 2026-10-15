@@ -1,0 +1,34 @@
+# ReviewSource
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **str** |  | [optional] 
+**base_study_id** | **str** |  | [optional] 
+**label** | **str** |  | [optional] 
+**origin** | **str** |  | [optional] 
+**created_at** | **datetime** |  | [optional] 
+**reviews** | [**List[ReviewProgress]**](ReviewProgress.md) |  | [optional] 
+
+## Example
+
+```python
+from neurostore_sdk.models.review_source import ReviewSource
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ReviewSource from a JSON string
+review_source_instance = ReviewSource.from_json(json)
+# print the JSON string representation of the object
+print(ReviewSource.to_json())
+
+# convert the object into a dict
+review_source_dict = review_source_instance.to_dict()
+# create an instance of ReviewSource from a dict
+review_source_from_dict = ReviewSource.from_dict(review_source_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

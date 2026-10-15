@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**annotations_id_put**](StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
 [**annotations_post**](StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
 [**base_studies_get**](StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
+[**base_studies_id_delete**](StoreApi.md#base_studies_id_delete) | **DELETE** /base-studies/{id} | Delete a base study
 [**base_studies_id_get**](StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
 [**base_studies_id_put**](StoreApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
 [**base_studies_post**](StoreApi.md#base_studies_post) | **POST** /base-studies/ | 
@@ -1301,6 +1302,89 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **base_studies_id_delete**
+> BaseStudiesIdDelete200Response base_studies_id_delete(id)
+
+Delete a base study
+
+Owner or admin. Refused while a paper loaded for review reads one of the base study's texts.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.base_studies_id_delete200_response import BaseStudiesIdDelete200Response
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # Delete a base study
+        api_response = api_instance.base_studies_id_delete(id)
+        print("The response of StoreApi->base_studies_id_delete:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->base_studies_id_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**BaseStudiesIdDelete200Response**](BaseStudiesIdDelete200Response.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+**409** | The base study has papers loaded for review |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -61,7 +61,7 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                 has_z_maps = True,
                 has_t_maps = True,
                 has_beta_and_variance_maps = True,
-                features = neurostore_sdk.models.base_study_return_features.base_study_return_features()
+                features = neurostore_sdk.models.review_detail_all_of_provenance.review_detail_allOf_provenance()
             )
         else:
             return BaseStudiesPost200Response(

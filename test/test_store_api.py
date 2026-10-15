@@ -132,6 +132,13 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_base_studies_id_delete(self) -> None:
+        """Test case for base_studies_id_delete
+
+        Delete a base study
+        """
+        pass
+
     def test_base_studies_id_get(self) -> None:
         """Test case for base_studies_id_get
 

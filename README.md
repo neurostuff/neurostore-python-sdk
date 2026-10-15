@@ -62,32 +62,30 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = neurostore_sdk.StoreApi(api_client)
-    search = 'imagin' # str | search for entries that contain the substring (optional)
-    sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
-    page = 56 # int | page of results (optional)
-    desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
-    page_size = 56 # int | number of results to show on a page (optional)
-    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
-    study = 'study_example' # str | Filter tables by study id (optional)
-    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
-    name = 'name_example' # str | search the name field for a term (optional)
-    nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
-    image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
-    image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+    id = 'id_example' # str | 
 
     try:
-        # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
-        print("The response of StoreApi->analyses_get:\n")
+        # Everything the review app needs to open one paper for the caller
+        api_response = api_instance.neurostore_resources_review_review_bundles_view_get(id)
+        print("The response of ReviewApi->neurostore_resources_review_review_bundles_view_get:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling StoreApi->analyses_get: %s\n" % e)
+        print("Exception when calling ReviewApi->neurostore_resources_review_review_bundles_view_get: %s\n" % e)
 
 ```
 
@@ -97,6 +95,12 @@ All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ReviewApi* | [**neurostore_resources_review_review_bundles_view_get**](docs/ReviewApi.md#neurostore_resources_review_review_bundles_view_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
+*ReviewApi* | [**neurostore_resources_review_review_ops_view_post**](docs/ReviewApi.md#neurostore_resources_review_review_ops_view_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
+*ReviewApi* | [**neurostore_resources_review_review_sources_view_search**](docs/ReviewApi.md#neurostore_resources_review_review_sources_view_search) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
+*ReviewApi* | [**neurostore_resources_review_reviews_view_get**](docs/ReviewApi.md#neurostore_resources_review_reviews_view_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
+*ReviewApi* | [**neurostore_resources_review_reviews_view_patch**](docs/ReviewApi.md#neurostore_resources_review_reviews_view_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, or mark as the reference review
+*ReviewApi* | [**neurostore_resources_review_source_reviews_view_put**](docs/ReviewApi.md#neurostore_resources_review_source_reviews_view_put) | **PUT** /review/sources/{id}/review | Start the caller&#39;s review of a paper
 *StoreApi* | [**analyses_get**](docs/StoreApi.md#analyses_get) | **GET** /analyses/ | GET list of analyses
 *StoreApi* | [**analyses_id_delete**](docs/StoreApi.md#analyses_id_delete) | **DELETE** /analyses/{id} | DELETE an analysis
 *StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
@@ -112,6 +116,7 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
 *StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
 *StoreApi* | [**base_studies_get**](docs/StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
+*StoreApi* | [**base_studies_id_delete**](docs/StoreApi.md#base_studies_id_delete) | **DELETE** /base-studies/{id} | Delete a base study
 *StoreApi* | [**base_studies_id_get**](docs/StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
 *StoreApi* | [**base_studies_id_put**](docs/StoreApi.md#base_studies_id_put) | **PUT** /base-studies/{id} | 
 *StoreApi* | [**base_studies_post**](docs/StoreApi.md#base_studies_post) | **POST** /base-studies/ | 
@@ -201,6 +206,7 @@ Class | Method | HTTP request | Description
  - [AnnotationReturnOneOf](docs/AnnotationReturnOneOf.md)
  - [AnnotationReturnRelationships](docs/AnnotationReturnRelationships.md)
  - [AnnotationReturnRelationshipsNotes](docs/AnnotationReturnRelationshipsNotes.md)
+ - [BaseStudiesIdDelete200Response](docs/BaseStudiesIdDelete200Response.md)
  - [BaseStudiesPost200Response](docs/BaseStudiesPost200Response.md)
  - [BaseStudiesPostRequest](docs/BaseStudiesPostRequest.md)
  - [BaseStudy](docs/BaseStudy.md)
@@ -256,6 +262,15 @@ Class | Method | HTTP request | Description
  - [PointValue](docs/PointValue.md)
  - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
+ - [ReviewDetail](docs/ReviewDetail.md)
+ - [ReviewOpBatch](docs/ReviewOpBatch.md)
+ - [ReviewOpResult](docs/ReviewOpResult.md)
+ - [ReviewProgress](docs/ReviewProgress.md)
+ - [ReviewSource](docs/ReviewSource.md)
+ - [ReviewSourceList](docs/ReviewSourceList.md)
+ - [ReviewState](docs/ReviewState.md)
+ - [ReviewStatePatch](docs/ReviewStatePatch.md)
+ - [ReviewSummary](docs/ReviewSummary.md)
  - [StudyBase](docs/StudyBase.md)
  - [StudyCommon](docs/StudyCommon.md)
  - [StudyList](docs/StudyList.md)
