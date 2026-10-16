@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.review_state import ReviewState
+from neurostore_sdk.models.review_stored_op import ReviewStoredOp
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,7 +41,7 @@ class ReviewDetail(BaseModel):
     coordinate_revision: Optional[Dict[str, Any]] = None
     provenance: Optional[Dict[str, Any]] = None
     annotations: Optional[Dict[str, Any]] = None
-    ops: Optional[List[Dict[str, Any]]] = None
+    ops: Optional[List[ReviewStoredOp]] = None
     __properties: ClassVar[List[str]] = ["id", "source_id", "user_id", "state", "last_seq", "created_at", "updated_at", "record", "coordinate_revision", "provenance", "annotations", "ops"]
 
     model_config = ConfigDict(
@@ -81,6 +82,13 @@ class ReviewDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in ops (list)
+        _items = []
+        if self.ops is not None:
+            for _item_ops in self.ops:
+                if _item_ops is not None:
+                    _items.append(_item_ops.to_dict())
+            _dict['ops'] = _items
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field
         if self.updated_at is None and "updated_at" in self.model_fields_set:
@@ -114,7 +122,7 @@ class ReviewDetail(BaseModel):
             "coordinate_revision": obj.get("coordinate_revision"),
             "provenance": obj.get("provenance"),
             "annotations": obj.get("annotations"),
-            "ops": obj.get("ops")
+            "ops": [ReviewStoredOp.from_dict(_item) for _item in obj["ops"]] if obj.get("ops") is not None else None
         })
         return _obj
 

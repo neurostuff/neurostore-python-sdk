@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **coordinate_revision** | **object** |  | [optional] 
 **provenance** | **object** |  | [optional] 
 **annotations** | **object** |  | [optional] 
-**ops** | **List[object]** |  | [optional] 
+**ops** | [**List[ReviewStoredOp]**](ReviewStoredOp.md) |  | [optional] 
 
 ## Example
 

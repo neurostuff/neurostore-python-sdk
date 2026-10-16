@@ -126,6 +126,7 @@ __all__ = [
     "ReviewSourceList",
     "ReviewState",
     "ReviewStatePatch",
+    "ReviewStoredOp",
     "ReviewSummary",
     "StudyBase",
     "StudyCommon",
@@ -290,6 +291,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.review_source_list import ReviewSourceList as ReviewSourceList
     from neurostore_sdk.models.review_state import ReviewState as ReviewState
     from neurostore_sdk.models.review_state_patch import ReviewStatePatch as ReviewStatePatch
+    from neurostore_sdk.models.review_stored_op import ReviewStoredOp as ReviewStoredOp
     from neurostore_sdk.models.review_summary import ReviewSummary as ReviewSummary
     from neurostore_sdk.models.study_base import StudyBase as StudyBase
     from neurostore_sdk.models.study_common import StudyCommon as StudyCommon
@@ -460,6 +462,7 @@ from neurostore_sdk.models.review_source import ReviewSource as ReviewSource
 from neurostore_sdk.models.review_source_list import ReviewSourceList as ReviewSourceList
 from neurostore_sdk.models.review_state import ReviewState as ReviewState
 from neurostore_sdk.models.review_state_patch import ReviewStatePatch as ReviewStatePatch
+from neurostore_sdk.models.review_stored_op import ReviewStoredOp as ReviewStoredOp
 from neurostore_sdk.models.review_summary import ReviewSummary as ReviewSummary
 from neurostore_sdk.models.study_base import StudyBase as StudyBase
 from neurostore_sdk.models.study_common import StudyCommon as StudyCommon

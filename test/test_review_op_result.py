@@ -37,7 +37,10 @@ class TestReviewOpResult(unittest.TestCase):
         if include_optional:
             return ReviewOpResult(
                 ops = [
-                    neurostore_sdk.models.review_stored_op.review-stored-op()
+                    neurostore_sdk.models.review_stored_op.review-stored-op(
+                        inverse = [
+                            None
+                            ], )
                     ],
                 last_seq = 56,
                 record = None,

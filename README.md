@@ -279,6 +279,7 @@ Class | Method | HTTP request | Description
  - [ReviewSourceList](docs/ReviewSourceList.md)
  - [ReviewState](docs/ReviewState.md)
  - [ReviewStatePatch](docs/ReviewStatePatch.md)
+ - [ReviewStoredOp](docs/ReviewStoredOp.md)
  - [ReviewSummary](docs/ReviewSummary.md)
  - [StudyBase](docs/StudyBase.md)
  - [StudyCommon](docs/StudyCommon.md)

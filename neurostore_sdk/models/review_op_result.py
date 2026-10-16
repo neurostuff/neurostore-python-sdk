@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.review_stored_op import ReviewStoredOp
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,7 @@ class ReviewOpResult(BaseModel):
     """
     ReviewOpResult
     """ # noqa: E501
-    ops: Optional[List[Dict[str, Any]]] = None
+    ops: Optional[List[ReviewStoredOp]] = None
     last_seq: Optional[StrictInt] = None
     record: Optional[Dict[str, Any]] = None
     coordinate_revision: Optional[Dict[str, Any]] = None
@@ -75,6 +76,13 @@ class ReviewOpResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in ops (list)
+        _items = []
+        if self.ops is not None:
+            for _item_ops in self.ops:
+                if _item_ops is not None:
+                    _items.append(_item_ops.to_dict())
+            _dict['ops'] = _items
         # set to None if coordinate_revision (nullable) is None
         # and model_fields_set contains the field
         if self.coordinate_revision is None and "coordinate_revision" in self.model_fields_set:
@@ -92,7 +100,7 @@ class ReviewOpResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ops": obj.get("ops"),
+            "ops": [ReviewStoredOp.from_dict(_item) for _item in obj["ops"]] if obj.get("ops") is not None else None,
             "last_seq": obj.get("last_seq"),
             "record": obj.get("record"),
             "coordinate_revision": obj.get("coordinate_revision"),

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ops** | **List[object]** |  | [optional] 
+**ops** | [**List[ReviewStoredOp]**](ReviewStoredOp.md) |  | [optional] 
 **last_seq** | **int** |  | [optional] 
 **record** | **object** |  | [optional] 
 **coordinate_revision** | **object** |  | [optional] 
