@@ -65,7 +65,7 @@ class TestReviewApi(unittest.TestCase):
     def test_review_reviews_id_patch(self) -> None:
         """Test case for review_reviews_id_patch
 
-        Submit, reopen, or mark as the reference review
+        Submit, reopen, set aside, or mark as the reference review
         """
         pass
 

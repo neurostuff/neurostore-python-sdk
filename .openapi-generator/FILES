@@ -96,6 +96,8 @@ docs/ReviewImportReportSkippedInner.md
 docs/ReviewOpBatch.md
 docs/ReviewOpResult.md
 docs/ReviewProgress.md
+docs/ReviewSetAside.md
+docs/ReviewSetAsideReason.md
 docs/ReviewSource.md
 docs/ReviewSourceList.md
 docs/ReviewState.md
@@ -253,6 +255,8 @@ neurostore_sdk/models/review_import_report_skipped_inner.py
 neurostore_sdk/models/review_op_batch.py
 neurostore_sdk/models/review_op_result.py
 neurostore_sdk/models/review_progress.py
+neurostore_sdk/models/review_set_aside.py
+neurostore_sdk/models/review_set_aside_reason.py
 neurostore_sdk/models/review_source.py
 neurostore_sdk/models/review_source_list.py
 neurostore_sdk/models/review_state.py
@@ -408,6 +412,8 @@ test/test_review_import_report_skipped_inner.py
 test/test_review_op_batch.py
 test/test_review_op_result.py
 test/test_review_progress.py
+test/test_review_set_aside.py
+test/test_review_set_aside_reason.py
 test/test_review_source.py
 test/test_review_source_list.py
 test/test_review_state.py

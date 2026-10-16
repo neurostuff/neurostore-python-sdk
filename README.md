@@ -100,7 +100,7 @@ Class | Method | HTTP request | Description
 *ReviewApi* | [**review_reviews_id_export_get**](docs/ReviewApi.md#review_reviews_id_export_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
 *ReviewApi* | [**review_reviews_id_get**](docs/ReviewApi.md#review_reviews_id_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
 *ReviewApi* | [**review_reviews_id_ops_post**](docs/ReviewApi.md#review_reviews_id_ops_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
-*ReviewApi* | [**review_reviews_id_patch**](docs/ReviewApi.md#review_reviews_id_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, or mark as the reference review
+*ReviewApi* | [**review_reviews_id_patch**](docs/ReviewApi.md#review_reviews_id_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, set aside, or mark as the reference review
 *ReviewApi* | [**review_schemas_name_get**](docs/ReviewApi.md#review_schemas_name_get) | **GET** /review/schemas/{name} | One study_schema JSON Schema the review app reads
 *ReviewApi* | [**review_sources_get**](docs/ReviewApi.md#review_sources_get) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
 *ReviewApi* | [**review_sources_id_bundle_get**](docs/ReviewApi.md#review_sources_id_bundle_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
@@ -275,6 +275,8 @@ Class | Method | HTTP request | Description
  - [ReviewOpBatch](docs/ReviewOpBatch.md)
  - [ReviewOpResult](docs/ReviewOpResult.md)
  - [ReviewProgress](docs/ReviewProgress.md)
+ - [ReviewSetAside](docs/ReviewSetAside.md)
+ - [ReviewSetAsideReason](docs/ReviewSetAsideReason.md)
  - [ReviewSource](docs/ReviewSource.md)
  - [ReviewSourceList](docs/ReviewSourceList.md)
  - [ReviewState](docs/ReviewState.md)

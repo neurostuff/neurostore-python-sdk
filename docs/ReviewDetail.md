@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **source_id** | **str** |  | [optional] 
 **user_id** | **str** |  | [optional] 
 **state** | [**ReviewState**](ReviewState.md) |  | [optional] 
+**set_aside** | [**ReviewSetAside**](ReviewSetAside.md) |  | [optional] 
 **last_seq** | **int** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 

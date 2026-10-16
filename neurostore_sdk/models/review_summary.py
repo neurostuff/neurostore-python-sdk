@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.review_set_aside import ReviewSetAside
 from neurostore_sdk.models.review_state import ReviewState
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,10 +34,11 @@ class ReviewSummary(BaseModel):
     source_id: Optional[StrictStr] = None
     user_id: Optional[StrictStr] = None
     state: Optional[ReviewState] = None
+    set_aside: Optional[ReviewSetAside] = None
     last_seq: Optional[StrictInt] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["id", "source_id", "user_id", "state", "last_seq", "created_at", "updated_at"]
+    __properties: ClassVar[List[str]] = ["id", "source_id", "user_id", "state", "set_aside", "last_seq", "created_at", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +78,9 @@ class ReviewSummary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of set_aside
+        if self.set_aside is not None:
+            _dict['set_aside'] = self.set_aside.to_dict()
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field
         if self.updated_at is None and "updated_at" in self.model_fields_set:
@@ -97,6 +102,7 @@ class ReviewSummary(BaseModel):
             "source_id": obj.get("source_id"),
             "user_id": obj.get("user_id"),
             "state": obj.get("state"),
+            "set_aside": ReviewSetAside.from_dict(obj["set_aside"]) if obj.get("set_aside") is not None else None,
             "last_seq": obj.get("last_seq"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at")

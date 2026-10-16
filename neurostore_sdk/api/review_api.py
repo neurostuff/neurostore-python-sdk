@@ -1489,9 +1489,9 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReviewSummary:
-        """Submit, reopen, or mark as the reference review
+        """Submit, reopen, set aside, or mark as the reference review
 
-        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
+        The owner moves in_progress to submitted and back, and sets an unusable paper aside (set_aside, with a reason) and resumes it (back to in_progress). Only an admin sets reference, and a paper has at most one reference review. 
 
         :param id: (required)
         :type id: str
@@ -1564,9 +1564,9 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReviewSummary]:
-        """Submit, reopen, or mark as the reference review
+        """Submit, reopen, set aside, or mark as the reference review
 
-        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
+        The owner moves in_progress to submitted and back, and sets an unusable paper aside (set_aside, with a reason) and resumes it (back to in_progress). Only an admin sets reference, and a paper has at most one reference review. 
 
         :param id: (required)
         :type id: str
@@ -1639,9 +1639,9 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit, reopen, or mark as the reference review
+        """Submit, reopen, set aside, or mark as the reference review
 
-        The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review. 
+        The owner moves in_progress to submitted and back, and sets an unusable paper aside (set_aside, with a reason) and resumes it (back to in_progress). Only an admin sets reference, and a paper has at most one reference review. 
 
         :param id: (required)
         :type id: str

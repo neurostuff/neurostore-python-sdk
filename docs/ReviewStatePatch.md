@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | [**ReviewState**](ReviewState.md) |  | 
+**reason** | [**ReviewSetAsideReason**](ReviewSetAsideReason.md) |  | [optional] 
+**note** | **str** |  | [optional] 
 
 ## Example
 

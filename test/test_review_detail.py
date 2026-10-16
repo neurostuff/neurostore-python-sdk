@@ -40,6 +40,9 @@ class TestReviewDetail(unittest.TestCase):
                 source_id = '',
                 user_id = '',
                 state = 'in_progress',
+                set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                    reason = 'no_usable_text', 
+                    note = '', ),
                 last_seq = 56,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),

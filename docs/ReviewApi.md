@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**review_reviews_id_export_get**](ReviewApi.md#review_reviews_id_export_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
 [**review_reviews_id_get**](ReviewApi.md#review_reviews_id_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
 [**review_reviews_id_ops_post**](ReviewApi.md#review_reviews_id_ops_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
-[**review_reviews_id_patch**](ReviewApi.md#review_reviews_id_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, or mark as the reference review
+[**review_reviews_id_patch**](ReviewApi.md#review_reviews_id_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, set aside, or mark as the reference review
 [**review_schemas_name_get**](ReviewApi.md#review_schemas_name_get) | **GET** /review/schemas/{name} | One study_schema JSON Schema the review app reads
 [**review_sources_get**](ReviewApi.md#review_sources_get) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
 [**review_sources_id_bundle_get**](ReviewApi.md#review_sources_id_bundle_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
@@ -436,9 +436,9 @@ Name | Type | Description  | Notes
 # **review_reviews_id_patch**
 > ReviewSummary review_reviews_id_patch(id, review_state_patch=review_state_patch)
 
-Submit, reopen, or mark as the reference review
+Submit, reopen, set aside, or mark as the reference review
 
-The owner moves in_progress to submitted and back. Only an admin sets reference, and a paper has at most one reference review.
+The owner moves in_progress to submitted and back, and sets an unusable paper aside (set_aside, with a reason) and resumes it (back to in_progress). Only an admin sets reference, and a paper has at most one reference review.
 
 
 ### Example
@@ -476,7 +476,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     review_state_patch = neurostore_sdk.ReviewStatePatch() # ReviewStatePatch |  (optional)
 
     try:
-        # Submit, reopen, or mark as the reference review
+        # Submit, reopen, set aside, or mark as the reference review
         api_response = api_instance.review_reviews_id_patch(id, review_state_patch=review_state_patch)
         print("The response of ReviewApi->review_reviews_id_patch:\n")
         pprint(api_response)

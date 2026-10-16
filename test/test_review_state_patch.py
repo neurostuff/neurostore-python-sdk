@@ -36,7 +36,9 @@ class TestReviewStatePatch(unittest.TestCase):
         model = ReviewStatePatch()
         if include_optional:
             return ReviewStatePatch(
-                state = 'in_progress'
+                state = 'in_progress',
+                reason = 'no_usable_text',
+                note = ''
             )
         else:
             return ReviewStatePatch(

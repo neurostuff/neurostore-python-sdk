@@ -122,6 +122,8 @@ __all__ = [
     "ReviewOpBatch",
     "ReviewOpResult",
     "ReviewProgress",
+    "ReviewSetAside",
+    "ReviewSetAsideReason",
     "ReviewSource",
     "ReviewSourceList",
     "ReviewState",
@@ -287,6 +289,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.review_op_batch import ReviewOpBatch as ReviewOpBatch
     from neurostore_sdk.models.review_op_result import ReviewOpResult as ReviewOpResult
     from neurostore_sdk.models.review_progress import ReviewProgress as ReviewProgress
+    from neurostore_sdk.models.review_set_aside import ReviewSetAside as ReviewSetAside
+    from neurostore_sdk.models.review_set_aside_reason import ReviewSetAsideReason as ReviewSetAsideReason
     from neurostore_sdk.models.review_source import ReviewSource as ReviewSource
     from neurostore_sdk.models.review_source_list import ReviewSourceList as ReviewSourceList
     from neurostore_sdk.models.review_state import ReviewState as ReviewState
@@ -458,6 +462,8 @@ from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImpor
 from neurostore_sdk.models.review_op_batch import ReviewOpBatch as ReviewOpBatch
 from neurostore_sdk.models.review_op_result import ReviewOpResult as ReviewOpResult
 from neurostore_sdk.models.review_progress import ReviewProgress as ReviewProgress
+from neurostore_sdk.models.review_set_aside import ReviewSetAside as ReviewSetAside
+from neurostore_sdk.models.review_set_aside_reason import ReviewSetAsideReason as ReviewSetAsideReason
 from neurostore_sdk.models.review_source import ReviewSource as ReviewSource
 from neurostore_sdk.models.review_source_list import ReviewSourceList as ReviewSourceList
 from neurostore_sdk.models.review_state import ReviewState as ReviewState

@@ -41,8 +41,8 @@ class ReviewExportsPostRequest(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['in_progress', 'submitted', 'reference']):
-                raise ValueError("each list item must be one of ('in_progress', 'submitted', 'reference')")
+            if i not in set(['in_progress', 'submitted', 'reference', 'set_aside']):
+                raise ValueError("each list item must be one of ('in_progress', 'submitted', 'reference', 'set_aside')")
         return value
 
     model_config = ConfigDict(

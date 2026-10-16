@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **user_id** | **str** |  | [optional] 
 **user_name** | **str** |  | [optional] 
 **state** | [**ReviewState**](ReviewState.md) |  | [optional] 
+**set_aside** | [**ReviewSetAside**](ReviewSetAside.md) |  | [optional] 
 **last_seq** | **int** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **edited** | **int** | Targets the reviewer edited, added or removed. | [optional] 

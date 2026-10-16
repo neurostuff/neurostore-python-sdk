@@ -30,6 +30,7 @@ class ReviewState(str, Enum):
     IN_PROGRESS = 'in_progress'
     SUBMITTED = 'submitted'
     REFERENCE = 'reference'
+    SET_ASIDE = 'set_aside'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

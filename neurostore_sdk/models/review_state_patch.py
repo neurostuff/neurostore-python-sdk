@@ -18,8 +18,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from neurostore_sdk.models.review_set_aside_reason import ReviewSetAsideReason
 from neurostore_sdk.models.review_state import ReviewState
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +31,9 @@ class ReviewStatePatch(BaseModel):
     ReviewStatePatch
     """ # noqa: E501
     state: ReviewState
-    __properties: ClassVar[List[str]] = ["state"]
+    reason: Optional[ReviewSetAsideReason] = None
+    note: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = None
+    __properties: ClassVar[List[str]] = ["state", "reason", "note"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +85,9 @@ class ReviewStatePatch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state": obj.get("state")
+            "state": obj.get("state"),
+            "reason": obj.get("reason"),
+            "note": obj.get("note")
         })
         return _obj
 

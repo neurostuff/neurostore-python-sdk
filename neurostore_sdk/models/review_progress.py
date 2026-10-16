@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.review_set_aside import ReviewSetAside
 from neurostore_sdk.models.review_state import ReviewState
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,12 +33,13 @@ class ReviewProgress(BaseModel):
     user_id: Optional[StrictStr] = None
     user_name: Optional[StrictStr] = None
     state: Optional[ReviewState] = None
+    set_aside: Optional[ReviewSetAside] = None
     last_seq: Optional[StrictInt] = None
     updated_at: Optional[datetime] = None
     edited: Optional[StrictInt] = Field(default=None, description="Targets the reviewer edited, added or removed.")
     verified: Optional[StrictInt] = Field(default=None, description="Targets the reviewer checked and left unchanged.")
     reviewed: Optional[StrictInt] = Field(default=None, description="Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source's judgeable targets.")
-    __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "last_seq", "updated_at", "edited", "verified", "reviewed"]
+    __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "set_aside", "last_seq", "updated_at", "edited", "verified", "reviewed"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +79,9 @@ class ReviewProgress(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of set_aside
+        if self.set_aside is not None:
+            _dict['set_aside'] = self.set_aside.to_dict()
         # set to None if user_name (nullable) is None
         # and model_fields_set contains the field
         if self.user_name is None and "user_name" in self.model_fields_set:
@@ -102,6 +107,7 @@ class ReviewProgress(BaseModel):
             "user_id": obj.get("user_id"),
             "user_name": obj.get("user_name"),
             "state": obj.get("state"),
+            "set_aside": ReviewSetAside.from_dict(obj["set_aside"]) if obj.get("set_aside") is not None else None,
             "last_seq": obj.get("last_seq"),
             "updated_at": obj.get("updated_at"),
             "edited": obj.get("edited"),

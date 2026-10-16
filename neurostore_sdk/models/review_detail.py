@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.review_set_aside import ReviewSetAside
 from neurostore_sdk.models.review_state import ReviewState
 from neurostore_sdk.models.review_stored_op import ReviewStoredOp
 from typing import Optional, Set
@@ -34,6 +35,7 @@ class ReviewDetail(BaseModel):
     source_id: Optional[StrictStr] = None
     user_id: Optional[StrictStr] = None
     state: Optional[ReviewState] = None
+    set_aside: Optional[ReviewSetAside] = None
     last_seq: Optional[StrictInt] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
@@ -42,7 +44,7 @@ class ReviewDetail(BaseModel):
     provenance: Optional[Dict[str, Any]] = None
     annotations: Optional[Dict[str, Any]] = None
     ops: Optional[List[ReviewStoredOp]] = None
-    __properties: ClassVar[List[str]] = ["id", "source_id", "user_id", "state", "last_seq", "created_at", "updated_at", "record", "coordinate_revision", "provenance", "annotations", "ops"]
+    __properties: ClassVar[List[str]] = ["id", "source_id", "user_id", "state", "set_aside", "last_seq", "created_at", "updated_at", "record", "coordinate_revision", "provenance", "annotations", "ops"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +84,9 @@ class ReviewDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of set_aside
+        if self.set_aside is not None:
+            _dict['set_aside'] = self.set_aside.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in ops (list)
         _items = []
         if self.ops is not None:
@@ -115,6 +120,7 @@ class ReviewDetail(BaseModel):
             "source_id": obj.get("source_id"),
             "user_id": obj.get("user_id"),
             "state": obj.get("state"),
+            "set_aside": ReviewSetAside.from_dict(obj["set_aside"]) if obj.get("set_aside") is not None else None,
             "last_seq": obj.get("last_seq"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
