@@ -30,17 +30,17 @@ class ReviewProgress(BaseModel):
     """
     One reviewer's review of a paper, as the paper list shows it.
     """ # noqa: E501
-    user_id: Optional[StrictStr] = None
-    user_name: Optional[StrictStr] = None
-    state: Optional[ReviewState] = None
+    user_id: StrictStr
+    user_name: Optional[StrictStr]
+    state: ReviewState
     set_aside: Optional[ReviewSetAside] = None
-    last_seq: Optional[StrictInt] = None
-    updated_at: Optional[datetime] = None
-    edited: Optional[StrictInt] = Field(default=None, description="Targets the reviewer edited, added or removed.")
-    verified: Optional[StrictInt] = Field(default=None, description="Targets the reviewer checked and left unchanged.")
-    reviewed: Optional[StrictInt] = Field(default=None, description="Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source's judgeable targets.")
-    op_count: Optional[StrictInt] = Field(default=None, description="The ops the reviewer has applied to this review.")
-    last_edit_at: Optional[datetime] = Field(default=None, description="When the reviewer last applied an op; null before any.")
+    last_seq: StrictInt
+    updated_at: Optional[datetime]
+    edited: StrictInt = Field(description="Targets the reviewer edited, added or removed.")
+    verified: StrictInt = Field(description="Targets the reviewer checked and left unchanged.")
+    reviewed: StrictInt = Field(description="Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source's judgeable targets.")
+    op_count: StrictInt = Field(description="The ops the reviewer has applied to this review.")
+    last_edit_at: Optional[datetime] = Field(description="When the reviewer last applied an op; null before any.")
     __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "set_aside", "last_seq", "updated_at", "edited", "verified", "reviewed", "op_count", "last_edit_at"]
 
     model_config = ConfigDict(

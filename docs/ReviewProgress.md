@@ -6,17 +6,17 @@ One reviewer's review of a paper, as the paper list shows it.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **str** |  | [optional] 
-**user_name** | **str** |  | [optional] 
-**state** | [**ReviewState**](ReviewState.md) |  | [optional] 
+**user_id** | **str** |  | 
+**user_name** | **str** |  | 
+**state** | [**ReviewState**](ReviewState.md) |  | 
 **set_aside** | [**ReviewSetAside**](ReviewSetAside.md) |  | [optional] 
-**last_seq** | **int** |  | [optional] 
-**updated_at** | **datetime** |  | [optional] 
-**edited** | **int** | Targets the reviewer edited, added or removed. | [optional] 
-**verified** | **int** | Targets the reviewer checked and left unchanged. | [optional] 
-**reviewed** | **int** | Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source&#39;s judgeable targets. | [optional] 
-**op_count** | **int** | The ops the reviewer has applied to this review. | [optional] 
-**last_edit_at** | **datetime** | When the reviewer last applied an op; null before any. | [optional] 
+**last_seq** | **int** |  | 
+**updated_at** | **datetime** |  | 
+**edited** | **int** | Targets the reviewer edited, added or removed. | 
+**verified** | **int** | Targets the reviewer checked and left unchanged. | 
+**reviewed** | **int** | Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source&#39;s judgeable targets. | 
+**op_count** | **int** | The ops the reviewer has applied to this review. | 
+**last_edit_at** | **datetime** | When the reviewer last applied an op; null before any. | 
 
 ## Example
 

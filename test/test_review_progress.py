@@ -52,6 +52,16 @@ class TestReviewProgress(unittest.TestCase):
             )
         else:
             return ReviewProgress(
+                user_id = '',
+                user_name = '',
+                state = 'in_progress',
+                last_seq = 56,
+                updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                edited = 56,
+                verified = 56,
+                reviewed = 56,
+                op_count = 56,
+                last_edit_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

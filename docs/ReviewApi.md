@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**review_reviews_id_get**](ReviewApi.md#review_reviews_id_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
 [**review_reviews_id_ops_post**](ReviewApi.md#review_reviews_id_ops_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
 [**review_reviews_id_patch**](ReviewApi.md#review_reviews_id_patch) | **PATCH** /review/reviews/{id} | Submit, reopen, set aside, or mark as the reference review
-[**review_schemas_name_get**](ReviewApi.md#review_schemas_name_get) | **GET** /review/schemas/{name} | One study_schema JSON Schema the review app reads
+[**review_schemas_name_get**](ReviewApi.md#review_schemas_name_get) | **GET** /review/schemas/{name} | One JSON Schema of the review API
 [**review_sources_get**](ReviewApi.md#review_sources_get) | **GET** /review/sources/ | List papers loaded for review, with each reviewer&#39;s progress
 [**review_sources_id_bundle_get**](ReviewApi.md#review_sources_id_bundle_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
 [**review_sources_id_review_put**](ReviewApi.md#review_sources_id_review_put) | **PUT** /review/sources/{id}/review | Start the caller&#39;s review of a paper
@@ -387,7 +387,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.ReviewApi(api_client)
-    file = None # bytearray | A zip of a study_schema layout, at most 200 MB.
+    file = None # bytearray | A zip of a study_schema layout. The whole request body is at most 200 MiB.
 
     try:
         # Load the papers of a study_schema layout zip for review
@@ -405,7 +405,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **bytearray**| A zip of a study_schema layout, at most 200 MB. | 
+ **file** | **bytearray**| A zip of a study_schema layout. The whole request body is at most 200 MiB. | 
 
 ### Return type
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 **200** | The report of what each paper did |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
-**413** | The file is over 200 MB |  * X-Request-ID -  <br>  |
+**413** | The request body is over 200 MiB |  * X-Request-ID -  <br>  |
 **422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -824,11 +824,11 @@ Name | Type | Description  | Notes
 **200** | The ops applied, or the stored ops of a replay |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
-**400** | The body is not a batch: empty, more than 500 ops, or an op that is not an object. The error names the rule that failed, not the batch.  |  -  |
+**400** | The body is not a batch: a negative expected_last_seq, or an op that is not an object. The error names the rule that failed, not the batch.  |  -  |
 **404** | Not Found |  * X-Request-ID -  <br>  |
 **409** | The review is not in_progress, expected_last_seq is not the review&#39;s last_seq (the body carries last_seq), or only some of the batch&#39;s client_op_ids are stored  |  -  |
 **413** | The request body is over the review body limit (8 MiB) |  -  |
-**422** | The batch does not validate, an op cannot be applied, or the record would fail study_schema. Each refused op is one error: field ops/&lt;index&gt;, code REJECTED, and context with op_index (an integer) and client_op_id. The message names the problem. A problem with the batch as a whole has field ops and no op index. Nothing is applied.  |  -  |
+**422** | The batch does not validate (no ops, more ops than the review-ops contract allows, or an op outside it), an op cannot be applied, or the record would fail study_schema. Each refused op is one error: field ops/&lt;index&gt;, code REJECTED, and context with op_index (an integer) and client_op_id. The message names the problem. A problem with the batch as a whole has field ops and no op index. Nothing is applied.  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -921,9 +921,9 @@ Name | Type | Description  | Notes
 # **review_schemas_name_get**
 > object review_schemas_name_get(name, if_none_match=if_none_match)
 
-One study_schema JSON Schema the review app reads
+One JSON Schema of the review API
 
-The extraction-record or coordinate-parse JSON Schema of the study_schema version the server runs, with its description annotations removed (a property named description is kept). The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304.
+extraction-record and coordinate-parse are the JSON Schemas of the study_schema version the server runs, with their description annotations removed (a property named description is kept). review-bundle and review-ops are the JSON Schema 2020-12 contracts of the review bundle and of a batch of review ops, whole. The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304.
 
 
 ### Example
@@ -955,11 +955,11 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.ReviewApi(api_client)
-    name = 'name_example' # str | extraction-record or coordinate-parse
+    name = 'name_example' # str | extraction-record, coordinate-parse, review-bundle or review-ops
     if_none_match = 'if_none_match_example' # str |  (optional)
 
     try:
-        # One study_schema JSON Schema the review app reads
+        # One JSON Schema of the review API
         api_response = api_instance.review_schemas_name_get(name, if_none_match=if_none_match)
         print("The response of ReviewApi->review_schemas_name_get:\n")
         pprint(api_response)
@@ -974,7 +974,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| extraction-record or coordinate-parse | 
+ **name** | **str**| extraction-record, coordinate-parse, review-bundle or review-ops | 
  **if_none_match** | **str**|  | [optional] 
 
 ### Return type

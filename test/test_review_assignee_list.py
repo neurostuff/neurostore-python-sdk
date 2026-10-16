@@ -44,6 +44,11 @@ class TestReviewAssigneeList(unittest.TestCase):
             )
         else:
             return ReviewAssigneeList(
+                results = [
+                    neurostore_sdk.models.review_assignee.review-assignee(
+                        user_id = '', 
+                        name = '', )
+                    ],
         )
         """
 

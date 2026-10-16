@@ -30,22 +30,19 @@ class ReviewSource(BaseModel):
     """
     ReviewSource
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    base_study_id: Optional[StrictStr] = None
-    label: Optional[StrictStr] = None
-    origin: Optional[StrictStr] = Field(default=None, description="pipeline_run when the source names a pipeline config and a run, else upload.")
-    created_at: Optional[datetime] = None
-    total: Optional[StrictInt] = Field(default=None, description="Targets a reviewer can judge in the source's record, its extracted values and its coordinate parse's analyses.")
-    reviews: Optional[List[ReviewProgress]] = None
-    assignees: Optional[List[ReviewAssignee]] = Field(default=None, description="The users the paper (base study) is assigned to.")
+    id: StrictStr
+    base_study_id: StrictStr
+    label: Optional[StrictStr]
+    origin: StrictStr = Field(description="pipeline_run when the source names a pipeline config and a run, else upload.")
+    created_at: datetime
+    total: StrictInt = Field(description="Targets a reviewer can judge in the source's record, its extracted values and its coordinate parse's analyses.")
+    reviews: List[ReviewProgress]
+    assignees: List[ReviewAssignee] = Field(description="The users the paper (base study) is assigned to.")
     __properties: ClassVar[List[str]] = ["id", "base_study_id", "label", "origin", "created_at", "total", "reviews", "assignees"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['upload', 'pipeline_run']):
             raise ValueError("must be one of enum values ('upload', 'pipeline_run')")
         return value

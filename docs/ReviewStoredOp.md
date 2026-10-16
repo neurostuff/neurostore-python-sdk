@@ -1,6 +1,6 @@
 # ReviewStoredOp
 
-An applied op as the review stores it: StoredOp of store/backend/neurostore/review/schema/review-bundle.schema.json. In an op result each one also carries `inverse`, the ops that undo it without their client_op_ids, unless it is a note; the bundle's stored ops do not. 
+An applied op as the review stores it: $defs/StoredOp of the contract served at GET /api/review/schemas/review-bundle. In an op result each one also carries `inverse`, the ops that undo it without their client_op_ids, unless it is a note; the bundle's stored ops do not. 
 
 ## Properties
 

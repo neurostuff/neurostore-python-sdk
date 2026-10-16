@@ -54,6 +54,18 @@ class TestReviewOpResult(unittest.TestCase):
             )
         else:
             return ReviewOpResult(
+                ops = [
+                    neurostore_sdk.models.review_stored_op.review-stored-op(
+                        inverse = [
+                            None
+                            ], )
+                    ],
+                last_seq = 56,
+                record = None,
+                coordinate_revision = None,
+                provenance = None,
+                annotations = None,
+                hidden = None,
         )
         """
 

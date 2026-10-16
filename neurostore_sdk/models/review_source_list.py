@@ -19,9 +19,9 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata
+from typing import Any, ClassVar, Dict, List
 from neurostore_sdk.models.review_source import ReviewSource
+from neurostore_sdk.models.review_source_list_metadata import ReviewSourceListMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,8 +29,8 @@ class ReviewSourceList(BaseModel):
     """
     ReviewSourceList
     """ # noqa: E501
-    metadata: Optional[NeurostoreStudysetReleasesGet200ResponseMetadata] = None
-    results: Optional[List[ReviewSource]] = None
+    metadata: ReviewSourceListMetadata
+    results: List[ReviewSource]
     __properties: ClassVar[List[str]] = ["metadata", "results"]
 
     model_config = ConfigDict(
@@ -93,7 +93,7 @@ class ReviewSourceList(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "metadata": NeurostoreStudysetReleasesGet200ResponseMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
+            "metadata": ReviewSourceListMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "results": [ReviewSource.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj

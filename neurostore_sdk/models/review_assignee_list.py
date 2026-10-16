@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from neurostore_sdk.models.review_assignee import ReviewAssignee
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class ReviewAssigneeList(BaseModel):
     """
     ReviewAssigneeList
     """ # noqa: E501
-    results: Optional[List[ReviewAssignee]] = None
+    results: List[ReviewAssignee]
     __properties: ClassVar[List[str]] = ["results"]
 
     model_config = ConfigDict(

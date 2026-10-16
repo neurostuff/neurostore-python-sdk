@@ -29,7 +29,7 @@ class ReviewOpBatch(BaseModel):
     ReviewOpBatch
     """ # noqa: E501
     expected_last_seq: Annotated[int, Field(strict=True, ge=0)] = Field(description="The review's last_seq the batch was made against.")
-    ops: Annotated[List[Dict[str, Any]], Field(min_length=1, max_length=500)]
+    ops: List[Dict[str, Any]] = Field(description="The batch's ops, at least and at most as many as the contract served at GET /api/review/schemas/review-ops allows. ")
     __properties: ClassVar[List[str]] = ["expected_last_seq", "ops"]
 
     model_config = ConfigDict(

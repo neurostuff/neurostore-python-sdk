@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**source_id** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
-**state** | [**ReviewState**](ReviewState.md) |  | [optional] 
+**id** | **str** |  | 
+**source_id** | **str** |  | 
+**user_id** | **str** |  | 
+**state** | [**ReviewState**](ReviewState.md) |  | 
 **set_aside** | [**ReviewSetAside**](ReviewSetAside.md) |  | [optional] 
-**last_seq** | **int** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
-**updated_at** | **datetime** |  | [optional] 
+**last_seq** | **int** |  | 
+**created_at** | **datetime** |  | 
+**updated_at** | **datetime** |  | 
 
 ## Example
 

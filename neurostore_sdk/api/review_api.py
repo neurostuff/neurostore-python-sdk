@@ -1181,7 +1181,7 @@ class ReviewApi:
     @validate_call
     def review_imports_post(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout, at most 200 MB.")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout. The whole request body is at most 200 MiB.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1199,7 +1199,7 @@ class ReviewApi:
 
         Lead reviewers only (admin-reviewer and admin). Each paper is checked and stored on its own: the report names what loaded, what was already loaded and what failed, and why. A file that is not a layout is refused whole. 
 
-        :param file: A zip of a study_schema layout, at most 200 MB. (required)
+        :param file: A zip of a study_schema layout. The whole request body is at most 200 MiB. (required)
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1252,7 +1252,7 @@ class ReviewApi:
     @validate_call
     def review_imports_post_with_http_info(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout, at most 200 MB.")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout. The whole request body is at most 200 MiB.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1270,7 +1270,7 @@ class ReviewApi:
 
         Lead reviewers only (admin-reviewer and admin). Each paper is checked and stored on its own: the report names what loaded, what was already loaded and what failed, and why. A file that is not a layout is refused whole. 
 
-        :param file: A zip of a study_schema layout, at most 200 MB. (required)
+        :param file: A zip of a study_schema layout. The whole request body is at most 200 MiB. (required)
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1323,7 +1323,7 @@ class ReviewApi:
     @validate_call
     def review_imports_post_without_preload_content(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout, at most 200 MB.")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="A zip of a study_schema layout. The whole request body is at most 200 MiB.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1341,7 +1341,7 @@ class ReviewApi:
 
         Lead reviewers only (admin-reviewer and admin). Each paper is checked and stored on its own: the report names what loaded, what was already loaded and what failed, and why. A file that is not a layout is refused whole. 
 
-        :param file: A zip of a study_schema layout, at most 200 MB. (required)
+        :param file: A zip of a study_schema layout. The whole request body is at most 200 MiB. (required)
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3120,7 +3120,7 @@ class ReviewApi:
     @validate_call
     def review_schemas_name_get(
         self,
-        name: Annotated[StrictStr, Field(description="extraction-record or coordinate-parse")],
+        name: Annotated[StrictStr, Field(description="extraction-record, coordinate-parse, review-bundle or review-ops")],
         if_none_match: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -3135,11 +3135,11 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """One study_schema JSON Schema the review app reads
+        """One JSON Schema of the review API
 
-        The extraction-record or coordinate-parse JSON Schema of the study_schema version the server runs, with its description annotations removed (a property named description is kept). The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304. 
+        extraction-record and coordinate-parse are the JSON Schemas of the study_schema version the server runs, with their description annotations removed (a property named description is kept). review-bundle and review-ops are the JSON Schema 2020-12 contracts of the review bundle and of a batch of review ops, whole. The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304. 
 
-        :param name: extraction-record or coordinate-parse (required)
+        :param name: extraction-record, coordinate-parse, review-bundle or review-ops (required)
         :type name: str
         :param if_none_match:
         :type if_none_match: str
@@ -3195,7 +3195,7 @@ class ReviewApi:
     @validate_call
     def review_schemas_name_get_with_http_info(
         self,
-        name: Annotated[StrictStr, Field(description="extraction-record or coordinate-parse")],
+        name: Annotated[StrictStr, Field(description="extraction-record, coordinate-parse, review-bundle or review-ops")],
         if_none_match: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -3210,11 +3210,11 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """One study_schema JSON Schema the review app reads
+        """One JSON Schema of the review API
 
-        The extraction-record or coordinate-parse JSON Schema of the study_schema version the server runs, with its description annotations removed (a property named description is kept). The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304. 
+        extraction-record and coordinate-parse are the JSON Schemas of the study_schema version the server runs, with their description annotations removed (a property named description is kept). review-bundle and review-ops are the JSON Schema 2020-12 contracts of the review bundle and of a batch of review ops, whole. The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304. 
 
-        :param name: extraction-record or coordinate-parse (required)
+        :param name: extraction-record, coordinate-parse, review-bundle or review-ops (required)
         :type name: str
         :param if_none_match:
         :type if_none_match: str
@@ -3270,7 +3270,7 @@ class ReviewApi:
     @validate_call
     def review_schemas_name_get_without_preload_content(
         self,
-        name: Annotated[StrictStr, Field(description="extraction-record or coordinate-parse")],
+        name: Annotated[StrictStr, Field(description="extraction-record, coordinate-parse, review-bundle or review-ops")],
         if_none_match: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -3285,11 +3285,11 @@ class ReviewApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One study_schema JSON Schema the review app reads
+        """One JSON Schema of the review API
 
-        The extraction-record or coordinate-parse JSON Schema of the study_schema version the server runs, with its description annotations removed (a property named description is kept). The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304. 
+        extraction-record and coordinate-parse are the JSON Schemas of the study_schema version the server runs, with their description annotations removed (a property named description is kept). review-bundle and review-ops are the JSON Schema 2020-12 contracts of the review bundle and of a batch of review ops, whole. The ETag is a hash of the body; a request whose If-None-Match holds it is answered with 304. 
 
-        :param name: extraction-record or coordinate-parse (required)
+        :param name: extraction-record, coordinate-parse, review-bundle or review-ops (required)
         :type name: str
         :param if_none_match:
         :type if_none_match: str

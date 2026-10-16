@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | [**List[ReviewAssignee]**](ReviewAssignee.md) |  | [optional] 
+**results** | [**List[ReviewAssignee]**](ReviewAssignee.md) |  | 
 
 ## Example
 

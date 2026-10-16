@@ -31,14 +31,14 @@ class ReviewDetail(BaseModel):
     """
     ReviewDetail
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    source_id: Optional[StrictStr] = None
-    user_id: Optional[StrictStr] = None
-    state: Optional[ReviewState] = None
+    id: StrictStr
+    source_id: StrictStr
+    user_id: StrictStr
+    state: ReviewState
     set_aside: Optional[ReviewSetAside] = None
-    last_seq: Optional[StrictInt] = None
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    last_seq: StrictInt
+    created_at: datetime
+    updated_at: Optional[datetime]
     record: Optional[Dict[str, Any]] = Field(default=None, description="The extraction record with the review's ops applied.")
     coordinate_revision: Optional[Dict[str, Any]] = None
     provenance: Optional[Dict[str, Any]] = None

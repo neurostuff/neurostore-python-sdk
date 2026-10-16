@@ -105,6 +105,7 @@ docs/ReviewSetAside.md
 docs/ReviewSetAsideReason.md
 docs/ReviewSource.md
 docs/ReviewSourceList.md
+docs/ReviewSourceListMetadata.md
 docs/ReviewState.md
 docs/ReviewStatePatch.md
 docs/ReviewStoredOp.md
@@ -269,6 +270,7 @@ neurostore_sdk/models/review_set_aside.py
 neurostore_sdk/models/review_set_aside_reason.py
 neurostore_sdk/models/review_source.py
 neurostore_sdk/models/review_source_list.py
+neurostore_sdk/models/review_source_list_metadata.py
 neurostore_sdk/models/review_state.py
 neurostore_sdk/models/review_state_patch.py
 neurostore_sdk/models/review_stored_op.py
@@ -431,6 +433,7 @@ test/test_review_set_aside.py
 test/test_review_set_aside_reason.py
 test/test_review_source.py
 test/test_review_source_list.py
+test/test_review_source_list_metadata.py
 test/test_review_state.py
 test/test_review_state_patch.py
 test/test_review_stored_op.py

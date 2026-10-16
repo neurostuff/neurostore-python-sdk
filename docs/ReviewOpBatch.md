@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **expected_last_seq** | **int** | The review&#39;s last_seq the batch was made against. | 
-**ops** | **List[object]** |  | 
+**ops** | **List[object]** | The batch&#39;s ops, at least and at most as many as the contract served at GET /api/review/schemas/review-ops allows.  | 
 
 ## Example
 

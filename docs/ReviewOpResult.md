@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ops** | [**List[ReviewStoredOp]**](ReviewStoredOp.md) |  | [optional] 
-**last_seq** | **int** |  | [optional] 
-**record** | **object** |  | [optional] 
-**coordinate_revision** | **object** |  | [optional] 
-**provenance** | **object** |  | [optional] 
-**annotations** | **object** |  | [optional] 
-**hidden** | **object** | The hidden set of the new record, as in the bundle. | [optional] 
+**ops** | [**List[ReviewStoredOp]**](ReviewStoredOp.md) |  | 
+**last_seq** | **int** |  | 
+**record** | **object** |  | 
+**coordinate_revision** | **object** |  | 
+**provenance** | **object** |  | 
+**annotations** | **object** |  | 
+**hidden** | **object** | The hidden set of the new record, as in the bundle. | 
 **entities** | **List[object]** | The entity index of the new record, as in the bundle. | [optional] 
 
 ## Example

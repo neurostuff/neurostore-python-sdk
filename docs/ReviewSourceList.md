@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | [**NeurostoreStudysetReleasesGet200ResponseMetadata**](NeurostoreStudysetReleasesGet200ResponseMetadata.md) |  | [optional] 
-**results** | [**List[ReviewSource]**](ReviewSource.md) |  | [optional] 
+**metadata** | [**ReviewSourceListMetadata**](ReviewSourceListMetadata.md) |  | 
+**results** | [**List[ReviewSource]**](ReviewSource.md) |  | 
 
 ## Example
 

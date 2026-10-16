@@ -28,13 +28,13 @@ class ReviewOpResult(BaseModel):
     """
     ReviewOpResult
     """ # noqa: E501
-    ops: Optional[List[ReviewStoredOp]] = None
-    last_seq: Optional[StrictInt] = None
-    record: Optional[Dict[str, Any]] = None
-    coordinate_revision: Optional[Dict[str, Any]] = None
-    provenance: Optional[Dict[str, Any]] = None
-    annotations: Optional[Dict[str, Any]] = None
-    hidden: Optional[Dict[str, Any]] = Field(default=None, description="The hidden set of the new record, as in the bundle.")
+    ops: List[ReviewStoredOp]
+    last_seq: StrictInt
+    record: Dict[str, Any]
+    coordinate_revision: Optional[Dict[str, Any]]
+    provenance: Dict[str, Any]
+    annotations: Dict[str, Any]
+    hidden: Dict[str, Any] = Field(description="The hidden set of the new record, as in the bundle.")
     entities: Optional[List[Dict[str, Any]]] = Field(default=None, description="The entity index of the new record, as in the bundle.")
     __properties: ClassVar[List[str]] = ["ops", "last_seq", "record", "coordinate_revision", "provenance", "annotations", "hidden", "entities"]
 

@@ -116,6 +116,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.review_set_aside_reason import ReviewSetAsideReason
     from neurostore_sdk.models.review_source import ReviewSource
     from neurostore_sdk.models.review_source_list import ReviewSourceList
+    from neurostore_sdk.models.review_source_list_metadata import ReviewSourceListMetadata
     from neurostore_sdk.models.review_state import ReviewState
     from neurostore_sdk.models.review_state_patch import ReviewStatePatch
     from neurostore_sdk.models.review_stored_op import ReviewStoredOp
@@ -277,6 +278,7 @@ from neurostore_sdk.models.review_set_aside import ReviewSetAside
 from neurostore_sdk.models.review_set_aside_reason import ReviewSetAsideReason
 from neurostore_sdk.models.review_source import ReviewSource
 from neurostore_sdk.models.review_source_list import ReviewSourceList
+from neurostore_sdk.models.review_source_list_metadata import ReviewSourceListMetadata
 from neurostore_sdk.models.review_state import ReviewState
 from neurostore_sdk.models.review_state_patch import ReviewStatePatch
 from neurostore_sdk.models.review_stored_op import ReviewStoredOp

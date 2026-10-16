@@ -49,6 +49,13 @@ class TestReviewSummary(unittest.TestCase):
             )
         else:
             return ReviewSummary(
+                id = '',
+                source_id = '',
+                user_id = '',
+                state = 'in_progress',
+                last_seq = 56,
+                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
         """
 

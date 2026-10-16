@@ -107,7 +107,7 @@ class TestReviewApi(unittest.TestCase):
     def test_review_schemas_name_get(self) -> None:
         """Test case for review_schemas_name_get
 
-        One study_schema JSON Schema the review app reads
+        One JSON Schema of the review API
         """
         pass
 
