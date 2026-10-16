@@ -32,7 +32,7 @@ class ReviewSource(BaseModel):
     id: Optional[StrictStr] = None
     base_study_id: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
-    origin: Optional[StrictStr] = None
+    origin: Optional[StrictStr] = Field(default=None, description="pipeline_run when the source names a pipeline config and a run, else upload.")
     created_at: Optional[datetime] = None
     total: Optional[StrictInt] = Field(default=None, description="Targets a reviewer can judge in the source's record, its extracted values and its coordinate parse's analyses.")
     reviews: Optional[List[ReviewProgress]] = None

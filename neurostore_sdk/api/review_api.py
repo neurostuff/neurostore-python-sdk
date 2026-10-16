@@ -102,9 +102,9 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '401': None,
-            '403': None,
-            '422': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -172,9 +172,9 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '401': None,
-            '403': None,
-            '422': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -242,9 +242,9 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '401': None,
-            '403': None,
-            '422': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -289,7 +289,8 @@ class ReviewApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/zip'
+                    'application/zip', 
+                    'application/json'
                 ]
             )
 
@@ -385,8 +386,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewImportReport",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '413': "ErrorResponse",
             '422': "ErrorResponse",
         }
@@ -456,8 +457,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewImportReport",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '413': "ErrorResponse",
             '422': "ErrorResponse",
         }
@@ -527,8 +528,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewImportReport",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '413': "ErrorResponse",
             '422': "ErrorResponse",
         }
@@ -671,9 +672,10 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -741,9 +743,10 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -811,9 +814,10 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -942,8 +946,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewDetail",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1012,8 +1016,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewDetail",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1082,8 +1086,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewDetail",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1216,10 +1220,12 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewOpResult",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '400': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
+            '413': "ErrorResponse",
             '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1292,10 +1298,12 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewOpResult",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '400': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
+            '413': "ErrorResponse",
             '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1368,10 +1376,12 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewOpResult",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '400': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
+            '413': "ErrorResponse",
             '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -1520,8 +1530,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSummary",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
         }
@@ -1595,8 +1605,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSummary",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
         }
@@ -1670,8 +1680,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSummary",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
         }
@@ -1828,9 +1838,9 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSourceList",
-            '400': None,
-            '401': None,
-            '403': None,
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1909,9 +1919,9 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSourceList",
-            '400': None,
-            '401': None,
-            '403': None,
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1990,9 +2000,9 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSourceList",
-            '400': None,
-            '401': None,
-            '403': None,
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2136,8 +2146,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -2205,8 +2215,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -2274,8 +2284,8 @@ class ReviewApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
@@ -2405,8 +2415,8 @@ class ReviewApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSummary",
             '201': "ReviewSummary",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
         }
@@ -2477,8 +2487,8 @@ class ReviewApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSummary",
             '201': "ReviewSummary",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
         }
@@ -2549,8 +2559,8 @@ class ReviewApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReviewSummary",
             '201': "ReviewSummary",
-            '401': None,
-            '403': None,
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
             '404': "ErrorResponse",
             '409': "ErrorResponse",
         }

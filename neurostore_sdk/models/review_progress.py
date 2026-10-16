@@ -36,7 +36,7 @@ class ReviewProgress(BaseModel):
     updated_at: Optional[datetime] = None
     edited: Optional[StrictInt] = Field(default=None, description="Targets the reviewer edited, added or removed.")
     verified: Optional[StrictInt] = Field(default=None, description="Targets the reviewer checked and left unchanged.")
-    reviewed: Optional[StrictInt] = Field(default=None, description="Judgeable targets of the source that the reviewer verified, edited, added or removed.")
+    reviewed: Optional[StrictInt] = Field(default=None, description="Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source's judgeable targets.")
     __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "last_seq", "updated_at", "edited", "verified", "reviewed"]
 
     model_config = ConfigDict(

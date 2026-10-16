@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **base_study_id** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
-**origin** | **str** |  | [optional] 
+**origin** | **str** | pipeline_run when the source names a pipeline config and a run, else upload. | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **total** | **int** | Targets a reviewer can judge in the source&#39;s record, its extracted values and its coordinate parse&#39;s analyses. | [optional] 
 **reviews** | [**List[ReviewProgress]**](ReviewProgress.md) |  | [optional] 
