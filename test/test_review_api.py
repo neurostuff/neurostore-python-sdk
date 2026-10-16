@@ -69,6 +69,13 @@ class TestReviewApi(unittest.TestCase):
         """
         pass
 
+    def test_review_schemas_name_get(self) -> None:
+        """Test case for review_schemas_name_get
+
+        One study_schema JSON Schema the review app reads
+        """
+        pass
+
     def test_review_sources_get(self) -> None:
         """Test case for review_sources_get
 
