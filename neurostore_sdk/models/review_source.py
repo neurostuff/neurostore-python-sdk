@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.review_assignee import ReviewAssignee
 from neurostore_sdk.models.review_progress import ReviewProgress
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,7 +37,8 @@ class ReviewSource(BaseModel):
     created_at: Optional[datetime] = None
     total: Optional[StrictInt] = Field(default=None, description="Targets a reviewer can judge in the source's record, its extracted values and its coordinate parse's analyses.")
     reviews: Optional[List[ReviewProgress]] = None
-    __properties: ClassVar[List[str]] = ["id", "base_study_id", "label", "origin", "created_at", "total", "reviews"]
+    assignees: Optional[List[ReviewAssignee]] = Field(default=None, description="The users the paper (base study) is assigned to.")
+    __properties: ClassVar[List[str]] = ["id", "base_study_id", "label", "origin", "created_at", "total", "reviews", "assignees"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
@@ -93,6 +95,13 @@ class ReviewSource(BaseModel):
                 if _item_reviews is not None:
                     _items.append(_item_reviews.to_dict())
             _dict['reviews'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in assignees (list)
+        _items = []
+        if self.assignees is not None:
+            for _item_assignees in self.assignees:
+                if _item_assignees is not None:
+                    _items.append(_item_assignees.to_dict())
+            _dict['assignees'] = _items
         # set to None if label (nullable) is None
         # and model_fields_set contains the field
         if self.label is None and "label" in self.model_fields_set:
@@ -116,7 +125,8 @@ class ReviewSource(BaseModel):
             "origin": obj.get("origin"),
             "created_at": obj.get("created_at"),
             "total": obj.get("total"),
-            "reviews": [ReviewProgress.from_dict(_item) for _item in obj["reviews"]] if obj.get("reviews") is not None else None
+            "reviews": [ReviewProgress.from_dict(_item) for _item in obj["reviews"]] if obj.get("reviews") is not None else None,
+            "assignees": [ReviewAssignee.from_dict(_item) for _item in obj["assignees"]] if obj.get("assignees") is not None else None
         })
         return _obj
 

@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **edited** | **int** | Targets the reviewer edited, added or removed. | [optional] 
 **verified** | **int** | Targets the reviewer checked and left unchanged. | [optional] 
 **reviewed** | **int** | Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source&#39;s judgeable targets. | [optional] 
+**op_count** | **int** | The ops the reviewer has applied to this review. | [optional] 
+**last_edit_at** | **datetime** | When the reviewer last applied an op; null before any. | [optional] 
 
 ## Example
 

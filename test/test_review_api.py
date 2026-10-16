@@ -27,6 +27,27 @@ class TestReviewApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_review_base_studies_id_assignments_get(self) -> None:
+        """Test case for review_base_studies_id_assignments_get
+
+        The users a paper is assigned to
+        """
+        pass
+
+    def test_review_base_studies_id_assignments_user_id_delete(self) -> None:
+        """Test case for review_base_studies_id_assignments_user_id_delete
+
+        Release a paper from a reviewer
+        """
+        pass
+
+    def test_review_base_studies_id_assignments_user_id_put(self) -> None:
+        """Test case for review_base_studies_id_assignments_user_id_put
+
+        Assign a paper to a reviewer, or reassign it
+        """
+        pass
+
     def test_review_exports_post(self) -> None:
         """Test case for review_exports_post
 
@@ -38,6 +59,20 @@ class TestReviewApi(unittest.TestCase):
         """Test case for review_imports_post
 
         Load the papers of a study_schema layout zip for review
+        """
+        pass
+
+    def test_review_me_get(self) -> None:
+        """Test case for review_me_get
+
+        The caller, as a reviewer
+        """
+        pass
+
+    def test_review_reviewers_get(self) -> None:
+        """Test case for review_reviewers_get
+
+        The admin-reviewers, to assign papers to
         """
         pass
 

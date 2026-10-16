@@ -39,7 +39,9 @@ class ReviewProgress(BaseModel):
     edited: Optional[StrictInt] = Field(default=None, description="Targets the reviewer edited, added or removed.")
     verified: Optional[StrictInt] = Field(default=None, description="Targets the reviewer checked and left unchanged.")
     reviewed: Optional[StrictInt] = Field(default=None, description="Judgeable targets of the source that the reviewer verified, edited, added or removed. Unlike edited and verified, which count every provenance key, this counts only among the source's judgeable targets.")
-    __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "set_aside", "last_seq", "updated_at", "edited", "verified", "reviewed"]
+    op_count: Optional[StrictInt] = Field(default=None, description="The ops the reviewer has applied to this review.")
+    last_edit_at: Optional[datetime] = Field(default=None, description="When the reviewer last applied an op; null before any.")
+    __properties: ClassVar[List[str]] = ["user_id", "user_name", "state", "set_aside", "last_seq", "updated_at", "edited", "verified", "reviewed", "op_count", "last_edit_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,6 +94,11 @@ class ReviewProgress(BaseModel):
         if self.updated_at is None and "updated_at" in self.model_fields_set:
             _dict['updated_at'] = None
 
+        # set to None if last_edit_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_edit_at is None and "last_edit_at" in self.model_fields_set:
+            _dict['last_edit_at'] = None
+
         return _dict
 
     @classmethod
@@ -112,7 +119,9 @@ class ReviewProgress(BaseModel):
             "updated_at": obj.get("updated_at"),
             "edited": obj.get("edited"),
             "verified": obj.get("verified"),
-            "reviewed": obj.get("reviewed")
+            "reviewed": obj.get("reviewed"),
+            "op_count": obj.get("op_count"),
+            "last_edit_at": obj.get("last_edit_at")
         })
         return _obj
 

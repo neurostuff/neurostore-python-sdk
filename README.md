@@ -77,15 +77,15 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.ReviewApi(api_client)
-    review_exports_post_request = neurostore_sdk.ReviewExportsPostRequest() # ReviewExportsPostRequest |  (optional)
+    id = 'id_example' # str | The base study (paper).
 
     try:
-        # Export the reviews that match the filters as a zip of layout trees
-        api_response = api_instance.review_exports_post(review_exports_post_request=review_exports_post_request)
-        print("The response of ReviewApi->review_exports_post:\n")
+        # The users a paper is assigned to
+        api_response = api_instance.review_base_studies_id_assignments_get(id)
+        print("The response of ReviewApi->review_base_studies_id_assignments_get:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ReviewApi->review_exports_post: %s\n" % e)
+        print("Exception when calling ReviewApi->review_base_studies_id_assignments_get: %s\n" % e)
 
 ```
 
@@ -95,8 +95,13 @@ All URIs are relative to *https://neurostore.org/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ReviewApi* | [**review_base_studies_id_assignments_get**](docs/ReviewApi.md#review_base_studies_id_assignments_get) | **GET** /review/base-studies/{id}/assignments | The users a paper is assigned to
+*ReviewApi* | [**review_base_studies_id_assignments_user_id_delete**](docs/ReviewApi.md#review_base_studies_id_assignments_user_id_delete) | **DELETE** /review/base-studies/{id}/assignments/{user_id} | Release a paper from a reviewer
+*ReviewApi* | [**review_base_studies_id_assignments_user_id_put**](docs/ReviewApi.md#review_base_studies_id_assignments_user_id_put) | **PUT** /review/base-studies/{id}/assignments/{user_id} | Assign a paper to a reviewer, or reassign it
 *ReviewApi* | [**review_exports_post**](docs/ReviewApi.md#review_exports_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
 *ReviewApi* | [**review_imports_post**](docs/ReviewApi.md#review_imports_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
+*ReviewApi* | [**review_me_get**](docs/ReviewApi.md#review_me_get) | **GET** /review/me | The caller, as a reviewer
+*ReviewApi* | [**review_reviewers_get**](docs/ReviewApi.md#review_reviewers_get) | **GET** /review/reviewers/ | The admin-reviewers, to assign papers to
 *ReviewApi* | [**review_reviews_id_export_get**](docs/ReviewApi.md#review_reviews_id_export_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
 *ReviewApi* | [**review_reviews_id_get**](docs/ReviewApi.md#review_reviews_id_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
 *ReviewApi* | [**review_reviews_id_ops_post**](docs/ReviewApi.md#review_reviews_id_ops_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
@@ -266,15 +271,20 @@ Class | Method | HTTP request | Description
  - [PointValue](docs/PointValue.md)
  - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
+ - [ReviewAssignee](docs/ReviewAssignee.md)
+ - [ReviewAssigneeList](docs/ReviewAssigneeList.md)
+ - [ReviewAssignment](docs/ReviewAssignment.md)
  - [ReviewDetail](docs/ReviewDetail.md)
  - [ReviewExportsPostRequest](docs/ReviewExportsPostRequest.md)
  - [ReviewImportReport](docs/ReviewImportReport.md)
  - [ReviewImportReportFailedInner](docs/ReviewImportReportFailedInner.md)
  - [ReviewImportReportLoadedInner](docs/ReviewImportReportLoadedInner.md)
  - [ReviewImportReportSkippedInner](docs/ReviewImportReportSkippedInner.md)
+ - [ReviewMe](docs/ReviewMe.md)
  - [ReviewOpBatch](docs/ReviewOpBatch.md)
  - [ReviewOpResult](docs/ReviewOpResult.md)
  - [ReviewProgress](docs/ReviewProgress.md)
+ - [ReviewReviewerList](docs/ReviewReviewerList.md)
  - [ReviewSetAside](docs/ReviewSetAside.md)
  - [ReviewSetAsideReason](docs/ReviewSetAsideReason.md)
  - [ReviewSource](docs/ReviewSource.md)

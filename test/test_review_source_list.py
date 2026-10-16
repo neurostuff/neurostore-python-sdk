@@ -58,7 +58,14 @@ class TestReviewSourceList(unittest.TestCase):
                                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 edited = 56, 
                                 verified = 56, 
-                                reviewed = 56, )
+                                reviewed = 56, 
+                                op_count = 56, 
+                                last_edit_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                            ], 
+                        assignees = [
+                            neurostore_sdk.models.review_assignee.review-assignee(
+                                user_id = '', 
+                                name = '', )
                             ], )
                     ]
             )

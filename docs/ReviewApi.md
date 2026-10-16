@@ -4,8 +4,13 @@ All URIs are relative to *https://neurostore.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**review_base_studies_id_assignments_get**](ReviewApi.md#review_base_studies_id_assignments_get) | **GET** /review/base-studies/{id}/assignments | The users a paper is assigned to
+[**review_base_studies_id_assignments_user_id_delete**](ReviewApi.md#review_base_studies_id_assignments_user_id_delete) | **DELETE** /review/base-studies/{id}/assignments/{user_id} | Release a paper from a reviewer
+[**review_base_studies_id_assignments_user_id_put**](ReviewApi.md#review_base_studies_id_assignments_user_id_put) | **PUT** /review/base-studies/{id}/assignments/{user_id} | Assign a paper to a reviewer, or reassign it
 [**review_exports_post**](ReviewApi.md#review_exports_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
 [**review_imports_post**](ReviewApi.md#review_imports_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
+[**review_me_get**](ReviewApi.md#review_me_get) | **GET** /review/me | The caller, as a reviewer
+[**review_reviewers_get**](ReviewApi.md#review_reviewers_get) | **GET** /review/reviewers/ | The admin-reviewers, to assign papers to
 [**review_reviews_id_export_get**](ReviewApi.md#review_reviews_id_export_get) | **GET** /review/reviews/{id}/export | Export one review as a study_schema layout zip
 [**review_reviews_id_get**](ReviewApi.md#review_reviews_id_get) | **GET** /review/reviews/{id} | One reviewer&#39;s review of a paper
 [**review_reviews_id_ops_post**](ReviewApi.md#review_reviews_id_ops_post) | **POST** /review/reviews/{id}/ops | Apply a batch of the owner&#39;s ops to their review
@@ -15,6 +20,252 @@ Method | HTTP request | Description
 [**review_sources_id_bundle_get**](ReviewApi.md#review_sources_id_bundle_get) | **GET** /review/sources/{id}/bundle | Everything the review app needs to open one paper for the caller
 [**review_sources_id_review_put**](ReviewApi.md#review_sources_id_review_put) | **PUT** /review/sources/{id}/review | Start the caller&#39;s review of a paper
 
+
+# **review_base_studies_id_assignments_get**
+> ReviewAssigneeList review_base_studies_id_assignments_get(id)
+
+The users a paper is assigned to
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.review_assignee_list import ReviewAssigneeList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+    id = 'id_example' # str | The base study (paper).
+
+    try:
+        # The users a paper is assigned to
+        api_response = api_instance.review_base_studies_id_assignments_get(id)
+        print("The response of ReviewApi->review_base_studies_id_assignments_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReviewApi->review_base_studies_id_assignments_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The base study (paper). | 
+
+### Return type
+
+[**ReviewAssigneeList**](ReviewAssigneeList.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **review_base_studies_id_assignments_user_id_delete**
+> review_base_studies_id_assignments_user_id_delete(id, user_id)
+
+Release a paper from a reviewer
+
+A reviewer releases their own assignment; a lead reviewer releases anyone's. Releasing a user who is not assigned changes nothing and answers 204.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+    id = 'id_example' # str | The base study (paper).
+    user_id = 'user_id_example' # str | The assignee. A reviewer may name only themselves; a lead reviewer may name anyone.
+
+    try:
+        # Release a paper from a reviewer
+        api_instance.review_base_studies_id_assignments_user_id_delete(id, user_id)
+    except Exception as e:
+        print("Exception when calling ReviewApi->review_base_studies_id_assignments_user_id_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The base study (paper). | 
+ **user_id** | **str**| The assignee. A reviewer may name only themselves; a lead reviewer may name anyone. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | The assignment is released, or was not there |  -  |
+**401** | Unauthorized |  -  |
+**403** | A reviewer named another user |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **review_base_studies_id_assignments_user_id_put**
+> ReviewAssignment review_base_studies_id_assignments_user_id_put(id, user_id)
+
+Assign a paper to a reviewer, or reassign it
+
+A reviewer assigns a paper to themselves. A lead reviewer (admin-reviewer and admin) assigns it to any admin-reviewer. Assigning an already assigned user changes nothing and answers 200. The assignee must hold the admin-reviewer role, or the request is refused with 422.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.review_assignment import ReviewAssignment
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+    id = 'id_example' # str | The base study (paper).
+    user_id = 'user_id_example' # str | The assignee. A reviewer may name only themselves; a lead reviewer may name anyone.
+
+    try:
+        # Assign a paper to a reviewer, or reassign it
+        api_response = api_instance.review_base_studies_id_assignments_user_id_put(id, user_id)
+        print("The response of ReviewApi->review_base_studies_id_assignments_user_id_put:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReviewApi->review_base_studies_id_assignments_user_id_put: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The base study (paper). | 
+ **user_id** | **str**| The assignee. A reviewer may name only themselves; a lead reviewer may name anyone. | 
+
+### Return type
+
+[**ReviewAssignment**](ReviewAssignment.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The user was already assigned |  -  |
+**201** | The user was assigned |  -  |
+**401** | Unauthorized |  -  |
+**403** | A reviewer named another user |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+**422** | The assignee does not hold the admin-reviewer role |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **review_exports_post**
 > bytearray review_exports_post(review_exports_post_request=review_exports_post_request)
@@ -178,6 +429,154 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **413** | The file is over 200 MB |  * X-Request-ID -  <br>  |
 **422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **review_me_get**
+> ReviewMe review_me_get()
+
+The caller, as a reviewer
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.review_me import ReviewMe
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+
+    try:
+        # The caller, as a reviewer
+        api_response = api_instance.review_me_get()
+        print("The response of ReviewApi->review_me_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReviewApi->review_me_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ReviewMe**](ReviewMe.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **review_reviewers_get**
+> ReviewReviewerList review_reviewers_get()
+
+The admin-reviewers, to assign papers to
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.review_reviewer_list import ReviewReviewerList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+
+    try:
+        # The admin-reviewers, to assign papers to
+        api_response = api_instance.review_reviewers_get()
+        print("The response of ReviewApi->review_reviewers_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReviewApi->review_reviewers_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ReviewReviewerList**](ReviewReviewerList.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -604,7 +1003,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **review_sources_get**
-> ReviewSourceList review_sources_get(page=page, page_size=page_size, base_study_id=base_study_id, mine=mine)
+> ReviewSourceList review_sources_get(page=page, page_size=page_size, base_study_id=base_study_id, mine=mine, assigned=assigned)
 
 List papers loaded for review, with each reviewer's progress
 
@@ -642,10 +1041,11 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page_size = 20 # int |  (optional) (default to 20)
     base_study_id = 'base_study_id_example' # str | Only the sources of this base study. (optional)
     mine = False # bool | Only the sources the caller has a review of. (optional) (default to False)
+    assigned = 'assigned_example' # str | Only the sources whose paper is assigned to the caller. (optional)
 
     try:
         # List papers loaded for review, with each reviewer's progress
-        api_response = api_instance.review_sources_get(page=page, page_size=page_size, base_study_id=base_study_id, mine=mine)
+        api_response = api_instance.review_sources_get(page=page, page_size=page_size, base_study_id=base_study_id, mine=mine, assigned=assigned)
         print("The response of ReviewApi->review_sources_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -663,6 +1063,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**|  | [optional] [default to 20]
  **base_study_id** | **str**| Only the sources of this base study. | [optional] 
  **mine** | **bool**| Only the sources the caller has a review of. | [optional] [default to False]
+ **assigned** | **str**| Only the sources whose paper is assigned to the caller. | [optional] 
 
 ### Return type
 
