@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *ReviewApi* | [**review_base_studies_id_assignments_user_id_delete**](docs/ReviewApi.md#review_base_studies_id_assignments_user_id_delete) | **DELETE** /review/base-studies/{id}/assignments/{user_id} | Release a paper from a reviewer
 *ReviewApi* | [**review_base_studies_id_assignments_user_id_put**](docs/ReviewApi.md#review_base_studies_id_assignments_user_id_put) | **PUT** /review/base-studies/{id}/assignments/{user_id} | Assign a paper to a reviewer, or reassign it
 *ReviewApi* | [**review_exports_post**](docs/ReviewApi.md#review_exports_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
+*ReviewApi* | [**review_imports_pipeline_post**](docs/ReviewApi.md#review_imports_pipeline_post) | **POST** /review/imports/pipeline | Load the records of a pipeline run already in neurostore for review
 *ReviewApi* | [**review_imports_post**](docs/ReviewApi.md#review_imports_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
 *ReviewApi* | [**review_me_get**](docs/ReviewApi.md#review_me_get) | **GET** /review/me | The caller, as a reviewer
 *ReviewApi* | [**review_reviewers_get**](docs/ReviewApi.md#review_reviewers_get) | **GET** /review/reviewers/ | The admin-reviewers, to assign papers to

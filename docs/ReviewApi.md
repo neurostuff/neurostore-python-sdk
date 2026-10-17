@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**review_base_studies_id_assignments_user_id_delete**](ReviewApi.md#review_base_studies_id_assignments_user_id_delete) | **DELETE** /review/base-studies/{id}/assignments/{user_id} | Release a paper from a reviewer
 [**review_base_studies_id_assignments_user_id_put**](ReviewApi.md#review_base_studies_id_assignments_user_id_put) | **PUT** /review/base-studies/{id}/assignments/{user_id} | Assign a paper to a reviewer, or reassign it
 [**review_exports_post**](ReviewApi.md#review_exports_post) | **POST** /review/exports/ | Export the reviews that match the filters as a zip of layout trees
+[**review_imports_pipeline_post**](ReviewApi.md#review_imports_pipeline_post) | **POST** /review/imports/pipeline | Load the records of a pipeline run already in neurostore for review
 [**review_imports_post**](ReviewApi.md#review_imports_post) | **POST** /review/imports/ | Load the papers of a study_schema layout zip for review
 [**review_me_get**](ReviewApi.md#review_me_get) | **GET** /review/me | The caller, as a reviewer
 [**review_reviewers_get**](ReviewApi.md#review_reviewers_get) | **GET** /review/reviewers/ | The admin-reviewers, to assign papers to
@@ -346,6 +347,95 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **422** | include_unreviewed was combined with a reviewer or state filter, or a source&#39;s paper has no article_id  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **review_imports_pipeline_post**
+> ReviewImportReport review_imports_pipeline_post(config_id, run_id, file)
+
+Load the records of a pipeline run already in neurostore for review
+
+Lead reviewers only (admin-reviewer and admin). Each record the run stored under the config loads with the coordinate parse it read, and with the pipeline's revision when it read one. Neurostore keeps no parsed paper or text, so the zip holds each paper's parsed paper and text as a study_schema layout; its parses and records are not read. A text whose sha256 is not the one the run read fails its paper.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.review_import_report import ReviewImportReport
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.ReviewApi(api_client)
+    config_id = 'config_id_example' # str | The pipeline config whose records to load.
+    run_id = 'run_id_example' # str | The run of that config.
+    file = None # bytearray | A zip of a study_schema layout with each paper's parsed paper and text. The whole request body is at most 200 MiB.
+
+    try:
+        # Load the records of a pipeline run already in neurostore for review
+        api_response = api_instance.review_imports_pipeline_post(config_id, run_id, file)
+        print("The response of ReviewApi->review_imports_pipeline_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReviewApi->review_imports_pipeline_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **config_id** | **str**| The pipeline config whose records to load. | 
+ **run_id** | **str**| The run of that config. | 
+ **file** | **bytearray**| A zip of a study_schema layout with each paper&#39;s parsed paper and text. The whole request body is at most 200 MiB. | 
+
+### Return type
+
+[**ReviewImportReport**](ReviewImportReport.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The report of what each paper did |  -  |
+**400** | The form has no config_id, run_id or file |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | The config is unknown, or the run stored no record under it |  -  |
+**413** | The request body is over 200 MiB |  * X-Request-ID -  <br>  |
+**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
