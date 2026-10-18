@@ -37,6 +37,7 @@ class ErrorResponse(BaseModel):
     errors: Optional[List[ErrorDetail]] = Field(default=None, description="Field-specific validation errors")
     timestamp: datetime = Field(description="ISO 8601 timestamp")
     request_id: StrictStr = Field(description="Unique request identifier")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["status", "title", "detail", "type", "instance", "errors", "timestamp", "request_id"]
 
     model_config = ConfigDict(
@@ -69,6 +70,7 @@ class ErrorResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([])
 
@@ -84,6 +86,11 @@ class ErrorResponse(BaseModel):
                 if _item_errors is not None:
                     _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -105,6 +112,11 @@ class ErrorResponse(BaseModel):
             "timestamp": obj.get("timestamp"),
             "request_id": obj.get("request_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
