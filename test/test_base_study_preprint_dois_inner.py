@@ -37,12 +37,12 @@ class TestBaseStudyPreprintDoisInner(unittest.TestCase):
         if include_optional:
             return BaseStudyPreprintDoisInner(
                 doi = '',
-                server = ''
+                server = 'biorxiv'
             )
         else:
             return BaseStudyPreprintDoisInner(
                 doi = '',
-                server = '',
+                server = 'biorxiv',
         )
         """
 

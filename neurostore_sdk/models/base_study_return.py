@@ -44,7 +44,7 @@ class BaseStudyReturn(BaseModel):
     is_oa: Optional[StrictBool] = None
     pmcid: Optional[StrictStr] = None
     publication_status: Optional[StrictStr] = Field(default=None, description="study_schema's publication_status: `preprint` while only a preprint's identifiers are known, `published` once a version of record's are. ")
-    preprint_dois: Optional[List[BaseStudyPreprintDoisInner]] = Field(default=None, description="DOIs a preprint server registered for the paper, with the server (a study_schema PreprintServer). A base study holds an identifier once: on a POST, one another base study holds is not taken. ")
+    preprint_dois: Optional[List[BaseStudyPreprintDoisInner]] = Field(default=None, description="DOIs a preprint server registered for the paper, with the server. An identifier is held by one active base study: one another base study holds is not taken (see POST /base-studies). Returned normalized: DOIs in lower case. ")
     preprint_pmids: Optional[List[StrictStr]] = Field(default=None, description="PubMed's records of the paper's preprint.")
     preprint_pmcids: Optional[List[StrictStr]] = Field(default=None, description="PubMed Central's copies of the paper's preprint.")
     alternative_dois: Optional[List[StrictStr]] = Field(default=None, description="Any other DOI of the paper that is neither the version of record's `doi` nor a preprint's. ")

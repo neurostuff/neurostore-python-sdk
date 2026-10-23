@@ -1465,6 +1465,9 @@ No authorization required
 
 
 
+The edit is taken as it is. The preprint and alternative identifier lists are added to, never removed from; a changed `doi`, `pmid` or `pmcid` replaces the stored one, which the base study then no longer holds. An identifier another base study holds stays with that base study, and the pair is recorded as a merge candidate: a PUT is not refused for it.
+
+
 ### Example
 
 * Bearer Authentication (JSON-Web-Token):
@@ -1544,7 +1547,7 @@ Name | Type | Description  | Notes
 
 
 
-Creates a base study, or returns the active base study one or more of the posted identifiers (any bucket) already belong to, adding the identifiers it lacks. When the identifiers belong to several active base studies the one holding the strongest (version of record doi, pmid, pmcid, then a preprint's, then an alternative; the oldest on a tie) is returned, identifiers another base study holds are not taken, and the base studies are recorded as merge candidates.
+Creates a base study, or returns the active base study one or more of the posted identifiers (any bucket) already belong to, adding the identifiers it lacks. When the identifiers belong to several active base studies the one holding the strongest (version of record doi, pmid, pmcid, then a preprint's, then an alternative; the oldest on a tie) is returned, identifiers another base study holds are not taken, and the base studies are recorded as merge candidates. A POST is not refused for this. A single object is resolved like a list, and a new base study (one object or a list) is created with its first version, owned by the caller. Identifiers are returned normalized: DOIs in lower case, PMCIDs as `PMC` and digits.
 
 
 ### Example
