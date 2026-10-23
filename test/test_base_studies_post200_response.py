@@ -50,6 +50,27 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                 level = '',
                 is_oa = True,
                 pmcid = '',
+                publication_status = 'preprint',
+                preprint_dois = [
+                    neurostore_sdk.models.base_study_preprint_dois_inner.base_study_preprint_dois_inner(
+                        doi = '', 
+                        server = '', )
+                    ],
+                preprint_pmids = [
+                    ''
+                    ],
+                preprint_pmcids = [
+                    ''
+                    ],
+                alternative_dois = [
+                    ''
+                    ],
+                alternative_pmids = [
+                    ''
+                    ],
+                alternative_pmcids = [
+                    ''
+                    ],
                 created_at = '2021-01-16T20:50:38.009318Z',
                 updated_at = '',
                 id = '38jobTomPDqt',
