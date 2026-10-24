@@ -81,7 +81,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> AnalysisList analyses_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET list of analyses
 
@@ -107,7 +107,6 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
-    search = 'imagin' # str | search for entries that contain the substring (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -122,7 +121,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.analyses_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -136,7 +135,6 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| search for entries that contain the substring | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
@@ -1623,7 +1621,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **conditions_get**
-> ConditionList conditions_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description)
+> ConditionList conditions_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description)
 
 GET Conditions
 
@@ -1649,7 +1647,6 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
-    search = 'imagin' # str | search for entries that contain the substring (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -1660,7 +1657,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET Conditions
-        api_response = api_instance.conditions_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description)
+        api_response = api_instance.conditions_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description)
         print("The response of StoreApi->conditions_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1674,7 +1671,6 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| search for entries that contain the substring | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
@@ -2010,7 +2006,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **images_get**
-> ImageList images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> ImageList images_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a list of images
 
@@ -2036,7 +2032,6 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
-    search = 'imagin' # str | search for entries that contain the substring (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -2052,7 +2047,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of images
-        api_response = api_instance.images_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.images_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, filename=filename, study=study, analysis_name=analysis_name, value_type=value_type, space=space, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->images_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -2066,7 +2061,6 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| search for entries that contain the substring | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
@@ -4660,7 +4654,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studysets_get**
-> StudysetList studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
+> StudysetList studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, authors=authors, user_id=user_id)
 
 GET a list of studysets
 
@@ -4705,15 +4699,12 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
-    source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
-    unique = None # object | whether to list clones with originals (optional)
-    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
 
     try:
         # GET a list of studysets
-        api_response = api_instance.studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id)
+        api_response = api_instance.studysets_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, authors=authors, user_id=user_id)
         print("The response of StoreApi->studysets_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -4736,9 +4727,6 @@ Name | Type | Description  | Notes
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
- **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
- **unique** | [**object**](.md)| whether to list clones with originals | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
 
@@ -5081,7 +5069,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tables_get**
-> TableList tables_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
+> TableList tables_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
 
 GET list of tables
 
@@ -5107,7 +5095,6 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
-    search = 'imagin' # str | search for entries that contain the substring (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -5119,7 +5106,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET list of tables
-        api_response = api_instance.tables_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
+        api_response = api_instance.tables_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, nested=nested)
         print("The response of StoreApi->tables_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -5133,7 +5120,6 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | **str**| search for entries that contain the substring | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
