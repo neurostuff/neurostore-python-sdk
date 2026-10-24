@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -40,7 +41,24 @@ class BaseStudy(BaseModel):
     level: Optional[StrictStr] = None
     is_oa: Optional[StrictBool] = None
     pmcid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid"]
+    publication_status: Optional[StrictStr] = Field(default=None, description="study_schema's publication_status: `preprint` while only a preprint's identifiers are known, `published` once a version of record's are. ")
+    preprint_dois: Optional[List[BaseStudyPreprintDoisInner]] = Field(default=None, description="DOIs a preprint server registered for the paper, with the server. An identifier is held by one active base study: one another base study holds is not taken (see POST /base-studies). Returned normalized: DOIs in lower case. ")
+    preprint_pmids: Optional[List[StrictStr]] = Field(default=None, description="PubMed's records of the paper's preprint.")
+    preprint_pmcids: Optional[List[StrictStr]] = Field(default=None, description="PubMed Central's copies of the paper's preprint.")
+    alternative_dois: Optional[List[StrictStr]] = Field(default=None, description="Any other DOI of the paper that is neither the version of record's `doi` nor a preprint's. ")
+    alternative_pmids: Optional[List[StrictStr]] = Field(default=None, description="Any other PMID of the paper that is neither `pmid` nor a preprint's.")
+    alternative_pmcids: Optional[List[StrictStr]] = Field(default=None, description="Any other PMCID of the paper that is neither `pmcid` nor a preprint's.")
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids"]
+
+    @field_validator('publication_status')
+    def publication_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['preprint', 'published']):
+            raise ValueError("must be one of enum values ('preprint', 'published')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +105,13 @@ class BaseStudy(BaseModel):
                 if _item_versions is not None:
                     _items.append(_item_versions.to_dict())
             _dict['versions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in preprint_dois (list)
+        _items = []
+        if self.preprint_dois is not None:
+            for _item_preprint_dois in self.preprint_dois:
+                if _item_preprint_dois is not None:
+                    _items.append(_item_preprint_dois.to_dict())
+            _dict['preprint_dois'] = _items
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -142,6 +167,11 @@ class BaseStudy(BaseModel):
         if self.pmcid is None and "pmcid" in self.model_fields_set:
             _dict['pmcid'] = None
 
+        # set to None if publication_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.publication_status is None and "publication_status" in self.model_fields_set:
+            _dict['publication_status'] = None
+
         return _dict
 
     @classmethod
@@ -165,7 +195,14 @@ class BaseStudy(BaseModel):
             "year": obj.get("year"),
             "level": obj.get("level"),
             "is_oa": obj.get("is_oa"),
-            "pmcid": obj.get("pmcid")
+            "pmcid": obj.get("pmcid"),
+            "publication_status": obj.get("publication_status"),
+            "preprint_dois": [BaseStudyPreprintDoisInner.from_dict(_item) for _item in obj["preprint_dois"]] if obj.get("preprint_dois") is not None else None,
+            "preprint_pmids": obj.get("preprint_pmids"),
+            "preprint_pmcids": obj.get("preprint_pmcids"),
+            "alternative_dois": obj.get("alternative_dois"),
+            "alternative_pmids": obj.get("alternative_pmids"),
+            "alternative_pmcids": obj.get("alternative_pmcids")
         })
         return _obj
 

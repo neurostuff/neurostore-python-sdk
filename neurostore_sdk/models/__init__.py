@@ -47,6 +47,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
     from neurostore_sdk.models.base_study import BaseStudy
     from neurostore_sdk.models.base_study_list import BaseStudyList
+    from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner
     from neurostore_sdk.models.base_study_return import BaseStudyReturn
     from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
     from neurostore_sdk.models.clone import Clone
@@ -209,6 +210,7 @@ from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost2
 from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
 from neurostore_sdk.models.base_study import BaseStudy
 from neurostore_sdk.models.base_study_list import BaseStudyList
+from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner
 from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from neurostore_sdk.models.clone import Clone

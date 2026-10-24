@@ -49,7 +49,28 @@ class TestBaseStudy(unittest.TestCase):
                 year = 56,
                 level = '',
                 is_oa = True,
-                pmcid = ''
+                pmcid = '',
+                publication_status = 'preprint',
+                preprint_dois = [
+                    neurostore_sdk.models.base_study_preprint_dois_inner.base_study_preprint_dois_inner(
+                        doi = '', 
+                        server = 'biorxiv', )
+                    ],
+                preprint_pmids = [
+                    ''
+                    ],
+                preprint_pmcids = [
+                    ''
+                    ],
+                alternative_dois = [
+                    ''
+                    ],
+                alternative_pmids = [
+                    ''
+                    ],
+                alternative_pmcids = [
+                    ''
+                    ]
             )
         else:
             return BaseStudy(
