@@ -89,7 +89,6 @@ class StoreApi:
     @validate_call
     def analyses_get(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -118,8 +117,6 @@ class StoreApi:
 
         List all analyses performed across studies.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -165,7 +162,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._analyses_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -200,7 +196,6 @@ class StoreApi:
     @validate_call
     def analyses_get_with_http_info(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -229,8 +224,6 @@ class StoreApi:
 
         List all analyses performed across studies.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -276,7 +269,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._analyses_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -311,7 +303,6 @@ class StoreApi:
     @validate_call
     def analyses_get_without_preload_content(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -340,8 +331,6 @@ class StoreApi:
 
         List all analyses performed across studies.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -387,7 +376,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._analyses_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -417,7 +405,6 @@ class StoreApi:
 
     def _analyses_get_serialize(
         self,
-        search,
         sort,
         page,
         desc,
@@ -451,10 +438,6 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
-        if search is not None:
-            
-            _query_params.append(('search', search))
-            
         if sort is not None:
             
             _query_params.append(('sort', sort))
@@ -6127,7 +6110,6 @@ class StoreApi:
     @validate_call
     def conditions_get(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -6152,8 +6134,6 @@ class StoreApi:
 
         Get all conditions
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -6191,7 +6171,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._conditions_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -6222,7 +6201,6 @@ class StoreApi:
     @validate_call
     def conditions_get_with_http_info(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -6247,8 +6225,6 @@ class StoreApi:
 
         Get all conditions
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -6286,7 +6262,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._conditions_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -6317,7 +6292,6 @@ class StoreApi:
     @validate_call
     def conditions_get_without_preload_content(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -6342,8 +6316,6 @@ class StoreApi:
 
         Get all conditions
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -6381,7 +6353,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._conditions_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -6407,7 +6378,6 @@ class StoreApi:
 
     def _conditions_get_serialize(
         self,
-        search,
         sort,
         page,
         desc,
@@ -6437,10 +6407,6 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
-        if search is not None:
-            
-            _query_params.append(('search', search))
-            
         if sort is not None:
             
             _query_params.append(('sort', sort))
@@ -7591,7 +7557,6 @@ class StoreApi:
     @validate_call
     def images_get(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -7621,8 +7586,6 @@ class StoreApi:
 
         Retrieve and list images.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -7670,7 +7633,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._images_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -7706,7 +7668,6 @@ class StoreApi:
     @validate_call
     def images_get_with_http_info(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -7736,8 +7697,6 @@ class StoreApi:
 
         Retrieve and list images.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -7785,7 +7744,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._images_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -7821,7 +7779,6 @@ class StoreApi:
     @validate_call
     def images_get_without_preload_content(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -7851,8 +7808,6 @@ class StoreApi:
 
         Retrieve and list images.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -7900,7 +7855,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._images_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -7931,7 +7885,6 @@ class StoreApi:
 
     def _images_get_serialize(
         self,
-        search,
         sort,
         page,
         desc,
@@ -7966,10 +7919,6 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
-        if search is not None:
-            
-            _query_params.append(('search', search))
-            
         if sort is not None:
             
             _query_params.append(('sort', sort))
@@ -18168,9 +18117,6 @@ class StoreApi:
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
-        source_id: Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None,
-        unique: Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None,
-        source: Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None,
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         _request_timeout: Union[
@@ -18208,12 +18154,6 @@ class StoreApi:
         :type name: str
         :param description: search description field for a term
         :type description: str
-        :param source_id: id of the resource you are either filtering/copying on
-        :type source_id: str
-        :param unique: whether to list clones with originals
-        :type unique: object
-        :param source: the source of the resource you would like to filter/copy from
-        :type source: str
         :param authors: search authors
         :type authors: str
         :param user_id: user id you want to filter by
@@ -18250,9 +18190,6 @@ class StoreApi:
             nested=nested,
             name=name,
             description=description,
-            source_id=source_id,
-            unique=unique,
-            source=source,
             authors=authors,
             user_id=user_id,
             _request_auth=_request_auth,
@@ -18287,9 +18224,6 @@ class StoreApi:
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
-        source_id: Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None,
-        unique: Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None,
-        source: Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None,
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         _request_timeout: Union[
@@ -18327,12 +18261,6 @@ class StoreApi:
         :type name: str
         :param description: search description field for a term
         :type description: str
-        :param source_id: id of the resource you are either filtering/copying on
-        :type source_id: str
-        :param unique: whether to list clones with originals
-        :type unique: object
-        :param source: the source of the resource you would like to filter/copy from
-        :type source: str
         :param authors: search authors
         :type authors: str
         :param user_id: user id you want to filter by
@@ -18369,9 +18297,6 @@ class StoreApi:
             nested=nested,
             name=name,
             description=description,
-            source_id=source_id,
-            unique=unique,
-            source=source,
             authors=authors,
             user_id=user_id,
             _request_auth=_request_auth,
@@ -18406,9 +18331,6 @@ class StoreApi:
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
-        source_id: Annotated[Optional[StrictStr], Field(description="id of the resource you are either filtering/copying on")] = None,
-        unique: Annotated[Optional[Any], Field(description="whether to list clones with originals")] = None,
-        source: Annotated[Optional[StrictStr], Field(description="the source of the resource you would like to filter/copy from")] = None,
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         _request_timeout: Union[
@@ -18446,12 +18368,6 @@ class StoreApi:
         :type name: str
         :param description: search description field for a term
         :type description: str
-        :param source_id: id of the resource you are either filtering/copying on
-        :type source_id: str
-        :param unique: whether to list clones with originals
-        :type unique: object
-        :param source: the source of the resource you would like to filter/copy from
-        :type source: str
         :param authors: search authors
         :type authors: str
         :param user_id: user id you want to filter by
@@ -18488,9 +18404,6 @@ class StoreApi:
             nested=nested,
             name=name,
             description=description,
-            source_id=source_id,
-            unique=unique,
-            source=source,
             authors=authors,
             user_id=user_id,
             _request_auth=_request_auth,
@@ -18520,9 +18433,6 @@ class StoreApi:
         nested,
         name,
         description,
-        source_id,
-        unique,
-        source,
         authors,
         user_id,
         _request_auth,
@@ -18582,18 +18492,6 @@ class StoreApi:
         if description is not None:
             
             _query_params.append(('description', description))
-            
-        if source_id is not None:
-            
-            _query_params.append(('source_id', source_id))
-            
-        if unique is not None:
-            
-            _query_params.append(('unique', unique))
-            
-        if source is not None:
-            
-            _query_params.append(('source', source))
             
         if authors is not None:
             
@@ -19829,7 +19727,6 @@ class StoreApi:
     @validate_call
     def tables_get(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -19855,8 +19752,6 @@ class StoreApi:
 
         List all tables across studies.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -19896,7 +19791,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._tables_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -19928,7 +19822,6 @@ class StoreApi:
     @validate_call
     def tables_get_with_http_info(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -19954,8 +19847,6 @@ class StoreApi:
 
         List all tables across studies.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -19995,7 +19886,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._tables_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -20027,7 +19917,6 @@ class StoreApi:
     @validate_call
     def tables_get_without_preload_content(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -20053,8 +19942,6 @@ class StoreApi:
 
         List all tables across studies.
 
-        :param search: search for entries that contain the substring
-        :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -20094,7 +19981,6 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._tables_get_serialize(
-            search=search,
             sort=sort,
             page=page,
             desc=desc,
@@ -20121,7 +20007,6 @@ class StoreApi:
 
     def _tables_get_serialize(
         self,
-        search,
         sort,
         page,
         desc,
@@ -20152,10 +20037,6 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
-        if search is not None:
-            
-            _query_params.append(('search', search))
-            
         if sort is not None:
             
             _query_params.append(('sort', sort))
