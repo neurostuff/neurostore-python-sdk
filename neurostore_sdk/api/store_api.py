@@ -4326,6 +4326,8 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseStudyList",
+            '502': "ErrorResponse",
+            '503': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4524,6 +4526,8 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseStudyList",
+            '502': "ErrorResponse",
+            '503': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4722,6 +4726,8 @@ class StoreApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BaseStudyList",
+            '502': "ErrorResponse",
+            '503': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
