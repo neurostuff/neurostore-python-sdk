@@ -4159,6 +4159,7 @@ class StoreApi:
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4225,6 +4226,8 @@ class StoreApi:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
         :type search: str
+        :param search_full_text: Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract.
+        :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -4300,6 +4303,7 @@ class StoreApi:
             overall_cap=overall_cap,
             feature_flatten=feature_flatten,
             search=search,
+            search_full_text=search_full_text,
             sort=sort,
             page=page,
             desc=desc,
@@ -4359,6 +4363,7 @@ class StoreApi:
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4425,6 +4430,8 @@ class StoreApi:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
         :type search: str
+        :param search_full_text: Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract.
+        :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -4500,6 +4507,7 @@ class StoreApi:
             overall_cap=overall_cap,
             feature_flatten=feature_flatten,
             search=search,
+            search_full_text=search_full_text,
             sort=sort,
             page=page,
             desc=desc,
@@ -4559,6 +4567,7 @@ class StoreApi:
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4625,6 +4634,8 @@ class StoreApi:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
         :type search: str
+        :param search_full_text: Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract.
+        :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -4700,6 +4711,7 @@ class StoreApi:
             overall_cap=overall_cap,
             feature_flatten=feature_flatten,
             search=search,
+            search_full_text=search_full_text,
             sort=sort,
             page=page,
             desc=desc,
@@ -4754,6 +4766,7 @@ class StoreApi:
         overall_cap,
         feature_flatten,
         search,
+        search_full_text,
         sort,
         page,
         desc,
@@ -4859,6 +4872,10 @@ class StoreApi:
         if search is not None:
             
             _query_params.append(('search', search))
+            
+        if search_full_text is not None:
+            
+            _query_params.append(('search_full_text', search_full_text))
             
         if sort is not None:
             
