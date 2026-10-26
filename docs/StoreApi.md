@@ -1162,7 +1162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -1212,6 +1212,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     overall_cap = 3000 # int | Maximum number of overall results to return (default 3000) (optional)
     feature_flatten = True # bool |  (optional)
     search = 'imagin' # str | search for entries that contain the substring (optional)
+    search_full_text = False # bool | Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract. (optional) (default to False)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -1233,7 +1234,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
         print("The response of StoreApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1263,6 +1264,7 @@ Name | Type | Description  | Notes
  **overall_cap** | **int**| Maximum number of overall results to return (default 3000) | [optional] 
  **feature_flatten** | **bool**|  | [optional] 
  **search** | **str**| search for entries that contain the substring | [optional] 
+ **search_full_text** | **bool**| Also match &#x60;search&#x60; against the text of the paper. Without it a search matches titles and abstracts only. Records found only in the text are listed after those found in a title or abstract. | [optional] [default to False]
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
