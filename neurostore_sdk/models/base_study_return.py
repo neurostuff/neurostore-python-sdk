@@ -38,7 +38,7 @@ class BaseStudyReturn(BaseModel):
     publication: Optional[StrictStr] = None
     doi: Optional[StrictStr] = None
     pmid: Optional[StrictStr] = None
-    authors: Optional[StrictStr] = Field(default=None, description="The authors in published order, separated by \"; \". When a paper's structured author list has been uploaded the server derives this from it, and a value sent in a PUT is ignored.")
+    authors: Optional[StrictStr] = Field(default=None, description="The authors in published order. New values are joined with \"; \", since a name may hold \", \"; older values may be joined with \", \" or \";\". When a paper's structured author list has been uploaded the server derives this from it, and a value sent in a PUT, including null, is ignored.")
     year: Optional[StrictInt] = None
     level: Optional[StrictStr] = None
     is_oa: Optional[StrictBool] = None

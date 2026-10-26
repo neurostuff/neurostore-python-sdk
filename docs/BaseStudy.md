@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **publication** | **str** |  | [optional] 
 **doi** | **str** |  | [optional] 
 **pmid** | **str** |  | [optional] 
-**authors** | **str** | The authors in published order, separated by \&quot;; \&quot;. When a paper&#39;s structured author list has been uploaded the server derives this from it, and a value sent in a PUT is ignored. | [optional] 
+**authors** | **str** | The authors in published order. New values are joined with \&quot;; \&quot;, since a name may hold \&quot;, \&quot;; older values may be joined with \&quot;, \&quot; or \&quot;;\&quot;. When a paper&#39;s structured author list has been uploaded the server derives this from it, and a value sent in a PUT, including null, is ignored. | [optional] 
 **year** | **int** |  | [optional] 
 **level** | **str** |  | [optional] 
 **is_oa** | **bool** |  | [optional] 
