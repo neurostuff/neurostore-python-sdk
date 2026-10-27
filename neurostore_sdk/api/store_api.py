@@ -4158,8 +4158,8 @@ class StoreApi:
         distance_threshold: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Distance threshold for semantic search (default 0.5)")] = None,
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
-        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the paper's preferred full text, the copy its `fulltext_id` names (other copies are not searched): each word may match the title, the abstract or that text, and a quoted phrase must sit within one of them. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4224,9 +4224,9 @@ class StoreApi:
         :type overall_cap: int
         :param feature_flatten:
         :type feature_flatten: bool
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
-        :param search_full_text: Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
+        :param search_full_text: Also match `search` against the paper's preferred full text, the copy its `fulltext_id` names (other copies are not searched): each word may match the title, the abstract or that text, and a quoted phrase must sit within one of them. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
         :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
@@ -4362,8 +4362,8 @@ class StoreApi:
         distance_threshold: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Distance threshold for semantic search (default 0.5)")] = None,
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
-        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the paper's preferred full text, the copy its `fulltext_id` names (other copies are not searched): each word may match the title, the abstract or that text, and a quoted phrase must sit within one of them. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4428,9 +4428,9 @@ class StoreApi:
         :type overall_cap: int
         :param feature_flatten:
         :type feature_flatten: bool
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
-        :param search_full_text: Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
+        :param search_full_text: Also match `search` against the paper's preferred full text, the copy its `fulltext_id` names (other copies are not searched): each word may match the title, the abstract or that text, and a quoted phrase must sit within one of them. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
         :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
@@ -4566,8 +4566,8 @@ class StoreApi:
         distance_threshold: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Distance threshold for semantic search (default 0.5)")] = None,
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
-        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the paper's preferred full text, the copy its `fulltext_id` names (other copies are not searched): each word may match the title, the abstract or that text, and a quoted phrase must sit within one of them. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4632,9 +4632,9 @@ class StoreApi:
         :type overall_cap: int
         :param feature_flatten:
         :type feature_flatten: bool
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
-        :param search_full_text: Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
+        :param search_full_text: Also match `search` against the paper's preferred full text, the copy its `fulltext_id` names (other copies are not searched): each word may match the title, the abstract or that text, and a quoted phrase must sit within one of them. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
         :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
@@ -15989,7 +15989,7 @@ class StoreApi:
     @validate_call
     def studies_get(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -16030,7 +16030,7 @@ class StoreApi:
 
         List studies
 
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
@@ -16148,7 +16148,7 @@ class StoreApi:
     @validate_call
     def studies_get_with_http_info(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -16189,7 +16189,7 @@ class StoreApi:
 
         List studies
 
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
@@ -16307,7 +16307,7 @@ class StoreApi:
     @validate_call
     def studies_get_without_preload_content(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -16348,7 +16348,7 @@ class StoreApi:
 
         List studies
 
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
@@ -18131,7 +18131,7 @@ class StoreApi:
     @validate_call
     def studysets_get(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -18159,7 +18159,7 @@ class StoreApi:
 
         Get a list of studysets.
 
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
@@ -18238,7 +18238,7 @@ class StoreApi:
     @validate_call
     def studysets_get_with_http_info(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -18266,7 +18266,7 @@ class StoreApi:
 
         Get a list of studysets.
 
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
@@ -18345,7 +18345,7 @@ class StoreApi:
     @validate_call
     def studysets_get_without_preload_content(
         self,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -18373,7 +18373,7 @@ class StoreApi:
 
         Get a list of studysets.
 
-        :param search: search for entries that contain the substring
+        :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix, and every word must match; quoted phrases, AND, OR, NOT, a leading `-` and parentheses are understood. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
         :type sort: str
