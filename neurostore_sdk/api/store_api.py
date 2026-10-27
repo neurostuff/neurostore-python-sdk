@@ -4159,7 +4159,7 @@ class StoreApi:
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
-        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match.")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4226,7 +4226,7 @@ class StoreApi:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
         :type search: str
-        :param search_full_text: Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match.
+        :param search_full_text: Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
         :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
@@ -4363,7 +4363,7 @@ class StoreApi:
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
-        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match.")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4430,7 +4430,7 @@ class StoreApi:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
         :type search: str
-        :param search_full_text: Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match.
+        :param search_full_text: Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
         :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str
@@ -4567,7 +4567,7 @@ class StoreApi:
         overall_cap: Annotated[Optional[StrictInt], Field(description="Maximum number of overall results to return (default 3000)")] = None,
         feature_flatten: Optional[StrictBool] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="search for entries that contain the substring")] = None,
-        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match.")] = None,
+        search_full_text: Annotated[Optional[StrictBool], Field(description="Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -4634,7 +4634,7 @@ class StoreApi:
         :type feature_flatten: bool
         :param search: search for entries that contain the substring
         :type search: str
-        :param search_full_text: Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match.
+        :param search_full_text: Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed.
         :type search_full_text: bool
         :param sort: Parameter to sort results on
         :type sort: str

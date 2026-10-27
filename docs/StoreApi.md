@@ -1212,7 +1212,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     overall_cap = 3000 # int | Maximum number of overall results to return (default 3000) (optional)
     feature_flatten = True # bool |  (optional)
     search = 'imagin' # str | search for entries that contain the substring (optional)
-    search_full_text = False # bool | Also match `search` against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match. (optional) (default to False)
+    search_full_text = False # bool | Also match `search` against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed. (optional) (default to False)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -1264,7 +1264,7 @@ Name | Type | Description  | Notes
  **overall_cap** | **int**| Maximum number of overall results to return (default 3000) | [optional] 
  **feature_flatten** | **bool**|  | [optional] 
  **search** | **str**| search for entries that contain the substring | [optional] 
- **search_full_text** | **bool**| Also match &#x60;search&#x60; against the text of the paper. Without it a search matches titles and abstracts only. Results are ranked by relevance, in which a match in a title counts most, then one in an abstract, then one in the text; a record found only in the text can still rank above a weak title or abstract match. | [optional] [default to False]
+ **search_full_text** | **bool**| Also match &#x60;search&#x60; against the text of the paper: each word may match the title, the abstract or the text. Without it a search matches titles and abstracts only. A match in a title counts most, then one in an abstract, then one in the text, so records found only in the text usually rank below the others; that order is not guaranteed. | [optional] [default to False]
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
