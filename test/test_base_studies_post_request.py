@@ -54,7 +54,7 @@ class TestBaseStudiesPostRequest(unittest.TestCase):
                 preprint_dois = [
                     neurostore_sdk.models.base_study_preprint_dois_inner.base_study_preprint_dois_inner(
                         doi = '', 
-                        server = '0', )
+                        server = 'biorxiv', )
                     ],
                 preprint_pmids = [
                     ''

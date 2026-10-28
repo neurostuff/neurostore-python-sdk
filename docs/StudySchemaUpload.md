@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **coordinate_parse** | **Dict[str, object]** | A study_schema CoordinateParse (neuroimaging-paper-parse); a revision when revision_of is set. | [optional] 
 **record** | **Dict[str, object]** | A study_schema extraction record (neuroimaging-study-extraction). | [optional] 
 **parsed_paper** | **Dict[str, object]** | The ParsedPaper the parse read, for table captions and the bibliography. | [optional] 
+**text** | **str** | The parsed paper&#39;s text, whose sha256 is the parsed paper&#39;s text_sha256. Stored as one of the base study&#39;s full texts, with the licence of the copy it was read from. Needs parsed_paper.  | [optional] 
 **parse_id** | **str** | For a record uploaded alone, the parse_id of the stored parse it read. | [optional] 
 **base_study_id** | **str** | The base study; otherwise found by the parse header&#39;s identifiers. | [optional] 
 **run_id** | **str** | The caller&#39;s id for the pipeline run, stored on each result the upload writes. Re-uploading the same documents with the same run_id returns the same results and adds none; a run_id that already stored a different document for the paper is refused (422).  | [optional] 

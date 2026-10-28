@@ -31,11 +31,12 @@ class StudySchemaUpload(BaseModel):
     coordinate_parse: Optional[Dict[str, Any]] = Field(default=None, description="A study_schema CoordinateParse (neuroimaging-paper-parse); a revision when revision_of is set.")
     record: Optional[Dict[str, Any]] = Field(default=None, description="A study_schema extraction record (neuroimaging-study-extraction).")
     parsed_paper: Optional[Dict[str, Any]] = Field(default=None, description="The ParsedPaper the parse read, for table captions and the bibliography.")
+    text: Optional[StrictStr] = Field(default=None, description="The parsed paper's text, whose sha256 is the parsed paper's text_sha256. Stored as one of the base study's full texts, with the licence of the copy it was read from. Needs parsed_paper. ")
     parse_id: Optional[StrictStr] = Field(default=None, description="For a record uploaded alone, the parse_id of the stored parse it read.")
     base_study_id: Optional[StrictStr] = Field(default=None, description="The base study; otherwise found by the parse header's identifiers.")
     run_id: Optional[StrictStr] = Field(default=None, description="The caller's id for the pipeline run, stored on each result the upload writes. Re-uploading the same documents with the same run_id returns the same results and adds none; a run_id that already stored a different document for the paper is refused (422). ")
     pipeline: Optional[StudySchemaUploadPipeline] = None
-    __properties: ClassVar[List[str]] = ["coordinate_parse", "record", "parsed_paper", "parse_id", "base_study_id", "run_id", "pipeline"]
+    __properties: ClassVar[List[str]] = ["coordinate_parse", "record", "parsed_paper", "text", "parse_id", "base_study_id", "run_id", "pipeline"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,6 +94,7 @@ class StudySchemaUpload(BaseModel):
             "coordinate_parse": obj.get("coordinate_parse"),
             "record": obj.get("record"),
             "parsed_paper": obj.get("parsed_paper"),
+            "text": obj.get("text"),
             "parse_id": obj.get("parse_id"),
             "base_study_id": obj.get("base_study_id"),
             "run_id": obj.get("run_id"),

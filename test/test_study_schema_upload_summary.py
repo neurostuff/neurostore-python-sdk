@@ -38,6 +38,10 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
             return StudySchemaUploadSummary(
                 kind = 'parse',
                 base_study_id = '',
+                merged_from = [
+                    ''
+                    ],
+                took_ownership_from = '',
                 study_id = '',
                 parse_id = '',
                 skeleton = neurostore_sdk.models.study_schema_upload_summary_skeleton.study_schema_upload_summary_skeleton(

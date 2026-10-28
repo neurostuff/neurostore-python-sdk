@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **kind** | **str** |  | [optional] 
 **base_study_id** | **str** |  | [optional] 
+**merged_from** | **List[str]** | The base study the upload named, and each one between it and base_study_id, when it was merged into base_study_id and the upload followed the merge. Absent otherwise.  | [optional] 
+**took_ownership_from** | **str** | The user who owned the base study before this upload, which leaves it owned by no one and public. Absent when no one did.  | [optional] 
 **study_id** | **str** | The paper&#39;s pipeline-owned study. | [optional] 
 **parse_id** | **str** |  | [optional] 
 **skeleton** | [**StudySchemaUploadSummarySkeleton**](StudySchemaUploadSummarySkeleton.md) |  | [optional] 

@@ -34,6 +34,8 @@ class StudySchemaUploadSummary(BaseModel):
     """ # noqa: E501
     kind: Optional[StrictStr] = None
     base_study_id: Optional[StrictStr] = None
+    merged_from: Optional[List[StrictStr]] = Field(default=None, description="The base study the upload named, and each one between it and base_study_id, when it was merged into base_study_id and the upload followed the merge. Absent otherwise. ")
+    took_ownership_from: Optional[StrictStr] = Field(default=None, description="The user who owned the base study before this upload, which leaves it owned by no one and public. Absent when no one did. ")
     study_id: Optional[StrictStr] = Field(default=None, description="The paper's pipeline-owned study.")
     parse_id: Optional[StrictStr] = None
     skeleton: Optional[StudySchemaUploadSummarySkeleton] = None
@@ -41,7 +43,7 @@ class StudySchemaUploadSummary(BaseModel):
     set_aside_resolved: Optional[List[StudySchemaUploadSummarySetAsideResolvedInner]] = Field(default=None, description="For a parse: stored records whose set-aside keys (no earlier parse held them) this parse holds, re-ingested onto the new entities. ")
     record: Optional[StudySchemaUploadSummaryRecord] = None
     provenance: Optional[Dict[str, PipelineRunProvenance]] = Field(default=None, description="The stored run behind each part of the upload, keyed parse and record.")
-    __properties: ClassVar[List[str]] = ["kind", "base_study_id", "study_id", "parse_id", "skeleton", "carried", "set_aside_resolved", "record", "provenance"]
+    __properties: ClassVar[List[str]] = ["kind", "base_study_id", "merged_from", "took_ownership_from", "study_id", "parse_id", "skeleton", "carried", "set_aside_resolved", "record", "provenance"]
 
     @field_validator('kind')
     def kind_validate_enum(cls, value):
@@ -128,6 +130,8 @@ class StudySchemaUploadSummary(BaseModel):
         _obj = cls.model_validate({
             "kind": obj.get("kind"),
             "base_study_id": obj.get("base_study_id"),
+            "merged_from": obj.get("merged_from"),
+            "took_ownership_from": obj.get("took_ownership_from"),
             "study_id": obj.get("study_id"),
             "parse_id": obj.get("parse_id"),
             "skeleton": StudySchemaUploadSummarySkeleton.from_dict(obj["skeleton"]) if obj.get("skeleton") is not None else None,
