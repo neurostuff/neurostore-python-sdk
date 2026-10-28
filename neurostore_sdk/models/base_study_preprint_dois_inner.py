@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,15 +29,8 @@ class BaseStudyPreprintDoisInner(BaseModel):
     BaseStudyPreprintDoisInner
     """ # noqa: E501
     doi: StrictStr
-    server: StrictStr = Field(description="The preprint server that registered the DOI (study_schema's PreprintServer).")
+    server: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The preprint server that registered the DOI: one of study_schema's PreprintServer values (biorxiv, medrxiv, arxiv, researchsquare, osf_preprints, psyarxiv, ssrn and others), or any other non-empty name for a server it does not list. ")
     __properties: ClassVar[List[str]] = ["doi", "server"]
-
-    @field_validator('server')
-    def server_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['biorxiv', 'medrxiv', 'arxiv', 'researchsquare', 'osf_preprints', 'elife', 'arabixiv', 'metaarxiv', 'engrxiv', 'focus_archive', 'frenxiv', 'ina_rxiv', 'lawarxiv', 'lis_scholarship_archive', 'marxiv', 'mindrxiv', 'nutrixiv', 'paleorxiv', 'psyarxiv', 'socarxiv', 'sportrxiv', 'africarxiv', 'mediarxiv', 'bodoarxiv', 'edarxiv', 'biohackrxiv', 'ssrn', 'preprints_org', 'authorea', 'techrxiv', 'chemrxiv', 'jmir_preprints']):
-            raise ValueError("must be one of enum values ('biorxiv', 'medrxiv', 'arxiv', 'researchsquare', 'osf_preprints', 'elife', 'arabixiv', 'metaarxiv', 'engrxiv', 'focus_archive', 'frenxiv', 'ina_rxiv', 'lawarxiv', 'lis_scholarship_archive', 'marxiv', 'mindrxiv', 'nutrixiv', 'paleorxiv', 'psyarxiv', 'socarxiv', 'sportrxiv', 'africarxiv', 'mediarxiv', 'bodoarxiv', 'edarxiv', 'biohackrxiv', 'ssrn', 'preprints_org', 'authorea', 'techrxiv', 'chemrxiv', 'jmir_preprints')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
