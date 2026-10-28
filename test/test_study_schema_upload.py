@@ -39,6 +39,7 @@ class TestStudySchemaUpload(unittest.TestCase):
                 coordinate_parse = { },
                 record = { },
                 parsed_paper = { },
+                text = '',
                 parse_id = '',
                 base_study_id = '',
                 run_id = '',
