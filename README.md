@@ -125,6 +125,10 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**annotations_id_get**](docs/StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
 *StoreApi* | [**annotations_id_put**](docs/StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
 *StoreApi* | [**annotations_post**](docs/StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
+*StoreApi* | [**api_keys_get**](docs/StoreApi.md#api_keys_get) | **GET** /api-keys/ | List your API keys
+*StoreApi* | [**api_keys_id_delete**](docs/StoreApi.md#api_keys_id_delete) | **DELETE** /api-keys/{id} | Revoke an API key
+*StoreApi* | [**api_keys_introspect_get**](docs/StoreApi.md#api_keys_introspect_get) | **GET** /api-keys/introspect | Describe the API key making the request
+*StoreApi* | [**api_keys_post**](docs/StoreApi.md#api_keys_post) | **POST** /api-keys/ | Create an API key
 *StoreApi* | [**base_studies_get**](docs/StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
 *StoreApi* | [**base_studies_id_delete**](docs/StoreApi.md#base_studies_id_delete) | **DELETE** /base-studies/{id} | Delete a base study
 *StoreApi* | [**base_studies_id_get**](docs/StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
@@ -216,6 +220,11 @@ Class | Method | HTTP request | Description
  - [AnnotationReturnOneOf](docs/AnnotationReturnOneOf.md)
  - [AnnotationReturnRelationships](docs/AnnotationReturnRelationships.md)
  - [AnnotationReturnRelationshipsNotes](docs/AnnotationReturnRelationshipsNotes.md)
+ - [ApiKey](docs/ApiKey.md)
+ - [ApiKeyCreated](docs/ApiKeyCreated.md)
+ - [ApiKeyIntrospection](docs/ApiKeyIntrospection.md)
+ - [ApiKeyList](docs/ApiKeyList.md)
+ - [ApiKeyRequest](docs/ApiKeyRequest.md)
  - [BaseStudiesIdDelete200Response](docs/BaseStudiesIdDelete200Response.md)
  - [BaseStudiesPost200Response](docs/BaseStudiesPost200Response.md)
  - [BaseStudiesPostRequest](docs/BaseStudiesPostRequest.md)
