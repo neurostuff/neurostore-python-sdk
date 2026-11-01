@@ -125,6 +125,34 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_api_keys_get(self) -> None:
+        """Test case for api_keys_get
+
+        List your API keys
+        """
+        pass
+
+    def test_api_keys_id_delete(self) -> None:
+        """Test case for api_keys_id_delete
+
+        Revoke an API key
+        """
+        pass
+
+    def test_api_keys_introspect_get(self) -> None:
+        """Test case for api_keys_introspect_get
+
+        Describe the API key making the request
+        """
+        pass
+
+    def test_api_keys_post(self) -> None:
+        """Test case for api_keys_post
+
+        Create an API key
+        """
+        pass
+
     def test_base_studies_get(self) -> None:
         """Test case for base_studies_get
 

@@ -42,6 +42,11 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
     from neurostore_sdk.models.annotation_return_relationships import AnnotationReturnRelationships
     from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
+    from neurostore_sdk.models.api_key import ApiKey
+    from neurostore_sdk.models.api_key_created import ApiKeyCreated
+    from neurostore_sdk.models.api_key_introspection import ApiKeyIntrospection
+    from neurostore_sdk.models.api_key_list import ApiKeyList
+    from neurostore_sdk.models.api_key_request import ApiKeyRequest
     from neurostore_sdk.models.base_studies_id_delete200_response import BaseStudiesIdDelete200Response
     from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response
     from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest
@@ -205,6 +210,11 @@ from neurostore_sdk.models.annotation_return import AnnotationReturn
 from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf
 from neurostore_sdk.models.annotation_return_relationships import AnnotationReturnRelationships
 from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
+from neurostore_sdk.models.api_key import ApiKey
+from neurostore_sdk.models.api_key_created import ApiKeyCreated
+from neurostore_sdk.models.api_key_introspection import ApiKeyIntrospection
+from neurostore_sdk.models.api_key_list import ApiKeyList
+from neurostore_sdk.models.api_key_request import ApiKeyRequest
 from neurostore_sdk.models.base_studies_id_delete200_response import BaseStudiesIdDelete200Response
 from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response
 from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest

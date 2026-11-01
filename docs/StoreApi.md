@@ -18,6 +18,10 @@ Method | HTTP request | Description
 [**annotations_id_get**](StoreApi.md#annotations_id_get) | **GET** /annotations/{id} | Your GET endpoint
 [**annotations_id_put**](StoreApi.md#annotations_id_put) | **PUT** /annotations/{id} | Update an annotation
 [**annotations_post**](StoreApi.md#annotations_post) | **POST** /annotations/ | Post Annotation
+[**api_keys_get**](StoreApi.md#api_keys_get) | **GET** /api-keys/ | List your API keys
+[**api_keys_id_delete**](StoreApi.md#api_keys_id_delete) | **DELETE** /api-keys/{id} | Revoke an API key
+[**api_keys_introspect_get**](StoreApi.md#api_keys_introspect_get) | **GET** /api-keys/introspect | Describe the API key making the request
+[**api_keys_post**](StoreApi.md#api_keys_post) | **POST** /api-keys/ | Create an API key
 [**base_studies_get**](StoreApi.md#base_studies_get) | **GET** /base-studies/ | 
 [**base_studies_id_delete**](StoreApi.md#base_studies_id_delete) | **DELETE** /base-studies/{id} | Delete a base study
 [**base_studies_id_get**](StoreApi.md#base_studies_id_get) | **GET** /base-studies/{id} | Your GET endpoint
@@ -1158,6 +1162,308 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_keys_get**
+> ApiKeyList api_keys_get()
+
+List your API keys
+
+List the caller's API keys, revoked ones included. Requires a login token, not an API key.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.api_key_list import ApiKeyList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+
+    try:
+        # List your API keys
+        api_response = api_instance.api_keys_get()
+        print("The response of StoreApi->api_keys_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->api_keys_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiKeyList**](ApiKeyList.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_keys_id_delete**
+> api_keys_id_delete(id)
+
+Revoke an API key
+
+Revoke one of the caller's API keys. Requires a login token, not an API key.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # Revoke an API key
+        api_instance.api_keys_id_delete(id)
+    except Exception as e:
+        print("Exception when calling StoreApi->api_keys_id_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Revoked |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_keys_introspect_get**
+> ApiKeyIntrospection api_keys_introspect_get()
+
+Describe the API key making the request
+
+Return the owner and scopes of the API key sent as the bearer token.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.api_key_introspection import ApiKeyIntrospection
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+
+    try:
+        # Describe the API key making the request
+        api_response = api_instance.api_keys_introspect_get()
+        print("The response of StoreApi->api_keys_introspect_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->api_keys_introspect_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiKeyIntrospection**](ApiKeyIntrospection.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_keys_post**
+> ApiKeyCreated api_keys_post(api_key_request=api_key_request)
+
+Create an API key
+
+Create an API key that works on Neurostore and Neurosynth Compose until it is revoked. The key is returned only in this response. Requires a login token, not an API key.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.api_key_created import ApiKeyCreated
+from neurostore_sdk.models.api_key_request import ApiKeyRequest
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    api_key_request = neurostore_sdk.ApiKeyRequest() # ApiKeyRequest |  (optional)
+
+    try:
+        # Create an API key
+        api_response = api_instance.api_keys_post(api_key_request=api_key_request)
+        print("The response of StoreApi->api_keys_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->api_keys_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api_key_request** | [**ApiKeyRequest**](ApiKeyRequest.md)|  | [optional] 
+
+### Return type
+
+[**ApiKeyCreated**](ApiKeyCreated.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
