@@ -59,7 +59,10 @@ class TestAnalysisRequest(unittest.TestCase):
                 role = '',
                 relabelled_by = '',
                 outcome = 'significant_effect',
-                from_prior_study = True
+                from_prior_study = True,
+                data_sources = [
+                    ''
+                    ]
             )
         else:
             return AnalysisRequest(

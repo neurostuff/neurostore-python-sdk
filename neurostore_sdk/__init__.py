@@ -75,6 +75,12 @@ __all__ = [
     "ConditionList",
     "ConditionRequest",
     "ConditionReturn",
+    "DataSourceAlias",
+    "DataSourceCommon",
+    "DataSourceList",
+    "DataSourceRequest",
+    "DataSourceReturn",
+    "DataSourceSummary",
     "Entity",
     "ErrorDetail",
     "ErrorResponse",
@@ -254,6 +260,12 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.condition_list import ConditionList as ConditionList
     from neurostore_sdk.models.condition_request import ConditionRequest as ConditionRequest
     from neurostore_sdk.models.condition_return import ConditionReturn as ConditionReturn
+    from neurostore_sdk.models.data_source_alias import DataSourceAlias as DataSourceAlias
+    from neurostore_sdk.models.data_source_common import DataSourceCommon as DataSourceCommon
+    from neurostore_sdk.models.data_source_list import DataSourceList as DataSourceList
+    from neurostore_sdk.models.data_source_request import DataSourceRequest as DataSourceRequest
+    from neurostore_sdk.models.data_source_return import DataSourceReturn as DataSourceReturn
+    from neurostore_sdk.models.data_source_summary import DataSourceSummary as DataSourceSummary
     from neurostore_sdk.models.entity import Entity as Entity
     from neurostore_sdk.models.error_detail import ErrorDetail as ErrorDetail
     from neurostore_sdk.models.error_response import ErrorResponse as ErrorResponse
@@ -439,6 +451,12 @@ from neurostore_sdk.models.condition_base import ConditionBase as ConditionBase
 from neurostore_sdk.models.condition_list import ConditionList as ConditionList
 from neurostore_sdk.models.condition_request import ConditionRequest as ConditionRequest
 from neurostore_sdk.models.condition_return import ConditionReturn as ConditionReturn
+from neurostore_sdk.models.data_source_alias import DataSourceAlias as DataSourceAlias
+from neurostore_sdk.models.data_source_common import DataSourceCommon as DataSourceCommon
+from neurostore_sdk.models.data_source_list import DataSourceList as DataSourceList
+from neurostore_sdk.models.data_source_request import DataSourceRequest as DataSourceRequest
+from neurostore_sdk.models.data_source_return import DataSourceReturn as DataSourceReturn
+from neurostore_sdk.models.data_source_summary import DataSourceSummary as DataSourceSummary
 from neurostore_sdk.models.entity import Entity as Entity
 from neurostore_sdk.models.error_detail import ErrorDetail as ErrorDetail
 from neurostore_sdk.models.error_response import ErrorResponse as ErrorResponse

@@ -49,7 +49,8 @@ class AnalysisRequest(BaseModel):
     relabelled_by: Optional[StrictStr] = Field(default=None, description="The parse_id of the reviewed revision whose relabel verdict set `role`; a later parse does not replace a relabelled role. Null while the role is the classifier's, whose name and version are in `metadata.role_source` (study_schema's `role_source`).")
     outcome: Optional[StrictStr] = Field(default=None, description="Whether anything survived the analysis's threshold (study_schema AnalysisOutcome), from the extraction record. The ingester sets it only on results.")
     from_prior_study: Optional[StrictBool] = Field(default=None, description="The coordinates are quoted from an earlier study, not this one's.")
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "table_id", "entities", "order", "metadata", "role", "relabelled_by", "outcome", "from_prior_study"]
+    data_sources: Optional[List[StrictStr]] = Field(default=None, description="The ids of the data sources the analysis's data come from; replaces its links.")
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "study", "images", "points", "conditions", "id", "public", "table_id", "entities", "order", "metadata", "role", "relabelled_by", "outcome", "from_prior_study", "data_sources"]
 
     @field_validator('outcome')
     def outcome_validate_enum(cls, value):
@@ -188,7 +189,8 @@ class AnalysisRequest(BaseModel):
             "role": obj.get("role"),
             "relabelled_by": obj.get("relabelled_by"),
             "outcome": obj.get("outcome"),
-            "from_prior_study": obj.get("from_prior_study")
+            "from_prior_study": obj.get("from_prior_study"),
+            "data_sources": obj.get("data_sources")
         })
         return _obj
 

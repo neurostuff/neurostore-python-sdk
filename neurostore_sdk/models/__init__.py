@@ -60,6 +60,12 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.condition_list import ConditionList
     from neurostore_sdk.models.condition_request import ConditionRequest
     from neurostore_sdk.models.condition_return import ConditionReturn
+    from neurostore_sdk.models.data_source_alias import DataSourceAlias
+    from neurostore_sdk.models.data_source_common import DataSourceCommon
+    from neurostore_sdk.models.data_source_list import DataSourceList
+    from neurostore_sdk.models.data_source_request import DataSourceRequest
+    from neurostore_sdk.models.data_source_return import DataSourceReturn
+    from neurostore_sdk.models.data_source_summary import DataSourceSummary
     from neurostore_sdk.models.entity import Entity
     from neurostore_sdk.models.error_detail import ErrorDetail
     from neurostore_sdk.models.error_response import ErrorResponse
@@ -228,6 +234,12 @@ from neurostore_sdk.models.condition_base import ConditionBase
 from neurostore_sdk.models.condition_list import ConditionList
 from neurostore_sdk.models.condition_request import ConditionRequest
 from neurostore_sdk.models.condition_return import ConditionReturn
+from neurostore_sdk.models.data_source_alias import DataSourceAlias
+from neurostore_sdk.models.data_source_common import DataSourceCommon
+from neurostore_sdk.models.data_source_list import DataSourceList
+from neurostore_sdk.models.data_source_request import DataSourceRequest
+from neurostore_sdk.models.data_source_return import DataSourceReturn
+from neurostore_sdk.models.data_source_summary import DataSourceSummary
 from neurostore_sdk.models.entity import Entity
 from neurostore_sdk.models.error_detail import ErrorDetail
 from neurostore_sdk.models.error_response import ErrorResponse

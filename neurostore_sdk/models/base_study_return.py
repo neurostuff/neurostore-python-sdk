@@ -24,6 +24,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
+from neurostore_sdk.models.data_source_summary import DataSourceSummary
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +63,8 @@ class BaseStudyReturn(BaseModel):
     has_t_maps: Optional[StrictBool] = None
     has_beta_and_variance_maps: Optional[StrictBool] = None
     features: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features"]
+    data_sources: Optional[List[DataSourceSummary]] = Field(default=None, description="Present only when the request sets `data_sources=true`.")
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features", "data_sources"]
 
     @field_validator('publication_status')
     def publication_status_validate_enum(cls, value):
@@ -107,6 +109,7 @@ class BaseStudyReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([])
 
@@ -129,6 +132,13 @@ class BaseStudyReturn(BaseModel):
                 if _item_preprint_dois is not None:
                     _items.append(_item_preprint_dois.to_dict())
             _dict['preprint_dois'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in data_sources (list)
+        _items = []
+        if self.data_sources is not None:
+            for _item_data_sources in self.data_sources:
+                if _item_data_sources is not None:
+                    _items.append(_item_data_sources.to_dict())
+            _dict['data_sources'] = _items
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field
         if self.metadata is None and "metadata" in self.model_fields_set:
@@ -246,7 +256,8 @@ class BaseStudyReturn(BaseModel):
             "has_z_maps": obj.get("has_z_maps"),
             "has_t_maps": obj.get("has_t_maps"),
             "has_beta_and_variance_maps": obj.get("has_beta_and_variance_maps"),
-            "features": obj.get("features")
+            "features": obj.get("features"),
+            "data_sources": [DataSourceSummary.from_dict(_item) for _item in obj["data_sources"]] if obj.get("data_sources") is not None else None
         })
         return _obj
 

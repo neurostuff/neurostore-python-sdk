@@ -39,6 +39,9 @@ from neurostore_sdk.models.base_study_return import BaseStudyReturn
 from neurostore_sdk.models.condition_list import ConditionList
 from neurostore_sdk.models.condition_request import ConditionRequest
 from neurostore_sdk.models.condition_return import ConditionReturn
+from neurostore_sdk.models.data_source_list import DataSourceList
+from neurostore_sdk.models.data_source_request import DataSourceRequest
+from neurostore_sdk.models.data_source_return import DataSourceReturn
 from neurostore_sdk.models.image_list import ImageList
 from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
@@ -93,6 +96,7 @@ class StoreApi:
     @validate_call
     def analyses_get(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -121,6 +125,8 @@ class StoreApi:
 
         List all analyses performed across studies.
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -166,6 +172,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._analyses_get_serialize(
+            data_sources=data_sources,
             sort=sort,
             page=page,
             desc=desc,
@@ -200,6 +207,7 @@ class StoreApi:
     @validate_call
     def analyses_get_with_http_info(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -228,6 +236,8 @@ class StoreApi:
 
         List all analyses performed across studies.
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -273,6 +283,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._analyses_get_serialize(
+            data_sources=data_sources,
             sort=sort,
             page=page,
             desc=desc,
@@ -307,6 +318,7 @@ class StoreApi:
     @validate_call
     def analyses_get_without_preload_content(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
@@ -335,6 +347,8 @@ class StoreApi:
 
         List all analyses performed across studies.
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param sort: Parameter to sort results on
         :type sort: str
         :param page: page of results
@@ -380,6 +394,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._analyses_get_serialize(
+            data_sources=data_sources,
             sort=sort,
             page=page,
             desc=desc,
@@ -409,6 +424,7 @@ class StoreApi:
 
     def _analyses_get_serialize(
         self,
+        data_sources,
         sort,
         page,
         desc,
@@ -442,6 +458,10 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if data_sources is not None:
+            
+            _query_params.append(('data_sources', data_sources))
+            
         if sort is not None:
             
             _query_params.append(('sort', sort))
@@ -780,6 +800,7 @@ class StoreApi:
     def analyses_id_get(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
         image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
@@ -802,6 +823,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
@@ -832,6 +855,7 @@ class StoreApi:
 
         _param = self._analyses_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             nested=nested,
             image_metadata=image_metadata,
             image_value_summary=image_value_summary,
@@ -860,6 +884,7 @@ class StoreApi:
     def analyses_id_get_with_http_info(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
         image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
@@ -882,6 +907,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
@@ -912,6 +939,7 @@ class StoreApi:
 
         _param = self._analyses_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             nested=nested,
             image_metadata=image_metadata,
             image_value_summary=image_value_summary,
@@ -940,6 +968,7 @@ class StoreApi:
     def analyses_id_get_without_preload_content(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
         image_value_summary: Annotated[Optional[StrictBool], Field(description="include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads.")] = None,
@@ -962,6 +991,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param image_metadata: include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.
@@ -992,6 +1023,7 @@ class StoreApi:
 
         _param = self._analyses_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             nested=nested,
             image_metadata=image_metadata,
             image_value_summary=image_value_summary,
@@ -1015,6 +1047,7 @@ class StoreApi:
     def _analyses_id_get_serialize(
         self,
         id,
+        data_sources,
         nested,
         image_metadata,
         image_value_summary,
@@ -1042,6 +1075,10 @@ class StoreApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if data_sources is not None:
+            
+            _query_params.append(('data_sources', data_sources))
+            
         if nested is not None:
             
             _query_params.append(('nested', nested))
@@ -5167,6 +5204,7 @@ class StoreApi:
     @validate_call
     def base_studies_get(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
         x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
@@ -5218,6 +5256,8 @@ class StoreApi:
         """
 
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param year_min: Minimum publication year (inclusive) for study search
@@ -5311,6 +5351,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            data_sources=data_sources,
             nested=nested,
             year_min=year_min,
             x=x,
@@ -5371,6 +5412,7 @@ class StoreApi:
     @validate_call
     def base_studies_get_with_http_info(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
         x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
@@ -5422,6 +5464,8 @@ class StoreApi:
         """
 
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param year_min: Minimum publication year (inclusive) for study search
@@ -5515,6 +5559,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            data_sources=data_sources,
             nested=nested,
             year_min=year_min,
             x=x,
@@ -5575,6 +5620,7 @@ class StoreApi:
     @validate_call
     def base_studies_get_without_preload_content(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         year_min: Annotated[Optional[StrictInt], Field(description="Minimum publication year (inclusive) for study search")] = None,
         x: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="X coordinate for spatial query (requires y, z, and radius)")] = None,
@@ -5626,6 +5672,8 @@ class StoreApi:
         """
 
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param year_min: Minimum publication year (inclusive) for study search
@@ -5719,6 +5767,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._base_studies_get_serialize(
+            data_sources=data_sources,
             nested=nested,
             year_min=year_min,
             x=x,
@@ -5774,6 +5823,7 @@ class StoreApi:
 
     def _base_studies_get_serialize(
         self,
+        data_sources,
         nested,
         year_min,
         x,
@@ -5833,6 +5883,10 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if data_sources is not None:
+            
+            _query_params.append(('data_sources', data_sources))
+            
         if nested is not None:
             
             _query_params.append(('nested', nested))
@@ -6287,6 +6341,7 @@ class StoreApi:
     def base_studies_id_get(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -6308,6 +6363,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
@@ -6338,6 +6395,7 @@ class StoreApi:
 
         _param = self._base_studies_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             flat=flat,
             info=info,
             nested=nested,
@@ -6365,6 +6423,7 @@ class StoreApi:
     def base_studies_id_get_with_http_info(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -6386,6 +6445,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
@@ -6416,6 +6477,7 @@ class StoreApi:
 
         _param = self._base_studies_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             flat=flat,
             info=info,
             nested=nested,
@@ -6443,6 +6505,7 @@ class StoreApi:
     def base_studies_id_get_without_preload_content(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
         info: Annotated[Optional[StrictBool], Field(description="show additional for endpoint-object relationships without being fully nested. Incompatible with nested")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
@@ -6464,6 +6527,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param flat: do not return any embedded relationships. When set, it is incompatible with nested. 
         :type flat: bool
         :param info: show additional for endpoint-object relationships without being fully nested. Incompatible with nested
@@ -6494,6 +6559,7 @@ class StoreApi:
 
         _param = self._base_studies_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             flat=flat,
             info=info,
             nested=nested,
@@ -6516,6 +6582,7 @@ class StoreApi:
     def _base_studies_id_get_serialize(
         self,
         id,
+        data_sources,
         flat,
         info,
         nested,
@@ -6543,6 +6610,10 @@ class StoreApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if data_sources is not None:
+            
+            _query_params.append(('data_sources', data_sources))
+            
         if flat is not None:
             
             _query_params.append(('flat', flat))
@@ -8586,6 +8657,1496 @@ class StoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/conditions/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def data_sources_get(
+        self,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
+        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
+        kind: Annotated[Optional[StrictStr], Field(description="only data sources of this kind")] = None,
+        slug: Annotated[Optional[StrictStr], Field(description="only the data source with this slug")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DataSourceList:
+        """GET data sources
+
+        List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param name: search the name field for a term
+        :type name: str
+        :param description: search description field for a term
+        :type description: str
+        :param kind: only data sources of this kind
+        :type kind: str
+        :param slug: only the data source with this slug
+        :type slug: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_get_serialize(
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            name=name,
+            description=description,
+            kind=kind,
+            slug=slug,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def data_sources_get_with_http_info(
+        self,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
+        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
+        kind: Annotated[Optional[StrictStr], Field(description="only data sources of this kind")] = None,
+        slug: Annotated[Optional[StrictStr], Field(description="only the data source with this slug")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DataSourceList]:
+        """GET data sources
+
+        List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param name: search the name field for a term
+        :type name: str
+        :param description: search description field for a term
+        :type description: str
+        :param kind: only data sources of this kind
+        :type kind: str
+        :param slug: only the data source with this slug
+        :type slug: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_get_serialize(
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            name=name,
+            description=description,
+            kind=kind,
+            slug=slug,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def data_sources_get_without_preload_content(
+        self,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
+        description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
+        kind: Annotated[Optional[StrictStr], Field(description="only data sources of this kind")] = None,
+        slug: Annotated[Optional[StrictStr], Field(description="only the data source with this slug")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET data sources
+
+        List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param name: search the name field for a term
+        :type name: str
+        :param description: search description field for a term
+        :type description: str
+        :param kind: only data sources of this kind
+        :type kind: str
+        :param slug: only the data source with this slug
+        :type slug: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_get_serialize(
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            name=name,
+            description=description,
+            kind=kind,
+            slug=slug,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _data_sources_get_serialize(
+        self,
+        sort,
+        page,
+        desc,
+        page_size,
+        paginate,
+        name,
+        description,
+        kind,
+        slug,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if sort is not None:
+            
+            _query_params.append(('sort', sort))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if desc is not None:
+            
+            _query_params.append(('desc', desc))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
+        if name is not None:
+            
+            _query_params.append(('name', name))
+            
+        if description is not None:
+            
+            _query_params.append(('description', description))
+            
+        if kind is not None:
+            
+            _query_params.append(('kind', kind))
+            
+        if slug is not None:
+            
+            _query_params.append(('slug', slug))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/data-sources/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def data_sources_id_delete(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """DELETE a data source
+
+        Delete a data source and its analysis links. Admins only.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_delete_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def data_sources_id_delete_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """DELETE a data source
+
+        Delete a data source and its analysis links. Admins only.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_delete_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def data_sources_id_delete_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """DELETE a data source
+
+        Delete a data source and its analysis links. Admins only.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_delete_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _data_sources_id_delete_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/data-sources/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def data_sources_id_get(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DataSourceReturn:
+        """GET a data source
+
+        Retrieve a data source and its aliases.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def data_sources_id_get_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DataSourceReturn]:
+        """GET a data source
+
+        Retrieve a data source and its aliases.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def data_sources_id_get_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET a data source
+
+        Retrieve a data source and its aliases.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '404': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _data_sources_id_get_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/data-sources/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def data_sources_id_put(
+        self,
+        id: StrictStr,
+        data_source_request: Optional[DataSourceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DataSourceReturn:
+        """PUT/update a data source
+
+        Update a data source; given aliases replace its aliases. Admins only.
+
+        :param id: (required)
+        :type id: str
+        :param data_source_request:
+        :type data_source_request: DataSourceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_put_serialize(
+            id=id,
+            data_source_request=data_source_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '403': None,
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def data_sources_id_put_with_http_info(
+        self,
+        id: StrictStr,
+        data_source_request: Optional[DataSourceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DataSourceReturn]:
+        """PUT/update a data source
+
+        Update a data source; given aliases replace its aliases. Admins only.
+
+        :param id: (required)
+        :type id: str
+        :param data_source_request:
+        :type data_source_request: DataSourceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_put_serialize(
+            id=id,
+            data_source_request=data_source_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '403': None,
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def data_sources_id_put_without_preload_content(
+        self,
+        id: StrictStr,
+        data_source_request: Optional[DataSourceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """PUT/update a data source
+
+        Update a data source; given aliases replace its aliases. Admins only.
+
+        :param id: (required)
+        :type id: str
+        :param data_source_request:
+        :type data_source_request: DataSourceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_id_put_serialize(
+            id=id,
+            data_source_request=data_source_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '403': None,
+            '422': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _data_sources_id_put_serialize(
+        self,
+        id,
+        data_source_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if data_source_request is not None:
+            _body_params = data_source_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/data-sources/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def data_sources_post(
+        self,
+        data_source_request: Optional[DataSourceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DataSourceReturn:
+        """POST/Create a data source
+
+        Create a data source. Admins only.
+
+        :param data_source_request:
+        :type data_source_request: DataSourceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_post_serialize(
+            data_source_request=data_source_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def data_sources_post_with_http_info(
+        self,
+        data_source_request: Optional[DataSourceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DataSourceReturn]:
+        """POST/Create a data source
+
+        Create a data source. Admins only.
+
+        :param data_source_request:
+        :type data_source_request: DataSourceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_post_serialize(
+            data_source_request=data_source_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def data_sources_post_without_preload_content(
+        self,
+        data_source_request: Optional[DataSourceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """POST/Create a data source
+
+        Create a data source. Admins only.
+
+        :param data_source_request:
+        :type data_source_request: DataSourceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_sources_post_serialize(
+            data_source_request=data_source_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DataSourceReturn",
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _data_sources_post_serialize(
+        self,
+        data_source_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if data_source_request is not None:
+            _body_params = data_source_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/data-sources/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -17013,6 +18574,7 @@ class StoreApi:
     @validate_call
     def studies_get(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -17054,6 +18616,8 @@ class StoreApi:
 
         List studies
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
@@ -17125,6 +18689,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._studies_get_serialize(
+            data_sources=data_sources,
             search=search,
             sort=sort,
             page=page,
@@ -17172,6 +18737,7 @@ class StoreApi:
     @validate_call
     def studies_get_with_http_info(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -17213,6 +18779,8 @@ class StoreApi:
 
         List studies
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
@@ -17284,6 +18852,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._studies_get_serialize(
+            data_sources=data_sources,
             search=search,
             sort=sort,
             page=page,
@@ -17331,6 +18900,7 @@ class StoreApi:
     @validate_call
     def studies_get_without_preload_content(
         self,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -17372,6 +18942,8 @@ class StoreApi:
 
         List studies
 
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
@@ -17443,6 +19015,7 @@ class StoreApi:
         """ # noqa: E501
 
         _param = self._studies_get_serialize(
+            data_sources=data_sources,
             search=search,
             sort=sort,
             page=page,
@@ -17485,6 +19058,7 @@ class StoreApi:
 
     def _studies_get_serialize(
         self,
+        data_sources,
         search,
         sort,
         page,
@@ -17531,6 +19105,10 @@ class StoreApi:
 
         # process the path parameters
         # process the query parameters
+        if data_sources is not None:
+            
+            _query_params.append(('data_sources', data_sources))
+            
         if search is not None:
             
             _query_params.append(('search', search))
@@ -17922,6 +19500,7 @@ class StoreApi:
     def studies_id_get(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
@@ -17946,6 +19525,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
@@ -17980,6 +19561,7 @@ class StoreApi:
 
         _param = self._studies_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             nested=nested,
             studyset_owner=studyset_owner,
             flat=flat,
@@ -18010,6 +19592,7 @@ class StoreApi:
     def studies_id_get_with_http_info(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
@@ -18034,6 +19617,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
@@ -18068,6 +19653,7 @@ class StoreApi:
 
         _param = self._studies_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             nested=nested,
             studyset_owner=studyset_owner,
             flat=flat,
@@ -18098,6 +19684,7 @@ class StoreApi:
     def studies_id_get_without_preload_content(
         self,
         id: StrictStr,
+        data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         flat: Annotated[Optional[StrictBool], Field(description="do not return any embedded relationships. When set, it is incompatible with nested. ")] = None,
@@ -18122,6 +19709,8 @@ class StoreApi:
 
         :param id: (required)
         :type id: str
+        :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
+        :type data_sources: bool
         :param nested: whether to show the URI to a resource (false) or to embed the object in the response (true)
         :type nested: bool
         :param studyset_owner: for all studies filter which studysets are listed based on who owns the studyset
@@ -18156,6 +19745,7 @@ class StoreApi:
 
         _param = self._studies_id_get_serialize(
             id=id,
+            data_sources=data_sources,
             nested=nested,
             studyset_owner=studyset_owner,
             flat=flat,
@@ -18181,6 +19771,7 @@ class StoreApi:
     def _studies_id_get_serialize(
         self,
         id,
+        data_sources,
         nested,
         studyset_owner,
         flat,
@@ -18210,6 +19801,10 @@ class StoreApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if data_sources is not None:
+            
+            _query_params.append(('data_sources', data_sources))
+            
         if nested is not None:
             
             _query_params.append(('nested', nested))

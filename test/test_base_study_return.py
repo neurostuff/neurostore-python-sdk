@@ -82,7 +82,14 @@ class TestBaseStudyReturn(unittest.TestCase):
                 has_z_maps = True,
                 has_t_maps = True,
                 has_beta_and_variance_maps = True,
-                features = neurostore_sdk.models.review_detail_all_of_provenance.review_detail_allOf_provenance()
+                features = neurostore_sdk.models.review_detail_all_of_provenance.review_detail_allOf_provenance(),
+                data_sources = [
+                    neurostore_sdk.models.data_source_summary.data-source-summary(
+                        id = '', 
+                        slug = '', 
+                        name = '', 
+                        url = '', )
+                    ]
             )
         else:
             return BaseStudyReturn(
