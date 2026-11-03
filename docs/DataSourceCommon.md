@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**slug** | **str** | A short stable key, e.g. &#x60;ukb&#x60;. | [optional] 
+**id** | **str** | The data source&#39;s key, e.g. &#x60;ukb&#x60;, given when it is created and never changed, so records made outside neurostore can name it before it is uploaded. | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **kinds** | **List[str]** |  | [optional] 
@@ -15,8 +15,6 @@ Name | Type | Description | Notes
 **url_kind** | **str** | Where the url came from or what it points to, e.g. &#x60;rrid&#x60;, &#x60;re3data&#x60;, &#x60;jpnd&#x60;, &#x60;checked:official&#x60;, &#x60;checked:registry&#x60;, &#x60;checked:publication&#x60;. | [optional] 
 **rrids** | **List[str]** |  | [optional] 
 **re3data_ids** | **List[str]** |  | [optional] 
-**listed_in** | **List[str]** | The catalogues the data source was found in. | [optional] 
-**aliases** | [**List[DataSourceAlias]**](DataSourceAlias.md) |  | [optional] 
 
 ## Example
 

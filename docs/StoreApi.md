@@ -2329,11 +2329,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **data_sources_get**
-> DataSourceList data_sources_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, kind=kind, slug=slug)
+> DataSourceList data_sources_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, kind=kind)
 
 GET data sources
 
-List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+List the named studies (cohorts), consortia and repositories a paper's data can come from.
 
 ### Example
 
@@ -2363,11 +2363,10 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
     kind = 'kind_example' # str | only data sources of this kind (optional)
-    slug = 'slug_example' # str | only the data source with this slug (optional)
 
     try:
         # GET data sources
-        api_response = api_instance.data_sources_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, kind=kind, slug=slug)
+        api_response = api_instance.data_sources_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, kind=kind)
         print("The response of StoreApi->data_sources_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -2389,7 +2388,6 @@ Name | Type | Description  | Notes
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
  **kind** | **str**| only data sources of this kind | [optional] 
- **slug** | **str**| only the data source with this slug | [optional] 
 
 ### Return type
 
@@ -2493,7 +2491,7 @@ void (empty response body)
 
 GET a data source
 
-Retrieve a data source and its aliases.
+Retrieve a data source.
 
 ### Example
 
@@ -2562,7 +2560,7 @@ No authorization required
 
 PUT/update a data source
 
-Update a data source; given aliases replace its aliases. Admins only.
+Update a data source; its id cannot change. Admins only.
 
 ### Example
 
@@ -2645,7 +2643,7 @@ Name | Type | Description  | Notes
 
 POST/Create a data source
 
-Create a data source. Admins only.
+Create a data source under the id given in the body. Admins only.
 
 ### Example
 
@@ -2717,6 +2715,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **403** | Only an admin can change data sources. |  -  |
+**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -37,7 +37,6 @@ class TestDataSourceSummary(unittest.TestCase):
         if include_optional:
             return DataSourceSummary(
                 id = '',
-                slug = '',
                 name = '',
                 url = ''
             )

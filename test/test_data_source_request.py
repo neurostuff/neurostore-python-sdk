@@ -36,7 +36,7 @@ class TestDataSourceRequest(unittest.TestCase):
         model = DataSourceRequest()
         if include_optional:
             return DataSourceRequest(
-                slug = '',
+                id = 'wr2c3v8s7djuy2zmetozkhdomha2b',
                 name = '',
                 description = '',
                 kinds = [
@@ -53,18 +53,7 @@ class TestDataSourceRequest(unittest.TestCase):
                     ],
                 re3data_ids = [
                     ''
-                    ],
-                listed_in = [
-                    ''
-                    ],
-                aliases = [
-                    neurostore_sdk.models.data_source_alias.data-source-alias(
-                        id = '', 
-                        alias = '', 
-                        tier = 'name', )
-                    ],
-                id = '38jobTomPDqt',
-                public = True
+                    ]
             )
         else:
             return DataSourceRequest(

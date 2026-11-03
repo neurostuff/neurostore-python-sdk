@@ -8683,7 +8683,6 @@ class StoreApi:
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         kind: Annotated[Optional[StrictStr], Field(description="only data sources of this kind")] = None,
-        slug: Annotated[Optional[StrictStr], Field(description="only the data source with this slug")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8699,7 +8698,7 @@ class StoreApi:
     ) -> DataSourceList:
         """GET data sources
 
-        List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+        List the named studies (cohorts), consortia and repositories a paper's data can come from.
 
         :param sort: Parameter to sort results on
         :type sort: str
@@ -8717,8 +8716,6 @@ class StoreApi:
         :type description: str
         :param kind: only data sources of this kind
         :type kind: str
-        :param slug: only the data source with this slug
-        :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8750,7 +8747,6 @@ class StoreApi:
             name=name,
             description=description,
             kind=kind,
-            slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8782,7 +8778,6 @@ class StoreApi:
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         kind: Annotated[Optional[StrictStr], Field(description="only data sources of this kind")] = None,
-        slug: Annotated[Optional[StrictStr], Field(description="only the data source with this slug")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8798,7 +8793,7 @@ class StoreApi:
     ) -> ApiResponse[DataSourceList]:
         """GET data sources
 
-        List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+        List the named studies (cohorts), consortia and repositories a paper's data can come from.
 
         :param sort: Parameter to sort results on
         :type sort: str
@@ -8816,8 +8811,6 @@ class StoreApi:
         :type description: str
         :param kind: only data sources of this kind
         :type kind: str
-        :param slug: only the data source with this slug
-        :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8849,7 +8842,6 @@ class StoreApi:
             name=name,
             description=description,
             kind=kind,
-            slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8881,7 +8873,6 @@ class StoreApi:
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         description: Annotated[Optional[StrictStr], Field(description="search description field for a term")] = None,
         kind: Annotated[Optional[StrictStr], Field(description="only data sources of this kind")] = None,
-        slug: Annotated[Optional[StrictStr], Field(description="only the data source with this slug")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8897,7 +8888,7 @@ class StoreApi:
     ) -> RESTResponseType:
         """GET data sources
 
-        List the named studies (cohorts), consortia and repositories a paper's data can come from, with the aliases used to find them in text.
+        List the named studies (cohorts), consortia and repositories a paper's data can come from.
 
         :param sort: Parameter to sort results on
         :type sort: str
@@ -8915,8 +8906,6 @@ class StoreApi:
         :type description: str
         :param kind: only data sources of this kind
         :type kind: str
-        :param slug: only the data source with this slug
-        :type slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8948,7 +8937,6 @@ class StoreApi:
             name=name,
             description=description,
             kind=kind,
-            slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8975,7 +8963,6 @@ class StoreApi:
         name,
         description,
         kind,
-        slug,
         _request_auth,
         _content_type,
         _headers,
@@ -9029,10 +9016,6 @@ class StoreApi:
         if kind is not None:
             
             _query_params.append(('kind', kind))
-            
-        if slug is not None:
-            
-            _query_params.append(('slug', slug))
             
         # process the header parameters
         # process the form parameters
@@ -9346,7 +9329,7 @@ class StoreApi:
     ) -> DataSourceReturn:
         """GET a data source
 
-        Retrieve a data source and its aliases.
+        Retrieve a data source.
 
         :param id: (required)
         :type id: str
@@ -9414,7 +9397,7 @@ class StoreApi:
     ) -> ApiResponse[DataSourceReturn]:
         """GET a data source
 
-        Retrieve a data source and its aliases.
+        Retrieve a data source.
 
         :param id: (required)
         :type id: str
@@ -9482,7 +9465,7 @@ class StoreApi:
     ) -> RESTResponseType:
         """GET a data source
 
-        Retrieve a data source and its aliases.
+        Retrieve a data source.
 
         :param id: (required)
         :type id: str
@@ -9610,7 +9593,7 @@ class StoreApi:
     ) -> DataSourceReturn:
         """PUT/update a data source
 
-        Update a data source; given aliases replace its aliases. Admins only.
+        Update a data source; its id cannot change. Admins only.
 
         :param id: (required)
         :type id: str
@@ -9683,7 +9666,7 @@ class StoreApi:
     ) -> ApiResponse[DataSourceReturn]:
         """PUT/update a data source
 
-        Update a data source; given aliases replace its aliases. Admins only.
+        Update a data source; its id cannot change. Admins only.
 
         :param id: (required)
         :type id: str
@@ -9756,7 +9739,7 @@ class StoreApi:
     ) -> RESTResponseType:
         """PUT/update a data source
 
-        Update a data source; given aliases replace its aliases. Admins only.
+        Update a data source; its id cannot change. Admins only.
 
         :param id: (required)
         :type id: str
@@ -9904,7 +9887,7 @@ class StoreApi:
     ) -> DataSourceReturn:
         """POST/Create a data source
 
-        Create a data source. Admins only.
+        Create a data source under the id given in the body. Admins only.
 
         :param data_source_request:
         :type data_source_request: DataSourceRequest
@@ -9941,6 +9924,7 @@ class StoreApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSourceReturn",
             '403': None,
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9972,7 +9956,7 @@ class StoreApi:
     ) -> ApiResponse[DataSourceReturn]:
         """POST/Create a data source
 
-        Create a data source. Admins only.
+        Create a data source under the id given in the body. Admins only.
 
         :param data_source_request:
         :type data_source_request: DataSourceRequest
@@ -10009,6 +9993,7 @@ class StoreApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSourceReturn",
             '403': None,
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10040,7 +10025,7 @@ class StoreApi:
     ) -> RESTResponseType:
         """POST/Create a data source
 
-        Create a data source. Admins only.
+        Create a data source under the id given in the body. Admins only.
 
         :param data_source_request:
         :type data_source_request: DataSourceRequest
@@ -10077,6 +10062,7 @@ class StoreApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DataSourceReturn",
             '403': None,
+            '422': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,

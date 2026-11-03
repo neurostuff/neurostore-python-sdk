@@ -36,7 +36,7 @@ class TestDataSourceReturn(unittest.TestCase):
         model = DataSourceReturn()
         if include_optional:
             return DataSourceReturn(
-                slug = '',
+                id = 'wr2c3v8s7djuy2zmetozkhdomha2b',
                 name = '',
                 description = '',
                 kinds = [
@@ -54,19 +54,8 @@ class TestDataSourceReturn(unittest.TestCase):
                 re3data_ids = [
                     ''
                     ],
-                listed_in = [
-                    ''
-                    ],
-                aliases = [
-                    neurostore_sdk.models.data_source_alias.data-source-alias(
-                        id = '', 
-                        alias = '', 
-                        tier = 'name', )
-                    ],
                 created_at = '2021-01-16T20:50:38.009318Z',
                 updated_at = '',
-                id = '38jobTomPDqt',
-                public = True,
                 user = '',
                 username = ''
             )

@@ -243,7 +243,6 @@ Class | Method | HTTP request | Description
  - [ConditionList](docs/ConditionList.md)
  - [ConditionRequest](docs/ConditionRequest.md)
  - [ConditionReturn](docs/ConditionReturn.md)
- - [DataSourceAlias](docs/DataSourceAlias.md)
  - [DataSourceCommon](docs/DataSourceCommon.md)
  - [DataSourceList](docs/DataSourceList.md)
  - [DataSourceRequest](docs/DataSourceRequest.md)

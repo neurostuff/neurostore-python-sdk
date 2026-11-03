@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.data_source_alias import DataSourceAlias
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class DataSourceCommon(BaseModel):
     """
     DataSourceCommon
     """ # noqa: E501
-    slug: Optional[StrictStr] = Field(default=None, description="A short stable key, e.g. `ukb`.")
+    id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The data source's key, e.g. `ukb`, given when it is created and never changed, so records made outside neurostore can name it before it is uploaded.")
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     kinds: Optional[List[StrictStr]] = None
@@ -38,9 +38,17 @@ class DataSourceCommon(BaseModel):
     url_kind: Optional[StrictStr] = Field(default=None, description="Where the url came from or what it points to, e.g. `rrid`, `re3data`, `jpnd`, `checked:official`, `checked:registry`, `checked:publication`.")
     rrids: Optional[List[StrictStr]] = None
     re3data_ids: Optional[List[StrictStr]] = None
-    listed_in: Optional[List[StrictStr]] = Field(default=None, description="The catalogues the data source was found in.")
-    aliases: Optional[List[DataSourceAlias]] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "kinds", "modalities", "part_of", "url", "url_kind", "rrids", "re3data_ids", "listed_in", "aliases"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "kinds", "modalities", "part_of", "url", "url_kind", "rrids", "re3data_ids"]
+
+    @field_validator('id')
+    def id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[a-z0-9][a-z0-9_]*$", value):
+            raise ValueError(r"must validate the regular expression /^[a-z0-9][a-z0-9_]*$/")
+        return value
 
     @field_validator('kinds')
     def kinds_validate_enum(cls, value):
@@ -91,13 +99,6 @@ class DataSourceCommon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in aliases (list)
-        _items = []
-        if self.aliases is not None:
-            for _item_aliases in self.aliases:
-                if _item_aliases is not None:
-                    _items.append(_item_aliases.to_dict())
-            _dict['aliases'] = _items
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -130,7 +131,7 @@ class DataSourceCommon(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "slug": obj.get("slug"),
+            "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "kinds": obj.get("kinds"),
@@ -139,9 +140,7 @@ class DataSourceCommon(BaseModel):
             "url": obj.get("url"),
             "url_kind": obj.get("url_kind"),
             "rrids": obj.get("rrids"),
-            "re3data_ids": obj.get("re3data_ids"),
-            "listed_in": obj.get("listed_in"),
-            "aliases": [DataSourceAlias.from_dict(_item) for _item in obj["aliases"]] if obj.get("aliases") is not None else None
+            "re3data_ids": obj.get("re3data_ids")
         })
         return _obj
 

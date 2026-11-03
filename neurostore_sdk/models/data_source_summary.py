@@ -28,10 +28,9 @@ class DataSourceSummary(BaseModel):
     DataSourceSummary
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    slug: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     url: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "slug", "name", "url"]
+    __properties: ClassVar[List[str]] = ["id", "name", "url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +88,6 @@ class DataSourceSummary(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "slug": obj.get("slug"),
             "name": obj.get("name"),
             "url": obj.get("url")
         })

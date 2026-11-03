@@ -86,7 +86,6 @@ class TestBaseStudyReturn(unittest.TestCase):
                 data_sources = [
                     neurostore_sdk.models.data_source_summary.data-source-summary(
                         id = '', 
-                        slug = '', 
                         name = '', 
                         url = '', )
                     ]

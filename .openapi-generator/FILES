@@ -48,7 +48,6 @@ docs/ConditionBase.md
 docs/ConditionList.md
 docs/ConditionRequest.md
 docs/ConditionReturn.md
-docs/DataSourceAlias.md
 docs/DataSourceCommon.md
 docs/DataSourceList.md
 docs/DataSourceRequest.md
@@ -226,7 +225,6 @@ neurostore_sdk/models/condition_base.py
 neurostore_sdk/models/condition_list.py
 neurostore_sdk/models/condition_request.py
 neurostore_sdk/models/condition_return.py
-neurostore_sdk/models/data_source_alias.py
 neurostore_sdk/models/data_source_common.py
 neurostore_sdk/models/data_source_list.py
 neurostore_sdk/models/data_source_request.py
@@ -400,7 +398,6 @@ test/test_condition_base.py
 test/test_condition_list.py
 test/test_condition_request.py
 test/test_condition_return.py
-test/test_data_source_alias.py
 test/test_data_source_common.py
 test/test_data_source_list.py
 test/test_data_source_request.py

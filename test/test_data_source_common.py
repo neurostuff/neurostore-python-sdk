@@ -36,7 +36,7 @@ class TestDataSourceCommon(unittest.TestCase):
         model = DataSourceCommon()
         if include_optional:
             return DataSourceCommon(
-                slug = '',
+                id = 'wr2c3v8s7djuy2zmetozkhdomha2b',
                 name = '',
                 description = '',
                 kinds = [
@@ -53,15 +53,6 @@ class TestDataSourceCommon(unittest.TestCase):
                     ],
                 re3data_ids = [
                     ''
-                    ],
-                listed_in = [
-                    ''
-                    ],
-                aliases = [
-                    neurostore_sdk.models.data_source_alias.data-source-alias(
-                        id = '', 
-                        alias = '', 
-                        tier = 'name', )
                     ]
             )
         else:

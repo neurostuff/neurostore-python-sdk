@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**slug** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **url** | **str** |  | [optional] 
 
