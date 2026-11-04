@@ -140,6 +140,7 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
     from neurostore_sdk.models.study_schema_carried import StudySchemaCarried
     from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate
+    from neurostore_sdk.models.study_schema_run import StudySchemaRun
     from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside
     from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
     from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline
@@ -308,6 +309,7 @@ from neurostore_sdk.models.study_return_relationships import StudyReturnRelation
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 from neurostore_sdk.models.study_schema_carried import StudySchemaCarried
 from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate
+from neurostore_sdk.models.study_schema_run import StudySchemaRun
 from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside
 from neurostore_sdk.models.study_schema_upload import StudySchemaUpload
 from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline
