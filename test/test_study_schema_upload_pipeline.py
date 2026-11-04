@@ -42,14 +42,18 @@ class TestStudySchemaUploadPipeline(unittest.TestCase):
                 runs = [
                     neurostore_sdk.models.study_schema_run.study-schema-run(
                         run_id = '', 
+                        kind = '', 
                         stage = '', 
                         source = '', 
+                        pipeline = '', 
+                        version = '', 
                         model = '', 
                         adapter = '', 
                         prompt_version = '', 
                         schema_version = '', 
                         code_commit = '', 
                         machine = '', 
+                        fit = '', 
                         created_at = '', )
                     ]
             )

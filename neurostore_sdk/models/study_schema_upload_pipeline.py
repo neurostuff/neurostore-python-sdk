@@ -31,7 +31,7 @@ class StudySchemaUploadPipeline(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="Default pondie.")
     version: Optional[StrictStr] = Field(default=None, description="Default the record's extraction_metadata.extractor_version.")
     commit: Optional[StrictStr] = Field(default=None, description="The commit of the code that produced the record. Two commits of one version are different configs.")
-    runs: Optional[List[StudySchemaRun]] = Field(default=None, description="The runs that made the record: its record run, and the evidence and normalize runs that filled it in, at most one per stage. The record's config holds them in stage order with every field present, so uploads made by the same runs share one config and any other run gets another. Without runs the config is keyed as before. Validated by the service (422 SCHEMA, DUPLICATE_STAGE, DUPLICATE_RUN_ID, RUN_CONFLICT). ")
+    runs: Optional[List[StudySchemaRun]] = Field(default=None, description="The runs that made the record: its record run, and the evidence and normalize runs that filled it in, at most one per stage. The record's config holds them in stage order with every field present, so uploads made by the same runs share one config, and a run of another model, adapter, prompt or fit gets another. A rerun with the same model and inputs is the same run and joins its config. Without runs the config is keyed as before. Validated by the service (422 SCHEMA, DUPLICATE_STAGE, DUPLICATE_RUN_ID, RUN_CONFLICT). ")
     __properties: ClassVar[List[str]] = ["name", "version", "commit", "runs"]
 
     model_config = ConfigDict(

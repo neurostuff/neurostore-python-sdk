@@ -146,14 +146,18 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
                         runs = [
                             neurostore_sdk.models.study_schema_run.study-schema-run(
                                 run_id = '', 
+                                kind = '', 
                                 stage = '', 
                                 source = '', 
+                                pipeline = '', 
+                                version = '', 
                                 model = '', 
                                 adapter = '', 
                                 prompt_version = '', 
                                 schema_version = '', 
                                 code_commit = '', 
                                 machine = '', 
+                                fit = '', 
                                 created_at = '', )
                             ], 
                         date_executed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

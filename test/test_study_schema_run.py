@@ -37,14 +37,18 @@ class TestStudySchemaRun(unittest.TestCase):
         if include_optional:
             return StudySchemaRun(
                 run_id = '',
+                kind = '',
                 stage = '',
                 source = '',
+                pipeline = '',
+                version = '',
                 model = '',
                 adapter = '',
                 prompt_version = '',
                 schema_version = '',
                 code_commit = '',
                 machine = '',
+                fit = '',
                 created_at = ''
             )
         else:

@@ -25,19 +25,23 @@ from typing_extensions import Self
 
 class StudySchemaRun(BaseModel):
     """
-    One run behind a record, as the pipeline's runs table holds it.
+    One run behind a record, as the pipeline's runs table first stored it. A run is one combination of model and inputs; reruns of it carry the same run_id and fields. 
     """ # noqa: E501
     run_id: Optional[StrictStr] = Field(default=None, description="Required. Names one run; a run_id stored with other fields is refused (RUN_CONFLICT).")
+    kind: Optional[StrictStr] = Field(default=None, description="model (a model made the output) or migration (an older output carried over).")
     stage: Optional[StrictStr] = Field(default=None, description="Required. record, evidence or normalize.")
     source: Optional[StrictStr] = Field(default=None, description="Required. The record source the run made or read.")
+    pipeline: Optional[StrictStr] = Field(default=None, description="The pipeline that ran the stage.")
+    version: Optional[StrictStr] = Field(default=None, description="The pipeline's version.")
     model: Optional[StrictStr] = None
     adapter: Optional[StrictStr] = Field(default=None, description="repo@revision of the adapter the model ran with.")
     prompt_version: Optional[StrictStr] = None
     schema_version: Optional[StrictStr] = None
     code_commit: Optional[StrictStr] = None
     machine: Optional[StrictStr] = None
+    fit: Optional[StrictStr] = Field(default=None, description="For a normalize run, the fingerprint of the fitted normalization model (the task and contrast clustering) it assigned with. A refit is a new run. ")
     created_at: Optional[StrictStr] = Field(default=None, description="Required. When the run was made, ISO 8601.")
-    __properties: ClassVar[List[str]] = ["run_id", "stage", "source", "model", "adapter", "prompt_version", "schema_version", "code_commit", "machine", "created_at"]
+    __properties: ClassVar[List[str]] = ["run_id", "kind", "stage", "source", "pipeline", "version", "model", "adapter", "prompt_version", "schema_version", "code_commit", "machine", "fit", "created_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +81,21 @@ class StudySchemaRun(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if kind (nullable) is None
+        # and model_fields_set contains the field
+        if self.kind is None and "kind" in self.model_fields_set:
+            _dict['kind'] = None
+
+        # set to None if pipeline (nullable) is None
+        # and model_fields_set contains the field
+        if self.pipeline is None and "pipeline" in self.model_fields_set:
+            _dict['pipeline'] = None
+
+        # set to None if version (nullable) is None
+        # and model_fields_set contains the field
+        if self.version is None and "version" in self.model_fields_set:
+            _dict['version'] = None
+
         # set to None if model (nullable) is None
         # and model_fields_set contains the field
         if self.model is None and "model" in self.model_fields_set:
@@ -107,6 +126,11 @@ class StudySchemaRun(BaseModel):
         if self.machine is None and "machine" in self.model_fields_set:
             _dict['machine'] = None
 
+        # set to None if fit (nullable) is None
+        # and model_fields_set contains the field
+        if self.fit is None and "fit" in self.model_fields_set:
+            _dict['fit'] = None
+
         return _dict
 
     @classmethod
@@ -120,14 +144,18 @@ class StudySchemaRun(BaseModel):
 
         _obj = cls.model_validate({
             "run_id": obj.get("run_id"),
+            "kind": obj.get("kind"),
             "stage": obj.get("stage"),
             "source": obj.get("source"),
+            "pipeline": obj.get("pipeline"),
+            "version": obj.get("version"),
             "model": obj.get("model"),
             "adapter": obj.get("adapter"),
             "prompt_version": obj.get("prompt_version"),
             "schema_version": obj.get("schema_version"),
             "code_commit": obj.get("code_commit"),
             "machine": obj.get("machine"),
+            "fit": obj.get("fit"),
             "created_at": obj.get("created_at")
         })
         return _obj
