@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProvenanceSchema
+from neurostore_sdk.models.study_schema_run import StudySchemaRun
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -37,10 +38,11 @@ class PipelineRunProvenance(BaseModel):
     commit: Optional[StrictStr] = None
     var_schema: Optional[PipelineRunProvenanceSchema] = Field(default=None, alias="schema")
     parse_version: Optional[Dict[str, Any]] = Field(default=None, description="The parse's producer (name, version, stage, model, prompt_version).")
+    runs: Optional[List[StudySchemaRun]] = Field(default=None, description="For a record uploaded with runs, the runs its config holds; null otherwise.")
     date_executed: Optional[datetime] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["result_id", "config_id", "run_id", "pipeline", "version", "commit", "schema", "parse_version", "date_executed", "created_at", "updated_at"]
+    __properties: ClassVar[List[str]] = ["result_id", "config_id", "run_id", "pipeline", "version", "commit", "schema", "parse_version", "runs", "date_executed", "created_at", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,6 +85,13 @@ class PipelineRunProvenance(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of var_schema
         if self.var_schema is not None:
             _dict['schema'] = self.var_schema.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in runs (list)
+        _items = []
+        if self.runs is not None:
+            for _item_runs in self.runs:
+                if _item_runs is not None:
+                    _items.append(_item_runs.to_dict())
+            _dict['runs'] = _items
         # set to None if run_id (nullable) is None
         # and model_fields_set contains the field
         if self.run_id is None and "run_id" in self.model_fields_set:
@@ -92,6 +101,11 @@ class PipelineRunProvenance(BaseModel):
         # and model_fields_set contains the field
         if self.commit is None and "commit" in self.model_fields_set:
             _dict['commit'] = None
+
+        # set to None if runs (nullable) is None
+        # and model_fields_set contains the field
+        if self.runs is None and "runs" in self.model_fields_set:
+            _dict['runs'] = None
 
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field
@@ -118,6 +132,7 @@ class PipelineRunProvenance(BaseModel):
             "commit": obj.get("commit"),
             "schema": PipelineRunProvenanceSchema.from_dict(obj["schema"]) if obj.get("schema") is not None else None,
             "parse_version": obj.get("parse_version"),
+            "runs": [StudySchemaRun.from_dict(_item) for _item in obj["runs"]] if obj.get("runs") is not None else None,
             "date_executed": obj.get("date_executed"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at")

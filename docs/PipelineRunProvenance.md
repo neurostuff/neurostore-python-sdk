@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **commit** | **str** |  | [optional] 
 **var_schema** | [**PipelineRunProvenanceSchema**](PipelineRunProvenanceSchema.md) |  | [optional] 
 **parse_version** | **Dict[str, object]** | The parse&#39;s producer (name, version, stage, model, prompt_version). | [optional] 
+**runs** | [**List[StudySchemaRun]**](StudySchemaRun.md) | For a record uploaded with runs, the runs its config holds; null otherwise. | [optional] 
 **date_executed** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
