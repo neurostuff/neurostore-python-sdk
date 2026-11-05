@@ -116,6 +116,8 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**analyses_id_get**](docs/StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
 *StoreApi* | [**analyses_id_put**](docs/StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
 *StoreApi* | [**analyses_post**](docs/StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+*StoreApi* | [**analysis_queries_post**](docs/StoreApi.md#analysis_queries_post) | **POST** /analysis-queries/ | Select analyses by what their extraction records say
+*StoreApi* | [**analysis_terms_get**](docs/StoreApi.md#analysis_terms_get) | **GET** /analysis-terms/ | The values an analysis query field takes
 *StoreApi* | [**annotation_analyses_get**](docs/StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 *StoreApi* | [**annotation_analyses_id_get**](docs/StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 *StoreApi* | [**annotation_analyses_id_put**](docs/StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
@@ -201,6 +203,21 @@ Class | Method | HTTP request | Description
  - [AnalysisBase](docs/AnalysisBase.md)
  - [AnalysisCommon](docs/AnalysisCommon.md)
  - [AnalysisList](docs/AnalysisList.md)
+ - [AnalysisQuery](docs/AnalysisQuery.md)
+ - [AnalysisQueryBoolean](docs/AnalysisQueryBoolean.md)
+ - [AnalysisQueryBooleanOneOf](docs/AnalysisQueryBooleanOneOf.md)
+ - [AnalysisQueryContrast](docs/AnalysisQueryContrast.md)
+ - [AnalysisQueryDesign](docs/AnalysisQueryDesign.md)
+ - [AnalysisQueryRange](docs/AnalysisQueryRange.md)
+ - [AnalysisQueryRequest](docs/AnalysisQueryRequest.md)
+ - [AnalysisQueryResult](docs/AnalysisQueryResult.md)
+ - [AnalysisQueryResultCounts](docs/AnalysisQueryResultCounts.md)
+ - [AnalysisQueryResultFunnelInner](docs/AnalysisQueryResultFunnelInner.md)
+ - [AnalysisQueryResultResultsInner](docs/AnalysisQueryResultResultsInner.md)
+ - [AnalysisQueryResultSearched](docs/AnalysisQueryResultSearched.md)
+ - [AnalysisQueryText](docs/AnalysisQueryText.md)
+ - [AnalysisQueryValues](docs/AnalysisQueryValues.md)
+ - [AnalysisQueryWhenSilent](docs/AnalysisQueryWhenSilent.md)
  - [AnalysisRequest](docs/AnalysisRequest.md)
  - [AnalysisRequestRelationships](docs/AnalysisRequestRelationships.md)
  - [AnalysisRequestRelationshipsConditions](docs/AnalysisRequestRelationshipsConditions.md)
@@ -211,11 +228,14 @@ Class | Method | HTTP request | Description
  - [AnalysisReturnRelationshipsConditions](docs/AnalysisReturnRelationshipsConditions.md)
  - [AnalysisReturnRelationshipsImages](docs/AnalysisReturnRelationshipsImages.md)
  - [AnalysisReturnRelationshipsPoints](docs/AnalysisReturnRelationshipsPoints.md)
+ - [AnalysisTermList](docs/AnalysisTermList.md)
+ - [AnalysisTermListResultsInner](docs/AnalysisTermListResultsInner.md)
  - [AnnotationBase](docs/AnnotationBase.md)
  - [AnnotationCommon](docs/AnnotationCommon.md)
  - [AnnotationExport](docs/AnnotationExport.md)
  - [AnnotationList](docs/AnnotationList.md)
  - [AnnotationPipelineExtension](docs/AnnotationPipelineExtension.md)
+ - [AnnotationPipelineExtensionAnalysisQuery](docs/AnnotationPipelineExtensionAnalysisQuery.md)
  - [AnnotationPipelineExtensionPipelinesInner](docs/AnnotationPipelineExtensionPipelinesInner.md)
  - [AnnotationRequest](docs/AnnotationRequest.md)
  - [AnnotationRequestOneOf](docs/AnnotationRequestOneOf.md)

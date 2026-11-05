@@ -18,6 +18,21 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.analysis_base import AnalysisBase
     from neurostore_sdk.models.analysis_common import AnalysisCommon
     from neurostore_sdk.models.analysis_list import AnalysisList
+    from neurostore_sdk.models.analysis_query import AnalysisQuery
+    from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
+    from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf
+    from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
+    from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
+    from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
+    from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
+    from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
+    from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts
+    from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
+    from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
+    from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
+    from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+    from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues
+    from neurostore_sdk.models.analysis_query_when_silent import AnalysisQueryWhenSilent
     from neurostore_sdk.models.analysis_request import AnalysisRequest
     from neurostore_sdk.models.analysis_request_relationships import AnalysisRequestRelationships
     from neurostore_sdk.models.analysis_request_relationships_conditions import AnalysisRequestRelationshipsConditions
@@ -28,11 +43,14 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
     from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
     from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints
+    from neurostore_sdk.models.analysis_term_list import AnalysisTermList
+    from neurostore_sdk.models.analysis_term_list_results_inner import AnalysisTermListResultsInner
     from neurostore_sdk.models.annotation_base import AnnotationBase
     from neurostore_sdk.models.annotation_common import AnnotationCommon
     from neurostore_sdk.models.annotation_export import AnnotationExport
     from neurostore_sdk.models.annotation_list import AnnotationList
     from neurostore_sdk.models.annotation_pipeline_extension import AnnotationPipelineExtension
+    from neurostore_sdk.models.annotation_pipeline_extension_analysis_query import AnnotationPipelineExtensionAnalysisQuery
     from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner
     from neurostore_sdk.models.annotation_request import AnnotationRequest
     from neurostore_sdk.models.annotation_request_one_of import AnnotationRequestOneOf
@@ -192,6 +210,21 @@ else:
 from neurostore_sdk.models.analysis_base import AnalysisBase
 from neurostore_sdk.models.analysis_common import AnalysisCommon
 from neurostore_sdk.models.analysis_list import AnalysisList
+from neurostore_sdk.models.analysis_query import AnalysisQuery
+from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
+from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf
+from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
+from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
+from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
+from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
+from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
+from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts
+from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
+from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
+from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
+from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues
+from neurostore_sdk.models.analysis_query_when_silent import AnalysisQueryWhenSilent
 from neurostore_sdk.models.analysis_request import AnalysisRequest
 from neurostore_sdk.models.analysis_request_relationships import AnalysisRequestRelationships
 from neurostore_sdk.models.analysis_request_relationships_conditions import AnalysisRequestRelationshipsConditions
@@ -202,11 +235,14 @@ from neurostore_sdk.models.analysis_return_relationships import AnalysisReturnRe
 from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
 from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
 from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints
+from neurostore_sdk.models.analysis_term_list import AnalysisTermList
+from neurostore_sdk.models.analysis_term_list_results_inner import AnalysisTermListResultsInner
 from neurostore_sdk.models.annotation_base import AnnotationBase
 from neurostore_sdk.models.annotation_common import AnnotationCommon
 from neurostore_sdk.models.annotation_export import AnnotationExport
 from neurostore_sdk.models.annotation_list import AnnotationList
 from neurostore_sdk.models.annotation_pipeline_extension import AnnotationPipelineExtension
+from neurostore_sdk.models.annotation_pipeline_extension_analysis_query import AnnotationPipelineExtensionAnalysisQuery
 from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner
 from neurostore_sdk.models.annotation_request import AnnotationRequest
 from neurostore_sdk.models.annotation_request_one_of import AnnotationRequestOneOf
