@@ -44,6 +44,8 @@ Method | HTTP request | Description
 [**images_id_get**](StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
 [**images_id_put**](StoreApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
 [**images_post**](StoreApi.md#images_post) | **POST** /images/ | POST/create an image
+[**journals_get**](StoreApi.md#journals_get) | **GET** /journals/ | GET journals
+[**journals_id_get**](StoreApi.md#journals_id_get) | **GET** /journals/{id} | GET a journal
 [**neurostore_studyset_releases_get**](StoreApi.md#neurostore_studyset_releases_get) | **GET** /neurostore-studyset-releases/ | GET NeuroStore studyset release list
 [**neurostore_studyset_releases_version_download_get**](StoreApi.md#neurostore_studyset_releases_version_download_get) | **GET** /neurostore-studyset-releases/{version}/download | Download NeuroStore studyset release tarball
 [**neurostore_studyset_releases_version_get**](StoreApi.md#neurostore_studyset_releases_version_get) | **GET** /neurostore-studyset-releases/{version} | GET NeuroStore studyset release manifest
@@ -1623,7 +1625,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(data_sources=data_sources, nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(data_sources=data_sources, nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, journal_id=journal_id, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -1687,6 +1689,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     is_oa = True # bool |  (optional)
     publication = 'publication_example' # str | search for papers from a particular journal (optional)
+    journal_id = 'journal_id_example' # str | only papers neurostore identified as appearing in this journal (optional)
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
     neurovault_id = 'neurovault_id_example' # str | search for study with specific neurovault id (optional)
@@ -1696,7 +1699,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(data_sources=data_sources, nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(data_sources=data_sources, nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, journal_id=journal_id, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
         print("The response of StoreApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1740,6 +1743,7 @@ Name | Type | Description  | Notes
  **map_type** | **str**| filter by stored map-type flags | [optional] 
  **is_oa** | **bool**|  | [optional] 
  **publication** | **str**| search for papers from a particular journal | [optional] 
+ **journal_id** | **str**| only papers neurostore identified as appearing in this journal | [optional] 
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
  **neurovault_id** | **str**| search for study with specific neurovault id | [optional] 
@@ -3261,6 +3265,156 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **journals_get**
+> JournalList journals_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, search=search, kind=kind)
+
+GET journals
+
+List the journals, preprint servers and conference series papers appeared in, each one OpenAlex source.
+
+### Example
+
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.journal_kind import JournalKind
+from neurostore_sdk.models.journal_list import JournalList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
+    page = 56 # int | page of results (optional)
+    desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
+    page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
+    search = 'search_example' # str | Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it. (optional)
+    kind = neurostore_sdk.JournalKind() # JournalKind | only journals of this kind (optional)
+
+    try:
+        # GET journals
+        api_response = api_instance.journals_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, search=search, kind=kind)
+        print("The response of StoreApi->journals_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->journals_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
+ **page** | **int**| page of results | [optional] 
+ **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
+ **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
+ **search** | **str**| Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it. | [optional] 
+ **kind** | [**JournalKind**](.md)| only journals of this kind | [optional] 
+
+### Return type
+
+[**JournalList**](JournalList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **journals_id_get**
+> JournalReturn journals_id_get(id)
+
+GET a journal
+
+Retrieve a journal.
+
+### Example
+
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.journal_return import JournalReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # GET a journal
+        api_response = api_instance.journals_id_get(id)
+        print("The response of StoreApi->journals_id_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->journals_id_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**JournalReturn**](JournalReturn.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | No journal has this id. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4987,7 +5141,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_get**
-> StudyList studies_get(data_sources=data_sources, search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> StudyList studies_get(data_sources=data_sources, journal_id=journal_id, search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a list of studies
 
@@ -5024,6 +5178,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
+    journal_id = 'journal_id_example' # str | only papers neurostore identified as appearing in this journal (optional)
     search = 'imagin' # str | Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one. (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
@@ -5051,7 +5206,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(data_sources=data_sources, search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.studies_get(data_sources=data_sources, journal_id=journal_id, search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -5066,6 +5221,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
+ **journal_id** | **str**| only papers neurostore identified as appearing in this journal | [optional] 
  **search** | **str**| Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading &#x60;-&#x60; and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one. | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 

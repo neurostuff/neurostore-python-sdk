@@ -307,6 +307,20 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_journals_get(self) -> None:
+        """Test case for journals_get
+
+        GET journals
+        """
+        pass
+
+    def test_journals_id_get(self) -> None:
+        """Test case for journals_id_get
+
+        GET a journal
+        """
+        pass
+
     def test_neurostore_studyset_releases_get(self) -> None:
         """Test case for neurostore_studyset_releases_get
 

@@ -110,6 +110,10 @@ __all__ = [
     "ImageReturn",
     "ImageValueSummary",
     "ImageValueSummaryHistogram",
+    "JournalKind",
+    "JournalList",
+    "JournalReturn",
+    "JournalSummary",
     "JsonLd",
     "JsonLdContext",
     "Metadata",
@@ -313,6 +317,10 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.image_return import ImageReturn as ImageReturn
     from neurostore_sdk.models.image_value_summary import ImageValueSummary as ImageValueSummary
     from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram as ImageValueSummaryHistogram
+    from neurostore_sdk.models.journal_kind import JournalKind as JournalKind
+    from neurostore_sdk.models.journal_list import JournalList as JournalList
+    from neurostore_sdk.models.journal_return import JournalReturn as JournalReturn
+    from neurostore_sdk.models.journal_summary import JournalSummary as JournalSummary
     from neurostore_sdk.models.json_ld import JsonLd as JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
     from neurostore_sdk.models.metadata import Metadata as Metadata
@@ -522,6 +530,10 @@ from neurostore_sdk.models.image_request import ImageRequest as ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn as ImageReturn
 from neurostore_sdk.models.image_value_summary import ImageValueSummary as ImageValueSummary
 from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram as ImageValueSummaryHistogram
+from neurostore_sdk.models.journal_kind import JournalKind as JournalKind
+from neurostore_sdk.models.journal_list import JournalList as JournalList
+from neurostore_sdk.models.journal_return import JournalReturn as JournalReturn
+from neurostore_sdk.models.journal_summary import JournalSummary as JournalSummary
 from neurostore_sdk.models.json_ld import JsonLd as JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
 from neurostore_sdk.models.metadata import Metadata as Metadata

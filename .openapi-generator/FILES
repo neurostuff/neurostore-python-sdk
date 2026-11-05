@@ -83,6 +83,10 @@ docs/ImageRequest.md
 docs/ImageReturn.md
 docs/ImageValueSummary.md
 docs/ImageValueSummaryHistogram.md
+docs/JournalKind.md
+docs/JournalList.md
+docs/JournalReturn.md
+docs/JournalSummary.md
 docs/JsonLd.md
 docs/JsonLdContext.md
 docs/Metadata.md
@@ -279,6 +283,10 @@ neurostore_sdk/models/image_request.py
 neurostore_sdk/models/image_return.py
 neurostore_sdk/models/image_value_summary.py
 neurostore_sdk/models/image_value_summary_histogram.py
+neurostore_sdk/models/journal_kind.py
+neurostore_sdk/models/journal_list.py
+neurostore_sdk/models/journal_return.py
+neurostore_sdk/models/journal_summary.py
 neurostore_sdk/models/json_ld.py
 neurostore_sdk/models/json_ld_context.py
 neurostore_sdk/models/metadata.py
@@ -471,6 +479,10 @@ test/test_image_request.py
 test/test_image_return.py
 test/test_image_value_summary.py
 test/test_image_value_summary_histogram.py
+test/test_journal_kind.py
+test/test_journal_list.py
+test/test_journal_return.py
+test/test_journal_summary.py
 test/test_json_ld.py
 test/test_json_ld_context.py
 test/test_metadata.py

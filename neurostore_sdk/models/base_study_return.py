@@ -25,6 +25,7 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner
 from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner
 from neurostore_sdk.models.data_source_summary import DataSourceSummary
+from neurostore_sdk.models.journal_summary import JournalSummary
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -57,6 +58,7 @@ class BaseStudyReturn(BaseModel):
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
+    journal: Optional[JournalSummary] = None
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
     has_z_maps: Optional[StrictBool] = None
@@ -64,7 +66,7 @@ class BaseStudyReturn(BaseModel):
     has_beta_and_variance_maps: Optional[StrictBool] = None
     features: Optional[Dict[str, Any]] = None
     data_sources: Optional[List[DataSourceSummary]] = Field(default=None, description="Present only when the request sets `data_sources=true`.")
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features", "data_sources"]
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "journal", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features", "data_sources"]
 
     @field_validator('publication_status')
     def publication_status_validate_enum(cls, value):
@@ -132,6 +134,9 @@ class BaseStudyReturn(BaseModel):
                 if _item_preprint_dois is not None:
                     _items.append(_item_preprint_dois.to_dict())
             _dict['preprint_dois'] = _items
+        # override the default output from pydantic by calling `to_dict()` of journal
+        if self.journal is not None:
+            _dict['journal'] = self.journal.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in data_sources (list)
         _items = []
         if self.data_sources is not None:
@@ -214,6 +219,11 @@ class BaseStudyReturn(BaseModel):
         if self.username is None and "username" in self.model_fields_set:
             _dict['username'] = None
 
+        # set to None if journal (nullable) is None
+        # and model_fields_set contains the field
+        if self.journal is None and "journal" in self.model_fields_set:
+            _dict['journal'] = None
+
         return _dict
 
     @classmethod
@@ -251,6 +261,7 @@ class BaseStudyReturn(BaseModel):
             "public": obj.get("public") if obj.get("public") is not None else True,
             "user": obj.get("user"),
             "username": obj.get("username"),
+            "journal": JournalSummary.from_dict(obj["journal"]) if obj.get("journal") is not None else None,
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),
             "has_z_maps": obj.get("has_z_maps"),

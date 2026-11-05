@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
 **tables** | **List[str]** |  | [optional] 
 **data_sources** | [**List[DataSourceSummary]**](DataSourceSummary.md) | Present only when the request sets &#x60;data_sources&#x3D;true&#x60;. | [optional] [readonly] 
+**journal** | [**JournalSummary**](JournalSummary.md) |  | [optional] 
 **studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 

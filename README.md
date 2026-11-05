@@ -151,6 +151,8 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
 *StoreApi* | [**images_id_put**](docs/StoreApi.md#images_id_put) | **PUT** /images/{id} | PUT/update an image
 *StoreApi* | [**images_post**](docs/StoreApi.md#images_post) | **POST** /images/ | POST/create an image
+*StoreApi* | [**journals_get**](docs/StoreApi.md#journals_get) | **GET** /journals/ | GET journals
+*StoreApi* | [**journals_id_get**](docs/StoreApi.md#journals_id_get) | **GET** /journals/{id} | GET a journal
 *StoreApi* | [**neurostore_studyset_releases_get**](docs/StoreApi.md#neurostore_studyset_releases_get) | **GET** /neurostore-studyset-releases/ | GET NeuroStore studyset release list
 *StoreApi* | [**neurostore_studyset_releases_version_download_get**](docs/StoreApi.md#neurostore_studyset_releases_version_download_get) | **GET** /neurostore-studyset-releases/{version}/download | Download NeuroStore studyset release tarball
 *StoreApi* | [**neurostore_studyset_releases_version_get**](docs/StoreApi.md#neurostore_studyset_releases_version_get) | **GET** /neurostore-studyset-releases/{version} | GET NeuroStore studyset release manifest
@@ -280,6 +282,10 @@ Class | Method | HTTP request | Description
  - [ImageReturn](docs/ImageReturn.md)
  - [ImageValueSummary](docs/ImageValueSummary.md)
  - [ImageValueSummaryHistogram](docs/ImageValueSummaryHistogram.md)
+ - [JournalKind](docs/JournalKind.md)
+ - [JournalList](docs/JournalList.md)
+ - [JournalReturn](docs/JournalReturn.md)
+ - [JournalSummary](docs/JournalSummary.md)
  - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
  - [Metadata](docs/Metadata.md)
