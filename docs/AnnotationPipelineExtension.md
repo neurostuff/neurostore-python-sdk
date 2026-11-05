@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pipelines** | [**List[AnnotationPipelineExtensionPipelinesInner]**](AnnotationPipelineExtensionPipelinesInner.md) | Optional pipeline descriptors used to populate annotation notes with feature columns. Each entry should include the pipeline name and the list of columns to import, along with optional version and config id.  | [optional] 
+**analysis_query** | [**AnnotationPipelineExtensionAnalysisQuery**](AnnotationPipelineExtensionAnalysisQuery.md) |  | [optional] 
 
 ## Example
 

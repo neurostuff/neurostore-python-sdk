@@ -62,6 +62,20 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_analysis_queries_post(self) -> None:
+        """Test case for analysis_queries_post
+
+        Select analyses by what their extraction records say
+        """
+        pass
+
+    def test_analysis_terms_get(self) -> None:
+        """Test case for analysis_terms_get
+
+        The values an analysis query field takes
+        """
+        pass
+
     def test_annotation_analyses_get(self) -> None:
         """Test case for annotation_analyses_get
 

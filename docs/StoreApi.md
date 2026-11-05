@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**analyses_id_get**](StoreApi.md#analyses_id_get) | **GET** /analyses/{id} | GET an analysis
 [**analyses_id_put**](StoreApi.md#analyses_id_put) | **PUT** /analyses/{id} | PUT/update an analysis
 [**analyses_post**](StoreApi.md#analyses_post) | **POST** /analyses/ | POST/create an analysis
+[**analysis_queries_post**](StoreApi.md#analysis_queries_post) | **POST** /analysis-queries/ | Select analyses by what their extraction records say
+[**analysis_terms_get**](StoreApi.md#analysis_terms_get) | **GET** /analysis-terms/ | The values an analysis query field takes
 [**annotation_analyses_get**](StoreApi.md#annotation_analyses_get) | **GET** /annotation-analyses/ | Get annotation analyses
 [**annotation_analyses_id_get**](StoreApi.md#annotation_analyses_id_get) | **GET** /annotation-analyses/{id} | Your GET endpoint
 [**annotation_analyses_id_put**](StoreApi.md#annotation_analyses_id_put) | **PUT** /annotation-analyses/{id} | Your PUT endpoint
@@ -489,6 +491,150 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **analysis_queries_post**
+> AnalysisQueryResult analysis_queries_post(analysis_query_request=analysis_query_request)
+
+Select analyses by what their extraction records say
+
+Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A criterion with ids (diagnosis, task, contrast set) also matches a value that is one of the analysis's ids. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and with `funnel` says what each criterion dropped.
+
+
+### Example
+
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
+from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    analysis_query_request = neurostore_sdk.AnalysisQueryRequest() # AnalysisQueryRequest |  (optional)
+
+    try:
+        # Select analyses by what their extraction records say
+        api_response = api_instance.analysis_queries_post(analysis_query_request=analysis_query_request)
+        print("The response of StoreApi->analysis_queries_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->analysis_queries_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysis_query_request** | [**AnalysisQueryRequest**](AnalysisQueryRequest.md)|  | [optional] 
+
+### Return type
+
+[**AnalysisQueryResult**](AnalysisQueryResult.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The selected analyses, and what each criterion dropped |  -  |
+**400** | The query is not valid. Field error codes: UNKNOWN_FIELD, INVALID_VALUE, MISSING_VALUE, and PATTERN_TOO_BROAD for a text pattern without three consecutive letters or digits.  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **analysis_terms_get**
+> AnalysisTermList analysis_terms_get(var_field, search=search, limit=limit)
+
+The values an analysis query field takes
+
+Each value of one field across the pipeline analyses' features, with its label and how many analyses and papers carry it, most common first.
+
+
+### Example
+
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.analysis_term_list import AnalysisTermList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    var_field = 'var_field_example' # str | 
+    search = 'search_example' # str | Keep the values or labels that contain this text, case-insensitively. (optional)
+    limit = 50 # int |  (optional) (default to 50)
+
+    try:
+        # The values an analysis query field takes
+        api_response = api_instance.analysis_terms_get(var_field, search=search, limit=limit)
+        print("The response of StoreApi->analysis_terms_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->analysis_terms_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_field** | **str**|  | 
+ **search** | **str**| Keep the values or labels that contain this text, case-insensitively. | [optional] 
+ **limit** | **int**|  | [optional] [default to 50]
+
+### Return type
+
+[**AnalysisTermList**](AnalysisTermList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The field&#39;s values |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -49,6 +49,44 @@ class TestAnnotationRequest(unittest.TestCase):
                             ''
                             ], )
                     ],
+                analysis_query = neurostore_sdk.models.annotation_pipeline_extension_analysis_query.annotation_pipeline_extension_analysis_query(
+                    query = neurostore_sdk.models.analysis_query.analysis-query(
+                        diagnosis = null, 
+                        has_patients = null, 
+                        has_healthy = null, 
+                        species = null, 
+                        task = null, 
+                        spatial_scope = null, 
+                        coordinate_space = null, 
+                        measure_type = null, 
+                        measure_family = null, 
+                        details_type = null, 
+                        is_meta_analysis = null, 
+                        n = neurostore_sdk.models.analysis_query_range.analysis-query-range(
+                            min = 1.337, 
+                            max = 1.337, 
+                            when_silent = 'exclude', ), 
+                        has_coordinates = null, 
+                        role = null, 
+                        contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
+                            positive = null, 
+                            negative = null, 
+                            set = null, 
+                            kind = null, 
+                            groups = null, ), 
+                        design = neurostore_sdk.models.analysis_query_design.analysis_query_design(
+                            allocation = null, 
+                            assignment_structure = null, 
+                            blinding = null, 
+                            arm_kind = null, 
+                            longitudinal = null, ), 
+                        or = [
+                            { }
+                            ], ), 
+                    column = 'included', 
+                    feature_columns = [
+                        'diagnosis'
+                        ], ),
                 notes = None,
                 id = '38jobTomPDqt',
                 public = True,

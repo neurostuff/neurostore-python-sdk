@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.annotation_pipeline_extension_analysis_query import AnnotationPipelineExtensionAnalysisQuery
 from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +30,8 @@ class AnnotationPipelineExtension(BaseModel):
     AnnotationPipelineExtension
     """ # noqa: E501
     pipelines: Optional[List[AnnotationPipelineExtensionPipelinesInner]] = Field(default=None, description="Optional pipeline descriptors used to populate annotation notes with feature columns. Each entry should include the pipeline name and the list of columns to import, along with optional version and config id. ")
-    __properties: ClassVar[List[str]] = ["pipelines"]
+    analysis_query: Optional[AnnotationPipelineExtensionAnalysisQuery] = None
+    __properties: ClassVar[List[str]] = ["pipelines", "analysis_query"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +78,9 @@ class AnnotationPipelineExtension(BaseModel):
                 if _item_pipelines is not None:
                     _items.append(_item_pipelines.to_dict())
             _dict['pipelines'] = _items
+        # override the default output from pydantic by calling `to_dict()` of analysis_query
+        if self.analysis_query is not None:
+            _dict['analysis_query'] = self.analysis_query.to_dict()
         return _dict
 
     @classmethod
@@ -88,7 +93,8 @@ class AnnotationPipelineExtension(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "pipelines": [AnnotationPipelineExtensionPipelinesInner.from_dict(_item) for _item in obj["pipelines"]] if obj.get("pipelines") is not None else None
+            "pipelines": [AnnotationPipelineExtensionPipelinesInner.from_dict(_item) for _item in obj["pipelines"]] if obj.get("pipelines") is not None else None,
+            "analysis_query": AnnotationPipelineExtensionAnalysisQuery.from_dict(obj["analysis_query"]) if obj.get("analysis_query") is not None else None
         })
         return _obj
 
