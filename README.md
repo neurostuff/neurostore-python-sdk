@@ -328,6 +328,7 @@ Class | Method | HTTP request | Description
  - [StudyReturnRelationshipsAnalyses](docs/StudyReturnRelationshipsAnalyses.md)
  - [StudySchemaCarried](docs/StudySchemaCarried.md)
  - [StudySchemaRenameCandidate](docs/StudySchemaRenameCandidate.md)
+ - [StudySchemaRun](docs/StudySchemaRun.md)
  - [StudySchemaSetAside](docs/StudySchemaSetAside.md)
  - [StudySchemaUpload](docs/StudySchemaUpload.md)
  - [StudySchemaUploadPipeline](docs/StudySchemaUploadPipeline.md)

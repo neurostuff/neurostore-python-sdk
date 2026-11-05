@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.study_schema_run import StudySchemaRun
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +31,8 @@ class StudySchemaUploadPipeline(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="Default pondie.")
     version: Optional[StrictStr] = Field(default=None, description="Default the record's extraction_metadata.extractor_version.")
     commit: Optional[StrictStr] = Field(default=None, description="The commit of the code that produced the record. Two commits of one version are different configs.")
-    __properties: ClassVar[List[str]] = ["name", "version", "commit"]
+    runs: Optional[List[StudySchemaRun]] = Field(default=None, description="The runs that made the record: its record run, and the evidence and normalize runs that filled it in, at most one per stage. The record's config holds them in stage order with every field present, so uploads made by the same runs share one config, and a run of another model, adapter, prompt or fit gets another. A rerun with the same model and inputs is the same run and joins its config. Without runs the config is keyed as before. Validated by the service (422 SCHEMA, DUPLICATE_STAGE, DUPLICATE_RUN_ID, RUN_CONFLICT). ")
+    __properties: ClassVar[List[str]] = ["name", "version", "commit", "runs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +72,13 @@ class StudySchemaUploadPipeline(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in runs (list)
+        _items = []
+        if self.runs is not None:
+            for _item_runs in self.runs:
+                if _item_runs is not None:
+                    _items.append(_item_runs.to_dict())
+            _dict['runs'] = _items
         return _dict
 
     @classmethod
@@ -84,7 +93,8 @@ class StudySchemaUploadPipeline(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "version": obj.get("version"),
-            "commit": obj.get("commit")
+            "commit": obj.get("commit"),
+            "runs": [StudySchemaRun.from_dict(_item) for _item in obj["runs"]] if obj.get("runs") is not None else None
         })
         return _obj
 
