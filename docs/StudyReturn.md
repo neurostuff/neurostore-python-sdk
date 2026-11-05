@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **source_updated_at** | **str** |  | [optional] [readonly] 
 **analyses** | [**StudyReturnRelationshipsAnalyses**](StudyReturnRelationshipsAnalyses.md) |  | [optional] 
 **tables** | **List[str]** |  | [optional] 
+**data_sources** | [**List[DataSourceSummary]**](DataSourceSummary.md) | Present only when the request sets &#x60;data_sources&#x3D;true&#x60;. | [optional] [readonly] 
 **studysets** | [**List[StudyReturnAllOfStudysets]**](StudyReturnAllOfStudysets.md) |  | [optional] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 

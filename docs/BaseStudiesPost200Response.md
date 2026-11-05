@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **has_t_maps** | **bool** |  | [optional] 
 **has_beta_and_variance_maps** | **bool** |  | [optional] 
 **features** | **object** |  | [optional] 
+**data_sources** | [**List[DataSourceSummary]**](DataSourceSummary.md) | Present only when the request sets &#x60;data_sources&#x3D;true&#x60;. | [optional] [readonly] 
 
 ## Example
 

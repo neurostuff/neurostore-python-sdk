@@ -71,7 +71,13 @@ class TestAnalysisReturn(unittest.TestCase):
                 has_images = True,
                 has_z_maps = True,
                 has_t_maps = True,
-                has_beta_and_variance_maps = True
+                has_beta_and_variance_maps = True,
+                data_sources = [
+                    neurostore_sdk.models.data_source_summary.data-source-summary(
+                        id = '', 
+                        name = '', 
+                        url = '', )
+                    ]
             )
         else:
             return AnalysisReturn(

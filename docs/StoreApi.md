@@ -32,6 +32,11 @@ Method | HTTP request | Description
 [**conditions_id_get**](StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
 [**conditions_id_put**](StoreApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
 [**conditions_post**](StoreApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+[**data_sources_get**](StoreApi.md#data_sources_get) | **GET** /data-sources/ | GET data sources
+[**data_sources_id_delete**](StoreApi.md#data_sources_id_delete) | **DELETE** /data-sources/{id} | DELETE a data source
+[**data_sources_id_get**](StoreApi.md#data_sources_id_get) | **GET** /data-sources/{id} | GET a data source
+[**data_sources_id_put**](StoreApi.md#data_sources_id_put) | **PUT** /data-sources/{id} | PUT/update a data source
+[**data_sources_post**](StoreApi.md#data_sources_post) | **POST** /data-sources/ | POST/Create a data source
 [**images_get**](StoreApi.md#images_get) | **GET** /images/ | GET a list of images
 [**images_id_delete**](StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 [**images_id_get**](StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -85,7 +90,7 @@ Method | HTTP request | Description
 
 
 # **analyses_get**
-> AnalysisList analyses_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> AnalysisList analyses_get(data_sources=data_sources, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET list of analyses
 
@@ -111,6 +116,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
@@ -125,7 +131,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET list of analyses
-        api_response = api_instance.analyses_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.analyses_get(data_sources=data_sources, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, study=study, role=role, name=name, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -139,6 +145,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
@@ -248,7 +255,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **analyses_id_get**
-> AnalysisReturn analyses_id_get(id, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> AnalysisReturn analyses_id_get(id, data_sources=data_sources, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET an analysis
 
@@ -275,13 +282,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     id = 'id_example' # str | 
+    data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
     image_value_summary = False # bool | include each image's stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. (optional) (default to False)
 
     try:
         # GET an analysis
-        api_response = api_instance.analyses_id_get(id, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.analyses_id_get(id, data_sources=data_sources, nested=nested, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->analyses_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -296,6 +304,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
+ **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
  **image_value_summary** | **bool**| include each image&#39;s stored value summary (percentiles, spread, histogram, nan/zero/negative counts). Withheld by default; never present in studyset payloads. | [optional] [default to False]
@@ -1468,7 +1477,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_get**
-> BaseStudyList base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+> BaseStudyList base_studies_get(data_sources=data_sources, nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
 
 
 
@@ -1502,6 +1511,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     year_min = 56 # int | Minimum publication year (inclusive) for study search (optional)
     x = 10 # float | X coordinate for spatial query (requires y, z, and radius) (optional)
@@ -1540,7 +1550,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # 
-        api_response = api_instance.base_studies_get(nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
+        api_response = api_instance.base_studies_get(data_sources=data_sources, nested=nested, year_min=year_min, x=x, y=y, z=z, radius=radius, year_max=year_max, feature_filter=feature_filter, pipeline_config=pipeline_config, feature_display=feature_display, semantic_search=semantic_search, pipeline_config_id=pipeline_config_id, distance_threshold=distance_threshold, overall_cap=overall_cap, feature_flatten=feature_flatten, search=search, search_full_text=search_full_text, sort=sort, page=page, desc=desc, page_size=page_size, name=name, description=description, authors=authors, level=level, data_type=data_type, map_type=map_type, is_oa=is_oa, publication=publication, pmid=pmid, doi=doi, neurovault_id=neurovault_id, flat=flat, info=info, paginate=paginate)
         print("The response of StoreApi->base_studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1554,6 +1564,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **year_min** | **int**| Minimum publication year (inclusive) for study search | [optional] 
  **x** | **float**| X coordinate for spatial query (requires y, z, and radius) | [optional] 
@@ -1697,7 +1708,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **base_studies_id_get**
-> BaseStudyReturn base_studies_id_get(id, flat=flat, info=info, nested=nested)
+> BaseStudyReturn base_studies_id_get(id, data_sources=data_sources, flat=flat, info=info, nested=nested)
 
 Your GET endpoint
 
@@ -1722,13 +1733,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     id = 'id_example' # str | 
+    data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
     info = True # bool | show additional for endpoint-object relationships without being fully nested. Incompatible with nested (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
 
     try:
         # Your GET endpoint
-        api_response = api_instance.base_studies_id_get(id, flat=flat, info=info, nested=nested)
+        api_response = api_instance.base_studies_id_get(id, data_sources=data_sources, flat=flat, info=info, nested=nested)
         print("The response of StoreApi->base_studies_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -1743,6 +1755,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
+ **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
  **info** | **bool**| show additional for endpoint-object relationships without being fully nested. Incompatible with nested | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
@@ -2312,6 +2325,397 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **data_sources_get**
+> DataSourceList data_sources_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, kind=kind)
+
+GET data sources
+
+List the named studies (cohorts), consortia and repositories a paper's data can come from.
+
+### Example
+
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.data_source_list import DataSourceList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
+    page = 56 # int | page of results (optional)
+    desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
+    page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
+    name = 'name_example' # str | search the name field for a term (optional)
+    description = 'description_example' # str | search description field for a term (optional)
+    kind = 'kind_example' # str | only data sources of this kind (optional)
+
+    try:
+        # GET data sources
+        api_response = api_instance.data_sources_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, name=name, description=description, kind=kind)
+        print("The response of StoreApi->data_sources_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->data_sources_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
+ **page** | **int**| page of results | [optional] 
+ **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
+ **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
+ **name** | **str**| search the name field for a term | [optional] 
+ **description** | **str**| search description field for a term | [optional] 
+ **kind** | **str**| only data sources of this kind | [optional] 
+
+### Return type
+
+[**DataSourceList**](DataSourceList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **data_sources_id_delete**
+> data_sources_id_delete(id)
+
+DELETE a data source
+
+Delete a data source and its analysis links. Admins only.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # DELETE a data source
+        api_instance.data_sources_id_delete(id)
+    except Exception as e:
+        print("Exception when calling StoreApi->data_sources_id_delete: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Only an admin can change data sources. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **data_sources_id_get**
+> DataSourceReturn data_sources_id_get(id)
+
+GET a data source
+
+Retrieve a data source.
+
+### Example
+
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.data_source_return import DataSourceReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # GET a data source
+        api_response = api_instance.data_sources_id_get(id)
+        print("The response of StoreApi->data_sources_id_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->data_sources_id_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**DataSourceReturn**](DataSourceReturn.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **data_sources_id_put**
+> DataSourceReturn data_sources_id_put(id, data_source_request=data_source_request)
+
+PUT/update a data source
+
+Update a data source; its id cannot change. Admins only.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.data_source_request import DataSourceRequest
+from neurostore_sdk.models.data_source_return import DataSourceReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+    data_source_request = neurostore_sdk.DataSourceRequest() # DataSourceRequest |  (optional)
+
+    try:
+        # PUT/update a data source
+        api_response = api_instance.data_sources_id_put(id, data_source_request=data_source_request)
+        print("The response of StoreApi->data_sources_id_put:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->data_sources_id_put: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **data_source_request** | [**DataSourceRequest**](DataSourceRequest.md)|  | [optional] 
+
+### Return type
+
+[**DataSourceReturn**](DataSourceReturn.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Only an admin can change data sources. |  -  |
+**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **data_sources_post**
+> DataSourceReturn data_sources_post(data_source_request=data_source_request)
+
+POST/Create a data source
+
+Create a data source under the id given in the body. Admins only.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.data_source_request import DataSourceRequest
+from neurostore_sdk.models.data_source_return import DataSourceReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    data_source_request = neurostore_sdk.DataSourceRequest() # DataSourceRequest |  (optional)
+
+    try:
+        # POST/Create a data source
+        api_response = api_instance.data_sources_post(data_source_request=data_source_request)
+        print("The response of StoreApi->data_sources_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->data_sources_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_source_request** | [**DataSourceRequest**](DataSourceRequest.md)|  | [optional] 
+
+### Return type
+
+[**DataSourceReturn**](DataSourceReturn.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Only an admin can change data sources. |  -  |
+**422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4437,7 +4841,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_get**
-> StudyList studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> StudyList studies_get(data_sources=data_sources, search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a list of studies
 
@@ -4473,6 +4877,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
+    data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
     search = 'imagin' # str | Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one. (optional)
     sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
     page = 56 # int | page of results (optional)
@@ -4500,7 +4905,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a list of studies
-        api_response = api_instance.studies_get(search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.studies_get(data_sources=data_sources, search=search, sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, nested=nested, name=name, description=description, source_id=source_id, unique=unique, source=source, authors=authors, user_id=user_id, data_type=data_type, role=role, map_type=map_type, studyset_owner=studyset_owner, level=level, pmid=pmid, doi=doi, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->studies_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -4514,6 +4919,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
  **search** | **str**| Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading &#x60;-&#x60; and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one. | [optional] 
  **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
  **page** | **int**| page of results | [optional] 
@@ -4636,7 +5042,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **studies_id_get**
-> StudyReturn studies_id_get(id, nested=nested, studyset_owner=studyset_owner, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+> StudyReturn studies_id_get(id, data_sources=data_sources, nested=nested, studyset_owner=studyset_owner, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
 
 GET a study
 
@@ -4663,6 +5069,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     id = 'id_example' # str | 
+    data_sources = False # bool | include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. (optional) (default to False)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
@@ -4671,7 +5078,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
     try:
         # GET a study
-        api_response = api_instance.studies_id_get(id, nested=nested, studyset_owner=studyset_owner, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
+        api_response = api_instance.studies_id_get(id, data_sources=data_sources, nested=nested, studyset_owner=studyset_owner, flat=flat, image_metadata=image_metadata, image_value_summary=image_value_summary)
         print("The response of StoreApi->studies_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -4686,6 +5093,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
+ **data_sources** | **bool**| include &#x60;data_sources&#x60;: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default. | [optional] [default to False]
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 

@@ -139,6 +139,11 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**conditions_id_get**](docs/StoreApi.md#conditions_id_get) | **GET** /conditions/{id} | GET a condition
 *StoreApi* | [**conditions_id_put**](docs/StoreApi.md#conditions_id_put) | **PUT** /conditions/{id} | PUT/update a condition
 *StoreApi* | [**conditions_post**](docs/StoreApi.md#conditions_post) | **POST** /conditions/ | POST/Create a condition
+*StoreApi* | [**data_sources_get**](docs/StoreApi.md#data_sources_get) | **GET** /data-sources/ | GET data sources
+*StoreApi* | [**data_sources_id_delete**](docs/StoreApi.md#data_sources_id_delete) | **DELETE** /data-sources/{id} | DELETE a data source
+*StoreApi* | [**data_sources_id_get**](docs/StoreApi.md#data_sources_id_get) | **GET** /data-sources/{id} | GET a data source
+*StoreApi* | [**data_sources_id_put**](docs/StoreApi.md#data_sources_id_put) | **PUT** /data-sources/{id} | PUT/update a data source
+*StoreApi* | [**data_sources_post**](docs/StoreApi.md#data_sources_post) | **POST** /data-sources/ | POST/Create a data source
 *StoreApi* | [**images_get**](docs/StoreApi.md#images_get) | **GET** /images/ | GET a list of images
 *StoreApi* | [**images_id_delete**](docs/StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 *StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -238,6 +243,11 @@ Class | Method | HTTP request | Description
  - [ConditionList](docs/ConditionList.md)
  - [ConditionRequest](docs/ConditionRequest.md)
  - [ConditionReturn](docs/ConditionReturn.md)
+ - [DataSourceCommon](docs/DataSourceCommon.md)
+ - [DataSourceList](docs/DataSourceList.md)
+ - [DataSourceRequest](docs/DataSourceRequest.md)
+ - [DataSourceReturn](docs/DataSourceReturn.md)
+ - [DataSourceSummary](docs/DataSourceSummary.md)
  - [Entity](docs/Entity.md)
  - [ErrorDetail](docs/ErrorDetail.md)
  - [ErrorResponse](docs/ErrorResponse.md)

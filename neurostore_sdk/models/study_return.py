@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from neurostore_sdk.models.data_source_summary import DataSourceSummary
 from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOfStudysets
 from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses
 from typing import Optional, Set
@@ -50,6 +51,7 @@ class StudyReturn(BaseModel):
     source_updated_at: Optional[StrictStr] = None
     analyses: Optional[StudyReturnRelationshipsAnalyses] = None
     tables: Optional[List[StrictStr]] = None
+    data_sources: Optional[List[DataSourceSummary]] = Field(default=None, description="Present only when the request sets `data_sources=true`.")
     studysets: Optional[List[StudyReturnAllOfStudysets]] = None
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
@@ -58,7 +60,7 @@ class StudyReturn(BaseModel):
     has_beta_and_variance_maps: Optional[StrictBool] = None
     base_study: Optional[StrictStr] = None
     pmcid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "tables", "studysets", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "base_study", "pmcid"]
+    __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "analyses", "tables", "data_sources", "studysets", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "base_study", "pmcid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,6 +96,7 @@ class StudyReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([])
 
@@ -105,6 +108,13 @@ class StudyReturn(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of analyses
         if self.analyses is not None:
             _dict['analyses'] = self.analyses.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in data_sources (list)
+        _items = []
+        if self.data_sources is not None:
+            for _item_data_sources in self.data_sources:
+                if _item_data_sources is not None:
+                    _items.append(_item_data_sources.to_dict())
+            _dict['data_sources'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in studysets (list)
         _items = []
         if self.studysets is not None:
@@ -223,6 +233,7 @@ class StudyReturn(BaseModel):
             "source_updated_at": obj.get("source_updated_at"),
             "analyses": StudyReturnRelationshipsAnalyses.from_dict(obj["analyses"]) if obj.get("analyses") is not None else None,
             "tables": obj.get("tables"),
+            "data_sources": [DataSourceSummary.from_dict(_item) for _item in obj["data_sources"]] if obj.get("data_sources") is not None else None,
             "studysets": [StudyReturnAllOfStudysets.from_dict(_item) for _item in obj["studysets"]] if obj.get("studysets") is not None else None,
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),

@@ -25,6 +25,7 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions
 from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages
 from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints
+from neurostore_sdk.models.data_source_summary import DataSourceSummary
 from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
 from typing_extensions import Self
@@ -62,7 +63,8 @@ class AnalysisReturn(BaseModel):
     has_z_maps: Optional[StrictBool] = None
     has_t_maps: Optional[StrictBool] = None
     has_beta_and_variance_maps: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "role", "relabelled_by", "outcome", "from_prior_study", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps"]
+    data_sources: Optional[List[DataSourceSummary]] = Field(default=None, description="Present only when the request sets `data_sources=true`.")
+    __properties: ClassVar[List[str]] = ["name", "description", "weights", "created_at", "updated_at", "id", "public", "user", "username", "study", "images", "points", "conditions", "table_id", "entities", "order", "metadata", "role", "relabelled_by", "outcome", "from_prior_study", "source_id", "point_count", "image_count", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "data_sources"]
 
     @field_validator('outcome')
     def outcome_validate_enum(cls, value):
@@ -108,6 +110,7 @@ class AnalysisReturn(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([])
 
@@ -132,6 +135,13 @@ class AnalysisReturn(BaseModel):
                 if _item_entities is not None:
                     _items.append(_item_entities.to_dict())
             _dict['entities'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in data_sources (list)
+        _items = []
+        if self.data_sources is not None:
+            for _item_data_sources in self.data_sources:
+                if _item_data_sources is not None:
+                    _items.append(_item_data_sources.to_dict())
+            _dict['data_sources'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -247,7 +257,8 @@ class AnalysisReturn(BaseModel):
             "has_images": obj.get("has_images"),
             "has_z_maps": obj.get("has_z_maps"),
             "has_t_maps": obj.get("has_t_maps"),
-            "has_beta_and_variance_maps": obj.get("has_beta_and_variance_maps")
+            "has_beta_and_variance_maps": obj.get("has_beta_and_variance_maps"),
+            "data_sources": [DataSourceSummary.from_dict(_item) for _item in obj["data_sources"]] if obj.get("data_sources") is not None else None
         })
         return _obj
 

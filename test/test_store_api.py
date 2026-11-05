@@ -223,6 +223,41 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_data_sources_get(self) -> None:
+        """Test case for data_sources_get
+
+        GET data sources
+        """
+        pass
+
+    def test_data_sources_id_delete(self) -> None:
+        """Test case for data_sources_id_delete
+
+        DELETE a data source
+        """
+        pass
+
+    def test_data_sources_id_get(self) -> None:
+        """Test case for data_sources_id_get
+
+        GET a data source
+        """
+        pass
+
+    def test_data_sources_id_put(self) -> None:
+        """Test case for data_sources_id_put
+
+        PUT/update a data source
+        """
+        pass
+
+    def test_data_sources_post(self) -> None:
+        """Test case for data_sources_post
+
+        POST/Create a data source
+        """
+        pass
+
     def test_images_get(self) -> None:
         """Test case for images_get
 
