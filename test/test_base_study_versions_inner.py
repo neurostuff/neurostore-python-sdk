@@ -63,6 +63,10 @@ class TestBaseStudyVersionsInner(unittest.TestCase):
                         name = '', 
                         url = '', )
                     ],
+                journal = neurostore_sdk.models.journal_summary.journal-summary(
+                    id = '', 
+                    title = '', 
+                    abbreviation = '', ),
                 studysets = [
                     null
                     ],

@@ -77,6 +77,10 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.image_return import ImageReturn
     from neurostore_sdk.models.image_value_summary import ImageValueSummary
     from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram
+    from neurostore_sdk.models.journal_kind import JournalKind
+    from neurostore_sdk.models.journal_list import JournalList
+    from neurostore_sdk.models.journal_return import JournalReturn
+    from neurostore_sdk.models.journal_summary import JournalSummary
     from neurostore_sdk.models.json_ld import JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext
     from neurostore_sdk.models.metadata import Metadata
@@ -251,6 +255,10 @@ from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
 from neurostore_sdk.models.image_value_summary import ImageValueSummary
 from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram
+from neurostore_sdk.models.journal_kind import JournalKind
+from neurostore_sdk.models.journal_list import JournalList
+from neurostore_sdk.models.journal_return import JournalReturn
+from neurostore_sdk.models.journal_summary import JournalSummary
 from neurostore_sdk.models.json_ld import JsonLd
 from neurostore_sdk.models.json_ld_context import JsonLdContext
 from neurostore_sdk.models.metadata import Metadata

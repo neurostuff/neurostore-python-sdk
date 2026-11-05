@@ -45,6 +45,9 @@ from neurostore_sdk.models.data_source_return import DataSourceReturn
 from neurostore_sdk.models.image_list import ImageList
 from neurostore_sdk.models.image_request import ImageRequest
 from neurostore_sdk.models.image_return import ImageReturn
+from neurostore_sdk.models.journal_kind import JournalKind
+from neurostore_sdk.models.journal_list import JournalList
+from neurostore_sdk.models.journal_return import JournalReturn
 from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response
 from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
@@ -5234,6 +5237,7 @@ class StoreApi:
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
+        journal_id: Annotated[Optional[StrictStr], Field(description="only papers neurostore identified as appearing in this journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         neurovault_id: Annotated[Optional[StrictStr], Field(description="search for study with specific neurovault id")] = None,
@@ -5316,6 +5320,8 @@ class StoreApi:
         :type is_oa: bool
         :param publication: search for papers from a particular journal
         :type publication: str
+        :param journal_id: only papers neurostore identified as appearing in this journal
+        :type journal_id: str
         :param pmid: search for particular pmid
         :type pmid: str
         :param doi: search for study with specific doi
@@ -5381,6 +5387,7 @@ class StoreApi:
             map_type=map_type,
             is_oa=is_oa,
             publication=publication,
+            journal_id=journal_id,
             pmid=pmid,
             doi=doi,
             neurovault_id=neurovault_id,
@@ -5442,6 +5449,7 @@ class StoreApi:
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
+        journal_id: Annotated[Optional[StrictStr], Field(description="only papers neurostore identified as appearing in this journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         neurovault_id: Annotated[Optional[StrictStr], Field(description="search for study with specific neurovault id")] = None,
@@ -5524,6 +5532,8 @@ class StoreApi:
         :type is_oa: bool
         :param publication: search for papers from a particular journal
         :type publication: str
+        :param journal_id: only papers neurostore identified as appearing in this journal
+        :type journal_id: str
         :param pmid: search for particular pmid
         :type pmid: str
         :param doi: search for study with specific doi
@@ -5589,6 +5599,7 @@ class StoreApi:
             map_type=map_type,
             is_oa=is_oa,
             publication=publication,
+            journal_id=journal_id,
             pmid=pmid,
             doi=doi,
             neurovault_id=neurovault_id,
@@ -5650,6 +5661,7 @@ class StoreApi:
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         is_oa: Optional[StrictBool] = None,
         publication: Annotated[Optional[StrictStr], Field(description="search for papers from a particular journal")] = None,
+        journal_id: Annotated[Optional[StrictStr], Field(description="only papers neurostore identified as appearing in this journal")] = None,
         pmid: Annotated[Optional[StrictStr], Field(description="search for particular pmid")] = None,
         doi: Annotated[Optional[StrictStr], Field(description="search for study with specific doi")] = None,
         neurovault_id: Annotated[Optional[StrictStr], Field(description="search for study with specific neurovault id")] = None,
@@ -5732,6 +5744,8 @@ class StoreApi:
         :type is_oa: bool
         :param publication: search for papers from a particular journal
         :type publication: str
+        :param journal_id: only papers neurostore identified as appearing in this journal
+        :type journal_id: str
         :param pmid: search for particular pmid
         :type pmid: str
         :param doi: search for study with specific doi
@@ -5797,6 +5811,7 @@ class StoreApi:
             map_type=map_type,
             is_oa=is_oa,
             publication=publication,
+            journal_id=journal_id,
             pmid=pmid,
             doi=doi,
             neurovault_id=neurovault_id,
@@ -5853,6 +5868,7 @@ class StoreApi:
         map_type,
         is_oa,
         publication,
+        journal_id,
         pmid,
         doi,
         neurovault_id,
@@ -6002,6 +6018,10 @@ class StoreApi:
         if publication is not None:
             
             _query_params.append(('publication', publication))
+            
+        if journal_id is not None:
+            
+            _query_params.append(('journal_id', journal_id))
             
         if pmid is not None:
             
@@ -11699,6 +11719,633 @@ class StoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/images/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def journals_get(
+        self,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.")] = None,
+        kind: Annotated[Optional[JournalKind], Field(description="only journals of this kind")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> JournalList:
+        """GET journals
+
+        List the journals, preprint servers and conference series papers appeared in, each one OpenAlex source.
+
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param search: Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.
+        :type search: str
+        :param kind: only journals of this kind
+        :type kind: JournalKind
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._journals_get_serialize(
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            search=search,
+            kind=kind,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JournalList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def journals_get_with_http_info(
+        self,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.")] = None,
+        kind: Annotated[Optional[JournalKind], Field(description="only journals of this kind")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[JournalList]:
+        """GET journals
+
+        List the journals, preprint servers and conference series papers appeared in, each one OpenAlex source.
+
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param search: Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.
+        :type search: str
+        :param kind: only journals of this kind
+        :type kind: JournalKind
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._journals_get_serialize(
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            search=search,
+            kind=kind,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JournalList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def journals_get_without_preload_content(
+        self,
+        sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
+        page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
+        desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
+        paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
+        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.")] = None,
+        kind: Annotated[Optional[JournalKind], Field(description="only journals of this kind")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET journals
+
+        List the journals, preprint servers and conference series papers appeared in, each one OpenAlex source.
+
+        :param sort: Parameter to sort results on
+        :type sort: str
+        :param page: page of results
+        :type page: int
+        :param desc: sort results by descending order (as opposed to ascending order)
+        :type desc: bool
+        :param page_size: number of results to show on a page
+        :type page_size: int
+        :param paginate: whether to paginate results (true) or return all results at once (false)
+        :type paginate: bool
+        :param search: Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.
+        :type search: str
+        :param kind: only journals of this kind
+        :type kind: JournalKind
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._journals_get_serialize(
+            sort=sort,
+            page=page,
+            desc=desc,
+            page_size=page_size,
+            paginate=paginate,
+            search=search,
+            kind=kind,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JournalList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _journals_get_serialize(
+        self,
+        sort,
+        page,
+        desc,
+        page_size,
+        paginate,
+        search,
+        kind,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if sort is not None:
+            
+            _query_params.append(('sort', sort))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if desc is not None:
+            
+            _query_params.append(('desc', desc))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        if paginate is not None:
+            
+            _query_params.append(('paginate', paginate))
+            
+        if search is not None:
+            
+            _query_params.append(('search', search))
+            
+        if kind is not None:
+            
+            _query_params.append(('kind', kind.value))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/journals/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def journals_id_get(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> JournalReturn:
+        """GET a journal
+
+        Retrieve a journal.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._journals_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JournalReturn",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def journals_id_get_with_http_info(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[JournalReturn]:
+        """GET a journal
+
+        Retrieve a journal.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._journals_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JournalReturn",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def journals_id_get_without_preload_content(
+        self,
+        id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """GET a journal
+
+        Retrieve a journal.
+
+        :param id: (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._journals_id_get_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "JournalReturn",
+            '404': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _journals_id_get_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/journals/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -18561,6 +19208,7 @@ class StoreApi:
     def studies_get(
         self,
         data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
+        journal_id: Annotated[Optional[StrictStr], Field(description="only papers neurostore identified as appearing in this journal")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -18604,6 +19252,8 @@ class StoreApi:
 
         :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
         :type data_sources: bool
+        :param journal_id: only papers neurostore identified as appearing in this journal
+        :type journal_id: str
         :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
@@ -18676,6 +19326,7 @@ class StoreApi:
 
         _param = self._studies_get_serialize(
             data_sources=data_sources,
+            journal_id=journal_id,
             search=search,
             sort=sort,
             page=page,
@@ -18724,6 +19375,7 @@ class StoreApi:
     def studies_get_with_http_info(
         self,
         data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
+        journal_id: Annotated[Optional[StrictStr], Field(description="only papers neurostore identified as appearing in this journal")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -18767,6 +19419,8 @@ class StoreApi:
 
         :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
         :type data_sources: bool
+        :param journal_id: only papers neurostore identified as appearing in this journal
+        :type journal_id: str
         :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
@@ -18839,6 +19493,7 @@ class StoreApi:
 
         _param = self._studies_get_serialize(
             data_sources=data_sources,
+            journal_id=journal_id,
             search=search,
             sort=sort,
             page=page,
@@ -18887,6 +19542,7 @@ class StoreApi:
     def studies_get_without_preload_content(
         self,
         data_sources: Annotated[Optional[StrictBool], Field(description="include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.")] = None,
+        journal_id: Annotated[Optional[StrictStr], Field(description="only papers neurostore identified as appearing in this journal")] = None,
         search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Parameter to sort results on")] = None,
         page: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="page of results")] = None,
@@ -18930,6 +19586,8 @@ class StoreApi:
 
         :param data_sources: include `data_sources`: on an analysis, the data sources linked to it; on a study or base study, those of all its analyses. Withheld by default.
         :type data_sources: bool
+        :param journal_id: only papers neurostore identified as appearing in this journal
+        :type journal_id: str
         :param search: Words to find in the name and description. Each word is matched whole after English stemming, not as a substring or a prefix. Words must all match unless joined by OR; quoted phrases, AND, NOT, a leading `-` and parentheses are understood too. A search of digits only is matched against the PMID instead, on records that have one.
         :type search: str
         :param sort: Parameter to sort results on
@@ -19002,6 +19660,7 @@ class StoreApi:
 
         _param = self._studies_get_serialize(
             data_sources=data_sources,
+            journal_id=journal_id,
             search=search,
             sort=sort,
             page=page,
@@ -19045,6 +19704,7 @@ class StoreApi:
     def _studies_get_serialize(
         self,
         data_sources,
+        journal_id,
         search,
         sort,
         page,
@@ -19094,6 +19754,10 @@ class StoreApi:
         if data_sources is not None:
             
             _query_params.append(('data_sources', data_sources))
+            
+        if journal_id is not None:
+            
+            _query_params.append(('journal_id', journal_id))
             
         if search is not None:
             

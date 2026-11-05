@@ -77,6 +77,10 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                 public = True,
                 user = '',
                 username = '',
+                journal = neurostore_sdk.models.journal_summary.journal-summary(
+                    id = '', 
+                    title = '', 
+                    abbreviation = '', ),
                 has_coordinates = True,
                 has_images = True,
                 has_z_maps = True,
