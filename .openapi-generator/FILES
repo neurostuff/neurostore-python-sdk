@@ -416,7 +416,6 @@ neurostore_sdk/rest.py
 pyproject.toml
 requirements.txt
 setup.cfg
-setup.py
 test-requirements.txt
 test/__init__.py
 test/test_analysis_base.py
