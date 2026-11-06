@@ -15,10 +15,10 @@
 
 import unittest
 
-from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms
+from neurostore_sdk.models.query_dataset_columns_inner import QueryDatasetColumnsInner
 
-class TestAnalysisQueryTerms(unittest.TestCase):
-    """AnalysisQueryTerms unit test stubs"""
+class TestQueryDatasetColumnsInner(unittest.TestCase):
+    """QueryDatasetColumnsInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,27 @@ class TestAnalysisQueryTerms(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AnalysisQueryTerms:
-        """Test AnalysisQueryTerms
+    def make_instance(self, include_optional) -> QueryDatasetColumnsInner:
+        """Test QueryDatasetColumnsInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AnalysisQueryTerms`
+        # uncomment below to create an instance of `QueryDatasetColumnsInner`
         """
-        model = AnalysisQueryTerms()
+        model = QueryDatasetColumnsInner()
         if include_optional:
-            return AnalysisQueryTerms(
-                ids = None,
-                text = None
+            return QueryDatasetColumnsInner(
+                name = '',
+                type = 'text',
+                description = ''
             )
         else:
-            return AnalysisQueryTerms(
+            return QueryDatasetColumnsInner(
         )
         """
 
-    def testAnalysisQueryTerms(self):
-        """Test AnalysisQueryTerms"""
+    def testQueryDatasetColumnsInner(self):
+        """Test QueryDatasetColumnsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

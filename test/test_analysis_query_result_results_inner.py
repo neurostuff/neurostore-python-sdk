@@ -40,9 +40,6 @@ class TestAnalysisQueryResultResultsInner(unittest.TestCase):
                 study = '',
                 base_study = '',
                 name = '',
-                matched_by = {
-                    'id' : 'id'
-                    },
                 features = { }
             )
         else:

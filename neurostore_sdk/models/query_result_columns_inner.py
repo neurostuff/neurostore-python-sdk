@@ -18,18 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisQueryIds(BaseModel):
+class QueryResultColumnsInner(BaseModel):
     """
-    AnalysisQueryIds
+    QueryResultColumnsInner
     """ # noqa: E501
-    ids: Optional[AnalysisQueryStrings] = None
-    __properties: ClassVar[List[str]] = ["ids"]
+    name: Optional[StrictStr] = None
+    type: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class AnalysisQueryIds(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisQueryIds from a JSON string"""
+        """Create an instance of QueryResultColumnsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,14 +69,11 @@ class AnalysisQueryIds(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of ids
-        if self.ids is not None:
-            _dict['ids'] = self.ids.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisQueryIds from a dict"""
+        """Create an instance of QueryResultColumnsInner from a dict"""
         if obj is None:
             return None
 
@@ -84,7 +81,8 @@ class AnalysisQueryIds(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ids": AnalysisQueryStrings.from_dict(obj["ids"]) if obj.get("ids") is not None else None
+            "name": obj.get("name"),
+            "type": obj.get("type")
         })
         return _obj
 

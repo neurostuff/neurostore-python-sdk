@@ -67,6 +67,8 @@ from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResult
 from neurostore_sdk.models.point_list import PointList
 from neurostore_sdk.models.point_request import PointRequest
 from neurostore_sdk.models.point_return import PointReturn
+from neurostore_sdk.models.query_dataset_list import QueryDatasetList
+from neurostore_sdk.models.query_result import QueryResult
 from neurostore_sdk.models.study_list import StudyList
 from neurostore_sdk.models.study_request import StudyRequest
 from neurostore_sdk.models.study_return import StudyReturn
@@ -1718,7 +1720,7 @@ class StoreApi:
     ) -> AnalysisQueryResult:
         """Select analyses by what their extraction records say
 
-        Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A normalized criterion (medical_condition, task, contrast.key, contrast.set) takes `ids`, the terms a normalizer mapped the record's wording to, which match their descendants (a task family its tasks, a family its contrast keys and sets) unless `descendants` is false, and `text`, a pattern over the wording and the terms' labels; either may match. Contrast keys and sets are directional: a term with `:reversed` is the contrast stated the other way round. `when_unmapped` decides the analyses whose record states the feature but maps none of it, excluded by default; a healthy group's condition, or a value read as an absence, is silent. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and how it matched each normalized criterion, and with `funnel` says what each criterion dropped. 
+        Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A criterion with ids (diagnosis, task, contrast set) also matches a value that is one of the analysis's ids. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and with `funnel` says what each criterion dropped. 
 
         :param analysis_query_request:
         :type analysis_query_request: AnalysisQueryRequest
@@ -1786,7 +1788,7 @@ class StoreApi:
     ) -> ApiResponse[AnalysisQueryResult]:
         """Select analyses by what their extraction records say
 
-        Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A normalized criterion (medical_condition, task, contrast.key, contrast.set) takes `ids`, the terms a normalizer mapped the record's wording to, which match their descendants (a task family its tasks, a family its contrast keys and sets) unless `descendants` is false, and `text`, a pattern over the wording and the terms' labels; either may match. Contrast keys and sets are directional: a term with `:reversed` is the contrast stated the other way round. `when_unmapped` decides the analyses whose record states the feature but maps none of it, excluded by default; a healthy group's condition, or a value read as an absence, is silent. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and how it matched each normalized criterion, and with `funnel` says what each criterion dropped. 
+        Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A criterion with ids (diagnosis, task, contrast set) also matches a value that is one of the analysis's ids. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and with `funnel` says what each criterion dropped. 
 
         :param analysis_query_request:
         :type analysis_query_request: AnalysisQueryRequest
@@ -1854,7 +1856,7 @@ class StoreApi:
     ) -> RESTResponseType:
         """Select analyses by what their extraction records say
 
-        Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A normalized criterion (medical_condition, task, contrast.key, contrast.set) takes `ids`, the terms a normalizer mapped the record's wording to, which match their descendants (a task family its tasks, a family its contrast keys and sets) unless `descendants` is false, and `text`, a pattern over the wording and the terms' labels; either may match. Contrast keys and sets are directional: a term with `:reversed` is the contrast stated the other way round. `when_unmapped` decides the analyses whose record states the feature but maps none of it, excluded by default; a healthy group's condition, or a value read as an absence, is silent. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and how it matched each normalized criterion, and with `funnel` says what each criterion dropped. 
+        Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A criterion with ids (diagnosis, task, contrast set) also matches a value that is one of the analysis's ids. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and with `funnel` says what each criterion dropped. 
 
         :param analysis_query_request:
         :type analysis_query_request: AnalysisQueryRequest
@@ -1979,8 +1981,7 @@ class StoreApi:
     def analysis_terms_get(
         self,
         var_field: StrictStr,
-        search: Annotated[Optional[StrictStr], Field(description="Keep the values whose id, label or a synonym contains this text, case-insensitively. ")] = None,
-        parent: Annotated[Optional[StrictStr], Field(description="Keep the values directly under this term.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Keep the values or labels that contain this text, case-insensitively.")] = None,
         limit: Optional[Annotated[int, Field(le=500, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -1997,14 +1998,12 @@ class StoreApi:
     ) -> AnalysisTermList:
         """The values an analysis query field takes
 
-        Each value of one field across the pipeline analyses' features, with its label, parent, children and synonyms and how many analyses and papers carry it, most common first. A directional contrast key or set is listed in each direction it occurs in. 
+        Each value of one field across the pipeline analyses' features, with its label and how many analyses and papers carry it, most common first. 
 
         :param var_field: (required)
         :type var_field: str
-        :param search: Keep the values whose id, label or a synonym contains this text, case-insensitively. 
+        :param search: Keep the values or labels that contain this text, case-insensitively.
         :type search: str
-        :param parent: Keep the values directly under this term.
-        :type parent: str
         :param limit:
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2032,7 +2031,6 @@ class StoreApi:
         _param = self._analysis_terms_get_serialize(
             var_field=var_field,
             search=search,
-            parent=parent,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2058,8 +2056,7 @@ class StoreApi:
     def analysis_terms_get_with_http_info(
         self,
         var_field: StrictStr,
-        search: Annotated[Optional[StrictStr], Field(description="Keep the values whose id, label or a synonym contains this text, case-insensitively. ")] = None,
-        parent: Annotated[Optional[StrictStr], Field(description="Keep the values directly under this term.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Keep the values or labels that contain this text, case-insensitively.")] = None,
         limit: Optional[Annotated[int, Field(le=500, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -2076,14 +2073,12 @@ class StoreApi:
     ) -> ApiResponse[AnalysisTermList]:
         """The values an analysis query field takes
 
-        Each value of one field across the pipeline analyses' features, with its label, parent, children and synonyms and how many analyses and papers carry it, most common first. A directional contrast key or set is listed in each direction it occurs in. 
+        Each value of one field across the pipeline analyses' features, with its label and how many analyses and papers carry it, most common first. 
 
         :param var_field: (required)
         :type var_field: str
-        :param search: Keep the values whose id, label or a synonym contains this text, case-insensitively. 
+        :param search: Keep the values or labels that contain this text, case-insensitively.
         :type search: str
-        :param parent: Keep the values directly under this term.
-        :type parent: str
         :param limit:
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2111,7 +2106,6 @@ class StoreApi:
         _param = self._analysis_terms_get_serialize(
             var_field=var_field,
             search=search,
-            parent=parent,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2137,8 +2131,7 @@ class StoreApi:
     def analysis_terms_get_without_preload_content(
         self,
         var_field: StrictStr,
-        search: Annotated[Optional[StrictStr], Field(description="Keep the values whose id, label or a synonym contains this text, case-insensitively. ")] = None,
-        parent: Annotated[Optional[StrictStr], Field(description="Keep the values directly under this term.")] = None,
+        search: Annotated[Optional[StrictStr], Field(description="Keep the values or labels that contain this text, case-insensitively.")] = None,
         limit: Optional[Annotated[int, Field(le=500, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
@@ -2155,14 +2148,12 @@ class StoreApi:
     ) -> RESTResponseType:
         """The values an analysis query field takes
 
-        Each value of one field across the pipeline analyses' features, with its label, parent, children and synonyms and how many analyses and papers carry it, most common first. A directional contrast key or set is listed in each direction it occurs in. 
+        Each value of one field across the pipeline analyses' features, with its label and how many analyses and papers carry it, most common first. 
 
         :param var_field: (required)
         :type var_field: str
-        :param search: Keep the values whose id, label or a synonym contains this text, case-insensitively. 
+        :param search: Keep the values or labels that contain this text, case-insensitively.
         :type search: str
-        :param parent: Keep the values directly under this term.
-        :type parent: str
         :param limit:
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2190,7 +2181,6 @@ class StoreApi:
         _param = self._analysis_terms_get_serialize(
             var_field=var_field,
             search=search,
-            parent=parent,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2212,7 +2202,6 @@ class StoreApi:
         self,
         var_field,
         search,
-        parent,
         limit,
         _request_auth,
         _content_type,
@@ -2243,10 +2232,6 @@ class StoreApi:
         if search is not None:
             
             _query_params.append(('search', search))
-            
-        if parent is not None:
-            
-            _query_params.append(('parent', parent))
             
         if limit is not None:
             
@@ -19815,6 +19800,661 @@ class StoreApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/points/',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def query_dataset_get(
+        self,
+        dataset: Annotated[StrictStr, Field(description="A dataset named by `GET /query/`.")],
+        select: Annotated[Optional[StrictStr], Field(description="Comma-separated expressions, each optionally `AS alias`; `*` for every column.")] = None,
+        where: Annotated[Optional[StrictStr], Field(description="A condition over columns; no aggregates.")] = None,
+        group: Annotated[Optional[StrictStr], Field(description="Comma-separated columns, expressions or `$select` aliases.")] = None,
+        having: Annotated[Optional[StrictStr], Field(description="A condition over aggregates and `$select` aliases.")] = None,
+        order: Annotated[Optional[StrictStr], Field(description="Comma-separated expressions or aliases, each optionally `ASC` or `DESC`.")] = None,
+        limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = None,
+        offset: Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> QueryResult:
+        """Run an aggregate query over one dataset
+
+        A subset of Socrata's SoQL. Each parameter takes an expression over the dataset's columns: literals, `= != < <= > >= + -`, `AND OR NOT`, `IS [NOT] NULL`, `[NOT] IN (…)`, `BETWEEN … AND …`, `LIKE` and `starts_with(column, 'text')`; the aggregates `count(*)`, `count(column)`, `count(distinct column)`, `sum`, `avg`, `min` and `max`; and `date_trunc_y`, `date_trunc_ym`, `date_extract_y`, `lower`, `upper`, `coalesce` and `case(condition, value, …)`. Nothing else compiles. A query whose planned cost exceeds the caller's limit is refused; an API key with `read` scope has a higher limit. 
+
+        :param dataset: A dataset named by `GET /query/`. (required)
+        :type dataset: str
+        :param select: Comma-separated expressions, each optionally `AS alias`; `*` for every column.
+        :type select: str
+        :param where: A condition over columns; no aggregates.
+        :type where: str
+        :param group: Comma-separated columns, expressions or `$select` aliases.
+        :type group: str
+        :param having: A condition over aggregates and `$select` aliases.
+        :type having: str
+        :param order: Comma-separated expressions or aliases, each optionally `ASC` or `DESC`.
+        :type order: str
+        :param limit:
+        :type limit: int
+        :param offset:
+        :type offset: int
+        :param q: Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only.
+        :type q: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_dataset_get_serialize(
+            dataset=dataset,
+            select=select,
+            where=where,
+            group=group,
+            having=having,
+            order=order,
+            limit=limit,
+            offset=offset,
+            q=q,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "QueryResult",
+            '304': None,
+            '400': None,
+            '422': None,
+            '503': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def query_dataset_get_with_http_info(
+        self,
+        dataset: Annotated[StrictStr, Field(description="A dataset named by `GET /query/`.")],
+        select: Annotated[Optional[StrictStr], Field(description="Comma-separated expressions, each optionally `AS alias`; `*` for every column.")] = None,
+        where: Annotated[Optional[StrictStr], Field(description="A condition over columns; no aggregates.")] = None,
+        group: Annotated[Optional[StrictStr], Field(description="Comma-separated columns, expressions or `$select` aliases.")] = None,
+        having: Annotated[Optional[StrictStr], Field(description="A condition over aggregates and `$select` aliases.")] = None,
+        order: Annotated[Optional[StrictStr], Field(description="Comma-separated expressions or aliases, each optionally `ASC` or `DESC`.")] = None,
+        limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = None,
+        offset: Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[QueryResult]:
+        """Run an aggregate query over one dataset
+
+        A subset of Socrata's SoQL. Each parameter takes an expression over the dataset's columns: literals, `= != < <= > >= + -`, `AND OR NOT`, `IS [NOT] NULL`, `[NOT] IN (…)`, `BETWEEN … AND …`, `LIKE` and `starts_with(column, 'text')`; the aggregates `count(*)`, `count(column)`, `count(distinct column)`, `sum`, `avg`, `min` and `max`; and `date_trunc_y`, `date_trunc_ym`, `date_extract_y`, `lower`, `upper`, `coalesce` and `case(condition, value, …)`. Nothing else compiles. A query whose planned cost exceeds the caller's limit is refused; an API key with `read` scope has a higher limit. 
+
+        :param dataset: A dataset named by `GET /query/`. (required)
+        :type dataset: str
+        :param select: Comma-separated expressions, each optionally `AS alias`; `*` for every column.
+        :type select: str
+        :param where: A condition over columns; no aggregates.
+        :type where: str
+        :param group: Comma-separated columns, expressions or `$select` aliases.
+        :type group: str
+        :param having: A condition over aggregates and `$select` aliases.
+        :type having: str
+        :param order: Comma-separated expressions or aliases, each optionally `ASC` or `DESC`.
+        :type order: str
+        :param limit:
+        :type limit: int
+        :param offset:
+        :type offset: int
+        :param q: Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only.
+        :type q: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_dataset_get_serialize(
+            dataset=dataset,
+            select=select,
+            where=where,
+            group=group,
+            having=having,
+            order=order,
+            limit=limit,
+            offset=offset,
+            q=q,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "QueryResult",
+            '304': None,
+            '400': None,
+            '422': None,
+            '503': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def query_dataset_get_without_preload_content(
+        self,
+        dataset: Annotated[StrictStr, Field(description="A dataset named by `GET /query/`.")],
+        select: Annotated[Optional[StrictStr], Field(description="Comma-separated expressions, each optionally `AS alias`; `*` for every column.")] = None,
+        where: Annotated[Optional[StrictStr], Field(description="A condition over columns; no aggregates.")] = None,
+        group: Annotated[Optional[StrictStr], Field(description="Comma-separated columns, expressions or `$select` aliases.")] = None,
+        having: Annotated[Optional[StrictStr], Field(description="A condition over aggregates and `$select` aliases.")] = None,
+        order: Annotated[Optional[StrictStr], Field(description="Comma-separated expressions or aliases, each optionally `ASC` or `DESC`.")] = None,
+        limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = None,
+        offset: Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Run an aggregate query over one dataset
+
+        A subset of Socrata's SoQL. Each parameter takes an expression over the dataset's columns: literals, `= != < <= > >= + -`, `AND OR NOT`, `IS [NOT] NULL`, `[NOT] IN (…)`, `BETWEEN … AND …`, `LIKE` and `starts_with(column, 'text')`; the aggregates `count(*)`, `count(column)`, `count(distinct column)`, `sum`, `avg`, `min` and `max`; and `date_trunc_y`, `date_trunc_ym`, `date_extract_y`, `lower`, `upper`, `coalesce` and `case(condition, value, …)`. Nothing else compiles. A query whose planned cost exceeds the caller's limit is refused; an API key with `read` scope has a higher limit. 
+
+        :param dataset: A dataset named by `GET /query/`. (required)
+        :type dataset: str
+        :param select: Comma-separated expressions, each optionally `AS alias`; `*` for every column.
+        :type select: str
+        :param where: A condition over columns; no aggregates.
+        :type where: str
+        :param group: Comma-separated columns, expressions or `$select` aliases.
+        :type group: str
+        :param having: A condition over aggregates and `$select` aliases.
+        :type having: str
+        :param order: Comma-separated expressions or aliases, each optionally `ASC` or `DESC`.
+        :type order: str
+        :param limit:
+        :type limit: int
+        :param offset:
+        :type offset: int
+        :param q: Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only.
+        :type q: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_dataset_get_serialize(
+            dataset=dataset,
+            select=select,
+            where=where,
+            group=group,
+            having=having,
+            order=order,
+            limit=limit,
+            offset=offset,
+            q=q,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "QueryResult",
+            '304': None,
+            '400': None,
+            '422': None,
+            '503': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _query_dataset_get_serialize(
+        self,
+        dataset,
+        select,
+        where,
+        group,
+        having,
+        order,
+        limit,
+        offset,
+        q,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if dataset is not None:
+            _path_params['dataset'] = dataset
+        # process the query parameters
+        if select is not None:
+            
+            _query_params.append(('$select', select))
+            
+        if where is not None:
+            
+            _query_params.append(('$where', where))
+            
+        if group is not None:
+            
+            _query_params.append(('$group', group))
+            
+        if having is not None:
+            
+            _query_params.append(('$having', having))
+            
+        if order is not None:
+            
+            _query_params.append(('$order', order))
+            
+        if limit is not None:
+            
+            _query_params.append(('$limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('$offset', offset))
+            
+        if q is not None:
+            
+            _query_params.append(('$q', q))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/query/{dataset}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def query_get(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> QueryDatasetList:
+        """The datasets a public query reads
+
+        Every dataset a public query can read, with its columns, their types, and whether each may be grouped and aggregated. A dataset holds public records only and is refreshed nightly; `refreshed_at` says when. 
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "QueryDatasetList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def query_get_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[QueryDatasetList]:
+        """The datasets a public query reads
+
+        Every dataset a public query can read, with its columns, their types, and whether each may be grouped and aggregated. A dataset holds public records only and is refreshed nightly; `refreshed_at` says when. 
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "QueryDatasetList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def query_get_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """The datasets a public query reads
+
+        Every dataset a public query can read, with its columns, their types, and whether each may be grouped and aggregated. A dataset holds public records only and is refreshed nightly; `refreshed_at` says when. 
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._query_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "QueryDatasetList",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _query_get_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'JSON-Web-Token'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/query/',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

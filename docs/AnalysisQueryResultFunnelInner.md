@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **base_studies** | **int** |  | [optional] 
 **dropped** | **int** |  | [optional] 
 **silent** | **int** | Analyses left by the criteria before this one whose record says nothing on it. | [optional] 
-**unmapped** | **int** | For a normalized criterion, the analyses left by the criteria before this one whose record states the feature but maps none of it.  | [optional] 
 
 ## Example
 

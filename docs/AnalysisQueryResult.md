@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**query** | **Dict[str, object]** | The query in canonical form: a normalized criterion as ids, text, all, none, descendants, when_unmapped and when_silent, every other as any/all/none lists.  | [optional] 
+**query** | **Dict[str, object]** | The query in canonical form, every criterion as any/all/none lists. | [optional] 
 **counts** | [**AnalysisQueryResultCounts**](AnalysisQueryResultCounts.md) |  | [optional] 
 **searched** | [**AnalysisQueryResultSearched**](AnalysisQueryResultSearched.md) |  | [optional] 
 **funnel** | [**List[AnalysisQueryResultFunnelInner]**](AnalysisQueryResultFunnelInner.md) | With &#x60;funnel&#x60;, the criteria in order, each with what remains after it. | [optional] 

@@ -40,8 +40,7 @@ class TestAnalysisQueryResultFunnelInner(unittest.TestCase):
                 analyses = 56,
                 base_studies = 56,
                 dropped = 56,
-                silent = 56,
-                unmapped = 56
+                silent = 56
             )
         else:
             return AnalysisQueryResultFunnelInner(

@@ -18,19 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings
+from neurostore_sdk.models.query_dataset import QueryDataset
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AnalysisQueryTerms(BaseModel):
+class QueryDatasetList(BaseModel):
     """
-    AnalysisQueryTerms
+    QueryDatasetList
     """ # noqa: E501
-    ids: Optional[AnalysisQueryStrings] = None
-    text: Optional[AnalysisQueryStrings] = None
-    __properties: ClassVar[List[str]] = ["ids", "text"]
+    refreshed_at: Optional[datetime] = Field(default=None, description="When the datasets were last refreshed.")
+    results: Optional[List[QueryDataset]] = None
+    __properties: ClassVar[List[str]] = ["refreshed_at", "results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +51,7 @@ class AnalysisQueryTerms(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisQueryTerms from a JSON string"""
+        """Create an instance of QueryDatasetList from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,17 +71,23 @@ class AnalysisQueryTerms(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of ids
-        if self.ids is not None:
-            _dict['ids'] = self.ids.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of text
-        if self.text is not None:
-            _dict['text'] = self.text.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in results (list)
+        _items = []
+        if self.results is not None:
+            for _item_results in self.results:
+                if _item_results is not None:
+                    _items.append(_item_results.to_dict())
+            _dict['results'] = _items
+        # set to None if refreshed_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.refreshed_at is None and "refreshed_at" in self.model_fields_set:
+            _dict['refreshed_at'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisQueryTerms from a dict"""
+        """Create an instance of QueryDatasetList from a dict"""
         if obj is None:
             return None
 
@@ -88,8 +95,8 @@ class AnalysisQueryTerms(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ids": AnalysisQueryStrings.from_dict(obj["ids"]) if obj.get("ids") is not None else None,
-            "text": AnalysisQueryStrings.from_dict(obj["text"]) if obj.get("text") is not None else None
+            "refreshed_at": obj.get("refreshed_at"),
+            "results": [QueryDataset.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 
