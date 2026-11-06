@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
+**parent** | **str** | The term directly above it (a task&#39;s or a contrast&#39;s family). | [optional] 
+**children** | **List[str]** | The terms directly under it. | [optional] 
+**synonyms** | **List[str]** |  | [optional] 
 **analyses** | **int** |  | [optional] 
 **base_studies** | **int** |  | [optional] 
 

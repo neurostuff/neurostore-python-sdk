@@ -36,7 +36,8 @@ class TestAnalysisQuery(unittest.TestCase):
         model = AnalysisQuery()
         if include_optional:
             return AnalysisQuery(
-                diagnosis = None,
+                name = None,
+                medical_condition = None,
                 has_patients = None,
                 has_healthy = None,
                 species = None,
@@ -56,6 +57,7 @@ class TestAnalysisQuery(unittest.TestCase):
                 contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
                     positive = null, 
                     negative = null, 
+                    key = null, 
                     set = null, 
                     kind = null, 
                     groups = null, ),

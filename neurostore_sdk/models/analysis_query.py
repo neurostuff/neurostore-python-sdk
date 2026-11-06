@@ -24,6 +24,8 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
 from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
 from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
+from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition
+from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized
 from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
 from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
 from typing import Optional, Set
@@ -31,13 +33,14 @@ from typing_extensions import Self
 
 class AnalysisQuery(BaseModel):
     """
-    Criteria on a pipeline analysis. Group criteria (diagnosis, species, has_patients, has_healthy) match when any group the analysis ran on matches. 
+    Criteria on a pipeline analysis. Group criteria (medical_condition, species, has_patients, has_healthy) match when any group the analysis ran on matches. 
     """ # noqa: E501
-    diagnosis: Optional[AnalysisQueryText] = None
+    name: Optional[AnalysisQueryText] = None
+    medical_condition: Optional[AnalysisQueryMedicalCondition] = None
     has_patients: Optional[AnalysisQueryBoolean] = None
     has_healthy: Optional[AnalysisQueryBoolean] = None
     species: Optional[AnalysisQueryText] = None
-    task: Optional[AnalysisQueryText] = None
+    task: Optional[AnalysisQueryNormalized] = None
     spatial_scope: Optional[AnalysisQueryText] = None
     coordinate_space: Optional[AnalysisQueryText] = None
     measure_type: Optional[AnalysisQueryText] = None
@@ -50,7 +53,7 @@ class AnalysisQuery(BaseModel):
     contrast: Optional[AnalysisQueryContrast] = None
     design: Optional[AnalysisQueryDesign] = None
     var_or: Optional[Annotated[List[Dict[str, Any]], Field(min_length=2)]] = Field(default=None, description="Sub-queries, any of which may match; each takes this object's criteria. (Not a $ref to this schema, which resolvers that inline references cannot expand.) ", alias="or")
-    __properties: ClassVar[List[str]] = ["diagnosis", "has_patients", "has_healthy", "species", "task", "spatial_scope", "coordinate_space", "measure_type", "measure_family", "details_type", "is_meta_analysis", "n", "has_coordinates", "role", "contrast", "design", "or"]
+    __properties: ClassVar[List[str]] = ["name", "medical_condition", "has_patients", "has_healthy", "species", "task", "spatial_scope", "coordinate_space", "measure_type", "measure_family", "details_type", "is_meta_analysis", "n", "has_coordinates", "role", "contrast", "design", "or"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +93,12 @@ class AnalysisQuery(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of diagnosis
-        if self.diagnosis is not None:
-            _dict['diagnosis'] = self.diagnosis.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of name
+        if self.name is not None:
+            _dict['name'] = self.name.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of medical_condition
+        if self.medical_condition is not None:
+            _dict['medical_condition'] = self.medical_condition.to_dict()
         # override the default output from pydantic by calling `to_dict()` of has_patients
         if self.has_patients is not None:
             _dict['has_patients'] = self.has_patients.to_dict()
@@ -150,11 +156,12 @@ class AnalysisQuery(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "diagnosis": AnalysisQueryText.from_dict(obj["diagnosis"]) if obj.get("diagnosis") is not None else None,
+            "name": AnalysisQueryText.from_dict(obj["name"]) if obj.get("name") is not None else None,
+            "medical_condition": AnalysisQueryMedicalCondition.from_dict(obj["medical_condition"]) if obj.get("medical_condition") is not None else None,
             "has_patients": AnalysisQueryBoolean.from_dict(obj["has_patients"]) if obj.get("has_patients") is not None else None,
             "has_healthy": AnalysisQueryBoolean.from_dict(obj["has_healthy"]) if obj.get("has_healthy") is not None else None,
             "species": AnalysisQueryText.from_dict(obj["species"]) if obj.get("species") is not None else None,
-            "task": AnalysisQueryText.from_dict(obj["task"]) if obj.get("task") is not None else None,
+            "task": AnalysisQueryNormalized.from_dict(obj["task"]) if obj.get("task") is not None else None,
             "spatial_scope": AnalysisQueryText.from_dict(obj["spatial_scope"]) if obj.get("spatial_scope") is not None else None,
             "coordinate_space": AnalysisQueryText.from_dict(obj["coordinate_space"]) if obj.get("coordinate_space") is not None else None,
             "measure_type": AnalysisQueryText.from_dict(obj["measure_type"]) if obj.get("measure_type") is not None else None,

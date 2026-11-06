@@ -1,16 +1,17 @@
 # AnalysisQuery
 
-Criteria on a pipeline analysis. Group criteria (diagnosis, species, has_patients, has_healthy) match when any group the analysis ran on matches. 
+Criteria on a pipeline analysis. Group criteria (medical_condition, species, has_patients, has_healthy) match when any group the analysis ran on matches. 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**diagnosis** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
+**name** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
+**medical_condition** | [**AnalysisQueryMedicalCondition**](AnalysisQueryMedicalCondition.md) |  | [optional] 
 **has_patients** | [**AnalysisQueryBoolean**](AnalysisQueryBoolean.md) |  | [optional] 
 **has_healthy** | [**AnalysisQueryBoolean**](AnalysisQueryBoolean.md) |  | [optional] 
 **species** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**task** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
+**task** | [**AnalysisQueryNormalized**](AnalysisQueryNormalized.md) |  | [optional] 
 **spatial_scope** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **coordinate_space** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **measure_type** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 

@@ -1,6 +1,6 @@
 # AnnotationPipelineExtensionAnalysisQuery
 
-Run an analysis query over the annotation's studyset and write its result into the notes: `column` (boolean) is true for each analysis the query selects and false for every other, and each of `feature_columns` (string) carries that analysis's feature, or null where its record says nothing. 
+Run an analysis query over the annotation's studyset and write its result into the notes: `column` (boolean) is true for each analysis the query selects and false for every other, and each of `feature_columns` (string) carries that analysis's feature, or null where its record says nothing. The annotation's `metadata.analysis_queries.<column>` keeps the selection frozen: the canonical query, the selected analysis ids, the normalizers and fits (`mapping_tools`) their features came from, and when. 
 
 ## Properties
 
