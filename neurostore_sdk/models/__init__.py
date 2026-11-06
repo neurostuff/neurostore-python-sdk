@@ -21,6 +21,8 @@ __all__ = [
     "AnalysisQueryBoolean",
     "AnalysisQueryBooleanOneOf",
     "AnalysisQueryContrast",
+    "AnalysisQueryContrastSide",
+    "AnalysisQueryContrastSideOneOf",
     "AnalysisQueryDesign",
     "AnalysisQueryIds",
     "AnalysisQueryMedicalCondition",
@@ -230,6 +232,8 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
     from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf
     from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
+    from neurostore_sdk.models.analysis_query_contrast_side import AnalysisQueryContrastSide
+    from neurostore_sdk.models.analysis_query_contrast_side_one_of import AnalysisQueryContrastSideOneOf
     from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
     from neurostore_sdk.models.analysis_query_ids import AnalysisQueryIds
     from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition
@@ -438,6 +442,8 @@ else:
         "AnalysisQueryBoolean": ".analysis_query_boolean",
         "AnalysisQueryBooleanOneOf": ".analysis_query_boolean_one_of",
         "AnalysisQueryContrast": ".analysis_query_contrast",
+        "AnalysisQueryContrastSide": ".analysis_query_contrast_side",
+        "AnalysisQueryContrastSideOneOf": ".analysis_query_contrast_side_one_of",
         "AnalysisQueryDesign": ".analysis_query_design",
         "AnalysisQueryIds": ".analysis_query_ids",
         "AnalysisQueryMedicalCondition": ".analysis_query_medical_condition",

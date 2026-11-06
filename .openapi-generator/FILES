@@ -10,6 +10,8 @@ docs/AnalysisQuery.md
 docs/AnalysisQueryBoolean.md
 docs/AnalysisQueryBooleanOneOf.md
 docs/AnalysisQueryContrast.md
+docs/AnalysisQueryContrastSide.md
+docs/AnalysisQueryContrastSideOneOf.md
 docs/AnalysisQueryDesign.md
 docs/AnalysisQueryIds.md
 docs/AnalysisQueryMedicalCondition.md
@@ -225,6 +227,8 @@ neurostore_sdk/models/analysis_query.py
 neurostore_sdk/models/analysis_query_boolean.py
 neurostore_sdk/models/analysis_query_boolean_one_of.py
 neurostore_sdk/models/analysis_query_contrast.py
+neurostore_sdk/models/analysis_query_contrast_side.py
+neurostore_sdk/models/analysis_query_contrast_side_one_of.py
 neurostore_sdk/models/analysis_query_design.py
 neurostore_sdk/models/analysis_query_ids.py
 neurostore_sdk/models/analysis_query_medical_condition.py
@@ -435,6 +439,8 @@ test/test_analysis_query.py
 test/test_analysis_query_boolean.py
 test/test_analysis_query_boolean_one_of.py
 test/test_analysis_query_contrast.py
+test/test_analysis_query_contrast_side.py
+test/test_analysis_query_contrast_side_one_of.py
 test/test_analysis_query_design.py
 test/test_analysis_query_ids.py
 test/test_analysis_query_medical_condition.py

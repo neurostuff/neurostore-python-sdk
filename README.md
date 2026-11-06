@@ -213,6 +213,8 @@ Class | Method | HTTP request | Description
  - [AnalysisQueryBoolean](docs/AnalysisQueryBoolean.md)
  - [AnalysisQueryBooleanOneOf](docs/AnalysisQueryBooleanOneOf.md)
  - [AnalysisQueryContrast](docs/AnalysisQueryContrast.md)
+ - [AnalysisQueryContrastSide](docs/AnalysisQueryContrastSide.md)
+ - [AnalysisQueryContrastSideOneOf](docs/AnalysisQueryContrastSideOneOf.md)
  - [AnalysisQueryDesign](docs/AnalysisQueryDesign.md)
  - [AnalysisQueryIds](docs/AnalysisQueryIds.md)
  - [AnalysisQueryMedicalCondition](docs/AnalysisQueryMedicalCondition.md)
