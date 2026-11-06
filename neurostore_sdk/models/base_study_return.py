@@ -56,7 +56,7 @@ class BaseStudyReturn(BaseModel):
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
     id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
-    user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
+    user: Optional[StrictStr] = Field(default=None, description="The owner's Auth0 id, served only to the owner; null for anyone else, who sees `username`.")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
     journal: Optional[JournalSummary] = None
     has_coordinates: Optional[StrictBool] = None

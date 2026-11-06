@@ -6,7 +6,7 @@ common resource attributes
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | **str** | who owns the resource | [optional] [readonly] 
+**user** | **str** | The owner&#39;s Auth0 id, served only to the owner; null for anyone else, who sees &#x60;username&#x60;. | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
 
 ## Example

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **re3data_ids** | **List[str]** |  | [optional] 
 **created_at** | **datetime** | time the resource was created on the database | [optional] [readonly] 
 **updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
-**user** | **str** | who owns the resource | [optional] [readonly] 
+**user** | **str** | The owner&#39;s Auth0 id, served only to the owner; null for anyone else, who sees &#x60;username&#x60;. | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
 
 ## Example

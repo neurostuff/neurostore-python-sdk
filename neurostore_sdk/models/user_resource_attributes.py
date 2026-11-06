@@ -27,7 +27,7 @@ class UserResourceAttributes(BaseModel):
     """
     common resource attributes
     """ # noqa: E501
-    user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
+    user: Optional[StrictStr] = Field(default=None, description="The owner's Auth0 id, served only to the owner; null for anyone else, who sees `username`.")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
     __properties: ClassVar[List[str]] = ["user", "username"]
 
