@@ -50,7 +50,8 @@ class TestAnalysisQueryResult(unittest.TestCase):
                         analyses = 56, 
                         base_studies = 56, 
                         dropped = 56, 
-                        silent = 56, )
+                        silent = 56, 
+                        unmapped = 56, )
                     ],
                 results = [
                     neurostore_sdk.models.analysis_query_result_results_inner.analysis_query_result_results_inner(
@@ -58,6 +59,9 @@ class TestAnalysisQueryResult(unittest.TestCase):
                         study = '', 
                         base_study = '', 
                         name = '', 
+                        matched_by = {
+                            'id' : 'id'
+                            }, 
                         features = { }, )
                     ],
                 study_ids = [

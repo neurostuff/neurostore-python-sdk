@@ -38,6 +38,7 @@ class TestAnalysisQueryContrast(unittest.TestCase):
             return AnalysisQueryContrast(
                 positive = None,
                 negative = None,
+                key = None,
                 set = None,
                 kind = None,
                 groups = None

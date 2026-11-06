@@ -40,6 +40,13 @@ class TestAnalysisTermList(unittest.TestCase):
                     neurostore_sdk.models.analysis_term_list_results_inner.analysis_term_list_results_inner(
                         value = '', 
                         label = '', 
+                        parent = '', 
+                        children = [
+                            ''
+                            ], 
+                        synonyms = [
+                            ''
+                            ], 
                         analyses = 56, 
                         base_studies = 56, )
                     ]

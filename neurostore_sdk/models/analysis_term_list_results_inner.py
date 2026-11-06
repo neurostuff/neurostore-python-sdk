@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,9 +29,12 @@ class AnalysisTermListResultsInner(BaseModel):
     """ # noqa: E501
     value: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
+    parent: Optional[StrictStr] = Field(default=None, description="The term directly above it (a task's or a contrast's family).")
+    children: Optional[List[StrictStr]] = Field(default=None, description="The terms directly under it.")
+    synonyms: Optional[List[StrictStr]] = None
     analyses: Optional[StrictInt] = None
     base_studies: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["value", "label", "analyses", "base_studies"]
+    __properties: ClassVar[List[str]] = ["value", "label", "parent", "children", "synonyms", "analyses", "base_studies"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +79,11 @@ class AnalysisTermListResultsInner(BaseModel):
         if self.label is None and "label" in self.model_fields_set:
             _dict['label'] = None
 
+        # set to None if parent (nullable) is None
+        # and model_fields_set contains the field
+        if self.parent is None and "parent" in self.model_fields_set:
+            _dict['parent'] = None
+
         return _dict
 
     @classmethod
@@ -90,6 +98,9 @@ class AnalysisTermListResultsInner(BaseModel):
         _obj = cls.model_validate({
             "value": obj.get("value"),
             "label": obj.get("label"),
+            "parent": obj.get("parent"),
+            "children": obj.get("children"),
+            "synonyms": obj.get("synonyms"),
             "analyses": obj.get("analyses"),
             "base_studies": obj.get("base_studies")
         })

@@ -47,7 +47,8 @@ class TestAnnotationPipelineExtension(unittest.TestCase):
                     ],
                 analysis_query = neurostore_sdk.models.annotation_pipeline_extension_analysis_query.annotation_pipeline_extension_analysis_query(
                     query = neurostore_sdk.models.analysis_query.analysis-query(
-                        diagnosis = null, 
+                        name = null, 
+                        medical_condition = null, 
                         has_patients = null, 
                         has_healthy = null, 
                         species = null, 
@@ -67,6 +68,7 @@ class TestAnnotationPipelineExtension(unittest.TestCase):
                         contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
                             positive = null, 
                             negative = null, 
+                            key = null, 
                             set = null, 
                             kind = null, 
                             groups = null, ), 
@@ -81,7 +83,7 @@ class TestAnnotationPipelineExtension(unittest.TestCase):
                             ], ), 
                     column = 'included', 
                     feature_columns = [
-                        'diagnosis'
+                        'medical_condition'
                         ], )
             )
         else:

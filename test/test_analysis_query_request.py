@@ -37,7 +37,8 @@ class TestAnalysisQueryRequest(unittest.TestCase):
         if include_optional:
             return AnalysisQueryRequest(
                 query = neurostore_sdk.models.analysis_query.analysis-query(
-                    diagnosis = null, 
+                    name = null, 
+                    medical_condition = null, 
                     has_patients = null, 
                     has_healthy = null, 
                     species = null, 
@@ -57,6 +58,7 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                     contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
                         positive = null, 
                         negative = null, 
+                        key = null, 
                         set = null, 
                         kind = null, 
                         groups = null, ), 
@@ -75,7 +77,8 @@ class TestAnalysisQueryRequest(unittest.TestCase):
         else:
             return AnalysisQueryRequest(
                 query = neurostore_sdk.models.analysis_query.analysis-query(
-                    diagnosis = null, 
+                    name = null, 
+                    medical_condition = null, 
                     has_patients = null, 
                     has_healthy = null, 
                     species = null, 
@@ -95,6 +98,7 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                     contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
                         positive = null, 
                         negative = null, 
+                        key = null, 
                         set = null, 
                         kind = null, 
                         groups = null, ), 

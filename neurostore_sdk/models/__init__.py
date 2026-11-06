@@ -23,6 +23,14 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf
     from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
     from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
+    from neurostore_sdk.models.analysis_query_ids import AnalysisQueryIds
+    from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition
+    from neurostore_sdk.models.analysis_query_medical_condition_one_of import AnalysisQueryMedicalConditionOneOf
+    from neurostore_sdk.models.analysis_query_medical_condition_one_of_role import AnalysisQueryMedicalConditionOneOfRole
+    from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized
+    from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds
+    from neurostore_sdk.models.analysis_query_normalized_ids_one_of import AnalysisQueryNormalizedIdsOneOf
+    from neurostore_sdk.models.analysis_query_normalized_one_of import AnalysisQueryNormalizedOneOf
     from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
     from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
     from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
@@ -30,6 +38,8 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
     from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
     from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
+    from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings
+    from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms
     from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
     from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues
     from neurostore_sdk.models.analysis_query_when_silent import AnalysisQueryWhenSilent
@@ -219,6 +229,14 @@ from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
 from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf
 from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
 from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
+from neurostore_sdk.models.analysis_query_ids import AnalysisQueryIds
+from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition
+from neurostore_sdk.models.analysis_query_medical_condition_one_of import AnalysisQueryMedicalConditionOneOf
+from neurostore_sdk.models.analysis_query_medical_condition_one_of_role import AnalysisQueryMedicalConditionOneOfRole
+from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized
+from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds
+from neurostore_sdk.models.analysis_query_normalized_ids_one_of import AnalysisQueryNormalizedIdsOneOf
+from neurostore_sdk.models.analysis_query_normalized_one_of import AnalysisQueryNormalizedOneOf
 from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
 from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
 from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
@@ -226,6 +244,8 @@ from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResu
 from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
 from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
 from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
+from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings
+from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms
 from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
 from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues
 from neurostore_sdk.models.analysis_query_when_silent import AnalysisQueryWhenSilent

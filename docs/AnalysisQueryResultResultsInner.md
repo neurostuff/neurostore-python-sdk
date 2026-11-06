@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **study** | **str** |  | [optional] 
 **base_study** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**matched_by** | **Dict[str, str]** | How the analysis matched each normalized criterion, by its path (&#x60;medical_condition&#x60;, &#x60;or[0].task&#x60;): by id, by text, as unmapped or as silent (under &#x60;include&#x60;). Absent where a mapped analysis matched only through &#x60;none&#x60;.  | [optional] 
 **features** | **Dict[str, object]** |  | [optional] 
 
 ## Example

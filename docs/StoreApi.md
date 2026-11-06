@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 Select analyses by what their extraction records say
 
-Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A criterion with ids (diagnosis, task, contrast set) also matches a value that is one of the analysis's ids. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and with `funnel` says what each criterion dropped.
+Runs a query over each pipeline analysis's features, read from its paper's latest extraction record. Every criterion is optional and criteria combine with AND; a list means any of its values, and `or` takes sub-queries. Text criteria match whole words, case-insensitively, with `*` for any run of characters and `?` for one; a pattern needs three consecutive letters or digits. A normalized criterion (medical_condition, task, contrast.key, contrast.set) takes `ids`, the terms a normalizer mapped the record's wording to, which match their descendants (a task family its tasks, a family its contrast keys and sets) unless `descendants` is false, and `text`, a pattern over the wording and the terms' labels; either may match. Contrast keys and sets are directional: a term with `:reversed` is the contrast stated the other way round. `when_unmapped` decides the analyses whose record states the feature but maps none of it, excluded by default; a healthy group's condition, or a value read as an absence, is silent. An analysis whose record is silent on a criterion does not match it unless the criterion says `when_silent: include`. Nothing is stored; the response names every selected analysis's study, for a studyset, and how it matched each normalized criterion, and with `funnel` says what each criterion dropped.
 
 
 ### Example
@@ -568,11 +568,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **analysis_terms_get**
-> AnalysisTermList analysis_terms_get(var_field, search=search, limit=limit)
+> AnalysisTermList analysis_terms_get(var_field, search=search, parent=parent, limit=limit)
 
 The values an analysis query field takes
 
-Each value of one field across the pipeline analyses' features, with its label and how many analyses and papers carry it, most common first.
+Each value of one field across the pipeline analyses' features, with its label, parent, children and synonyms and how many analyses and papers carry it, most common first. A directional contrast key or set is listed in each direction it occurs in.
 
 
 ### Example
@@ -596,12 +596,13 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     var_field = 'var_field_example' # str | 
-    search = 'search_example' # str | Keep the values or labels that contain this text, case-insensitively. (optional)
+    search = 'search_example' # str | Keep the values whose id, label or a synonym contains this text, case-insensitively.  (optional)
+    parent = 'parent_example' # str | Keep the values directly under this term. (optional)
     limit = 50 # int |  (optional) (default to 50)
 
     try:
         # The values an analysis query field takes
-        api_response = api_instance.analysis_terms_get(var_field, search=search, limit=limit)
+        api_response = api_instance.analysis_terms_get(var_field, search=search, parent=parent, limit=limit)
         print("The response of StoreApi->analysis_terms_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -616,7 +617,8 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **var_field** | **str**|  | 
- **search** | **str**| Keep the values or labels that contain this text, case-insensitively. | [optional] 
+ **search** | **str**| Keep the values whose id, label or a synonym contains this text, case-insensitively.  | [optional] 
+ **parent** | **str**| Keep the values directly under this term. | [optional] 
  **limit** | **int**|  | [optional] [default to 50]
 
 ### Return type

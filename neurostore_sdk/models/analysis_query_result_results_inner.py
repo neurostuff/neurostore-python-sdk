@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,8 +31,20 @@ class AnalysisQueryResultResultsInner(BaseModel):
     study: Optional[StrictStr] = None
     base_study: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
+    matched_by: Optional[Dict[str, StrictStr]] = Field(default=None, description="How the analysis matched each normalized criterion, by its path (`medical_condition`, `or[0].task`): by id, by text, as unmapped or as silent (under `include`). Absent where a mapped analysis matched only through `none`. ")
     features: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["analysis", "study", "base_study", "name", "features"]
+    __properties: ClassVar[List[str]] = ["analysis", "study", "base_study", "name", "matched_by", "features"]
+
+    @field_validator('matched_by')
+    def matched_by_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value.values():
+            if i not in set(['id', 'text', 'unmapped', 'silent']):
+                raise ValueError("dict values must be one of enum values ('id', 'text', 'unmapped', 'silent')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,6 +105,7 @@ class AnalysisQueryResultResultsInner(BaseModel):
             "study": obj.get("study"),
             "base_study": obj.get("base_study"),
             "name": obj.get("name"),
+            "matched_by": obj.get("matched_by"),
             "features": obj.get("features")
         })
         return _obj
