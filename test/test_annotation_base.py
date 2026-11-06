@@ -38,7 +38,7 @@ class TestAnnotationBase(unittest.TestCase):
             return AnnotationBase(
                 name = 'Examination of left versus right finger tapping',
                 description = 'This annotation tracks whether the analysis of interest for all included studies are left handed/right handed, or bimanual taps.',
-                metadata = None,
+                metadata = { },
                 note_keys = {include=boolean}
             )
         else:

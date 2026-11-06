@@ -22,19 +22,21 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AnnotationBase(BaseModel):
     """
     AnnotationBase
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.")
-    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.")
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.", json_schema_extra={"examples": ["Examination of left versus right finger tapping"]})
+    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.", json_schema_extra={"examples": ["This annotation tracks whether the analysis of interest for all included studies are left handed/right handed, or bimanual taps."]})
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
-    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
+    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).", json_schema_extra={"examples": [{"include": "boolean"}]})
     __properties: ClassVar[List[str]] = ["name", "description", "metadata", "note_keys"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +48,7 @@ class AnnotationBase(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

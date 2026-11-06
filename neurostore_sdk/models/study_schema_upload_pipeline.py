@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.study_schema_run import StudySchemaRun
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudySchemaUploadPipeline(BaseModel):
     """
@@ -35,7 +36,8 @@ class StudySchemaUploadPipeline(BaseModel):
     __properties: ClassVar[List[str]] = ["name", "version", "commit", "runs"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +49,7 @@ class StudySchemaUploadPipeline(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -76,8 +77,7 @@ class StudySchemaUploadPipeline(BaseModel):
         _items = []
         if self.runs is not None:
             for _item_runs in self.runs:
-                if _item_runs is not None:
-                    _items.append(_item_runs.to_dict())
+                _items.append(_item_runs.to_dict() if _item_runs is not None else None)
             _dict['runs'] = _items
         return _dict
 

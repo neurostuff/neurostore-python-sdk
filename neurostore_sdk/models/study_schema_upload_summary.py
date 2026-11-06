@@ -27,6 +27,7 @@ from neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner 
 from neurostore_sdk.models.study_schema_upload_summary_skeleton import StudySchemaUploadSummarySkeleton
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudySchemaUploadSummary(BaseModel):
     """
@@ -56,7 +57,8 @@ class StudySchemaUploadSummary(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -68,8 +70,7 @@ class StudySchemaUploadSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -103,8 +104,7 @@ class StudySchemaUploadSummary(BaseModel):
         _items = []
         if self.set_aside_resolved is not None:
             for _item_set_aside_resolved in self.set_aside_resolved:
-                if _item_set_aside_resolved is not None:
-                    _items.append(_item_set_aside_resolved.to_dict())
+                _items.append(_item_set_aside_resolved.to_dict() if _item_set_aside_resolved is not None else None)
             _dict['set_aside_resolved'] = _items
         # override the default output from pydantic by calling `to_dict()` of record
         if self.record is not None:
@@ -113,8 +113,7 @@ class StudySchemaUploadSummary(BaseModel):
         _field_dict = {}
         if self.provenance is not None:
             for _key_provenance in self.provenance:
-                if self.provenance[_key_provenance]:
-                    _field_dict[_key_provenance] = self.provenance[_key_provenance].to_dict()
+                _field_dict[_key_provenance] = self.provenance[_key_provenance].to_dict() if self.provenance[_key_provenance] is not None else None
             _dict['provenance'] = _field_dict
         return _dict
 

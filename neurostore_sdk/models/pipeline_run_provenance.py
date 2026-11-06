@@ -25,6 +25,7 @@ from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProv
 from neurostore_sdk.models.study_schema_run import StudySchemaRun
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PipelineRunProvenance(BaseModel):
     """
@@ -45,7 +46,8 @@ class PipelineRunProvenance(BaseModel):
     __properties: ClassVar[List[str]] = ["result_id", "config_id", "run_id", "pipeline", "version", "commit", "schema", "parse_version", "runs", "date_executed", "created_at", "updated_at"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,8 +59,7 @@ class PipelineRunProvenance(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -89,8 +90,7 @@ class PipelineRunProvenance(BaseModel):
         _items = []
         if self.runs is not None:
             for _item_runs in self.runs:
-                if _item_runs is not None:
-                    _items.append(_item_runs.to_dict())
+                _items.append(_item_runs.to_dict() if _item_runs is not None else None)
             _dict['runs'] = _items
         # set to None if run_id (nullable) is None
         # and model_fields_set contains the field

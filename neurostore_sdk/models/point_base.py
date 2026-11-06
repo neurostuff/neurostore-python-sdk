@@ -23,19 +23,21 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PointBase(BaseModel):
     """
     PointBase
     """ # noqa: E501
     coordinates: Optional[Annotated[List[Optional[Union[StrictFloat, StrictInt]]], Field(min_length=3, max_length=3)]] = Field(default=None, description="Location of the significant coordinate in three dimensional space.")
-    space: Optional[StrictStr] = Field(default=None, description="Template space used to determine coordinate Examples include TAL or MNI.")
+    space: Optional[StrictStr] = Field(default=None, description="Template space used to determine coordinate Examples include TAL or MNI.", json_schema_extra={"examples": ["MNI"]})
     kind: Optional[StrictStr] = Field(default=None, description="Method of how point was derived (e.g., center of mass)")
     label_id: Optional[StrictStr] = Field(default=None, description="If the point is associated with an image, this is the value the point takes in that image.")
     __properties: ClassVar[List[str]] = ["coordinates", "space", "kind", "label_id"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +49,7 @@ class PointBase(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -36,7 +36,7 @@ class TestJsonLd(unittest.TestCase):
         model = JsonLd()
         if include_optional:
             return JsonLd(
-                context = neurostore_sdk.models.json_ld__context.json_ld__context(
+                context = neurostore_sdk.models.json_ld_context.JsonLdContext(
                     @vocab = '', ),
                 id = '',
                 type = 'Study'

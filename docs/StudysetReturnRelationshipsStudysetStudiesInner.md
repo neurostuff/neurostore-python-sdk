@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**curation_stub_uuid** | **str** |  | [optional] 
+**curation_stub_uuid** | **UUID** |  | [optional] 
 
 ## Example
 

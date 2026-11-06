@@ -28,6 +28,7 @@ from neurostore_sdk.models.data_source_summary import DataSourceSummary
 from neurostore_sdk.models.journal_summary import JournalSummary
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class BaseStudyReturn(BaseModel):
     """
@@ -52,9 +53,9 @@ class BaseStudyReturn(BaseModel):
     alternative_dois: Optional[List[StrictStr]] = Field(default=None, description="Any other DOI of the paper that is neither the version of record's `doi` nor a preprint's. ")
     alternative_pmids: Optional[List[StrictStr]] = Field(default=None, description="Any other PMID of the paper that is neither `pmid` nor a preprint's.")
     alternative_pmcids: Optional[List[StrictStr]] = Field(default=None, description="Any other PMCID of the paper that is neither `pmcid` nor a preprint's.")
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="The owner's Auth0 id, served only to the owner; null for anyone else, who sees `username`.")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
@@ -79,7 +80,8 @@ class BaseStudyReturn(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -91,8 +93,7 @@ class BaseStudyReturn(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -124,15 +125,13 @@ class BaseStudyReturn(BaseModel):
         _items = []
         if self.versions is not None:
             for _item_versions in self.versions:
-                if _item_versions is not None:
-                    _items.append(_item_versions.to_dict())
+                _items.append(_item_versions.to_dict() if _item_versions is not None else None)
             _dict['versions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in preprint_dois (list)
         _items = []
         if self.preprint_dois is not None:
             for _item_preprint_dois in self.preprint_dois:
-                if _item_preprint_dois is not None:
-                    _items.append(_item_preprint_dois.to_dict())
+                _items.append(_item_preprint_dois.to_dict() if _item_preprint_dois is not None else None)
             _dict['preprint_dois'] = _items
         # override the default output from pydantic by calling `to_dict()` of journal
         if self.journal is not None:
@@ -141,8 +140,7 @@ class BaseStudyReturn(BaseModel):
         _items = []
         if self.data_sources is not None:
             for _item_data_sources in self.data_sources:
-                if _item_data_sources is not None:
-                    _items.append(_item_data_sources.to_dict())
+                _items.append(_item_data_sources.to_dict() if _item_data_sources is not None else None)
             _dict['data_sources'] = _items
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field

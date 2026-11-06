@@ -37,11 +37,11 @@ class TestPipelineConfigList(unittest.TestCase):
         if include_optional:
             return PipelineConfigList(
                 results = [
-                    neurostore_sdk.models.pipeline_config.pipeline-config(
+                    neurostore_sdk.models.pipeline_config.PipelineConfig(
                         id = '', 
-                        config = neurostore_sdk.models.config.config(), )
+                        config = { }, )
                     ],
-                metadata = neurostore_sdk.models.metadata.metadata(
+                metadata = neurostore_sdk.models.metadata.Metadata(
                     total_count = 56, 
                     unique_count = 56, )
             )

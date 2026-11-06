@@ -22,18 +22,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AnalysisBase(BaseModel):
     """
     AnalysisBase
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="A name of the contrast being performed.")
-    description: Optional[StrictStr] = Field(default=None, description="A long form description of how the contrast was performed")
+    name: Optional[StrictStr] = Field(default=None, description="A name of the contrast being performed.", json_schema_extra={"examples": ["\"houses>faces\""]})
+    description: Optional[StrictStr] = Field(default=None, description="A long form description of how the contrast was performed", json_schema_extra={"examples": ["This analysis represents a contrast of houses versus faces."]})
     weights: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="Weight applied to each condition, must be the same length as the conditions attribute.")
     __properties: ClassVar[List[str]] = ["name", "description", "weights"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,8 +47,7 @@ class AnalysisBase(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

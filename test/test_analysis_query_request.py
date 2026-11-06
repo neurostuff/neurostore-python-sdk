@@ -36,7 +36,7 @@ class TestAnalysisQueryRequest(unittest.TestCase):
         model = AnalysisQueryRequest()
         if include_optional:
             return AnalysisQueryRequest(
-                query = neurostore_sdk.models.analysis_query.analysis-query(
+                query = neurostore_sdk.models.analysis_query.AnalysisQuery(
                     name = null, 
                     medical_condition = null, 
                     has_patients = null, 
@@ -49,20 +49,20 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                     measure_family = null, 
                     details_type = null, 
                     is_meta_analysis = null, 
-                    n = neurostore_sdk.models.analysis_query_range.analysis-query-range(
+                    n = neurostore_sdk.models.analysis_query_range.AnalysisQueryRange(
                         min = 1.337, 
                         max = 1.337, 
                         when_silent = 'exclude', ), 
                     has_coordinates = null, 
                     role = null, 
-                    contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
+                    contrast = neurostore_sdk.models.analysis_query_contrast.AnalysisQueryContrast(
                         positive = null, 
                         negative = null, 
                         key = null, 
                         set = null, 
                         kind = null, 
                         groups = null, ), 
-                    design = neurostore_sdk.models.analysis_query_design.analysis_query_design(
+                    design = neurostore_sdk.models.analysis_query_design.AnalysisQueryDesign(
                         allocation = null, 
                         assignment_structure = null, 
                         blinding = null, 
@@ -76,7 +76,7 @@ class TestAnalysisQueryRequest(unittest.TestCase):
             )
         else:
             return AnalysisQueryRequest(
-                query = neurostore_sdk.models.analysis_query.analysis-query(
+                query = neurostore_sdk.models.analysis_query.AnalysisQuery(
                     name = null, 
                     medical_condition = null, 
                     has_patients = null, 
@@ -89,20 +89,20 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                     measure_family = null, 
                     details_type = null, 
                     is_meta_analysis = null, 
-                    n = neurostore_sdk.models.analysis_query_range.analysis-query-range(
+                    n = neurostore_sdk.models.analysis_query_range.AnalysisQueryRange(
                         min = 1.337, 
                         max = 1.337, 
                         when_silent = 'exclude', ), 
                     has_coordinates = null, 
                     role = null, 
-                    contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
+                    contrast = neurostore_sdk.models.analysis_query_contrast.AnalysisQueryContrast(
                         positive = null, 
                         negative = null, 
                         key = null, 
                         set = null, 
                         kind = null, 
                         groups = null, ), 
-                    design = neurostore_sdk.models.analysis_query_design.analysis_query_design(
+                    design = neurostore_sdk.models.analysis_query_design.AnalysisQueryDesign(
                         allocation = null, 
                         assignment_structure = null, 
                         blinding = null, 

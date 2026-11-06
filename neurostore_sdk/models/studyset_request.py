@@ -24,18 +24,19 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudysetRequest(BaseModel):
     """
     StudysetRequest
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Descriptive and human readable name of the studyset.")
-    description: Optional[StrictStr] = Field(default=None, description="A longform description of the studyset.")
-    publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.")
-    doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
-    pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive and human readable name of the studyset.", json_schema_extra={"examples": ["Examination of want versus need"]})
+    description: Optional[StrictStr] = Field(default=None, description="A longform description of the studyset.", json_schema_extra={"examples": ["A collection of studies that include tasks x, y, and z, for the purpose of teasing apart concepts a and b."]})
+    publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.", json_schema_extra={"examples": ["Journal of Open Results"]})
+    doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).", json_schema_extra={"examples": ["digital object identifier of the studyset"]})
+    pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.", json_schema_extra={"examples": ["35998675"]})
     studies: Optional[List[StudysetRequestRelationshipsStudiesInner]] = Field(default=None, description="Accepts study IDs or objects containing an ID and an optional curation stub UUID used to keep curation/extraction alignment. ")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     level: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["name", "description", "publication", "doi", "pmid", "studies", "id", "public", "level"]
@@ -51,7 +52,8 @@ class StudysetRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -63,8 +65,7 @@ class StudysetRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -92,8 +93,7 @@ class StudysetRequest(BaseModel):
         _items = []
         if self.studies is not None:
             for _item_studies in self.studies:
-                if _item_studies is not None:
-                    _items.append(_item_studies.to_dict())
+                _items.append(_item_studies.to_dict() if _item_studies is not None else None)
             _dict['studies'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field

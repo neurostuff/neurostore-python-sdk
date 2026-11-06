@@ -39,7 +39,7 @@ class TestTableList(unittest.TestCase):
                 results = [
                     null
                     ],
-                metadata = neurostore_sdk.models.metadata.metadata(
+                metadata = neurostore_sdk.models.metadata.Metadata(
                     total_count = 56, 
                     unique_count = 56, )
             )

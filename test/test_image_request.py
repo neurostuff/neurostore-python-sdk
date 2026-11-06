@@ -36,7 +36,7 @@ class TestImageRequest(unittest.TestCase):
         model = ImageRequest()
         if include_optional:
             return ImageRequest(
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 url = 'https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz',
                 filename = 'Positive_RPEs_zstat.nii.gz',
                 space = 'MNI152NLin2009aAsym',
@@ -45,7 +45,7 @@ class TestImageRequest(unittest.TestCase):
                 analysis = '',
                 study = '',
                 entities = [
-                    neurostore_sdk.models.entity.entity(
+                    neurostore_sdk.models.entity.Entity(
                         label = '', 
                         level = '', 
                         analysis = '', )

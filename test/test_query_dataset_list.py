@@ -38,14 +38,14 @@ class TestQueryDatasetList(unittest.TestCase):
             return QueryDatasetList(
                 refreshed_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 results = [
-                    neurostore_sdk.models.query_dataset.query-dataset(
+                    neurostore_sdk.models.query_dataset.QueryDataset(
                         name = '', 
                         description = '', 
                         key = [
                             ''
                             ], 
                         columns = [
-                            neurostore_sdk.models.query_dataset_columns_inner.query_dataset_columns_inner(
+                            neurostore_sdk.models.query_dataset_columns_inner.QueryDatasetColumnsInner(
                                 name = '', 
                                 type = 'text', 
                                 description = '', )

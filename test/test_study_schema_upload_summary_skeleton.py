@@ -41,7 +41,7 @@ class TestStudySchemaUploadSummarySkeleton(unittest.TestCase):
                 superseded = 56,
                 omitted_analyses = 56,
                 orphaned_claims = [
-                    neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner.study_schema_upload_summary_skeleton_orphaned_claims_inner(
+                    neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner.StudySchemaUploadSummarySkeletonOrphanedClaimsInner(
                         key = '', 
                         class = '', 
                         entity_id = '', 

@@ -235,7 +235,9 @@ __all__ = [
     "WriteableResourceAttributes",
 ]
 
-if __import__("typing").TYPE_CHECKING:
+import typing as _typing
+
+if _typing.TYPE_CHECKING:
     # import apis into sdk package
     from neurostore_sdk.api.review_api import ReviewApi as ReviewApi
     from neurostore_sdk.api.store_api import StoreApi as StoreApi
@@ -457,235 +459,231 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.writeable_resource_attributes import WriteableResourceAttributes as WriteableResourceAttributes
     
 else:
-    from lazy_imports import LazyModule, as_package, load
+    from importlib import import_module
 
-    load(
-        LazyModule(
-            *as_package(__file__),
-            ("__version__", __version__),
-            ("__all__", __all__),
-            """# import apis into sdk package
-from neurostore_sdk.api.review_api import ReviewApi as ReviewApi
-from neurostore_sdk.api.store_api import StoreApi as StoreApi
+    _exports = {
+        "ReviewApi": ".api.review_api",
+        "StoreApi": ".api.store_api",
+        "ApiResponse": ".api_response",
+        "ApiClient": ".api_client",
+        "Configuration": ".configuration",
+        "OpenApiException": ".exceptions",
+        "ApiTypeError": ".exceptions",
+        "ApiValueError": ".exceptions",
+        "ApiKeyError": ".exceptions",
+        "ApiAttributeError": ".exceptions",
+        "ApiException": ".exceptions",
+        "AnalysisBase": ".models.analysis_base",
+        "AnalysisCommon": ".models.analysis_common",
+        "AnalysisList": ".models.analysis_list",
+        "AnalysisQuery": ".models.analysis_query",
+        "AnalysisQueryBoolean": ".models.analysis_query_boolean",
+        "AnalysisQueryBooleanOneOf": ".models.analysis_query_boolean_one_of",
+        "AnalysisQueryContrast": ".models.analysis_query_contrast",
+        "AnalysisQueryDesign": ".models.analysis_query_design",
+        "AnalysisQueryIds": ".models.analysis_query_ids",
+        "AnalysisQueryMedicalCondition": ".models.analysis_query_medical_condition",
+        "AnalysisQueryMedicalConditionOneOf": ".models.analysis_query_medical_condition_one_of",
+        "AnalysisQueryMedicalConditionOneOfRole": ".models.analysis_query_medical_condition_one_of_role",
+        "AnalysisQueryNormalized": ".models.analysis_query_normalized",
+        "AnalysisQueryNormalizedIds": ".models.analysis_query_normalized_ids",
+        "AnalysisQueryNormalizedIdsOneOf": ".models.analysis_query_normalized_ids_one_of",
+        "AnalysisQueryNormalizedOneOf": ".models.analysis_query_normalized_one_of",
+        "AnalysisQueryRange": ".models.analysis_query_range",
+        "AnalysisQueryRequest": ".models.analysis_query_request",
+        "AnalysisQueryResult": ".models.analysis_query_result",
+        "AnalysisQueryResultCounts": ".models.analysis_query_result_counts",
+        "AnalysisQueryResultFunnelInner": ".models.analysis_query_result_funnel_inner",
+        "AnalysisQueryResultResultsInner": ".models.analysis_query_result_results_inner",
+        "AnalysisQueryResultSearched": ".models.analysis_query_result_searched",
+        "AnalysisQueryStrings": ".models.analysis_query_strings",
+        "AnalysisQueryTerms": ".models.analysis_query_terms",
+        "AnalysisQueryText": ".models.analysis_query_text",
+        "AnalysisQueryValues": ".models.analysis_query_values",
+        "AnalysisQueryWhenSilent": ".models.analysis_query_when_silent",
+        "AnalysisRequest": ".models.analysis_request",
+        "AnalysisRequestRelationships": ".models.analysis_request_relationships",
+        "AnalysisRequestRelationshipsConditions": ".models.analysis_request_relationships_conditions",
+        "AnalysisRequestRelationshipsImages": ".models.analysis_request_relationships_images",
+        "AnalysisRequestRelationshipsPoints": ".models.analysis_request_relationships_points",
+        "AnalysisReturn": ".models.analysis_return",
+        "AnalysisReturnRelationships": ".models.analysis_return_relationships",
+        "AnalysisReturnRelationshipsConditions": ".models.analysis_return_relationships_conditions",
+        "AnalysisReturnRelationshipsImages": ".models.analysis_return_relationships_images",
+        "AnalysisReturnRelationshipsPoints": ".models.analysis_return_relationships_points",
+        "AnalysisTermList": ".models.analysis_term_list",
+        "AnalysisTermListResultsInner": ".models.analysis_term_list_results_inner",
+        "AnnotationBase": ".models.annotation_base",
+        "AnnotationCommon": ".models.annotation_common",
+        "AnnotationExport": ".models.annotation_export",
+        "AnnotationList": ".models.annotation_list",
+        "AnnotationPipelineExtension": ".models.annotation_pipeline_extension",
+        "AnnotationPipelineExtensionAnalysisQuery": ".models.annotation_pipeline_extension_analysis_query",
+        "AnnotationPipelineExtensionPipelinesInner": ".models.annotation_pipeline_extension_pipelines_inner",
+        "AnnotationRequest": ".models.annotation_request",
+        "AnnotationRequestOneOf": ".models.annotation_request_one_of",
+        "AnnotationRequestRelationships": ".models.annotation_request_relationships",
+        "AnnotationRequestRelationshipsNotes": ".models.annotation_request_relationships_notes",
+        "AnnotationReturn": ".models.annotation_return",
+        "AnnotationReturnOneOf": ".models.annotation_return_one_of",
+        "AnnotationReturnRelationships": ".models.annotation_return_relationships",
+        "AnnotationReturnRelationshipsNotes": ".models.annotation_return_relationships_notes",
+        "ApiKey": ".models.api_key",
+        "ApiKeyCreated": ".models.api_key_created",
+        "ApiKeyIntrospection": ".models.api_key_introspection",
+        "ApiKeyList": ".models.api_key_list",
+        "ApiKeyRequest": ".models.api_key_request",
+        "BaseStudiesIdDelete200Response": ".models.base_studies_id_delete200_response",
+        "BaseStudiesPost200Response": ".models.base_studies_post200_response",
+        "BaseStudiesPostRequest": ".models.base_studies_post_request",
+        "BaseStudy": ".models.base_study",
+        "BaseStudyList": ".models.base_study_list",
+        "BaseStudyPreprintDoisInner": ".models.base_study_preprint_dois_inner",
+        "BaseStudyReturn": ".models.base_study_return",
+        "BaseStudyVersionsInner": ".models.base_study_versions_inner",
+        "Clone": ".models.clone",
+        "ConditionBase": ".models.condition_base",
+        "ConditionList": ".models.condition_list",
+        "ConditionRequest": ".models.condition_request",
+        "ConditionReturn": ".models.condition_return",
+        "DataSourceCommon": ".models.data_source_common",
+        "DataSourceList": ".models.data_source_list",
+        "DataSourceRequest": ".models.data_source_request",
+        "DataSourceReturn": ".models.data_source_return",
+        "DataSourceSummary": ".models.data_source_summary",
+        "Entity": ".models.entity",
+        "ErrorDetail": ".models.error_detail",
+        "ErrorResponse": ".models.error_response",
+        "ImageBase": ".models.image_base",
+        "ImageCommon": ".models.image_common",
+        "ImageDetail": ".models.image_detail",
+        "ImageList": ".models.image_list",
+        "ImageRelationships": ".models.image_relationships",
+        "ImageRequest": ".models.image_request",
+        "ImageReturn": ".models.image_return",
+        "ImageValueSummary": ".models.image_value_summary",
+        "ImageValueSummaryHistogram": ".models.image_value_summary_histogram",
+        "JournalKind": ".models.journal_kind",
+        "JournalList": ".models.journal_list",
+        "JournalReturn": ".models.journal_return",
+        "JournalSummary": ".models.journal_summary",
+        "JsonLd": ".models.json_ld",
+        "JsonLdContext": ".models.json_ld_context",
+        "Metadata": ".models.metadata",
+        "NestedPutAttributes": ".models.nested_put_attributes",
+        "NeurostoreStudysetReleasesGet200Response": ".models.neurostore_studyset_releases_get200_response",
+        "NeurostoreStudysetReleasesGet200ResponseMetadata": ".models.neurostore_studyset_releases_get200_response_metadata",
+        "NoteCollectionBase": ".models.note_collection_base",
+        "NoteCollectionList": ".models.note_collection_list",
+        "NoteCollectionRequest": ".models.note_collection_request",
+        "NoteCollectionReturn": ".models.note_collection_return",
+        "Pipeline": ".models.pipeline",
+        "PipelineConfig": ".models.pipeline_config",
+        "PipelineConfigList": ".models.pipeline_config_list",
+        "PipelineEmbedding": ".models.pipeline_embedding",
+        "PipelineEmbeddingList": ".models.pipeline_embedding_list",
+        "PipelineList": ".models.pipeline_list",
+        "PipelineRunProvenance": ".models.pipeline_run_provenance",
+        "PipelineRunProvenanceSchema": ".models.pipeline_run_provenance_schema",
+        "PipelineStudyResult": ".models.pipeline_study_result",
+        "PipelineStudyResultList": ".models.pipeline_study_result_list",
+        "PipelineStudyResultPost": ".models.pipeline_study_result_post",
+        "PipelineStudyResultSearch": ".models.pipeline_study_result_search",
+        "PointBase": ".models.point_base",
+        "PointCommon": ".models.point_common",
+        "PointList": ".models.point_list",
+        "PointRelationships": ".models.point_relationships",
+        "PointRelationshipsValues": ".models.point_relationships_values",
+        "PointRequest": ".models.point_request",
+        "PointReturn": ".models.point_return",
+        "PointValue": ".models.point_value",
+        "QueryDataset": ".models.query_dataset",
+        "QueryDatasetColumnsInner": ".models.query_dataset_columns_inner",
+        "QueryDatasetList": ".models.query_dataset_list",
+        "QueryResult": ".models.query_result",
+        "QueryResultColumnsInner": ".models.query_result_columns_inner",
+        "ReadableResourceAttributes": ".models.readable_resource_attributes",
+        "ResourceAttributes": ".models.resource_attributes",
+        "ReviewAssignee": ".models.review_assignee",
+        "ReviewAssigneeList": ".models.review_assignee_list",
+        "ReviewAssignment": ".models.review_assignment",
+        "ReviewDetail": ".models.review_detail",
+        "ReviewExportsPostRequest": ".models.review_exports_post_request",
+        "ReviewImportReport": ".models.review_import_report",
+        "ReviewImportReportFailedInner": ".models.review_import_report_failed_inner",
+        "ReviewImportReportLoadedInner": ".models.review_import_report_loaded_inner",
+        "ReviewImportReportSkippedInner": ".models.review_import_report_skipped_inner",
+        "ReviewMe": ".models.review_me",
+        "ReviewOpBatch": ".models.review_op_batch",
+        "ReviewOpResult": ".models.review_op_result",
+        "ReviewProgress": ".models.review_progress",
+        "ReviewReviewerList": ".models.review_reviewer_list",
+        "ReviewSetAside": ".models.review_set_aside",
+        "ReviewSetAsideReason": ".models.review_set_aside_reason",
+        "ReviewSource": ".models.review_source",
+        "ReviewSourceList": ".models.review_source_list",
+        "ReviewSourceListMetadata": ".models.review_source_list_metadata",
+        "ReviewState": ".models.review_state",
+        "ReviewStatePatch": ".models.review_state_patch",
+        "ReviewStoredOp": ".models.review_stored_op",
+        "ReviewSummary": ".models.review_summary",
+        "StudyBase": ".models.study_base",
+        "StudyCommon": ".models.study_common",
+        "StudyList": ".models.study_list",
+        "StudyRequest": ".models.study_request",
+        "StudyRequestRelationships": ".models.study_request_relationships",
+        "StudyRequestRelationshipsAnalyses": ".models.study_request_relationships_analyses",
+        "StudyReturn": ".models.study_return",
+        "StudyReturnAllOfStudysets": ".models.study_return_all_of_studysets",
+        "StudyReturnAllOfStudysetsOneOf": ".models.study_return_all_of_studysets_one_of",
+        "StudyReturnRelationships": ".models.study_return_relationships",
+        "StudyReturnRelationshipsAnalyses": ".models.study_return_relationships_analyses",
+        "StudySchemaCarried": ".models.study_schema_carried",
+        "StudySchemaRenameCandidate": ".models.study_schema_rename_candidate",
+        "StudySchemaRun": ".models.study_schema_run",
+        "StudySchemaSetAside": ".models.study_schema_set_aside",
+        "StudySchemaUpload": ".models.study_schema_upload",
+        "StudySchemaUploadPipeline": ".models.study_schema_upload_pipeline",
+        "StudySchemaUploadSummary": ".models.study_schema_upload_summary",
+        "StudySchemaUploadSummaryRecord": ".models.study_schema_upload_summary_record",
+        "StudySchemaUploadSummaryRecordAnalyses": ".models.study_schema_upload_summary_record_analyses",
+        "StudySchemaUploadSummaryRecordAnalysesSupersededInner": ".models.study_schema_upload_summary_record_analyses_superseded_inner",
+        "StudySchemaUploadSummaryRecordClaims": ".models.study_schema_upload_summary_record_claims",
+        "StudySchemaUploadSummaryRecordClaimsEntities": ".models.study_schema_upload_summary_record_claims_entities",
+        "StudySchemaUploadSummaryRecordConditionConflictsInner": ".models.study_schema_upload_summary_record_condition_conflicts_inner",
+        "StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner": ".models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner",
+        "StudySchemaUploadSummarySetAsideResolvedInner": ".models.study_schema_upload_summary_set_aside_resolved_inner",
+        "StudySchemaUploadSummarySkeleton": ".models.study_schema_upload_summary_skeleton",
+        "StudySchemaUploadSummarySkeletonOrphanedClaimsInner": ".models.study_schema_upload_summary_skeleton_orphaned_claims_inner",
+        "StudysetBase": ".models.studyset_base",
+        "StudysetList": ".models.studyset_list",
+        "StudysetRequest": ".models.studyset_request",
+        "StudysetRequestRelationships": ".models.studyset_request_relationships",
+        "StudysetRequestRelationshipsStudiesInner": ".models.studyset_request_relationships_studies_inner",
+        "StudysetRequestRelationshipsStudiesInnerAnyOf": ".models.studyset_request_relationships_studies_inner_any_of",
+        "StudysetReturn": ".models.studyset_return",
+        "StudysetReturnRelationships": ".models.studyset_return_relationships",
+        "StudysetReturnRelationshipsStudies": ".models.studyset_return_relationships_studies",
+        "StudysetReturnRelationshipsStudysetStudiesInner": ".models.studyset_return_relationships_studyset_studies_inner",
+        "TableCommon": ".models.table_common",
+        "TableList": ".models.table_list",
+        "TableRequest": ".models.table_request",
+        "TableRequestRelationships": ".models.table_request_relationships",
+        "TableReturn": ".models.table_return",
+        "TableReturnRelationships": ".models.table_return_relationships",
+        "User": ".models.user",
+        "UserList": ".models.user_list",
+        "UserResourceAttributes": ".models.user_resource_attributes",
+        "UserlessResourceAttributes": ".models.userless_resource_attributes",
+        "WriteableResourceAttributes": ".models.writeable_resource_attributes",
+    }
 
-# import ApiClient
-from neurostore_sdk.api_response import ApiResponse as ApiResponse
-from neurostore_sdk.api_client import ApiClient as ApiClient
-from neurostore_sdk.configuration import Configuration as Configuration
-from neurostore_sdk.exceptions import OpenApiException as OpenApiException
-from neurostore_sdk.exceptions import ApiTypeError as ApiTypeError
-from neurostore_sdk.exceptions import ApiValueError as ApiValueError
-from neurostore_sdk.exceptions import ApiKeyError as ApiKeyError
-from neurostore_sdk.exceptions import ApiAttributeError as ApiAttributeError
-from neurostore_sdk.exceptions import ApiException as ApiException
+    def __getattr__(name: str) -> object:
+        if (module_name := _exports.get(name)) is None:
+            raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+        value = getattr(import_module(module_name, __name__), name)
+        globals()[name] = value
+        return value
 
-# import models into sdk package
-from neurostore_sdk.models.analysis_base import AnalysisBase as AnalysisBase
-from neurostore_sdk.models.analysis_common import AnalysisCommon as AnalysisCommon
-from neurostore_sdk.models.analysis_list import AnalysisList as AnalysisList
-from neurostore_sdk.models.analysis_query import AnalysisQuery as AnalysisQuery
-from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean as AnalysisQueryBoolean
-from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf as AnalysisQueryBooleanOneOf
-from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast as AnalysisQueryContrast
-from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign as AnalysisQueryDesign
-from neurostore_sdk.models.analysis_query_ids import AnalysisQueryIds as AnalysisQueryIds
-from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition as AnalysisQueryMedicalCondition
-from neurostore_sdk.models.analysis_query_medical_condition_one_of import AnalysisQueryMedicalConditionOneOf as AnalysisQueryMedicalConditionOneOf
-from neurostore_sdk.models.analysis_query_medical_condition_one_of_role import AnalysisQueryMedicalConditionOneOfRole as AnalysisQueryMedicalConditionOneOfRole
-from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized as AnalysisQueryNormalized
-from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds as AnalysisQueryNormalizedIds
-from neurostore_sdk.models.analysis_query_normalized_ids_one_of import AnalysisQueryNormalizedIdsOneOf as AnalysisQueryNormalizedIdsOneOf
-from neurostore_sdk.models.analysis_query_normalized_one_of import AnalysisQueryNormalizedOneOf as AnalysisQueryNormalizedOneOf
-from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange as AnalysisQueryRange
-from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest as AnalysisQueryRequest
-from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult as AnalysisQueryResult
-from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts as AnalysisQueryResultCounts
-from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner as AnalysisQueryResultFunnelInner
-from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner as AnalysisQueryResultResultsInner
-from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched as AnalysisQueryResultSearched
-from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings as AnalysisQueryStrings
-from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms as AnalysisQueryTerms
-from neurostore_sdk.models.analysis_query_text import AnalysisQueryText as AnalysisQueryText
-from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues as AnalysisQueryValues
-from neurostore_sdk.models.analysis_query_when_silent import AnalysisQueryWhenSilent as AnalysisQueryWhenSilent
-from neurostore_sdk.models.analysis_request import AnalysisRequest as AnalysisRequest
-from neurostore_sdk.models.analysis_request_relationships import AnalysisRequestRelationships as AnalysisRequestRelationships
-from neurostore_sdk.models.analysis_request_relationships_conditions import AnalysisRequestRelationshipsConditions as AnalysisRequestRelationshipsConditions
-from neurostore_sdk.models.analysis_request_relationships_images import AnalysisRequestRelationshipsImages as AnalysisRequestRelationshipsImages
-from neurostore_sdk.models.analysis_request_relationships_points import AnalysisRequestRelationshipsPoints as AnalysisRequestRelationshipsPoints
-from neurostore_sdk.models.analysis_return import AnalysisReturn as AnalysisReturn
-from neurostore_sdk.models.analysis_return_relationships import AnalysisReturnRelationships as AnalysisReturnRelationships
-from neurostore_sdk.models.analysis_return_relationships_conditions import AnalysisReturnRelationshipsConditions as AnalysisReturnRelationshipsConditions
-from neurostore_sdk.models.analysis_return_relationships_images import AnalysisReturnRelationshipsImages as AnalysisReturnRelationshipsImages
-from neurostore_sdk.models.analysis_return_relationships_points import AnalysisReturnRelationshipsPoints as AnalysisReturnRelationshipsPoints
-from neurostore_sdk.models.analysis_term_list import AnalysisTermList as AnalysisTermList
-from neurostore_sdk.models.analysis_term_list_results_inner import AnalysisTermListResultsInner as AnalysisTermListResultsInner
-from neurostore_sdk.models.annotation_base import AnnotationBase as AnnotationBase
-from neurostore_sdk.models.annotation_common import AnnotationCommon as AnnotationCommon
-from neurostore_sdk.models.annotation_export import AnnotationExport as AnnotationExport
-from neurostore_sdk.models.annotation_list import AnnotationList as AnnotationList
-from neurostore_sdk.models.annotation_pipeline_extension import AnnotationPipelineExtension as AnnotationPipelineExtension
-from neurostore_sdk.models.annotation_pipeline_extension_analysis_query import AnnotationPipelineExtensionAnalysisQuery as AnnotationPipelineExtensionAnalysisQuery
-from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner as AnnotationPipelineExtensionPipelinesInner
-from neurostore_sdk.models.annotation_request import AnnotationRequest as AnnotationRequest
-from neurostore_sdk.models.annotation_request_one_of import AnnotationRequestOneOf as AnnotationRequestOneOf
-from neurostore_sdk.models.annotation_request_relationships import AnnotationRequestRelationships as AnnotationRequestRelationships
-from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes as AnnotationRequestRelationshipsNotes
-from neurostore_sdk.models.annotation_return import AnnotationReturn as AnnotationReturn
-from neurostore_sdk.models.annotation_return_one_of import AnnotationReturnOneOf as AnnotationReturnOneOf
-from neurostore_sdk.models.annotation_return_relationships import AnnotationReturnRelationships as AnnotationReturnRelationships
-from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes as AnnotationReturnRelationshipsNotes
-from neurostore_sdk.models.api_key import ApiKey as ApiKey
-from neurostore_sdk.models.api_key_created import ApiKeyCreated as ApiKeyCreated
-from neurostore_sdk.models.api_key_introspection import ApiKeyIntrospection as ApiKeyIntrospection
-from neurostore_sdk.models.api_key_list import ApiKeyList as ApiKeyList
-from neurostore_sdk.models.api_key_request import ApiKeyRequest as ApiKeyRequest
-from neurostore_sdk.models.base_studies_id_delete200_response import BaseStudiesIdDelete200Response as BaseStudiesIdDelete200Response
-from neurostore_sdk.models.base_studies_post200_response import BaseStudiesPost200Response as BaseStudiesPost200Response
-from neurostore_sdk.models.base_studies_post_request import BaseStudiesPostRequest as BaseStudiesPostRequest
-from neurostore_sdk.models.base_study import BaseStudy as BaseStudy
-from neurostore_sdk.models.base_study_list import BaseStudyList as BaseStudyList
-from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner as BaseStudyPreprintDoisInner
-from neurostore_sdk.models.base_study_return import BaseStudyReturn as BaseStudyReturn
-from neurostore_sdk.models.base_study_versions_inner import BaseStudyVersionsInner as BaseStudyVersionsInner
-from neurostore_sdk.models.clone import Clone as Clone
-from neurostore_sdk.models.condition_base import ConditionBase as ConditionBase
-from neurostore_sdk.models.condition_list import ConditionList as ConditionList
-from neurostore_sdk.models.condition_request import ConditionRequest as ConditionRequest
-from neurostore_sdk.models.condition_return import ConditionReturn as ConditionReturn
-from neurostore_sdk.models.data_source_common import DataSourceCommon as DataSourceCommon
-from neurostore_sdk.models.data_source_list import DataSourceList as DataSourceList
-from neurostore_sdk.models.data_source_request import DataSourceRequest as DataSourceRequest
-from neurostore_sdk.models.data_source_return import DataSourceReturn as DataSourceReturn
-from neurostore_sdk.models.data_source_summary import DataSourceSummary as DataSourceSummary
-from neurostore_sdk.models.entity import Entity as Entity
-from neurostore_sdk.models.error_detail import ErrorDetail as ErrorDetail
-from neurostore_sdk.models.error_response import ErrorResponse as ErrorResponse
-from neurostore_sdk.models.image_base import ImageBase as ImageBase
-from neurostore_sdk.models.image_common import ImageCommon as ImageCommon
-from neurostore_sdk.models.image_detail import ImageDetail as ImageDetail
-from neurostore_sdk.models.image_list import ImageList as ImageList
-from neurostore_sdk.models.image_relationships import ImageRelationships as ImageRelationships
-from neurostore_sdk.models.image_request import ImageRequest as ImageRequest
-from neurostore_sdk.models.image_return import ImageReturn as ImageReturn
-from neurostore_sdk.models.image_value_summary import ImageValueSummary as ImageValueSummary
-from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram as ImageValueSummaryHistogram
-from neurostore_sdk.models.journal_kind import JournalKind as JournalKind
-from neurostore_sdk.models.journal_list import JournalList as JournalList
-from neurostore_sdk.models.journal_return import JournalReturn as JournalReturn
-from neurostore_sdk.models.journal_summary import JournalSummary as JournalSummary
-from neurostore_sdk.models.json_ld import JsonLd as JsonLd
-from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
-from neurostore_sdk.models.metadata import Metadata as Metadata
-from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
-from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
-from neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata import NeurostoreStudysetReleasesGet200ResponseMetadata as NeurostoreStudysetReleasesGet200ResponseMetadata
-from neurostore_sdk.models.note_collection_base import NoteCollectionBase as NoteCollectionBase
-from neurostore_sdk.models.note_collection_list import NoteCollectionList as NoteCollectionList
-from neurostore_sdk.models.note_collection_request import NoteCollectionRequest as NoteCollectionRequest
-from neurostore_sdk.models.note_collection_return import NoteCollectionReturn as NoteCollectionReturn
-from neurostore_sdk.models.pipeline import Pipeline as Pipeline
-from neurostore_sdk.models.pipeline_config import PipelineConfig as PipelineConfig
-from neurostore_sdk.models.pipeline_config_list import PipelineConfigList as PipelineConfigList
-from neurostore_sdk.models.pipeline_embedding import PipelineEmbedding as PipelineEmbedding
-from neurostore_sdk.models.pipeline_embedding_list import PipelineEmbeddingList as PipelineEmbeddingList
-from neurostore_sdk.models.pipeline_list import PipelineList as PipelineList
-from neurostore_sdk.models.pipeline_run_provenance import PipelineRunProvenance as PipelineRunProvenance
-from neurostore_sdk.models.pipeline_run_provenance_schema import PipelineRunProvenanceSchema as PipelineRunProvenanceSchema
-from neurostore_sdk.models.pipeline_study_result import PipelineStudyResult as PipelineStudyResult
-from neurostore_sdk.models.pipeline_study_result_list import PipelineStudyResultList as PipelineStudyResultList
-from neurostore_sdk.models.pipeline_study_result_post import PipelineStudyResultPost as PipelineStudyResultPost
-from neurostore_sdk.models.pipeline_study_result_search import PipelineStudyResultSearch as PipelineStudyResultSearch
-from neurostore_sdk.models.point_base import PointBase as PointBase
-from neurostore_sdk.models.point_common import PointCommon as PointCommon
-from neurostore_sdk.models.point_list import PointList as PointList
-from neurostore_sdk.models.point_relationships import PointRelationships as PointRelationships
-from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues as PointRelationshipsValues
-from neurostore_sdk.models.point_request import PointRequest as PointRequest
-from neurostore_sdk.models.point_return import PointReturn as PointReturn
-from neurostore_sdk.models.point_value import PointValue as PointValue
-from neurostore_sdk.models.query_dataset import QueryDataset as QueryDataset
-from neurostore_sdk.models.query_dataset_columns_inner import QueryDatasetColumnsInner as QueryDatasetColumnsInner
-from neurostore_sdk.models.query_dataset_list import QueryDatasetList as QueryDatasetList
-from neurostore_sdk.models.query_result import QueryResult as QueryResult
-from neurostore_sdk.models.query_result_columns_inner import QueryResultColumnsInner as QueryResultColumnsInner
-from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
-from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
-from neurostore_sdk.models.review_assignee import ReviewAssignee as ReviewAssignee
-from neurostore_sdk.models.review_assignee_list import ReviewAssigneeList as ReviewAssigneeList
-from neurostore_sdk.models.review_assignment import ReviewAssignment as ReviewAssignment
-from neurostore_sdk.models.review_detail import ReviewDetail as ReviewDetail
-from neurostore_sdk.models.review_exports_post_request import ReviewExportsPostRequest as ReviewExportsPostRequest
-from neurostore_sdk.models.review_import_report import ReviewImportReport as ReviewImportReport
-from neurostore_sdk.models.review_import_report_failed_inner import ReviewImportReportFailedInner as ReviewImportReportFailedInner
-from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImportReportLoadedInner as ReviewImportReportLoadedInner
-from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImportReportSkippedInner as ReviewImportReportSkippedInner
-from neurostore_sdk.models.review_me import ReviewMe as ReviewMe
-from neurostore_sdk.models.review_op_batch import ReviewOpBatch as ReviewOpBatch
-from neurostore_sdk.models.review_op_result import ReviewOpResult as ReviewOpResult
-from neurostore_sdk.models.review_progress import ReviewProgress as ReviewProgress
-from neurostore_sdk.models.review_reviewer_list import ReviewReviewerList as ReviewReviewerList
-from neurostore_sdk.models.review_set_aside import ReviewSetAside as ReviewSetAside
-from neurostore_sdk.models.review_set_aside_reason import ReviewSetAsideReason as ReviewSetAsideReason
-from neurostore_sdk.models.review_source import ReviewSource as ReviewSource
-from neurostore_sdk.models.review_source_list import ReviewSourceList as ReviewSourceList
-from neurostore_sdk.models.review_source_list_metadata import ReviewSourceListMetadata as ReviewSourceListMetadata
-from neurostore_sdk.models.review_state import ReviewState as ReviewState
-from neurostore_sdk.models.review_state_patch import ReviewStatePatch as ReviewStatePatch
-from neurostore_sdk.models.review_stored_op import ReviewStoredOp as ReviewStoredOp
-from neurostore_sdk.models.review_summary import ReviewSummary as ReviewSummary
-from neurostore_sdk.models.study_base import StudyBase as StudyBase
-from neurostore_sdk.models.study_common import StudyCommon as StudyCommon
-from neurostore_sdk.models.study_list import StudyList as StudyList
-from neurostore_sdk.models.study_request import StudyRequest as StudyRequest
-from neurostore_sdk.models.study_request_relationships import StudyRequestRelationships as StudyRequestRelationships
-from neurostore_sdk.models.study_request_relationships_analyses import StudyRequestRelationshipsAnalyses as StudyRequestRelationshipsAnalyses
-from neurostore_sdk.models.study_return import StudyReturn as StudyReturn
-from neurostore_sdk.models.study_return_all_of_studysets import StudyReturnAllOfStudysets as StudyReturnAllOfStudysets
-from neurostore_sdk.models.study_return_all_of_studysets_one_of import StudyReturnAllOfStudysetsOneOf as StudyReturnAllOfStudysetsOneOf
-from neurostore_sdk.models.study_return_relationships import StudyReturnRelationships as StudyReturnRelationships
-from neurostore_sdk.models.study_return_relationships_analyses import StudyReturnRelationshipsAnalyses as StudyReturnRelationshipsAnalyses
-from neurostore_sdk.models.study_schema_carried import StudySchemaCarried as StudySchemaCarried
-from neurostore_sdk.models.study_schema_rename_candidate import StudySchemaRenameCandidate as StudySchemaRenameCandidate
-from neurostore_sdk.models.study_schema_run import StudySchemaRun as StudySchemaRun
-from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside as StudySchemaSetAside
-from neurostore_sdk.models.study_schema_upload import StudySchemaUpload as StudySchemaUpload
-from neurostore_sdk.models.study_schema_upload_pipeline import StudySchemaUploadPipeline as StudySchemaUploadPipeline
-from neurostore_sdk.models.study_schema_upload_summary import StudySchemaUploadSummary as StudySchemaUploadSummary
-from neurostore_sdk.models.study_schema_upload_summary_record import StudySchemaUploadSummaryRecord as StudySchemaUploadSummaryRecord
-from neurostore_sdk.models.study_schema_upload_summary_record_analyses import StudySchemaUploadSummaryRecordAnalyses as StudySchemaUploadSummaryRecordAnalyses
-from neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner import StudySchemaUploadSummaryRecordAnalysesSupersededInner as StudySchemaUploadSummaryRecordAnalysesSupersededInner
-from neurostore_sdk.models.study_schema_upload_summary_record_claims import StudySchemaUploadSummaryRecordClaims as StudySchemaUploadSummaryRecordClaims
-from neurostore_sdk.models.study_schema_upload_summary_record_claims_entities import StudySchemaUploadSummaryRecordClaimsEntities as StudySchemaUploadSummaryRecordClaimsEntities
-from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner import StudySchemaUploadSummaryRecordConditionConflictsInner as StudySchemaUploadSummaryRecordConditionConflictsInner
-from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner import StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner as StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner
-from neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner import StudySchemaUploadSummarySetAsideResolvedInner as StudySchemaUploadSummarySetAsideResolvedInner
-from neurostore_sdk.models.study_schema_upload_summary_skeleton import StudySchemaUploadSummarySkeleton as StudySchemaUploadSummarySkeleton
-from neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner import StudySchemaUploadSummarySkeletonOrphanedClaimsInner as StudySchemaUploadSummarySkeletonOrphanedClaimsInner
-from neurostore_sdk.models.studyset_base import StudysetBase as StudysetBase
-from neurostore_sdk.models.studyset_list import StudysetList as StudysetList
-from neurostore_sdk.models.studyset_request import StudysetRequest as StudysetRequest
-from neurostore_sdk.models.studyset_request_relationships import StudysetRequestRelationships as StudysetRequestRelationships
-from neurostore_sdk.models.studyset_request_relationships_studies_inner import StudysetRequestRelationshipsStudiesInner as StudysetRequestRelationshipsStudiesInner
-from neurostore_sdk.models.studyset_request_relationships_studies_inner_any_of import StudysetRequestRelationshipsStudiesInnerAnyOf as StudysetRequestRelationshipsStudiesInnerAnyOf
-from neurostore_sdk.models.studyset_return import StudysetReturn as StudysetReturn
-from neurostore_sdk.models.studyset_return_relationships import StudysetReturnRelationships as StudysetReturnRelationships
-from neurostore_sdk.models.studyset_return_relationships_studies import StudysetReturnRelationshipsStudies as StudysetReturnRelationshipsStudies
-from neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner import StudysetReturnRelationshipsStudysetStudiesInner as StudysetReturnRelationshipsStudysetStudiesInner
-from neurostore_sdk.models.table_common import TableCommon as TableCommon
-from neurostore_sdk.models.table_list import TableList as TableList
-from neurostore_sdk.models.table_request import TableRequest as TableRequest
-from neurostore_sdk.models.table_request_relationships import TableRequestRelationships as TableRequestRelationships
-from neurostore_sdk.models.table_return import TableReturn as TableReturn
-from neurostore_sdk.models.table_return_relationships import TableReturnRelationships as TableReturnRelationships
-from neurostore_sdk.models.user import User as User
-from neurostore_sdk.models.user_list import UserList as UserList
-from neurostore_sdk.models.user_resource_attributes import UserResourceAttributes as UserResourceAttributes
-from neurostore_sdk.models.userless_resource_attributes import UserlessResourceAttributes as UserlessResourceAttributes
-from neurostore_sdk.models.writeable_resource_attributes import WriteableResourceAttributes as WriteableResourceAttributes
-
-""",
-            name=__name__,
-            doc=__doc__,
-        )
-    )
+    def __dir__() -> list[str]:
+        return sorted(globals().keys() | _exports.keys())

@@ -36,7 +36,7 @@ class TestAnnotationExport(unittest.TestCase):
         model = AnnotationExport()
         if include_optional:
             return AnnotationExport(
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 annotation_csv = ''
             )
         else:

@@ -36,10 +36,10 @@ class TestReviewSourceList(unittest.TestCase):
         model = ReviewSourceList()
         if include_optional:
             return ReviewSourceList(
-                metadata = neurostore_sdk.models.review_source_list_metadata.review_source_list_metadata(
+                metadata = neurostore_sdk.models.review_source_list_metadata.ReviewSourceListMetadata(
                     total_count = 56, ),
                 results = [
-                    neurostore_sdk.models.review_source.review-source(
+                    neurostore_sdk.models.review_source.ReviewSource(
                         id = '', 
                         base_study_id = '', 
                         label = '', 
@@ -47,11 +47,11 @@ class TestReviewSourceList(unittest.TestCase):
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         total = 56, 
                         reviews = [
-                            neurostore_sdk.models.review_progress.review-progress(
+                            neurostore_sdk.models.review_progress.ReviewProgress(
                                 user_id = '', 
                                 user_name = '', 
                                 state = 'in_progress', 
-                                set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                                set_aside = neurostore_sdk.models.review_set_aside.ReviewSetAside(
                                     reason = 'no_usable_text', 
                                     note = '', ), 
                                 last_seq = 56, 
@@ -63,7 +63,7 @@ class TestReviewSourceList(unittest.TestCase):
                                 last_edit_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                             ], 
                         assignees = [
-                            neurostore_sdk.models.review_assignee.review-assignee(
+                            neurostore_sdk.models.review_assignee.ReviewAssignee(
                                 user_id = '', 
                                 name = '', )
                             ], )
@@ -71,10 +71,10 @@ class TestReviewSourceList(unittest.TestCase):
             )
         else:
             return ReviewSourceList(
-                metadata = neurostore_sdk.models.review_source_list_metadata.review_source_list_metadata(
+                metadata = neurostore_sdk.models.review_source_list_metadata.ReviewSourceListMetadata(
                     total_count = 56, ),
                 results = [
-                    neurostore_sdk.models.review_source.review-source(
+                    neurostore_sdk.models.review_source.ReviewSource(
                         id = '', 
                         base_study_id = '', 
                         label = '', 
@@ -82,11 +82,11 @@ class TestReviewSourceList(unittest.TestCase):
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         total = 56, 
                         reviews = [
-                            neurostore_sdk.models.review_progress.review-progress(
+                            neurostore_sdk.models.review_progress.ReviewProgress(
                                 user_id = '', 
                                 user_name = '', 
                                 state = 'in_progress', 
-                                set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                                set_aside = neurostore_sdk.models.review_set_aside.ReviewSetAside(
                                     reason = 'no_usable_text', 
                                     note = '', ), 
                                 last_seq = 56, 
@@ -98,7 +98,7 @@ class TestReviewSourceList(unittest.TestCase):
                                 last_edit_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                             ], 
                         assignees = [
-                            neurostore_sdk.models.review_assignee.review-assignee(
+                            neurostore_sdk.models.review_assignee.ReviewAssignee(
                                 user_id = '', 
                                 name = '', )
                             ], )

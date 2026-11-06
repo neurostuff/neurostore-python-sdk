@@ -25,6 +25,7 @@ from neurostore_sdk.models.review_import_report_loaded_inner import ReviewImport
 from neurostore_sdk.models.review_import_report_skipped_inner import ReviewImportReportSkippedInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ReviewImportReport(BaseModel):
     """
@@ -36,7 +37,8 @@ class ReviewImportReport(BaseModel):
     __properties: ClassVar[List[str]] = ["loaded", "skipped", "failed"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,8 +50,7 @@ class ReviewImportReport(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -77,22 +78,19 @@ class ReviewImportReport(BaseModel):
         _items = []
         if self.loaded is not None:
             for _item_loaded in self.loaded:
-                if _item_loaded is not None:
-                    _items.append(_item_loaded.to_dict())
+                _items.append(_item_loaded.to_dict() if _item_loaded is not None else None)
             _dict['loaded'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in skipped (list)
         _items = []
         if self.skipped is not None:
             for _item_skipped in self.skipped:
-                if _item_skipped is not None:
-                    _items.append(_item_skipped.to_dict())
+                _items.append(_item_skipped.to_dict() if _item_skipped is not None else None)
             _dict['skipped'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in failed (list)
         _items = []
         if self.failed is not None:
             for _item_failed in self.failed:
-                if _item_failed is not None:
-                    _items.append(_item_failed.to_dict())
+                _items.append(_item_failed.to_dict() if _item_failed is not None else None)
             _dict['failed'] = _items
         return _dict
 

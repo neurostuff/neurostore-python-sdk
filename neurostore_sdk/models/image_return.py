@@ -26,24 +26,25 @@ from neurostore_sdk.models.entity import Entity
 from neurostore_sdk.models.image_value_summary import ImageValueSummary
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ImageReturn(BaseModel):
     """
     ImageReturn
     """ # noqa: E501
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata about image such as software and version used and other relevant data about how the image was produced.")
-    url: Optional[StrictStr] = Field(default=None, description="URL to image file.")
-    filename: Optional[StrictStr] = Field(default=None, description="Name of the image file.")
-    space: Optional[StrictStr] = Field(default=None, description="The template space the image is in (e.g., MNI ")
-    value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.")
+    url: Optional[StrictStr] = Field(default=None, description="URL to image file.", json_schema_extra={"examples": ["https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz"]})
+    filename: Optional[StrictStr] = Field(default=None, description="Name of the image file.", json_schema_extra={"examples": ["Positive_RPEs_zstat.nii.gz"]})
+    space: Optional[StrictStr] = Field(default=None, description="The template space the image is in (e.g., MNI ", json_schema_extra={"examples": ["MNI152NLin2009aAsym"]})
+    value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.", json_schema_extra={"examples": ["Z"]})
     add_date: Optional[datetime] = Field(default=None, description="Date the image was added.")
     analysis: Optional[StrictStr] = None
     study: Optional[StrictStr] = None
     entities: Optional[List[Entity]] = None
     analysis_name: Optional[StrictStr] = None
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="The owner's Auth0 id, served only to the owner; null for anyone else, who sees `username`.")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
@@ -52,7 +53,8 @@ class ImageReturn(BaseModel):
     __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "created_at", "updated_at", "id", "public", "user", "username", "order", "value_summary"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,8 +66,7 @@ class ImageReturn(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -97,8 +98,7 @@ class ImageReturn(BaseModel):
         _items = []
         if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities is not None:
-                    _items.append(_item_entities.to_dict())
+                _items.append(_item_entities.to_dict() if _item_entities is not None else None)
             _dict['entities'] = _items
         # override the default output from pydantic by calling `to_dict()` of value_summary
         if self.value_summary is not None:

@@ -36,10 +36,10 @@ class TestNeurostoreStudysetReleasesGet200Response(unittest.TestCase):
         model = NeurostoreStudysetReleasesGet200Response()
         if include_optional:
             return NeurostoreStudysetReleasesGet200Response(
-                metadata = neurostore_sdk.models._neurostore_studyset_releases__get_200_response_metadata._neurostore_studyset_releases__get_200_response_metadata(
+                metadata = neurostore_sdk.models.neurostore_studyset_releases_get200_response_metadata.NeurostoreStudysetReleasesGet200ResponseMetadata(
                     total_count = 56, ),
                 results = [
-                    None
+                    { }
                     ]
             )
         else:

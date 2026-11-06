@@ -36,7 +36,7 @@ class TestImageReturn(unittest.TestCase):
         model = ImageReturn()
         if include_optional:
             return ImageReturn(
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 url = 'https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz',
                 filename = 'Positive_RPEs_zstat.nii.gz',
                 space = 'MNI152NLin2009aAsym',
@@ -45,7 +45,7 @@ class TestImageReturn(unittest.TestCase):
                 analysis = '',
                 study = '',
                 entities = [
-                    neurostore_sdk.models.entity.entity(
+                    neurostore_sdk.models.entity.Entity(
                         label = '', 
                         level = '', 
                         analysis = '', )
@@ -58,7 +58,7 @@ class TestImageReturn(unittest.TestCase):
                 user = '',
                 username = '',
                 order = 56,
-                value_summary = neurostore_sdk.models.image_value_summary.image-value-summary(
+                value_summary = neurostore_sdk.models.image_value_summary.ImageValueSummary(
                     status = '', 
                     error = '', 
                     summarizer_version = 56, 
@@ -77,7 +77,7 @@ class TestImageReturn(unittest.TestCase):
                     percentiles = {
                         'key' : 1.337
                         }, 
-                    histogram = neurostore_sdk.models.image_value_summary_histogram.image_value_summary_histogram(
+                    histogram = neurostore_sdk.models.image_value_summary_histogram.ImageValueSummaryHistogram(
                         min = 1.337, 
                         max = 1.337, 
                         bin_width = 1.337, 

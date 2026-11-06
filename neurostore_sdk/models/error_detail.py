@@ -22,19 +22,21 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ErrorDetail(BaseModel):
     """
     ErrorDetail
     """ # noqa: E501
-    var_field: Optional[StrictStr] = Field(default=None, description="Field name that caused the error", alias="field")
-    code: StrictStr = Field(description="Machine-readable error code")
-    message: StrictStr = Field(description="Human-readable error message")
+    var_field: Optional[StrictStr] = Field(default=None, description="Field name that caused the error", alias="field", json_schema_extra={"examples": ["source"]})
+    code: StrictStr = Field(description="Machine-readable error code", json_schema_extra={"examples": ["INVALID_VALUE"]})
+    message: StrictStr = Field(description="Human-readable error message", json_schema_extra={"examples": ["invalid source, choose from: 'neurostore'"]})
     context: Optional[Dict[str, Any]] = Field(default=None, description="Additional error context")
     __properties: ClassVar[List[str]] = ["field", "code", "message", "context"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +48,7 @@ class ErrorDetail(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -41,13 +41,13 @@ class TestStudySchemaUploadSummaryRecordAnalyses(unittest.TestCase):
                     ''
                     ],
                 parked = [
-                    neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
+                    neurostore_sdk.models.study_schema_set_aside.StudySchemaSetAside(
                         entity = '', 
                         key = '', 
                         reason = '', )
                     ],
                 superseded = [
-                    neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner.study_schema_upload_summary_record_analyses_superseded_inner(
+                    neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner.StudySchemaUploadSummaryRecordAnalysesSupersededInner(
                         key = '', 
                         replaced_by = [
                             ''

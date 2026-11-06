@@ -41,7 +41,7 @@ class TestPipelineEmbedding(unittest.TestCase):
                 config_id = '',
                 base_study_id = '',
                 date_executed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                file_inputs = None,
+                file_inputs = { },
                 status = '',
                 embedding = [
                     1.337

@@ -41,7 +41,7 @@ class TestQueryResult(unittest.TestCase):
                     'key' : ''
                     },
                 columns = [
-                    neurostore_sdk.models.query_result_columns_inner.query_result_columns_inner(
+                    neurostore_sdk.models.query_result_columns_inner.QueryResultColumnsInner(
                         name = '', 
                         type = '', )
                     ],

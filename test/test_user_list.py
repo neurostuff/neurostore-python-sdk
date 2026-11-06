@@ -37,11 +37,11 @@ class TestUserList(unittest.TestCase):
         if include_optional:
             return UserList(
                 results = [
-                    neurostore_sdk.models.user.user(
+                    neurostore_sdk.models.user.User(
                         name = '', 
                         neuroid = '', )
                     ],
-                metadata = neurostore_sdk.models.metadata.metadata(
+                metadata = neurostore_sdk.models.metadata.Metadata(
                     total_count = 56, 
                     unique_count = 56, )
             )

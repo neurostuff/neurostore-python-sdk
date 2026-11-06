@@ -25,28 +25,30 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ImageRequest(BaseModel):
     """
     ImageRequest
     """ # noqa: E501
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata about image such as software and version used and other relevant data about how the image was produced.")
-    url: Optional[StrictStr] = Field(default=None, description="URL to image file.")
-    filename: Optional[StrictStr] = Field(default=None, description="Name of the image file.")
-    space: Optional[StrictStr] = Field(default=None, description="The template space the image is in (e.g., MNI ")
-    value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.")
+    url: Optional[StrictStr] = Field(default=None, description="URL to image file.", json_schema_extra={"examples": ["https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz"]})
+    filename: Optional[StrictStr] = Field(default=None, description="Name of the image file.", json_schema_extra={"examples": ["Positive_RPEs_zstat.nii.gz"]})
+    space: Optional[StrictStr] = Field(default=None, description="The template space the image is in (e.g., MNI ", json_schema_extra={"examples": ["MNI152NLin2009aAsym"]})
+    value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.", json_schema_extra={"examples": ["Z"]})
     add_date: Optional[datetime] = Field(default=None, description="Date the image was added.")
     analysis: Optional[StrictStr] = None
     study: Optional[StrictStr] = None
     entities: Optional[List[Entity]] = None
     analysis_name: Optional[StrictStr] = None
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     order: Optional[StrictInt] = Field(default=None, description="determines the position to display the image within its analysis (or study, when the image has no analysis)")
     __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date", "analysis", "study", "entities", "analysis_name", "id", "public", "order"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +60,7 @@ class ImageRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -88,8 +89,7 @@ class ImageRequest(BaseModel):
         _items = []
         if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities is not None:
-                    _items.append(_item_entities.to_dict())
+                _items.append(_item_entities.to_dict() if _item_entities is not None else None)
             _dict['entities'] = _items
         # set to None if metadata (nullable) is None
         # and model_fields_set contains the field

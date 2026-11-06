@@ -37,7 +37,7 @@ class TestReviewReviewerList(unittest.TestCase):
         if include_optional:
             return ReviewReviewerList(
                 results = [
-                    neurostore_sdk.models.review_assignee.review-assignee(
+                    neurostore_sdk.models.review_assignee.ReviewAssignee(
                         user_id = '', 
                         name = '', )
                     ]
@@ -45,7 +45,7 @@ class TestReviewReviewerList(unittest.TestCase):
         else:
             return ReviewReviewerList(
                 results = [
-                    neurostore_sdk.models.review_assignee.review-assignee(
+                    neurostore_sdk.models.review_assignee.ReviewAssignee(
                         user_id = '', 
                         name = '', )
                     ],

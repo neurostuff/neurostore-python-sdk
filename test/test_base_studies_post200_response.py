@@ -36,7 +36,7 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
         model = BaseStudiesPost200Response()
         if include_optional:
             return BaseStudiesPost200Response(
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 versions = [
                     null
                     ],
@@ -52,7 +52,7 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                 pmcid = '',
                 publication_status = 'preprint',
                 preprint_dois = [
-                    neurostore_sdk.models.base_study_preprint_dois_inner.base_study_preprint_dois_inner(
+                    neurostore_sdk.models.base_study_preprint_dois_inner.BaseStudyPreprintDoisInner(
                         doi = '', 
                         server = '0', )
                     ],
@@ -77,7 +77,7 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                 public = True,
                 user = '',
                 username = '',
-                journal = neurostore_sdk.models.journal_summary.journal-summary(
+                journal = neurostore_sdk.models.journal_summary.JournalSummary(
                     id = '', 
                     title = '', 
                     abbreviation = '', ),
@@ -86,9 +86,9 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                 has_z_maps = True,
                 has_t_maps = True,
                 has_beta_and_variance_maps = True,
-                features = neurostore_sdk.models.review_detail_all_of_provenance.review_detail_allOf_provenance(),
+                features = { },
                 data_sources = [
-                    neurostore_sdk.models.data_source_summary.data-source-summary(
+                    neurostore_sdk.models.data_source_summary.DataSourceSummary(
                         id = '', 
                         name = '', 
                         url = '', )

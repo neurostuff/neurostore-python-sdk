@@ -37,7 +37,7 @@ class TestApiKeyList(unittest.TestCase):
         if include_optional:
             return ApiKeyList(
                 results = [
-                    neurostore_sdk.models.api_key.api-key(
+                    neurostore_sdk.models.api_key.ApiKey(
                         id = '', 
                         name = '', 
                         prefix = '', 

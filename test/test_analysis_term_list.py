@@ -37,7 +37,7 @@ class TestAnalysisTermList(unittest.TestCase):
         if include_optional:
             return AnalysisTermList(
                 results = [
-                    neurostore_sdk.models.analysis_term_list_results_inner.analysis_term_list_results_inner(
+                    neurostore_sdk.models.analysis_term_list_results_inner.AnalysisTermListResultsInner(
                         value = '', 
                         label = '', 
                         parent = '', 

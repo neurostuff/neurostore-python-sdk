@@ -38,7 +38,7 @@ class TestStudyReturn(unittest.TestCase):
             return StudyReturn(
                 doi = '10.1016/S0926-6410(97)00020-7',
                 name = 'Functional magnetic resonance imaging of category-specific cortical activation: evidence for semantic maps.',
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 description = 'This is my very scientific abstract.',
                 publication = 'Journal of Super Important Science.',
                 pmid = '35998675',
@@ -58,12 +58,12 @@ class TestStudyReturn(unittest.TestCase):
                     ''
                     ],
                 data_sources = [
-                    neurostore_sdk.models.data_source_summary.data-source-summary(
+                    neurostore_sdk.models.data_source_summary.DataSourceSummary(
                         id = '', 
                         name = '', 
                         url = '', )
                     ],
-                journal = neurostore_sdk.models.journal_summary.journal-summary(
+                journal = neurostore_sdk.models.journal_summary.JournalSummary(
                     id = '', 
                     title = '', 
                     abbreviation = '', ),

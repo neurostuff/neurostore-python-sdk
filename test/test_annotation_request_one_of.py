@@ -38,10 +38,10 @@ class TestAnnotationRequestOneOf(unittest.TestCase):
             return AnnotationRequestOneOf(
                 name = 'Examination of left versus right finger tapping',
                 description = 'This annotation tracks whether the analysis of interest for all included studies are left handed/right handed, or bimanual taps.',
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 note_keys = {include=boolean},
                 pipelines = [
-                    neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner.annotation_pipeline_extension_pipelines_inner(
+                    neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner.AnnotationPipelineExtensionPipelinesInner(
                         name = '', 
                         version = '', 
                         config_id = '', 
@@ -49,8 +49,8 @@ class TestAnnotationRequestOneOf(unittest.TestCase):
                             ''
                             ], )
                     ],
-                analysis_query = neurostore_sdk.models.annotation_pipeline_extension_analysis_query.annotation_pipeline_extension_analysis_query(
-                    query = neurostore_sdk.models.analysis_query.analysis-query(
+                analysis_query = neurostore_sdk.models.annotation_pipeline_extension_analysis_query.AnnotationPipelineExtensionAnalysisQuery(
+                    query = neurostore_sdk.models.analysis_query.AnalysisQuery(
                         name = null, 
                         medical_condition = null, 
                         has_patients = null, 
@@ -63,20 +63,20 @@ class TestAnnotationRequestOneOf(unittest.TestCase):
                         measure_family = null, 
                         details_type = null, 
                         is_meta_analysis = null, 
-                        n = neurostore_sdk.models.analysis_query_range.analysis-query-range(
+                        n = neurostore_sdk.models.analysis_query_range.AnalysisQueryRange(
                             min = 1.337, 
                             max = 1.337, 
                             when_silent = 'exclude', ), 
                         has_coordinates = null, 
                         role = null, 
-                        contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
+                        contrast = neurostore_sdk.models.analysis_query_contrast.AnalysisQueryContrast(
                             positive = null, 
                             negative = null, 
                             key = null, 
                             set = null, 
                             kind = null, 
                             groups = null, ), 
-                        design = neurostore_sdk.models.analysis_query_design.analysis_query_design(
+                        design = neurostore_sdk.models.analysis_query_design.AnalysisQueryDesign(
                             allocation = null, 
                             assignment_structure = null, 
                             blinding = null, 

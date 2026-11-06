@@ -25,12 +25,13 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.journal_kind import JournalKind
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class JournalReturn(BaseModel):
     """
     JournalReturn
     """ # noqa: E501
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
     id: Optional[StrictStr] = None
     openalex_id: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="OpenAlex's source id, bare (`S121666818`).")
@@ -43,18 +44,19 @@ class JournalReturn(BaseModel):
     wikidata_id: Optional[StrictStr] = Field(default=None, description="Wikidata's item for the title (`Q5936947`).")
     __properties: ClassVar[List[str]] = ["created_at", "updated_at", "id", "openalex_id", "title", "abbreviation", "kind", "issns", "issn_l", "nlm_id", "wikidata_id"]
 
-    @field_validator('openalex_id')
+    @field_validator('openalex_id', mode="before")
     def openalex_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^S\d+$", value):
+        if isinstance(value, str) and not re.match(r"^S\d+$", value):
             raise ValueError(r"must validate the regular expression /^S\d+$/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -66,8 +68,7 @@ class JournalReturn(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

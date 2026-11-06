@@ -38,14 +38,14 @@ class TestReviewOpBatch(unittest.TestCase):
             return ReviewOpBatch(
                 expected_last_seq = 0,
                 ops = [
-                    neurostore_sdk.models.review_op.review-op()
+                    { }
                     ]
             )
         else:
             return ReviewOpBatch(
                 expected_last_seq = 0,
                 ops = [
-                    neurostore_sdk.models.review_op.review-op()
+                    { }
                     ],
         )
         """

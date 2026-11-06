@@ -22,20 +22,22 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudysetBase(BaseModel):
     """
     StudysetBase
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Descriptive and human readable name of the studyset.")
-    description: Optional[StrictStr] = Field(default=None, description="A longform description of the studyset.")
-    publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.")
-    doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
-    pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive and human readable name of the studyset.", json_schema_extra={"examples": ["Examination of want versus need"]})
+    description: Optional[StrictStr] = Field(default=None, description="A longform description of the studyset.", json_schema_extra={"examples": ["A collection of studies that include tasks x, y, and z, for the purpose of teasing apart concepts a and b."]})
+    publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.", json_schema_extra={"examples": ["Journal of Open Results"]})
+    doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).", json_schema_extra={"examples": ["digital object identifier of the studyset"]})
+    pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.", json_schema_extra={"examples": ["35998675"]})
     __properties: ClassVar[List[str]] = ["name", "description", "publication", "doi", "pmid"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +49,7 @@ class StudysetBase(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

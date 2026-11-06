@@ -42,7 +42,7 @@ class TestQueryDataset(unittest.TestCase):
                     ''
                     ],
                 columns = [
-                    neurostore_sdk.models.query_dataset_columns_inner.query_dataset_columns_inner(
+                    neurostore_sdk.models.query_dataset_columns_inner.QueryDatasetColumnsInner(
                         name = '', 
                         type = 'text', 
                         description = '', )
