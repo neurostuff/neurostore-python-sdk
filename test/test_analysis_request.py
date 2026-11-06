@@ -49,13 +49,13 @@ class TestAnalysisRequest(unittest.TestCase):
                 public = True,
                 table_id = '',
                 entities = [
-                    neurostore_sdk.models.entity.entity(
+                    neurostore_sdk.models.entity.Entity(
                         label = '', 
                         level = '', 
                         analysis = '', )
                     ],
                 order = 56,
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 role = '',
                 relabelled_by = '',
                 outcome = 'significant_effect',

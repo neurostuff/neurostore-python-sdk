@@ -23,21 +23,23 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ImageBase(BaseModel):
     """
     ImageBase
     """ # noqa: E501
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata about image such as software and version used and other relevant data about how the image was produced.")
-    url: Optional[StrictStr] = Field(default=None, description="URL to image file.")
-    filename: Optional[StrictStr] = Field(default=None, description="Name of the image file.")
-    space: Optional[StrictStr] = Field(default=None, description="The template space the image is in (e.g., MNI ")
-    value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.")
+    url: Optional[StrictStr] = Field(default=None, description="URL to image file.", json_schema_extra={"examples": ["https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz"]})
+    filename: Optional[StrictStr] = Field(default=None, description="Name of the image file.", json_schema_extra={"examples": ["Positive_RPEs_zstat.nii.gz"]})
+    space: Optional[StrictStr] = Field(default=None, description="The template space the image is in (e.g., MNI ", json_schema_extra={"examples": ["MNI152NLin2009aAsym"]})
+    value_type: Optional[StrictStr] = Field(default=None, description="The values the image represents. For example, T-statistic or Z-statistic, or Betas.", json_schema_extra={"examples": ["Z"]})
     add_date: Optional[datetime] = Field(default=None, description="Date the image was added.")
     __properties: ClassVar[List[str]] = ["metadata", "url", "filename", "space", "value_type", "add_date"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,8 +51,7 @@ class ImageBase(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

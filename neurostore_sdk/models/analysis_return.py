@@ -29,17 +29,18 @@ from neurostore_sdk.models.data_source_summary import DataSourceSummary
 from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AnalysisReturn(BaseModel):
     """
     AnalysisReturn
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="A name of the contrast being performed.")
-    description: Optional[StrictStr] = Field(default=None, description="A long form description of how the contrast was performed")
+    name: Optional[StrictStr] = Field(default=None, description="A name of the contrast being performed.", json_schema_extra={"examples": ["\"houses>faces\""]})
+    description: Optional[StrictStr] = Field(default=None, description="A long form description of how the contrast was performed", json_schema_extra={"examples": ["This analysis represents a contrast of houses versus faces."]})
     weights: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="Weight applied to each condition, must be the same length as the conditions attribute.")
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
@@ -77,7 +78,8 @@ class AnalysisReturn(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -89,8 +91,7 @@ class AnalysisReturn(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -132,15 +133,13 @@ class AnalysisReturn(BaseModel):
         _items = []
         if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities is not None:
-                    _items.append(_item_entities.to_dict())
+                _items.append(_item_entities.to_dict() if _item_entities is not None else None)
             _dict['entities'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in data_sources (list)
         _items = []
         if self.data_sources is not None:
             for _item_data_sources in self.data_sources:
-                if _item_data_sources is not None:
-                    _items.append(_item_data_sources.to_dict())
+                _items.append(_item_data_sources.to_dict() if _item_data_sources is not None else None)
             _dict['data_sources'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field

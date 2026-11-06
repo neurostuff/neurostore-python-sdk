@@ -24,19 +24,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class UserlessResourceAttributes(BaseModel):
     """
     common resource attributes not tied to a specific user
     """ # noqa: E501
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     __properties: ClassVar[List[str]] = ["created_at", "updated_at", "id", "public"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,8 +50,7 @@ class UserlessResourceAttributes(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

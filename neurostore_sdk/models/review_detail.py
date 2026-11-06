@@ -26,6 +26,7 @@ from neurostore_sdk.models.review_state import ReviewState
 from neurostore_sdk.models.review_stored_op import ReviewStoredOp
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ReviewDetail(BaseModel):
     """
@@ -47,7 +48,8 @@ class ReviewDetail(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "source_id", "user_id", "state", "set_aside", "last_seq", "created_at", "updated_at", "record", "coordinate_revision", "provenance", "annotations", "ops"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,8 +61,7 @@ class ReviewDetail(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -91,8 +92,7 @@ class ReviewDetail(BaseModel):
         _items = []
         if self.ops is not None:
             for _item_ops in self.ops:
-                if _item_ops is not None:
-                    _items.append(_item_ops.to_dict())
+                _items.append(_item_ops.to_dict() if _item_ops is not None else None)
             _dict['ops'] = _items
         # set to None if updated_at (nullable) is None
         # and model_fields_set contains the field

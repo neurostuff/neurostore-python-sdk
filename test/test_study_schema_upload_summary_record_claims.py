@@ -41,7 +41,7 @@ class TestStudySchemaUploadSummaryRecordClaims(unittest.TestCase):
                 rejected_paths = [
                     ''
                     ],
-                entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.study_schema_upload_summary_record_claims_entities(
+                entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.StudySchemaUploadSummaryRecordClaimsEntities(
                     created = 56, 
                     matched = 56, ),
                 unlocated = [
@@ -54,7 +54,7 @@ class TestStudySchemaUploadSummaryRecordClaims(unittest.TestCase):
                     ''
                     ],
                 rename_candidates = [
-                    neurostore_sdk.models.study_schema_rename_candidate.study-schema-rename-candidate(
+                    neurostore_sdk.models.study_schema_rename_candidate.StudySchemaRenameCandidate(
                         class = '', 
                         from = '', 
                         to = '', 
@@ -62,7 +62,7 @@ class TestStudySchemaUploadSummaryRecordClaims(unittest.TestCase):
                         candidate_id = '', )
                     ],
                 parked_entities = [
-                    neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
+                    neurostore_sdk.models.study_schema_set_aside.StudySchemaSetAside(
                         entity = '', 
                         key = '', 
                         reason = '', )

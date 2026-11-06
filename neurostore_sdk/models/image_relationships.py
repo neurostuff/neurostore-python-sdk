@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.entity import Entity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ImageRelationships(BaseModel):
     """
@@ -35,7 +36,8 @@ class ImageRelationships(BaseModel):
     __properties: ClassVar[List[str]] = ["analysis", "study", "entities", "analysis_name"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +49,7 @@ class ImageRelationships(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -76,8 +77,7 @@ class ImageRelationships(BaseModel):
         _items = []
         if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities is not None:
-                    _items.append(_item_entities.to_dict())
+                _items.append(_item_entities.to_dict() if _item_entities is not None else None)
             _dict['entities'] = _items
         # set to None if analysis (nullable) is None
         # and model_fields_set contains the field

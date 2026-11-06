@@ -37,19 +37,19 @@ class TestReviewImportReport(unittest.TestCase):
         if include_optional:
             return ReviewImportReport(
                 loaded = [
-                    neurostore_sdk.models.review_import_report_loaded_inner.review_import_report_loaded_inner(
+                    neurostore_sdk.models.review_import_report_loaded_inner.ReviewImportReportLoadedInner(
                         study_id = '', 
                         source_id = '', 
                         base_study_id = '', )
                     ],
                 skipped = [
-                    neurostore_sdk.models.review_import_report_skipped_inner.review_import_report_skipped_inner(
+                    neurostore_sdk.models.review_import_report_skipped_inner.ReviewImportReportSkippedInner(
                         study_id = '', 
                         source_id = '', 
                         reason = '', )
                     ],
                 failed = [
-                    neurostore_sdk.models.review_import_report_failed_inner.review_import_report_failed_inner(
+                    neurostore_sdk.models.review_import_report_failed_inner.ReviewImportReportFailedInner(
                         study_id = '', 
                         problems = [
                             ''
@@ -59,19 +59,19 @@ class TestReviewImportReport(unittest.TestCase):
         else:
             return ReviewImportReport(
                 loaded = [
-                    neurostore_sdk.models.review_import_report_loaded_inner.review_import_report_loaded_inner(
+                    neurostore_sdk.models.review_import_report_loaded_inner.ReviewImportReportLoadedInner(
                         study_id = '', 
                         source_id = '', 
                         base_study_id = '', )
                     ],
                 skipped = [
-                    neurostore_sdk.models.review_import_report_skipped_inner.review_import_report_skipped_inner(
+                    neurostore_sdk.models.review_import_report_skipped_inner.ReviewImportReportSkippedInner(
                         study_id = '', 
                         source_id = '', 
                         reason = '', )
                     ],
                 failed = [
-                    neurostore_sdk.models.review_import_report_failed_inner.review_import_report_failed_inner(
+                    neurostore_sdk.models.review_import_report_failed_inner.ReviewImportReportFailedInner(
                         study_id = '', 
                         problems = [
                             ''

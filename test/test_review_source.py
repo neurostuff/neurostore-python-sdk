@@ -43,11 +43,11 @@ class TestReviewSource(unittest.TestCase):
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 total = 56,
                 reviews = [
-                    neurostore_sdk.models.review_progress.review-progress(
+                    neurostore_sdk.models.review_progress.ReviewProgress(
                         user_id = '', 
                         user_name = '', 
                         state = 'in_progress', 
-                        set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                        set_aside = neurostore_sdk.models.review_set_aside.ReviewSetAside(
                             reason = 'no_usable_text', 
                             note = '', ), 
                         last_seq = 56, 
@@ -59,7 +59,7 @@ class TestReviewSource(unittest.TestCase):
                         last_edit_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
                 assignees = [
-                    neurostore_sdk.models.review_assignee.review-assignee(
+                    neurostore_sdk.models.review_assignee.ReviewAssignee(
                         user_id = '', 
                         name = '', )
                     ]
@@ -73,11 +73,11 @@ class TestReviewSource(unittest.TestCase):
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 total = 56,
                 reviews = [
-                    neurostore_sdk.models.review_progress.review-progress(
+                    neurostore_sdk.models.review_progress.ReviewProgress(
                         user_id = '', 
                         user_name = '', 
                         state = 'in_progress', 
-                        set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                        set_aside = neurostore_sdk.models.review_set_aside.ReviewSetAside(
                             reason = 'no_usable_text', 
                             note = '', ), 
                         last_seq = 56, 
@@ -89,7 +89,7 @@ class TestReviewSource(unittest.TestCase):
                         last_edit_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
                 assignees = [
-                    neurostore_sdk.models.review_assignee.review-assignee(
+                    neurostore_sdk.models.review_assignee.ReviewAssignee(
                         user_id = '', 
                         name = '', )
                     ],

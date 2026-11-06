@@ -38,7 +38,7 @@ class TestStudySchemaUploadSummaryRecordConditionConflictsInner(unittest.TestCas
             return StudySchemaUploadSummaryRecordConditionConflictsInner(
                 key = '',
                 cells = [
-                    neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner(
+                    neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner(
                         term = '', 
                         level = '', 
                         reason = 'both_directions', 

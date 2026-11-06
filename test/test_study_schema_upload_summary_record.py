@@ -37,19 +37,19 @@ class TestStudySchemaUploadSummaryRecord(unittest.TestCase):
         if include_optional:
             return StudySchemaUploadSummaryRecord(
                 config_id = '',
-                analyses = neurostore_sdk.models.study_schema_upload_summary_record_analyses.study_schema_upload_summary_record_analyses(
+                analyses = neurostore_sdk.models.study_schema_upload_summary_record_analyses.StudySchemaUploadSummaryRecordAnalyses(
                     resolved = 56, 
                     unresolved = [
                         ''
                         ], 
                     parked = [
-                        neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
+                        neurostore_sdk.models.study_schema_set_aside.StudySchemaSetAside(
                             entity = '', 
                             key = '', 
                             reason = '', )
                         ], 
                     superseded = [
-                        neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner.study_schema_upload_summary_record_analyses_superseded_inner(
+                        neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner.StudySchemaUploadSummaryRecordAnalysesSupersededInner(
                             key = '', 
                             replaced_by = [
                                 ''
@@ -57,23 +57,23 @@ class TestStudySchemaUploadSummaryRecord(unittest.TestCase):
                             reason = '', )
                         ], ),
                 condition_conflicts = [
-                    neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner.study_schema_upload_summary_record_condition_conflicts_inner(
+                    neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner.StudySchemaUploadSummaryRecordConditionConflictsInner(
                         key = '', 
                         cells = [
-                            neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner(
+                            neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner(
                                 term = '', 
                                 level = '', 
                                 reason = 'both_directions', 
                                 name = '', )
                             ], )
                     ],
-                claims = neurostore_sdk.models.study_schema_upload_summary_record_claims.study_schema_upload_summary_record_claims(
+                claims = neurostore_sdk.models.study_schema_upload_summary_record_claims.StudySchemaUploadSummaryRecordClaims(
                     created = 56, 
                     matched = 56, 
                     rejected_paths = [
                         ''
                         ], 
-                    entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.study_schema_upload_summary_record_claims_entities(
+                    entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.StudySchemaUploadSummaryRecordClaimsEntities(
                         created = 56, 
                         matched = 56, ), 
                     unlocated = [
@@ -86,7 +86,7 @@ class TestStudySchemaUploadSummaryRecord(unittest.TestCase):
                         ''
                         ], 
                     rename_candidates = [
-                        neurostore_sdk.models.study_schema_rename_candidate.study-schema-rename-candidate(
+                        neurostore_sdk.models.study_schema_rename_candidate.StudySchemaRenameCandidate(
                             class = '', 
                             from = '', 
                             to = '', 
@@ -94,12 +94,12 @@ class TestStudySchemaUploadSummaryRecord(unittest.TestCase):
                             candidate_id = '', )
                         ], 
                     parked_entities = [
-                        neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
+                        neurostore_sdk.models.study_schema_set_aside.StudySchemaSetAside(
                             entity = '', 
                             key = '', 
                             reason = '', )
                         ], ),
-                carried = neurostore_sdk.models.study_schema_carried.study-schema-carried(
+                carried = neurostore_sdk.models.study_schema_carried.StudySchemaCarried(
                     claims = 56, )
             )
         else:

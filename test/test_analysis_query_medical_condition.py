@@ -38,10 +38,10 @@ class TestAnalysisQueryMedicalCondition(unittest.TestCase):
             return AnalysisQueryMedicalCondition(
                 ids = None,
                 text = None,
-                all = neurostore_sdk.models.analysis_query_terms.analysis-query-terms(
+                all = neurostore_sdk.models.analysis_query_terms.AnalysisQueryTerms(
                     ids = null, 
                     text = null, ),
-                var_none = neurostore_sdk.models.analysis_query_terms.analysis-query-terms(
+                var_none = neurostore_sdk.models.analysis_query_terms.AnalysisQueryTerms(
                     ids = null, 
                     text = null, ),
                 descendants = True,

@@ -25,13 +25,14 @@ from neurostore_sdk.models.entity import Entity
 from neurostore_sdk.models.point_relationships_values import PointRelationshipsValues
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PointRequest(BaseModel):
     """
     PointRequest
     """ # noqa: E501
     coordinates: Optional[Annotated[List[Optional[Union[StrictFloat, StrictInt]]], Field(min_length=3, max_length=3)]] = Field(default=None, description="Location of the significant coordinate in three dimensional space.")
-    space: Optional[StrictStr] = Field(default=None, description="Template space used to determine coordinate Examples include TAL or MNI.")
+    space: Optional[StrictStr] = Field(default=None, description="Template space used to determine coordinate Examples include TAL or MNI.", json_schema_extra={"examples": ["MNI"]})
     kind: Optional[StrictStr] = Field(default=None, description="Method of how point was derived (e.g., center of mass)")
     label_id: Optional[StrictStr] = Field(default=None, description="If the point is associated with an image, this is the value the point takes in that image.")
     image: Optional[StrictStr] = None
@@ -40,7 +41,7 @@ class PointRequest(BaseModel):
     y: Optional[Union[StrictFloat, StrictInt]] = None
     z: Optional[Union[StrictFloat, StrictInt]] = None
     entities: Optional[List[Entity]] = None
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     analysis: Optional[StrictStr] = None
     cluster_size: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="size of the cluster in cubic millimeters")
@@ -51,7 +52,8 @@ class PointRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["coordinates", "space", "kind", "label_id", "image", "values", "x", "y", "z", "entities", "id", "public", "analysis", "cluster_size", "subpeak", "deactivation", "is_seed", "order"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -63,8 +65,7 @@ class PointRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -95,8 +96,7 @@ class PointRequest(BaseModel):
         _items = []
         if self.entities is not None:
             for _item_entities in self.entities:
-                if _item_entities is not None:
-                    _items.append(_item_entities.to_dict())
+                _items.append(_item_entities.to_dict() if _item_entities is not None else None)
             _dict['entities'] = _items
         # set to None if space (nullable) is None
         # and model_fields_set contains the field

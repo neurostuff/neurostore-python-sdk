@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.json_ld_context import JsonLdContext
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class JsonLd(BaseModel):
     """
@@ -30,11 +31,12 @@ class JsonLd(BaseModel):
     """ # noqa: E501
     context: Optional[JsonLdContext] = Field(default=None, alias="@context")
     id: Optional[StrictStr] = Field(default=None, description="URI of the resource", alias="@id")
-    type: Optional[StrictStr] = Field(default=None, description="One of the NiMADS data types", alias="@type")
+    type: Optional[StrictStr] = Field(default=None, description="One of the NiMADS data types", alias="@type", json_schema_extra={"examples": ["Study"]})
     __properties: ClassVar[List[str]] = ["@context", "@id", "@type"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +48,7 @@ class JsonLd(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

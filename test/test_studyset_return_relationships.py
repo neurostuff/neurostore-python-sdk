@@ -37,7 +37,7 @@ class TestStudysetReturnRelationships(unittest.TestCase):
         if include_optional:
             return StudysetReturnRelationships(
                 studyset_studies = [
-                    neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner.studyset_return_relationships_studyset_studies_inner(
+                    neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner.StudysetReturnRelationshipsStudysetStudiesInner(
                         id = '', 
                         curation_stub_uuid = '', )
                     ],

@@ -37,7 +37,7 @@ class TestPipelineConfig(unittest.TestCase):
         if include_optional:
             return PipelineConfig(
                 id = '',
-                config = None
+                config = { }
             )
         else:
             return PipelineConfig(

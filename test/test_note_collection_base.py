@@ -36,7 +36,7 @@ class TestNoteCollectionBase(unittest.TestCase):
         model = NoteCollectionBase()
         if include_optional:
             return NoteCollectionBase(
-                note = neurostore_sdk.models.note.note()
+                note = { }
             )
         else:
             return NoteCollectionBase(

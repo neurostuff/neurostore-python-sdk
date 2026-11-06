@@ -48,7 +48,7 @@ class TestPointRequest(unittest.TestCase):
                 y = 1.337,
                 z = 1.337,
                 entities = [
-                    neurostore_sdk.models.entity.entity(
+                    neurostore_sdk.models.entity.Entity(
                         label = '', 
                         level = '', 
                         analysis = '', )

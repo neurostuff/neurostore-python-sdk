@@ -37,7 +37,7 @@ class TestPipelineList(unittest.TestCase):
         if include_optional:
             return PipelineList(
                 results = [
-                    neurostore_sdk.models.pipeline.pipeline(
+                    neurostore_sdk.models.pipeline.Pipeline(
                         id = '', 
                         name = '', 
                         description = '', 
@@ -47,7 +47,7 @@ class TestPipelineList(unittest.TestCase):
                         pubget_compatible = True, 
                         derived_from = '', )
                     ],
-                metadata = neurostore_sdk.models.metadata.metadata(
+                metadata = neurostore_sdk.models.metadata.Metadata(
                     total_count = 56, 
                     unique_count = 56, )
             )

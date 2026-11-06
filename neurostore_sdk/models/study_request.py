@@ -24,27 +24,29 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.study_request_relationships_analyses import StudyRequestRelationshipsAnalyses
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudyRequest(BaseModel):
     """
     StudyRequest
     """ # noqa: E501
-    doi: Optional[StrictStr] = Field(default=None, description="Digital object identifier of the study.")
-    name: Optional[StrictStr] = Field(default=None, description="Title of the study.")
+    doi: Optional[StrictStr] = Field(default=None, description="Digital object identifier of the study.", json_schema_extra={"examples": ["10.1016/S0926-6410(97)00020-7"]})
+    name: Optional[StrictStr] = Field(default=None, description="Title of the study.", json_schema_extra={"examples": ["Functional magnetic resonance imaging of category-specific cortical activation: evidence for semantic maps."]})
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata associated with the study not covered by the other study attributes.")
-    description: Optional[StrictStr] = Field(default=None, description="Long form description of the study, typically the abstract.")
-    publication: Optional[StrictStr] = Field(default=None, description="The journal/place of publication for the study.")
-    pmid: Optional[StrictStr] = Field(default=None, description="If the study was published on PubMed, place the PubMed ID here.")
-    authors: Optional[StrictStr] = Field(default=None, description="The authors on the publication of this study.")
-    year: Optional[Annotated[int, Field(le=9999, strict=True, ge=0)]] = Field(default=None, description="The year this study was published.")
+    description: Optional[StrictStr] = Field(default=None, description="Long form description of the study, typically the abstract.", json_schema_extra={"examples": ["This is my very scientific abstract."]})
+    publication: Optional[StrictStr] = Field(default=None, description="The journal/place of publication for the study.", json_schema_extra={"examples": ["Journal of Super Important Science."]})
+    pmid: Optional[StrictStr] = Field(default=None, description="If the study was published on PubMed, place the PubMed ID here.", json_schema_extra={"examples": ["35998675"]})
+    authors: Optional[StrictStr] = Field(default=None, description="The authors on the publication of this study.", json_schema_extra={"examples": ["Strange, M."]})
+    year: Optional[Annotated[int, Field(le=9999, strict=True, ge=0)]] = Field(default=None, description="The year this study was published.", json_schema_extra={"examples": [1991]})
     analyses: Optional[StudyRequestRelationshipsAnalyses] = None
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     pmcid: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["doi", "name", "metadata", "description", "publication", "pmid", "authors", "year", "analyses", "id", "public", "pmcid"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,8 +58,7 @@ class StudyRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

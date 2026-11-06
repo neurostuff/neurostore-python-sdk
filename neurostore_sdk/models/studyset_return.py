@@ -26,19 +26,20 @@ from neurostore_sdk.models.studyset_return_relationships_studies import Studyset
 from neurostore_sdk.models.studyset_return_relationships_studyset_studies_inner import StudysetReturnRelationshipsStudysetStudiesInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudysetReturn(BaseModel):
     """
     StudysetReturn
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Descriptive and human readable name of the studyset.")
-    description: Optional[StrictStr] = Field(default=None, description="A longform description of the studyset.")
-    publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.")
-    doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).")
-    pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.")
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive and human readable name of the studyset.", json_schema_extra={"examples": ["Examination of want versus need"]})
+    description: Optional[StrictStr] = Field(default=None, description="A longform description of the studyset.", json_schema_extra={"examples": ["A collection of studies that include tasks x, y, and z, for the purpose of teasing apart concepts a and b."]})
+    publication: Optional[StrictStr] = Field(default=None, description="The journal/source the studyset is connected to if the studyset was published.", json_schema_extra={"examples": ["Journal of Open Results"]})
+    doi: Optional[StrictStr] = Field(default=None, description="A DOI connected to the published studyset (may change to being automatically created so each studyset connected to a successful meta-analysis gets a DOI).", json_schema_extra={"examples": ["digital object identifier of the studyset"]})
+    pmid: Optional[StrictStr] = Field(default=None, description="If the article connected to the studyset was published on PubMed, then link the ID here.", json_schema_extra={"examples": ["35998675"]})
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
@@ -61,7 +62,8 @@ class StudysetReturn(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -73,8 +75,7 @@ class StudysetReturn(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -106,8 +107,7 @@ class StudysetReturn(BaseModel):
         _items = []
         if self.studyset_studies is not None:
             for _item_studyset_studies in self.studyset_studies:
-                if _item_studyset_studies is not None:
-                    _items.append(_item_studyset_studies.to_dict())
+                _items.append(_item_studyset_studies.to_dict() if _item_studyset_studies is not None else None)
             _dict['studyset_studies'] = _items
         # override the default output from pydantic by calling `to_dict()` of studies
         if self.studies is not None:

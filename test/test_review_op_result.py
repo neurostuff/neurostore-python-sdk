@@ -37,35 +37,35 @@ class TestReviewOpResult(unittest.TestCase):
         if include_optional:
             return ReviewOpResult(
                 ops = [
-                    neurostore_sdk.models.review_stored_op.review-stored-op(
+                    neurostore_sdk.models.review_stored_op.ReviewStoredOp(
                         inverse = [
-                            None
+                            { }
                             ], )
                     ],
                 last_seq = 56,
-                record = None,
-                coordinate_revision = None,
-                provenance = None,
-                annotations = None,
-                hidden = None,
+                record = { },
+                coordinate_revision = { },
+                provenance = { },
+                annotations = { },
+                hidden = { },
                 entities = [
-                    None
+                    { }
                     ]
             )
         else:
             return ReviewOpResult(
                 ops = [
-                    neurostore_sdk.models.review_stored_op.review-stored-op(
+                    neurostore_sdk.models.review_stored_op.ReviewStoredOp(
                         inverse = [
-                            None
+                            { }
                             ], )
                     ],
                 last_seq = 56,
-                record = None,
-                coordinate_revision = None,
-                provenance = None,
-                annotations = None,
-                hidden = None,
+                record = { },
+                coordinate_revision = { },
+                provenance = { },
+                annotations = { },
+                hidden = { },
         )
         """
 

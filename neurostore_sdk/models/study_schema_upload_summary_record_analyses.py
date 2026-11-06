@@ -24,6 +24,7 @@ from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside
 from neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner import StudySchemaUploadSummaryRecordAnalysesSupersededInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudySchemaUploadSummaryRecordAnalyses(BaseModel):
     """
@@ -36,7 +37,8 @@ class StudySchemaUploadSummaryRecordAnalyses(BaseModel):
     __properties: ClassVar[List[str]] = ["resolved", "unresolved", "parked", "superseded"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,8 +50,7 @@ class StudySchemaUploadSummaryRecordAnalyses(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -77,15 +78,13 @@ class StudySchemaUploadSummaryRecordAnalyses(BaseModel):
         _items = []
         if self.parked is not None:
             for _item_parked in self.parked:
-                if _item_parked is not None:
-                    _items.append(_item_parked.to_dict())
+                _items.append(_item_parked.to_dict() if _item_parked is not None else None)
             _dict['parked'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in superseded (list)
         _items = []
         if self.superseded is not None:
             for _item_superseded in self.superseded:
-                if _item_superseded is not None:
-                    _items.append(_item_superseded.to_dict())
+                _items.append(_item_superseded.to_dict() if _item_superseded is not None else None)
             _dict['superseded'] = _items
         return _dict
 

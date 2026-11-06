@@ -24,24 +24,26 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.error_detail import ErrorDetail
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ErrorResponse(BaseModel):
     """
     ErrorResponse
     """ # noqa: E501
-    status: StrictInt = Field(description="HTTP status code")
-    title: StrictStr = Field(description="Short, human-readable summary")
-    detail: StrictStr = Field(description="Human-readable explanation")
+    status: StrictInt = Field(description="HTTP status code", json_schema_extra={"examples": [400]})
+    title: StrictStr = Field(description="Short, human-readable summary", json_schema_extra={"examples": ["Bad Request"]})
+    detail: StrictStr = Field(description="Human-readable explanation", json_schema_extra={"examples": ["The request contains invalid parameters"]})
     type: Optional[StrictStr] = Field(default='about:blank', description="URI reference for error type")
-    instance: Optional[StrictStr] = Field(default=None, description="URI reference for specific occurrence")
+    instance: Optional[StrictStr] = Field(default=None, description="URI reference for specific occurrence", json_schema_extra={"examples": ["/api/studies/123"]})
     errors: Optional[List[ErrorDetail]] = Field(default=None, description="Field-specific validation errors")
     timestamp: datetime = Field(description="ISO 8601 timestamp")
-    request_id: StrictStr = Field(description="Unique request identifier")
+    request_id: StrictStr = Field(description="Unique request identifier", json_schema_extra={"examples": ["a1b2c3d4"]})
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["status", "title", "detail", "type", "instance", "errors", "timestamp", "request_id"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +55,7 @@ class ErrorResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -83,8 +84,7 @@ class ErrorResponse(BaseModel):
         _items = []
         if self.errors is not None:
             for _item_errors in self.errors:
-                if _item_errors is not None:
-                    _items.append(_item_errors.to_dict())
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
             _dict['errors'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

@@ -37,7 +37,7 @@ class TestReviewStoredOp(unittest.TestCase):
         if include_optional:
             return ReviewStoredOp(
                 inverse = [
-                    None
+                    { }
                     ]
             )
         else:

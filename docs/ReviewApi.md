@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **review_exports_post**
-> bytearray review_exports_post(review_exports_post_request=review_exports_post_request)
+> bytes review_exports_post(review_exports_post_request=review_exports_post_request)
 
 Export the reviews that match the filters as a zip of layout trees
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 
@@ -390,7 +390,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     api_instance = neurostore_sdk.ReviewApi(api_client)
     config_id = 'config_id_example' # str | The pipeline config whose records to load.
     run_id = 'run_id_example' # str | The run of that config.
-    file = None # bytearray | A zip of a study_schema layout with each paper's parsed paper and text. The whole request body is at most 200 MiB.
+    file = None # bytes | A zip of a study_schema layout with each paper's parsed paper and text. The whole request body is at most 200 MiB.
 
     try:
         # Load the records of a pipeline run already in neurostore for review
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **config_id** | **str**| The pipeline config whose records to load. | 
  **run_id** | **str**| The run of that config. | 
- **file** | **bytearray**| A zip of a study_schema layout with each paper&#39;s parsed paper and text. The whole request body is at most 200 MiB. | 
+ **file** | **bytes**| A zip of a study_schema layout with each paper&#39;s parsed paper and text. The whole request body is at most 200 MiB. | 
 
 ### Return type
 
@@ -477,7 +477,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.ReviewApi(api_client)
-    file = None # bytearray | A zip of a study_schema layout. The whole request body is at most 200 MiB.
+    file = None # bytes | A zip of a study_schema layout. The whole request body is at most 200 MiB.
 
     try:
         # Load the papers of a study_schema layout zip for review
@@ -495,7 +495,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **bytearray**| A zip of a study_schema layout. The whole request body is at most 200 MiB. | 
+ **file** | **bytes**| A zip of a study_schema layout. The whole request body is at most 200 MiB. | 
 
 ### Return type
 
@@ -671,7 +671,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **review_reviews_id_export_get**
-> bytearray review_reviews_id_export_get(id)
+> bytes review_reviews_id_export_get(id)
 
 Export one review as a study_schema layout zip
 
@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 

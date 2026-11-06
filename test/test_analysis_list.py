@@ -36,7 +36,7 @@ class TestAnalysisList(unittest.TestCase):
         model = AnalysisList()
         if include_optional:
             return AnalysisList(
-                metadata = neurostore_sdk.models.metadata.metadata(
+                metadata = neurostore_sdk.models.metadata.Metadata(
                     total_count = 56, 
                     unique_count = 56, ),
                 results = [

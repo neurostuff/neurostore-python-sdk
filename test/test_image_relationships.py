@@ -39,7 +39,7 @@ class TestImageRelationships(unittest.TestCase):
                 analysis = '',
                 study = '',
                 entities = [
-                    neurostore_sdk.models.entity.entity(
+                    neurostore_sdk.models.entity.Entity(
                         label = '', 
                         level = '', 
                         analysis = '', )

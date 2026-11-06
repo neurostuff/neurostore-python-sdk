@@ -24,6 +24,7 @@ from neurostore_sdk.models.annotation_pipeline_extension_analysis_query import A
 from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import AnnotationPipelineExtensionPipelinesInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AnnotationPipelineExtension(BaseModel):
     """
@@ -34,7 +35,8 @@ class AnnotationPipelineExtension(BaseModel):
     __properties: ClassVar[List[str]] = ["pipelines", "analysis_query"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +48,7 @@ class AnnotationPipelineExtension(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -75,8 +76,7 @@ class AnnotationPipelineExtension(BaseModel):
         _items = []
         if self.pipelines is not None:
             for _item_pipelines in self.pipelines:
-                if _item_pipelines is not None:
-                    _items.append(_item_pipelines.to_dict())
+                _items.append(_item_pipelines.to_dict() if _item_pipelines is not None else None)
             _dict['pipelines'] = _items
         # override the default output from pydantic by calling `to_dict()` of analysis_query
         if self.analysis_query is not None:

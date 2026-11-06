@@ -36,7 +36,7 @@ class TestBaseStudy(unittest.TestCase):
         model = BaseStudy()
         if include_optional:
             return BaseStudy(
-                metadata = None,
+                metadata = { },
                 versions = [
                     null
                     ],
@@ -52,7 +52,7 @@ class TestBaseStudy(unittest.TestCase):
                 pmcid = '',
                 publication_status = 'preprint',
                 preprint_dois = [
-                    neurostore_sdk.models.base_study_preprint_dois_inner.base_study_preprint_dois_inner(
+                    neurostore_sdk.models.base_study_preprint_dois_inner.BaseStudyPreprintDoisInner(
                         doi = '', 
                         server = '0', )
                     ],

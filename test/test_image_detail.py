@@ -36,7 +36,7 @@ class TestImageDetail(unittest.TestCase):
         model = ImageDetail()
         if include_optional:
             return ImageDetail(
-                value_summary = neurostore_sdk.models.image_value_summary.image-value-summary(
+                value_summary = neurostore_sdk.models.image_value_summary.ImageValueSummary(
                     status = '', 
                     error = '', 
                     summarizer_version = 56, 
@@ -55,7 +55,7 @@ class TestImageDetail(unittest.TestCase):
                     percentiles = {
                         'key' : 1.337
                         }, 
-                    histogram = neurostore_sdk.models.image_value_summary_histogram.image_value_summary_histogram(
+                    histogram = neurostore_sdk.models.image_value_summary_histogram.ImageValueSummaryHistogram(
                         min = 1.337, 
                         max = 1.337, 
                         bin_width = 1.337, 

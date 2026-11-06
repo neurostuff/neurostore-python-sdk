@@ -24,6 +24,7 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from neurostore_sdk.models.image_value_summary_histogram import ImageValueSummaryHistogram
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ImageValueSummary(BaseModel):
     """
@@ -49,7 +50,8 @@ class ImageValueSummary(BaseModel):
     __properties: ClassVar[List[str]] = ["status", "error", "summarizer_version", "computed_at", "source_sha256", "source_bytes", "n_voxels", "n_values", "fraction_nan", "fraction_zero", "fraction_negative", "min", "max", "mean", "std", "percentiles", "histogram"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -61,8 +63,7 @@ class ImageValueSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

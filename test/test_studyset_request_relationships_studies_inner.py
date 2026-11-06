@@ -40,7 +40,7 @@ class TestStudysetRequestRelationshipsStudiesInner(unittest.TestCase):
                 curation_stub_uuid = '',
                 doi = '10.1016/S0926-6410(97)00020-7',
                 name = 'Functional magnetic resonance imaging of category-specific cortical activation: evidence for semantic maps.',
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 description = 'This is my very scientific abstract.',
                 publication = 'Journal of Super Important Science.',
                 pmid = '35998675',

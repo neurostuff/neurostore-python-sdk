@@ -25,6 +25,7 @@ from neurostore_sdk.models.study_schema_set_aside import StudySchemaSetAside
 from neurostore_sdk.models.study_schema_upload_summary_record_claims_entities import StudySchemaUploadSummaryRecordClaimsEntities
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudySchemaUploadSummaryRecordClaims(BaseModel):
     """
@@ -42,7 +43,8 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
     __properties: ClassVar[List[str]] = ["created", "matched", "rejected_paths", "entities", "unlocated", "unidentified", "duplicates", "rename_candidates", "parked_entities"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,8 +56,7 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -86,15 +87,13 @@ class StudySchemaUploadSummaryRecordClaims(BaseModel):
         _items = []
         if self.rename_candidates is not None:
             for _item_rename_candidates in self.rename_candidates:
-                if _item_rename_candidates is not None:
-                    _items.append(_item_rename_candidates.to_dict())
+                _items.append(_item_rename_candidates.to_dict() if _item_rename_candidates is not None else None)
             _dict['rename_candidates'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in parked_entities (list)
         _items = []
         if self.parked_entities is not None:
             for _item_parked_entities in self.parked_entities:
-                if _item_parked_entities is not None:
-                    _items.append(_item_parked_entities.to_dict())
+                _items.append(_item_parked_entities.to_dict() if _item_parked_entities is not None else None)
             _dict['parked_entities'] = _items
         return _dict
 

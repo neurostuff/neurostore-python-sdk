@@ -36,7 +36,7 @@ class TestNoteCollectionRequest(unittest.TestCase):
         model = NoteCollectionRequest()
         if include_optional:
             return NoteCollectionRequest(
-                note = neurostore_sdk.models.note.note(),
+                note = { },
                 id = '38jobTomPDqt',
                 public = True
             )

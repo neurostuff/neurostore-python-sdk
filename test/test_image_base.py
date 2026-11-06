@@ -36,7 +36,7 @@ class TestImageBase(unittest.TestCase):
         model = ImageBase()
         if include_optional:
             return ImageBase(
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 url = 'https://neurovault.org/media/images/4778/Positive_RPEs_zstat.nii.gz',
                 filename = 'Positive_RPEs_zstat.nii.gz',
                 space = 'MNI152NLin2009aAsym',

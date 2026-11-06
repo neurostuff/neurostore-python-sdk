@@ -38,7 +38,7 @@ class TestAnnotationReturnOneOf(unittest.TestCase):
             return AnnotationReturnOneOf(
                 name = 'Examination of left versus right finger tapping',
                 description = 'This annotation tracks whether the analysis of interest for all included studies are left handed/right handed, or bimanual taps.',
-                metadata = neurostore_sdk.models.metadata.metadata(),
+                metadata = { },
                 note_keys = {include=boolean},
                 created_at = '2021-01-16T20:50:38.009318Z',
                 updated_at = '',

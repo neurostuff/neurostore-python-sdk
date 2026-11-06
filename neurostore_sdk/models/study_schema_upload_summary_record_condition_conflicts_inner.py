@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner import StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StudySchemaUploadSummaryRecordConditionConflictsInner(BaseModel):
     """
@@ -33,7 +34,8 @@ class StudySchemaUploadSummaryRecordConditionConflictsInner(BaseModel):
     __properties: ClassVar[List[str]] = ["key", "cells"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,8 +47,7 @@ class StudySchemaUploadSummaryRecordConditionConflictsInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -74,8 +75,7 @@ class StudySchemaUploadSummaryRecordConditionConflictsInner(BaseModel):
         _items = []
         if self.cells is not None:
             for _item_cells in self.cells:
-                if _item_cells is not None:
-                    _items.append(_item_cells.to_dict())
+                _items.append(_item_cells.to_dict() if _item_cells is not None else None)
             _dict['cells'] = _items
         return _dict
 

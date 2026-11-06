@@ -25,18 +25,19 @@ from typing_extensions import Annotated
 from neurostore_sdk.models.annotation_return_relationships_notes import AnnotationReturnRelationshipsNotes
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AnnotationReturnOneOf(BaseModel):
     """
     AnnotationReturnOneOf
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.")
-    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.")
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.", json_schema_extra={"examples": ["Examination of left versus right finger tapping"]})
+    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.", json_schema_extra={"examples": ["This annotation tracks whether the analysis of interest for all included studies are left handed/right handed, or bimanual taps."]})
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
-    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
-    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
+    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).", json_schema_extra={"examples": [{"include": "boolean"}]})
+    created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database", json_schema_extra={"examples": ["2021-01-16T20:50:38.009318Z"]})
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
@@ -48,7 +49,8 @@ class AnnotationReturnOneOf(BaseModel):
     __properties: ClassVar[List[str]] = ["name", "description", "metadata", "note_keys", "created_at", "updated_at", "id", "public", "user", "username", "source", "source_id", "source_updated_at", "notes", "studyset"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,8 +62,7 @@ class AnnotationReturnOneOf(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

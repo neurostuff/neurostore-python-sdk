@@ -26,25 +26,27 @@ from neurostore_sdk.models.annotation_pipeline_extension_pipelines_inner import 
 from neurostore_sdk.models.annotation_request_relationships_notes import AnnotationRequestRelationshipsNotes
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AnnotationRequestOneOf(BaseModel):
     """
     AnnotationRequestOneOf
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.")
-    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.")
+    name: Optional[StrictStr] = Field(default=None, description="Descriptive name for the annotation.", json_schema_extra={"examples": ["Examination of left versus right finger tapping"]})
+    description: Optional[StrictStr] = Field(default=None, description="Long form description of the annotation.", json_schema_extra={"examples": ["This annotation tracks whether the analysis of interest for all included studies are left handed/right handed, or bimanual taps."]})
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="object describing metadata about the annotation, such as software used or descriptions of the keys used in the annotation.")
-    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).")
+    note_keys: Optional[Dict[str, Any]] = Field(default=None, description="The keys (columns) in the annotation and the key's respective data type (such as an integer or string).", json_schema_extra={"examples": [{"include": "boolean"}]})
     pipelines: Optional[List[AnnotationPipelineExtensionPipelinesInner]] = Field(default=None, description="Optional pipeline descriptors used to populate annotation notes with feature columns. Each entry should include the pipeline name and the list of columns to import, along with optional version and config id. ")
     analysis_query: Optional[AnnotationPipelineExtensionAnalysisQuery] = None
     notes: Optional[AnnotationRequestRelationshipsNotes] = None
-    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource")
+    id: Optional[Annotated[str, Field(min_length=12, strict=True, max_length=30)]] = Field(default=None, description="short UUID specifying the location of this resource", json_schema_extra={"examples": ["38jobTomPDqt"]})
     public: Optional[StrictBool] = Field(default=True, description="whether the resource is listed in public searches or not")
     studyset: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["name", "description", "metadata", "note_keys", "pipelines", "analysis_query", "notes", "id", "public", "studyset"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,8 +58,7 @@ class AnnotationRequestOneOf(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -85,8 +86,7 @@ class AnnotationRequestOneOf(BaseModel):
         _items = []
         if self.pipelines is not None:
             for _item_pipelines in self.pipelines:
-                if _item_pipelines is not None:
-                    _items.append(_item_pipelines.to_dict())
+                _items.append(_item_pipelines.to_dict() if _item_pipelines is not None else None)
             _dict['pipelines'] = _items
         # override the default output from pydantic by calling `to_dict()` of analysis_query
         if self.analysis_query is not None:

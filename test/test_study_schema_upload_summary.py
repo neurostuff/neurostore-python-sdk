@@ -44,43 +44,43 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
                 took_ownership_from = '',
                 study_id = '',
                 parse_id = '',
-                skeleton = neurostore_sdk.models.study_schema_upload_summary_skeleton.study_schema_upload_summary_skeleton(
+                skeleton = neurostore_sdk.models.study_schema_upload_summary_skeleton.StudySchemaUploadSummarySkeleton(
                     created = 56, 
                     updated = 56, 
                     superseded = 56, 
                     omitted_analyses = 56, 
                     orphaned_claims = [
-                        neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner.study_schema_upload_summary_skeleton_orphaned_claims_inner(
+                        neurostore_sdk.models.study_schema_upload_summary_skeleton_orphaned_claims_inner.StudySchemaUploadSummarySkeletonOrphanedClaimsInner(
                             key = '', 
                             class = '', 
                             entity_id = '', 
                             claims = 56, 
                             reason = 'no_successor', )
                         ], ),
-                carried = neurostore_sdk.models.study_schema_carried.study-schema-carried(
+                carried = neurostore_sdk.models.study_schema_carried.StudySchemaCarried(
                     claims = 56, ),
                 set_aside_resolved = [
-                    neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner.study_schema_upload_summary_set_aside_resolved_inner(
+                    neurostore_sdk.models.study_schema_upload_summary_set_aside_resolved_inner.StudySchemaUploadSummarySetAsideResolvedInner(
                         config_id = '', 
                         keys = [
                             ''
                             ], )
                     ],
-                record = neurostore_sdk.models.study_schema_upload_summary_record.study_schema_upload_summary_record(
+                record = neurostore_sdk.models.study_schema_upload_summary_record.StudySchemaUploadSummaryRecord(
                     config_id = '', 
-                    analyses = neurostore_sdk.models.study_schema_upload_summary_record_analyses.study_schema_upload_summary_record_analyses(
+                    analyses = neurostore_sdk.models.study_schema_upload_summary_record_analyses.StudySchemaUploadSummaryRecordAnalyses(
                         resolved = 56, 
                         unresolved = [
                             ''
                             ], 
                         parked = [
-                            neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
+                            neurostore_sdk.models.study_schema_set_aside.StudySchemaSetAside(
                                 entity = '', 
                                 key = '', 
                                 reason = '', )
                             ], 
                         superseded = [
-                            neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner.study_schema_upload_summary_record_analyses_superseded_inner(
+                            neurostore_sdk.models.study_schema_upload_summary_record_analyses_superseded_inner.StudySchemaUploadSummaryRecordAnalysesSupersededInner(
                                 key = '', 
                                 replaced_by = [
                                     ''
@@ -88,23 +88,23 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
                                 reason = '', )
                             ], ), 
                     condition_conflicts = [
-                        neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner.study_schema_upload_summary_record_condition_conflicts_inner(
+                        neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner.StudySchemaUploadSummaryRecordConditionConflictsInner(
                             key = '', 
                             cells = [
-                                neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner(
+                                neurostore_sdk.models.study_schema_upload_summary_record_condition_conflicts_inner_cells_inner.StudySchemaUploadSummaryRecordConditionConflictsInnerCellsInner(
                                     term = '', 
                                     level = '', 
                                     reason = 'both_directions', 
                                     name = '', )
                                 ], )
                         ], 
-                    claims = neurostore_sdk.models.study_schema_upload_summary_record_claims.study_schema_upload_summary_record_claims(
+                    claims = neurostore_sdk.models.study_schema_upload_summary_record_claims.StudySchemaUploadSummaryRecordClaims(
                         created = 56, 
                         matched = 56, 
                         rejected_paths = [
                             ''
                             ], 
-                        entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.study_schema_upload_summary_record_claims_entities(
+                        entities = neurostore_sdk.models.study_schema_upload_summary_record_claims_entities.StudySchemaUploadSummaryRecordClaimsEntities(
                             created = 56, 
                             matched = 56, ), 
                         unlocated = [
@@ -117,7 +117,7 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
                             ''
                             ], 
                         rename_candidates = [
-                            neurostore_sdk.models.study_schema_rename_candidate.study-schema-rename-candidate(
+                            neurostore_sdk.models.study_schema_rename_candidate.StudySchemaRenameCandidate(
                                 class = '', 
                                 from = '', 
                                 to = '', 
@@ -125,26 +125,27 @@ class TestStudySchemaUploadSummary(unittest.TestCase):
                                 candidate_id = '', )
                             ], 
                         parked_entities = [
-                            neurostore_sdk.models.study_schema_set_aside.study-schema-set-aside(
+                            neurostore_sdk.models.study_schema_set_aside.StudySchemaSetAside(
                                 entity = '', 
                                 key = '', 
                                 reason = '', )
                             ], ), 
-                    carried = neurostore_sdk.models.study_schema_carried.study-schema-carried(), ),
+                    carried = neurostore_sdk.models.study_schema_carried.StudySchemaCarried(
+                        claims = 56, ), ),
                 provenance = {
-                    'key' : neurostore_sdk.models.pipeline_run_provenance.pipeline-run-provenance(
+                    'key' : neurostore_sdk.models.pipeline_run_provenance.PipelineRunProvenance(
                         result_id = '', 
                         config_id = '', 
                         run_id = '', 
                         pipeline = '', 
                         version = '', 
                         commit = '', 
-                        schema = neurostore_sdk.models.pipeline_run_provenance_schema.pipeline_run_provenance_schema(
+                        schema = neurostore_sdk.models.pipeline_run_provenance_schema.PipelineRunProvenanceSchema(
                             name = '', 
                             version = '', ), 
                         parse_version = { }, 
                         runs = [
-                            neurostore_sdk.models.study_schema_run.study-schema-run(
+                            neurostore_sdk.models.study_schema_run.StudySchemaRun(
                                 run_id = '', 
                                 kind = '', 
                                 stage = '', 

@@ -40,7 +40,7 @@ class TestStudySchemaUploadPipeline(unittest.TestCase):
                 version = '',
                 commit = '',
                 runs = [
-                    neurostore_sdk.models.study_schema_run.study-schema-run(
+                    neurostore_sdk.models.study_schema_run.StudySchemaRun(
                         run_id = '', 
                         kind = '', 
                         stage = '', 

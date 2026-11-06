@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | short UUID specifying the location of this resource | 
-**curation_stub_uuid** | **str** |  | [optional] 
+**curation_stub_uuid** | **UUID** |  | [optional] 
 **doi** | **str** | Digital object identifier of the study. | [optional] 
 **name** | **str** | Title of the study. | [optional] 
 **metadata** | **object** | Metadata associated with the study not covered by the other study attributes. | [optional] 

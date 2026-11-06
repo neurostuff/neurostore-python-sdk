@@ -37,9 +37,9 @@ class TestAnalysisQueryNormalizedIds(unittest.TestCase):
         if include_optional:
             return AnalysisQueryNormalizedIds(
                 ids = None,
-                all = neurostore_sdk.models.analysis_query_ids.analysis-query-ids(
+                all = neurostore_sdk.models.analysis_query_ids.AnalysisQueryIds(
                     ids = null, ),
-                var_none = neurostore_sdk.models.analysis_query_ids.analysis-query-ids(
+                var_none = neurostore_sdk.models.analysis_query_ids.AnalysisQueryIds(
                     ids = null, ),
                 descendants = True,
                 when_unmapped = 'exclude',

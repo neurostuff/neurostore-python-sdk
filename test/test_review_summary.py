@@ -40,7 +40,7 @@ class TestReviewSummary(unittest.TestCase):
                 source_id = '',
                 user_id = '',
                 state = 'in_progress',
-                set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                set_aside = neurostore_sdk.models.review_set_aside.ReviewSetAside(
                     reason = 'no_usable_text', 
                     note = '', ),
                 last_seq = 56,

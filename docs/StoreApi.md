@@ -1279,7 +1279,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
-    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
+    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     annotation_request = neurostore_sdk.AnnotationRequest() # AnnotationRequest |  (optional)
 
@@ -1299,7 +1299,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **annotation_request** | [**AnnotationRequest**](AnnotationRequest.md)|  | [optional] 
 
@@ -1686,7 +1686,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     name = 'name_example' # str | search the name field for a term (optional)
     description = 'description_example' # str | search description field for a term (optional)
     authors = 'authors_example' # str | search authors (optional)
-    level = group # str | select between studies with group results or meta results (optional) (default to group)
+    level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     is_oa = True # bool |  (optional)
@@ -1740,7 +1740,7 @@ Name | Type | Description  | Notes
  **name** | **str**| search the name field for a term | [optional] 
  **description** | **str**| search description field for a term | [optional] 
  **authors** | **str**| search authors | [optional] 
- **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
+ **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **map_type** | **str**| filter by stored map-type flags | [optional] 
  **is_oa** | **bool**|  | [optional] 
@@ -3487,7 +3487,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **neurostore_studyset_releases_version_download_get**
-> bytearray neurostore_studyset_releases_version_download_get(version)
+> bytes neurostore_studyset_releases_version_download_get(version)
 
 Download NeuroStore studyset release tarball
 
@@ -3532,7 +3532,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 
@@ -5196,14 +5196,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     description = 'description_example' # str | search description field for a term (optional)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     unique = None # object | whether to list clones with originals (optional)
-    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
+    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
     role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
-    level = group # str | select between studies with group results or meta results (optional) (default to group)
+    level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
     pmid = 'pmid_example' # str | search for particular pmid (optional)
     doi = 'doi_example' # str | search for study with specific doi (optional)
     flat = True # bool | do not return any embedded relationships. When set, it is incompatible with nested.  (optional)
@@ -5239,14 +5239,14 @@ Name | Type | Description  | Notes
  **description** | **str**| search description field for a term | [optional] 
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **unique** | [**object**](.md)| whether to list clones with originals | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
  **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **map_type** | **str**| filter by stored map-type flags | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
- **level** | **str**| select between studies with group results or meta results | [optional] [default to group]
+ **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]
  **pmid** | **str**| search for particular pmid | [optional] 
  **doi** | **str**| search for study with specific doi | [optional] 
  **flat** | **bool**| do not return any embedded relationships. When set, it is incompatible with nested.  | [optional] 
@@ -5550,7 +5550,7 @@ configuration = neurostore_sdk.Configuration(
 with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
-    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
+    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
     study_request = neurostore_sdk.StudyRequest() # StudyRequest |  (optional)
 
@@ -5570,7 +5570,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
  **study_request** | [**StudyRequest**](StudyRequest.md)|  | [optional] 
 
@@ -6048,7 +6048,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = neurostore_sdk.StoreApi(api_client)
     source_id = '1234567890ab' # str | id of the resource you are either filtering/copying on (optional)
-    source = neurostore # str | the source of the resource you would like to filter/copy from (optional) (default to neurostore)
+    source = 'neurostore' # str | the source of the resource you would like to filter/copy from (optional) (default to 'neurostore')
     copy_annotations = True # bool | When cloning a studyset, copy annotations and their notes when true (default). (optional) (default to True)
     studyset_request = neurostore_sdk.StudysetRequest() # StudysetRequest |  (optional)
 
@@ -6069,7 +6069,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| id of the resource you are either filtering/copying on | [optional] 
- **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to neurostore]
+ **source** | **str**| the source of the resource you would like to filter/copy from | [optional] [default to &#39;neurostore&#39;]
  **copy_annotations** | **bool**| When cloning a studyset, copy annotations and their notes when true (default). | [optional] [default to True]
  **studyset_request** | [**StudysetRequest**](StudysetRequest.md)|  | [optional] 
 

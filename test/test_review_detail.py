@@ -40,20 +40,20 @@ class TestReviewDetail(unittest.TestCase):
                 source_id = '',
                 user_id = '',
                 state = 'in_progress',
-                set_aside = neurostore_sdk.models.review_set_aside.review-set-aside(
+                set_aside = neurostore_sdk.models.review_set_aside.ReviewSetAside(
                     reason = 'no_usable_text', 
                     note = '', ),
                 last_seq = 56,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                record = None,
-                coordinate_revision = None,
-                provenance = None,
-                annotations = None,
+                record = { },
+                coordinate_revision = { },
+                provenance = { },
+                annotations = { },
                 ops = [
-                    neurostore_sdk.models.review_stored_op.review-stored-op(
+                    neurostore_sdk.models.review_stored_op.ReviewStoredOp(
                         inverse = [
-                            None
+                            { }
                             ], )
                     ]
             )

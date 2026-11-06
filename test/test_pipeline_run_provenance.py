@@ -42,12 +42,12 @@ class TestPipelineRunProvenance(unittest.TestCase):
                 pipeline = '',
                 version = '',
                 commit = '',
-                var_schema = neurostore_sdk.models.pipeline_run_provenance_schema.pipeline_run_provenance_schema(
+                var_schema = neurostore_sdk.models.pipeline_run_provenance_schema.PipelineRunProvenanceSchema(
                     name = '', 
                     version = '', ),
                 parse_version = { },
                 runs = [
-                    neurostore_sdk.models.study_schema_run.study-schema-run(
+                    neurostore_sdk.models.study_schema_run.StudySchemaRun(
                         run_id = '', 
                         kind = '', 
                         stage = '', 

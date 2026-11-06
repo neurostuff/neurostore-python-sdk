@@ -54,7 +54,7 @@ class TestImageValueSummary(unittest.TestCase):
                 percentiles = {
                     'key' : 1.337
                     },
-                histogram = neurostore_sdk.models.image_value_summary_histogram.image_value_summary_histogram(
+                histogram = neurostore_sdk.models.image_value_summary_histogram.ImageValueSummaryHistogram(
                     min = 1.337, 
                     max = 1.337, 
                     bin_width = 1.337, 

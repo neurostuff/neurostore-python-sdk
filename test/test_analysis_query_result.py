@@ -37,15 +37,15 @@ class TestAnalysisQueryResult(unittest.TestCase):
         if include_optional:
             return AnalysisQueryResult(
                 query = { },
-                counts = neurostore_sdk.models.analysis_query_result_counts.analysis_query_result_counts(
+                counts = neurostore_sdk.models.analysis_query_result_counts.AnalysisQueryResultCounts(
                     analyses = 56, 
                     studies = 56, 
                     base_studies = 56, ),
-                searched = neurostore_sdk.models.analysis_query_result_searched.analysis_query_result_searched(
+                searched = neurostore_sdk.models.analysis_query_result_searched.AnalysisQueryResultSearched(
                     analyses = 56, 
                     base_studies = 56, ),
                 funnel = [
-                    neurostore_sdk.models.analysis_query_result_funnel_inner.analysis_query_result_funnel_inner(
+                    neurostore_sdk.models.analysis_query_result_funnel_inner.AnalysisQueryResultFunnelInner(
                         criterion = '', 
                         analyses = 56, 
                         base_studies = 56, 
@@ -54,7 +54,7 @@ class TestAnalysisQueryResult(unittest.TestCase):
                         unmapped = 56, )
                     ],
                 results = [
-                    neurostore_sdk.models.analysis_query_result_results_inner.analysis_query_result_results_inner(
+                    neurostore_sdk.models.analysis_query_result_results_inner.AnalysisQueryResultResultsInner(
                         analysis = '', 
                         study = '', 
                         base_study = '', 
