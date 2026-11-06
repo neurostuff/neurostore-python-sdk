@@ -139,6 +139,11 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.point_request import PointRequest
     from neurostore_sdk.models.point_return import PointReturn
     from neurostore_sdk.models.point_value import PointValue
+    from neurostore_sdk.models.query_dataset import QueryDataset
+    from neurostore_sdk.models.query_dataset_columns_inner import QueryDatasetColumnsInner
+    from neurostore_sdk.models.query_dataset_list import QueryDatasetList
+    from neurostore_sdk.models.query_result import QueryResult
+    from neurostore_sdk.models.query_result_columns_inner import QueryResultColumnsInner
     from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes
     from neurostore_sdk.models.resource_attributes import ResourceAttributes
     from neurostore_sdk.models.review_assignee import ReviewAssignee
@@ -345,6 +350,11 @@ from neurostore_sdk.models.point_relationships_values import PointRelationshipsV
 from neurostore_sdk.models.point_request import PointRequest
 from neurostore_sdk.models.point_return import PointReturn
 from neurostore_sdk.models.point_value import PointValue
+from neurostore_sdk.models.query_dataset import QueryDataset
+from neurostore_sdk.models.query_dataset_columns_inner import QueryDatasetColumnsInner
+from neurostore_sdk.models.query_dataset_list import QueryDatasetList
+from neurostore_sdk.models.query_result import QueryResult
+from neurostore_sdk.models.query_result_columns_inner import QueryResultColumnsInner
 from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes
 from neurostore_sdk.models.resource_attributes import ResourceAttributes
 from neurostore_sdk.models.review_assignee import ReviewAssignee

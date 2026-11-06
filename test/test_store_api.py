@@ -496,6 +496,20 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_query_dataset_get(self) -> None:
+        """Test case for query_dataset_get
+
+        Run an aggregate query over one dataset
+        """
+        pass
+
+    def test_query_get(self) -> None:
+        """Test case for query_get
+
+        The datasets a public query reads
+        """
+        pass
+
     def test_studies_get(self) -> None:
         """Test case for studies_get
 

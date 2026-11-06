@@ -71,6 +71,8 @@ Method | HTTP request | Description
 [**points_id_get**](StoreApi.md#points_id_get) | **GET** /points/{id} | GET a point
 [**points_id_put**](StoreApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
 [**points_post**](StoreApi.md#points_post) | **POST** /points/ | POST Points
+[**query_dataset_get**](StoreApi.md#query_dataset_get) | **GET** /query/{dataset} | Run an aggregate query over one dataset
+[**query_get**](StoreApi.md#query_get) | **GET** /query/ | The datasets a public query reads
 [**studies_get**](StoreApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 [**studies_id_delete**](StoreApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 [**studies_id_get**](StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
@@ -5283,6 +5285,180 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **query_dataset_get**
+> QueryResult query_dataset_get(dataset, select=select, where=where, group=group, having=having, order=order, limit=limit, offset=offset, q=q)
+
+Run an aggregate query over one dataset
+
+A subset of Socrata's SoQL. Each parameter takes an expression over the dataset's columns: literals, `= != < <= > >= + -`, `AND OR NOT`, `IS [NOT] NULL`, `[NOT] IN (…)`, `BETWEEN … AND …`, `LIKE` and `starts_with(column, 'text')`; the aggregates `count(*)`, `count(column)`, `count(distinct column)`, `sum`, `avg`, `min` and `max`; and `date_trunc_y`, `date_trunc_ym`, `date_extract_y`, `lower`, `upper`, `coalesce` and `case(condition, value, …)`. Nothing else compiles. A query whose planned cost exceeds the caller's limit is refused; an API key with `read` scope has a higher limit.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.query_result import QueryResult
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    dataset = 'dataset_example' # str | A dataset named by `GET /query/`.
+    select = 'select_example' # str | Comma-separated expressions, each optionally `AS alias`; `*` for every column. (optional)
+    where = 'where_example' # str | A condition over columns; no aggregates. (optional)
+    group = 'group_example' # str | Comma-separated columns, expressions or `$select` aliases. (optional)
+    having = 'having_example' # str | A condition over aggregates and `$select` aliases. (optional)
+    order = 'order_example' # str | Comma-separated expressions or aliases, each optionally `ASC` or `DESC`. (optional)
+    limit = 100 # int |  (optional) (default to 100)
+    offset = 0 # int |  (optional) (default to 0)
+    q = 'q_example' # str | Words to search for in titles and abstracts, as base-study search reads them; `base-studies` only. (optional)
+
+    try:
+        # Run an aggregate query over one dataset
+        api_response = api_instance.query_dataset_get(dataset, select=select, where=where, group=group, having=having, order=order, limit=limit, offset=offset, q=q)
+        print("The response of StoreApi->query_dataset_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->query_dataset_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dataset** | **str**| A dataset named by &#x60;GET /query/&#x60;. | 
+ **select** | **str**| Comma-separated expressions, each optionally &#x60;AS alias&#x60;; &#x60;*&#x60; for every column. | [optional] 
+ **where** | **str**| A condition over columns; no aggregates. | [optional] 
+ **group** | **str**| Comma-separated columns, expressions or &#x60;$select&#x60; aliases. | [optional] 
+ **having** | **str**| A condition over aggregates and &#x60;$select&#x60; aliases. | [optional] 
+ **order** | **str**| Comma-separated expressions or aliases, each optionally &#x60;ASC&#x60; or &#x60;DESC&#x60;. | [optional] 
+ **limit** | **int**|  | [optional] [default to 100]
+ **offset** | **int**|  | [optional] [default to 0]
+ **q** | **str**| Words to search for in titles and abstracts, as base-study search reads them; &#x60;base-studies&#x60; only. | [optional] 
+
+### Return type
+
+[**QueryResult**](QueryResult.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The rows |  * ETag -  <br>  |
+**304** | Unchanged since the ETag sent in &#x60;If-None-Match&#x60; |  -  |
+**400** | The query does not parse, or names something outside the dataset |  -  |
+**422** | The query&#39;s planned cost exceeds the caller&#39;s limit, or it ran past the time limit |  -  |
+**503** | Too many queries are running; retry after the &#x60;Retry-After&#x60; header&#39;s seconds |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **query_get**
+> QueryDatasetList query_get()
+
+The datasets a public query reads
+
+Every dataset a public query can read, with its columns, their types, and whether each may be grouped and aggregated. A dataset holds public records only and is refreshed nightly; `refreshed_at` says when.
+
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.query_dataset_list import QueryDatasetList
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+
+    try:
+        # The datasets a public query reads
+        api_response = api_instance.query_get()
+        print("The response of StoreApi->query_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->query_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**QueryDatasetList**](QueryDatasetList.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The datasets |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

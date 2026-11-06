@@ -154,6 +154,11 @@ __all__ = [
     "PointRequest",
     "PointReturn",
     "PointValue",
+    "QueryDataset",
+    "QueryDatasetColumnsInner",
+    "QueryDatasetList",
+    "QueryResult",
+    "QueryResultColumnsInner",
     "ReadableResourceAttributes",
     "ResourceAttributes",
     "ReviewAssignee",
@@ -371,6 +376,11 @@ if __import__("typing").TYPE_CHECKING:
     from neurostore_sdk.models.point_request import PointRequest as PointRequest
     from neurostore_sdk.models.point_return import PointReturn as PointReturn
     from neurostore_sdk.models.point_value import PointValue as PointValue
+    from neurostore_sdk.models.query_dataset import QueryDataset as QueryDataset
+    from neurostore_sdk.models.query_dataset_columns_inner import QueryDatasetColumnsInner as QueryDatasetColumnsInner
+    from neurostore_sdk.models.query_dataset_list import QueryDatasetList as QueryDatasetList
+    from neurostore_sdk.models.query_result import QueryResult as QueryResult
+    from neurostore_sdk.models.query_result_columns_inner import QueryResultColumnsInner as QueryResultColumnsInner
     from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
     from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
     from neurostore_sdk.models.review_assignee import ReviewAssignee as ReviewAssignee
@@ -594,6 +604,11 @@ from neurostore_sdk.models.point_relationships_values import PointRelationshipsV
 from neurostore_sdk.models.point_request import PointRequest as PointRequest
 from neurostore_sdk.models.point_return import PointReturn as PointReturn
 from neurostore_sdk.models.point_value import PointValue as PointValue
+from neurostore_sdk.models.query_dataset import QueryDataset as QueryDataset
+from neurostore_sdk.models.query_dataset_columns_inner import QueryDatasetColumnsInner as QueryDatasetColumnsInner
+from neurostore_sdk.models.query_dataset_list import QueryDatasetList as QueryDatasetList
+from neurostore_sdk.models.query_result import QueryResult as QueryResult
+from neurostore_sdk.models.query_result_columns_inner import QueryResultColumnsInner as QueryResultColumnsInner
 from neurostore_sdk.models.readable_resource_attributes import ReadableResourceAttributes as ReadableResourceAttributes
 from neurostore_sdk.models.resource_attributes import ResourceAttributes as ResourceAttributes
 from neurostore_sdk.models.review_assignee import ReviewAssignee as ReviewAssignee

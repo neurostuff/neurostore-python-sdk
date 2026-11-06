@@ -127,6 +127,11 @@ docs/PointRelationshipsValues.md
 docs/PointRequest.md
 docs/PointReturn.md
 docs/PointValue.md
+docs/QueryDataset.md
+docs/QueryDatasetColumnsInner.md
+docs/QueryDatasetList.md
+docs/QueryResult.md
+docs/QueryResultColumnsInner.md
 docs/ReadableResourceAttributes.md
 docs/ResourceAttributes.md
 docs/ReviewApi.md
@@ -337,6 +342,11 @@ neurostore_sdk/models/point_relationships_values.py
 neurostore_sdk/models/point_request.py
 neurostore_sdk/models/point_return.py
 neurostore_sdk/models/point_value.py
+neurostore_sdk/models/query_dataset.py
+neurostore_sdk/models/query_dataset_columns_inner.py
+neurostore_sdk/models/query_dataset_list.py
+neurostore_sdk/models/query_result.py
+neurostore_sdk/models/query_result_columns_inner.py
 neurostore_sdk/models/readable_resource_attributes.py
 neurostore_sdk/models/resource_attributes.py
 neurostore_sdk/models/review_assignee.py
@@ -543,6 +553,11 @@ test/test_point_relationships_values.py
 test/test_point_request.py
 test/test_point_return.py
 test/test_point_value.py
+test/test_query_dataset.py
+test/test_query_dataset_columns_inner.py
+test/test_query_dataset_list.py
+test/test_query_result.py
+test/test_query_result_columns_inner.py
 test/test_readable_resource_attributes.py
 test/test_resource_attributes.py
 test/test_review_api.py

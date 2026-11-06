@@ -178,6 +178,8 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**points_id_get**](docs/StoreApi.md#points_id_get) | **GET** /points/{id} | GET a point
 *StoreApi* | [**points_id_put**](docs/StoreApi.md#points_id_put) | **PUT** /points/{id} | PUT/update a point
 *StoreApi* | [**points_post**](docs/StoreApi.md#points_post) | **POST** /points/ | POST Points
+*StoreApi* | [**query_dataset_get**](docs/StoreApi.md#query_dataset_get) | **GET** /query/{dataset} | Run an aggregate query over one dataset
+*StoreApi* | [**query_get**](docs/StoreApi.md#query_get) | **GET** /query/ | The datasets a public query reads
 *StoreApi* | [**studies_get**](docs/StoreApi.md#studies_get) | **GET** /studies/ | GET a list of studies
 *StoreApi* | [**studies_id_delete**](docs/StoreApi.md#studies_id_delete) | **DELETE** /studies/{id} | DELETE a study
 *StoreApi* | [**studies_id_get**](docs/StoreApi.md#studies_id_get) | **GET** /studies/{id} | GET a study
@@ -326,6 +328,11 @@ Class | Method | HTTP request | Description
  - [PointRequest](docs/PointRequest.md)
  - [PointReturn](docs/PointReturn.md)
  - [PointValue](docs/PointValue.md)
+ - [QueryDataset](docs/QueryDataset.md)
+ - [QueryDatasetColumnsInner](docs/QueryDatasetColumnsInner.md)
+ - [QueryDatasetList](docs/QueryDatasetList.md)
+ - [QueryResult](docs/QueryResult.md)
+ - [QueryResultColumnsInner](docs/QueryResultColumnsInner.md)
  - [ReadableResourceAttributes](docs/ReadableResourceAttributes.md)
  - [ResourceAttributes](docs/ResourceAttributes.md)
  - [ReviewAssignee](docs/ReviewAssignee.md)
