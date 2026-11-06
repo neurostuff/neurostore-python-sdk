@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.analysis_query_contrast_side import AnalysisQueryContrastSide
 from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds
 from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
 from typing import Optional, Set
@@ -30,8 +31,8 @@ class AnalysisQueryContrast(BaseModel):
     """
     AnalysisQueryContrast
     """ # noqa: E501
-    positive: Optional[AnalysisQueryText] = None
-    negative: Optional[AnalysisQueryText] = None
+    positive: Optional[AnalysisQueryContrastSide] = None
+    negative: Optional[AnalysisQueryContrastSide] = None
     key: Optional[AnalysisQueryNormalizedIds] = None
     set: Optional[AnalysisQueryNormalizedIds] = None
     kind: Optional[AnalysisQueryText] = None
@@ -106,8 +107,8 @@ class AnalysisQueryContrast(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "positive": AnalysisQueryText.from_dict(obj["positive"]) if obj.get("positive") is not None else None,
-            "negative": AnalysisQueryText.from_dict(obj["negative"]) if obj.get("negative") is not None else None,
+            "positive": AnalysisQueryContrastSide.from_dict(obj["positive"]) if obj.get("positive") is not None else None,
+            "negative": AnalysisQueryContrastSide.from_dict(obj["negative"]) if obj.get("negative") is not None else None,
             "key": AnalysisQueryNormalizedIds.from_dict(obj["key"]) if obj.get("key") is not None else None,
             "set": AnalysisQueryNormalizedIds.from_dict(obj["set"]) if obj.get("set") is not None else None,
             "kind": AnalysisQueryText.from_dict(obj["kind"]) if obj.get("kind") is not None else None,
