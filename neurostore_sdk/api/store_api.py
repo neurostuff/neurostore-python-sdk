@@ -12317,7 +12317,9 @@ class StoreApi:
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.")] = None,
+        title: Annotated[Optional[StrictStr], Field(description="journals whose title contains this text")] = None,
+        abbreviation: Annotated[Optional[StrictStr], Field(description="journals whose abbreviation contains this text")] = None,
+        issn: Annotated[Optional[StrictStr], Field(description="the journal one of whose ISSNs (print or electronic) is this one")] = None,
         kind: Annotated[Optional[JournalKind], Field(description="only journals of this kind")] = None,
         _request_timeout: Union[
             None,
@@ -12346,8 +12348,12 @@ class StoreApi:
         :type page_size: int
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
-        :param search: Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.
-        :type search: str
+        :param title: journals whose title contains this text
+        :type title: str
+        :param abbreviation: journals whose abbreviation contains this text
+        :type abbreviation: str
+        :param issn: the journal one of whose ISSNs (print or electronic) is this one
+        :type issn: str
         :param kind: only journals of this kind
         :type kind: JournalKind
         :param _request_timeout: timeout setting for this request. If one
@@ -12378,7 +12384,9 @@ class StoreApi:
             desc=desc,
             page_size=page_size,
             paginate=paginate,
-            search=search,
+            title=title,
+            abbreviation=abbreviation,
+            issn=issn,
             kind=kind,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12408,7 +12416,9 @@ class StoreApi:
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.")] = None,
+        title: Annotated[Optional[StrictStr], Field(description="journals whose title contains this text")] = None,
+        abbreviation: Annotated[Optional[StrictStr], Field(description="journals whose abbreviation contains this text")] = None,
+        issn: Annotated[Optional[StrictStr], Field(description="the journal one of whose ISSNs (print or electronic) is this one")] = None,
         kind: Annotated[Optional[JournalKind], Field(description="only journals of this kind")] = None,
         _request_timeout: Union[
             None,
@@ -12437,8 +12447,12 @@ class StoreApi:
         :type page_size: int
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
-        :param search: Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.
-        :type search: str
+        :param title: journals whose title contains this text
+        :type title: str
+        :param abbreviation: journals whose abbreviation contains this text
+        :type abbreviation: str
+        :param issn: the journal one of whose ISSNs (print or electronic) is this one
+        :type issn: str
         :param kind: only journals of this kind
         :type kind: JournalKind
         :param _request_timeout: timeout setting for this request. If one
@@ -12469,7 +12483,9 @@ class StoreApi:
             desc=desc,
             page_size=page_size,
             paginate=paginate,
-            search=search,
+            title=title,
+            abbreviation=abbreviation,
+            issn=issn,
             kind=kind,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12499,7 +12515,9 @@ class StoreApi:
         desc: Annotated[Optional[StrictBool], Field(description="sort results by descending order (as opposed to ascending order)")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
-        search: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.")] = None,
+        title: Annotated[Optional[StrictStr], Field(description="journals whose title contains this text")] = None,
+        abbreviation: Annotated[Optional[StrictStr], Field(description="journals whose abbreviation contains this text")] = None,
+        issn: Annotated[Optional[StrictStr], Field(description="the journal one of whose ISSNs (print or electronic) is this one")] = None,
         kind: Annotated[Optional[JournalKind], Field(description="only journals of this kind")] = None,
         _request_timeout: Union[
             None,
@@ -12528,8 +12546,12 @@ class StoreApi:
         :type page_size: int
         :param paginate: whether to paginate results (true) or return all results at once (false)
         :type paginate: bool
-        :param search: Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it.
-        :type search: str
+        :param title: journals whose title contains this text
+        :type title: str
+        :param abbreviation: journals whose abbreviation contains this text
+        :type abbreviation: str
+        :param issn: the journal one of whose ISSNs (print or electronic) is this one
+        :type issn: str
         :param kind: only journals of this kind
         :type kind: JournalKind
         :param _request_timeout: timeout setting for this request. If one
@@ -12560,7 +12582,9 @@ class StoreApi:
             desc=desc,
             page_size=page_size,
             paginate=paginate,
-            search=search,
+            title=title,
+            abbreviation=abbreviation,
+            issn=issn,
             kind=kind,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12585,7 +12609,9 @@ class StoreApi:
         desc,
         page_size,
         paginate,
-        search,
+        title,
+        abbreviation,
+        issn,
         kind,
         _request_auth,
         _content_type,
@@ -12629,9 +12655,17 @@ class StoreApi:
             
             _query_params.append(('paginate', paginate))
             
-        if search is not None:
+        if title is not None:
             
-            _query_params.append(('search', search))
+            _query_params.append(('title', title))
+            
+        if abbreviation is not None:
+            
+            _query_params.append(('abbreviation', abbreviation))
+            
+        if issn is not None:
+            
+            _query_params.append(('issn', issn))
             
         if kind is not None:
             

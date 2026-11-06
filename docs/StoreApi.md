@@ -3269,7 +3269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **journals_get**
-> JournalList journals_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, search=search, kind=kind)
+> JournalList journals_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, title=title, abbreviation=abbreviation, issn=issn, kind=kind)
 
 GET journals
 
@@ -3301,12 +3301,14 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
-    search = 'search_example' # str | Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it. (optional)
+    title = 'title_example' # str | journals whose title contains this text (optional)
+    abbreviation = 'abbreviation_example' # str | journals whose abbreviation contains this text (optional)
+    issn = 'issn_example' # str | the journal one of whose ISSNs (print or electronic) is this one (optional)
     kind = neurostore_sdk.JournalKind() # JournalKind | only journals of this kind (optional)
 
     try:
         # GET journals
-        api_response = api_instance.journals_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, search=search, kind=kind)
+        api_response = api_instance.journals_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, title=title, abbreviation=abbreviation, issn=issn, kind=kind)
         print("The response of StoreApi->journals_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -3325,7 +3327,9 @@ Name | Type | Description  | Notes
  **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
  **page_size** | **int**| number of results to show on a page | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
- **search** | **str**| Journals whose title or abbreviation contains these words, or one of whose ISSNs equals it. | [optional] 
+ **title** | **str**| journals whose title contains this text | [optional] 
+ **abbreviation** | **str**| journals whose abbreviation contains this text | [optional] 
+ **issn** | **str**| the journal one of whose ISSNs (print or electronic) is this one | [optional] 
  **kind** | [**JournalKind**](.md)| only journals of this kind | [optional] 
 
 ### Return type
