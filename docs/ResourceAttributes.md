@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **updated_at** | **str** | when the resource was last modified/updated. | [optional] [readonly] 
 **id** | **str** | short UUID specifying the location of this resource | [optional] 
 **public** | **bool** | whether the resource is listed in public searches or not | [optional] [default to True]
-**user** | **str** | who owns the resource | [optional] [readonly] 
+**user** | **str** | The owner&#39;s Auth0 id, served only to the owner; null for anyone else, who sees &#x60;username&#x60;. | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
 
 ## Example

@@ -102,6 +102,7 @@ List all analyses performed across studies.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -115,6 +116,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -168,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -267,6 +277,7 @@ Information pertaining to a particular analysis within a study.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -280,6 +291,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -319,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -649,6 +669,7 @@ Get annotation analyses
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -662,6 +683,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -693,7 +723,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -954,6 +984,7 @@ get annotations for an available studyset
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -967,6 +998,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -1000,7 +1040,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -1099,6 +1139,7 @@ get an individual annotation
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -1112,6 +1153,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -1145,7 +1195,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -1866,6 +1916,7 @@ Your GET endpoint
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -1879,6 +1930,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -1918,7 +1978,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -2104,6 +2164,7 @@ Get all conditions
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -2117,6 +2178,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -2160,7 +2230,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -2259,6 +2329,7 @@ Retrieve a condition (e.g., 2-back) that can be used in contrasts (e.g., 2-back 
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -2272,6 +2343,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -2303,7 +2383,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -2489,6 +2569,7 @@ List the named studies (cohorts), consortia and repositories a paper's data can 
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -2502,6 +2583,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -2547,7 +2637,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -2647,6 +2737,7 @@ Retrieve a data source.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -2660,6 +2751,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -2691,7 +2791,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -2880,6 +2980,7 @@ Retrieve and list images.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -2893,6 +2994,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -2946,7 +3056,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -3045,6 +3155,7 @@ Retrieve information about a particular image from an analysis.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -3058,6 +3169,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -3093,7 +3213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -4782,6 +4902,7 @@ list points in database
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -4795,6 +4916,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -4826,7 +4956,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -4925,6 +5055,7 @@ Information about a particular MRI coordinate
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -4938,6 +5069,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -4969,7 +5109,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -5358,6 +5498,7 @@ Get a study.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -5371,6 +5512,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -5414,7 +5564,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -5861,6 +6011,7 @@ Retrieve the information of a studyset with the matching studyset ID.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -5874,6 +6025,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -5911,7 +6071,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -6103,6 +6263,7 @@ List all tables across studies.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -6116,6 +6277,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -6161,7 +6331,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -6260,6 +6430,7 @@ Information about a specific table.
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -6273,6 +6444,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -6306,7 +6486,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
@@ -6566,6 +6746,7 @@ get an individual user
 
 ### Example
 
+* Bearer Authentication (JSON-Web-Token):
 
 ```python
 import neurostore_sdk
@@ -6579,6 +6760,15 @@ configuration = neurostore_sdk.Configuration(
     host = "https://neurostore.org/api"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with neurostore_sdk.ApiClient(configuration) as api_client:
@@ -6610,7 +6800,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[JSON-Web-Token](../README.md#JSON-Web-Token)
 
 ### HTTP request headers
 
