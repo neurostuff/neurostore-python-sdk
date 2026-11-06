@@ -32,8 +32,7 @@ class AnalysisQueryResultFunnelInner(BaseModel):
     base_studies: Optional[StrictInt] = None
     dropped: Optional[StrictInt] = None
     silent: Optional[StrictInt] = Field(default=None, description="Analyses left by the criteria before this one whose record says nothing on it.")
-    unmapped: Optional[StrictInt] = Field(default=None, description="For a normalized criterion, the analyses left by the criteria before this one whose record states the feature but maps none of it. ")
-    __properties: ClassVar[List[str]] = ["criterion", "analyses", "base_studies", "dropped", "silent", "unmapped"]
+    __properties: ClassVar[List[str]] = ["criterion", "analyses", "base_studies", "dropped", "silent"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,11 +77,6 @@ class AnalysisQueryResultFunnelInner(BaseModel):
         if self.silent is None and "silent" in self.model_fields_set:
             _dict['silent'] = None
 
-        # set to None if unmapped (nullable) is None
-        # and model_fields_set contains the field
-        if self.unmapped is None and "unmapped" in self.model_fields_set:
-            _dict['unmapped'] = None
-
         return _dict
 
     @classmethod
@@ -99,8 +93,7 @@ class AnalysisQueryResultFunnelInner(BaseModel):
             "analyses": obj.get("analyses"),
             "base_studies": obj.get("base_studies"),
             "dropped": obj.get("dropped"),
-            "silent": obj.get("silent"),
-            "unmapped": obj.get("unmapped")
+            "silent": obj.get("silent")
         })
         return _obj
 

@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class AnnotationPipelineExtensionAnalysisQuery(BaseModel):
     """
-    Run an analysis query over the annotation's studyset and write its result into the notes: `column` (boolean) is true for each analysis the query selects and false for every other, and each of `feature_columns` (string) carries that analysis's feature, or null where its record says nothing. The annotation's `metadata.analysis_queries.<column>` keeps the selection frozen: the canonical query, the selected analysis ids, the normalizers and fits (`mapping_tools`) their features came from, and when. 
+    Run an analysis query over the annotation's studyset and write its result into the notes: `column` (boolean) is true for each analysis the query selects and false for every other, and each of `feature_columns` (string) carries that analysis's feature, or null where its record says nothing. 
     """ # noqa: E501
     query: AnalysisQuery
     column: Optional[Annotated[str, Field(min_length=1, strict=True)]] = 'included'
@@ -41,8 +41,8 @@ class AnnotationPipelineExtensionAnalysisQuery(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['medical_condition', 'task', 'contrast', 'contrast_key', 'contrast_set', 'spatial_scope', 'measure_type', 'n']):
-                raise ValueError("each list item must be one of ('medical_condition', 'task', 'contrast', 'contrast_key', 'contrast_set', 'spatial_scope', 'measure_type', 'n')")
+            if i not in set(['diagnosis', 'task', 'contrast', 'contrast_set', 'spatial_scope', 'measure_type', 'n']):
+                raise ValueError("each list item must be one of ('diagnosis', 'task', 'contrast', 'contrast_set', 'spatial_scope', 'measure_type', 'n')")
         return value
 
     model_config = ConfigDict(

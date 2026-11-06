@@ -41,7 +41,7 @@ class DataSourceReturn(BaseModel):
     re3data_ids: Optional[List[StrictStr]] = None
     created_at: Optional[datetime] = Field(default=None, description="time the resource was created on the database")
     updated_at: Optional[StrictStr] = Field(default=None, description="when the resource was last modified/updated.")
-    user: Optional[StrictStr] = Field(default=None, description="who owns the resource")
+    user: Optional[StrictStr] = Field(default=None, description="The owner's Auth0 id, served only to the owner; null for anyone else, who sees `username`.")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "kinds", "modalities", "part_of", "url", "url_kind", "rrids", "re3data_ids", "created_at", "updated_at", "user", "username"]
 

@@ -31,7 +31,7 @@ class AnalysisQueryResult(BaseModel):
     """
     AnalysisQueryResult
     """ # noqa: E501
-    query: Optional[Dict[str, Any]] = Field(default=None, description="The query in canonical form: a normalized criterion as ids, text, all, none, descendants, when_unmapped and when_silent, every other as any/all/none lists. ")
+    query: Optional[Dict[str, Any]] = Field(default=None, description="The query in canonical form, every criterion as any/all/none lists.")
     counts: Optional[AnalysisQueryResultCounts] = None
     searched: Optional[AnalysisQueryResultSearched] = None
     funnel: Optional[List[AnalysisQueryResultFunnelInner]] = Field(default=None, description="With `funnel`, the criteria in order, each with what remains after it.")

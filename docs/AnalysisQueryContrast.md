@@ -7,8 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **positive** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **negative** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**key** | [**AnalysisQueryNormalizedIds**](AnalysisQueryNormalizedIds.md) |  | [optional] 
-**set** | [**AnalysisQueryNormalizedIds**](AnalysisQueryNormalizedIds.md) |  | [optional] 
+**set** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **kind** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **groups** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 

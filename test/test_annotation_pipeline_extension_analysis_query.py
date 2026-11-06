@@ -37,8 +37,7 @@ class TestAnnotationPipelineExtensionAnalysisQuery(unittest.TestCase):
         if include_optional:
             return AnnotationPipelineExtensionAnalysisQuery(
                 query = neurostore_sdk.models.analysis_query.analysis-query(
-                    name = null, 
-                    medical_condition = null, 
+                    diagnosis = null, 
                     has_patients = null, 
                     has_healthy = null, 
                     species = null, 
@@ -58,7 +57,6 @@ class TestAnnotationPipelineExtensionAnalysisQuery(unittest.TestCase):
                     contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
                         positive = null, 
                         negative = null, 
-                        key = null, 
                         set = null, 
                         kind = null, 
                         groups = null, ), 
@@ -73,14 +71,13 @@ class TestAnnotationPipelineExtensionAnalysisQuery(unittest.TestCase):
                         ], ),
                 column = 'included',
                 feature_columns = [
-                    'medical_condition'
+                    'diagnosis'
                     ]
             )
         else:
             return AnnotationPipelineExtensionAnalysisQuery(
                 query = neurostore_sdk.models.analysis_query.analysis-query(
-                    name = null, 
-                    medical_condition = null, 
+                    diagnosis = null, 
                     has_patients = null, 
                     has_healthy = null, 
                     species = null, 
@@ -100,7 +97,6 @@ class TestAnnotationPipelineExtensionAnalysisQuery(unittest.TestCase):
                     contrast = neurostore_sdk.models.analysis_query_contrast.analysis_query_contrast(
                         positive = null, 
                         negative = null, 
-                        key = null, 
                         set = null, 
                         kind = null, 
                         groups = null, ), 

@@ -38,13 +38,6 @@ class TestAnalysisTermListResultsInner(unittest.TestCase):
             return AnalysisTermListResultsInner(
                 value = '',
                 label = '',
-                parent = '',
-                children = [
-                    ''
-                    ],
-                synonyms = [
-                    ''
-                    ],
                 analyses = 56,
                 base_studies = 56
             )
