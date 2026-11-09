@@ -72,6 +72,13 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                         { }
                         ], ),
                 limit = 0,
+                offset = 0,
+                base_study_ids = [
+                    ''
+                    ],
+                study_ids = [
+                    ''
+                    ],
                 funnel = True
             )
         else:

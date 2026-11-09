@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts
 from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
@@ -38,7 +38,8 @@ class AnalysisQueryResult(BaseModel):
     funnel: Optional[List[AnalysisQueryResultFunnelInner]] = Field(default=None, description="With `funnel`, the criteria in order, each with what remains after it.")
     results: Optional[List[AnalysisQueryResultResultsInner]] = None
     study_ids: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["query", "counts", "searched", "funnel", "results", "study_ids"]
+    next_offset: Optional[StrictInt] = Field(default=None, description="The `offset` that lists the next selected analyses, or null when this listing reaches the last of them. ")
+    __properties: ClassVar[List[str]] = ["query", "counts", "searched", "funnel", "results", "study_ids", "next_offset"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -96,6 +97,11 @@ class AnalysisQueryResult(BaseModel):
             for _item_results in self.results:
                 _items.append(_item_results.to_dict() if _item_results is not None else None)
             _dict['results'] = _items
+        # set to None if next_offset (nullable) is None
+        # and model_fields_set contains the field
+        if self.next_offset is None and "next_offset" in self.model_fields_set:
+            _dict['next_offset'] = None
+
         return _dict
 
     @classmethod
@@ -113,7 +119,8 @@ class AnalysisQueryResult(BaseModel):
             "searched": AnalysisQueryResultSearched.from_dict(obj["searched"]) if obj.get("searched") is not None else None,
             "funnel": [AnalysisQueryResultFunnelInner.from_dict(_item) for _item in obj["funnel"]] if obj.get("funnel") is not None else None,
             "results": [AnalysisQueryResultResultsInner.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None,
-            "study_ids": obj.get("study_ids")
+            "study_ids": obj.get("study_ids"),
+            "next_offset": obj.get("next_offset")
         })
         return _obj
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.analysis_query import AnalysisQuery
@@ -32,8 +32,11 @@ class AnalysisQueryRequest(BaseModel):
     """ # noqa: E501
     query: AnalysisQuery
     limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = Field(default=100, description="How many selected analyses to list; counts and study_ids cover them all.")
+    offset: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=0, description="How many selected analyses to skip before listing `limit` of them, in the listing's order (by paper, then analysis). With `next_offset`, pages through a selection larger than one listing. ")
+    base_study_ids: Optional[Annotated[List[StrictStr], Field(max_length=1000)]] = Field(default=None, description="Only the analyses of these papers. Counts, `study_ids` and the funnel cover the same restricted set, so an empty query lists every analysis with features that these papers have. ")
+    study_ids: Optional[Annotated[List[StrictStr], Field(max_length=1000)]] = Field(default=None, description="Only the analyses of these studies (the pipeline studies `study_ids` names). With `base_study_ids`, an analysis must be in both. ")
     funnel: Optional[StrictBool] = Field(default=False, description="Also return `searched` and `funnel`: what each criterion in turn keeps and drops, and how many analyses it finds silent. It counts once per criterion, so it costs most when criteria keep most analyses. ")
-    __properties: ClassVar[List[str]] = ["query", "limit", "funnel"]
+    __properties: ClassVar[List[str]] = ["query", "limit", "offset", "base_study_ids", "study_ids", "funnel"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,6 +93,9 @@ class AnalysisQueryRequest(BaseModel):
         _obj = cls.model_validate({
             "query": AnalysisQuery.from_dict(obj["query"]) if obj.get("query") is not None else None,
             "limit": obj.get("limit") if obj.get("limit") is not None else 100,
+            "offset": obj.get("offset") if obj.get("offset") is not None else 0,
+            "base_study_ids": obj.get("base_study_ids"),
+            "study_ids": obj.get("study_ids"),
             "funnel": obj.get("funnel") if obj.get("funnel") is not None else False
         })
         return _obj

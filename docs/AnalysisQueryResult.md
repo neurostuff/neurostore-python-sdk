@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **funnel** | [**List[AnalysisQueryResultFunnelInner]**](AnalysisQueryResultFunnelInner.md) | With &#x60;funnel&#x60;, the criteria in order, each with what remains after it. | [optional] 
 **results** | [**List[AnalysisQueryResultResultsInner]**](AnalysisQueryResultResultsInner.md) |  | [optional] 
 **study_ids** | **List[str]** |  | [optional] 
+**next_offset** | **int** | The &#x60;offset&#x60; that lists the next selected analyses, or null when this listing reaches the last of them.  | [optional] 
 
 ## Example
 

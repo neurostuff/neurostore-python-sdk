@@ -66,7 +66,8 @@ class TestAnalysisQueryResult(unittest.TestCase):
                     ],
                 study_ids = [
                     ''
-                    ]
+                    ],
+                next_offset = 56
             )
         else:
             return AnalysisQueryResult(
