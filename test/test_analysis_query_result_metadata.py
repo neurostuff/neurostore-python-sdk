@@ -15,10 +15,10 @@
 
 import unittest
 
-from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts
+from neurostore_sdk.models.analysis_query_result_metadata import AnalysisQueryResultMetadata
 
-class TestAnalysisQueryResultCounts(unittest.TestCase):
-    """AnalysisQueryResultCounts unit test stubs"""
+class TestAnalysisQueryResultMetadata(unittest.TestCase):
+    """AnalysisQueryResultMetadata unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,27 +26,26 @@ class TestAnalysisQueryResultCounts(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AnalysisQueryResultCounts:
-        """Test AnalysisQueryResultCounts
+    def make_instance(self, include_optional) -> AnalysisQueryResultMetadata:
+        """Test AnalysisQueryResultMetadata
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AnalysisQueryResultCounts`
+        # uncomment below to create an instance of `AnalysisQueryResultMetadata`
         """
-        model = AnalysisQueryResultCounts()
+        model = AnalysisQueryResultMetadata()
         if include_optional:
-            return AnalysisQueryResultCounts(
-                analyses = 56,
-                studies = 56,
-                base_studies = 56
+            return AnalysisQueryResultMetadata(
+                total_count = 56,
+                analysis_count = 56
             )
         else:
-            return AnalysisQueryResultCounts(
+            return AnalysisQueryResultMetadata(
         )
         """
 
-    def testAnalysisQueryResultCounts(self):
-        """Test AnalysisQueryResultCounts"""
+    def testAnalysisQueryResultMetadata(self):
+        """Test AnalysisQueryResultMetadata"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

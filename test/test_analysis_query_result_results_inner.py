@@ -36,14 +36,17 @@ class TestAnalysisQueryResultResultsInner(unittest.TestCase):
         model = AnalysisQueryResultResultsInner()
         if include_optional:
             return AnalysisQueryResultResultsInner(
-                analysis = '',
                 study = '',
                 base_study = '',
-                name = '',
-                matched_by = {
-                    'id' : 'id'
-                    },
-                features = { }
+                analyses = [
+                    neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner.AnalysisQueryResultResultsInnerAnalysesInner(
+                        id = '', 
+                        name = '', 
+                        matched_by = {
+                            'id' : 'id'
+                            }, 
+                        features = { }, )
+                    ]
             )
         else:
             return AnalysisQueryResultResultsInner(

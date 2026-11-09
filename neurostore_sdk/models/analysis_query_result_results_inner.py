@@ -18,8 +18,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner import AnalysisQueryResultResultsInnerAnalysesInner
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,24 +29,10 @@ class AnalysisQueryResultResultsInner(BaseModel):
     """
     AnalysisQueryResultResultsInner
     """ # noqa: E501
-    analysis: Optional[StrictStr] = None
     study: Optional[StrictStr] = None
     base_study: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    matched_by: Optional[Dict[str, StrictStr]] = Field(default=None, description="How the analysis matched each normalized criterion, by its path (`medical_condition`, `or[0].task`): by id, by text, as unmapped or as silent (under `include`). Absent where a mapped analysis matched only through `none`. ")
-    features: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["analysis", "study", "base_study", "name", "matched_by", "features"]
-
-    @field_validator('matched_by')
-    def matched_by_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        for i in value.values():
-            if i not in set(['id', 'text', 'unmapped', 'silent']):
-                raise ValueError("dict values must be one of enum values ('id', 'text', 'unmapped', 'silent')")
-        return value
+    analyses: Optional[List[AnalysisQueryResultResultsInnerAnalysesInner]] = Field(default=None, description="Absent when `detail` is `studies`.")
+    __properties: ClassVar[List[str]] = ["study", "base_study", "analyses"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,11 +72,12 @@ class AnalysisQueryResultResultsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of each item in analyses (list)
+        _items = []
+        if self.analyses is not None:
+            for _item_analyses in self.analyses:
+                _items.append(_item_analyses.to_dict() if _item_analyses is not None else None)
+            _dict['analyses'] = _items
         return _dict
 
     @classmethod
@@ -102,12 +90,9 @@ class AnalysisQueryResultResultsInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analysis": obj.get("analysis"),
             "study": obj.get("study"),
             "base_study": obj.get("base_study"),
-            "name": obj.get("name"),
-            "matched_by": obj.get("matched_by"),
-            "features": obj.get("features")
+            "analyses": [AnalysisQueryResultResultsInnerAnalysesInner.from_dict(_item) for _item in obj["analyses"]] if obj.get("analyses") is not None else None
         })
         return _obj
 

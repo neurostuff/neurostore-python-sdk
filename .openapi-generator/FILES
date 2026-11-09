@@ -24,9 +24,10 @@ docs/AnalysisQueryNormalizedOneOf.md
 docs/AnalysisQueryRange.md
 docs/AnalysisQueryRequest.md
 docs/AnalysisQueryResult.md
-docs/AnalysisQueryResultCounts.md
 docs/AnalysisQueryResultFunnelInner.md
+docs/AnalysisQueryResultMetadata.md
 docs/AnalysisQueryResultResultsInner.md
+docs/AnalysisQueryResultResultsInnerAnalysesInner.md
 docs/AnalysisQueryResultSearched.md
 docs/AnalysisQueryStrings.md
 docs/AnalysisQueryTerms.md
@@ -241,9 +242,10 @@ neurostore_sdk/models/analysis_query_normalized_one_of.py
 neurostore_sdk/models/analysis_query_range.py
 neurostore_sdk/models/analysis_query_request.py
 neurostore_sdk/models/analysis_query_result.py
-neurostore_sdk/models/analysis_query_result_counts.py
 neurostore_sdk/models/analysis_query_result_funnel_inner.py
+neurostore_sdk/models/analysis_query_result_metadata.py
 neurostore_sdk/models/analysis_query_result_results_inner.py
+neurostore_sdk/models/analysis_query_result_results_inner_analyses_inner.py
 neurostore_sdk/models/analysis_query_result_searched.py
 neurostore_sdk/models/analysis_query_strings.py
 neurostore_sdk/models/analysis_query_terms.py
@@ -453,9 +455,10 @@ test/test_analysis_query_normalized_one_of.py
 test/test_analysis_query_range.py
 test/test_analysis_query_request.py
 test/test_analysis_query_result.py
-test/test_analysis_query_result_counts.py
 test/test_analysis_query_result_funnel_inner.py
+test/test_analysis_query_result_metadata.py
 test/test_analysis_query_result_results_inner.py
+test/test_analysis_query_result_results_inner_analyses_inner.py
 test/test_analysis_query_result_searched.py
 test/test_analysis_query_strings.py
 test/test_analysis_query_terms.py

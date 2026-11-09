@@ -18,10 +18,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts
 from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
+from neurostore_sdk.models.analysis_query_result_metadata import AnalysisQueryResultMetadata
 from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
 from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
 from typing import Optional, Set
@@ -32,14 +32,12 @@ class AnalysisQueryResult(BaseModel):
     """
     AnalysisQueryResult
     """ # noqa: E501
+    metadata: Optional[AnalysisQueryResultMetadata] = None
     query: Optional[Dict[str, Any]] = Field(default=None, description="The query in canonical form: a normalized criterion as ids, text, all, none, descendants, when_unmapped and when_silent, every other as any/all/none lists. ")
-    counts: Optional[AnalysisQueryResultCounts] = None
     searched: Optional[AnalysisQueryResultSearched] = None
     funnel: Optional[List[AnalysisQueryResultFunnelInner]] = Field(default=None, description="With `funnel`, the criteria in order, each with what remains after it.")
-    results: Optional[List[AnalysisQueryResultResultsInner]] = None
-    study_ids: Optional[List[StrictStr]] = None
-    next_offset: Optional[StrictInt] = Field(default=None, description="The `offset` that lists the next selected analyses, or null when this listing reaches the last of them. ")
-    __properties: ClassVar[List[str]] = ["query", "counts", "searched", "funnel", "results", "study_ids", "next_offset"]
+    results: Optional[List[AnalysisQueryResultResultsInner]] = Field(default=None, description="The page's studies, in order of paper, each with its selected analyses.")
+    __properties: ClassVar[List[str]] = ["metadata", "query", "searched", "funnel", "results"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -79,9 +77,9 @@ class AnalysisQueryResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of counts
-        if self.counts is not None:
-            _dict['counts'] = self.counts.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata is not None:
+            _dict['metadata'] = self.metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of searched
         if self.searched is not None:
             _dict['searched'] = self.searched.to_dict()
@@ -97,11 +95,6 @@ class AnalysisQueryResult(BaseModel):
             for _item_results in self.results:
                 _items.append(_item_results.to_dict() if _item_results is not None else None)
             _dict['results'] = _items
-        # set to None if next_offset (nullable) is None
-        # and model_fields_set contains the field
-        if self.next_offset is None and "next_offset" in self.model_fields_set:
-            _dict['next_offset'] = None
-
         return _dict
 
     @classmethod
@@ -114,13 +107,11 @@ class AnalysisQueryResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "metadata": AnalysisQueryResultMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
             "query": obj.get("query"),
-            "counts": AnalysisQueryResultCounts.from_dict(obj["counts"]) if obj.get("counts") is not None else None,
             "searched": AnalysisQueryResultSearched.from_dict(obj["searched"]) if obj.get("searched") is not None else None,
             "funnel": [AnalysisQueryResultFunnelInner.from_dict(_item) for _item in obj["funnel"]] if obj.get("funnel") is not None else None,
-            "results": [AnalysisQueryResultResultsInner.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None,
-            "study_ids": obj.get("study_ids"),
-            "next_offset": obj.get("next_offset")
+            "results": [AnalysisQueryResultResultsInner.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 

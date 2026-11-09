@@ -36,11 +36,10 @@ class TestAnalysisQueryResult(unittest.TestCase):
         model = AnalysisQueryResult()
         if include_optional:
             return AnalysisQueryResult(
+                metadata = neurostore_sdk.models.analysis_query_result_metadata.AnalysisQueryResultMetadata(
+                    total_count = 56, 
+                    analysis_count = 56, ),
                 query = { },
-                counts = neurostore_sdk.models.analysis_query_result_counts.AnalysisQueryResultCounts(
-                    analyses = 56, 
-                    studies = 56, 
-                    base_studies = 56, ),
                 searched = neurostore_sdk.models.analysis_query_result_searched.AnalysisQueryResultSearched(
                     analyses = 56, 
                     base_studies = 56, ),
@@ -55,19 +54,18 @@ class TestAnalysisQueryResult(unittest.TestCase):
                     ],
                 results = [
                     neurostore_sdk.models.analysis_query_result_results_inner.AnalysisQueryResultResultsInner(
-                        analysis = '', 
                         study = '', 
                         base_study = '', 
-                        name = '', 
-                        matched_by = {
-                            'id' : 'id'
-                            }, 
-                        features = { }, )
-                    ],
-                study_ids = [
-                    ''
-                    ],
-                next_offset = 56
+                        analyses = [
+                            neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner.AnalysisQueryResultResultsInnerAnalysesInner(
+                                id = '', 
+                                name = '', 
+                                matched_by = {
+                                    'id' : 'id'
+                                    }, 
+                                features = { }, )
+                            ], )
+                    ]
             )
         else:
             return AnalysisQueryResult(

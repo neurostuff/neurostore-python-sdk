@@ -35,9 +35,10 @@ __all__ = [
     "AnalysisQueryRange",
     "AnalysisQueryRequest",
     "AnalysisQueryResult",
-    "AnalysisQueryResultCounts",
     "AnalysisQueryResultFunnelInner",
+    "AnalysisQueryResultMetadata",
     "AnalysisQueryResultResultsInner",
+    "AnalysisQueryResultResultsInnerAnalysesInner",
     "AnalysisQueryResultSearched",
     "AnalysisQueryStrings",
     "AnalysisQueryTerms",
@@ -246,9 +247,10 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
     from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
     from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
-    from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts
     from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
+    from neurostore_sdk.models.analysis_query_result_metadata import AnalysisQueryResultMetadata
     from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
+    from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner import AnalysisQueryResultResultsInnerAnalysesInner
     from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
     from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings
     from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms
@@ -456,9 +458,10 @@ else:
         "AnalysisQueryRange": ".analysis_query_range",
         "AnalysisQueryRequest": ".analysis_query_request",
         "AnalysisQueryResult": ".analysis_query_result",
-        "AnalysisQueryResultCounts": ".analysis_query_result_counts",
         "AnalysisQueryResultFunnelInner": ".analysis_query_result_funnel_inner",
+        "AnalysisQueryResultMetadata": ".analysis_query_result_metadata",
         "AnalysisQueryResultResultsInner": ".analysis_query_result_results_inner",
+        "AnalysisQueryResultResultsInnerAnalysesInner": ".analysis_query_result_results_inner_analyses_inner",
         "AnalysisQueryResultSearched": ".analysis_query_result_searched",
         "AnalysisQueryStrings": ".analysis_query_strings",
         "AnalysisQueryTerms": ".analysis_query_terms",
