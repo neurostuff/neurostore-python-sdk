@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.analysis_query import AnalysisQuery
@@ -31,9 +31,24 @@ class AnalysisQueryRequest(BaseModel):
     AnalysisQueryRequest
     """ # noqa: E501
     query: AnalysisQuery
-    limit: Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]] = Field(default=100, description="How many selected analyses to list; counts and study_ids cover them all.")
+    page: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=1, description="Which page of studies to list, in order of paper.")
+    page_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=20, description="How many studies a page lists, each with all its selected analyses; 0 lists none. ")
+    paginate: Optional[StrictBool] = Field(default=True, description="False lists every selected study, whatever `page` and `page_size` say.")
+    detail: Optional[StrictStr] = Field(default='features', description="How much each listed study carries: `studies` only its ids, `analyses` also its selected analyses' ids, names and matches, `features` also their features. With `paginate: false`, `studies` lists every selected study's id at once. ")
+    base_study_ids: Optional[List[StrictStr]] = Field(default=None, description="Only the analyses of these papers. The counts, results and funnel cover the same restricted set, so an empty query lists every analysis with features that these papers have. ")
+    study_ids: Optional[List[StrictStr]] = Field(default=None, description="Only the analyses of these studies (the pipeline studies the results name). With `base_study_ids`, an analysis must be in both. ")
     funnel: Optional[StrictBool] = Field(default=False, description="Also return `searched` and `funnel`: what each criterion in turn keeps and drops, and how many analyses it finds silent. It counts once per criterion, so it costs most when criteria keep most analyses. ")
-    __properties: ClassVar[List[str]] = ["query", "limit", "funnel"]
+    __properties: ClassVar[List[str]] = ["query", "page", "page_size", "paginate", "detail", "base_study_ids", "study_ids", "funnel"]
+
+    @field_validator('detail')
+    def detail_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['studies', 'analyses', 'features']):
+            raise ValueError("must be one of enum values ('studies', 'analyses', 'features')")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,7 +104,12 @@ class AnalysisQueryRequest(BaseModel):
 
         _obj = cls.model_validate({
             "query": AnalysisQuery.from_dict(obj["query"]) if obj.get("query") is not None else None,
-            "limit": obj.get("limit") if obj.get("limit") is not None else 100,
+            "page": obj.get("page") if obj.get("page") is not None else 1,
+            "page_size": obj.get("page_size") if obj.get("page_size") is not None else 20,
+            "paginate": obj.get("paginate") if obj.get("paginate") is not None else True,
+            "detail": obj.get("detail") if obj.get("detail") is not None else 'features',
+            "base_study_ids": obj.get("base_study_ids"),
+            "study_ids": obj.get("study_ids"),
             "funnel": obj.get("funnel") if obj.get("funnel") is not None else False
         })
         return _obj

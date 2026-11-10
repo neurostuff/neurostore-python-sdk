@@ -51,9 +51,10 @@ __all__ = [
     "AnalysisQueryRange",
     "AnalysisQueryRequest",
     "AnalysisQueryResult",
-    "AnalysisQueryResultCounts",
     "AnalysisQueryResultFunnelInner",
+    "AnalysisQueryResultMetadata",
     "AnalysisQueryResultResultsInner",
+    "AnalysisQueryResultResultsInnerAnalysesInner",
     "AnalysisQueryResultSearched",
     "AnalysisQueryStrings",
     "AnalysisQueryTerms",
@@ -277,9 +278,10 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange as AnalysisQueryRange
     from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest as AnalysisQueryRequest
     from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult as AnalysisQueryResult
-    from neurostore_sdk.models.analysis_query_result_counts import AnalysisQueryResultCounts as AnalysisQueryResultCounts
     from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner as AnalysisQueryResultFunnelInner
+    from neurostore_sdk.models.analysis_query_result_metadata import AnalysisQueryResultMetadata as AnalysisQueryResultMetadata
     from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner as AnalysisQueryResultResultsInner
+    from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner import AnalysisQueryResultResultsInnerAnalysesInner as AnalysisQueryResultResultsInnerAnalysesInner
     from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched as AnalysisQueryResultSearched
     from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings as AnalysisQueryStrings
     from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms as AnalysisQueryTerms
@@ -498,9 +500,10 @@ else:
         "AnalysisQueryRange": ".models.analysis_query_range",
         "AnalysisQueryRequest": ".models.analysis_query_request",
         "AnalysisQueryResult": ".models.analysis_query_result",
-        "AnalysisQueryResultCounts": ".models.analysis_query_result_counts",
         "AnalysisQueryResultFunnelInner": ".models.analysis_query_result_funnel_inner",
+        "AnalysisQueryResultMetadata": ".models.analysis_query_result_metadata",
         "AnalysisQueryResultResultsInner": ".models.analysis_query_result_results_inner",
+        "AnalysisQueryResultResultsInnerAnalysesInner": ".models.analysis_query_result_results_inner_analyses_inner",
         "AnalysisQueryResultSearched": ".models.analysis_query_result_searched",
         "AnalysisQueryStrings": ".models.analysis_query_strings",
         "AnalysisQueryTerms": ".models.analysis_query_terms",

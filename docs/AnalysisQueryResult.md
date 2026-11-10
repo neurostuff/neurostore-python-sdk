@@ -5,12 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**metadata** | [**AnalysisQueryResultMetadata**](AnalysisQueryResultMetadata.md) |  | [optional] 
 **query** | **Dict[str, object]** | The query in canonical form: a normalized criterion as ids, text, all, none, descendants, when_unmapped and when_silent, every other as any/all/none lists.  | [optional] 
-**counts** | [**AnalysisQueryResultCounts**](AnalysisQueryResultCounts.md) |  | [optional] 
 **searched** | [**AnalysisQueryResultSearched**](AnalysisQueryResultSearched.md) |  | [optional] 
 **funnel** | [**List[AnalysisQueryResultFunnelInner]**](AnalysisQueryResultFunnelInner.md) | With &#x60;funnel&#x60;, the criteria in order, each with what remains after it. | [optional] 
-**results** | [**List[AnalysisQueryResultResultsInner]**](AnalysisQueryResultResultsInner.md) |  | [optional] 
-**study_ids** | **List[str]** |  | [optional] 
+**results** | [**List[AnalysisQueryResultResultsInner]**](AnalysisQueryResultResultsInner.md) | The page&#39;s studies, in order of paper, each with its selected analyses. | [optional] 
 
 ## Example
 

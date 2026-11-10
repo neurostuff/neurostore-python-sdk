@@ -71,7 +71,16 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                     or = [
                         { }
                         ], ),
-                limit = 0,
+                page = 1,
+                page_size = 0,
+                paginate = True,
+                detail = 'features',
+                base_study_ids = [
+                    ''
+                    ],
+                study_ids = [
+                    ''
+                    ],
                 funnel = True
             )
         else:

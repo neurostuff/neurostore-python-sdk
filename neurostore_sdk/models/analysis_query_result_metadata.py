@@ -18,20 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class AnalysisQueryResultCounts(BaseModel):
+class AnalysisQueryResultMetadata(BaseModel):
     """
-    AnalysisQueryResultCounts
+    AnalysisQueryResultMetadata
     """ # noqa: E501
-    analyses: Optional[StrictInt] = None
-    studies: Optional[StrictInt] = None
-    base_studies: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["analyses", "studies", "base_studies"]
+    total_count: Optional[StrictInt] = Field(default=None, description="How many studies the query selects, over every page.")
+    analysis_count: Optional[StrictInt] = Field(default=None, description="How many analyses the query selects, over every page.")
+    __properties: ClassVar[List[str]] = ["total_count", "analysis_count"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +50,7 @@ class AnalysisQueryResultCounts(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AnalysisQueryResultCounts from a JSON string"""
+        """Create an instance of AnalysisQueryResultMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +74,7 @@ class AnalysisQueryResultCounts(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AnalysisQueryResultCounts from a dict"""
+        """Create an instance of AnalysisQueryResultMetadata from a dict"""
         if obj is None:
             return None
 
@@ -83,9 +82,8 @@ class AnalysisQueryResultCounts(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyses": obj.get("analyses"),
-            "studies": obj.get("studies"),
-            "base_studies": obj.get("base_studies")
+            "total_count": obj.get("total_count"),
+            "analysis_count": obj.get("analysis_count")
         })
         return _obj
 
