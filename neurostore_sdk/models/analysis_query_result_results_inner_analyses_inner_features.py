@@ -27,7 +27,7 @@ from pydantic_core import to_jsonable_python
 
 class AnalysisQueryResultResultsInnerAnalysesInnerFeatures(BaseModel):
     """
-    Only when `detail` is `features`. The analysis's display and every column its criteria read, named as stored (`is_meta_analysis`, `species`, `task_ids`, `medical_condition_role_ids`, `arm_kinds`, `contrast_positive_timepoints`, and the analysis's `role` and `has_coordinates`), with `task_family_ids` and the extraction they were read from. 
+    Only when `detail` is `features`. The analysis's display and every column its criteria read, named as stored (`is_meta_analysis`, `species`, `task_ids`, `medical_condition_role_ids`, `arm_kinds`, `contrast_positive_timepoints`, and the analysis's `role` and `has_coordinates`), with `task_family_ids` and the extraction they were read from. A column the record is silent on is absent. 
     """ # noqa: E501
     config_id: Optional[StrictStr] = Field(default=None, description="The pipeline config of the record the features were read from.")
     updated_at: Optional[datetime] = Field(default=None, description="When the features were last written. Every re-ingest of the paper rewrites them, changed or not. ")
