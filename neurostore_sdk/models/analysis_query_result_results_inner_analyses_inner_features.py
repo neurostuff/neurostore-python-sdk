@@ -30,7 +30,7 @@ class AnalysisQueryResultResultsInnerAnalysesInnerFeatures(BaseModel):
     Only when `detail` is `features`. The analysis's display and the `analysis_features` columns its criteria read, named as stored (`is_meta_analysis`, `species`, `task_ids`, `task_family_ids`, `arm_kinds`, `contrast_positive_timepoints`), with the extraction they were read from. 
     """ # noqa: E501
     config_id: Optional[StrictStr] = Field(default=None, description="The pipeline config of the record the features were read from.")
-    updated_at: Optional[datetime] = Field(default=None, description="When the features were last written; a re-ingest that changes them moves it. ")
+    updated_at: Optional[datetime] = Field(default=None, description="When the features were last written. Every re-ingest of the paper rewrites them, changed or not. ")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["config_id", "updated_at"]
 
