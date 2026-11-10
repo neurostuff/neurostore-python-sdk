@@ -76,10 +76,10 @@ class TestAnalysisQueryRequest(unittest.TestCase):
                 paginate = True,
                 detail = 'features',
                 base_study_ids = [
-                    ''
+                    '0'
                     ],
                 study_ids = [
-                    ''
+                    '0'
                     ],
                 funnel = True
             )

@@ -1,6 +1,6 @@
 # AnalysisQueryResultResultsInnerAnalysesInnerFeatures
 
-Only when `detail` is `features`. The analysis's display and the `analysis_features` columns its criteria read, named as stored (`is_meta_analysis`, `species`, `task_ids`, `task_family_ids`, `arm_kinds`, `contrast_positive_timepoints`), with the extraction they were read from. 
+Only when `detail` is `features`. The analysis's display and every column its criteria read, named as stored (`is_meta_analysis`, `species`, `task_ids`, `medical_condition_role_ids`, `arm_kinds`, `contrast_positive_timepoints`, and the analysis's `role` and `has_coordinates`), with `task_family_ids` and the extraction they were read from. 
 
 ## Properties
 
