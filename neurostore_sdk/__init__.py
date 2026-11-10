@@ -34,21 +34,28 @@ __all__ = [
     "AnalysisCommon",
     "AnalysisList",
     "AnalysisQuery",
+    "AnalysisQueryAcquisition",
     "AnalysisQueryBoolean",
     "AnalysisQueryBooleanOneOf",
+    "AnalysisQueryConnectivity",
     "AnalysisQueryContrast",
     "AnalysisQueryContrastSide",
     "AnalysisQueryContrastSideOneOf",
+    "AnalysisQueryCoordinates",
     "AnalysisQueryDesign",
     "AnalysisQueryIds",
+    "AnalysisQueryInference",
     "AnalysisQueryMedicalCondition",
     "AnalysisQueryMedicalConditionOneOf",
     "AnalysisQueryMedicalConditionOneOfRole",
+    "AnalysisQueryModel",
     "AnalysisQueryNormalized",
     "AnalysisQueryNormalizedIds",
     "AnalysisQueryNormalizedIdsOneOf",
     "AnalysisQueryNormalizedOneOf",
+    "AnalysisQueryPreprocessing",
     "AnalysisQueryRange",
+    "AnalysisQueryRegion",
     "AnalysisQueryRequest",
     "AnalysisQueryResult",
     "AnalysisQueryResultFunnelInner",
@@ -57,7 +64,10 @@ __all__ = [
     "AnalysisQueryResultResultsInnerAnalysesInner",
     "AnalysisQueryResultResultsInnerAnalysesInnerFeatures",
     "AnalysisQueryResultSearched",
+    "AnalysisQuerySample",
+    "AnalysisQueryStatistic",
     "AnalysisQueryStrings",
+    "AnalysisQueryTaskDetails",
     "AnalysisQueryTerms",
     "AnalysisQueryText",
     "AnalysisQueryValues",
@@ -262,21 +272,28 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.analysis_common import AnalysisCommon as AnalysisCommon
     from neurostore_sdk.models.analysis_list import AnalysisList as AnalysisList
     from neurostore_sdk.models.analysis_query import AnalysisQuery as AnalysisQuery
+    from neurostore_sdk.models.analysis_query_acquisition import AnalysisQueryAcquisition as AnalysisQueryAcquisition
     from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean as AnalysisQueryBoolean
     from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf as AnalysisQueryBooleanOneOf
+    from neurostore_sdk.models.analysis_query_connectivity import AnalysisQueryConnectivity as AnalysisQueryConnectivity
     from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast as AnalysisQueryContrast
     from neurostore_sdk.models.analysis_query_contrast_side import AnalysisQueryContrastSide as AnalysisQueryContrastSide
     from neurostore_sdk.models.analysis_query_contrast_side_one_of import AnalysisQueryContrastSideOneOf as AnalysisQueryContrastSideOneOf
+    from neurostore_sdk.models.analysis_query_coordinates import AnalysisQueryCoordinates as AnalysisQueryCoordinates
     from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign as AnalysisQueryDesign
     from neurostore_sdk.models.analysis_query_ids import AnalysisQueryIds as AnalysisQueryIds
+    from neurostore_sdk.models.analysis_query_inference import AnalysisQueryInference as AnalysisQueryInference
     from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition as AnalysisQueryMedicalCondition
     from neurostore_sdk.models.analysis_query_medical_condition_one_of import AnalysisQueryMedicalConditionOneOf as AnalysisQueryMedicalConditionOneOf
     from neurostore_sdk.models.analysis_query_medical_condition_one_of_role import AnalysisQueryMedicalConditionOneOfRole as AnalysisQueryMedicalConditionOneOfRole
+    from neurostore_sdk.models.analysis_query_model import AnalysisQueryModel as AnalysisQueryModel
     from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized as AnalysisQueryNormalized
     from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds as AnalysisQueryNormalizedIds
     from neurostore_sdk.models.analysis_query_normalized_ids_one_of import AnalysisQueryNormalizedIdsOneOf as AnalysisQueryNormalizedIdsOneOf
     from neurostore_sdk.models.analysis_query_normalized_one_of import AnalysisQueryNormalizedOneOf as AnalysisQueryNormalizedOneOf
+    from neurostore_sdk.models.analysis_query_preprocessing import AnalysisQueryPreprocessing as AnalysisQueryPreprocessing
     from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange as AnalysisQueryRange
+    from neurostore_sdk.models.analysis_query_region import AnalysisQueryRegion as AnalysisQueryRegion
     from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest as AnalysisQueryRequest
     from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult as AnalysisQueryResult
     from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner as AnalysisQueryResultFunnelInner
@@ -285,7 +302,10 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner import AnalysisQueryResultResultsInnerAnalysesInner as AnalysisQueryResultResultsInnerAnalysesInner
     from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner_features import AnalysisQueryResultResultsInnerAnalysesInnerFeatures as AnalysisQueryResultResultsInnerAnalysesInnerFeatures
     from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched as AnalysisQueryResultSearched
+    from neurostore_sdk.models.analysis_query_sample import AnalysisQuerySample as AnalysisQuerySample
+    from neurostore_sdk.models.analysis_query_statistic import AnalysisQueryStatistic as AnalysisQueryStatistic
     from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings as AnalysisQueryStrings
+    from neurostore_sdk.models.analysis_query_task_details import AnalysisQueryTaskDetails as AnalysisQueryTaskDetails
     from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms as AnalysisQueryTerms
     from neurostore_sdk.models.analysis_query_text import AnalysisQueryText as AnalysisQueryText
     from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues as AnalysisQueryValues
@@ -485,21 +505,28 @@ else:
         "AnalysisCommon": ".models.analysis_common",
         "AnalysisList": ".models.analysis_list",
         "AnalysisQuery": ".models.analysis_query",
+        "AnalysisQueryAcquisition": ".models.analysis_query_acquisition",
         "AnalysisQueryBoolean": ".models.analysis_query_boolean",
         "AnalysisQueryBooleanOneOf": ".models.analysis_query_boolean_one_of",
+        "AnalysisQueryConnectivity": ".models.analysis_query_connectivity",
         "AnalysisQueryContrast": ".models.analysis_query_contrast",
         "AnalysisQueryContrastSide": ".models.analysis_query_contrast_side",
         "AnalysisQueryContrastSideOneOf": ".models.analysis_query_contrast_side_one_of",
+        "AnalysisQueryCoordinates": ".models.analysis_query_coordinates",
         "AnalysisQueryDesign": ".models.analysis_query_design",
         "AnalysisQueryIds": ".models.analysis_query_ids",
+        "AnalysisQueryInference": ".models.analysis_query_inference",
         "AnalysisQueryMedicalCondition": ".models.analysis_query_medical_condition",
         "AnalysisQueryMedicalConditionOneOf": ".models.analysis_query_medical_condition_one_of",
         "AnalysisQueryMedicalConditionOneOfRole": ".models.analysis_query_medical_condition_one_of_role",
+        "AnalysisQueryModel": ".models.analysis_query_model",
         "AnalysisQueryNormalized": ".models.analysis_query_normalized",
         "AnalysisQueryNormalizedIds": ".models.analysis_query_normalized_ids",
         "AnalysisQueryNormalizedIdsOneOf": ".models.analysis_query_normalized_ids_one_of",
         "AnalysisQueryNormalizedOneOf": ".models.analysis_query_normalized_one_of",
+        "AnalysisQueryPreprocessing": ".models.analysis_query_preprocessing",
         "AnalysisQueryRange": ".models.analysis_query_range",
+        "AnalysisQueryRegion": ".models.analysis_query_region",
         "AnalysisQueryRequest": ".models.analysis_query_request",
         "AnalysisQueryResult": ".models.analysis_query_result",
         "AnalysisQueryResultFunnelInner": ".models.analysis_query_result_funnel_inner",
@@ -508,7 +535,10 @@ else:
         "AnalysisQueryResultResultsInnerAnalysesInner": ".models.analysis_query_result_results_inner_analyses_inner",
         "AnalysisQueryResultResultsInnerAnalysesInnerFeatures": ".models.analysis_query_result_results_inner_analyses_inner_features",
         "AnalysisQueryResultSearched": ".models.analysis_query_result_searched",
+        "AnalysisQuerySample": ".models.analysis_query_sample",
+        "AnalysisQueryStatistic": ".models.analysis_query_statistic",
         "AnalysisQueryStrings": ".models.analysis_query_strings",
+        "AnalysisQueryTaskDetails": ".models.analysis_query_task_details",
         "AnalysisQueryTerms": ".models.analysis_query_terms",
         "AnalysisQueryText": ".models.analysis_query_text",
         "AnalysisQueryValues": ".models.analysis_query_values",

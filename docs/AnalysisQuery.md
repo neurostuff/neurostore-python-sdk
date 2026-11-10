@@ -23,6 +23,16 @@ Name | Type | Description | Notes
 **role** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **contrast** | [**AnalysisQueryContrast**](AnalysisQueryContrast.md) |  | [optional] 
 **design** | [**AnalysisQueryDesign**](AnalysisQueryDesign.md) |  | [optional] 
+**sample** | [**AnalysisQuerySample**](AnalysisQuerySample.md) |  | [optional] 
+**inference** | [**AnalysisQueryInference**](AnalysisQueryInference.md) |  | [optional] 
+**acquisition** | [**AnalysisQueryAcquisition**](AnalysisQueryAcquisition.md) |  | [optional] 
+**preprocessing** | [**AnalysisQueryPreprocessing**](AnalysisQueryPreprocessing.md) |  | [optional] 
+**model** | [**AnalysisQueryModel**](AnalysisQueryModel.md) |  | [optional] 
+**statistic** | [**AnalysisQueryStatistic**](AnalysisQueryStatistic.md) |  | [optional] 
+**connectivity** | [**AnalysisQueryConnectivity**](AnalysisQueryConnectivity.md) |  | [optional] 
+**region** | [**AnalysisQueryRegion**](AnalysisQueryRegion.md) |  | [optional] 
+**coordinates** | [**AnalysisQueryCoordinates**](AnalysisQueryCoordinates.md) |  | [optional] 
+**task_details** | [**AnalysisQueryTaskDetails**](AnalysisQueryTaskDetails.md) |  | [optional] 
 **var_or** | **List[Dict[str, object]]** | Sub-queries, any of which may match; each takes this object&#39;s criteria. (Not a $ref to this schema, which resolvers that inline references cannot expand.)  | [optional] 
 
 ## Example
