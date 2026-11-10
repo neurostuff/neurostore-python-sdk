@@ -231,6 +231,7 @@ Class | Method | HTTP request | Description
  - [AnalysisQueryResultMetadata](docs/AnalysisQueryResultMetadata.md)
  - [AnalysisQueryResultResultsInner](docs/AnalysisQueryResultResultsInner.md)
  - [AnalysisQueryResultResultsInnerAnalysesInner](docs/AnalysisQueryResultResultsInnerAnalysesInner.md)
+ - [AnalysisQueryResultResultsInnerAnalysesInnerFeatures](docs/AnalysisQueryResultResultsInnerAnalysesInnerFeatures.md)
  - [AnalysisQueryResultSearched](docs/AnalysisQueryResultSearched.md)
  - [AnalysisQueryStrings](docs/AnalysisQueryStrings.md)
  - [AnalysisQueryTerms](docs/AnalysisQueryTerms.md)

@@ -55,6 +55,7 @@ __all__ = [
     "AnalysisQueryResultMetadata",
     "AnalysisQueryResultResultsInner",
     "AnalysisQueryResultResultsInnerAnalysesInner",
+    "AnalysisQueryResultResultsInnerAnalysesInnerFeatures",
     "AnalysisQueryResultSearched",
     "AnalysisQueryStrings",
     "AnalysisQueryTerms",
@@ -282,6 +283,7 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.analysis_query_result_metadata import AnalysisQueryResultMetadata as AnalysisQueryResultMetadata
     from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner as AnalysisQueryResultResultsInner
     from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner import AnalysisQueryResultResultsInnerAnalysesInner as AnalysisQueryResultResultsInnerAnalysesInner
+    from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner_features import AnalysisQueryResultResultsInnerAnalysesInnerFeatures as AnalysisQueryResultResultsInnerAnalysesInnerFeatures
     from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched as AnalysisQueryResultSearched
     from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings as AnalysisQueryStrings
     from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms as AnalysisQueryTerms
@@ -504,6 +506,7 @@ else:
         "AnalysisQueryResultMetadata": ".models.analysis_query_result_metadata",
         "AnalysisQueryResultResultsInner": ".models.analysis_query_result_results_inner",
         "AnalysisQueryResultResultsInnerAnalysesInner": ".models.analysis_query_result_results_inner_analyses_inner",
+        "AnalysisQueryResultResultsInnerAnalysesInnerFeatures": ".models.analysis_query_result_results_inner_analyses_inner_features",
         "AnalysisQueryResultSearched": ".models.analysis_query_result_searched",
         "AnalysisQueryStrings": ".models.analysis_query_strings",
         "AnalysisQueryTerms": ".models.analysis_query_terms",

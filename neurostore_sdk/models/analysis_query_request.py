@@ -35,8 +35,8 @@ class AnalysisQueryRequest(BaseModel):
     page_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=20, description="How many studies a page lists, each with all its selected analyses; 0 lists none. ")
     paginate: Optional[StrictBool] = Field(default=True, description="False lists every selected study, whatever `page` and `page_size` say.")
     detail: Optional[StrictStr] = Field(default='features', description="How much each listed study carries: `studies` only its ids, `analyses` also its selected analyses' ids, names and matches, `features` also their features. With `paginate: false`, `studies` lists every selected study's id at once. ")
-    base_study_ids: Optional[List[StrictStr]] = Field(default=None, description="Only the analyses of these papers. The counts, results and funnel cover the same restricted set, so an empty query lists every analysis with features that these papers have. ")
-    study_ids: Optional[List[StrictStr]] = Field(default=None, description="Only the analyses of these studies (the pipeline studies the results name). With `base_study_ids`, an analysis must be in both. ")
+    base_study_ids: Optional[List[Annotated[str, Field(min_length=1, strict=True)]]] = Field(default=None, description="Only the analyses of these papers. The counts, results and funnel cover the same restricted set, so an empty query lists every analysis with features that these papers have. ")
+    study_ids: Optional[List[Annotated[str, Field(min_length=1, strict=True)]]] = Field(default=None, description="Only the analyses of these studies (the pipeline studies the results name). With `base_study_ids`, an analysis must be in both. ")
     funnel: Optional[StrictBool] = Field(default=False, description="Also return `searched` and `funnel`: what each criterion in turn keeps and drops, and how many analyses it finds silent. It counts once per criterion, so it costs most when criteria keep most analyses. ")
     __properties: ClassVar[List[str]] = ["query", "page", "page_size", "paginate", "detail", "base_study_ids", "study_ids", "funnel"]
 

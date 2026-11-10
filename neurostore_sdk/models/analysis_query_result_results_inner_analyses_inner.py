@@ -20,6 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner_features import AnalysisQueryResultResultsInnerAnalysesInnerFeatures
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -31,7 +32,7 @@ class AnalysisQueryResultResultsInnerAnalysesInner(BaseModel):
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     matched_by: Optional[Dict[str, StrictStr]] = Field(default=None, description="How the analysis matched each normalized criterion, by its path (`medical_condition`, `or[0].task`): by id, by text, as unmapped or as silent (under `include`). Absent where a mapped analysis matched only through `none`. ")
-    features: Optional[Dict[str, Any]] = Field(default=None, description="Only when `detail` is `features`.")
+    features: Optional[AnalysisQueryResultResultsInnerAnalysesInnerFeatures] = None
     __properties: ClassVar[List[str]] = ["id", "name", "matched_by", "features"]
 
     @field_validator('matched_by')
@@ -83,6 +84,9 @@ class AnalysisQueryResultResultsInnerAnalysesInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of features
+        if self.features is not None:
+            _dict['features'] = self.features.to_dict()
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -103,7 +107,7 @@ class AnalysisQueryResultResultsInnerAnalysesInner(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "matched_by": obj.get("matched_by"),
-            "features": obj.get("features")
+            "features": AnalysisQueryResultResultsInnerAnalysesInnerFeatures.from_dict(obj["features"]) if obj.get("features") is not None else None
         })
         return _obj
 
