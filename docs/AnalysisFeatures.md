@@ -18,8 +18,6 @@ Name | Type | Description | Notes
 **details_type** | **str** |  | [optional] 
 **is_meta_analysis** | **bool** |  | [optional] 
 **n** | **int** |  | [optional] 
-**has_coordinates** | **bool** |  | [optional] 
-**role** | **str** |  | [optional] 
 **contrast** | [**AnalysisFeaturesContrast**](AnalysisFeaturesContrast.md) |  | [optional] 
 **design** | [**AnalysisFeaturesDesign**](AnalysisFeaturesDesign.md) |  | [optional] 
 **groups** | [**AnalysisFeaturesGroups**](AnalysisFeaturesGroups.md) |  | [optional] 

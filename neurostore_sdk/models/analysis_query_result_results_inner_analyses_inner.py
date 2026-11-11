@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.analysis_features import AnalysisFeatures
 from typing import Optional, Set
@@ -33,10 +33,12 @@ class AnalysisQueryResultResultsInnerAnalysesInner(BaseModel):
     id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     matched_by: Optional[Dict[str, StrictStr]] = Field(default=None, description="How the analysis matched each normalized criterion, by its path (`medical_condition`, `or[0].task`): by id, by text, as unmapped or as silent (under `include`). Absent where a mapped analysis matched only through `none`. ")
+    role: Optional[StrictStr] = Field(default=None, description="With `features`, the analysis's coordinate role (the `role` criterion), which a review can change apart from its features. ")
+    has_coordinates: Optional[StrictBool] = Field(default=None, description="With `features`, whether the analysis has coordinates.")
     config_id: Optional[StrictStr] = Field(default=None, description="With `features`, the pipeline config of the record they were read from.")
     updated_at: Optional[datetime] = Field(default=None, description="With `features`, when they were last written. Every re-ingest of the paper rewrites them, changed or not. ")
     features: Optional[AnalysisFeatures] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "matched_by", "config_id", "updated_at", "features"]
+    __properties: ClassVar[List[str]] = ["id", "name", "matched_by", "role", "has_coordinates", "config_id", "updated_at", "features"]
 
     @field_validator('matched_by')
     def matched_by_validate_enum(cls, value):
@@ -95,6 +97,11 @@ class AnalysisQueryResultResultsInnerAnalysesInner(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
+        # set to None if role (nullable) is None
+        # and model_fields_set contains the field
+        if self.role is None and "role" in self.model_fields_set:
+            _dict['role'] = None
+
         # set to None if config_id (nullable) is None
         # and model_fields_set contains the field
         if self.config_id is None and "config_id" in self.model_fields_set:
@@ -120,6 +127,8 @@ class AnalysisQueryResultResultsInnerAnalysesInner(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "matched_by": obj.get("matched_by"),
+            "role": obj.get("role"),
+            "has_coordinates": obj.get("has_coordinates"),
             "config_id": obj.get("config_id"),
             "updated_at": obj.get("updated_at"),
             "features": AnalysisFeatures.from_dict(obj["features"]) if obj.get("features") is not None else None

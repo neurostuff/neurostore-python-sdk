@@ -63,6 +63,8 @@ class TestAnalysisQueryResult(unittest.TestCase):
                                 matched_by = {
                                     'id' : 'id'
                                     }, 
+                                role = '', 
+                                has_coordinates = True, 
                                 config_id = '', 
                                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 features = neurostore_sdk.models.analysis_features.AnalysisFeatures(
@@ -98,8 +100,6 @@ class TestAnalysisQueryResult(unittest.TestCase):
                                     details_type = '', 
                                     is_meta_analysis = True, 
                                     n = 56, 
-                                    has_coordinates = True, 
-                                    role = '', 
                                     contrast = neurostore_sdk.models.analysis_features_contrast.AnalysisFeaturesContrast(
                                         key = neurostore_sdk.models.analysis_features_contrast_key.AnalysisFeaturesContrastKey(
                                             ids = [

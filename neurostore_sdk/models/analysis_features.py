@@ -54,8 +54,6 @@ class AnalysisFeatures(BaseModel):
     details_type: Optional[StrictStr] = None
     is_meta_analysis: Optional[StrictBool] = None
     n: Optional[StrictInt] = None
-    has_coordinates: Optional[StrictBool] = None
-    role: Optional[StrictStr] = None
     contrast: Optional[AnalysisFeaturesContrast] = None
     design: Optional[AnalysisFeaturesDesign] = None
     groups: Optional[AnalysisFeaturesGroups] = None
@@ -68,7 +66,7 @@ class AnalysisFeatures(BaseModel):
     regions: Optional[AnalysisFeaturesRegions] = None
     coordinate_sets: Optional[AnalysisFeaturesCoordinateSets] = None
     tasks: Optional[AnalysisFeaturesTasks] = None
-    __properties: ClassVar[List[str]] = ["medical_condition", "has_patients", "has_healthy", "species", "task", "spatial_scope", "coordinate_space", "measure_type", "measure_family", "details_type", "is_meta_analysis", "n", "has_coordinates", "role", "contrast", "design", "groups", "inference_settings", "acquisitions", "preprocessing", "model_estimation", "effect", "details", "regions", "coordinate_sets", "tasks"]
+    __properties: ClassVar[List[str]] = ["medical_condition", "has_patients", "has_healthy", "species", "task", "spatial_scope", "coordinate_space", "measure_type", "measure_family", "details_type", "is_meta_analysis", "n", "contrast", "design", "groups", "inference_settings", "acquisitions", "preprocessing", "model_estimation", "effect", "details", "regions", "coordinate_sets", "tasks"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -174,8 +172,6 @@ class AnalysisFeatures(BaseModel):
             "details_type": obj.get("details_type"),
             "is_meta_analysis": obj.get("is_meta_analysis"),
             "n": obj.get("n"),
-            "has_coordinates": obj.get("has_coordinates"),
-            "role": obj.get("role"),
             "contrast": AnalysisFeaturesContrast.from_dict(obj["contrast"]) if obj.get("contrast") is not None else None,
             "design": AnalysisFeaturesDesign.from_dict(obj["design"]) if obj.get("design") is not None else None,
             "groups": AnalysisFeaturesGroups.from_dict(obj["groups"]) if obj.get("groups") is not None else None,
