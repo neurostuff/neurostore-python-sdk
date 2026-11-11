@@ -28,12 +28,12 @@ from pydantic_core import to_jsonable_python
 
 class AnalysisQueryPreprocessing(BaseModel):
     """
-    The preprocessing of the analysis's model and of the models it takes inputs from. Smoothing FWHM in millimetres. 
+    The preprocessing of the analysis's model and of the models it takes inputs from.
     """ # noqa: E501
-    smoothing_fwhm: Optional[AnalysisQueryRange] = None
+    smoothing_fwhm_mm: Optional[AnalysisQueryRange] = None
     software: Optional[AnalysisQueryText] = None
     steps: Optional[AnalysisQueryText] = None
-    __properties: ClassVar[List[str]] = ["smoothing_fwhm", "software", "steps"]
+    __properties: ClassVar[List[str]] = ["smoothing_fwhm_mm", "software", "steps"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -73,9 +73,9 @@ class AnalysisQueryPreprocessing(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of smoothing_fwhm
-        if self.smoothing_fwhm is not None:
-            _dict['smoothing_fwhm'] = self.smoothing_fwhm.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of smoothing_fwhm_mm
+        if self.smoothing_fwhm_mm is not None:
+            _dict['smoothing_fwhm_mm'] = self.smoothing_fwhm_mm.to_dict()
         # override the default output from pydantic by calling `to_dict()` of software
         if self.software is not None:
             _dict['software'] = self.software.to_dict()
@@ -94,7 +94,7 @@ class AnalysisQueryPreprocessing(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "smoothing_fwhm": AnalysisQueryRange.from_dict(obj["smoothing_fwhm"]) if obj.get("smoothing_fwhm") is not None else None,
+            "smoothing_fwhm_mm": AnalysisQueryRange.from_dict(obj["smoothing_fwhm_mm"]) if obj.get("smoothing_fwhm_mm") is not None else None,
             "software": AnalysisQueryText.from_dict(obj["software"]) if obj.get("software") is not None else None,
             "steps": AnalysisQueryText.from_dict(obj["steps"]) if obj.get("steps") is not None else None
         })

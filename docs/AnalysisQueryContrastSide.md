@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **has_patients** | [**AnalysisQueryBoolean**](AnalysisQueryBoolean.md) |  | [optional] 
 **has_healthy** | [**AnalysisQueryBoolean**](AnalysisQueryBoolean.md) |  | [optional] 
 **medical_condition** | [**AnalysisQueryNormalized**](AnalysisQueryNormalized.md) |  | [optional] 
-**timepoint** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**arm_kind** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**facet** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
+**timepoint** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
+**arm_kind** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
+**facet** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
 
 ## Example
 

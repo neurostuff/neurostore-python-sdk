@@ -21,7 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
-from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+from neurostore_sdk.models.analysis_query_value import AnalysisQueryValue
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,10 +30,10 @@ class AnalysisQueryDesign(BaseModel):
     """
     AnalysisQueryDesign
     """ # noqa: E501
-    allocation: Optional[AnalysisQueryText] = None
-    assignment_structure: Optional[AnalysisQueryText] = None
-    blinding: Optional[AnalysisQueryText] = None
-    arm_kind: Optional[AnalysisQueryText] = None
+    allocation: Optional[AnalysisQueryValue] = None
+    assignment_structure: Optional[AnalysisQueryValue] = None
+    blinding: Optional[AnalysisQueryValue] = None
+    arm_kind: Optional[AnalysisQueryValue] = None
     longitudinal: Optional[AnalysisQueryBoolean] = None
     __properties: ClassVar[List[str]] = ["allocation", "assignment_structure", "blinding", "arm_kind", "longitudinal"]
 
@@ -102,10 +102,10 @@ class AnalysisQueryDesign(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "allocation": AnalysisQueryText.from_dict(obj["allocation"]) if obj.get("allocation") is not None else None,
-            "assignment_structure": AnalysisQueryText.from_dict(obj["assignment_structure"]) if obj.get("assignment_structure") is not None else None,
-            "blinding": AnalysisQueryText.from_dict(obj["blinding"]) if obj.get("blinding") is not None else None,
-            "arm_kind": AnalysisQueryText.from_dict(obj["arm_kind"]) if obj.get("arm_kind") is not None else None,
+            "allocation": AnalysisQueryValue.from_dict(obj["allocation"]) if obj.get("allocation") is not None else None,
+            "assignment_structure": AnalysisQueryValue.from_dict(obj["assignment_structure"]) if obj.get("assignment_structure") is not None else None,
+            "blinding": AnalysisQueryValue.from_dict(obj["blinding"]) if obj.get("blinding") is not None else None,
+            "arm_kind": AnalysisQueryValue.from_dict(obj["arm_kind"]) if obj.get("arm_kind") is not None else None,
             "longitudinal": AnalysisQueryBoolean.from_dict(obj["longitudinal"]) if obj.get("longitudinal") is not None else None
         })
         return _obj

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allocation** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**assignment_structure** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**blinding** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
-**arm_kind** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
+**allocation** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
+**assignment_structure** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
+**blinding** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
+**arm_kind** | [**AnalysisQueryValue**](AnalysisQueryValue.md) |  | [optional] 
 **longitudinal** | [**AnalysisQueryBoolean**](AnalysisQueryBoolean.md) |  | [optional] 
 
 ## Example

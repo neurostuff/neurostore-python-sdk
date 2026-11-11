@@ -16,44 +16,65 @@
 __all__ = [
     "AnalysisBase",
     "AnalysisCommon",
+    "AnalysisFeatures",
+    "AnalysisFeaturesAcquisitions",
+    "AnalysisFeaturesContrast",
+    "AnalysisFeaturesContrastKey",
+    "AnalysisFeaturesContrastPositive",
+    "AnalysisFeaturesCoordinateSets",
+    "AnalysisFeaturesDesign",
+    "AnalysisFeaturesDetails",
+    "AnalysisFeaturesEffect",
+    "AnalysisFeaturesEffectStatistic",
+    "AnalysisFeaturesGroups",
+    "AnalysisFeaturesInferenceSettings",
+    "AnalysisFeaturesMedicalCondition",
+    "AnalysisFeaturesModelEstimation",
+    "AnalysisFeaturesModelEstimationTerms",
+    "AnalysisFeaturesPreprocessing",
+    "AnalysisFeaturesRegions",
+    "AnalysisFeaturesTask",
+    "AnalysisFeaturesTasks",
     "AnalysisList",
     "AnalysisQuery",
-    "AnalysisQueryAcquisition",
+    "AnalysisQueryAcquisitions",
     "AnalysisQueryBoolean",
     "AnalysisQueryBooleanOneOf",
-    "AnalysisQueryConnectivity",
     "AnalysisQueryContrast",
     "AnalysisQueryContrastSide",
     "AnalysisQueryContrastSideOneOf",
-    "AnalysisQueryCoordinates",
+    "AnalysisQueryCoordinateSets",
     "AnalysisQueryDesign",
+    "AnalysisQueryDetails",
+    "AnalysisQueryEffect",
+    "AnalysisQueryEffectStatistic",
+    "AnalysisQueryGroups",
     "AnalysisQueryIds",
-    "AnalysisQueryInference",
+    "AnalysisQueryInferenceSettings",
     "AnalysisQueryMedicalCondition",
     "AnalysisQueryMedicalConditionOneOf",
     "AnalysisQueryMedicalConditionOneOfRole",
-    "AnalysisQueryModel",
+    "AnalysisQueryModelEstimation",
+    "AnalysisQueryModelEstimationTerms",
     "AnalysisQueryNormalized",
     "AnalysisQueryNormalizedIds",
     "AnalysisQueryNormalizedIdsOneOf",
     "AnalysisQueryNormalizedOneOf",
     "AnalysisQueryPreprocessing",
     "AnalysisQueryRange",
-    "AnalysisQueryRegion",
+    "AnalysisQueryRegions",
     "AnalysisQueryRequest",
     "AnalysisQueryResult",
     "AnalysisQueryResultFunnelInner",
     "AnalysisQueryResultMetadata",
     "AnalysisQueryResultResultsInner",
     "AnalysisQueryResultResultsInnerAnalysesInner",
-    "AnalysisQueryResultResultsInnerAnalysesInnerFeatures",
     "AnalysisQueryResultSearched",
-    "AnalysisQuerySample",
-    "AnalysisQueryStatistic",
     "AnalysisQueryStrings",
-    "AnalysisQueryTaskDetails",
+    "AnalysisQueryTasks",
     "AnalysisQueryTerms",
     "AnalysisQueryText",
+    "AnalysisQueryValue",
     "AnalysisQueryValues",
     "AnalysisQueryWhenSilent",
     "AnalysisRequest",
@@ -239,44 +260,65 @@ if _typing.TYPE_CHECKING:
     # import models into model package
     from neurostore_sdk.models.analysis_base import AnalysisBase
     from neurostore_sdk.models.analysis_common import AnalysisCommon
+    from neurostore_sdk.models.analysis_features import AnalysisFeatures
+    from neurostore_sdk.models.analysis_features_acquisitions import AnalysisFeaturesAcquisitions
+    from neurostore_sdk.models.analysis_features_contrast import AnalysisFeaturesContrast
+    from neurostore_sdk.models.analysis_features_contrast_key import AnalysisFeaturesContrastKey
+    from neurostore_sdk.models.analysis_features_contrast_positive import AnalysisFeaturesContrastPositive
+    from neurostore_sdk.models.analysis_features_coordinate_sets import AnalysisFeaturesCoordinateSets
+    from neurostore_sdk.models.analysis_features_design import AnalysisFeaturesDesign
+    from neurostore_sdk.models.analysis_features_details import AnalysisFeaturesDetails
+    from neurostore_sdk.models.analysis_features_effect import AnalysisFeaturesEffect
+    from neurostore_sdk.models.analysis_features_effect_statistic import AnalysisFeaturesEffectStatistic
+    from neurostore_sdk.models.analysis_features_groups import AnalysisFeaturesGroups
+    from neurostore_sdk.models.analysis_features_inference_settings import AnalysisFeaturesInferenceSettings
+    from neurostore_sdk.models.analysis_features_medical_condition import AnalysisFeaturesMedicalCondition
+    from neurostore_sdk.models.analysis_features_model_estimation import AnalysisFeaturesModelEstimation
+    from neurostore_sdk.models.analysis_features_model_estimation_terms import AnalysisFeaturesModelEstimationTerms
+    from neurostore_sdk.models.analysis_features_preprocessing import AnalysisFeaturesPreprocessing
+    from neurostore_sdk.models.analysis_features_regions import AnalysisFeaturesRegions
+    from neurostore_sdk.models.analysis_features_task import AnalysisFeaturesTask
+    from neurostore_sdk.models.analysis_features_tasks import AnalysisFeaturesTasks
     from neurostore_sdk.models.analysis_list import AnalysisList
     from neurostore_sdk.models.analysis_query import AnalysisQuery
-    from neurostore_sdk.models.analysis_query_acquisition import AnalysisQueryAcquisition
+    from neurostore_sdk.models.analysis_query_acquisitions import AnalysisQueryAcquisitions
     from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
     from neurostore_sdk.models.analysis_query_boolean_one_of import AnalysisQueryBooleanOneOf
-    from neurostore_sdk.models.analysis_query_connectivity import AnalysisQueryConnectivity
     from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
     from neurostore_sdk.models.analysis_query_contrast_side import AnalysisQueryContrastSide
     from neurostore_sdk.models.analysis_query_contrast_side_one_of import AnalysisQueryContrastSideOneOf
-    from neurostore_sdk.models.analysis_query_coordinates import AnalysisQueryCoordinates
+    from neurostore_sdk.models.analysis_query_coordinate_sets import AnalysisQueryCoordinateSets
     from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
+    from neurostore_sdk.models.analysis_query_details import AnalysisQueryDetails
+    from neurostore_sdk.models.analysis_query_effect import AnalysisQueryEffect
+    from neurostore_sdk.models.analysis_query_effect_statistic import AnalysisQueryEffectStatistic
+    from neurostore_sdk.models.analysis_query_groups import AnalysisQueryGroups
     from neurostore_sdk.models.analysis_query_ids import AnalysisQueryIds
-    from neurostore_sdk.models.analysis_query_inference import AnalysisQueryInference
+    from neurostore_sdk.models.analysis_query_inference_settings import AnalysisQueryInferenceSettings
     from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition
     from neurostore_sdk.models.analysis_query_medical_condition_one_of import AnalysisQueryMedicalConditionOneOf
     from neurostore_sdk.models.analysis_query_medical_condition_one_of_role import AnalysisQueryMedicalConditionOneOfRole
-    from neurostore_sdk.models.analysis_query_model import AnalysisQueryModel
+    from neurostore_sdk.models.analysis_query_model_estimation import AnalysisQueryModelEstimation
+    from neurostore_sdk.models.analysis_query_model_estimation_terms import AnalysisQueryModelEstimationTerms
     from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized
     from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds
     from neurostore_sdk.models.analysis_query_normalized_ids_one_of import AnalysisQueryNormalizedIdsOneOf
     from neurostore_sdk.models.analysis_query_normalized_one_of import AnalysisQueryNormalizedOneOf
     from neurostore_sdk.models.analysis_query_preprocessing import AnalysisQueryPreprocessing
     from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
-    from neurostore_sdk.models.analysis_query_region import AnalysisQueryRegion
+    from neurostore_sdk.models.analysis_query_regions import AnalysisQueryRegions
     from neurostore_sdk.models.analysis_query_request import AnalysisQueryRequest
     from neurostore_sdk.models.analysis_query_result import AnalysisQueryResult
     from neurostore_sdk.models.analysis_query_result_funnel_inner import AnalysisQueryResultFunnelInner
     from neurostore_sdk.models.analysis_query_result_metadata import AnalysisQueryResultMetadata
     from neurostore_sdk.models.analysis_query_result_results_inner import AnalysisQueryResultResultsInner
     from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner import AnalysisQueryResultResultsInnerAnalysesInner
-    from neurostore_sdk.models.analysis_query_result_results_inner_analyses_inner_features import AnalysisQueryResultResultsInnerAnalysesInnerFeatures
     from neurostore_sdk.models.analysis_query_result_searched import AnalysisQueryResultSearched
-    from neurostore_sdk.models.analysis_query_sample import AnalysisQuerySample
-    from neurostore_sdk.models.analysis_query_statistic import AnalysisQueryStatistic
     from neurostore_sdk.models.analysis_query_strings import AnalysisQueryStrings
-    from neurostore_sdk.models.analysis_query_task_details import AnalysisQueryTaskDetails
+    from neurostore_sdk.models.analysis_query_tasks import AnalysisQueryTasks
     from neurostore_sdk.models.analysis_query_terms import AnalysisQueryTerms
     from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+    from neurostore_sdk.models.analysis_query_value import AnalysisQueryValue
     from neurostore_sdk.models.analysis_query_values import AnalysisQueryValues
     from neurostore_sdk.models.analysis_query_when_silent import AnalysisQueryWhenSilent
     from neurostore_sdk.models.analysis_request import AnalysisRequest
@@ -461,44 +503,65 @@ else:
     _exports = {
         "AnalysisBase": ".analysis_base",
         "AnalysisCommon": ".analysis_common",
+        "AnalysisFeatures": ".analysis_features",
+        "AnalysisFeaturesAcquisitions": ".analysis_features_acquisitions",
+        "AnalysisFeaturesContrast": ".analysis_features_contrast",
+        "AnalysisFeaturesContrastKey": ".analysis_features_contrast_key",
+        "AnalysisFeaturesContrastPositive": ".analysis_features_contrast_positive",
+        "AnalysisFeaturesCoordinateSets": ".analysis_features_coordinate_sets",
+        "AnalysisFeaturesDesign": ".analysis_features_design",
+        "AnalysisFeaturesDetails": ".analysis_features_details",
+        "AnalysisFeaturesEffect": ".analysis_features_effect",
+        "AnalysisFeaturesEffectStatistic": ".analysis_features_effect_statistic",
+        "AnalysisFeaturesGroups": ".analysis_features_groups",
+        "AnalysisFeaturesInferenceSettings": ".analysis_features_inference_settings",
+        "AnalysisFeaturesMedicalCondition": ".analysis_features_medical_condition",
+        "AnalysisFeaturesModelEstimation": ".analysis_features_model_estimation",
+        "AnalysisFeaturesModelEstimationTerms": ".analysis_features_model_estimation_terms",
+        "AnalysisFeaturesPreprocessing": ".analysis_features_preprocessing",
+        "AnalysisFeaturesRegions": ".analysis_features_regions",
+        "AnalysisFeaturesTask": ".analysis_features_task",
+        "AnalysisFeaturesTasks": ".analysis_features_tasks",
         "AnalysisList": ".analysis_list",
         "AnalysisQuery": ".analysis_query",
-        "AnalysisQueryAcquisition": ".analysis_query_acquisition",
+        "AnalysisQueryAcquisitions": ".analysis_query_acquisitions",
         "AnalysisQueryBoolean": ".analysis_query_boolean",
         "AnalysisQueryBooleanOneOf": ".analysis_query_boolean_one_of",
-        "AnalysisQueryConnectivity": ".analysis_query_connectivity",
         "AnalysisQueryContrast": ".analysis_query_contrast",
         "AnalysisQueryContrastSide": ".analysis_query_contrast_side",
         "AnalysisQueryContrastSideOneOf": ".analysis_query_contrast_side_one_of",
-        "AnalysisQueryCoordinates": ".analysis_query_coordinates",
+        "AnalysisQueryCoordinateSets": ".analysis_query_coordinate_sets",
         "AnalysisQueryDesign": ".analysis_query_design",
+        "AnalysisQueryDetails": ".analysis_query_details",
+        "AnalysisQueryEffect": ".analysis_query_effect",
+        "AnalysisQueryEffectStatistic": ".analysis_query_effect_statistic",
+        "AnalysisQueryGroups": ".analysis_query_groups",
         "AnalysisQueryIds": ".analysis_query_ids",
-        "AnalysisQueryInference": ".analysis_query_inference",
+        "AnalysisQueryInferenceSettings": ".analysis_query_inference_settings",
         "AnalysisQueryMedicalCondition": ".analysis_query_medical_condition",
         "AnalysisQueryMedicalConditionOneOf": ".analysis_query_medical_condition_one_of",
         "AnalysisQueryMedicalConditionOneOfRole": ".analysis_query_medical_condition_one_of_role",
-        "AnalysisQueryModel": ".analysis_query_model",
+        "AnalysisQueryModelEstimation": ".analysis_query_model_estimation",
+        "AnalysisQueryModelEstimationTerms": ".analysis_query_model_estimation_terms",
         "AnalysisQueryNormalized": ".analysis_query_normalized",
         "AnalysisQueryNormalizedIds": ".analysis_query_normalized_ids",
         "AnalysisQueryNormalizedIdsOneOf": ".analysis_query_normalized_ids_one_of",
         "AnalysisQueryNormalizedOneOf": ".analysis_query_normalized_one_of",
         "AnalysisQueryPreprocessing": ".analysis_query_preprocessing",
         "AnalysisQueryRange": ".analysis_query_range",
-        "AnalysisQueryRegion": ".analysis_query_region",
+        "AnalysisQueryRegions": ".analysis_query_regions",
         "AnalysisQueryRequest": ".analysis_query_request",
         "AnalysisQueryResult": ".analysis_query_result",
         "AnalysisQueryResultFunnelInner": ".analysis_query_result_funnel_inner",
         "AnalysisQueryResultMetadata": ".analysis_query_result_metadata",
         "AnalysisQueryResultResultsInner": ".analysis_query_result_results_inner",
         "AnalysisQueryResultResultsInnerAnalysesInner": ".analysis_query_result_results_inner_analyses_inner",
-        "AnalysisQueryResultResultsInnerAnalysesInnerFeatures": ".analysis_query_result_results_inner_analyses_inner_features",
         "AnalysisQueryResultSearched": ".analysis_query_result_searched",
-        "AnalysisQuerySample": ".analysis_query_sample",
-        "AnalysisQueryStatistic": ".analysis_query_statistic",
         "AnalysisQueryStrings": ".analysis_query_strings",
-        "AnalysisQueryTaskDetails": ".analysis_query_task_details",
+        "AnalysisQueryTasks": ".analysis_query_tasks",
         "AnalysisQueryTerms": ".analysis_query_terms",
         "AnalysisQueryText": ".analysis_query_text",
+        "AnalysisQueryValue": ".analysis_query_value",
         "AnalysisQueryValues": ".analysis_query_values",
         "AnalysisQueryWhenSilent": ".analysis_query_when_silent",
         "AnalysisRequest": ".analysis_request",

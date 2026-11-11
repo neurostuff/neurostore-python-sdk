@@ -21,23 +21,24 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from neurostore_sdk.models.analysis_query_acquisition import AnalysisQueryAcquisition
+from neurostore_sdk.models.analysis_query_acquisitions import AnalysisQueryAcquisitions
 from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
-from neurostore_sdk.models.analysis_query_connectivity import AnalysisQueryConnectivity
 from neurostore_sdk.models.analysis_query_contrast import AnalysisQueryContrast
-from neurostore_sdk.models.analysis_query_coordinates import AnalysisQueryCoordinates
+from neurostore_sdk.models.analysis_query_coordinate_sets import AnalysisQueryCoordinateSets
 from neurostore_sdk.models.analysis_query_design import AnalysisQueryDesign
-from neurostore_sdk.models.analysis_query_inference import AnalysisQueryInference
+from neurostore_sdk.models.analysis_query_details import AnalysisQueryDetails
+from neurostore_sdk.models.analysis_query_effect import AnalysisQueryEffect
+from neurostore_sdk.models.analysis_query_groups import AnalysisQueryGroups
+from neurostore_sdk.models.analysis_query_inference_settings import AnalysisQueryInferenceSettings
 from neurostore_sdk.models.analysis_query_medical_condition import AnalysisQueryMedicalCondition
-from neurostore_sdk.models.analysis_query_model import AnalysisQueryModel
+from neurostore_sdk.models.analysis_query_model_estimation import AnalysisQueryModelEstimation
 from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized
 from neurostore_sdk.models.analysis_query_preprocessing import AnalysisQueryPreprocessing
 from neurostore_sdk.models.analysis_query_range import AnalysisQueryRange
-from neurostore_sdk.models.analysis_query_region import AnalysisQueryRegion
-from neurostore_sdk.models.analysis_query_sample import AnalysisQuerySample
-from neurostore_sdk.models.analysis_query_statistic import AnalysisQueryStatistic
-from neurostore_sdk.models.analysis_query_task_details import AnalysisQueryTaskDetails
+from neurostore_sdk.models.analysis_query_regions import AnalysisQueryRegions
+from neurostore_sdk.models.analysis_query_tasks import AnalysisQueryTasks
 from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+from neurostore_sdk.models.analysis_query_value import AnalysisQueryValue
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -50,31 +51,31 @@ class AnalysisQuery(BaseModel):
     medical_condition: Optional[AnalysisQueryMedicalCondition] = None
     has_patients: Optional[AnalysisQueryBoolean] = None
     has_healthy: Optional[AnalysisQueryBoolean] = None
-    species: Optional[AnalysisQueryText] = None
+    species: Optional[AnalysisQueryValue] = None
     task: Optional[AnalysisQueryNormalized] = None
-    spatial_scope: Optional[AnalysisQueryText] = None
+    spatial_scope: Optional[AnalysisQueryValue] = None
     coordinate_space: Optional[AnalysisQueryText] = None
-    measure_type: Optional[AnalysisQueryText] = None
-    measure_family: Optional[AnalysisQueryText] = None
-    details_type: Optional[AnalysisQueryText] = None
+    measure_type: Optional[AnalysisQueryValue] = None
+    measure_family: Optional[AnalysisQueryValue] = None
+    details_type: Optional[AnalysisQueryValue] = None
     is_meta_analysis: Optional[AnalysisQueryBoolean] = None
     n: Optional[AnalysisQueryRange] = None
     has_coordinates: Optional[AnalysisQueryBoolean] = None
-    role: Optional[AnalysisQueryText] = None
+    role: Optional[AnalysisQueryValue] = None
     contrast: Optional[AnalysisQueryContrast] = None
     design: Optional[AnalysisQueryDesign] = None
-    sample: Optional[AnalysisQuerySample] = None
-    inference: Optional[AnalysisQueryInference] = None
-    acquisition: Optional[AnalysisQueryAcquisition] = None
+    acquisitions: Optional[AnalysisQueryAcquisitions] = None
+    coordinate_sets: Optional[AnalysisQueryCoordinateSets] = None
+    details: Optional[AnalysisQueryDetails] = None
+    effect: Optional[AnalysisQueryEffect] = None
+    groups: Optional[AnalysisQueryGroups] = None
+    inference_settings: Optional[AnalysisQueryInferenceSettings] = None
+    model_estimation: Optional[AnalysisQueryModelEstimation] = None
     preprocessing: Optional[AnalysisQueryPreprocessing] = None
-    model: Optional[AnalysisQueryModel] = None
-    statistic: Optional[AnalysisQueryStatistic] = None
-    connectivity: Optional[AnalysisQueryConnectivity] = None
-    region: Optional[AnalysisQueryRegion] = None
-    coordinates: Optional[AnalysisQueryCoordinates] = None
-    task_details: Optional[AnalysisQueryTaskDetails] = None
+    regions: Optional[AnalysisQueryRegions] = None
+    tasks: Optional[AnalysisQueryTasks] = None
     var_or: Optional[Annotated[List[Dict[str, Any]], Field(min_length=2)]] = Field(default=None, description="Sub-queries, any of which may match; each takes this object's criteria. (Not a $ref to this schema, which resolvers that inline references cannot expand.) ", alias="or")
-    __properties: ClassVar[List[str]] = ["name", "medical_condition", "has_patients", "has_healthy", "species", "task", "spatial_scope", "coordinate_space", "measure_type", "measure_family", "details_type", "is_meta_analysis", "n", "has_coordinates", "role", "contrast", "design", "sample", "inference", "acquisition", "preprocessing", "model", "statistic", "connectivity", "region", "coordinates", "task_details", "or"]
+    __properties: ClassVar[List[str]] = ["name", "medical_condition", "has_patients", "has_healthy", "species", "task", "spatial_scope", "coordinate_space", "measure_type", "measure_family", "details_type", "is_meta_analysis", "n", "has_coordinates", "role", "contrast", "design", "acquisitions", "coordinate_sets", "details", "effect", "groups", "inference_settings", "model_estimation", "preprocessing", "regions", "tasks", "or"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -165,36 +166,36 @@ class AnalysisQuery(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of design
         if self.design is not None:
             _dict['design'] = self.design.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of sample
-        if self.sample is not None:
-            _dict['sample'] = self.sample.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of inference
-        if self.inference is not None:
-            _dict['inference'] = self.inference.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of acquisition
-        if self.acquisition is not None:
-            _dict['acquisition'] = self.acquisition.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of acquisitions
+        if self.acquisitions is not None:
+            _dict['acquisitions'] = self.acquisitions.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of coordinate_sets
+        if self.coordinate_sets is not None:
+            _dict['coordinate_sets'] = self.coordinate_sets.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of details
+        if self.details is not None:
+            _dict['details'] = self.details.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of effect
+        if self.effect is not None:
+            _dict['effect'] = self.effect.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of groups
+        if self.groups is not None:
+            _dict['groups'] = self.groups.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of inference_settings
+        if self.inference_settings is not None:
+            _dict['inference_settings'] = self.inference_settings.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of model_estimation
+        if self.model_estimation is not None:
+            _dict['model_estimation'] = self.model_estimation.to_dict()
         # override the default output from pydantic by calling `to_dict()` of preprocessing
         if self.preprocessing is not None:
             _dict['preprocessing'] = self.preprocessing.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of model
-        if self.model is not None:
-            _dict['model'] = self.model.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of statistic
-        if self.statistic is not None:
-            _dict['statistic'] = self.statistic.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of connectivity
-        if self.connectivity is not None:
-            _dict['connectivity'] = self.connectivity.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of region
-        if self.region is not None:
-            _dict['region'] = self.region.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of coordinates
-        if self.coordinates is not None:
-            _dict['coordinates'] = self.coordinates.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of task_details
-        if self.task_details is not None:
-            _dict['task_details'] = self.task_details.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of regions
+        if self.regions is not None:
+            _dict['regions'] = self.regions.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tasks
+        if self.tasks is not None:
+            _dict['tasks'] = self.tasks.to_dict()
         return _dict
 
     @classmethod
@@ -211,29 +212,29 @@ class AnalysisQuery(BaseModel):
             "medical_condition": AnalysisQueryMedicalCondition.from_dict(obj["medical_condition"]) if obj.get("medical_condition") is not None else None,
             "has_patients": AnalysisQueryBoolean.from_dict(obj["has_patients"]) if obj.get("has_patients") is not None else None,
             "has_healthy": AnalysisQueryBoolean.from_dict(obj["has_healthy"]) if obj.get("has_healthy") is not None else None,
-            "species": AnalysisQueryText.from_dict(obj["species"]) if obj.get("species") is not None else None,
+            "species": AnalysisQueryValue.from_dict(obj["species"]) if obj.get("species") is not None else None,
             "task": AnalysisQueryNormalized.from_dict(obj["task"]) if obj.get("task") is not None else None,
-            "spatial_scope": AnalysisQueryText.from_dict(obj["spatial_scope"]) if obj.get("spatial_scope") is not None else None,
+            "spatial_scope": AnalysisQueryValue.from_dict(obj["spatial_scope"]) if obj.get("spatial_scope") is not None else None,
             "coordinate_space": AnalysisQueryText.from_dict(obj["coordinate_space"]) if obj.get("coordinate_space") is not None else None,
-            "measure_type": AnalysisQueryText.from_dict(obj["measure_type"]) if obj.get("measure_type") is not None else None,
-            "measure_family": AnalysisQueryText.from_dict(obj["measure_family"]) if obj.get("measure_family") is not None else None,
-            "details_type": AnalysisQueryText.from_dict(obj["details_type"]) if obj.get("details_type") is not None else None,
+            "measure_type": AnalysisQueryValue.from_dict(obj["measure_type"]) if obj.get("measure_type") is not None else None,
+            "measure_family": AnalysisQueryValue.from_dict(obj["measure_family"]) if obj.get("measure_family") is not None else None,
+            "details_type": AnalysisQueryValue.from_dict(obj["details_type"]) if obj.get("details_type") is not None else None,
             "is_meta_analysis": AnalysisQueryBoolean.from_dict(obj["is_meta_analysis"]) if obj.get("is_meta_analysis") is not None else None,
             "n": AnalysisQueryRange.from_dict(obj["n"]) if obj.get("n") is not None else None,
             "has_coordinates": AnalysisQueryBoolean.from_dict(obj["has_coordinates"]) if obj.get("has_coordinates") is not None else None,
-            "role": AnalysisQueryText.from_dict(obj["role"]) if obj.get("role") is not None else None,
+            "role": AnalysisQueryValue.from_dict(obj["role"]) if obj.get("role") is not None else None,
             "contrast": AnalysisQueryContrast.from_dict(obj["contrast"]) if obj.get("contrast") is not None else None,
             "design": AnalysisQueryDesign.from_dict(obj["design"]) if obj.get("design") is not None else None,
-            "sample": AnalysisQuerySample.from_dict(obj["sample"]) if obj.get("sample") is not None else None,
-            "inference": AnalysisQueryInference.from_dict(obj["inference"]) if obj.get("inference") is not None else None,
-            "acquisition": AnalysisQueryAcquisition.from_dict(obj["acquisition"]) if obj.get("acquisition") is not None else None,
+            "acquisitions": AnalysisQueryAcquisitions.from_dict(obj["acquisitions"]) if obj.get("acquisitions") is not None else None,
+            "coordinate_sets": AnalysisQueryCoordinateSets.from_dict(obj["coordinate_sets"]) if obj.get("coordinate_sets") is not None else None,
+            "details": AnalysisQueryDetails.from_dict(obj["details"]) if obj.get("details") is not None else None,
+            "effect": AnalysisQueryEffect.from_dict(obj["effect"]) if obj.get("effect") is not None else None,
+            "groups": AnalysisQueryGroups.from_dict(obj["groups"]) if obj.get("groups") is not None else None,
+            "inference_settings": AnalysisQueryInferenceSettings.from_dict(obj["inference_settings"]) if obj.get("inference_settings") is not None else None,
+            "model_estimation": AnalysisQueryModelEstimation.from_dict(obj["model_estimation"]) if obj.get("model_estimation") is not None else None,
             "preprocessing": AnalysisQueryPreprocessing.from_dict(obj["preprocessing"]) if obj.get("preprocessing") is not None else None,
-            "model": AnalysisQueryModel.from_dict(obj["model"]) if obj.get("model") is not None else None,
-            "statistic": AnalysisQueryStatistic.from_dict(obj["statistic"]) if obj.get("statistic") is not None else None,
-            "connectivity": AnalysisQueryConnectivity.from_dict(obj["connectivity"]) if obj.get("connectivity") is not None else None,
-            "region": AnalysisQueryRegion.from_dict(obj["region"]) if obj.get("region") is not None else None,
-            "coordinates": AnalysisQueryCoordinates.from_dict(obj["coordinates"]) if obj.get("coordinates") is not None else None,
-            "task_details": AnalysisQueryTaskDetails.from_dict(obj["task_details"]) if obj.get("task_details") is not None else None,
+            "regions": AnalysisQueryRegions.from_dict(obj["regions"]) if obj.get("regions") is not None else None,
+            "tasks": AnalysisQueryTasks.from_dict(obj["tasks"]) if obj.get("tasks") is not None else None,
             "or": obj.get("or")
         })
         return _obj
