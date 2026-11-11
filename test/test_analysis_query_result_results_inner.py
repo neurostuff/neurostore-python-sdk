@@ -45,7 +45,262 @@ class TestAnalysisQueryResultResultsInner(unittest.TestCase):
                         matched_by = {
                             'id' : 'id'
                             }, 
-                        features = { }, )
+                        config_id = '', 
+                        updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        features = neurostore_sdk.models.analysis_features.AnalysisFeatures(
+                            medical_condition = neurostore_sdk.models.analysis_features_medical_condition.AnalysisFeaturesMedicalCondition(
+                                ids = [
+                                    ''
+                                    ], 
+                                role_ids = [
+                                    ''
+                                    ], 
+                                text = [
+                                    ''
+                                    ], ), 
+                            has_patients = True, 
+                            has_healthy = True, 
+                            species = [
+                                ''
+                                ], 
+                            task = neurostore_sdk.models.analysis_features_task.AnalysisFeaturesTask(
+                                ids = [
+                                    ''
+                                    ], 
+                                family_ids = [
+                                    ''
+                                    ], 
+                                text = [
+                                    ''
+                                    ], ), 
+                            spatial_scope = '', 
+                            coordinate_space = '', 
+                            measure_type = '', 
+                            measure_family = '', 
+                            details_type = '', 
+                            is_meta_analysis = True, 
+                            n = 56, 
+                            has_coordinates = True, 
+                            role = '', 
+                            contrast = neurostore_sdk.models.analysis_features_contrast.AnalysisFeaturesContrast(
+                                key = neurostore_sdk.models.analysis_features_contrast_key.AnalysisFeaturesContrastKey(
+                                    ids = [
+                                        ''
+                                        ], ), 
+                                set = neurostore_sdk.models.analysis_features_contrast_key.AnalysisFeaturesContrastKey(
+                                    ids = [
+                                        ''
+                                        ], ), 
+                                kind = '', 
+                                groups = 'between', 
+                                positive = neurostore_sdk.models.analysis_features_contrast_positive.AnalysisFeaturesContrastPositive(
+                                    name = [
+                                        ''
+                                        ], 
+                                    has_patients = True, 
+                                    has_healthy = True, 
+                                    medical_condition = neurostore_sdk.models.analysis_features_contrast_key.AnalysisFeaturesContrastKey(
+                                        ids = [
+                                            ''
+                                            ], ), 
+                                    timepoint = [
+                                        ''
+                                        ], 
+                                    arm_kind = [
+                                        ''
+                                        ], 
+                                    facet = [
+                                        ''
+                                        ], ), 
+                                negative = neurostore_sdk.models.analysis_features_contrast_positive.AnalysisFeaturesContrastPositive(
+                                    name = [
+                                        ''
+                                        ], 
+                                    has_patients = True, 
+                                    has_healthy = True, 
+                                    medical_condition = neurostore_sdk.models.analysis_features_contrast_key.AnalysisFeaturesContrastKey(
+                                        ids = [
+                                            ''
+                                            ], ), 
+                                    timepoint = [
+                                        ''
+                                        ], 
+                                    arm_kind = [
+                                        ''
+                                        ], 
+                                    facet = [
+                                        ''
+                                        ], ), ), 
+                            design = neurostore_sdk.models.analysis_features_design.AnalysisFeaturesDesign(
+                                allocation = '', 
+                                assignment_structure = '', 
+                                blinding = '', 
+                                arm_kind = [
+                                    ''
+                                    ], 
+                                longitudinal = True, ), 
+                            groups = neurostore_sdk.models.analysis_features_groups.AnalysisFeaturesGroups(
+                                age_mean = [
+                                    1.337
+                                    ], 
+                                age_standard_deviation = [
+                                    1.337
+                                    ], 
+                                age_minimum = [
+                                    1.337
+                                    ], 
+                                age_maximum = [
+                                    1.337
+                                    ], 
+                                age_median = [
+                                    1.337
+                                    ], 
+                                female_count = 56, 
+                                male_count = 56, 
+                                female_percent = 1.337, 
+                                handedness = [
+                                    ''
+                                    ], 
+                                enrolled_count = 56, 
+                                acquired_count = 56, 
+                                excluded_count = 56, 
+                                diagnostic_instrument = [
+                                    ''
+                                    ], 
+                                diagnostic_system = [
+                                    ''
+                                    ], 
+                                clinical_characteristics = [
+                                    ''
+                                    ], 
+                                education_summary = [
+                                    ''
+                                    ], ), 
+                            inference_settings = neurostore_sdk.models.analysis_features_inference_settings.AnalysisFeaturesInferenceSettings(
+                                inference_level = [
+                                    ''
+                                    ], 
+                                height_threshold_value = 1.337, 
+                                height_threshold_type = [
+                                    ''
+                                    ], 
+                                cluster_extent_threshold = 56, 
+                                clusterwise_threshold_value = 1.337, 
+                                multiple_comparison_method = [
+                                    ''
+                                    ], 
+                                correction_scope = '', 
+                                alpha_level = 1.337, 
+                                tfce_used = True, 
+                                permutation_count = 56, ), 
+                            acquisitions = neurostore_sdk.models.analysis_features_acquisitions.AnalysisFeaturesAcquisitions(
+                                modality = [
+                                    ''
+                                    ], 
+                                magnetic_field_strength_tesla = [
+                                    1.337
+                                    ], 
+                                repetition_time_seconds = [
+                                    1.337
+                                    ], 
+                                echo_time_seconds = [
+                                    1.337
+                                    ], 
+                                acquisition_voxel_size_mm = [
+                                    1.337
+                                    ], 
+                                device = [
+                                    ''
+                                    ], ), 
+                            preprocessing = neurostore_sdk.models.analysis_features_preprocessing.AnalysisFeaturesPreprocessing(
+                                smoothing_fwhm_mm = [
+                                    1.337
+                                    ], 
+                                software = [
+                                    ''
+                                    ], 
+                                steps = [
+                                    ''
+                                    ], ), 
+                            model_estimation = neurostore_sdk.models.analysis_features_model_estimation.AnalysisFeaturesModelEstimation(
+                                model_family = [
+                                    ''
+                                    ], 
+                                model_type = [
+                                    ''
+                                    ], 
+                                software = [
+                                    ''
+                                    ], 
+                                hrf_model = [
+                                    ''
+                                    ], 
+                                estimator = [
+                                    ''
+                                    ], 
+                                terms = neurostore_sdk.models.analysis_features_model_estimation_terms.AnalysisFeaturesModelEstimationTerms(
+                                    name = [
+                                        ''
+                                        ], 
+                                    type = [
+                                        ''
+                                        ], ), ), 
+                            effect = neurostore_sdk.models.analysis_features_effect.AnalysisFeaturesEffect(
+                                statistic = neurostore_sdk.models.analysis_features_effect_statistic.AnalysisFeaturesEffectStatistic(
+                                    family = '', 
+                                    degrees_of_freedom_numerator = 1.337, 
+                                    degrees_of_freedom_denominator = 1.337, ), ), 
+                            details = neurostore_sdk.models.analysis_features_details.AnalysisFeaturesDetails(
+                                connectivity_method = '', 
+                                inference_target = '', 
+                                seed_regions = [
+                                    ''
+                                    ], 
+                                target_regions = [
+                                    ''
+                                    ], ), 
+                            regions = neurostore_sdk.models.analysis_features_regions.AnalysisFeaturesRegions(
+                                name = [
+                                    ''
+                                    ], 
+                                atlas = [
+                                    ''
+                                    ], 
+                                region_type = [
+                                    ''
+                                    ], 
+                                definition_method = [
+                                    ''
+                                    ], ), 
+                            coordinate_sets = neurostore_sdk.models.analysis_features_coordinate_sets.AnalysisFeaturesCoordinateSets(
+                                role = [
+                                    ''
+                                    ], 
+                                result_kind = [
+                                    ''
+                                    ], 
+                                anchor_kind = [
+                                    ''
+                                    ], ), 
+                            tasks = neurostore_sdk.models.analysis_features_tasks.AnalysisFeaturesTasks(
+                                stimuli = [
+                                    ''
+                                    ], 
+                                stimulus_modality = [
+                                    ''
+                                    ], 
+                                response_modality = [
+                                    ''
+                                    ], 
+                                design_type = [
+                                    ''
+                                    ], 
+                                instructions = [
+                                    ''
+                                    ], 
+                                performance_measures = [
+                                    ''
+                                    ], ), ), )
                     ]
             )
         else:

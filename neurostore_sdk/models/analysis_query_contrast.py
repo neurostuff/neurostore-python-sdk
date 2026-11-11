@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.analysis_query_contrast_side import AnalysisQueryContrastSide
 from neurostore_sdk.models.analysis_query_normalized_ids import AnalysisQueryNormalizedIds
 from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+from neurostore_sdk.models.analysis_query_value import AnalysisQueryValue
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -35,7 +36,7 @@ class AnalysisQueryContrast(BaseModel):
     negative: Optional[AnalysisQueryContrastSide] = None
     key: Optional[AnalysisQueryNormalizedIds] = None
     set: Optional[AnalysisQueryNormalizedIds] = None
-    kind: Optional[AnalysisQueryText] = None
+    kind: Optional[AnalysisQueryValue] = None
     groups: Optional[AnalysisQueryText] = None
     __properties: ClassVar[List[str]] = ["positive", "negative", "key", "set", "kind", "groups"]
 
@@ -111,7 +112,7 @@ class AnalysisQueryContrast(BaseModel):
             "negative": AnalysisQueryContrastSide.from_dict(obj["negative"]) if obj.get("negative") is not None else None,
             "key": AnalysisQueryNormalizedIds.from_dict(obj["key"]) if obj.get("key") is not None else None,
             "set": AnalysisQueryNormalizedIds.from_dict(obj["set"]) if obj.get("set") is not None else None,
-            "kind": AnalysisQueryText.from_dict(obj["kind"]) if obj.get("kind") is not None else None,
+            "kind": AnalysisQueryValue.from_dict(obj["kind"]) if obj.get("kind") is not None else None,
             "groups": AnalysisQueryText.from_dict(obj["groups"]) if obj.get("groups") is not None else None
         })
         return _obj

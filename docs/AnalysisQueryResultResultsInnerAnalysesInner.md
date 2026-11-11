@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **matched_by** | **Dict[str, str]** | How the analysis matched each normalized criterion, by its path (&#x60;medical_condition&#x60;, &#x60;or[0].task&#x60;): by id, by text, as unmapped or as silent (under &#x60;include&#x60;). Absent where a mapped analysis matched only through &#x60;none&#x60;.  | [optional] 
-**features** | [**AnalysisQueryResultResultsInnerAnalysesInnerFeatures**](AnalysisQueryResultResultsInnerAnalysesInnerFeatures.md) |  | [optional] 
+**config_id** | **str** | With &#x60;features&#x60;, the pipeline config of the record they were read from. | [optional] 
+**updated_at** | **datetime** | With &#x60;features&#x60;, when they were last written. Every re-ingest of the paper rewrites them, changed or not.  | [optional] 
+**features** | [**AnalysisFeatures**](AnalysisFeatures.md) |  | [optional] 
 
 ## Example
 

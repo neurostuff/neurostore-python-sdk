@@ -36,7 +36,7 @@ class TestAnalysisQueryPreprocessing(unittest.TestCase):
         model = AnalysisQueryPreprocessing()
         if include_optional:
             return AnalysisQueryPreprocessing(
-                smoothing_fwhm = neurostore_sdk.models.analysis_query_range.AnalysisQueryRange(
+                smoothing_fwhm_mm = neurostore_sdk.models.analysis_query_range.AnalysisQueryRange(
                     min = 1.337, 
                     max = 1.337, 
                     when_silent = 'exclude', ),

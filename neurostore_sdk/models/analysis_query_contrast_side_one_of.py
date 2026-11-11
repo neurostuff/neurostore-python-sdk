@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from neurostore_sdk.models.analysis_query_boolean import AnalysisQueryBoolean
 from neurostore_sdk.models.analysis_query_normalized import AnalysisQueryNormalized
 from neurostore_sdk.models.analysis_query_text import AnalysisQueryText
+from neurostore_sdk.models.analysis_query_value import AnalysisQueryValue
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -35,9 +36,9 @@ class AnalysisQueryContrastSideOneOf(BaseModel):
     has_patients: Optional[AnalysisQueryBoolean] = None
     has_healthy: Optional[AnalysisQueryBoolean] = None
     medical_condition: Optional[AnalysisQueryNormalized] = None
-    timepoint: Optional[AnalysisQueryText] = None
-    arm_kind: Optional[AnalysisQueryText] = None
-    facet: Optional[AnalysisQueryText] = None
+    timepoint: Optional[AnalysisQueryValue] = None
+    arm_kind: Optional[AnalysisQueryValue] = None
+    facet: Optional[AnalysisQueryValue] = None
     __properties: ClassVar[List[str]] = ["name", "has_patients", "has_healthy", "medical_condition", "timepoint", "arm_kind", "facet"]
 
     model_config = ConfigDict(
@@ -115,9 +116,9 @@ class AnalysisQueryContrastSideOneOf(BaseModel):
             "has_patients": AnalysisQueryBoolean.from_dict(obj["has_patients"]) if obj.get("has_patients") is not None else None,
             "has_healthy": AnalysisQueryBoolean.from_dict(obj["has_healthy"]) if obj.get("has_healthy") is not None else None,
             "medical_condition": AnalysisQueryNormalized.from_dict(obj["medical_condition"]) if obj.get("medical_condition") is not None else None,
-            "timepoint": AnalysisQueryText.from_dict(obj["timepoint"]) if obj.get("timepoint") is not None else None,
-            "arm_kind": AnalysisQueryText.from_dict(obj["arm_kind"]) if obj.get("arm_kind") is not None else None,
-            "facet": AnalysisQueryText.from_dict(obj["facet"]) if obj.get("facet") is not None else None
+            "timepoint": AnalysisQueryValue.from_dict(obj["timepoint"]) if obj.get("timepoint") is not None else None,
+            "arm_kind": AnalysisQueryValue.from_dict(obj["arm_kind"]) if obj.get("arm_kind") is not None else None,
+            "facet": AnalysisQueryValue.from_dict(obj["facet"]) if obj.get("facet") is not None else None
         })
         return _obj
 

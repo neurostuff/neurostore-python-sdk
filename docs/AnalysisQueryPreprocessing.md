@@ -1,12 +1,12 @@
 # AnalysisQueryPreprocessing
 
-The preprocessing of the analysis's model and of the models it takes inputs from. Smoothing FWHM in millimetres. 
+The preprocessing of the analysis's model and of the models it takes inputs from.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**smoothing_fwhm** | [**AnalysisQueryRange**](AnalysisQueryRange.md) |  | [optional] 
+**smoothing_fwhm_mm** | [**AnalysisQueryRange**](AnalysisQueryRange.md) |  | [optional] 
 **software** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 **steps** | [**AnalysisQueryText**](AnalysisQueryText.md) |  | [optional] 
 
