@@ -81,6 +81,7 @@ class TestBaseStudiesPost200Response(unittest.TestCase):
                     id = '', 
                     title = '', 
                     abbreviation = '', ),
+                fulltext_id = '',
                 has_coordinates = True,
                 has_images = True,
                 has_z_maps = True,

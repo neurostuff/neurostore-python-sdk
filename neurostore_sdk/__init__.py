@@ -146,6 +146,11 @@ __all__ = [
     "Entity",
     "ErrorDetail",
     "ErrorResponse",
+    "FulltextAttribution",
+    "FulltextList",
+    "FulltextReturn",
+    "FulltextSummary",
+    "FulltextWithheld",
     "ImageBase",
     "ImageCommon",
     "ImageDetail",
@@ -161,6 +166,7 @@ __all__ = [
     "JournalSummary",
     "JsonLd",
     "JsonLdContext",
+    "LicenseId",
     "Metadata",
     "NestedPutAttributes",
     "NeurostoreStudysetReleasesGet200Response",
@@ -405,6 +411,11 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.entity import Entity as Entity
     from neurostore_sdk.models.error_detail import ErrorDetail as ErrorDetail
     from neurostore_sdk.models.error_response import ErrorResponse as ErrorResponse
+    from neurostore_sdk.models.fulltext_attribution import FulltextAttribution as FulltextAttribution
+    from neurostore_sdk.models.fulltext_list import FulltextList as FulltextList
+    from neurostore_sdk.models.fulltext_return import FulltextReturn as FulltextReturn
+    from neurostore_sdk.models.fulltext_summary import FulltextSummary as FulltextSummary
+    from neurostore_sdk.models.fulltext_withheld import FulltextWithheld as FulltextWithheld
     from neurostore_sdk.models.image_base import ImageBase as ImageBase
     from neurostore_sdk.models.image_common import ImageCommon as ImageCommon
     from neurostore_sdk.models.image_detail import ImageDetail as ImageDetail
@@ -420,6 +431,7 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.journal_summary import JournalSummary as JournalSummary
     from neurostore_sdk.models.json_ld import JsonLd as JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
+    from neurostore_sdk.models.license_id import LicenseId as LicenseId
     from neurostore_sdk.models.metadata import Metadata as Metadata
     from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
     from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
@@ -659,6 +671,11 @@ else:
         "Entity": ".models.entity",
         "ErrorDetail": ".models.error_detail",
         "ErrorResponse": ".models.error_response",
+        "FulltextAttribution": ".models.fulltext_attribution",
+        "FulltextList": ".models.fulltext_list",
+        "FulltextReturn": ".models.fulltext_return",
+        "FulltextSummary": ".models.fulltext_summary",
+        "FulltextWithheld": ".models.fulltext_withheld",
         "ImageBase": ".models.image_base",
         "ImageCommon": ".models.image_common",
         "ImageDetail": ".models.image_detail",
@@ -674,6 +691,7 @@ else:
         "JournalSummary": ".models.journal_summary",
         "JsonLd": ".models.json_ld",
         "JsonLdContext": ".models.json_ld_context",
+        "LicenseId": ".models.license_id",
         "Metadata": ".models.metadata",
         "NestedPutAttributes": ".models.nested_put_attributes",
         "NeurostoreStudysetReleasesGet200Response": ".models.neurostore_studyset_releases_get200_response",

@@ -272,6 +272,20 @@ class TestStoreApi(unittest.TestCase):
         """
         pass
 
+    def test_fulltexts_get(self) -> None:
+        """Test case for fulltexts_get
+
+        GET full texts
+        """
+        pass
+
+    def test_fulltexts_id_get(self) -> None:
+        """Test case for fulltexts_id_get
+
+        GET a full text
+        """
+        pass
+
     def test_images_get(self) -> None:
         """Test case for images_get
 

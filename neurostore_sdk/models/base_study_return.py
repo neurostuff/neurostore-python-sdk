@@ -60,6 +60,7 @@ class BaseStudyReturn(BaseModel):
     user: Optional[StrictStr] = Field(default=None, description="The owner's Auth0 id, served only to the owner; null for anyone else, who sees `username`.")
     username: Optional[StrictStr] = Field(default=None, description="human readable username")
     journal: Optional[JournalSummary] = None
+    fulltext_id: Optional[StrictStr] = Field(default=None, description="The paper's preferred full text (GET /fulltexts/{id}); null when it has none. GET /fulltexts/?base_study_id= lists every copy.")
     has_coordinates: Optional[StrictBool] = None
     has_images: Optional[StrictBool] = None
     has_z_maps: Optional[StrictBool] = None
@@ -67,7 +68,7 @@ class BaseStudyReturn(BaseModel):
     has_beta_and_variance_maps: Optional[StrictBool] = None
     features: Optional[Dict[str, Any]] = None
     data_sources: Optional[List[DataSourceSummary]] = Field(default=None, description="Present only when the request sets `data_sources=true`.")
-    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "journal", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features", "data_sources"]
+    __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "journal", "fulltext_id", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features", "data_sources"]
 
     @field_validator('publication_status')
     def publication_status_validate_enum(cls, value):
@@ -109,6 +110,7 @@ class BaseStudyReturn(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
@@ -222,6 +224,11 @@ class BaseStudyReturn(BaseModel):
         if self.journal is None and "journal" in self.model_fields_set:
             _dict['journal'] = None
 
+        # set to None if fulltext_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.fulltext_id is None and "fulltext_id" in self.model_fields_set:
+            _dict['fulltext_id'] = None
+
         return _dict
 
     @classmethod
@@ -260,6 +267,7 @@ class BaseStudyReturn(BaseModel):
             "user": obj.get("user"),
             "username": obj.get("username"),
             "journal": JournalSummary.from_dict(obj["journal"]) if obj.get("journal") is not None else None,
+            "fulltext_id": obj.get("fulltext_id"),
             "has_coordinates": obj.get("has_coordinates"),
             "has_images": obj.get("has_images"),
             "has_z_maps": obj.get("has_z_maps"),
