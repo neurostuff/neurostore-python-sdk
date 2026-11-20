@@ -5813,7 +5813,7 @@ class StoreApi:
         z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
         radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
         year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
-        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A value matches itself only: `mri` is an MRI whose kind was not stated, not a parent of `fmri`.")] = None,
+        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -5875,7 +5875,7 @@ class StoreApi:
         :type radius: float
         :param year_max: Maximum publication year (inclusive) for study search
         :type year_max: int
-        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A value matches itself only: `mri` is an MRI whose kind was not stated, not a parent of `fmri`.
+        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.
         :type modality: List[str]
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
@@ -6029,7 +6029,7 @@ class StoreApi:
         z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
         radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
         year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
-        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A value matches itself only: `mri` is an MRI whose kind was not stated, not a parent of `fmri`.")] = None,
+        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -6091,7 +6091,7 @@ class StoreApi:
         :type radius: float
         :param year_max: Maximum publication year (inclusive) for study search
         :type year_max: int
-        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A value matches itself only: `mri` is an MRI whose kind was not stated, not a parent of `fmri`.
+        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.
         :type modality: List[str]
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
@@ -6245,7 +6245,7 @@ class StoreApi:
         z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
         radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
         year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
-        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A value matches itself only: `mri` is an MRI whose kind was not stated, not a parent of `fmri`.")] = None,
+        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -6307,7 +6307,7 @@ class StoreApi:
         :type radius: float
         :param year_max: Maximum publication year (inclusive) for study search
         :type year_max: int
-        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A value matches itself only: `mri` is an MRI whose kind was not stated, not a parent of `fmri`.
+        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.
         :type modality: List[str]
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
