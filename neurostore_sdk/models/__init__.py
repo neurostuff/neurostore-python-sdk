@@ -130,6 +130,11 @@ __all__ = [
     "Entity",
     "ErrorDetail",
     "ErrorResponse",
+    "FulltextAttribution",
+    "FulltextList",
+    "FulltextReturn",
+    "FulltextSummary",
+    "FulltextWithheld",
     "ImageBase",
     "ImageCommon",
     "ImageDetail",
@@ -145,6 +150,7 @@ __all__ = [
     "JournalSummary",
     "JsonLd",
     "JsonLdContext",
+    "LicenseId",
     "Metadata",
     "NestedPutAttributes",
     "NeurostoreStudysetReleasesGet200Response",
@@ -374,6 +380,11 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.entity import Entity
     from neurostore_sdk.models.error_detail import ErrorDetail
     from neurostore_sdk.models.error_response import ErrorResponse
+    from neurostore_sdk.models.fulltext_attribution import FulltextAttribution
+    from neurostore_sdk.models.fulltext_list import FulltextList
+    from neurostore_sdk.models.fulltext_return import FulltextReturn
+    from neurostore_sdk.models.fulltext_summary import FulltextSummary
+    from neurostore_sdk.models.fulltext_withheld import FulltextWithheld
     from neurostore_sdk.models.image_base import ImageBase
     from neurostore_sdk.models.image_common import ImageCommon
     from neurostore_sdk.models.image_detail import ImageDetail
@@ -389,6 +400,7 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.journal_summary import JournalSummary
     from neurostore_sdk.models.json_ld import JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext
+    from neurostore_sdk.models.license_id import LicenseId
     from neurostore_sdk.models.metadata import Metadata
     from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes
     from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response
@@ -617,6 +629,11 @@ else:
         "Entity": ".entity",
         "ErrorDetail": ".error_detail",
         "ErrorResponse": ".error_response",
+        "FulltextAttribution": ".fulltext_attribution",
+        "FulltextList": ".fulltext_list",
+        "FulltextReturn": ".fulltext_return",
+        "FulltextSummary": ".fulltext_summary",
+        "FulltextWithheld": ".fulltext_withheld",
         "ImageBase": ".image_base",
         "ImageCommon": ".image_common",
         "ImageDetail": ".image_detail",
@@ -632,6 +649,7 @@ else:
         "JournalSummary": ".journal_summary",
         "JsonLd": ".json_ld",
         "JsonLdContext": ".json_ld_context",
+        "LicenseId": ".license_id",
         "Metadata": ".metadata",
         "NestedPutAttributes": ".nested_put_attributes",
         "NeurostoreStudysetReleasesGet200Response": ".neurostore_studyset_releases_get200_response",

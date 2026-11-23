@@ -39,6 +39,8 @@ Method | HTTP request | Description
 [**data_sources_id_get**](StoreApi.md#data_sources_id_get) | **GET** /data-sources/{id} | GET a data source
 [**data_sources_id_put**](StoreApi.md#data_sources_id_put) | **PUT** /data-sources/{id} | PUT/update a data source
 [**data_sources_post**](StoreApi.md#data_sources_post) | **POST** /data-sources/ | POST/Create a data source
+[**fulltexts_get**](StoreApi.md#fulltexts_get) | **GET** /fulltexts/ | GET full texts
+[**fulltexts_id_get**](StoreApi.md#fulltexts_id_get) | **GET** /fulltexts/{id} | GET a full text
 [**images_get**](StoreApi.md#images_get) | **GET** /images/ | GET a list of images
 [**images_id_delete**](StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 [**images_id_get**](StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -2970,6 +2972,178 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Only an admin can change data sources. |  -  |
 **422** | Unprocessable Entity |  * X-Request-ID -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fulltexts_get**
+> FulltextList fulltexts_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, base_study_id=base_study_id, source=source, license=license)
+
+GET full texts
+
+List the full texts ingestion stored, each the text of one copy of a paper, for the papers the caller may see. A list never carries text: `redistributable` says whether GET /fulltexts/{id} returns it.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.fulltext_list import FulltextList
+from neurostore_sdk.models.license_id import LicenseId
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    sort = 'created_at' # str | Parameter to sort results on (optional) (default to 'created_at')
+    page = 56 # int | page of results (optional)
+    desc = True # bool | sort results by descending order (as opposed to ascending order) (optional)
+    page_size = 56 # int | number of results to show on a page (optional)
+    paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
+    base_study_id = 'base_study_id_example' # str | the full texts of this base study (optional)
+    source = 'source_example' # str | only full texts from this ingestion source (`pubget`, `elsevier`, ...) (optional)
+    license = neurostore_sdk.LicenseId() # LicenseId | only full texts whose copy has this licence (optional)
+
+    try:
+        # GET full texts
+        api_response = api_instance.fulltexts_get(sort=sort, page=page, desc=desc, page_size=page_size, paginate=paginate, base_study_id=base_study_id, source=source, license=license)
+        print("The response of StoreApi->fulltexts_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->fulltexts_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sort** | **str**| Parameter to sort results on | [optional] [default to &#39;created_at&#39;]
+ **page** | **int**| page of results | [optional] 
+ **desc** | **bool**| sort results by descending order (as opposed to ascending order) | [optional] 
+ **page_size** | **int**| number of results to show on a page | [optional] 
+ **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
+ **base_study_id** | **str**| the full texts of this base study | [optional] 
+ **source** | **str**| only full texts from this ingestion source (&#x60;pubget&#x60;, &#x60;elsevier&#x60;, ...) | [optional] 
+ **license** | [**LicenseId**](.md)| only full texts whose copy has this licence | [optional] 
+
+### Return type
+
+[**FulltextList**](FulltextList.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fulltexts_id_get**
+> FulltextReturn fulltexts_id_get(id)
+
+GET a full text
+
+Retrieve a full text: its provenance always, and its text only when the copy it was read from may be passed on (a Creative Commons, CC0 or public-domain licence stated by a named source, in a copy obtained publicly). Otherwise `text` is null and `text_withheld` says why and where the paper can be read.
+
+### Example
+
+* Bearer Authentication (JSON-Web-Token):
+
+```python
+import neurostore_sdk
+from neurostore_sdk.models.fulltext_return import FulltextReturn
+from neurostore_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://neurostore.org/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = neurostore_sdk.Configuration(
+    host = "https://neurostore.org/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: JSON-Web-Token
+configuration = neurostore_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with neurostore_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = neurostore_sdk.StoreApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        # GET a full text
+        api_response = api_instance.fulltexts_id_get(id)
+        print("The response of StoreApi->fulltexts_id_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StoreApi->fulltexts_id_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**FulltextReturn**](FulltextReturn.md)
+
+### Authorization
+
+[JSON-Web-Token](../README.md#JSON-Web-Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | No full text has this id, or its paper is not visible to the caller. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

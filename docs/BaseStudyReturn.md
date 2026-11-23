@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **user** | **str** | The owner&#39;s Auth0 id, served only to the owner; null for anyone else, who sees &#x60;username&#x60;. | [optional] [readonly] 
 **username** | **str** | human readable username | [optional] 
 **journal** | [**JournalSummary**](JournalSummary.md) |  | [optional] 
+**fulltext_id** | **str** | The paper&#39;s preferred full text (GET /fulltexts/{id}); null when it has none. GET /fulltexts/?base_study_id&#x3D; lists every copy. | [optional] [readonly] 
 **has_coordinates** | **bool** |  | [optional] 
 **has_images** | **bool** |  | [optional] 
 **has_z_maps** | **bool** |  | [optional] 

@@ -148,6 +148,8 @@ Class | Method | HTTP request | Description
 *StoreApi* | [**data_sources_id_get**](docs/StoreApi.md#data_sources_id_get) | **GET** /data-sources/{id} | GET a data source
 *StoreApi* | [**data_sources_id_put**](docs/StoreApi.md#data_sources_id_put) | **PUT** /data-sources/{id} | PUT/update a data source
 *StoreApi* | [**data_sources_post**](docs/StoreApi.md#data_sources_post) | **POST** /data-sources/ | POST/Create a data source
+*StoreApi* | [**fulltexts_get**](docs/StoreApi.md#fulltexts_get) | **GET** /fulltexts/ | GET full texts
+*StoreApi* | [**fulltexts_id_get**](docs/StoreApi.md#fulltexts_id_get) | **GET** /fulltexts/{id} | GET a full text
 *StoreApi* | [**images_get**](docs/StoreApi.md#images_get) | **GET** /images/ | GET a list of images
 *StoreApi* | [**images_id_delete**](docs/StoreApi.md#images_id_delete) | **DELETE** /images/{id} | DELETE an image
 *StoreApi* | [**images_id_get**](docs/StoreApi.md#images_id_get) | **GET** /images/{id} | GET an image
@@ -322,6 +324,11 @@ Class | Method | HTTP request | Description
  - [Entity](docs/Entity.md)
  - [ErrorDetail](docs/ErrorDetail.md)
  - [ErrorResponse](docs/ErrorResponse.md)
+ - [FulltextAttribution](docs/FulltextAttribution.md)
+ - [FulltextList](docs/FulltextList.md)
+ - [FulltextReturn](docs/FulltextReturn.md)
+ - [FulltextSummary](docs/FulltextSummary.md)
+ - [FulltextWithheld](docs/FulltextWithheld.md)
  - [ImageBase](docs/ImageBase.md)
  - [ImageCommon](docs/ImageCommon.md)
  - [ImageDetail](docs/ImageDetail.md)
@@ -337,6 +344,7 @@ Class | Method | HTTP request | Description
  - [JournalSummary](docs/JournalSummary.md)
  - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
+ - [LicenseId](docs/LicenseId.md)
  - [Metadata](docs/Metadata.md)
  - [NestedPutAttributes](docs/NestedPutAttributes.md)
  - [NeurostoreStudysetReleasesGet200Response](docs/NeurostoreStudysetReleasesGet200Response.md)
