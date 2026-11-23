@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.base_study_preprint_dois_inner import BaseStudyPreprintDoisInner
@@ -46,7 +46,7 @@ class BaseStudyReturn(BaseModel):
     level: Optional[StrictStr] = None
     is_oa: Optional[StrictBool] = None
     pmcid: Optional[StrictStr] = None
-    publication_status: Optional[StrictStr] = Field(default=None, description="study_schema's publication_status: `preprint` while only a preprint's identifiers are known, `published` once a version of record's are. ")
+    publication_status: Optional[StrictStr] = Field(default=None, description="A value of study_schema's `PublicationStatus` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/bibliography.yaml): whether only a preprint's identifiers are known, or a version of record's too. Any other value is refused. ")
     preprint_dois: Optional[List[BaseStudyPreprintDoisInner]] = Field(default=None, description="DOIs a preprint server registered for the paper, with the server. An identifier is held by one active base study: one another base study holds is not taken (see POST /base-studies). Returned normalized: DOIs in lower case. ")
     preprint_pmids: Optional[List[StrictStr]] = Field(default=None, description="PubMed's records of the paper's preprint.")
     preprint_pmcids: Optional[List[StrictStr]] = Field(default=None, description="PubMed Central's copies of the paper's preprint.")
@@ -69,16 +69,6 @@ class BaseStudyReturn(BaseModel):
     features: Optional[Dict[str, Any]] = None
     data_sources: Optional[List[DataSourceSummary]] = Field(default=None, description="Present only when the request sets `data_sources=true`.")
     __properties: ClassVar[List[str]] = ["metadata", "versions", "name", "description", "publication", "doi", "pmid", "authors", "year", "level", "is_oa", "pmcid", "publication_status", "preprint_dois", "preprint_pmids", "preprint_pmcids", "alternative_dois", "alternative_pmids", "alternative_pmcids", "created_at", "updated_at", "id", "public", "user", "username", "journal", "fulltext_id", "has_coordinates", "has_images", "has_z_maps", "has_t_maps", "has_beta_and_variance_maps", "features", "data_sources"]
-
-    @field_validator('publication_status')
-    def publication_status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['preprint', 'published']):
-            raise ValueError("must be one of enum values ('preprint', 'published')")
-        return value
 
     model_config = ConfigDict(
         validate_by_name=True,

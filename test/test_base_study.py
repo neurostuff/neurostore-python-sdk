@@ -50,7 +50,7 @@ class TestBaseStudy(unittest.TestCase):
                 level = '',
                 is_oa = True,
                 pmcid = '',
-                publication_status = 'preprint',
+                publication_status = '',
                 preprint_dois = [
                     neurostore_sdk.models.base_study_preprint_dois_inner.BaseStudyPreprintDoisInner(
                         doi = '', 

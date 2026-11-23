@@ -30,7 +30,7 @@ class BaseStudyPreprintDoisInner(BaseModel):
     BaseStudyPreprintDoisInner
     """ # noqa: E501
     doi: StrictStr
-    server: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The preprint server that registered the DOI: one of study_schema's PreprintServer values (biorxiv, medrxiv, arxiv, researchsquare, osf_preprints, psyarxiv, ssrn and others), or any other non-empty name for a server it does not list. ")
+    server: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The preprint server that registered the DOI: a value of study_schema's `PreprintServer` (in the same file as `PublicationStatus`), or any other non-empty name for a server it does not list. ")
     __properties: ClassVar[List[str]] = ["doi", "server"]
 
     model_config = ConfigDict(

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **doi** | **str** |  | 
-**server** | **str** | The preprint server that registered the DOI: one of study_schema&#39;s PreprintServer values (biorxiv, medrxiv, arxiv, researchsquare, osf_preprints, psyarxiv, ssrn and others), or any other non-empty name for a server it does not list.  | 
+**server** | **str** | The preprint server that registered the DOI: a value of study_schema&#39;s &#x60;PreprintServer&#x60; (in the same file as &#x60;PublicationStatus&#x60;), or any other non-empty name for a server it does not list.  | 
 
 ## Example
 
