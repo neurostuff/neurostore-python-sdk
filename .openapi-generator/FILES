@@ -139,7 +139,6 @@ docs/JournalReturn.md
 docs/JournalSummary.md
 docs/JsonLd.md
 docs/JsonLdContext.md
-docs/LicenseId.md
 docs/Metadata.md
 docs/NestedPutAttributes.md
 docs/NeurostoreStudysetReleasesGet200Response.md
@@ -395,7 +394,6 @@ neurostore_sdk/models/journal_return.py
 neurostore_sdk/models/journal_summary.py
 neurostore_sdk/models/json_ld.py
 neurostore_sdk/models/json_ld_context.py
-neurostore_sdk/models/license_id.py
 neurostore_sdk/models/metadata.py
 neurostore_sdk/models/nested_put_attributes.py
 neurostore_sdk/models/neurostore_studyset_releases_get200_response.py
@@ -646,7 +644,6 @@ test/test_journal_return.py
 test/test_journal_summary.py
 test/test_json_ld.py
 test/test_json_ld_context.py
-test/test_license_id.py
 test/test_metadata.py
 test/test_nested_put_attributes.py
 test/test_neurostore_studyset_releases_get200_response.py

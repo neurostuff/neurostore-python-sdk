@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **year** | **int** |  | [optional] 
 **publication** | **str** |  | [optional] 
 **doi** | **str** |  | [optional] 
-**license** | [**LicenseId**](LicenseId.md) |  | [optional] 
+**license** | **str** | A value of study_schema&#39;s &#x60;LicenseId&#x60; (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/license.yaml), such as &#x60;cc_by&#x60; or &#x60;all_rights_reserved&#x60;; any other value is refused. The values it annotates &#x60;redistributable&#x60; let a text be passed on with attribution. | [optional] 
 **license_statement** | **str** | The licence as its source stated it (a licence URL, name or copyright line). | [optional] 
 
 ## Example

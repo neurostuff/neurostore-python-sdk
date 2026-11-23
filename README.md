@@ -344,7 +344,6 @@ Class | Method | HTTP request | Description
  - [JournalSummary](docs/JournalSummary.md)
  - [JsonLd](docs/JsonLd.md)
  - [JsonLdContext](docs/JsonLdContext.md)
- - [LicenseId](docs/LicenseId.md)
  - [Metadata](docs/Metadata.md)
  - [NestedPutAttributes](docs/NestedPutAttributes.md)
  - [NeurostoreStudysetReleasesGet200Response](docs/NeurostoreStudysetReleasesGet200Response.md)

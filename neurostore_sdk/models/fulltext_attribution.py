@@ -20,7 +20,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from neurostore_sdk.models.license_id import LicenseId
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -34,7 +33,7 @@ class FulltextAttribution(BaseModel):
     year: Optional[StrictInt] = None
     publication: Optional[StrictStr] = None
     doi: Optional[StrictStr] = None
-    license: Optional[LicenseId] = None
+    license: Optional[StrictStr] = Field(default=None, description="A value of study_schema's `LicenseId` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/license.yaml), such as `cc_by` or `all_rights_reserved`; any other value is refused. The values it annotates `redistributable` let a text be passed on with attribution.")
     license_statement: Optional[StrictStr] = Field(default=None, description="The licence as its source stated it (a licence URL, name or copyright line).")
     __properties: ClassVar[List[str]] = ["title", "authors", "year", "publication", "doi", "license", "license_statement"]
 

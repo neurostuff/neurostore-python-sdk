@@ -41,7 +41,7 @@ class TestFulltextAttribution(unittest.TestCase):
                 year = 56,
                 publication = '',
                 doi = '',
-                license = 'cc_by',
+                license = '',
                 license_statement = ''
             )
         else:

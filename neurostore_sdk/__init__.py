@@ -166,7 +166,6 @@ __all__ = [
     "JournalSummary",
     "JsonLd",
     "JsonLdContext",
-    "LicenseId",
     "Metadata",
     "NestedPutAttributes",
     "NeurostoreStudysetReleasesGet200Response",
@@ -431,7 +430,6 @@ if _typing.TYPE_CHECKING:
     from neurostore_sdk.models.journal_summary import JournalSummary as JournalSummary
     from neurostore_sdk.models.json_ld import JsonLd as JsonLd
     from neurostore_sdk.models.json_ld_context import JsonLdContext as JsonLdContext
-    from neurostore_sdk.models.license_id import LicenseId as LicenseId
     from neurostore_sdk.models.metadata import Metadata as Metadata
     from neurostore_sdk.models.nested_put_attributes import NestedPutAttributes as NestedPutAttributes
     from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response as NeurostoreStudysetReleasesGet200Response
@@ -691,7 +689,6 @@ else:
         "JournalSummary": ".models.journal_summary",
         "JsonLd": ".models.json_ld",
         "JsonLdContext": ".models.json_ld_context",
-        "LicenseId": ".models.license_id",
         "Metadata": ".models.metadata",
         "NestedPutAttributes": ".models.nested_put_attributes",
         "NeurostoreStudysetReleasesGet200Response": ".models.neurostore_studyset_releases_get200_response",

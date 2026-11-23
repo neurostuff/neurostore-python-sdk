@@ -23,7 +23,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from neurostore_sdk.models.fulltext_attribution import FulltextAttribution
-from neurostore_sdk.models.license_id import LicenseId
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -38,7 +37,7 @@ class FulltextSummary(BaseModel):
     base_study_id: Optional[StrictStr] = None
     source: Optional[StrictStr] = Field(default=None, description="The ingestion source the text came from (`pubget`, `elsevier`, ...).")
     source_version: Optional[StrictStr] = None
-    license: Optional[LicenseId] = Field(default=None, description="The licence of the copy the text was read from.")
+    license: Optional[StrictStr] = Field(default=None, description="The licence of the copy the text was read from.")
     sha256: Optional[Annotated[str, Field(strict=True)]] = None
     text_copy: Optional[Dict[str, Any]] = Field(default=None, description="The copy the text was read from (study_schema's HeldCopy).")
     preferred: Optional[StrictBool] = Field(default=None, description="Whether this is the base study's `fulltext_id`.")
