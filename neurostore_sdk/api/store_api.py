@@ -52,7 +52,6 @@ from neurostore_sdk.models.image_return import ImageReturn
 from neurostore_sdk.models.journal_kind import JournalKind
 from neurostore_sdk.models.journal_list import JournalList
 from neurostore_sdk.models.journal_return import JournalReturn
-from neurostore_sdk.models.license_id import LicenseId
 from neurostore_sdk.models.neurostore_studyset_releases_get200_response import NeurostoreStudysetReleasesGet200Response
 from neurostore_sdk.models.note_collection_list import NoteCollectionList
 from neurostore_sdk.models.note_collection_request import NoteCollectionRequest
@@ -113,7 +112,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
-        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
+        role: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
@@ -149,7 +148,7 @@ class StoreApi:
         :type paginate: bool
         :param study: Filter tables by study id
         :type study: str
-        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :param role: Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
         :type role: str
         :param name: search the name field for a term
         :type name: str
@@ -224,7 +223,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
-        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
+        role: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
@@ -260,7 +259,7 @@ class StoreApi:
         :type paginate: bool
         :param study: Filter tables by study id
         :type study: str
-        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :param role: Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
         :type role: str
         :param name: search the name field for a term
         :type name: str
@@ -335,7 +334,7 @@ class StoreApi:
         page_size: Annotated[Optional[Annotated[int, Field(lt=30000, strict=True, ge=1)]], Field(description="number of results to show on a page")] = None,
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         study: Annotated[Optional[StrictStr], Field(description="Filter tables by study id")] = None,
-        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
+        role: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         name: Annotated[Optional[StrictStr], Field(description="search the name field for a term")] = None,
         nested: Annotated[Optional[StrictBool], Field(description="whether to show the URI to a resource (false) or to embed the object in the response (true)")] = None,
         image_metadata: Annotated[Optional[StrictBool], Field(description="include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads.")] = None,
@@ -371,7 +370,7 @@ class StoreApi:
         :type paginate: bool
         :param study: Filter tables by study id
         :type study: str
-        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :param role: Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
         :type role: str
         :param name: search the name field for a term
         :type name: str
@@ -5816,7 +5815,7 @@ class StoreApi:
         z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
         radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
         year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
-        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.")] = None,
+        modality: Annotated[Optional[List[Annotated[str, Field(min_length=1, strict=True)]]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself.")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -5878,7 +5877,7 @@ class StoreApi:
         :type radius: float
         :param year_max: Maximum publication year (inclusive) for study search
         :type year_max: int
-        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.
+        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself.
         :type modality: List[str]
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
@@ -6032,7 +6031,7 @@ class StoreApi:
         z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
         radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
         year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
-        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.")] = None,
+        modality: Annotated[Optional[List[Annotated[str, Field(min_length=1, strict=True)]]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself.")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -6094,7 +6093,7 @@ class StoreApi:
         :type radius: float
         :param year_max: Maximum publication year (inclusive) for study search
         :type year_max: int
-        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.
+        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself.
         :type modality: List[str]
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
@@ -6248,7 +6247,7 @@ class StoreApi:
         z: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Z coordinate for spatial query (requires x, y, and radius)")] = None,
         radius: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Radius for spatial query (requires x, y, and z)")] = None,
         year_max: Annotated[Optional[StrictInt], Field(description="Maximum publication year (inclusive) for study search")] = None,
-        modality: Annotated[Optional[List[StrictStr]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.")] = None,
+        modality: Annotated[Optional[List[Annotated[str, Field(min_length=1, strict=True)]]], Field(description="Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself.")] = None,
         feature_filter: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         pipeline_config: Annotated[Optional[List[StrictStr]], Field(description="Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. ")] = None,
         feature_display: Annotated[Optional[StrictStr], Field(description="display features from pipelines")] = None,
@@ -6310,7 +6309,7 @@ class StoreApi:
         :type radius: float
         :param year_max: Maximum publication year (inclusive) for study search
         :type year_max: int
-        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself.
+        :param modality: Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself.
         :type modality: List[str]
         :param feature_filter: Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=. 
         :type feature_filter: List[str]
@@ -10802,7 +10801,7 @@ class StoreApi:
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         base_study_id: Annotated[Optional[StrictStr], Field(description="the full texts of this base study")] = None,
         source: Annotated[Optional[StrictStr], Field(description="only full texts from this ingestion source (`pubget`, `elsevier`, ...)")] = None,
-        license: Annotated[Optional[LicenseId], Field(description="only full texts whose copy has this licence")] = None,
+        license: Annotated[Optional[StrictStr], Field(description="only full texts whose copy has this licence")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10835,7 +10834,7 @@ class StoreApi:
         :param source: only full texts from this ingestion source (`pubget`, `elsevier`, ...)
         :type source: str
         :param license: only full texts whose copy has this licence
-        :type license: LicenseId
+        :type license: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10897,7 +10896,7 @@ class StoreApi:
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         base_study_id: Annotated[Optional[StrictStr], Field(description="the full texts of this base study")] = None,
         source: Annotated[Optional[StrictStr], Field(description="only full texts from this ingestion source (`pubget`, `elsevier`, ...)")] = None,
-        license: Annotated[Optional[LicenseId], Field(description="only full texts whose copy has this licence")] = None,
+        license: Annotated[Optional[StrictStr], Field(description="only full texts whose copy has this licence")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10930,7 +10929,7 @@ class StoreApi:
         :param source: only full texts from this ingestion source (`pubget`, `elsevier`, ...)
         :type source: str
         :param license: only full texts whose copy has this licence
-        :type license: LicenseId
+        :type license: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10992,7 +10991,7 @@ class StoreApi:
         paginate: Annotated[Optional[StrictBool], Field(description="whether to paginate results (true) or return all results at once (false)")] = None,
         base_study_id: Annotated[Optional[StrictStr], Field(description="the full texts of this base study")] = None,
         source: Annotated[Optional[StrictStr], Field(description="only full texts from this ingestion source (`pubget`, `elsevier`, ...)")] = None,
-        license: Annotated[Optional[LicenseId], Field(description="only full texts whose copy has this licence")] = None,
+        license: Annotated[Optional[StrictStr], Field(description="only full texts whose copy has this licence")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11025,7 +11024,7 @@ class StoreApi:
         :param source: only full texts from this ingestion source (`pubget`, `elsevier`, ...)
         :type source: str
         :param license: only full texts whose copy has this licence
-        :type license: LicenseId
+        :type license: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11135,7 +11134,7 @@ class StoreApi:
             
         if license is not None:
             
-            _query_params.append(('license', license.value))
+            _query_params.append(('license', license))
             
         # process the header parameters
         # process the form parameters
@@ -21187,7 +21186,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
-        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
+        role: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
@@ -21247,7 +21246,7 @@ class StoreApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
-        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :param role: Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
         :type role: str
         :param map_type: filter by stored map-type flags
         :type map_type: str
@@ -21354,7 +21353,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
-        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
+        role: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
@@ -21414,7 +21413,7 @@ class StoreApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
-        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :param role: Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
         :type role: str
         :param map_type: filter by stored map-type flags
         :type map_type: str
@@ -21521,7 +21520,7 @@ class StoreApi:
         authors: Annotated[Optional[StrictStr], Field(description="search authors")] = None,
         user_id: Annotated[Optional[StrictStr], Field(description="user id you want to filter by")] = None,
         data_type: Annotated[Optional[StrictStr], Field(description="whether searching for studies that contain coordinates, images, or both")] = None,
-        role: Annotated[Optional[StrictStr], Field(description="Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
+        role: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.")] = None,
         map_type: Annotated[Optional[StrictStr], Field(description="filter by stored map-type flags")] = None,
         studyset_owner: Annotated[Optional[StrictStr], Field(description="for all studies filter which studysets are listed based on who owns the studyset")] = None,
         level: Annotated[Optional[StrictStr], Field(description="select between studies with group results or meta results")] = None,
@@ -21581,7 +21580,7 @@ class StoreApi:
         :type user_id: str
         :param data_type: whether searching for studies that contain coordinates, images, or both
         :type data_type: str
-        :param role: Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
+        :param role: Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed.
         :type role: str
         :param map_type: filter by stored map-type flags
         :type map_type: str

@@ -141,7 +141,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     page_size = 56 # int | number of results to show on a page (optional)
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     study = 'study_example' # str | Filter tables by study id (optional)
-    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     name = 'name_example' # str | search the name field for a term (optional)
     nested = True # bool | whether to show the URI to a resource (false) or to embed the object in the response (true) (optional)
     image_metadata = False # bool | include each image's source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. (optional) (default to False)
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| number of results to show on a page | [optional] 
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **study** | **str**| Filter tables by study id | [optional] 
- **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
+ **role** | **str**| Only analyses with this coordinate role, a value of study_schema&#39;s &#x60;CoordinateRole&#x60; (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as &#x60;result&#x60; or &#x60;anchor&#x60;; any other value is refused. On the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **name** | **str**| search the name field for a term | [optional] 
  **nested** | **bool**| whether to show the URI to a resource (false) or to embed the object in the response (true) | [optional] 
  **image_metadata** | **bool**| include each image&#39;s source metadata (the payload it was ingested from). Withheld by default because it is large and unused by most clients; never present in studyset payloads. | [optional] [default to False]
@@ -1723,7 +1723,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     z = 30 # float | Z coordinate for spatial query (requires x, y, and radius) (optional)
     radius = 6 # float | Radius for spatial query (requires x, y, and z) (optional)
     year_max = 2020 # int | Maximum publication year (inclusive) for study search (optional)
-    modality = ['modality_example'] # List[str] | Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: `mri` matches fmri, smri, dmri and mrs, and `other` matches ct, ieeg and physiological. A child matches only itself. (optional)
+    modality = ['modality_example'] # List[str] | Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema's `Modality` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (`fMRI`, `MRI`, `PET`, `other`, ...); any other value is refused. A value also matches the values whose `is_a` names it, so `MRI` matches `fMRI`, `sMRI`, `dMRI` and `MRS` too, and a refined value matches only itself. (optional)
     feature_filter = ['feature_filter_example'] # List[str] | Filter studies by feature content. Format: \"PipelineName[:version]:field_path=value\". Examples:   - \"TestPipeline:1.0.0:predictions.age_mean>20\" (specific version)   - \"TestPipeline:groups.diagnosis=ADHD\" (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
     pipeline_config = ['pipeline_config_example'] # List[str] | Filter studies by pipeline config content. Format: \"PipelineName[:version]:config_path=value\". Examples:   - \"TestPipeline:1.0.0:settings.min_age=20\" (specific version)   - \"TestPipeline:model.type=linear\" (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with =, >, <, >=, <=.  (optional)
     feature_display = 'feature_display_example' # str | display features from pipelines (optional)
@@ -1778,7 +1778,7 @@ Name | Type | Description  | Notes
  **z** | **float**| Z coordinate for spatial query (requires x, y, and radius) | [optional] 
  **radius** | **float**| Radius for spatial query (requires x, y, and z) | [optional] 
  **year_max** | **int**| Maximum publication year (inclusive) for study search | [optional] 
- **modality** | [**List[str]**](str.md)| Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. A parent also matches its children: &#x60;mri&#x60; matches fmri, smri, dmri and mrs, and &#x60;other&#x60; matches ct, ieeg and physiological. A child matches only itself. | [optional] 
+ **modality** | [**List[str]**](str.md)| Only papers acquired by any of these modalities: the modalities their extraction record states, else those their methods section names. A paper with several modalities matches each of them. The values are study_schema&#39;s &#x60;Modality&#x60; (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/acquisition.yaml), spelled as it spells them (&#x60;fMRI&#x60;, &#x60;MRI&#x60;, &#x60;PET&#x60;, &#x60;other&#x60;, ...); any other value is refused. A value also matches the values whose &#x60;is_a&#x60; names it, so &#x60;MRI&#x60; matches &#x60;fMRI&#x60;, &#x60;sMRI&#x60;, &#x60;dMRI&#x60; and &#x60;MRS&#x60; too, and a refined value matches only itself. | [optional] 
  **feature_filter** | [**List[str]**](str.md)| Filter studies by feature content. Format: \&quot;PipelineName[:version]:field_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:predictions.age_mean&gt;20\&quot; (specific version)   - \&quot;TestPipeline:groups.diagnosis&#x3D;ADHD\&quot; (latest version)  Field path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
  **pipeline_config** | [**List[str]**](str.md)| Filter studies by pipeline config content. Format: \&quot;PipelineName[:version]:config_path&#x3D;value\&quot;. Examples:   - \&quot;TestPipeline:1.0.0:settings.min_age&#x3D;20\&quot; (specific version)   - \&quot;TestPipeline:model.type&#x3D;linear\&quot; (latest version)  Config path supports array notation with [], regex search with ~, and comparisons with &#x3D;, &gt;, &lt;, &gt;&#x3D;, &lt;&#x3D;.  | [optional] 
  **feature_display** | **str**| display features from pipelines | [optional] 
@@ -2991,7 +2991,6 @@ List the full texts ingestion stored, each the text of one copy of a paper, for 
 ```python
 import neurostore_sdk
 from neurostore_sdk.models.fulltext_list import FulltextList
-from neurostore_sdk.models.license_id import LicenseId
 from neurostore_sdk.rest import ApiException
 from pprint import pprint
 
@@ -3022,7 +3021,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     paginate = True # bool | whether to paginate results (true) or return all results at once (false) (optional) (default to True)
     base_study_id = 'base_study_id_example' # str | the full texts of this base study (optional)
     source = 'source_example' # str | only full texts from this ingestion source (`pubget`, `elsevier`, ...) (optional)
-    license = neurostore_sdk.LicenseId() # LicenseId | only full texts whose copy has this licence (optional)
+    license = 'license_example' # str | only full texts whose copy has this licence (optional)
 
     try:
         # GET full texts
@@ -3047,7 +3046,7 @@ Name | Type | Description  | Notes
  **paginate** | **bool**| whether to paginate results (true) or return all results at once (false) | [optional] [default to True]
  **base_study_id** | **str**| the full texts of this base study | [optional] 
  **source** | **str**| only full texts from this ingestion source (&#x60;pubget&#x60;, &#x60;elsevier&#x60;, ...) | [optional] 
- **license** | [**LicenseId**](.md)| only full texts whose copy has this licence | [optional] 
+ **license** | **str**| only full texts whose copy has this licence | [optional] 
 
 ### Return type
 
@@ -5692,7 +5691,7 @@ with neurostore_sdk.ApiClient(configuration) as api_client:
     authors = 'authors_example' # str | search authors (optional)
     user_id = 'user_id_example' # str | user id you want to filter by (optional)
     data_type = 'data_type_example' # str | whether searching for studies that contain coordinates, images, or both (optional)
-    role = 'role_example' # str | Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
+    role = 'role_example' # str | Only analyses with this coordinate role, a value of study_schema's `CoordinateRole` (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as `result` or `anchor`; any other value is refused. On the studies list, only studies with such an analysis. `result` also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline's versions with no role, which matches no value. Without `role`, analyses of every role are listed. (optional)
     map_type = 'map_type_example' # str | filter by stored map-type flags (optional)
     studyset_owner = 'studyset_owner_example' # str | for all studies filter which studysets are listed based on who owns the studyset (optional)
     level = 'group' # str | select between studies with group results or meta results (optional) (default to 'group')
@@ -5735,7 +5734,7 @@ Name | Type | Description  | Notes
  **authors** | **str**| search authors | [optional] 
  **user_id** | **str**| user id you want to filter by | [optional] 
  **data_type** | **str**| whether searching for studies that contain coordinates, images, or both | [optional] 
- **role** | **str**| Only analyses with this coordinate role (study_schema CoordinateRole); on the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
+ **role** | **str**| Only analyses with this coordinate role, a value of study_schema&#39;s &#x60;CoordinateRole&#x60; (https://github.com/neurostuff/study_schema/blob/main/src/study_schema/linkml/neuroimaging-study-storage/analysis_enums.yaml), such as &#x60;result&#x60; or &#x60;anchor&#x60;; any other value is refused. On the studies list, only studies with such an analysis. &#x60;result&#x60; also matches an analysis with no role (one from before roles, or one added through the API), except a set the study_schema ingester wrote to the pipeline&#39;s versions with no role, which matches no value. Without &#x60;role&#x60;, analyses of every role are listed. | [optional] 
  **map_type** | **str**| filter by stored map-type flags | [optional] 
  **studyset_owner** | **str**| for all studies filter which studysets are listed based on who owns the studyset | [optional] 
  **level** | **str**| select between studies with group results or meta results | [optional] [default to &#39;group&#39;]

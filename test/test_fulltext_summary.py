@@ -42,7 +42,7 @@ class TestFulltextSummary(unittest.TestCase):
                 base_study_id = '',
                 source = '',
                 source_version = '',
-                license = 'cc_by',
+                license = '',
                 sha256 = 'bf325375e030fccba00917317c574773100bf03b5fc61486286e564b23e9566b',
                 text_copy = { },
                 preferred = True,
